@@ -198,6 +198,7 @@ const config: Linter.Config = {
         "space-in-parens": ["warn", "never"],
         "padded-blocks": ["warn", "never"],
         "brace-style":["warn", "1tbs", { "allowSingleLine": true }],
+        "eol-last": "warn",
 
         // https://github.com/import-js/eslint-plugin-import/tree/main/docs/rules
         "import/no-amd": "error",

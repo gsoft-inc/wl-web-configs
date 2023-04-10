@@ -18,8 +18,8 @@
         "clean": "pnpm clean:pkg && pnpm clean:root",
         "clean:pkg": "pnpm -r clean",
         "clean:root": "pnpm dlx rimraf node_modules pnpm-lock.yaml",
-        "lint": "pnpm build:eslint && pnpm run /^lint:.*/",
-        "lint:eslint": "eslint . --ext .js,.jsx,.ts,.tsx  --max-warnings=0 --cache --cache-location node_modules/.cache/eslint",
+        "lint": "pnpm run /^lint:.*/",
+        "lint:eslint": "pnpm build:eslint && eslint . --ext .js,.jsx,.ts,.tsx  --max-warnings=0 --cache --cache-location node_modules/.cache/eslint",
         "lint:types": "pnpm -r lint:types",
         "release": "pnpm build && changeset publish",
         "test": "pnpm -r test"
