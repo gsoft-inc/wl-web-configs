@@ -1,0 +1,12 @@
+{
+    "$schema": "https://json.schemastore.org/tsconfig",
+    "extends": "@workleap/typescript-configs/library/build.json",
+    "compilerOptions": {
+        "moduleResolution": "nodenext",
+        "module": "CommonJS",
+        "outDir": "dist",
+        "verbatimModuleSyntax": false
+    },
+    "include": ["index.ts"],
+    "exclude": ["dist"]
+}

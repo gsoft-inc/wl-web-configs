@@ -1,0 +1,37 @@
+{
+    "name": "@workleap/browserslist-config",
+    "author": "Workleap",
+    "description": "Workleap recommended Browserslist config.",
+    "version": "0.0.1",
+    "license": "Apache-2.0",
+    "keywords": [
+        "workleap",
+        "browserslist"
+    ],
+    "contributors": [
+        "Alexandre Asselin <alexandre.asselin@gsoft.com>"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Workleap/wl-web-configs.git",
+        "directory": "packages/browserslist-config"
+    },
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "files": [
+        "dist",
+        "CHANGELOG.md",
+        "README.md"
+    ],
+    "scripts": {
+        "build": "tsc",
+        "clean": "pnpm dlx rimraf dist node_modules",
+        "lint:types": "tsc --noEmit"
+    },
+    "devDependencies": {
+        "@workleap/typescript-configs": "workspace:*"
+    },
+    "publishConfig": {
+        "access": "public"
+    }
+}
