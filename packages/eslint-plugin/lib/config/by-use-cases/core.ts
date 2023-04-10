@@ -4,7 +4,6 @@ const config: Linter.Config = {
     plugins: ["import"],
     extends: [
         "eslint:recommended"
-        // TODO, should we import those rules ? https://github.com/import-js/eslint-plugin-import/blob/main/config/recommended.js
     ],
     parserOptions: {
         sourceType: "module",
@@ -122,14 +121,6 @@ const config: Linter.Config = {
         "no-param-reassign": "warn",
         "no-multiple-empty-lines": "warn",
         "space-infix-ops": "warn",
-
-        // TODO: Those rules are disable, but not part of the eslint:recommended... should we remove them?
-        "linebreak-style": "off",
-        "quote-props": "off",
-        "no-console": "off",
-        "no-duplicate-imports": "off",
-        "default-case": "off",
-
         "max-len": ["warn", { tabWidth: 4, code: 300 }],
         "indent": [
             "warn",

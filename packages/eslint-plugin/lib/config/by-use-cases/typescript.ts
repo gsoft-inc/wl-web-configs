@@ -36,11 +36,6 @@ const config: Linter.Config = {
                 // @typescript-eslint/recommended disables
                 "@typescript-eslint/no-non-null-assertion": "off",
 
-                // TODO @typescript-eslint/recommended disables, but they are not in the recommended config, meaning those are useless? and can be
-                // removed
-                "@typescript-eslint/explicit-function-return-type": "off",
-                "@typescript-eslint/explicit-module-boundary-types": "off",
-
                 // additional rules we want
                 "@typescript-eslint/member-delimiter-style": "warn",
                 "@typescript-eslint/consistent-type-definitions": "warn",
