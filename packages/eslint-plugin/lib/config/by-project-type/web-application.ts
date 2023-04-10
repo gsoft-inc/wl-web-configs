@@ -19,7 +19,12 @@ const config: Linter.Config = {
     env: {
         browser: true,
         es6: true
+    },
+    rules: {
+        // Custom WorkLeap rules
+        "@workleap/strict-css-modules-names": "warn"
     }
+
 };
 
 export = config;
