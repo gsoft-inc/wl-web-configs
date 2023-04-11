@@ -27,6 +27,10 @@ yarn add --dev @workleap/eslint-plugin
 
 TODO
 
+## Advanced Usage
+
+If the default configuration doesn’t fit your needs, you can view the advanced usage documentation [here](./ADVANCED_USAGE.md).
+
 ## License
 
 Copyright © 2023, GSoft inc. This code is licensed under the Apache License, Version 2.0. You may obtain a copy of this license at https://github.com/gsoft-inc/gsoft-license/blob/master/LICENSE.
