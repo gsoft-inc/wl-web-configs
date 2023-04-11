@@ -15,7 +15,7 @@
         "build": "pnpm -r build",
         "build:eslint": "pnpm --filter=@workleap/eslint-plugin build",
         "changeset": "changeset",
-        "clean": "pnpm clean:pkg && pnpm clean:root",
+        "clean": "pnpm run /^clean:.*/",
         "clean:pkg": "pnpm -r clean",
         "clean:root": "pnpm dlx rimraf node_modules pnpm-lock.yaml",
         "lint": "pnpm run /^lint:.*/",

@@ -2,7 +2,7 @@
     "name": "@workleap/typescript-configs",
     "author": "Workleap",
     "description": "Workleap recommended typescript config.",
-    "version": "0.0.1",
+    "version": "0.0.0",
     "license": "Apache-2.0",
     "keywords": [
         "workleap",
