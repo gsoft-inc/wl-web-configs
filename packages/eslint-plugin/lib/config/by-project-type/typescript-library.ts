@@ -7,10 +7,6 @@ const config: Linter.Config = {
         "plugin:@workleap/jest",
         "plugin:@workleap/testing-library"
     ],
-    parserOptions: {
-        sourceType: "module",
-        ecmaVersion: "latest"
-    },
     env: {
         es6: true
     }

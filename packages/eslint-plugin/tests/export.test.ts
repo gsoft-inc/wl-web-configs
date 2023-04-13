@@ -3,7 +3,7 @@ import path from "path";
 import plugin from "../lib";
 
 const rules = fs.readdirSync(path.resolve(__dirname, "../lib/rules")).map(x => path.parse(x).name);
-const configsByUseCase = fs.readdirSync(path.resolve(__dirname, "../lib/config/by-use-cases")).map(x => path.parse(x).name);
+const configsByUseCase = fs.readdirSync(path.resolve(__dirname, "../lib/config/parts")).map(x => path.parse(x).name);
 const configsByProjectType = fs.readdirSync(path.resolve(__dirname, "../lib/config/by-project-type")).map(x => path.parse(x).name);
 const configs = [...configsByUseCase, ...configsByProjectType];
 

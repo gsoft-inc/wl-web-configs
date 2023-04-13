@@ -9,13 +9,6 @@ const config: Linter.Config = {
         "plugin:@workleap/testing-library",
         "plugin:@workleap/storybook"
     ],
-    parserOptions: {
-        sourceType: "module",
-        ecmaVersion: "latest",
-        ecmaFeatures: {
-            jsx: true
-        }
-    },
     env: {
         browser: true,
         es6: true
@@ -24,7 +17,6 @@ const config: Linter.Config = {
         // Custom WorkLeap rules
         "@workleap/strict-css-modules-names": "warn"
     }
-
 };
 
 export = config;
