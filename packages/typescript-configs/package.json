@@ -10,9 +10,6 @@
         "tsconfig",
         "config"
     ],
-    "contributors": [
-        "Alexandre Asselin <alexandre.asselin@gsoft.com>"
-    ],
     "repository": {
         "type": "git",
         "url": "git+https://github.com/Workleap/wl-web-configs.git",
