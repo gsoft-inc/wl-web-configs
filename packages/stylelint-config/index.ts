@@ -1,6 +1,8 @@
 import type { Config } from "stylelint";
 
 const config: Config = {
+    reportNeedlessDisables: true,
+    reportInvalidScopeDisables: true,
     extends: "stylelint-config-standard",
     rules: {
         // # Rule category: Avoid Errors

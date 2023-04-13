@@ -25,7 +25,83 @@ yarn add --dev @workleap/typescript-configs
 
 ## Usage
 
-TODO
+### Web App Project
+
+**Tsconfig.json used for linting**
+
+Before you can build your TypeScript code, you need to make sure that there are no compilation errors. This process involves running the TypeScript compiler in a "check" mode that only checks for errors, without actually compiling the code. By creating a separate tsconfig.json file for checking compilation errors, you can optimize the compilation process for speed and accuracy, without worrying about any other build settings.
+
+Here is an example of a tsconfig.json file extending the Workleap TypeScript configuration for linting:
+
+```json
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "@workleap/web-application/lint.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}
+```
+
+
+### React or TypeScript Library Project
+
+**Tsconfig.json used for linting**
+
+Before you can build your TypeScript code, you need to make sure that there are no compilation errors. This process involves running the TypeScript compiler in a "check" mode that only checks for errors, without actually compiling the code. By creating a separate tsconfig.json file for checking compilation errors, you can optimize the compilation process for speed and accuracy, without worrying about any other build settings.
+
+Here is an example of a tsconfig.json file extending the Workleap TypeScript configuration for linting:
+
+```json
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "@workleap/library/lint.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}
+```
+
+**Tsconfig.json used for building**
+
+Building your TypeScript code involves compiling it down to JavaScript that can be run in a browser or server environment. This process may require different settings than checking compilation errors, such as a different target version or module format. By creating a separate tsconfig.json file for building, you can ensure that your code is compiled optimally for the target environment.
+
+Here is an example of a tsconfig.json file extending the Workleap TypeScript configuration for building:
+
+```json
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "@workleap/library/build.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}
+```
+
+**Tsconfig.json used for building in dev mode**
+
+When you're developing your TypeScript code, you may want to compile it in a way that prioritizes speed over optimization. For example, you might want to use a watch mode that compiles your code quickly and automatically whenever you make changes. By creating a separate tsconfig.json file for building in dev mode, you can optimize the compilation process for speed and convenience, without sacrificing the quality of the resulting code.
+
+Here is an example of a tsconfig.json file extending the Workleap TypeScript configuration for building in dev mode:
+
+```json
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "@workleap/library/build-dev.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}
+```
+
 
 ## Advanced Usage
 
