@@ -21,12 +21,12 @@ ruleTester.run("strict-css-modules-names", rule, {
     valid: [
         {
             filename: "C:/Dev/MyProject/settings/entrust/entrust-section.jsx",
-            code: `import styles from "./entrust-section.module.css";`,
+            code: "import styles from \"./entrust-section.module.css\";",
             parserOptions
         },
         {
             filename: "C:/Dev/MyProject/settings/entrust/policy/bubble.jsx",
-            code: `import styles from "./bubble.module.css";`,
+            code: "import styles from \"./bubble.module.css\";",
             parserOptions
         }
     ],
@@ -34,7 +34,7 @@ ruleTester.run("strict-css-modules-names", rule, {
     invalid: [
         {
             filename: "C:/Dev/MyProject/settings/entrust/entrust-section.jsx",
-            code: `import styles from "./entrust/entrust-section.module.css";`,
+            code: "import styles from \"./entrust/entrust-section.module.css\";",
             errors: [
                 {
                     message:
@@ -45,7 +45,7 @@ ruleTester.run("strict-css-modules-names", rule, {
         },
         {
             filename: "C:/Dev/MyProject/settings/entrust/entrust-section.jsx",
-            code: `import styles from "@features/group-management/entrust-section.module.css";`,
+            code: "import styles from \"@features/group-management/entrust-section.module.css\";",
             errors: [
                 {
                     message:
@@ -56,7 +56,7 @@ ruleTester.run("strict-css-modules-names", rule, {
         },
         {
             filename: "C:/Dev/MyProject/settings/entrust/entrust-section.jsx",
-            code: `import styles from "./entrust.module.css";`,
+            code: "import styles from \"./entrust.module.css\";",
             errors: [
                 {
                     message: "CSS Modules should be associated to one component and should be named ./entrust-section.module.css. If the module is already used by another component, create a new one."

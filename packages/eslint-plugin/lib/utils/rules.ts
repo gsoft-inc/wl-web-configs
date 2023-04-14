@@ -1,6 +1,5 @@
 import { Rule } from "eslint";
-import { basename } from "path";
-import { sep } from "path";
+import { basename, sep } from "path";
 
 export const sanitizePath = (filePath: string) => {
     return filePath.replace(/\//g, sep).trim();
