@@ -29,9 +29,9 @@ yarn add --dev @workleap/typescript-configs
 
 **Tsconfig.json used for linting**
 
-Before you can build your TypeScript code, you need to make sure that there are no compilation errors. This process involves running the TypeScript compiler in a "check" mode that only checks for errors, without actually compiling the code. By creating a separate tsconfig.json file for checking compilation errors, you can optimize the compilation process for speed and accuracy, without worrying about any other build settings.
+To start, create a tsconfig.json in the root of your project.
 
-Here is an example of a tsconfig.json file extending the Workleap TypeScript configuration for linting:
+A typical setup where the application sit in [project root]/src folder is as follow:
 
 ```json
 {
@@ -44,7 +44,6 @@ Here is an example of a tsconfig.json file extending the Workleap TypeScript con
   "exclude": ["node_modules"]
 }
 ```
-
 
 ### React or TypeScript Library Project
 
@@ -78,6 +77,7 @@ Here is an example of a tsconfig.json file extending the Workleap TypeScript con
   "extends": "@workleap/library/build.json",
   "compilerOptions": {
     "baseUrl": ".",
+    "outDir": "dist",
   },
   "include": ["src"],
   "exclude": ["node_modules"]
@@ -96,12 +96,12 @@ Here is an example of a tsconfig.json file extending the Workleap TypeScript con
   "extends": "@workleap/library/build-dev.json",
   "compilerOptions": {
     "baseUrl": ".",
+    "outDir": "dist",
   },
   "include": ["src"],
   "exclude": ["node_modules"]
 }
 ```
-
 
 ## Advanced Usage
 

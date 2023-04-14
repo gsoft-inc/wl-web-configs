@@ -12,8 +12,8 @@ This repo is managed as a monorepo that is composed of many npm packages, where 
 
 | Name | NPM |
 | --- | --- |
-| [browserslist-config](packages/browserslist-config/README.md) | [![npm version](https://img.shields.io/npm/v/@workleap/browserslist-config)](https://www.npmjs.com/package/@workleap/browserslist-config) |
-| [eslint-plugin](packages/eslint-plugin/README.md) | [![npm version](https://img.shields.io/npm/v/@workleap/eslint-plugin)](https://www.npmjs.com/package/@workleap/eslint-plugin) |
-| [postcss-plugin](packages/postcss-plugin/README.md) | [![npm version](https://img.shields.io/npm/v/@workleap/postcss-plugin)](https://www.npmjs.com/package/@workleap/postcss-plugin) |
-| [stylelint-plugin](packages/stylelint-config/README.md) | [![npm version](https://img.shields.io/npm/v/@workleap/stylelint-config)](https://www.npmjs.com/package/@workleap/stylelint-plugin) |
-| [typescript-config](packages/typescript-configs/README.md) | [![npm version](https://img.shields.io/npm/v/@workleap/typescript-configs)](https://www.npmjs.com/package/@workleap/typescript-config) |
+| [@workleap/browserslist-config](packages/browserslist-config/README.md) | [![npm version](https://img.shields.io/npm/v/@workleap/browserslist-config)](https://www.npmjs.com/package/@workleap/browserslist-config) |
+| [@workleap/eslint-plugin](packages/eslint-plugin/README.md) | [![npm version](https://img.shields.io/npm/v/@workleap/eslint-plugin)](https://www.npmjs.com/package/@workleap/eslint-plugin) |
+| [@workleap/postcss-plugin](packages/postcss-plugin/README.md) | [![npm version](https://img.shields.io/npm/v/@workleap/postcss-plugin)](https://www.npmjs.com/package/@workleap/postcss-plugin) |
+| [@workleap/stylelint-plugin](packages/stylelint-config/README.md) | [![npm version](https://img.shields.io/npm/v/@workleap/stylelint-config)](https://www.npmjs.com/package/@workleap/stylelint-plugin) |
+| [@workleap/typescript-config](packages/typescript-configs/README.md) | [![npm version](https://img.shields.io/npm/v/@workleap/typescript-configs)](https://www.npmjs.com/package/@workleap/typescript-config) |
