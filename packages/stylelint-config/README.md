@@ -29,8 +29,7 @@ Create a `stylelint.config.js` file at the root of your project with the followi
 ```js
 /** @type {import('stylelint').Config} */
 module.exports = {
-    extends: "@workleap/stylelint-config",
-    defaultSeverity: "warning",
+    extends: "@workleap/stylelint-config"
 };
 ```
 

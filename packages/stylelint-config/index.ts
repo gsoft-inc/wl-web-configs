@@ -6,6 +6,7 @@ const config: Config = {
     // Emit errors for `stylelint-disable` comments that don't match rules that are specified in the configuration object.
     reportInvalidScopeDisables: true,
     extends: "stylelint-config-standard",
+    defaultSeverity: "warning",
     rules: {
         // # Rule category: Avoid Errors
 
