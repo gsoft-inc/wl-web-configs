@@ -15,7 +15,6 @@
     "typescript.preferences.useAliasesForRenames": false,
     "json.format.enable": false,
     "css.validate": false,
-    "eslint.alwaysShowStatus": true,
     "eslint.packageManager": "pnpm",
     "eslint.validate": ["javascript", "javascriptreact", "mdx"],
     "stylelint.autoFixOnSave": true,
