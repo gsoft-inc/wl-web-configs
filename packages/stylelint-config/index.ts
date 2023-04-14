@@ -1,7 +1,9 @@
 import type { Config } from "stylelint";
 
 const config: Config = {
+    // Emit errors for `stylelint-disable` comments that don't actually match any lints that need to be disabled.
     reportNeedlessDisables: true,
+    // Emit errors for `stylelint-disable` comments that don't match rules that are specified in the configuration object.
     reportInvalidScopeDisables: true,
     extends: "stylelint-config-standard",
     rules: {
