@@ -1,0 +1,21 @@
+{
+    "name": "@workleap/typescript-configs",
+    "author": "Workleap",
+    "description": "Workleap recommended typescript config.",
+    "version": "0.0.0",
+    "license": "Apache-2.0",
+    "keywords": [
+        "workleap",
+        "typescript",
+        "tsconfig",
+        "config"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Workleap/wl-web-configs.git",
+        "directory": "packages/typescript-configs"
+    },
+    "publishConfig": {
+        "access": "public"
+    }
+}

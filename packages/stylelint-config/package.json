@@ -1,0 +1,44 @@
+{
+    "name": "@workleap/stylelint-config",
+    "author": "Workleap",
+    "description": "Workleap recommended stylelint config.",
+    "version": "0.0.0",
+    "license": "Apache-2.0",
+    "keywords": [
+        "workleap",
+        "stylelint",
+        "stylelint-plugin",
+        "config",
+        "css"
+    ],
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "files": [
+        "dist",
+        "CHANGELOG.md",
+        "README.md"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Workleap/wl-web-configs.git",
+        "directory": "packages/stylelint-config"
+    },
+    "scripts": {
+        "build": "tsc",
+        "clean": "pnpm dlx rimraf dist node_modules",
+        "lint:types": "tsc --noEmit"
+    },
+    "dependencies": {
+        "@workleap/typescript-configs": "workspace:*",
+        "stylelint-config-standard": "32.0.0"
+    },
+    "devDependencies": {
+        "stylelint": "15.4.0"
+    },
+    "peerDependencies": {
+        "stylelint": ">=15"
+    },
+    "publishConfig": {
+        "access": "public"
+    }
+}

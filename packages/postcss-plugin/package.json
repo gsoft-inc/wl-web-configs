@@ -1,0 +1,43 @@
+{
+    "name": "@workleap/postcss-plugin",
+    "author": "Workleap",
+    "description": "Workleap recommended PostCSS config.",
+    "version": "0.0.0",
+    "license": "Apache-2.0",
+    "keywords": [
+        "workleap",
+        "postcss",
+        "postcss-plugin",
+        "css"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Workleap/wl-web-configs.git",
+        "directory": "packages/postcss-plugin"
+    },
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "files": [
+        "dist",
+        "CHANGELOG.md",
+        "README.md"
+    ],
+    "scripts": {
+        "build": "tsc",
+        "clean": "pnpm dlx rimraf dist node_modules",
+        "lint:types": "tsc --noEmit"
+    },
+    "dependencies": {
+        "postcss-preset-env": "8.3.1"
+    },
+    "devDependencies": {
+        "@workleap/typescript-configs": "workspace:*",
+        "postcss": "8.4.21"
+    },
+    "peerDependencies": {
+        "postcss": ">=8.4.6"
+    },
+    "publishConfig": {
+        "access": "public"
+    }
+}
