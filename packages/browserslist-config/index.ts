@@ -5,4 +5,4 @@ const config: string | string[] = [
     "not dead"
 ];
 
-export = config;
+export default config;

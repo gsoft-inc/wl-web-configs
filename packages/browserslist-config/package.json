@@ -4,6 +4,7 @@
     "description": "Workleap recommended Browserslist config.",
     "version": "0.0.0",
     "license": "Apache-2.0",
+    "type": "module",
     "keywords": [
         "workleap",
         "browserslist"
@@ -13,7 +14,7 @@
         "url": "git+https://github.com/Workleap/wl-web-configs.git",
         "directory": "packages/browserslist-config"
     },
-    "main": "./dist/index.js",
+    "exports": "./dist/index.js",
     "types": "./dist/index.d.ts",
     "files": [
         "dist",
@@ -30,5 +31,8 @@
     },
     "publishConfig": {
         "access": "public"
+    },
+    "engines": {
+        "node": ">=14.16"
     }
 }
