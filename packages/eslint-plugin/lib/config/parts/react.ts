@@ -16,8 +16,7 @@ const config: Linter.Config = {
                 }
             },
             env: {
-                browser: true,
-                es6: true
+                browser: true
             },
             rules: {
                 // https://eslint.org/docs/rules

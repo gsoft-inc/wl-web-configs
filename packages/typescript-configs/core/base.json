@@ -1,7 +1,11 @@
 {
     "$schema": "https://json.schemastore.org/tsconfig",
-    "compileOnSave": false,
     "compilerOptions": {
+        "moduleResolution": "bundler",
+        "module": "ESNext",
+        "target": "ESNext",
+        "lib": ["esnext"],
+
         "isolatedModules": true,
         "allowSyntheticDefaultImports": true,
         "resolveJsonModule": true,

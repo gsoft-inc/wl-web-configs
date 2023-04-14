@@ -1,5 +1,4 @@
-import { splitPath, sanitizePath } from "../utils/path";
-import { getFileName } from "../utils/context";
+import { splitPath, sanitizePath, getFileName } from "../utils/rules";
 import { parse, sep } from "path";
 import { Rule } from "eslint";
 import ESTree from "estree";
