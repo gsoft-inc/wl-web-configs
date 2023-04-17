@@ -41,7 +41,7 @@ With that in mind, the `@workleap/stylelint-config` includes the stylelint-prett
 
 You should therefore add either a `.editorconfig` or `.prettierrc` file at the root of your project. These rule will be run against your CSS files and will be autofixed when you run stylelint --fix **/*.css.
 
-You need to make sure that you create a `.prettierignore` file to ignore your everything but your CSS files at the root of your project. This file should contain the following content:
+You need to make sure that you create a `.prettierignore` file to ignore everything but your CSS files at the root of your project. This file should contain the following content:
 
 ```
 *
