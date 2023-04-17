@@ -29,13 +29,16 @@
         "lint:types": "tsc --noEmit"
     },
     "dependencies": {
-        "@workleap/typescript-configs": "workspace:*",
-        "stylelint-config-standard": "32.0.0"
+        "stylelint-config-standard": "32.0.0",
+        "stylelint-prettier": "2.0.0"
     },
     "devDependencies": {
+        "@workleap/typescript-configs": "workspace:*",
+        "prettier": "2.8.7",
         "stylelint": "15.4.0"
     },
     "peerDependencies": {
+        "prettier": ">=2.0.0",
         "stylelint": ">=15"
     },
     "publishConfig": {
