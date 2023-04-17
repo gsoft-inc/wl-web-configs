@@ -5,7 +5,8 @@ const config: Config = {
     reportNeedlessDisables: true,
     // Emit errors for `stylelint-disable` comments that don't match rules that are specified in the configuration object.
     reportInvalidScopeDisables: true,
-    extends: "stylelint-config-standard",
+    extends: ["stylelint-config-standard"],
+    plugins: ["stylelint-prettier"],
     defaultSeverity: "warning",
     rules: {
         // # Rule category: Avoid Errors
@@ -65,7 +66,10 @@ const config: Config = {
             "s",
             "ch"
             // px is not allowed because we use rem units instead.
-        ]
+        ],
+
+        // As of Stylelint 15, all stylistic rules have been dropped. They suggest using Prettier instead.
+        "prettier/prettier": true
     }
 };
 
