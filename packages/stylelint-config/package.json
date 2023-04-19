@@ -1,4 +1,5 @@
 {
+    "$schema": "http://json.schemastore.org/package",
     "name": "@workleap/stylelint-config",
     "author": "Workleap",
     "description": "Workleap recommended stylelint config.",

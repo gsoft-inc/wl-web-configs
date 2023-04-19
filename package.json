@@ -1,4 +1,5 @@
 {
+    "$schema": "http://json.schemastore.org/package",
     "name": "wl-web-configs",
     "author": "Workleap",
     "description": "Common configurations for building web apps and libraries at Workleap",
