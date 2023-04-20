@@ -19,7 +19,7 @@
         "lint:eslint": "pnpm build:eslint && eslint . --ext .js,.jsx,.ts,.tsx  --cache --cache-location node_modules/.cache/eslint",
         "lint:types": "pnpm -r lint:types",
         "lint-ci": "pnpm run /^lint-ci:.*/",
-        "lint-ci:eslint": "eslint . --ext .js,.jsx,.ts,.tsx --max-warnings=0",
+        "lint-ci:eslint": "pnpm build:eslint && eslint . --ext .js,.jsx,.ts,.tsx --max-warnings=0",
         "release": "pnpm build && changeset publish",
         "test": "pnpm -r test"
     },
