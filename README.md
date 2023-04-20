@@ -6,7 +6,7 @@ Common configurations for building web apps at Workleap
 
 ## Usage
 
-This repo is managed as a monorepo that is composed of many npm packages, where each package has its own README and documentation describing usage.
+This repo is managed as a monorepo that is composed of many npm packages, where each package has its own README describing usage.
 
 ### Packages
 

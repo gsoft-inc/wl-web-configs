@@ -17,12 +17,10 @@
         "noUnusedLocals": true,
 
         "checkJs": true,
-        "verbatimModuleSyntax": true,
 
         "esModuleInterop": true,
         "skipLibCheck": true,
         "forceConsistentCasingInFileNames": true
     }
 }
-
 

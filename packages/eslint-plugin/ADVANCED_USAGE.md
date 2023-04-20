@@ -13,7 +13,7 @@ The `@workleap/eslint-plugin` package exposes the following configuration parts:
 
 Each configuration block can be extended individually, or in combination with others, to compose your custom ESLint configuration.
 
-Here's an example of how to use the typescript configuration block in your .eslintrc.json file:
+Here's an example of how to use the TypeScript configuration block in your .eslintrc.json file:
 
 ```json
 {
@@ -33,7 +33,7 @@ Similarly, here's an example of how to use the react configuration block:
   }
 }
 ```
-And here's an example of how to use both typescript and react configuration blocks together:
+And here's an example of how to use both TypeScript and react configuration blocks together:
 
 ```json
 {
