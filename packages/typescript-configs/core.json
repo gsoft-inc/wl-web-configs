@@ -22,7 +22,8 @@
         "forceConsistentCasingInFileNames": true,
 
         "noEmit": true,
-        "declaration": true
+        "declaration": true,
+        "sourceMap": false
     }
 }
 

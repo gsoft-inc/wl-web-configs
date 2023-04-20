@@ -23,7 +23,7 @@
         "README.md"
     ],
     "scripts": {
-        "build": "tsc",
+        "build": "tsup",
         "clean": "pnpm dlx rimraf dist node_modules",
         "lint:types": "tsc --noEmit"
     },
@@ -40,5 +40,11 @@
     "publishConfig": {
         "access": "public",
         "provenance": true
+    },
+    "tsup": {
+        "entry": ["./index.ts"],
+        "clean": true,
+        "declaration": true,
+        "format": ["cjs"]
     }
 }
