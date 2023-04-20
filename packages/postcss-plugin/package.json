@@ -38,6 +38,7 @@
         "postcss": ">=8.4.6"
     },
     "publishConfig": {
-        "access": "public"
+        "access": "public",
+        "provenance": true
     }
 }

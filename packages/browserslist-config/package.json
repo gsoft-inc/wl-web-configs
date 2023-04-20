@@ -29,6 +29,7 @@
         "@workleap/typescript-configs": "workspace:*"
     },
     "publishConfig": {
-        "access": "public"
+        "access": "public",
+        "provenance": true
     }
 }

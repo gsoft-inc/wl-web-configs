@@ -16,6 +16,7 @@
         "directory": "packages/typescript-configs"
     },
     "publishConfig": {
-        "access": "public"
+        "access": "public",
+        "provenance": true
     }
 }
