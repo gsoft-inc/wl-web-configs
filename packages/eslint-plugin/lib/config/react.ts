@@ -1,5 +1,5 @@
 import type { Linter } from "eslint";
-import { sourceFiles, jsxFiles } from "../../utils/patterns";
+import { sourceFiles, jsxFiles } from "../utils/patterns";
 
 const config: Linter.Config = {
     overrides: [

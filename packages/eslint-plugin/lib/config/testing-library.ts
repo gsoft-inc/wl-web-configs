@@ -1,5 +1,5 @@
 import type { Linter } from "eslint";
-import { testFiles, reactTestFiles } from "../../utils/patterns";
+import { testFiles, reactTestFiles } from "../utils/patterns";
 
 const config: Linter.Config = {
     overrides: [
