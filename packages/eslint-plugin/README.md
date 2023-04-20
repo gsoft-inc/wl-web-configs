@@ -58,6 +58,19 @@ To use this configuration, add the following to your `.eslintrc.json` file:
 }
 ```
 
+### monorepo-root
+
+The `monorepo-root` configuration is suitable for the root tsconfig.
+
+To use this configuration, add the following to your `.eslintrc.json` file:
+
+```json
+{
+    "$schema": "https://json.schemastore.org/eslintrc",
+    "extends": "plugin:@workleap/typescript-library"
+}
+```
+
 
 ## Advanced Usage
 
