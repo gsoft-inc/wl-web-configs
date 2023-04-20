@@ -21,16 +21,13 @@ The following configurations are available:
 
 ### Web App Project
 
-**tsconfig.json used for linting**
-
 To start, create a tsconfig.json in the root of your project.
 
 A typical setup where the application sit in [project root]/src folder is as follow:
 
 ```json
 {
-  "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "@workleap/typescript-configs/web-application/lint.json",
+  "extends": "@workleap/typescript-configs/web-application",
   "compilerOptions": {
     "baseUrl": ".",
   },
@@ -41,16 +38,13 @@ A typical setup where the application sit in [project root]/src folder is as fol
 
 ### React or TypeScript Library Project
 
-**tsconfig.json used for linting**
-
-Before you can build your TypeScript code, you need to make sure that there are no compilation errors. This process involves running the TypeScript compiler in a "linting" mode that only checks for errors, without actually compiling the code. By creating a separate tsconfig.json file for checking compilation errors, you can optimize the compilation process for speed and accuracy, without worrying about any other build settings.
+Before you can build your TypeScript code, you need to make sure that there are no compilation errors. This process involves running the TypeScript compiler in a "linting" mode that only checks for errors, without actually compiling the code.
 
 Here is an example of a tsconfig.json file extending the Workleap TypeScript configuration for linting:
 
 ```json
 {
-  "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "@workleap/typescript-configs/library/lint.json",
+  "extends": "@workleap/typescript-configs/library",
   "compilerOptions": {
     "baseUrl": ".",
   },
@@ -59,38 +53,18 @@ Here is an example of a tsconfig.json file extending the Workleap TypeScript con
 }
 ```
 
-**tsconfig.json used for building**
 
-Building your TypeScript code involves compiling it down to JavaScript that can be run in a browser or server environment. This process may require different settings than checking compilation errors, such as a different target version or module format. By creating a separate tsconfig.json file for building, you can ensure that your code is compiled optimally for the target environment.
+### Monorepo Root
 
-Here is an example of a tsconfig.json file extending the Workleap TypeScript configuration for building:
+Before you can build your TypeScript code, you need to make sure that there are no compilation errors. This process involves running the TypeScript compiler in a "linting" mode that only checks for errors, without actually compiling the code.
 
-```json
-{
-  "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "@workleap/typescript-configs/library/build.json",
-  "compilerOptions": {
-    "baseUrl": ".",
-    "outDir": "dist",
-  },
-  "include": ["src"],
-  "exclude": ["node_modules"]
-}
-```
-
-**tsconfig.json used for building in dev mode**
-
-When you're developing your TypeScript code, you may want to compile it in a way that prioritizes speed over optimization. For example, you might want to use a watch mode that compiles your code quickly and automatically whenever you make changes. By creating a separate tsconfig.json file for building in dev mode, you can optimize the compilation process for speed and convenience, without sacrificing the quality of the resulting code.
-
-Here is an example of a tsconfig.json file extending the Workleap TypeScript configuration for building in dev mode:
+Here is an example of a tsconfig.json file extending the Workleap TypeScript configuration for linting:
 
 ```json
 {
-  "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "@workleap/typescript-configs/library/build-dev.json",
+  "extends": "@workleap/typescript-configs/monorepo-root",
   "compilerOptions": {
     "baseUrl": ".",
-    "outDir": "dist",
   },
   "include": ["src"],
   "exclude": ["node_modules"]
@@ -103,11 +77,9 @@ The configurations exported via this package are designed to be used by ESM proj
 
 ```json
 {
-  "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "@workleap/typescript-configs/web-application/lint.json", // or any other configurations from this package
+  "extends": "@workleap/typescript-configs/web-application", // or any other configurations from this package
   "compilerOptions": {
     "module": "commonjs",
-    "moduleResolution": "node",
   }
 }
 ```
