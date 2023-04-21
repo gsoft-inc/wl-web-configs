@@ -20,7 +20,7 @@
     ],
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/Workleap/wl-web-configs",
+        "url": "git+https://github.com/workleap/wl-web-configs",
         "directory": "packages/stylelint-config"
     },
     "scripts": {
