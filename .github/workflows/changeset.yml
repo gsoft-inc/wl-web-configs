@@ -11,6 +11,8 @@ env:
 jobs:
   version:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write # required for provenance https://docs.npmjs.com/generating-provenance-statements#publishing-packages-with-provenance-via-github-actions
 
     steps:
       - name: Checkout
