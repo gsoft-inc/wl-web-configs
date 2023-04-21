@@ -60,7 +60,7 @@ To use this configuration, add the following to your `.eslintrc.json` file:
 
 ### monorepo-root
 
-The `monorepo-root` configuration is suitable for the root tsconfig.
+The `monorepo-root` configuration is suitable for the root `tsconfig` file of a monorepo project.
 
 To use this configuration, add the following to your `.eslintrc.json` file:
 

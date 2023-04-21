@@ -73,6 +73,8 @@ Here is an example of a tsconfig.json file extending the Workleap TypeScript con
 
 ## Migrating from existing projects
 
+Migrating a codebase to a new config can be a big task. To help with this, feel free to override any configuration that you need to change. It's alright to iterate on your configuration over time.
+
 The configurations exported via this package are designed to be used by ESM projects. If you are migrating an existing project and you don’t want to migrate your project to ESM, you will need to do the following changes to your TypeScript configuration:
 
 ```json
