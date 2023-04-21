@@ -20,7 +20,6 @@ const rule: Rule.RuleModule = {
             return sanitizePath(node.source != null ? node.source.value as string : "");
         };
 
-
         const isCssModule = (source: string) => {
             return source.endsWith(".module.css");
         };

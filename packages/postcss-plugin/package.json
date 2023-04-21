@@ -1,7 +1,7 @@
 {
     "name": "@workleap/postcss-plugin",
     "author": "Workleap",
-    "description": "Workleap recommended PostCSS config.",
+    "description": "Workleap's default PostCSS config.",
     "version": "1.0.0",
     "license": "Apache-2.0",
     "keywords": [
@@ -23,7 +23,7 @@
         "README.md"
     ],
     "scripts": {
-        "build": "tsc",
+        "build": "tsup",
         "clean": "pnpm dlx rimraf dist node_modules",
         "lint:types": "tsc --noEmit"
     },
@@ -38,6 +38,13 @@
         "postcss": ">=8.4.6"
     },
     "publishConfig": {
-        "access": "public"
+        "access": "public",
+        "provenance": true
+    },
+    "tsup": {
+        "entry": ["./index.ts"],
+        "clean": true,
+        "declaration": true,
+        "format": ["cjs"]
     }
 }

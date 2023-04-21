@@ -13,16 +13,6 @@ Install the package.
 pnpm add -D @workleap/browserslist-config
 ```
 
-**With npm**
-```shell
-npm i --save-dev @workleap/browserslist-config
-```
-
-**With yarn**
-```shell
-yarn add --dev @workleap/browserslist-config
-```
-
 ## Supported Browsers
 
 You can list all supported browsers by following this link:

@@ -13,31 +13,21 @@ Install the package.
 pnpm add -D @workleap/stylelint-config
 ```
 
-**With npm**
-```shell
-npm i --save-dev @workleap/stylelint-config
-```
-
-**With yarn**
-```shell
-yarn add --dev @workleap/stylelint-config
-```
-
 ## Usage
 
-Create a `stylelint.config.js` file at the root of your project with the following content:
-```js
-/** @type {import('stylelint').Config} */
-module.exports = {
-    extends: "@workleap/stylelint-config"
-};
+Create a `.stylelintrc.json` file at the root of your project with the following content:
+```json
+{
+    "$schema": "https://json.schemastore.org/stylelintrc",
+    "extends": "@workleap/stylelint-config"
+}
 ```
 
 ## Prettier
 
-Since Stylelint v15.0.0, Stylelint deprecated the Stylistic rules from their plugin. They now suggest using Prettier to format your CSS files.
+Since Stylelint v15.0.0, stylistic rules are deprecated. They now suggest using Prettier to format your CSS files.
 
-With that in mind, the `@workleap/stylelint-config` includes the stylelint-prettier plugin. Using this plugin, prettier changes are exposed as stylelint rule violations.
+With that in mind, the `@workleap/stylelint-config` includes the [stylelint-prettier plugin](https://github.com/prettier/stylelint-prettier). Using this plugin, prettier changes are exposed as stylelint rule violations.
 
 You should therefore add either a `.editorconfig` or `.prettierrc` file at the root of your project. These rule will be run against your CSS files and will be autofixed when you run stylelint --fix **/*.css.
 
@@ -48,7 +38,7 @@ You need to make sure that you create a `.prettierignore` file to ignore everyth
 !**/*.css
 ```
 
-Otherwise, Prettier will format your js/ts files and you will end up with a conflict between Prettier and ESlint.
+Otherwise, Prettier will format your JS/TS/JSON and other type of files and you will end up with a conflict between Prettier and ESlint.
 
 ## License
 

@@ -24,7 +24,7 @@
         "directory": "packages/stylelint-config"
     },
     "scripts": {
-        "build": "tsc",
+        "build": "tsup",
         "clean": "pnpm dlx rimraf dist node_modules",
         "lint:types": "tsc --noEmit"
     },
@@ -42,6 +42,13 @@
         "stylelint": ">=15"
     },
     "publishConfig": {
-        "access": "public"
+        "access": "public",
+        "provenance": true
+    },
+    "tsup": {
+        "entry": ["./index.ts"],
+        "clean": true,
+        "declaration": true,
+        "format": ["cjs"]
     }
 }

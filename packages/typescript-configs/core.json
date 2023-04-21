@@ -1,7 +1,7 @@
 {
     "$schema": "https://json.schemastore.org/tsconfig",
     "compilerOptions": {
-        "moduleResolution": "bundler",
+        "moduleResolution": "nodenext",
         "module": "ESNext",
         "target": "ESNext",
         "lib": ["esnext"],
@@ -17,12 +17,14 @@
         "noUnusedLocals": true,
 
         "checkJs": true,
-        "verbatimModuleSyntax": true,
 
         "esModuleInterop": true,
         "skipLibCheck": true,
-        "forceConsistentCasingInFileNames": true
+        "forceConsistentCasingInFileNames": true,
+
+        "noEmit": true,
+        "declaration": true,
+        "sourceMap": false
     }
 }
-
 

@@ -1,6 +1,6 @@
 {
     "$schema": "https://json.schemastore.org/tsconfig",
-    "extends": "./base.json",
+    "extends": "./core.json",
     "compilerOptions": {
         "jsx": "react-jsx",
         "lib": ["dom", "dom.iterable", "esnext"]

@@ -6,8 +6,7 @@ If the default configuration doesn’t fit your needs, and you want to create yo
 
 ```json
 {
-  "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "@workleap/typescript-configs/core/react",
+  "extends": "@workleap/typescript-configs/react",
     "compilerOptions": {
         "baseUrl": ".",
     },
@@ -16,12 +15,11 @@ If the default configuration doesn’t fit your needs, and you want to create yo
 }
 ```
 
-## Extending the base configuration for a TS project
+## Extending the core configuration for a TS project
 
 ```json
 {
-  "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "@workleap/typescript-configs/core/base",
+  "extends": "@workleap/typescript-configs/core",
     "compilerOptions": {
         "baseUrl": ".",
     },

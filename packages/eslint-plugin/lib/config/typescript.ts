@@ -1,5 +1,5 @@
 import type { Linter } from "eslint";
-import { typescriptFiles } from "../../utils/patterns";
+import { typescriptFiles } from "../utils/patterns";
 
 const config: Linter.Config = {
     overrides: [
