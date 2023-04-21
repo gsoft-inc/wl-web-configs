@@ -6,7 +6,7 @@
     "license": "Apache-2.0",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/Workleap/wl-web-configs.git"
+        "url": "git+https://github.com/Workleap/wl-web-configs"
     },
     "scripts": {
         "build": "pnpm -r build",
