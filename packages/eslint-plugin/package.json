@@ -2,7 +2,7 @@
     "name": "@workleap/eslint-plugin",
     "author": "Workleap",
     "description": "Workleap ESLint rules and configs.",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "keywords": [
         "workleap",
         "eslint",
@@ -70,9 +70,13 @@
         "provenance": true
     },
     "tsup": {
-        "entry": ["lib/index.ts"],
+        "entry": [
+            "lib/index.ts"
+        ],
         "clean": true,
         "declaration": true,
-        "format": ["cjs"]
+        "format": [
+            "cjs"
+        ]
     }
 }

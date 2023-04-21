@@ -1,5 +1,11 @@
 # @workleap/browserslist-config
 
+## 1.1.0
+
+### Minor Changes
+
+- [#9](https://github.com/workleap/wl-web-configs/pull/9) [`d4365f6`](https://github.com/workleap/wl-web-configs/commit/d4365f63033989ac4d7358186c188175d5ef60e9) Thanks [@alexasselin008](https://github.com/alexasselin008)! - Updated the documentation
+
 ## 1.0.0
 
 ### Major Changes

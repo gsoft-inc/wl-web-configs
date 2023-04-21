@@ -2,7 +2,7 @@
     "name": "@workleap/browserslist-config",
     "author": "Workleap",
     "description": "Workleap recommended Browserslist config.",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "license": "Apache-2.0",
     "keywords": [
         "workleap",
@@ -33,9 +33,13 @@
         "provenance": true
     },
     "tsup": {
-        "entry": ["./index.ts"],
+        "entry": [
+            "./index.ts"
+        ],
         "clean": true,
         "declaration": true,
-        "format": ["cjs"]
+        "format": [
+            "cjs"
+        ]
     }
 }
