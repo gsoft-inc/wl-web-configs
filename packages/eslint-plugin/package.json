@@ -44,7 +44,8 @@
         "@types/eslint": "8.37.0",
         "@types/estree": "1.0.0",
         "@typescript-eslint/parser": "5.58.0",
-        "eslint": "8.38.0"
+        "eslint": "8.38.0",
+        "tsup": "6.7.0"
     },
     "peerDependencies": {
         "@typescript-eslint/parser": "*",
@@ -62,15 +63,5 @@
     "publishConfig": {
         "access": "public",
         "provenance": true
-    },
-    "tsup": {
-        "entry": [
-            "lib/index.ts"
-        ],
-        "clean": true,
-        "declaration": true,
-        "format": [
-            "cjs"
-        ]
     }
 }
