@@ -28,6 +28,7 @@ To use this configuration, add the following to your `.eslintrc.json` file:
 ```json
 {
     "$schema": "https://json.schemastore.org/eslintrc",
+    "root": true,
     "extends": "plugin:@workleap/web-application"
 }
 ```
@@ -41,6 +42,7 @@ To use this configuration, add the following to your `.eslintrc.json` file:
 ```json
 {
     "$schema": "https://json.schemastore.org/eslintrc",
+    "root": true,
     "extends": "plugin:@workleap/react-library"
 }
 ```
@@ -54,6 +56,7 @@ To use this configuration, add the following to your `.eslintrc.json` file:
 ```json
 {
     "$schema": "https://json.schemastore.org/eslintrc",
+    "root": true,
     "extends": "plugin:@workleap/typescript-library"
 }
 ```
@@ -67,6 +70,7 @@ To use this configuration, add the following to your `.eslintrc.json` file:
 ```json
 {
     "$schema": "https://json.schemastore.org/eslintrc",
+    "root": true,
     "extends": "plugin:@workleap/typescript-library"
 }
 ```
