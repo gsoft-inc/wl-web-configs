@@ -24,9 +24,7 @@
         "directory": "packages/stylelint-config"
     },
     "scripts": {
-        "build": "tsup",
-        "clean": "pnpm dlx rimraf dist node_modules",
-        "lint:types": "tsc --noEmit"
+        "build": "tsup"
     },
     "dependencies": {
         "stylelint-config-standard": "32.0.0",

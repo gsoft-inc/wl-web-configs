@@ -1,5 +1,5 @@
 {
-    "extends": "@workleap/typescript-configs/library",
+    "extends": "@workleap/typescript-configs/monorepo-root.json",
     "compilerOptions": {
         "module": "CommonJS",
         "outDir": "dist"

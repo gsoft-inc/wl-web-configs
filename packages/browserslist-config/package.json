@@ -21,9 +21,7 @@
         "README.md"
     ],
     "scripts": {
-        "build": "tsup",
-        "clean": "pnpm dlx rimraf dist node_modules",
-        "lint:types": "tsc --noEmit"
+        "build": "tsup"
     },
     "devDependencies": {
         "@workleap/typescript-configs": "workspace:*"
