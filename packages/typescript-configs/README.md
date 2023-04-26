@@ -62,12 +62,7 @@ Here is an example of a tsconfig.json file extending the Workleap TypeScript con
 
 ```json
 {
-  "extends": "@workleap/typescript-configs/monorepo-root",
-  "compilerOptions": {
-    "baseUrl": ".",
-  },
-  "include": ["src"],
-  "exclude": ["node_modules"]
+  "extends": "@workleap/typescript-configs/monorepo-root"
 }
 ```
 
