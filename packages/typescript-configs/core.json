@@ -2,6 +2,7 @@
     "$schema": "https://json.schemastore.org/tsconfig",
     "compilerOptions": {
         "moduleResolution": "nodenext",
+        "allowImportingTsExtensions": true,
         "module": "ESNext",
         "target": "ESNext",
         "lib": ["esnext"],
