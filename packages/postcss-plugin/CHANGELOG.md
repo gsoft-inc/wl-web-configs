@@ -1,5 +1,14 @@
 # @workleap/postcss-plugin
 
+## 1.2.0
+
+### Minor Changes
+
+- [#25](https://github.com/workleap/wl-web-configs/pull/25) [`26447ac`](https://github.com/workleap/wl-web-configs/commit/26447acc2cb2dca69667e171ab37bca330ecfde5) Thanks [@alexasselin008](https://github.com/alexasselin008)! - Update to repository setups:
+  - feat: #19 clean, test and lint:types scripts shouldn't be delegated to packages
+  - chore: #18 clean script != reset script
+  - feat: #17 tsup setup
+
 ## 1.1.1
 
 ### Patch Changes
