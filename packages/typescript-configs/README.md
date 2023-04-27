@@ -31,7 +31,6 @@ A typical setup where the application sit in [project root]/src folder is as fol
   "compilerOptions": {
     "baseUrl": ".",
   },
-  "exclude": ["dist", "node_modules"]
 }
 ```
 
@@ -44,7 +43,6 @@ Here is an example of a tsconfig.json file extending the Workleap TypeScript con
 ```json
 {
   "extends": "@workleap/typescript-configs/library",
-  "exclude": ["dist", "node_modules"]
 }
 ```
 
