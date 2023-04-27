@@ -1,5 +1,13 @@
 # @workleap/typescript-configs
 
+## 2.1.0
+
+### Minor Changes
+
+- [#25](https://github.com/workleap/wl-web-configs/pull/25) [`26447ac`](https://github.com/workleap/wl-web-configs/commit/26447acc2cb2dca69667e171ab37bca330ecfde5) Thanks [@alexasselin008](https://github.com/alexasselin008)! - feat: #21 All typescript-configs should have allowImportingTsExtension
+  feat: #20 packages tsconfig files shouldn't include compilerOptions and exclude fields
+  feat: #19 clean, test and lint:types scripts shouldn't be delegated to packages
+
 ## 2.0.1
 
 ### Patch Changes
