@@ -28,6 +28,7 @@ To use this configuration, add the following to your `.eslintrc.json` file:
 ```json
 {
     "$schema": "https://json.schemastore.org/eslintrc",
+    "root": true,
     "extends": "plugin:@workleap/web-application"
 }
 ```
@@ -41,6 +42,7 @@ To use this configuration, add the following to your `.eslintrc.json` file:
 ```json
 {
     "$schema": "https://json.schemastore.org/eslintrc",
+    "root": true,
     "extends": "plugin:@workleap/react-library"
 }
 ```
@@ -54,6 +56,7 @@ To use this configuration, add the following to your `.eslintrc.json` file:
 ```json
 {
     "$schema": "https://json.schemastore.org/eslintrc",
+    "root": true,
     "extends": "plugin:@workleap/typescript-library"
 }
 ```
@@ -67,10 +70,24 @@ To use this configuration, add the following to your `.eslintrc.json` file:
 ```json
 {
     "$schema": "https://json.schemastore.org/eslintrc",
+    "root": true,
     "extends": "plugin:@workleap/typescript-library"
 }
 ```
 
+## ESLint ignore
+
+You can configure ESLint to ignore certain files and directories while linting by specifying one or more glob patterns.
+Heres the ESLint ignore file we usually use at Workleap:
+
+```
+// .eslintignore
+
+**/dist/*
+node_modules
+*.md
+pnpm-lock.yaml
+```
 
 ## Advanced Usage
 

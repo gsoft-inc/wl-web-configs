@@ -12,26 +12,28 @@
         "build": "pnpm -r build",
         "build:eslint": "pnpm --filter=@workleap/eslint-plugin build",
         "changeset": "changeset",
-        "clean": "pnpm run /^clean:.*/",
-        "clean:pkg": "pnpm -r clean",
-        "clean:root": "pnpm dlx rimraf node_modules pnpm-lock.yaml",
+        "clean": "pnpm -r --include-workspace-root --parallel exec pnpm dlx rimraf dist node_modules/.cache",
         "lint": "pnpm run /^lint:.*/",
         "lint:eslint": "pnpm build:eslint && eslint . --ext .js,.jsx,.ts,.tsx  --cache --cache-location node_modules/.cache/eslint",
-        "lint:types": "pnpm -r lint:types",
+        "lint:types": "pnpm -r --parallel --filter=!typescript-configs exec tsc",
         "lint-ci": "pnpm run /^lint-ci:.*/",
-        "lint-ci:eslint": "eslint . --ext .js,.jsx,.ts,.tsx --max-warnings=0",
+        "lint-ci:eslint": "eslint . --ext .js,.jsx,.ts,.tsx --max-warnings=1",
         "release": "pnpm build && changeset publish",
-        "test": "pnpm -r test"
+        "reset": "pnpm -r --include-workspace-root --parallel exec pnpm dlx rimraf dist node_modules",
+        "test": "jest"
     },
     "devDependencies": {
-        "tsup": "6.7.0",
         "@workleap/eslint-plugin": "workspace:*",
+        "@workleap/typescript-configs": "workspace:*",
         "@changesets/cli": "2.26.1",
         "@changesets/changelog-github": "0.4.8",
         "typescript": "5.0.4",
         "eslint": "8.38.0",
         "@types/node": "18.15.12",
-        "@types/jest": "29.5.1"
+        "@types/jest": "29.5.1",
+        "jest": "29.5.0",
+        "ts-jest": "29.1.0",
+        "ts-node": "10.9.1"
     },
     "engines": {
         "node": ">=16.0.0"

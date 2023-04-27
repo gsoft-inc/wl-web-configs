@@ -4,6 +4,6 @@
         "module": "CommonJS",
         "outDir": "dist"
     },
-    "include": ["lib"],
+    "include": ["lib", "tests"],
     "exclude": ["dist"]
 }

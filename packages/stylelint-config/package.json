@@ -24,9 +24,7 @@
         "directory": "packages/stylelint-config"
     },
     "scripts": {
-        "build": "tsup",
-        "clean": "pnpm dlx rimraf dist node_modules",
-        "lint:types": "tsc --noEmit"
+        "build": "tsup"
     },
     "dependencies": {
         "stylelint-config-standard": "32.0.0",
@@ -35,7 +33,8 @@
     "devDependencies": {
         "@workleap/typescript-configs": "workspace:*",
         "prettier": "2.8.7",
-        "stylelint": "15.4.0"
+        "stylelint": "15.4.0",
+        "tsup": "6.7.0"
     },
     "peerDependencies": {
         "prettier": ">=2.0.0",
@@ -44,15 +43,5 @@
     "publishConfig": {
         "access": "public",
         "provenance": true
-    },
-    "tsup": {
-        "entry": [
-            "./index.ts"
-        ],
-        "clean": true,
-        "declaration": true,
-        "format": [
-            "cjs"
-        ]
     }
 }

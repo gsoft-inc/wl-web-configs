@@ -21,25 +21,14 @@
         "README.md"
     ],
     "scripts": {
-        "build": "tsup",
-        "clean": "pnpm dlx rimraf dist node_modules",
-        "lint:types": "tsc --noEmit"
+        "build": "tsup"
     },
     "devDependencies": {
-        "@workleap/typescript-configs": "workspace:*"
+        "@workleap/typescript-configs": "workspace:*",
+        "tsup": "6.7.0"
     },
     "publishConfig": {
         "access": "public",
         "provenance": true
-    },
-    "tsup": {
-        "entry": [
-            "./index.ts"
-        ],
-        "clean": true,
-        "declaration": true,
-        "format": [
-            "cjs"
-        ]
     }
 }
