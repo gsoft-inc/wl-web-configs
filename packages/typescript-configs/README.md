@@ -70,6 +70,7 @@ The configurations exported via this package are designed to be used by ESM proj
   "extends": "@workleap/typescript-configs/web-application", // or any other configurations from this package
   "compilerOptions": {
     "module": "commonjs",
+    "moduleResolution": "bundler"
   }
 }
 ```

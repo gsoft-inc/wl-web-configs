@@ -75,20 +75,19 @@ To use this configuration, add the following to your `.eslintrc.json` file:
 }
 ```
 
-## Eslint ignore
+## ESLint ignore
 
 You can configure ESLint to ignore certain files and directories while linting by specifying one or more glob patterns.
-Heres the eslint ignore file we usually use at Workleap:
+Heres the ESLint ignore file we usually use at Workleap:
 
-
-.eslintignore
 ```
+// .eslintignore
+
 **/dist/*
 node_modules
 *.md
 pnpm-lock.yaml
 ```
-
 
 ## Advanced Usage
 

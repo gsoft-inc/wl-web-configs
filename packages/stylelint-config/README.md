@@ -38,7 +38,7 @@ You need to make sure that you create a `.prettierignore` file to ignore everyth
 !**/*.css
 ```
 
-Otherwise, Prettier will format your JS/TS/JSON and other type of files and you will end up with a conflict between Prettier and ESlint.
+Otherwise, Prettier will format your JS/TS/JSON and other type of files and you will end up with a conflict between Prettier and ESLint.
 
 ## License
 

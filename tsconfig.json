@@ -2,8 +2,5 @@
     "extends": "@workleap/typescript-configs/monorepo-root.json",
     "compilerOptions": {
         "module": "CommonJS",
-        "outDir": "dist"
-    },
-    "include": ["lib", "tests"],
-    "exclude": ["dist"]
+    }
 }
