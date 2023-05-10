@@ -15,7 +15,7 @@ const config: Linter.Config = {
     },
     rules: {
         // Custom WorkLeap rules
-        "@workleap/strict-css-modules-names": "warn"
+        // "@workleap/strict-css-modules-names": "warn" // disabled since this causes an issue(https://github.com/workleap/wl-web-configs/issues/31). Will reenable once a fix has been done
     }
 };
 
