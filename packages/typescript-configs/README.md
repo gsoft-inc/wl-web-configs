@@ -59,7 +59,7 @@ Here is an example of a tsconfig.json file extending the Workleap TypeScript con
 }
 ```
 
-**Note**: If you have a tsconfig.json file in your monorepo root and you exclude all packages, you might get a TS18003 error because TypeScript can't find any files to lint. To fix this, you can either add an empty `references` property to your tsconfig.json file:
+**Note**: If you have a tsconfig.json file in your monorepo root and you exclude all packages, you might get a TS18003 error because TypeScript can't find any files to lint. To fix this, you can add an empty `references` property to your tsconfig.json file:
 
 ```json
 {
@@ -68,9 +68,6 @@ Here is an example of a tsconfig.json file extending the Workleap TypeScript con
   "references": []
 }
 ```
-
-You can also delete the tsconfig.json file in your monorepo root, but be aware that you will lose the ability to lint configuration files or scripts that exists at the root of the repo.
-
 
 ## Migrating from existing projects
 
