@@ -27,10 +27,7 @@ A typical setup where the application sit in [project root]/src folder is as fol
 
 ```json
 {
-  "extends": "@workleap/typescript-configs/web-application",
-  "compilerOptions": {
-    "baseUrl": ".",
-  },
+  "extends": "@workleap/typescript-configs/web-application"
 }
 ```
 
@@ -42,7 +39,7 @@ Here is an example of a tsconfig.json file extending the Workleap TypeScript con
 
 ```json
 {
-  "extends": "@workleap/typescript-configs/library",
+  "extends": "@workleap/typescript-configs/library"
 }
 ```
 
