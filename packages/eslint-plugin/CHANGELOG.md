@@ -1,5 +1,12 @@
 # @workleap/eslint-plugin
 
+## 1.5.0
+
+### Minor Changes
+
+- [#42](https://github.com/workleap/wl-web-configs/pull/42) [`9060fae`](https://github.com/workleap/wl-web-configs/commit/9060fae5bd4122729610d2a4ef603d963873c950) Thanks [@alexasselin008](https://github.com/alexasselin008)! - - React version was not specified in eslint-plugin-react settings
+  - Fix typo in monorepo-root configuration
+
 ## 1.4.0
 
 ### Minor Changes
