@@ -1,5 +1,11 @@
 # @workleap/typescript-configs
 
+## 2.2.0
+
+### Minor Changes
+
+- [#43](https://github.com/workleap/wl-web-configs/pull/43) [`e5b4668`](https://github.com/workleap/wl-web-configs/commit/e5b4668bcdb2f81b7f8cd6cd462505b09740c74e) Thanks [@alexasselin008](https://github.com/alexasselin008)! - Updated documentation
+
 ## 2.1.0
 
 ### Minor Changes
