@@ -76,7 +76,17 @@ const config: Linter.Config = {
                 "quotes":"off",
                 "@typescript-eslint/quotes": ["warn", "double"],
                 "semi":"off",
-                "@typescript-eslint/semi": ["warn", "always"]
+                "@typescript-eslint/semi": ["warn", "always"],
+
+                "@typescript-eslint/no-import-type-side-effects": "warn",
+                "@typescript-eslint/consistent-type-imports": [
+                    "warn",
+                    {
+                        "prefer": "type-imports",
+                        "disallowTypeAnnotations": true,
+                        "fixStyle": "inline-type-imports"
+                    }
+                ]
             }
         }
     ]
