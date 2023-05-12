@@ -18,6 +18,11 @@ const config: Linter.Config = {
             env: {
                 browser: true
             },
+            settings: {
+                react: {
+                    version: "detect"
+                }
+            },
             rules: {
                 // https://eslint.org/docs/rules
                 "jsx-quotes": ["warn", "prefer-double"],
