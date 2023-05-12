@@ -1,5 +1,11 @@
 # @workleap/eslint-plugin
 
+## 1.4.0
+
+### Minor Changes
+
+- [#38](https://github.com/workleap/wl-web-configs/pull/38) [`fe66b2c`](https://github.com/workleap/wl-web-configs/commit/fe66b2cf6614537a55b0d3e4dc79994901fb5446) Thanks [@alexasselin008](https://github.com/alexasselin008)! - Re-enabled the strict-css-modules-names rule in the web-application config
+
 ## 1.3.0
 
 ### Minor Changes
