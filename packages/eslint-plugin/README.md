@@ -71,7 +71,7 @@ To use this configuration, add the following to your `.eslintrc.json` file:
 {
     "$schema": "https://json.schemastore.org/eslintrc",
     "root": true,
-    "extends": "plugin:@workleap/typescript-library"
+    "extends": "plugin:@workleap/monorepo-root"
 }
 ```
 
