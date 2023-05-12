@@ -27,7 +27,8 @@ A typical setup where the application sit in [project root]/src folder is as fol
 
 ```json
 {
-  "extends": "@workleap/typescript-configs/web-application"
+  "extends": "@workleap/typescript-configs/web-application",
+  "exclude": ["dist", "node_modules"]
 }
 ```
 
@@ -39,7 +40,8 @@ Here is an example of a tsconfig.json file extending the Workleap TypeScript con
 
 ```json
 {
-  "extends": "@workleap/typescript-configs/library"
+  "extends": "@workleap/typescript-configs/library",
+  "exclude": ["dist", "node_modules"]
 }
 ```
 
@@ -52,9 +54,23 @@ Here is an example of a tsconfig.json file extending the Workleap TypeScript con
 
 ```json
 {
-  "extends": "@workleap/typescript-configs/monorepo-root"
+  "extends": "@workleap/typescript-configs/monorepo-root",
+  "exclude": ["packages", "node_modules"]
 }
 ```
+
+**Note**: If you have a tsconfig.json file in your monorepo root and you exclude all packages, you might get a TS18003 error because TypeScript can't find any files to lint. To fix this, you can either add an empty `references` property to your tsconfig.json file:
+
+```json
+{
+  "extends": "@workleap/typescript-configs/monorepo-root",
+  "exclude": ["packages", "node_modules"],
+  "references": []
+}
+```
+
+You can also delete the tsconfig.json file in your monorepo root, but be aware that you will lose the ability to lint configuration files or scripts that exists at the root of the repo.
+
 
 ## Migrating from existing projects
 
