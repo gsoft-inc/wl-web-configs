@@ -2,7 +2,7 @@
     "name": "@workleap/postcss-plugin",
     "author": "Workleap",
     "description": "Workleap's default PostCSS config.",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "license": "Apache-2.0",
     "keywords": [
         "workleap",
