@@ -1,5 +1,11 @@
 # @workleap/eslint-plugin
 
+## 1.6.0
+
+### Minor Changes
+
+- [#48](https://github.com/workleap/wl-web-configs/pull/48) [`975f8c5`](https://github.com/workleap/wl-web-configs/commit/975f8c505b8a2557d4a2149253b58c7ba7022112) Thanks [@alexasselin008](https://github.com/alexasselin008)! - Updated typescript eslint import rules to have consistent type imports
+
 ## 1.5.0
 
 ### Minor Changes
