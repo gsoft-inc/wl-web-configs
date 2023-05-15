@@ -1,7 +1,7 @@
 import { splitPath, sanitizePath, getFileName } from "../utils/rules";
 import { parse, sep } from "path";
-import { Rule } from "eslint";
-import ESTree from "estree";
+import type { Rule } from "eslint";
+import type ESTree from "estree";
 
 const rule: Rule.RuleModule = {
     meta: {

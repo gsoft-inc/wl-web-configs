@@ -1,5 +1,5 @@
 import type { PluginCreator } from "postcss";
-import postcssPresetEnv, { pluginOptions as postcssPresetEnvOptions } from "postcss-preset-env";
+import postcssPresetEnv, { type pluginOptions as postcssPresetEnvOptions } from "postcss-preset-env";
 
 const PresetEnvOptions: postcssPresetEnvOptions = {
     autoprefixer: {

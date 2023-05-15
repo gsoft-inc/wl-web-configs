@@ -1,4 +1,4 @@
-import { Rule } from "eslint";
+import type { Rule } from "eslint";
 import { basename, sep } from "path";
 
 export const sanitizePath = (filePath: string) => {
