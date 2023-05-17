@@ -13,13 +13,39 @@ Install the package.
 pnpm add -D @workleap/tsup-configs
 ```
 
-[Check out all available options.](https://paka.dev/npm/tsup#module-index-export-Options)
+## Usage
 
-### Build a React or TypeScript Library Project
+### Build a React or TypeScript Library Project with a watch mode
 
-**Default**
-`defineBuildConfig` comes with a default configuration that will build a React or TypeScript ESM library.
+If your project is using tsup in watch mode, you might want a separate tsup config for development. This config will be used by tsup when running in watch mode. Then you need a second config to build the library. In order to do this, create 2 files at the top of your project:
 
+- `tsup.build.ts`
+- `tsup.dev.ts`
+
+Then, in your package.json file, add the following scripts:
+```json
+    "dev": "tsup --config ./tsup.dev.ts",
+    "build": "tsup --config ./tsup.build.ts"
+```
+
+In your `tsup.dev.ts` file, add the following code:
+```ts
+// tsup.dev.ts
+import { defineDevConfig } from "tsup";
+
+export default defineDevConfig();
+```
+In your `tsup.build.ts` file, add the following code:
+```ts
+// tsup.build.ts
+import { defineBuildConfig } from "tsup";
+
+export default defineBuildConfig();
+```
+
+### Build a React or TypeScript Library Project without a watch mode
+
+Simply create a `tsup.config.ts` file at the top of your project and add the following code:
 ```ts
 // tsup.config.ts
 import { defineBuildConfig } from "tsup";
@@ -27,8 +53,8 @@ import { defineBuildConfig } from "tsup";
 export default defineBuildConfig();
 ```
 
-**Using custom tsup config:**
-If you want to use additional tsup options or override the default ones, you can pass a custom tsup config to `defineBuildConfig`:
+## Customization
+If you want to use additional tsup options or override the default ones, you can pass a custom tsup config to the functions exported by this packages:
 
 ```ts
 // tsup.config.ts
@@ -39,6 +65,8 @@ export default defineBuildConfig({
     format: ["cjs"]
 });
 ```
+
+[Check out all available options.](https://paka.dev/npm/tsup#module-index-export-Options)
 
 ## License
 
