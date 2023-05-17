@@ -1,8 +1,7 @@
-import type { defineConfig } from "tsup";
-import { defineConfigBase } from "./defineConfigBase.ts";
+import { type DefineConfigOptions, defineConfigBase } from "./defineConfigBase.ts";
 
 
-export function defineBuildConfig(config?: Parameters<typeof defineConfig>[0]) {
+export function defineBuildConfig(config?: DefineConfigOptions) {
     return defineConfigBase(config, {
         clean: true,
         treeshake: true,

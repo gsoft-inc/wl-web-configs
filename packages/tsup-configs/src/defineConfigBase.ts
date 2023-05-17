@@ -1,6 +1,8 @@
 import { defineConfig, type Options } from "tsup";
 
-export function defineConfigBase(config: Parameters<typeof defineConfig>[0] | undefined, baseConfig: Options): ReturnType<typeof defineConfig> {
+export type DefineConfigOptions = Parameters<typeof defineConfig>[0];
+
+export function defineConfigBase(config: DefineConfigOptions | undefined, baseConfig: Options): ReturnType<typeof defineConfig> {
     if (config === undefined || (Array.isArray(config) && config.length === 0)) {
         return defineConfig(baseConfig);
     }
