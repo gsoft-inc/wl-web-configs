@@ -137,6 +137,15 @@ importers:
         specifier: 6.7.0
         version: 6.7.0(postcss@8.4.21)(ts-node@10.9.1)(typescript@5.0.4)
 
+  packages/tsup-configs:
+    devDependencies:
+      '@workleap/typescript-configs':
+        specifier: workspace:*
+        version: link:../typescript-configs
+      tsup:
+        specifier: 6.7.0
+        version: 6.7.0(postcss@8.4.21)(ts-node@10.9.1)(typescript@5.0.4)
+
   packages/typescript-configs: {}
 
 packages:

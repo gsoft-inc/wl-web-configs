@@ -1,0 +1,40 @@
+{
+    "name": "@workleap/tsup-configs",
+    "author": "Workleap",
+    "description": "Workleap's recommended tsup configs.",
+    "version": "0.0.0",
+    "license": "Apache-2.0",
+    "type": "module",
+    "sideEffects": false,
+    "keywords": [
+        "workleap",
+        "tsup",
+        "tsup-config"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/workleap/wl-web-configs.git",
+        "directory": "packages/tsup-configs"
+    },
+    "exports": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "files": [
+        "dist",
+        "CHANGELOG.md",
+        "README.md"
+    ],
+    "scripts": {
+        "build": "tsup"
+    },
+    "devDependencies": {
+        "@workleap/typescript-configs": "workspace:*",
+        "tsup": "6.7.0"
+    },
+    "peerDependencies": {
+        "tsup": "*"
+    },
+    "publishConfig": {
+        "access": "public",
+        "provenance": true
+    }
+}
