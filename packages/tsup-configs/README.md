@@ -15,27 +15,42 @@ pnpm add -D @workleap/tsup-configs
 
 ## Usage
 
-### Build a React or TypeScript Library Project with a watch mode
+To build your React or TypeScript library project, follow these steps:
 
-If your project is using tsup in watch mode, you might want a separate tsup config for development. This config will be used by tsup when running in watch mode. Then you need a second config to build the library. In order to do this, create 2 files at the top of your project:
+1. Create a `tsup.config.ts` file at the top of your project.
 
-- `tsup.build.ts`
-- `tsup.dev.ts`
+2. Open the `tsup.config.ts` file and add the following code:
 
-Then, in your package.json file, add the following scripts:
-```json
-    "dev": "tsup --config ./tsup.dev.ts",
-    "build": "tsup --config ./tsup.build.ts"
+```ts
+// tsup.config.ts
+import { defineBuildConfig } from "tsup";
+
+export default defineBuildConfig();
 ```
 
-In your `tsup.dev.ts` file, add the following code:
+4. In your package.json file, add the following scripts:
+
+```json
+"build": "tsup"
+```
+
+This configuration will be used to build your library.
+
+If you also want to enable watch mode for your project, follow these steps instead:
+
+1. Create two files at the top of your project: `tsup.dev.ts` and `tsup.build.ts`.
+
+2. Open the `tsup.dev.ts` file and add the following code:
+
 ```ts
 // tsup.dev.ts
 import { defineDevConfig } from "tsup";
 
 export default defineDevConfig();
 ```
-In your `tsup.build.ts` file, add the following code:
+
+3. Open the `tsup.build.ts` file and add the following code:
+
 ```ts
 // tsup.build.ts
 import { defineBuildConfig } from "tsup";
@@ -43,15 +58,14 @@ import { defineBuildConfig } from "tsup";
 export default defineBuildConfig();
 ```
 
-### Build a React or TypeScript Library Project without a watch mode
+4. In your package.json file, add the following scripts:
 
-Simply create a `tsup.config.ts` file at the top of your project and add the following code:
-```ts
-// tsup.config.ts
-import { defineBuildConfig } from "tsup";
-
-export default defineBuildConfig();
+```json
+"dev": "tsup --config ./tsup.dev.ts",
+"build": "tsup --config ./tsup.build.ts"
 ```
+
+Now you can use the `dev` script to run tsup in watch mode and the `build` script to build your library.
 
 ## Customization
 If you want to use additional tsup options or override the default ones, you can pass a custom tsup config to the functions exported by this packages:
