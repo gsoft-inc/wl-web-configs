@@ -1,6 +1,5 @@
 import { type DefineConfigOptions, defineConfigBase } from "./defineConfigBase.ts";
 
-
 export function defineBuildConfig(config?: DefineConfigOptions) {
     return defineConfigBase(config, {
         clean: true,

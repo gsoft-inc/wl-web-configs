@@ -15,7 +15,7 @@
         "allowUnusedLabels": false,
         "allowUnreachableCode": false,
         "noFallthroughCasesInSwitch": true,
-        "noUnusedLocals": true,
+        "noUnusedLocals": false,
 
         "checkJs": true,
 

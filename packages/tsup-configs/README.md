@@ -66,7 +66,7 @@ export default defineBuildConfig({
 });
 ```
 
-[Check out all available options.](https://paka.dev/npm/tsup#module-index-export-Options)
+[Check out all available options here](https://paka.dev/npm/tsup#module-index-export-Options) or the documentation website at https://tsup.egoist.dev/
 
 ## License
 
