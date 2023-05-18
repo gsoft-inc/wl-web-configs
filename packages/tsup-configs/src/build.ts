@@ -1,7 +1,7 @@
-import { type DefineConfigOptions, defineConfigBase } from "./defineConfigBase.ts";
+import { type DefineConfigOptions, mergeConfigs } from "./mergeConfigs.ts";
 
 export function defineBuildConfig(config?: DefineConfigOptions) {
-    return defineConfigBase(config, {
+    return mergeConfigs(config, {
         clean: true,
         treeshake: true,
         minify: true,

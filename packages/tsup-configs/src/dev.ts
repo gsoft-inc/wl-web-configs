@@ -1,7 +1,7 @@
-import { type DefineConfigOptions, defineConfigBase } from "./defineConfigBase.ts";
+import { type DefineConfigOptions, mergeConfigs } from "./mergeConfigs.ts";
 
 export function defineDevConfig(config?: DefineConfigOptions) {
-    return defineConfigBase(config, {
+    return mergeConfigs(config, {
         watch: true,
         dts: true,
         entry: ["./src"],
