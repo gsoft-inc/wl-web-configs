@@ -17,27 +17,6 @@ pnpm add -D @workleap/tsup-configs
 
 To build your React or TypeScript library project, follow these steps:
 
-1. Create a `tsup.config.ts` file at the top of your project.
-
-2. Open the `tsup.config.ts` file and add the following code:
-
-```ts
-// tsup.config.ts
-import { defineBuildConfig } from "tsup";
-
-export default defineBuildConfig();
-```
-
-4. In your package.json file, add the following scripts:
-
-```json
-"build": "tsup"
-```
-
-This configuration will be used to build your library.
-
-If you also want to enable watch mode for your project, follow these steps instead:
-
 1. Create two files at the top of your project: `tsup.dev.ts` and `tsup.build.ts`.
 
 2. Open the `tsup.dev.ts` file and add the following code:
