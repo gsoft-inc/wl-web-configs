@@ -23,7 +23,7 @@ To build your React or TypeScript library project, follow these steps:
 
 ```ts
 // tsup.dev.ts
-import { defineDevConfig } from "tsup";
+import { defineDevConfig } from "@workleap/tsup-configs";
 
 export default defineDevConfig();
 ```
@@ -32,7 +32,7 @@ export default defineDevConfig();
 
 ```ts
 // tsup.build.ts
-import { defineBuildConfig } from "tsup";
+import { defineBuildConfig } from "@workleap/tsup-configs";
 
 export default defineBuildConfig();
 ```
@@ -51,7 +51,7 @@ If you want to use additional tsup options or override the default ones, you can
 
 ```ts
 // tsup.config.ts
-import { defineBuildConfig } from "tsup";
+import { defineBuildConfig } from "@workleap/tsup-configs";
 
 export default defineBuildConfig({
     entry: ["lib/index.ts"],
