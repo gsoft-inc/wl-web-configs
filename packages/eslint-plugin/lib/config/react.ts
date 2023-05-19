@@ -56,21 +56,22 @@ const config: Linter.Config = {
                     { ignoreClassFields: true }
                 ],
                 "react/jsx-boolean-value": ["warn", "never"],
-                "react/jsx-closing-bracket-location": [1, "line-aligned"],
                 "react/default-props-match-prop-types": "warn",
                 "react/no-unused-state": "warn",
                 "react/no-array-index-key": "warn",
                 "react/no-access-state-in-setstate": "warn",
                 "react/jsx-filename-extension": ["warn", { "extensions": [".jsx", ".tsx"] }],
-                "react/jsx-tag-spacing": ["warn", { beforeSelfClosing: "always" }],
                 "react/jsx-curly-brace-presence": "warn",
-                "react/jsx-max-props-per-line": [
-                    "warn",
-                    { maximum: 1, when: "multiline" }
-                ],
                 "react/no-unused-prop-types": [
                     "warn",
                     { customValidators: [], skipShapeProps: true }
+                ],
+
+                "react/jsx-closing-bracket-location": [1, "line-aligned"],
+                "react/jsx-tag-spacing": ["warn", { beforeSelfClosing: "always" }],
+                "react/jsx-max-props-per-line": [
+                    "warn",
+                    { maximum: 1, when: "multiline" }
                 ],
                 "react/jsx-curly-spacing": ["warn", { children: true, when: "never" }],
 

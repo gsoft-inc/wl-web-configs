@@ -88,11 +88,33 @@ const config: Linter.Config = {
             }
         ],
         "strict": ["warn", "never"],
+        "no-unused-expressions": [
+            "error",
+            {
+                allowShortCircuit: true,
+                allowTernary: true,
+                allowTaggedTemplates: true
+            }
+        ],
 
         // Layout & Formatting
+        "no-native-reassign": "warn", // deprecated replaced by no-global-assign, deja ds recommended
+        "no-negated-in-lhs": "warn", // deprecated replaced by no-unsafe-negation, deja ds recommended
+        "padding-line-between-statements": [
+            "warn",
+            { blankLine: "always", prev: "*", next: "return" }
+        ],
+
+        "rest-spread-spacing": ["warn", "never"],
+        "unicode-bom": ["warn", "never"],
+        "comma-spacing": ["warn", { "before": false, "after": true }],
+        "keyword-spacing": ["warn", { before: true, after: true }],
+        "arrow-spacing": ["warn", { before: true, after: true }],
+        "space-before-blocks": ["warn", "always"],
+        "space-in-parens": ["warn", "never"],
+        "padded-blocks": ["warn", "never"],
+        "brace-style":["warn", "1tbs", { "allowSingleLine": true }],
         "new-parens": "warn",
-        "no-native-reassign": "warn",
-        "no-negated-in-lhs": "warn",
         "no-whitespace-before-property": "warn",
         "no-multi-spaces": "warn",
         "no-multiple-empty-lines": "warn",
@@ -112,27 +134,6 @@ const config: Linter.Config = {
         "object-curly-spacing": ["warn", "always"],
         "dot-location": ["warn", "property"],
         "arrow-parens": ["warn", "as-needed"],
-        "no-unused-expressions": [
-            "error",
-            {
-                allowShortCircuit: true,
-                allowTernary: true,
-                allowTaggedTemplates: true
-            }
-        ],
-        "rest-spread-spacing": ["warn", "never"],
-        "unicode-bom": ["warn", "never"],
-        "padding-line-between-statements": [
-            "warn",
-            { blankLine: "always", prev: "*", next: "return" }
-        ],
-        "comma-spacing": ["warn", { "before": false, "after": true }],
-        "keyword-spacing": ["warn", { before: true, after: true }],
-        "arrow-spacing": ["warn", { before: true, after: true }],
-        "space-before-blocks": ["warn", "always"],
-        "space-in-parens": ["warn", "never"],
-        "padded-blocks": ["warn", "never"],
-        "brace-style":["warn", "1tbs", { "allowSingleLine": true }],
 
         // https://github.com/import-js/eslint-plugin-import/tree/main/docs/rules
         "import/no-amd": "error",

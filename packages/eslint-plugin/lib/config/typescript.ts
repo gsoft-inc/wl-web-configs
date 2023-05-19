@@ -16,22 +16,11 @@ const config: Linter.Config = {
                 "@typescript-eslint/no-non-null-assertion": "off",
 
                 // additional rules we want
-                "@typescript-eslint/member-delimiter-style": "warn",
                 "@typescript-eslint/consistent-type-definitions": "warn",
                 "@typescript-eslint/no-implicit-any-catch": "warn",
                 "@typescript-eslint/explicit-member-accessibility": ["warn", { accessibility: "no-public" }],
                 "@typescript-eslint/method-signature-style": "warn",
                 "comma-dangle":"off",
-                "@typescript-eslint/comma-dangle": ["warn", "never"],
-                "indent":"off",
-                "@typescript-eslint/indent": [
-                    "warn",
-                    4,
-                    {
-                        SwitchCase: 1,
-                        CallExpression: { arguments: "first" }
-                    }
-                ],
                 "no-dupe-class-members":"off",
                 "@typescript-eslint/no-dupe-class-members":"error",
                 "no-loop-func":"off",
@@ -51,12 +40,8 @@ const config: Linter.Config = {
                 "no-useless-constructor":"off",
                 "@typescript-eslint/no-useless-constructor":"warn",
                 "object-curly-spacing":"off",
-                "@typescript-eslint/object-curly-spacing": ["warn", "always"],
                 "quotes":"off",
                 "@typescript-eslint/quotes": ["warn", "double"],
-                "semi":"off",
-                "@typescript-eslint/semi": ["warn", "always"],
-
                 "@typescript-eslint/no-import-type-side-effects": "warn",
                 "@typescript-eslint/consistent-type-imports": [
                     "warn",
@@ -65,7 +50,22 @@ const config: Linter.Config = {
                         "disallowTypeAnnotations": true,
                         "fixStyle": "inline-type-imports"
                     }
-                ]
+                ],
+
+                "@typescript-eslint/member-delimiter-style": "warn",
+                "@typescript-eslint/comma-dangle": ["warn", "never"],
+                "indent":"off",
+                "@typescript-eslint/indent": [
+                    "warn",
+                    4,
+                    {
+                        SwitchCase: 1,
+                        CallExpression: { arguments: "first" }
+                    }
+                ],
+                "@typescript-eslint/object-curly-spacing": ["warn", "always"],
+                "semi":"off",
+                "@typescript-eslint/semi": ["warn", "always"]
             }
         }
     ]
