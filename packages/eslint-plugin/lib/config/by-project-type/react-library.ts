@@ -1,4 +1,5 @@
 import type { Linter } from "eslint";
+import { sourceFiles } from "../../utils/patterns";
 
 const config: Linter.Config = {
     extends: [
@@ -9,19 +10,16 @@ const config: Linter.Config = {
         "plugin:@workleap/testing-library",
         "plugin:@workleap/storybook"
     ],
-    parserOptions: {
-        ecmaFeatures: {
-            jsx: true
+    overrides: [
+        {
+            files: sourceFiles,
+            plugins: ["@workleap"],
+            rules: {
+                // Custom WorkLeap rules
+                "@workleap/strict-css-modules-names": "warn"
+            }
         }
-    },
-    env: {
-        browser: true,
-        es6: true
-    },
-    rules: {
-        // Custom WorkLeap rules
-        "@workleap/strict-css-modules-names": "warn"
-    }
+    ]
 };
 
 export = config;

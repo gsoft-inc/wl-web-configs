@@ -1,10 +1,10 @@
 import type { Linter } from "eslint";
-import { sourceFiles, jsxFiles } from "../utils/patterns";
+import { mdxFiles, sourceFiles } from "../utils/patterns";
 
 const config: Linter.Config = {
     overrides: [
         {
-            files: [...sourceFiles, ...jsxFiles],
+            files: sourceFiles,
             plugins: ["jsx-a11y", "react", "react-hooks"],
             extends: [
                 "plugin:react/recommended",
