@@ -1,5 +1,12 @@
 # @workleap/eslint-plugin
 
+## 1.7.0
+
+### Minor Changes
+
+- [#57](https://github.com/workleap/wl-web-configs/pull/57) [`11c94c8`](https://github.com/workleap/wl-web-configs/commit/11c94c8efff2fbbbf6db2249d7a65b45d7dadef6) Thanks [@alexasselin008](https://github.com/alexasselin008)! - feat: add env node and commonjs to the core config. #59
+  feat: Updated configuration settings to improve error handling: Removed overwrites of all errors in the old configuration, resulting in errors now being flagged as errors instead of appearing as warnings. #50
+
 ## 1.6.0
 
 ### Minor Changes
