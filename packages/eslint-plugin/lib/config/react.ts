@@ -27,24 +27,6 @@ const config: Linter.Config = {
                 // https://eslint.org/docs/rules
                 "jsx-quotes": ["warn", "prefer-double"],
 
-                // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules
-                // react/recommended warn instead of error
-                "react/jsx-no-comment-textnodes": "warn",
-                "react/jsx-no-target-blank": "warn",
-                "react/jsx-uses-react": "warn",
-                "react/jsx-uses-vars": "warn",
-                "react/no-danger-with-children": "warn",
-                "react/no-direct-mutation-state": "warn",
-                "react/no-is-mounted": "warn",
-                "react/require-render-return": "warn",
-                "react/no-unknown-property": "warn",
-                "react/no-children-prop": "warn",
-                "react/no-deprecated": "warn",
-                "react/no-find-dom-node": "warn",
-                "react/no-render-return-value": "warn",
-                "react/no-string-refs": "warn",
-                "react/no-unsafe": "warn",
-
                 // react/recommended overrides
                 "react/jsx-no-duplicate-props": ["warn", { ignoreCase: true }],
                 "react/jsx-no-undef": ["warn", { allowGlobals: true }],
@@ -74,21 +56,22 @@ const config: Linter.Config = {
                     { ignoreClassFields: true }
                 ],
                 "react/jsx-boolean-value": ["warn", "never"],
-                "react/jsx-closing-bracket-location": [1, "line-aligned"],
                 "react/default-props-match-prop-types": "warn",
                 "react/no-unused-state": "warn",
                 "react/no-array-index-key": "warn",
                 "react/no-access-state-in-setstate": "warn",
                 "react/jsx-filename-extension": ["warn", { "extensions": [".jsx", ".tsx"] }],
-                "react/jsx-tag-spacing": ["warn", { beforeSelfClosing: "always" }],
                 "react/jsx-curly-brace-presence": "warn",
-                "react/jsx-max-props-per-line": [
-                    "warn",
-                    { maximum: 1, when: "multiline" }
-                ],
                 "react/no-unused-prop-types": [
                     "warn",
                     { customValidators: [], skipShapeProps: true }
+                ],
+
+                "react/jsx-closing-bracket-location": [1, "line-aligned"],
+                "react/jsx-tag-spacing": ["warn", { beforeSelfClosing: "always" }],
+                "react/jsx-max-props-per-line": [
+                    "warn",
+                    { maximum: 1, when: "multiline" }
                 ],
                 "react/jsx-curly-spacing": ["warn", { children: true, when: "never" }],
 
@@ -115,12 +98,7 @@ const config: Linter.Config = {
                 "jsx-a11y/no-redundant-roles": "warn",
                 "jsx-a11y/role-has-required-aria-props": "warn",
                 "jsx-a11y/role-supports-aria-props": "warn",
-                "jsx-a11y/scope": "warn",
-
-                // https://github.com/facebook/react/tree/master/packages/eslint-plugin-react-hooks
-                // react-hooks/recommended warn instead of error
-                "react-hooks/exhaustive-deps": "warn",
-                "react-hooks/rules-of-hooks": "warn"
+                "jsx-a11y/scope": "warn"
             }
         }
     ]
