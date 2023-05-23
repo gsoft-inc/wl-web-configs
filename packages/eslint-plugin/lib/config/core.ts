@@ -10,7 +10,9 @@ const config: Linter.Config = {
         ecmaVersion: "latest"
     },
     env: {
-        es6: true
+        es6: true,
+        node: true,
+        commonjs : true
     },
     rules: {
         // eslint:recommended warn instead of error
