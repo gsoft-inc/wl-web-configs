@@ -1,5 +1,11 @@
 # @workleap/eslint-plugin
 
+## 1.8.0
+
+### Minor Changes
+
+- [#62](https://github.com/workleap/wl-web-configs/pull/62) [`0270f59`](https://github.com/workleap/wl-web-configs/commit/0270f5909f192f22a9464d274d4f78425367d0b5) Thanks [@alexasselin008](https://github.com/alexasselin008)! - MDX files are now linted properly #52
+
 ## 1.7.0
 
 ### Minor Changes
