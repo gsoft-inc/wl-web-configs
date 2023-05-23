@@ -10,6 +10,7 @@ The `@workleap/eslint-plugin` package exposes the following configuration parts:
 - **`jest`**: Jest specific rules
 - **`testing-library`**: Testing library specific rules
 - **`storybook`**: Storybook specific rules
+- **`mdx`**: MDX specific rules
 
 Each configuration block can be extended individually, or in combination with others, to compose your custom ESLint configuration.
 
@@ -41,5 +42,28 @@ And here's an example of how to use both TypeScript and react configuration bloc
   "rules": {
     // your custom rules
   }
+}
+```
+
+Alternatively, if you want to lint files other than `.ts/.tsx/.js/.jsx`, you will need create different overwrite blocks
+
+```json
+{
+    "overrides": [
+        {
+            "files": ["*.ts", "*.tsx"],
+            "extends": ["plugin:@workleap/typescript", "plugin:@workleap/react"],
+            "rules": {
+                // your custom rules
+            }
+        },
+        {
+            "files": ["*.mdx"],
+            "extends": ["plugin:@workleap/mdx"],
+            "rules": {
+                // your custom rules
+            }
+        }
+    ]
 }
 ```

@@ -1,5 +1,6 @@
 export const sourceFiles = [
-    "*.[jt]s"
+    "*.[jt]s?(x)",
+    "*.[cm]js"
 ];
 
 export const typescriptFiles = [
@@ -11,10 +12,6 @@ export const testFiles = [
     "*-test.[jt]s",
     "**/__tests__/*.[jt]s",
     "**/test.[jt]s"
-];
-
-export const jsxFiles = [
-    "*.[jt]sx"
 ];
 
 export const reactTestFiles = [
