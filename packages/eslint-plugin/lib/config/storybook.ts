@@ -39,10 +39,6 @@ const config: Linter.Config = {
             rules: {
                 "storybook/no-uninstalled-addons": "warn"
             }
-        },
-        {
-            files: mdxFiles,
-            extends: ["plugin:mdx/recommended"]
         }
     ]
 };

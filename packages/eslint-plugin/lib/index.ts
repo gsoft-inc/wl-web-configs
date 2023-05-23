@@ -8,6 +8,7 @@ const plugin: ESLint.Plugin = {
         // by use cases
         core: require("./config/core"),
         jest: require("./config/jest"),
+        mdx: require("./config/mdx"),
         react: require("./config/react"),
         storybook: require("./config/storybook"),
         "testing-library": require("./config/testing-library"),
