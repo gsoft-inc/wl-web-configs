@@ -2,7 +2,7 @@
     "name": "@workleap/eslint-plugin",
     "author": "Workleap",
     "description": "Workleap ESLint rules and configs.",
-    "version": "1.7.0",
+    "version": "1.8.0",
     "keywords": [
         "workleap",
         "eslint",
