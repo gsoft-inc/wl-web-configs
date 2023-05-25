@@ -6,7 +6,7 @@ Common configurations for building web apps at Workleap
 
 ## Usage
 
-This repo is managed as a monorepo that is composed of many npm packages, where each package has its own README describing usage.
+This repository is managed as a monorepo that is composed of many npm packages, where each package has its own README describing usage.
 
 ### Packages
 
@@ -18,3 +18,7 @@ This repo is managed as a monorepo that is composed of many npm packages, where 
 | [@workleap/stylelint-plugin](packages/stylelint-config/README.md) | [![npm version](https://img.shields.io/npm/v/@workleap/stylelint-config)](https://www.npmjs.com/package/@workleap/stylelint-config) |
 | [@workleap/typescript-config](packages/typescript-configs/README.md) | [![npm version](https://img.shields.io/npm/v/@workleap/typescript-configs)](https://www.npmjs.com/package/@workleap/typescript-configs) |
 | [@workleap/tsup-configs](packages/tsup-configs/README.md) | [![npm version](https://img.shields.io/npm/v/@workleap/tsup-configs)](https://www.npmjs.com/package/@workleap/tsup-configs) |
+
+## 🤝 Contributing
+
+View the [contributors documentation](./CONTRIBUTING.md).
