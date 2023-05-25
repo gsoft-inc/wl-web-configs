@@ -1,6 +1,4 @@
 {
     "extends": "@workleap/typescript-configs/monorepo-root.json",
-    "compilerOptions": {
-        "module": "CommonJS",
-    }
+    "exclude": ["packages", "node_modules"]
 }

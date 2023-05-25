@@ -1,8 +1,8 @@
-const config: string | string[] = [
+const config: string[] = [
     "last 2 versions",
     "> 0.2%",
     "Firefox ESR",
     "not dead"
 ];
 
-export = config;
+export default config;

@@ -4,8 +4,6 @@
     "description": "Workleap's recommended tsup configs.",
     "version": "1.0.0",
     "license": "Apache-2.0",
-    "type": "module",
-    "sideEffects": false,
     "keywords": [
         "workleap",
         "tsup",
@@ -16,8 +14,13 @@
         "url": "git+https://github.com/workleap/wl-web-configs.git",
         "directory": "packages/tsup-configs"
     },
-    "exports": "./dist/index.js",
-    "types": "./dist/index.d.ts",
+    "type": "module",
+    "exports": {
+        ".": {
+            "import": "./dist/index.js",
+            "types": "./dist/index.d.ts"
+        }
+    },
     "files": [
         "dist",
         "CHANGELOG.md",

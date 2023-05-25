@@ -1,12 +1,12 @@
 import { defineConfig } from "tsup";
 
 export default defineConfig({
+    clean: true,
+    dts: true,
+    minify: true,
+    treeshake: true,
     entry: ["src"],
     outDir: "./dist",
-    clean: true,
     format: ["esm"],
-    treeshake: true,
-    minify: true,
-    dts: true,
     target: "esnext"
 });
