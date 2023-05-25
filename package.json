@@ -11,16 +11,20 @@
     "scripts": {
         "build": "pnpm -r build",
         "build:eslint": "pnpm --filter=@workleap/eslint-plugin build",
-        "changeset": "changeset",
-        "clean": "pnpm -r --include-workspace-root --parallel exec pnpm dlx rimraf dist node_modules/.cache",
+
+        "test": "jest",
+
         "lint": "pnpm run /^lint:.*/",
         "lint:eslint": "pnpm build:eslint && eslint . --ext .js,.jsx,.ts,.tsx  --cache --cache-location node_modules/.cache/eslint",
         "lint:types": "pnpm -r --parallel --filter=!typescript-configs exec tsc",
         "lint-ci": "pnpm run /^lint-ci:.*/",
         "lint-ci:eslint": "eslint . --ext .js,.jsx,.ts,.tsx --max-warnings=1",
+
+        "changeset": "changeset",
         "release": "pnpm build && changeset publish",
-        "reset": "pnpm -r --include-workspace-root --parallel exec pnpm dlx rimraf dist node_modules",
-        "test": "jest"
+
+        "clean": "pnpm -r --include-workspace-root --parallel exec pnpm dlx rimraf dist node_modules/.cache",
+        "reset": "pnpm -r --include-workspace-root --parallel exec pnpm dlx rimraf dist node_modules"
     },
     "devDependencies": {
         "@workleap/eslint-plugin": "workspace:*",
