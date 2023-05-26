@@ -1,7 +1,12 @@
 import { defineConfig } from "tsup";
 
 export default defineConfig({
-    entry: ["./index.ts"],
     clean: true,
-    format: ["cjs"]
+    splitting: false,
+    treeshake: true,
+    entry: ["./src"],
+    outDir: "./dist",
+    format: ["cjs"],
+    target: "esnext",
+    platform: "node"
 });

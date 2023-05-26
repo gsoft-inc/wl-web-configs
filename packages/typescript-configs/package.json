@@ -15,6 +15,9 @@
         "url": "git+https://github.com/workleap/wl-web-configs.git",
         "directory": "packages/typescript-configs"
     },
+    "peerDependencies": {
+        "typescript": "*"
+    },
     "publishConfig": {
         "access": "public",
         "provenance": true

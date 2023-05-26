@@ -2,8 +2,9 @@ import { type DefineConfigOptions, mergeConfigs } from "./mergeConfigs.ts";
 
 export function defineDevConfig(config?: DefineConfigOptions) {
     return mergeConfigs(config, {
-        watch: true,
         dts: true,
+        splitting: false,
+        watch: true,
         entry: ["./src"],
         outDir: "./dist",
         format: ["esm"],

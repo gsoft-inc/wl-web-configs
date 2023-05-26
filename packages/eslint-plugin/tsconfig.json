@@ -1,9 +1,4 @@
 {
     "extends": "@workleap/typescript-configs/library",
-    "compilerOptions": {
-        "module": "CommonJS",
-        "outDir": "dist"
-    },
-    "include": ["lib", "tests"],
-    "exclude": ["dist"]
+    "exclude": ["dist", "node_modules"]
 }

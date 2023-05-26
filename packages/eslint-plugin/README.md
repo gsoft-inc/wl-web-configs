@@ -1,4 +1,5 @@
-# `@workleap/eslint-plugin`
+# @workleap/eslint-plugin
+
 Workleap’s ESLint configs.
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](../../LICENSE)
@@ -9,6 +10,7 @@ Workleap’s ESLint configs.
 Install the package.
 
 **With pnpm**
+
 ```shell
 pnpm add -D @workleap/eslint-plugin
 ```

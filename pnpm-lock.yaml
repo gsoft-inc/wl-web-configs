@@ -40,12 +40,18 @@ importers:
 
   packages/browserslist-config:
     devDependencies:
+      '@workleap/eslint-plugin':
+        specifier: workspace:*
+        version: link:../eslint-plugin
       '@workleap/typescript-configs':
         specifier: workspace:*
         version: link:../typescript-configs
       tsup:
         specifier: 6.7.0
         version: 6.7.0(postcss@8.4.21)(ts-node@10.9.1)(typescript@5.0.4)
+      typescript:
+        specifier: 5.0.4
+        version: 5.0.4
 
   packages/eslint-plugin:
     dependencies:
@@ -76,9 +82,6 @@ importers:
       eslint-plugin-testing-library:
         specifier: 5.10.2
         version: 5.10.2(eslint@8.38.0)(typescript@5.0.4)
-      typescript:
-        specifier: '*'
-        version: 5.0.4
     devDependencies:
       '@types/eslint':
         specifier: 8.37.0
@@ -98,6 +101,9 @@ importers:
       tsup:
         specifier: 6.7.0
         version: 6.7.0(postcss@8.4.21)(ts-node@10.9.1)(typescript@5.0.4)
+      typescript:
+        specifier: 5.0.4
+        version: 5.0.4
 
   packages/postcss-plugin:
     dependencies:
@@ -105,6 +111,9 @@ importers:
         specifier: 8.3.1
         version: 8.3.1(postcss@8.4.21)
     devDependencies:
+      '@workleap/eslint-plugin':
+        specifier: workspace:*
+        version: link:../eslint-plugin
       '@workleap/typescript-configs':
         specifier: workspace:*
         version: link:../typescript-configs
@@ -114,6 +123,9 @@ importers:
       tsup:
         specifier: 6.7.0
         version: 6.7.0(postcss@8.4.21)(ts-node@10.9.1)(typescript@5.0.4)
+      typescript:
+        specifier: 5.0.4
+        version: 5.0.4
 
   packages/stylelint-config:
     dependencies:
@@ -124,6 +136,9 @@ importers:
         specifier: 2.0.0
         version: 2.0.0(prettier@2.8.7)(stylelint@15.4.0)
     devDependencies:
+      '@workleap/eslint-plugin':
+        specifier: workspace:*
+        version: link:../eslint-plugin
       '@workleap/typescript-configs':
         specifier: workspace:*
         version: link:../typescript-configs
@@ -136,17 +151,30 @@ importers:
       tsup:
         specifier: 6.7.0
         version: 6.7.0(postcss@8.4.21)(ts-node@10.9.1)(typescript@5.0.4)
+      typescript:
+        specifier: 5.0.4
+        version: 5.0.4
 
   packages/tsup-configs:
     devDependencies:
+      '@workleap/eslint-plugin':
+        specifier: workspace:*
+        version: link:../eslint-plugin
       '@workleap/typescript-configs':
         specifier: workspace:*
         version: link:../typescript-configs
       tsup:
         specifier: 6.7.0
         version: 6.7.0(postcss@8.4.21)(ts-node@10.9.1)(typescript@5.0.4)
+      typescript:
+        specifier: 5.0.4
+        version: 5.0.4
 
-  packages/typescript-configs: {}
+  packages/typescript-configs:
+    dependencies:
+      typescript:
+        specifier: '*'
+        version: 5.0.4
 
 packages:
 

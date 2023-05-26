@@ -1,4 +1,5 @@
-# `@workleap/browserslist-config`
+# @workleap/browserslist-config
+
 Shareable [browserslist](https://github.com/browserslist/browserslist) configuration for Workleap.
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](../../LICENSE)
@@ -9,6 +10,7 @@ Shareable [browserslist](https://github.com/browserslist/browserslist) configura
 Install the package.
 
 **With pnpm**
+
 ```shell
 pnpm add -D @workleap/browserslist-config
 ```

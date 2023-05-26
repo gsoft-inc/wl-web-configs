@@ -1,4 +1,5 @@
-# `@workleap/postcss-plugin`
+# @workleap/postcss-plugin
+
 All of Workleap’s default PostCSS plugins wrapped up in a single, easy-to-use plugin.
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](../../LICENSE)
@@ -9,6 +10,7 @@ All of Workleap’s default PostCSS plugins wrapped up in a single, easy-to-use 
 Install the package.
 
 **With pnpm**
+
 ```shell
 pnpm add -D @workleap/postcss-plugin
 ```
