@@ -2,7 +2,7 @@
 // Requirements
 //------------------------------------------------------------------------------
 import { RuleTester, type Linter } from "eslint";
-import rule from "../../src/rules/strict-css-modules-names";
+import rule from "../../../lib/rules/strict-css-modules-names";
 
 //------------------------------------------------------------------------------
 // Tests
