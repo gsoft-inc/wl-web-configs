@@ -1,14 +1,11 @@
 import type { Config } from "jest";
+import { config as swcConfig } from "./swc.jest";
 
 const config: Config = {
-    projects: [
-        "<rootDir>/packages/*"
-    ],
-    testRegex: "/tests/*/.*\\.test\\.(ts|tsx)$",
-    testPathIgnorePatterns: ["/node_modules/", "/dist/"],
-    cacheDirectory: "./node_modules/.cache/jest",
-    clearMocks: true,
-    verbose: true
+    testEnvironment: "node",
+    transform: {
+        "^.+\\.(js|ts)$": ["@swc/jest", swcConfig as Record<string, unknown>]
+    }
 };
 
 // Using TypeScript "export" keyword until ESLint support ESM.
