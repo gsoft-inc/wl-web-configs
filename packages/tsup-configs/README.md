@@ -1,4 +1,5 @@
-# `@workleap/tsup-configs`
+# @workleap/tsup-configs
+
 Workleap's recommended [tsup](https://tsup.egoist.dev/) configs.
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](../../LICENSE)
@@ -9,6 +10,7 @@ Workleap's recommended [tsup](https://tsup.egoist.dev/) configs.
 Install the package.
 
 **With pnpm**
+
 ```shell
 pnpm add -D @workleap/tsup-configs
 ```
@@ -47,6 +49,7 @@ export default defineBuildConfig();
 Now you can use the `dev` script to run tsup in watch mode and the `build` script to build your library.
 
 ## Customization
+
 If you want to use additional tsup options or override the default ones, you can pass a custom tsup config to the functions exported by this packages:
 
 ```ts

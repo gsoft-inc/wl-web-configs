@@ -1,4 +1,5 @@
-# `@workleap/typescript-configs`
+# @workleap/typescript-configs
+
 Workleap's reusable TypeScript configuration files
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](../../LICENSE)
@@ -9,6 +10,7 @@ Workleap's reusable TypeScript configuration files
 Install the package.
 
 **With pnpm**
+
 ```shell
 pnpm add -D @workleap/typescript-configs
 ```

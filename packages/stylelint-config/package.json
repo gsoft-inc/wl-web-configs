@@ -11,8 +11,12 @@
         "config",
         "css"
     ],
-    "main": "./dist/index.js",
-    "types": "./dist/index.d.ts",
+    "exports": {
+        ".": {
+            "require": "./dist/index.js",
+            "types": "./dist/index.d.ts"
+        }
+    },
     "files": [
         "dist",
         "CHANGELOG.md",
@@ -31,10 +35,12 @@
         "stylelint-prettier": "2.0.0"
     },
     "devDependencies": {
+        "@workleap/eslint-plugin": "workspace:*",
         "@workleap/typescript-configs": "workspace:*",
         "prettier": "2.8.7",
         "stylelint": "15.4.0",
-        "tsup": "6.7.0"
+        "tsup": "6.7.0",
+        "typescript": "5.0.4"
     },
     "peerDependencies": {
         "prettier": ">=2.0.0",

@@ -5,7 +5,7 @@ const plugin: ESLint.Plugin = {
         "strict-css-modules-names": require("./rules/strict-css-modules-names")
     },
     configs: {
-        // by use cases
+        // base configs
         core: require("./config/core"),
         jest: require("./config/jest"),
         mdx: require("./config/mdx"),
@@ -22,4 +22,7 @@ const plugin: ESLint.Plugin = {
     }
 };
 
+// Using TypeScript "export" keyword until ESLint support ESM.
+// Otherwise we must deal with a weird CommonJS output from esbuild which is not worth it.
+// For more info, see: https://github.com/evanw/esbuild/issues/1079
 export = plugin;

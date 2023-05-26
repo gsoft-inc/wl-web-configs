@@ -13,10 +13,9 @@
         "url": "git+https://github.com/workleap/wl-web-configs.git",
         "directory": "packages/browserslist-config"
     },
-    "type": "module",
     "exports": {
         ".": {
-            "require": "./dist/index.cjs",
+            "require": "./dist/index.js",
             "types": "./dist/index.d.ts"
         }
     },
@@ -29,8 +28,8 @@
         "build": "tsup"
     },
     "devDependencies": {
-        "@workleap/typescript-configs": "workspace:*",
         "@workleap/eslint-plugin": "workspace:*",
+        "@workleap/typescript-configs": "workspace:*",
         "tsup": "6.7.0",
         "typescript": "5.0.4"
     },

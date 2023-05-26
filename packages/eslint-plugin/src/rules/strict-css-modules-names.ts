@@ -1,7 +1,8 @@
-import { splitPath, sanitizePath, getFileName } from "../utils/rules";
+import { getFileName, sanitizePath, splitPath } from "../utils/rules";
 import { parse, sep } from "path";
-import type { Rule } from "eslint";
+
 import type ESTree from "estree";
+import type { Rule } from "eslint";
 
 const rule: Rule.RuleModule = {
     meta: {
@@ -57,4 +58,7 @@ const rule: Rule.RuleModule = {
     }
 };
 
+// Using TypeScript "export" keyword until ESLint support ESM.
+// Otherwise we must deal with a weird CommonJS output from esbuild which is not worth it.
+// For more info, see: https://github.com/evanw/esbuild/issues/1079
 export = rule;
