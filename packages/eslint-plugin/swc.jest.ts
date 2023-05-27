@@ -1,0 +1,19 @@
+import type { Config } from "@swc/core";
+
+export const config: Config = {
+    jsc: {
+        parser: {
+            syntax: "typescript"
+        },
+        // The output environment that the code will be compiled for.
+        target: "es2022",
+        // Import shims from an external module rather than inlining them in bundle files to greatly reduce the bundles size.
+        // Requires to add "@swc/helpers" as a project dependency
+        externalHelpers: true
+    },
+    module: {
+        type: "commonjs",
+        // Prevent SWC from exporting the `__esModule` property.
+        strict: true
+    }
+};
