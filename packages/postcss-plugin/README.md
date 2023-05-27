@@ -15,6 +15,18 @@ Install the package.
 pnpm add -D @workleap/postcss-plugin
 ```
 
+**With yarn**
+
+```shell
+yarn add -D @workleap/postcss-plugin
+```
+
+**With npm**
+
+```shell
+npm install -D @workleap/postcss-plugin
+```
+
 ## Features
 
 This plugin wraps around the following PostCSS transformations:

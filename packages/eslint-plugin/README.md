@@ -15,6 +15,18 @@ Install the package.
 pnpm add -D @workleap/eslint-plugin
 ```
 
+**With yarn**
+
+```shell
+yarn add -D @workleap/eslint-plugin
+```
+
+**With npm**
+
+```shell
+npm install -D @workleap/eslint-plugin
+```
+
 ## Usage
 
 This package provides ESLint configurations by project type. By providing configurations by project type, the burden of composing ESLint configurations is shifted from the consumer to the package maintainers. This approach allows for more accurate defaults and assumptions about the target environment. Additionally, it simplifies the process for consumers who only need to configure a single ESLint plugin.

@@ -15,6 +15,18 @@ Install the package.
 pnpm add -D @workleap/stylelint-config
 ```
 
+**With yarn**
+
+```shell
+yarn add -D @workleap/stylelint-config
+```
+
+**With npm**
+
+```shell
+npm install -D @workleap/stylelint-config
+```
+
 ## Usage
 
 Create a `.stylelintrc.json` file at the root of your project with the following content:

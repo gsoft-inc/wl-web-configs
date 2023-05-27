@@ -15,6 +15,18 @@ Install the package.
 pnpm add -D @workleap/typescript-configs
 ```
 
+**With yarn**
+
+```shell
+yarn add -D @workleap/typescript-configs
+```
+
+**With npm**
+
+```shell
+npm install -D @workleap/typescript-configs
+```
+
 ## Usage
 
 This package provides TypeScript configurations by project type. By providing configurations by project type, the burden of composing TypeScript configurations is shifted from the consumer to the package maintainers. This approach allows for more accurate defaults and assumptions about the target environment. Additionally, it simplifies the process for consumers who only need to configure a single TypeScript config plugin.
