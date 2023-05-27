@@ -130,7 +130,7 @@ This build run on a push on the `main` branch, and if theirs a file present in t
 
 ### CI
 
-This build will trigger when a commit is done in a PR to `main` or after a push to `main` and will run `build`, `lint-ci` and `test` commands on the source code.
+This build will trigger when a commit is done in a PR to `main` or after a push to `main` and will run `build`, `lint` and `test` commands on the source code.
 
 ## Add a new package to the monorepo
 
