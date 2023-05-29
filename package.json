@@ -15,10 +15,8 @@
         "test": "jest",
 
         "lint": "pnpm run /^lint:.*/",
-        "lint:eslint": "pnpm build:eslint && eslint . --ext .js,.jsx,.ts,.tsx  --cache --cache-location node_modules/.cache/eslint",
+        "lint:eslint": "pnpm build:eslint && eslint . --max-warnings=1 --cache --cache-location node_modules/.cache/eslint",
         "lint:types": "pnpm -r --parallel --filter=!typescript-configs exec tsc",
-        "lint-ci": "pnpm run /^lint-ci:.*/",
-        "lint-ci:eslint": "eslint . --ext .js,.jsx,.ts,.tsx --max-warnings=1",
 
         "changeset": "changeset",
         "release": "pnpm build && changeset publish",
