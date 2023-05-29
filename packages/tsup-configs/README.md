@@ -15,6 +15,18 @@ Install the package.
 pnpm add -D @workleap/tsup-configs
 ```
 
+**With yarn**
+
+```shell
+yarn add -D @workleap/tsup-configs
+```
+
+**With npm**
+
+```shell
+npm install -D @workleap/tsup-configs
+```
+
 ## Usage
 
 To build your React or TypeScript library project, follow these steps:
