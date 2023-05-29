@@ -1,5 +1,11 @@
 # @workleap/eslint-plugin
 
+## 1.8.1
+
+### Patch Changes
+
+- [#74](https://github.com/workleap/wl-web-configs/pull/74) [`43c9eb1`](https://github.com/workleap/wl-web-configs/commit/43c9eb11e61896855666c44beb0e711c82a560a3) Thanks [@alexasselin008](https://github.com/alexasselin008)! - Updated installation documentation
+
 ## 1.8.0
 
 ### Minor Changes
