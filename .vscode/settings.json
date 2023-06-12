@@ -1,6 +1,4 @@
 {
-    "javascript.preferences.useAliasesForRenames": false, // useAliasesForRenames is not the behavior we want from vscode
-    "typescript.preferences.useAliasesForRenames": false, // useAliasesForRenames is not the behavior we want from vscode
     "search.exclude": {
         "**/node_modules*": true,
         "**/dist*": true
@@ -9,22 +7,25 @@
     // Formatters settings
     "editor.codeActionsOnSave": {
         "source.fixAll": true, // this makes sure eslint and stylelint are run on save
-        "source.organizeImports": true // we want vscode to handle import sorting. It's snappier and more reliable than eslint
+        "source.sortImports": true // we want vscode to handle import sorting. It's snappier and more reliable than eslint
     },
     "editor.formatOnSave": true,
-    "[html]": {
-        "editor.formatOnSave": false
-    },
     "[typescriptreact]": {
         "editor.defaultFormatter": "vscode.typescript-language-features"
     },
 
-    // Formatters - Eslint plugin - dbaeumer.vscode-eslint
+    // Languages
     "typescript.format.enable": false, // disables the default formatter, we use eslint instead
+    "typescript.preferences.useAliasesForRenames": false, // useAliasesForRenames is not the behavior we want from vscode
+    "typescript.tsdk": "node_modules\\typescript\\lib",
+
     "javascript.format.enable": false, // disables the default formatter, we use eslint instead
+    "javascript.preferences.useAliasesForRenames": false, // useAliasesForRenames is not the behavior we want from vscode
+
     "json.format.enable": false, // disables the default formatter, we use eslint instead
 
-    // Formatters - Stylelint - stylelint.vscode-stylelint
+    "html.format.enable": false,
+
     "css.validate": false, // disables the default formatter, we use stylelint instead
     "less.validate": false, // disables the default formatter, we use stylelint instead
     "scss.validate": false, // disables the default formatter, we use stylelint instead
@@ -33,8 +34,5 @@
     // Third party - Jest
     "files.associations": {
         "*.snap": "javascriptreact"
-    },
-
-    // Settings for TypeScript integrations
-    "typescript.tsdk": "node_modules\\typescript\\lib"
+    }
 }

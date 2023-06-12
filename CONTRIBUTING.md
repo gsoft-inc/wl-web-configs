@@ -68,12 +68,36 @@ If you got linting error, most of the time, they can be fixed automatically usin
 
 From the project root, you have access to many commands the main ones are:
 
+### dev-sample
+
+Build the sample application for development and start the dev servers.
+
+```bash
+pnpm dev-sample
+```
+
 ### build
 
 Build the packages for release.
 
 ```bash
 pnpm build
+```
+
+### build-sample
+
+Build the sample application for release.
+
+```bash
+pnpm build-sample
+```
+
+### serve-sample
+
+Build the sample application for deployment and start a local web server to serve the application.
+
+```bash
+pnpm serve-sample
 ```
 
 ### test

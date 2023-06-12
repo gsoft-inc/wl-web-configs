@@ -1,0 +1,25 @@
+{
+    "name": "@sample/utils",
+    "author": "Workleap",
+    "version": "0.0.0",
+    "description": "Typescript library to try the web configs.",
+    "private": true,
+    "license": "Apache-2.0",
+    "type": "module",
+    "exports": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "scripts": {
+        "dev": "tsup --config ./tsup.dev.ts",
+        "build": "tsup --config ./tsup.build.ts",
+        "serve-build": "pnpm build"
+    },
+    "files": [
+        "/dist"
+    ],
+    "devDependencies": {
+        "@workleap/eslint-plugin": "workspace:*",
+        "@workleap/tsup-configs": "workspace:*",
+        "@workleap/typescript-configs": "workspace:*",
+        "tsup": "6.7.0"
+    }
+}
