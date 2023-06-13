@@ -9,10 +9,11 @@
         "url": "git+https://github.com/workleap/wl-web-configs.git"
     },
     "scripts": {
-        "postinstall": "pnpm build-eslint && pnpm build",
+        "postinstall": "pnpm build",
 
-        "build": "pnpm --filter ./packages/* -r build",
-        "build-eslint": "pnpm --filter=@workleap/eslint-plugin build",
+        "build": "pnpm build:eslint && pnpm build:tsup && pnpm --filter ./packages/* -r build",
+        "build:eslint": "pnpm --filter=@workleap/eslint-plugin build",
+        "build:tsup": "pnpm --filter=@workleap/tsup-configs build",
 
         "test": "jest",
 
