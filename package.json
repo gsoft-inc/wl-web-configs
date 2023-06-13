@@ -9,7 +9,7 @@
         "url": "git+https://github.com/workleap/wl-web-configs.git"
     },
     "scripts": {
-        "postinstall": "pnpm build-eslint",
+        "postinstall": "pnpm build-eslint && pnpm build",
 
         "build": "pnpm --filter ./packages/* -r build",
         "build-eslint": "pnpm --filter=@workleap/eslint-plugin build",
@@ -17,11 +17,11 @@
         "test": "jest",
 
         "lint": "pnpm run /^lint:.*/",
-        "lint:eslint": "pnpm build-eslint && eslint . --max-warnings=1 --cache --cache-location node_modules/.cache/eslint",
+        "lint:eslint": "eslint . --max-warnings=1 --cache --cache-location node_modules/.cache/eslint",
         "lint:types": "pnpm -r --parallel --filter=!@workleap/typescript-configs exec tsc",
 
         "changeset": "changeset",
-        "release": "pnpm build && changeset publish",
+        "ci-release": "pnpm build && changeset publish",
 
         "clean": "pnpm -r --include-workspace-root --parallel exec pnpm dlx rimraf dist node_modules/.cache",
         "reset": "pnpm -r --include-workspace-root --parallel exec pnpm dlx rimraf dist node_modules",
