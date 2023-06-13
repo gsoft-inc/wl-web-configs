@@ -9,6 +9,7 @@ const config: Config = {
         "^.+\\.(ts|tsx)$": ["@swc/jest", swcConfig as Record<string, unknown>]
     },
     moduleNameMapper: {
+        "\\.css$": "identity-obj-proxy",
         ...pathsToModuleNameMapper(compilerOptions.paths, {
             prefix: "<rootDir>"
         })
