@@ -1,13 +1,6 @@
-import { defineConfig } from "tsup";
+import { defineBuildConfig } from "./src/build.ts";
 
-export default defineConfig({
-    clean: true,
-    dts: true,
-    splitting: false,
-    treeshake: true,
-    entry: ["src"],
-    outDir: "./dist",
-    format: ["esm"],
-    target: "esnext",
+export default defineBuildConfig({
+    format: ["esm", "cjs"],
     platform: "node"
 });

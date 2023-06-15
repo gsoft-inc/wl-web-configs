@@ -8,10 +8,10 @@
         "swc",
         "config"
     ],
-    "type": "module",
     "exports": {
         ".": {
-            "import": "./dist/index.js",
+            "require": "./dist/index.js",
+            "import": "./dist/index.mjs",
             "types": "./dist/index.d.ts"
         }
     },

@@ -120,6 +120,14 @@ export default defineBuildConfig({
 
 [Check out all available options here](https://paka.dev/npm/tsup#module-index-export-Options) or the documentation website at https://tsup.egoist.dev/
 
+## Maintainers notes
+
+### CJS support
+
+To support CJS projects, the package is build for ESM and CJS formats. For CJS projects to use the package we cannot add `type: "module"` to the `package.json` file.
+
+Once all our projects use ESM, CJS support can be removed.
+
 ## License
 
 Copyright © 2023, GSoft inc. This code is licensed under the Apache License, Version 2.0. You may obtain a copy of this license at https://github.com/gsoft-inc/gsoft-license/blob/master/LICENSE.

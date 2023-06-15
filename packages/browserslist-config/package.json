@@ -29,6 +29,7 @@
     },
     "devDependencies": {
         "@workleap/eslint-plugin": "workspace:*",
+        "@workleap/tsup-configs": "workspace:*",
         "@workleap/typescript-configs": "workspace:*",
         "tsup": "6.7.0"
     },

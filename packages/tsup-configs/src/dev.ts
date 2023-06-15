@@ -3,11 +3,10 @@ import { defineConfig, type DefineConfigOptions } from "./defineConfig.ts";
 
 export const DefaultDevOptions = {
     dts: true,
-    splitting: false,
     watch: true,
     entry: ["./src"],
     outDir: "./dist",
-    format: ["esm"],
+    format: "esm",
     target: "esnext",
     platform: "browser",
     sourcemap: "inline"

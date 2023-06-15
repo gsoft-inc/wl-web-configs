@@ -1,12 +1,7 @@
-import { defineConfig } from "tsup";
+import { defineBuildConfig } from "@workleap/tsup-configs";
 
-export default defineConfig({
-    clean: true,
-    splitting: false,
-    treeshake: true,
+export default defineBuildConfig({
     entry: ["./lib"],
-    outDir: "./dist",
-    format: ["cjs"],
-    target: "esnext",
+    format: "cjs",
     platform: "node"
 });

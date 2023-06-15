@@ -36,6 +36,7 @@
     },
     "devDependencies": {
         "@workleap/eslint-plugin": "workspace:*",
+        "@workleap/tsup-configs": "workspace:*",
         "@workleap/typescript-configs": "workspace:*",
         "prettier": "2.8.7",
         "stylelint": "15.4.0",

@@ -4,12 +4,10 @@ import { defineConfig, type DefineConfigOptions } from "./defineConfig.ts";
 export const DefaultBuildOptions = {
     clean: true,
     dts: true,
-    // minify: true,
-    splitting: false,
     treeshake: true,
     entry: ["./src"],
     outDir: "./dist",
-    format: ["esm"],
+    format: "esm",
     target: "esnext",
     platform: "browser"
 };
