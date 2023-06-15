@@ -1,16 +1,14 @@
 {
-    "name": "@workleap/stylelint-config",
-    "author": "Workleap",
-    "description": "Workleap recommended stylelint config.",
-    "version": "1.2.1",
+    "name": "@workleap/swc-configs",
+    "description": "Workleap recommended SWC configs.",
+    "version": "0.0.1",
     "license": "Apache-2.0",
     "keywords": [
         "workleap",
-        "stylelint",
-        "stylelint-plugin",
-        "config",
-        "css"
+        "swc",
+        "config"
     ],
+    "type": "module",
     "exports": {
         ".": {
             "require": "./dist/index.js",
@@ -25,32 +23,28 @@
     "repository": {
         "type": "git",
         "url": "git+https://github.com/workleap/wl-web-configs.git",
-        "directory": "packages/stylelint-config"
+        "directory": "packages/swc-configs"
     },
     "scripts": {
         "build": "tsup"
     },
-    "dependencies": {
-        "stylelint-config-standard": "*",
-        "stylelint-prettier": "*"
-    },
     "devDependencies": {
+        "@swc/core": "1.3.63",
+        "@swc/helpers": "0.5.1",
+        "@swc/jest": "0.2.26",
         "@workleap/eslint-plugin": "workspace:*",
+        "@workleap/tsup-configs": "workspace:*",
         "@workleap/typescript-configs": "workspace:*",
-        "prettier": "2.8.7",
-        "stylelint": "15.4.0",
         "tsup": "6.7.0",
         "typescript": "5.0.4"
     },
     "peerDependencies": {
-        "prettier": ">=2.0.0",
-        "stylelint": ">=15"
+        "@swc/core": "*",
+        "@swc/helpers": "*",
+        "@swc/jest": "*"
     },
     "peerDependenciesMeta": {
-        "prettier": {
-            "optional": true
-        },
-        "stylelint": {
+        "@swc/jest": {
             "optional": true
         }
     },
