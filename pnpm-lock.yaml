@@ -306,6 +306,9 @@ importers:
       '@workleap/stylelint-config':
         specifier: workspace:*
         version: link:../../packages/stylelint-config
+      '@workleap/swc-configs':
+        specifier: workspace:*
+        version: link:../../packages/swc-configs
       '@workleap/typescript-configs':
         specifier: workspace:*
         version: link:../../packages/typescript-configs
@@ -390,6 +393,9 @@ importers:
       '@workleap/stylelint-config':
         specifier: workspace:*
         version: link:../../packages/stylelint-config
+      '@workleap/swc-configs':
+        specifier: workspace:*
+        version: link:../../packages/swc-configs
       '@workleap/tsup-configs':
         specifier: workspace:*
         version: link:../../packages/tsup-configs

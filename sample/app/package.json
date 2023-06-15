@@ -26,6 +26,7 @@
         "@workleap/eslint-plugin": "workspace:*",
         "@workleap/postcss-plugin": "workspace:*",
         "@workleap/stylelint-config": "workspace:*",
+        "@workleap/swc-configs": "workspace:*",
         "@workleap/typescript-configs": "workspace:*",
         "browserslist": "4.21.7",
         "css-loader": "6.8.1",

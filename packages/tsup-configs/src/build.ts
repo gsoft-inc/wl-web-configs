@@ -4,7 +4,7 @@ import { defineConfig, type DefineConfigOptions } from "./defineConfig.ts";
 export const DefaultBuildOptions = {
     clean: true,
     dts: true,
-    minify: true,
+    // minify: true,
     splitting: false,
     treeshake: true,
     entry: ["./src"],

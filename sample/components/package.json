@@ -32,6 +32,7 @@
         "@testing-library/react": "14.0.0",
         "@workleap/eslint-plugin": "workspace:*",
         "@workleap/stylelint-config": "workspace:*",
+        "@workleap/swc-configs": "workspace:*",
         "@workleap/tsup-configs": "workspace:*",
         "@workleap/typescript-configs": "workspace:*",
         "identity-obj-proxy": "3.0.0",

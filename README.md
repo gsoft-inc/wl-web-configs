@@ -18,6 +18,7 @@ This repository is managed as a monorepo that is composed of many npm packages, 
 | [@workleap/stylelint-plugin](packages/stylelint-config/README.md) | [![npm version](https://img.shields.io/npm/v/@workleap/stylelint-config)](https://www.npmjs.com/package/@workleap/stylelint-config) |
 | [@workleap/typescript-config](packages/typescript-configs/README.md) | [![npm version](https://img.shields.io/npm/v/@workleap/typescript-configs)](https://www.npmjs.com/package/@workleap/typescript-configs) |
 | [@workleap/tsup-configs](packages/tsup-configs/README.md) | [![npm version](https://img.shields.io/npm/v/@workleap/tsup-configs)](https://www.npmjs.com/package/@workleap/tsup-configs) |
+| [@workleap/swc-configs](packages/swc-configs/README.md) | [![npm version](https://img.shields.io/npm/v/@workleap/swc-configs)](https://www.npmjs.com/package/@workleap/swc-configs) |
 
 ## 🤝 Contributing
 
