@@ -32,9 +32,12 @@
         "@swc/core": "1.3.63",
         "@swc/helpers": "0.5.1",
         "@swc/jest": "0.2.26",
+        "@types/jest": "29.5.2",
         "@workleap/eslint-plugin": "workspace:*",
         "@workleap/tsup-configs": "workspace:*",
         "@workleap/typescript-configs": "workspace:*",
+        "jest": "29.5.0",
+        "ts-node": "10.9.1",
         "tsup": "6.7.0",
         "typescript": "5.0.4"
     },

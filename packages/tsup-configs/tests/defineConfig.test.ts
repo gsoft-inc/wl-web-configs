@@ -6,22 +6,22 @@ test("when no options are provided, return the default options", () => {
         dts: true
     };
 
-    const config = defineConfig(baseOptions);
+    const result = defineConfig(baseOptions);
 
-    expect(config).toMatchSnapshot();
+    expect(result).toEqual(baseOptions);
 });
 
 describe("single object of options", () => {
-    test("merge provided options with the default options", () => {
+    test("when options are provided, options are merged with the default options", () => {
         const baseOptions: Options = {
             dts: true
         };
 
-        const config = defineConfig(baseOptions, {
+        const result = defineConfig(baseOptions, {
             clean: true
         });
 
-        expect(config).toMatchSnapshot();
+        expect(result).toMatchSnapshot();
     });
 
     test("when a provided option match a default option, override the default option", () => {
@@ -30,24 +30,24 @@ describe("single object of options", () => {
             entry: ["./src"]
         };
 
-        const config = defineConfig(baseOptions, {
+        const result = defineConfig(baseOptions, {
             dts: false,
             entry: ["./toto"]
         });
 
-        expect(config).toMatchSnapshot();
+        expect(result).toMatchSnapshot();
     });
 
-    test("when a format array is provided, do not merge the provided array with the default format array", () => {
+    test("when a format option is provided, do not merge the provided array with the default format array", () => {
         const baseOptions: Options = {
             format: ["esm"]
         };
 
-        const config = defineConfig(baseOptions, {
+        const result = defineConfig(baseOptions, {
             format: ["cjs"]
         });
 
-        expect(config).toMatchSnapshot();
+        expect(result).toMatchSnapshot();
     });
 });
 
@@ -57,22 +57,22 @@ describe("array of options objects", () => {
             dts: true
         };
 
-        const config = defineConfig(baseOptions);
+        const result = defineConfig(baseOptions);
 
-        expect(config).toMatchSnapshot();
+        expect(result).toEqual(baseOptions);
     });
 
-    test("merge every options object included in the array with the default options", () => {
+    test("when options are provided, every object included in the array are merged with the default options", () => {
         const baseOptions: Options = {
             dts: true
         };
 
-        const config = defineConfig(baseOptions, [
+        const result = defineConfig(baseOptions, [
             { clean: true },
             { clean: false }
         ]);
 
-        expect(config).toMatchSnapshot();
+        expect(result).toMatchSnapshot();
     });
 
     test("when a provided option match a default option, override the default option", () => {
@@ -81,38 +81,38 @@ describe("array of options objects", () => {
             entry: ["./src"]
         };
 
-        const config = defineConfig(baseOptions, [
+        const result = defineConfig(baseOptions, [
             { dts: false, entry: ["./toto"] },
             { clean: false, entry: ["./toto"] }
         ]);
 
-        expect(config).toMatchSnapshot();
+        expect(result).toMatchSnapshot();
     });
 
-    test("when a format array is provided, do not merge the provided array with the default format array", () => {
+    test("when a format option is provided, do not merge the provided array with the default format array", () => {
         const baseOptions: Options = {
             format: ["esm"]
         };
 
-        const config = defineConfig(baseOptions, [
+        const result = defineConfig(baseOptions, [
             { format: ["cjs"] }
         ]);
 
-        expect(config).toMatchSnapshot();
+        expect(result).toMatchSnapshot();
     });
 });
 
 describe("function", () => {
-    test("merge the options returned by the function with the default options", () => {
+    test("when a function is provided, merge the options returned by the function with the default options", () => {
         const baseOptions: Options = {
             dts: true
         };
 
-        const config = defineConfig(baseOptions, () => ({
+        const result = defineConfig(baseOptions, () => ({
             clean: true
         })) as () => unknown;
 
-        expect(config()).toMatchSnapshot();
+        expect(result()).toMatchSnapshot();
     });
 
     test("when a provided option match a default option, override the default option", () => {
@@ -121,23 +121,23 @@ describe("function", () => {
             entry: ["./src"]
         };
 
-        const config = defineConfig(baseOptions, () => ({
+        const result = defineConfig(baseOptions, () => ({
             dts: false,
             entry: ["./toto"]
         })) as () => unknown;
 
-        expect(config()).toMatchSnapshot();
+        expect(result()).toMatchSnapshot();
     });
 
-    test("when a format array is provided, do not merge the provided array with the default format array", () => {
+    test("when a format option is provided, do not merge the provided array with the default format array", () => {
         const baseOptions: Options = {
             format: ["esm"]
         };
 
-        const config = defineConfig(baseOptions, () => ({
+        const result = defineConfig(baseOptions, () => ({
             format: ["cjs"]
         })) as () => unknown;
 
-        expect(config()).toMatchSnapshot();
+        expect(result()).toMatchSnapshot();
     });
 });

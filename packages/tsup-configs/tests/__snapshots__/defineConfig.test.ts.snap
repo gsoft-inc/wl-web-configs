@@ -1,19 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`array of options objects merge every options object included in the array with the default options 1`] = `
-[
-  {
-    "clean": true,
-    "dts": true,
-  },
-  {
-    "clean": false,
-    "dts": true,
-  },
-]
-`;
-
-exports[`array of options objects when a format array is provided, do not merge the provided array with the default format array 1`] = `
+exports[`array of options objects when a format option is provided, do not merge the provided array with the default format array 1`] = `
 [
   {
     "format": [
@@ -41,24 +28,31 @@ exports[`array of options objects when a provided option match a default option,
 ]
 `;
 
-exports[`array of options objects when an empty array is provided, returns the default options 1`] = `
-{
-  "dts": true,
-}
+exports[`array of options objects when options are provided, every object included in the array are merged with the default options 1`] = `
+[
+  {
+    "clean": true,
+    "dts": true,
+  },
+  {
+    "clean": false,
+    "dts": true,
+  },
+]
 `;
 
-exports[`function merge the options returned by the function with the default options 1`] = `
-{
-  "clean": true,
-  "dts": true,
-}
-`;
-
-exports[`function when a format array is provided, do not merge the provided array with the default format array 1`] = `
+exports[`function when a format option is provided, do not merge the provided array with the default format array 1`] = `
 {
   "format": [
     "cjs",
   ],
+}
+`;
+
+exports[`function when a function is provided, merge the options returned by the function with the default options 1`] = `
+{
+  "clean": true,
+  "dts": true,
 }
 `;
 
@@ -71,14 +65,7 @@ exports[`function when a provided option match a default option, override the de
 }
 `;
 
-exports[`single object of options merge provided options with the default options 1`] = `
-{
-  "clean": true,
-  "dts": true,
-}
-`;
-
-exports[`single object of options when a format array is provided, do not merge the provided array with the default format array 1`] = `
+exports[`single object of options when a format option is provided, do not merge the provided array with the default format array 1`] = `
 {
   "format": [
     "cjs",
@@ -95,8 +82,9 @@ exports[`single object of options when a provided option match a default option,
 }
 `;
 
-exports[`when no options are provided, return the default options 1`] = `
+exports[`single object of options when options are provided, options are merged with the default options 1`] = `
 {
+  "clean": true,
   "dts": true,
 }
 `;
