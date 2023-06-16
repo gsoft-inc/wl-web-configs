@@ -29,6 +29,7 @@ test("when a config override function is provided, the function argument is the 
     }));
 
     defineBuildConfig({
+        parser: "ecmascript",
         configOverride: fct
     });
 

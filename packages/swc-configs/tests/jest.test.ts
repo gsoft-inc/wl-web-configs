@@ -24,7 +24,7 @@ test("when \"parser\" is \"ecmascript\", the configuration parser is ecmascript"
     expect(result).toMatchSnapshot();
 });
 
-test("when a config override function is provided, the function argument is the config with the non config override options applied", () => {
+test("when a config override function is provided, the function argument is the config with the non-config override options applied", () => {
     const expectedArgument = defineJestConfig({
         react: true
     });
@@ -38,7 +38,8 @@ test("when a config override function is provided, the function argument is the 
     }));
 
     defineJestConfig({
-        configOverride: fct as ConfigOverride
+        react: true,
+        configOverride: fct
     });
 
     expect(fct).toHaveBeenCalledWith(expectedArgument);

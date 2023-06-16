@@ -38,7 +38,8 @@ test("when a config override function is provided, the function argument is the 
     }));
 
     defineDevConfig({
-        configOverride: fct as ConfigOverride
+        fastRefresh: true,
+        configOverride: fct
     });
 
     expect(fct).toHaveBeenCalledWith(expectedArgument);
