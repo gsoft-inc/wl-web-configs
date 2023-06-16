@@ -1,3 +1,4 @@
+import type { Config } from "@swc/core";
 import { DefaultJestConfig, defineJestConfig } from "../src/jest.ts";
 import type { ConfigOverride } from "../src/resolveOverrides.ts";
 
@@ -28,8 +29,12 @@ test("when a config override function is provided, the function argument is the 
         react: true
     });
 
-    const fct = jest.fn(() => ({
-        parser: "ecmascript"
+    const fct = jest.fn<Config, [Config]>(() => ({
+        jsc: {
+            parser: {
+                syntax: "ecmascript"
+            }
+        }
     }));
 
     defineJestConfig({
@@ -37,5 +42,15 @@ test("when a config override function is provided, the function argument is the 
     });
 
     expect(fct).toHaveBeenCalledWith(expectedArgument);
+});
+
+test("providing options doesn't alter the default config object", () => {
+    expect(DefaultJestConfig.jsc.parser.syntax).toBe("typescript");
+
+    defineJestConfig({
+        parser: "ecmascript"
+    });
+
+    expect(DefaultJestConfig.jsc.parser.syntax).toBe("typescript");
 });
 

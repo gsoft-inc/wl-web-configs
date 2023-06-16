@@ -1,3 +1,4 @@
+import type { Config } from "@swc/core";
 import { DefaultDevConfig, defineDevConfig } from "../src/dev.ts";
 import type { ConfigOverride } from "../src/resolveOverrides.ts";
 
@@ -28,8 +29,12 @@ test("when a config override function is provided, the function argument is the 
         fastRefresh: true
     });
 
-    const fct = jest.fn(() => ({
-        parser: "ecmascript"
+    const fct = jest.fn<Config, [Config]>(() => ({
+        jsc: {
+            parser: {
+                syntax: "ecmascript"
+            }
+        }
     }));
 
     defineDevConfig({
@@ -37,5 +42,15 @@ test("when a config override function is provided, the function argument is the 
     });
 
     expect(fct).toHaveBeenCalledWith(expectedArgument);
+});
+
+test("providing options doesn't alter the default config object", () => {
+    expect(DefaultDevConfig.jsc.parser.syntax).toBe("typescript");
+
+    defineDevConfig({
+        parser: "ecmascript"
+    });
+
+    expect(DefaultDevConfig.jsc.parser.syntax).toBe("typescript");
 });
 

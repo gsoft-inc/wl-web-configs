@@ -10,8 +10,8 @@ export const DefaultDevOptions = {
     target: "esnext",
     platform: "browser",
     sourcemap: "inline"
-};
+} satisfies Options;
 
 export function defineDevConfig(options?: DefineConfigOptions) {
-    return defineConfig(DefaultDevOptions as Options, options);
+    return defineConfig(DefaultDevOptions, options);
 }

@@ -11,10 +11,9 @@
     "scripts": {
         "postinstall": "pnpm build",
 
-        "build": "pnpm build:tsup && pnpm build:swc && pnpm build:eslint && pnpm --filter ./packages/** -r build",
-        "build:eslint": "pnpm --filter=@workleap/eslint-plugin build",
-        "build:tsup": "pnpm --filter=@workleap/tsup-configs build",
+        "build": "pnpm build:tsup && pnpm build:swc && pnpm --filter ./packages/* -r build",
         "build:swc": "pnpm --filter=@workleap/swc-configs build",
+        "build:tsup": "pnpm --filter=@workleap/tsup-configs build",
 
         "test": "jest",
 

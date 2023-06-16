@@ -1,6 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`when "fastRefresh" is true, the fast refresh configuration is included 1`] = `
+exports[`when "parser" is "ecmascript", the configuration parser is ecmascript 1`] = `
+{
+  "jsc": {
+    "externalHelpers": true,
+    "parser": {
+      "syntax": "ecmascript",
+    },
+    "target": "es2022",
+  },
+  "module": {
+    "ignoreDynamic": true,
+    "strict": true,
+    "type": "es6",
+  },
+}
+`;
+
+exports[`when "react" is true, the react configuration is included 1`] = `
 {
   "jsc": {
     "externalHelpers": true,
@@ -11,32 +28,6 @@ exports[`when "fastRefresh" is true, the fast refresh configuration is included 
     "target": "es2022",
     "transform": {
       "react": {
-        "refresh": true,
-        "runtime": "automatic",
-        "useBuiltins": true,
-      },
-    },
-  },
-  "module": {
-    "ignoreDynamic": true,
-    "strict": true,
-    "type": "es6",
-  },
-}
-`;
-
-exports[`when "parser" is "ecmascript", the configuration parser is ecmascript 1`] = `
-{
-  "jsc": {
-    "externalHelpers": true,
-    "parser": {
-      "jsx": true,
-      "syntax": "ecmascript",
-    },
-    "target": "es2022",
-    "transform": {
-      "react": {
-        "refresh": false,
         "runtime": "automatic",
         "useBuiltins": true,
       },

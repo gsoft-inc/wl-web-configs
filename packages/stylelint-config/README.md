@@ -127,7 +127,7 @@ You need to make sure that you create a `.prettierignore` file to ignore everyth
 
 Otherwise, Prettier will format your JS/TS/JSON and other type of files and you will end up with a conflict between Prettier and ESLint.
 
-> Great explanation about why we choose to still use ESLint rather than Prettier: https://antfu.me/posts/why-not-prettier.
+> Great explanation about why we choosed to stick with ESLint rather than migrating to Prettier: https://antfu.me/posts/why-not-prettier.
 
 ## License
 

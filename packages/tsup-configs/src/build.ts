@@ -10,9 +10,9 @@ export const DefaultBuildOptions = {
     format: "esm",
     target: "esnext",
     platform: "browser"
-};
+} satisfies Options;
 
 export function defineBuildConfig(options?: DefineConfigOptions) {
-    return defineConfig(DefaultBuildOptions as Options, options);
+    return defineConfig(DefaultBuildOptions, options);
 }
 

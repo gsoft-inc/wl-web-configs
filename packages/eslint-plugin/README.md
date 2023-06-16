@@ -175,6 +175,10 @@ pnpm-lock.yaml
 
 If the default configuration doesn’t fit your needs, please read the [advanced usage documentation](./ADVANCED_USAGE.md).
 
+## Prettier
+
+For a great explanation about why we choosed to stick with ESLint rather than migrating toPrettier, read the following [article](https://antfu.me/posts/why-not-prettier).
+
 ## License
 
 Copyright © 2023, GSoft inc. This code is licensed under the Apache License, Version 2.0. You may obtain a copy of this license at https://github.com/gsoft-inc/gsoft-license/blob/master/LICENSE.

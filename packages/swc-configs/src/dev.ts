@@ -1,4 +1,5 @@
 import type { Config } from "@swc/core";
+import { cloneObjectExceptFunctions } from "./cloneObjectExceptFunctions.ts";
 import { resolveOverrides, type ConfigOverride } from "./resolveOverrides.ts";
 
 export const DefaultDevConfig = {
@@ -32,7 +33,7 @@ export const DefaultDevConfig = {
         // Preserve dynamic imports.
         ignoreDynamic: true
     }
-};
+} satisfies Config;
 
 export interface DefineDevConfigOptions {
     fastRefresh?: boolean;
@@ -41,7 +42,7 @@ export interface DefineDevConfigOptions {
 }
 
 export function defineDevConfig({ fastRefresh, parser, configOverride }: DefineDevConfigOptions = {}) {
-    const config = { ...DefaultDevConfig } as Config;
+    const config = cloneObjectExceptFunctions(DefaultDevConfig) as Config;
 
     if (fastRefresh) {
         config.jsc!.transform!.react!.refresh = true;

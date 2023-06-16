@@ -1,4 +1,5 @@
-import type { Config } from "@swc/core";
+import type { Config, EsParserConfig } from "@swc/core";
+import { cloneObjectExceptFunctions } from "./cloneObjectExceptFunctions.ts";
 import { resolveOverrides, type ConfigOverride } from "./resolveOverrides.ts";
 
 export const DefaultJestConfig = {
@@ -20,7 +21,7 @@ export const DefaultJestConfig = {
         // Preserve dynamic imports.
         ignoreDynamic: true
     }
-};
+} satisfies Config;
 
 export interface DefineJestConfigOptions {
     react?: boolean;
@@ -29,7 +30,7 @@ export interface DefineJestConfigOptions {
 }
 
 export function defineJestConfig({ react, parser, configOverride }: DefineJestConfigOptions = {}) {
-    const config = { ...DefaultJestConfig } as Config;
+    const config = cloneObjectExceptFunctions(DefaultJestConfig) as Config;
 
     if (react) {
         config.jsc!.transform = {
@@ -43,11 +44,15 @@ export function defineJestConfig({ react, parser, configOverride }: DefineJestCo
     }
 
     if (parser === "ecmascript") {
-        config.jsc!.parser = {
-            syntax: "ecmascript",
-            jsx: react ? true : undefined
-        };
+        const parserConfig: EsParserConfig = { syntax: "ecmascript" };
+
+        if (react) {
+            parserConfig.jsx = true;
+        }
+
+        config.jsc!.parser = parserConfig;
     } else if (react) {
+        // The TS compiler is confused between the EsParserConfig and TsParserConfig types.
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         config.jsc!.parser!.tsx = true;

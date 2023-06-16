@@ -1,4 +1,5 @@
 import type { Config } from "@swc/core";
+import { cloneObjectExceptFunctions } from "./cloneObjectExceptFunctions.ts";
 import { resolveOverrides, type ConfigOverride } from "./resolveOverrides.ts";
 
 export const DefaultBuildConfig = {
@@ -34,7 +35,7 @@ export const DefaultBuildConfig = {
         // Preserve dynamic imports.
         ignoreDynamic: true
     }
-};
+} satisfies Config;
 
 export interface DefineBuildConfigOptions {
     parser?: "ecmascript";
@@ -42,7 +43,7 @@ export interface DefineBuildConfigOptions {
 }
 
 export function defineBuildConfig({ parser, configOverride }: DefineBuildConfigOptions = {}) {
-    const config = { ...DefaultBuildConfig } as Config;
+    const config = cloneObjectExceptFunctions(DefaultBuildConfig) as Config;
 
     if (parser === "ecmascript") {
         config.jsc!.parser = {
