@@ -1,6 +1,5 @@
 import type { Config } from "@swc/core";
 import { DefaultJestConfig, defineJestConfig } from "../src/jest.ts";
-import type { ConfigOverride } from "../src/resolveOverrides.ts";
 
 test("when no options are provided, return the default config", () => {
     const result = defineJestConfig();
