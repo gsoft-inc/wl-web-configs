@@ -54,14 +54,21 @@ Finally, install the Webpack [swc-loader](https://swc.rs/docs/usage/swc-loader) 
 
 import { swcConfig } from "./swc.dev.js";
 
-{
-    test: /\.(ts|tsx)/i,
-    exclude: /node_modules/,
-    use: {
-        loader: "swc-loader",
-        options: swcConfig
+/** @type {import("webpack").Configuration} */
+export default {
+    module: {
+        rules: [
+            {
+                test: /\.(ts|tsx)/i,
+                exclude: /node_modules/,
+                use: {
+                    loader: "swc-loader",
+                    options: swcConfig
+                }
+            }
+        ]
     }
-}
+};
 ```
 
 > The rule declaration may vary depending of your project configuration. For example, you might want to change the `test` property to target ECMAScript files instead: `test: /\.(js|jsx)/i`.
@@ -134,14 +141,21 @@ Finally, install the Webpack [swc-loader](https://swc.rs/docs/usage/swc-loader) 
 
 import { swcConfig } from "./swc.build.js";
 
-{
-    test: /\.(ts|tsx)/i,
-    exclude: /node_modules/,
-    use: {
-        loader: "swc-loader",
-        options: swcConfig
+/** @type {import("webpack").Configuration} */
+export default {
+    module: {
+        rules: [
+            {
+                test: /\.(ts|tsx)/i,
+                exclude: /node_modules/,
+                use: {
+                    loader: "swc-loader",
+                    options: swcConfig
+                }
+            }
+        ]
     }
-}
+};
 ```
 
 #### Customizing the configuration
