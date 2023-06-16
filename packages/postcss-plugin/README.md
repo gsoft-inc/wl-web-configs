@@ -7,24 +7,24 @@ All of Workleap’s default PostCSS plugins wrapped up in a single, easy-to-use 
 
 ## Installation
 
-Install the package.
+Install the following packages:
 
 **With pnpm**
 
 ```shell
-pnpm add -D @workleap/postcss-plugin
+pnpm add -D @workleap/postcss-plugin postcss
 ```
 
 **With yarn**
 
 ```shell
-yarn add -D @workleap/postcss-plugin
+yarn add -D @workleap/postcss-plugin postcss
 ```
 
 **With npm**
 
 ```shell
-npm install -D @workleap/postcss-plugin
+npm install -D @workleap/postcss-plugin postcss
 ```
 
 ## Features
@@ -35,12 +35,35 @@ This plugin wraps around the following PostCSS transformations:
 
 ## Usage
 
+### Configuration
+
 Create a `postcss.config.js` file at the root of your project with the following content:
 ```js
-/** @type {import('postcss').Postcss} */
+/** @type {import("postcss").Postcss} */
 module.exports = {
     plugins: ["@workleap/postcss-plugin"]
 };
+```
+
+### Webpack integration
+
+To integrate with Webpack, add the [postcss-loader](https://webpack.js.org/loaders/postcss-loader/) to the development and build configuration file:
+
+```js
+{
+    module: {
+        rules: [
+            {
+                test: /\.css/i,
+                use: [
+                    "style-loader",
+                    "css-loader",
+                    "postcss-loader"
+                ]
+            }
+        ]
+    }
+}
 ```
 
 ## License

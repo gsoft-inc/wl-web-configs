@@ -7,24 +7,24 @@ Workleap's recommended [tsup](https://tsup.egoist.dev/) configs.
 
 ## Installation
 
-Install the package.
+Install the following packages:
 
 **With pnpm**
 
 ```shell
-pnpm add -D @workleap/tsup-configs
+pnpm add -D @workleap/tsup-configs tsup
 ```
 
 **With yarn**
 
 ```shell
-yarn add -D @workleap/tsup-configs
+yarn add -D @workleap/tsup-configs tsup
 ```
 
 **With npm**
 
 ```shell
-npm install -D @workleap/tsup-configs
+npm install -D @workleap/tsup-configs tsup
 ```
 
 ## Usage
@@ -42,6 +42,28 @@ import { defineDevConfig } from "@workleap/tsup-configs";
 export default defineDevConfig();
 ```
 
+You can override any existing options:
+
+```ts
+// tsup.dev.ts
+import { defineDevConfig } from "@workleap/tsup-configs";
+
+export default defineDevConfig({
+    clean: true
+});
+```
+
+The provided options will be merged with the default options. Given that a provided option match a default option, it will override the default option. If you prefer to extend the default option, you can import the `DefaultDevOptions` object and handle the merging code in your configuration file:
+
+```ts
+// tsup.dev.ts
+import { defineDevConfig, DefaultDevOptions } from "@workleap/tsup-configs";
+
+export default defineDevConfig({
+    format: ["cjs", ...DefaultDevOptions.format]
+});
+```
+
 3. Open the `tsup.build.ts` file and add the following code:
 
 ```ts
@@ -49,6 +71,28 @@ export default defineDevConfig();
 import { defineBuildConfig } from "@workleap/tsup-configs";
 
 export default defineBuildConfig();
+```
+
+You can override any existing options:
+
+```ts
+// tsup.build.ts
+import { defineBuildConfig } from "@workleap/tsup-configs";
+
+export default defineBuildConfig({
+    clean: true
+});
+```
+
+The provided options will be merged with the default options. Given that a provided option matches a default option, it will override the default option. If you prefer to extend the default option, you can import the `DefaultBuildOptions` object and handle the merging code in your configuration file:
+
+```ts
+// tsup.build.ts
+import { defineBuildConfig, DefaultBuildOptions } from "@workleap/tsup-configs";
+
+export default defineBuildConfig({
+    format: ["cjs", ...DefaultBuildOptions.format]
+});
 ```
 
 4. In your package.json file, add the following scripts:
@@ -75,6 +119,14 @@ export default defineBuildConfig({
 ```
 
 [Check out all available options here](https://paka.dev/npm/tsup#module-index-export-Options) or the documentation website at https://tsup.egoist.dev/
+
+## Maintainers notes
+
+### CJS support
+
+To support CJS projects, the package is build for ESM and CJS formats. To support CJS, `type: "module"` has been temporary removed from the `package.json` file.
+
+Once all our projects use ESM, CJS support can be removed.
 
 ## License
 

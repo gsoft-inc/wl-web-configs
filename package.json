@@ -11,14 +11,17 @@
     "scripts": {
         "postinstall": "pnpm build",
 
-        "build": "pnpm build:eslint && pnpm build:tsup && pnpm --filter ./packages/* -r build",
-        "build:eslint": "pnpm --filter=@workleap/eslint-plugin build",
-        "build:tsup": "pnpm --filter=@workleap/tsup-configs build",
+        "build": "pnpm build:tsup && pnpm build:swc && pnpm build:eslint && pnpm build:stylelint && pnpm --filter=!@workleap/tsup-configs --filter=!@workleap/swc-configs --filter !@workleap/eslint-plugin --filter !@workleap/stylelint-config -r build",
+        "build:swc": "pnpm --filter @workleap/swc-configs build",
+        "build:tsup": "pnpm --filter @workleap/tsup-configs build",
+        "build:eslint": "pnpm --filter @workleap/eslint-plugin build",
+        "build:stylelint": "pnpm --filter @workleap/stylelint-config build",
 
         "test": "jest",
 
         "lint": "pnpm run /^lint:.*/",
         "lint:eslint": "eslint . --max-warnings=1 --cache --cache-location node_modules/.cache/eslint",
+        "lint:stylelint": "stylelint \"**/*.css\" --cache --cache-location node_modules/.cache/stylelint",
         "lint:types": "pnpm -r --parallel --filter=!@workleap/typescript-configs exec tsc",
 
         "changeset": "changeset",
@@ -34,10 +37,13 @@
     "devDependencies": {
         "@changesets/cli": "2.26.1",
         "@changesets/changelog-github": "0.4.8",
+        "@typescript-eslint/parser": "5.59.11",
         "@workleap/eslint-plugin": "workspace:*",
         "@workleap/typescript-configs": "workspace:*",
         "eslint": "8.38.0",
         "jest": "29.5.0",
+        "stylelint": "15.7.0",
+        "prettier": "2.8.8",
         "ts-node": "10.9.1",
         "typescript": "5.0.4"
     },

@@ -1,17 +1,18 @@
-import { type DefineConfigOptions, mergeConfigs } from "./mergeConfigs.ts";
+import type { Options } from "tsup";
+import { defineConfig, type DefineConfigOptions } from "./defineConfig.ts";
 
-export function defineBuildConfig(config?: DefineConfigOptions) {
-    return mergeConfigs(config, {
-        clean: true,
-        dts: true,
-        minify: true,
-        splitting: false,
-        treeshake: true,
-        entry: ["./src"],
-        outDir: "./dist",
-        format: ["esm"],
-        target: "esnext",
-        platform: "browser"
-    });
+export const DefaultBuildOptions = {
+    clean: true,
+    dts: true,
+    treeshake: true,
+    entry: ["./src"],
+    outDir: "./dist",
+    format: "esm",
+    target: "esnext",
+    platform: "browser"
+} satisfies Options;
+
+export function defineBuildConfig(options?: DefineConfigOptions) {
+    return defineConfig(DefaultBuildOptions, options);
 }
 

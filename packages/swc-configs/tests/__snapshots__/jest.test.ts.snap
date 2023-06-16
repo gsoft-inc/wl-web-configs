@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`when "parser" is "ecmascript", the configuration parser is ecmascript 1`] = `
+{
+  "jsc": {
+    "externalHelpers": true,
+    "parser": {
+      "syntax": "ecmascript",
+    },
+    "target": "es2022",
+  },
+  "module": {
+    "ignoreDynamic": true,
+    "strict": true,
+    "type": "es6",
+  },
+}
+`;
+
+exports[`when "react" is true, the react configuration is included 1`] = `
+{
+  "jsc": {
+    "externalHelpers": true,
+    "parser": {
+      "syntax": "typescript",
+      "tsx": true,
+    },
+    "target": "es2022",
+    "transform": {
+      "react": {
+        "runtime": "automatic",
+        "useBuiltins": true,
+      },
+    },
+  },
+  "module": {
+    "ignoreDynamic": true,
+    "strict": true,
+    "type": "es6",
+  },
+}
+`;

@@ -31,11 +31,12 @@
         "build": "tsup"
     },
     "dependencies": {
-        "stylelint-config-standard": "32.0.0",
-        "stylelint-prettier": "2.0.0"
+        "stylelint-config-standard": "*",
+        "stylelint-prettier": "*"
     },
     "devDependencies": {
         "@workleap/eslint-plugin": "workspace:*",
+        "@workleap/tsup-configs": "workspace:*",
         "@workleap/typescript-configs": "workspace:*",
         "prettier": "2.8.7",
         "stylelint": "15.4.0",
@@ -45,6 +46,14 @@
     "peerDependencies": {
         "prettier": ">=2.0.0",
         "stylelint": ">=15"
+    },
+    "peerDependenciesMeta": {
+        "prettier": {
+            "optional": true
+        },
+        "stylelint": {
+            "optional": true
+        }
     },
     "publishConfig": {
         "access": "public",

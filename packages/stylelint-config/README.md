@@ -7,9 +7,51 @@ Shareable [stylelint](https://stylelint.io/) configuration for Workleap.
 
 ## Installation
 
-Install the package.
+### Polyrepo
+
+Install the following package:
 
 **With pnpm**
+
+```shell
+pnpm add -D @workleap/stylelint-config stylelint prettier
+```
+
+**With yarn**
+
+```shell
+yarn add -D @workleap/stylelint-config stylelint prettier
+```
+
+**With npm**
+
+```shell
+npm install -D @workleap/stylelint-config stylelint prettier
+```
+
+### Monorepo
+
+Install the following packages at the root of the project:
+
+**With pnpm**
+
+```shell
+pnpm add -D @workleap/stylelint-config stylelint prettier
+```
+
+**With yarn**
+
+```shell
+yarn add -D @workleap/stylelint-config stylelint prettier
+```
+
+**With npm**
+
+```shell
+npm install -D @workleap/stylelint-config stylelint prettier
+```
+
+Install the following packages in every workspace project:
 
 ```shell
 pnpm add -D @workleap/stylelint-config
@@ -29,11 +71,42 @@ npm install -D @workleap/stylelint-config
 
 ## Usage
 
+### Configuration
+
 Create a `.stylelintrc.json` file at the root of your project with the following content:
+
 ```json
 {
     "$schema": "https://json.schemastore.org/stylelintrc",
     "extends": "@workleap/stylelint-config"
+}
+```
+
+### Package.json script
+
+Optionally add the following script to your `package.json` file:
+
+```json
+{
+    "lint:stylelint": "stylelint \"**/*.css\" --cache --cache-location node_modules/.cache/stylelint"
+}
+```
+
+> The script definition may vary depending of your needs and your application configuration. For example, you might want to specify additional file extensions such as `"**/*.{css,scss,sass}"`.
+
+### VSCode integration
+
+To integrate with VSCode, install the [stylelint.vscode-stylelint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint) VSCode extension for Stylelint and add the following settings to your `./vscode/settings.json` file:
+
+```json
+{
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true, // this makes sure Stylelint is run on save
+    },
+    "editor.formatOnSave": true,
+    "css.validate": false, // disables the default formatter, we use Stylelint instead
+    "less.validate": false, // disables the default formatter, we use Stylelint instead
+    "scss.validate": false, // disables the default formatter, we use Stylelint instead
 }
 ```
 
@@ -53,6 +126,8 @@ You need to make sure that you create a `.prettierignore` file to ignore everyth
 ```
 
 Otherwise, Prettier will format your JS/TS/JSON and other type of files and you will end up with a conflict between Prettier and ESLint.
+
+> Great explanation about why we choosed to stick with ESLint rather than migrating to Prettier: https://antfu.me/posts/why-not-prettier.
 
 ## License
 

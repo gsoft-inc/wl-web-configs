@@ -13,10 +13,8 @@ options:
 -> The swc project will probably exports:
     - defineDevConfig
             options:
-                - react: bool
                 - fastRefresh: bool
     - defineBuildConfig
-                - react: bool
     - defineJestConfig
             options:
                 - react: bool
@@ -28,21 +26,21 @@ options:
 Webpack
 
 dependencies:
-    - browserslist
-    - deepmerge
-    - html-webpack-plugin
     - swc-loader
+    - html-webpack-plugin
     - terser-webpack-plugin
 
 peerDependencies:
     - @swc/core,
     - @swc/helpers,
+    - browserslist
     - webpack
     - webpack-dev-server
 
 optionalPeerDependencies:
     - style-loader
     - css-loader
+    - postcss-loader
     - @pmmmwh/react-refresh-webpack-plugin
     - @svgr/webpack
 

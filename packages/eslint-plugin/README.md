@@ -7,9 +7,49 @@ Workleap’s ESLint configs.
 
 ## Installation
 
-Install the package.
+### Polyrepo
+
+Install the following packages:
 
 **With pnpm**
+
+```shell
+pnpm add -D @workleap/eslint-plugin eslint @typescript-eslint/parser
+```
+
+**With yarn**
+
+```shell
+yarn add -D @workleap/eslint-plugin eslint @typescript-eslint/parser
+```
+
+**With npm**
+
+```shell
+npm install -D @workleap/eslint-plugin eslint @typescript-eslint/parser
+```
+
+### Monorepo
+
+Install the following packages at the root of the project:
+
+```shell
+pnpm add -D @workleap/eslint-plugin eslint typescript @typescript-eslint/parser
+```
+
+**With yarn**
+
+```shell
+yarn add -D @workleap/eslint-plugin eslint typescript @typescript-eslint/parser
+```
+
+**With npm**
+
+```shell
+npm install -D @workleap/eslint-plugin eslint typescript @typescript-eslint/parser
+```
+
+Install the following packages in every workspace project:
 
 ```shell
 pnpm add -D @workleap/eslint-plugin
@@ -89,6 +129,34 @@ To use this configuration, add the following to your `.eslintrc.json` file:
 }
 ```
 
+### Package.json script
+
+Optionally add the following script to your `package.json` file:
+
+```json
+{
+    "lint:eslint:": "eslint . --max-warnings=1 --cache --cache-location node_modules/.cache/eslint"
+}
+```
+
+> The script definition may vary depending of your needs and your application configuration. For example, you might want to specify specific file extensions such as `--ext .js,.ts,.tsx`.
+
+### VSCode integration
+
+To integrate with VSCode, install the [dbaeumer.vscode-eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) VSCode extension for ESLint and add the following settings to your `./vscode/settings.json` file:
+
+```json
+{
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true, // this makes sure ESLint is run on save
+    },
+    "editor.formatOnSave": true,
+    "typescript.format.enable": false, // disables the default formatter, we use ESLint instead
+    "javascript.format.enable": false, // disables the default formatter, we use ESLint instead
+    "json.format.enable": false, // disables the default formatter, we use ESLint instead
+}
+```
+
 ## ESLint ignore
 
 You can configure ESLint to ignore certain files and directories while linting by specifying one or more glob patterns.
@@ -106,6 +174,10 @@ pnpm-lock.yaml
 ## Advanced Usage
 
 If the default configuration doesn’t fit your needs, please read the [advanced usage documentation](./ADVANCED_USAGE.md).
+
+## Prettier
+
+For a great explanation about why we choosed to stick with ESLint rather than migrating toPrettier, read the following [article](https://antfu.me/posts/why-not-prettier).
 
 ## License
 

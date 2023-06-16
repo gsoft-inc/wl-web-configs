@@ -1,15 +1,17 @@
-import { type DefineConfigOptions, mergeConfigs } from "./mergeConfigs.ts";
+import type { Options } from "tsup";
+import { defineConfig, type DefineConfigOptions } from "./defineConfig.ts";
 
-export function defineDevConfig(config?: DefineConfigOptions) {
-    return mergeConfigs(config, {
-        dts: true,
-        splitting: false,
-        watch: true,
-        entry: ["./src"],
-        outDir: "./dist",
-        format: ["esm"],
-        target: "esnext",
-        platform: "browser",
-        sourcemap: "inline"
-    });
+export const DefaultDevOptions = {
+    dts: true,
+    watch: true,
+    entry: ["./src"],
+    outDir: "./dist",
+    format: "esm",
+    target: "esnext",
+    platform: "browser",
+    sourcemap: "inline"
+} satisfies Options;
+
+export function defineDevConfig(options?: DefineConfigOptions) {
+    return defineConfig(DefaultDevOptions, options);
 }

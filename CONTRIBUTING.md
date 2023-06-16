@@ -191,3 +191,15 @@ Make sure the package publish access is *public* by adding the following to the 
 ### Dependencies
 
 npm *dependencies* and *peerDependencies* must be added to the package own *package.json* file.
+
+## Maintainers notes
+
+### Cyclic workspace dependencies
+
+At installation you'll notice that PNPM will warn that there are cyclic workspace dependencies.
+
+```
+There are cyclic workspace dependencies: C:\Dev\gsoft\wl-web-configs\packages\eslint-plugin, C:\Dev\gsoft\wl-web-configs\packages\swc-configs; C:\Dev\gsoft\wl-web-configs\packages\eslint-plugin, C:\Dev\gsoft\wl-web-configs\packages\swc-configs, C:\Dev\gsoft\wl-web-configs\packages\tsup-configs; C:\Dev\gsoft\wl-web-configs\packages\swc-configs, C:\Dev\gsoft\wl-web-configs\packages\tsup-configs
+```
+
+It is expected as we are dog fooding our own packages to build, lint and tests.

@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`function when an override match a config option, override the config option 1`] = `
+{
+  "jsc": {
+    "parser": {
+      "syntax": "ecmascript",
+    },
+  },
+}
+`;
+
+exports[`function when overrides are provided, merge the provided overrides with the config 1`] = `
+{
+  "jsc": {
+    "parser": {
+      "syntax": "typescript",
+      "tsx": true,
+    },
+  },
+  "module": {
+    "type": "es6",
+  },
+}
+`;
+
+exports[`object when an override match a config option, override the config option 1`] = `
+{
+  "jsc": {
+    "parser": {
+      "syntax": "ecmascript",
+    },
+  },
+}
+`;
+
+exports[`object when overrides are provided, merge the provided overrides with the config 1`] = `
+{
+  "jsc": {
+    "parser": {
+      "syntax": "typescript",
+      "tsx": true,
+    },
+  },
+  "module": {
+    "type": "es6",
+  },
+}
+`;

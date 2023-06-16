@@ -7,24 +7,24 @@ Workleap's reusable TypeScript configuration files
 
 ## Installation
 
-Install the package.
+Install the following packages:
 
 **With pnpm**
 
 ```shell
-pnpm add -D @workleap/typescript-configs
+pnpm add -D @workleap/typescript-configs typescript
 ```
 
 **With yarn**
 
 ```shell
-yarn add -D @workleap/typescript-configs
+yarn add -D @workleap/typescript-configs typescript
 ```
 
 **With npm**
 
 ```shell
-npm install -D @workleap/typescript-configs
+npm install -D @workleap/typescript-configs typescript
 ```
 
 ## Usage
@@ -59,7 +59,6 @@ Here is an example of a tsconfig.json file extending the Workleap TypeScript con
 }
 ```
 
-
 ### Monorepo Root
 
 Before you can build your TypeScript code, you need to make sure that there are no compilation errors. This process involves running the TypeScript compiler in a "linting" mode that only checks for errors, without actually compiling the code.
@@ -80,6 +79,24 @@ Here is an example of a tsconfig.json file extending the Workleap TypeScript con
   "extends": "@workleap/typescript-configs/monorepo-root",
   "exclude": ["packages", "node_modules"],
   "references": []
+}
+```
+
+### Package.json script
+
+Optionally add the following script to your `package.json` file:
+
+```json
+{
+    "lint:types": "tsc"
+}
+```
+
+If you are in a monorepo setup with PNPM, instead, add the following script:
+
+```json
+{
+    "lint:types": "pnpm -r --parallel --include-workspace-root exec tsc",
 }
 ```
 
