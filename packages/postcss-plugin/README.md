@@ -7,7 +7,7 @@ All of Workleap’s default PostCSS plugins wrapped up in a single, easy-to-use 
 
 ## Installation
 
-Install the following packages.
+Install the following packages:
 
 **With pnpm**
 
