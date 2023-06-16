@@ -1,6 +1,14 @@
 import type { Options } from "tsup";
 import { defineConfig } from "../src/defineConfig.ts";
 
+function unwrapFunctionResult(result: ReturnType<typeof defineConfig>) {
+    if (typeof result === "function") {
+        return result({});
+    }
+
+    return result;
+}
+
 test("when no options are provided, return the default options", () => {
     const baseOptions: Options = {
         dts: true
@@ -110,9 +118,9 @@ describe("function", () => {
 
         const result = defineConfig(baseOptions, () => ({
             clean: true
-        })) as () => Options;
+        }));
 
-        expect(result()).toMatchSnapshot();
+        expect(unwrapFunctionResult(result)).toMatchSnapshot();
     });
 
     test("when a provided option match a default option, override the default option", () => {
@@ -124,9 +132,9 @@ describe("function", () => {
         const result = defineConfig(baseOptions, () => ({
             dts: false,
             entry: ["./toto"]
-        })) as () => Options;
+        }));
 
-        expect(result()).toMatchSnapshot();
+        expect(unwrapFunctionResult(result)).toMatchSnapshot();
     });
 
     test("when a format option is provided, do not merge the provided array with the default format array", () => {
@@ -136,8 +144,8 @@ describe("function", () => {
 
         const result = defineConfig(baseOptions, () => ({
             format: ["cjs"]
-        })) as () => Options;
+        }));
 
-        expect(result()).toMatchSnapshot();
+        expect(unwrapFunctionResult(result)).toMatchSnapshot();
     });
 });
