@@ -54,12 +54,17 @@ Finally, install the Webpack [swc-loader](https://swc.rs/docs/usage/swc-loader) 
 
 import { swcConfig } from "./swc.dev.js";
 
-{
-    test: /\.(ts|tsx)/i,
-    exclude: /node_modules/,
-    use: {
-        loader: "swc-loader",
-        options: swcConfig
+/** @type {import("webpack").Configuration} */
+export default {
+    module: {
+        rules: {
+            test: /\.(ts|tsx)/i,
+            exclude: /node_modules/,
+            use: {
+                loader: "swc-loader",
+                options: swcConfig
+            }
+        }
     }
 }
 ```
@@ -134,12 +139,17 @@ Finally, install the Webpack [swc-loader](https://swc.rs/docs/usage/swc-loader) 
 
 import { swcConfig } from "./swc.build.js";
 
-{
-    test: /\.(ts|tsx)/i,
-    exclude: /node_modules/,
-    use: {
-        loader: "swc-loader",
-        options: swcConfig
+/** @type {import("webpack").Configuration} */
+export default {
+    module: {
+        rules: {
+            test: /\.(ts|tsx)/i,
+            exclude: /node_modules/,
+            use: {
+                loader: "swc-loader",
+                options: swcConfig
+            }
+        }
     }
 }
 ```
