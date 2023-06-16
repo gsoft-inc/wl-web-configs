@@ -110,7 +110,7 @@ describe("function", () => {
 
         const result = defineConfig(baseOptions, () => ({
             clean: true
-        })) as () => unknown;
+        })) as () => Options;
 
         expect(result()).toMatchSnapshot();
     });
@@ -124,7 +124,7 @@ describe("function", () => {
         const result = defineConfig(baseOptions, () => ({
             dts: false,
             entry: ["./toto"]
-        })) as () => unknown;
+        })) as () => Options;
 
         expect(result()).toMatchSnapshot();
     });
@@ -136,7 +136,7 @@ describe("function", () => {
 
         const result = defineConfig(baseOptions, () => ({
             format: ["cjs"]
-        })) as () => unknown;
+        })) as () => Options;
 
         expect(result()).toMatchSnapshot();
     });
