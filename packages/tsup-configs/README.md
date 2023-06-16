@@ -84,7 +84,7 @@ export default defineBuildConfig({
 });
 ```
 
-The provided options will be merged with the default options. Given that a provided option match a default option, it will override the default option. If you prefer to extend the default option, you can import the `DefaultBuildOptions` object and handle the merging code in your configuration file:
+The provided options will be merged with the default options. Given that a provided option matches a default option, it will override the default option. If you prefer to extend the default option, you can import the `DefaultBuildOptions` object and handle the merging code in your configuration file:
 
 ```ts
 // tsup.build.ts
