@@ -32,7 +32,10 @@
 
         "dev-sample": "pnpm --filter ./sample/* -r --parallel dev",
         "build-sample": "pnpm --filter ./sample/* -r --parallel build",
-        "serve-sample": "pnpm --filter ./sample/* -r --parallel serve-build"
+        "serve-sample": "pnpm --filter ./sample/* -r --parallel serve-build",
+
+        "list-outdated-deps": "pnpm outdated -r --format list",
+        "update-outdated-deps": "pnpm update -r --latest"
     },
     "devDependencies": {
         "@changesets/cli": "2.26.1",

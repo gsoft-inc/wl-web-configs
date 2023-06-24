@@ -1,26 +1,14 @@
+Ideas:
 
-SWC:
+-> Maybe could do a preflight (is it the right word) check to validate that a browserlist file, and swc config are available
+    -> Would emit warnings, not stop the execution
+    -> When in dev, would check for "swc.config.dev" at the root (could provide an alternative file path from the define function)
+    -> When in build, would check for "swc.config.build' at the root (could provide an alternative file path from the define function)
+    -> Would check for a .browserlistrc file at the root (could provide an alternative file path from the define function)
 
-peerDependencies:
-    - @swc/core,
-    - @swc/helpers
-
-options:
-    - any swc options
-
-
--> KEEP IN MIND, that the swc config will also be used by Jest, hopefully, that config can also be a .js, will
--> The swc project will probably exports:
-    - defineDevConfig
-            options:
-                - fastRefresh: bool
-    - defineBuildConfig
-    - defineJestConfig
-            options:
-                - react: bool
-
--> Add a lot of snapshot tests to try different config override
-
+-> What's up with all the config transformer thing?
+    -> Should define a TS interface
+    -> The define function should accept an array of transformers
 
 
 Webpack
@@ -49,8 +37,8 @@ options:
 
     - fastRefresh: bool
     - cache: bool
-    - css: bool
-    - images: bool
+    - css: bool  <---- should be included by default
+    - images: bool <------ should be included by default
 
 -> The webpack project will probably exports:
     - defineDevConfig

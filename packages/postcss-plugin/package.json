@@ -32,6 +32,9 @@
     "dependencies": {
         "postcss-preset-env": "*"
     },
+    "peerDependencies": {
+        "postcss": ">=8.4.6"
+    },
     "devDependencies": {
         "@workleap/eslint-plugin": "workspace:*",
         "@workleap/tsup-configs": "workspace:*",
@@ -39,9 +42,6 @@
         "postcss": "8.4.21",
         "tsup": "6.7.0",
         "typescript": "5.0.4"
-    },
-    "peerDependencies": {
-        "postcss": ">=8.4.6"
     },
     "publishConfig": {
         "access": "public",

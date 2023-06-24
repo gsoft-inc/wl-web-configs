@@ -1,13 +1,9 @@
-// @ts-check
-
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import path from "path";
 import TerserPlugin from "terser-webpack-plugin";
-import { enrichWithBrowserslistConfig } from "./enrichWithBrowserslistConfig.js";
-import { swcConfig } from "./swc.build.js";
+import type { Configuration } from "webpack";
 
-/** @type {import("webpack").Configuration} */
-export default {
+export const DefaultBuildConfig = {
     mode: "production",
     target: "web",
     entry: "./src/index.tsx",
@@ -37,10 +33,9 @@ export default {
             {
                 test: /\.(ts|tsx)/i,
                 exclude: /node_modules/,
-                use: {
-                    loader: "swc-loader",
-                    options: enrichWithBrowserslistConfig(swcConfig)
-                }
+                use: [
+                    { loader: "swc-loader" }
+                ]
             },
             {
                 // https://stackoverflow.com/questions/69427025/programmatic-webpack-jest-esm-cant-resolve-module-without-js-file-exten
@@ -51,16 +46,22 @@ export default {
                 }
             },
             {
+                test: /\.svg/i,
+                use: [
+                    { loader: "@svgr/webpack" }
+                ]
+            },
+            {
                 test: /\.css/i,
-                use: ["style-loader", "css-loader", "postcss-loader"]
+                use: [
+                    { loader: "style-loader" },
+                    { loader: "css-loader" },
+                    { loader: "postcss-loader" }
+                ]
             },
             {
                 test: /\.(png|jpe?g|gif)/i,
                 type: "asset/resource"
-            },
-            {
-                test: /\.svg/i,
-                use: ["@svgr/webpack"]
             }
         ]
     },
@@ -73,4 +74,31 @@ export default {
             template: "./public/index.html"
         })
     ]
-};
+} satisfies Configuration;
+
+/*
+- entry?: string
+- outputPath?: string (defaults to "/dist")
+- url: string
+- plugins?: [] (additional plugins - mention this in the docs)
+- moduleRules?: [] (additional rules - mention this in the docs)
+- htmlTemplateFilePath?: string (default to "./public/index.html")
+
+
+- minify?: bool (defaults to true)
+- cssModules?: bool (default to false)
+- transformTypeScriptFiles?: bool (defaults to true)
+- transformEcmaScriptFiles?: bool (defaults to false) -> always adds ".js" to resolve/extensions thought
+
+
+- swcConfig?: obj
+- browserslistConfig?: obj
+- postCssConfig?: obj
+
+
+- transformers?: [] (WebpackConfigTransformer interface)
+*/
+
+export function defineBuildConfig() {
+    console.log("Implement me!");
+}

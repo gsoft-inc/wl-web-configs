@@ -34,15 +34,6 @@
         "stylelint-config-standard": "*",
         "stylelint-prettier": "*"
     },
-    "devDependencies": {
-        "@workleap/eslint-plugin": "workspace:*",
-        "@workleap/tsup-configs": "workspace:*",
-        "@workleap/typescript-configs": "workspace:*",
-        "prettier": "2.8.7",
-        "stylelint": "15.4.0",
-        "tsup": "6.7.0",
-        "typescript": "5.0.4"
-    },
     "peerDependencies": {
         "prettier": ">=2.0.0",
         "stylelint": ">=15"
@@ -54,6 +45,15 @@
         "stylelint": {
             "optional": true
         }
+    },
+    "devDependencies": {
+        "@workleap/eslint-plugin": "workspace:*",
+        "@workleap/tsup-configs": "workspace:*",
+        "@workleap/typescript-configs": "workspace:*",
+        "prettier": "2.8.7",
+        "stylelint": "15.4.0",
+        "tsup": "6.7.0",
+        "typescript": "5.0.4"
     },
     "publishConfig": {
         "access": "public",

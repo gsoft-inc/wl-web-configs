@@ -12,19 +12,19 @@ Install the following packages:
 **With pnpm**
 
 ```shell
-pnpm add -D @workleap/tsup-configs tsup
+pnpm add -D @workleap/tsup-configs tsup typescript
 ```
 
 **With yarn**
 
 ```shell
-yarn add -D @workleap/tsup-configs tsup
+yarn add -D @workleap/tsup-configs tsup typescript
 ```
 
 **With npm**
 
 ```shell
-npm install -D @workleap/tsup-configs tsup
+npm install -D @workleap/tsup-configs tsup typescript
 ```
 
 ## Usage
@@ -124,7 +124,7 @@ export default defineBuildConfig({
 
 ### CJS support
 
-To support CJS projects, the package is build for ESM and CJS formats. To support CJS, `type: "module"` has been temporary removed from the `package.json` file.
+To support CJS projects, this package is build for ESM and CJS formats. To support CJS, `type: "module"` has been temporary removed from the `package.json` file.
 
 Once all our projects use ESM, CJS support can be removed.
 

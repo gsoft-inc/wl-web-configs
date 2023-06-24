@@ -140,6 +140,22 @@ Reset the monorepo installation (delete `dist` folders, clear caches, delete `no
 pnpm reset
 ```
 
+### list-outdated-deps
+
+Checks for outdated dependencies. For more information, view [PNPM documentation](https://pnpm.io/cli/outdated).
+
+```bash
+pnpm list-outdated-deps
+```
+
+### update-outdated-deps
+
+Updated outdated dependencies to their latest version. For more information, view [PNPM documentation](https://pnpm.io/cli/update).
+
+```bash
+pnpm update-outdated-deps
+```
+
 ## CI
 
 We use [GitHub Actions]() for this repository.
