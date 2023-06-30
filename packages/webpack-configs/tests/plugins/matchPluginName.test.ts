@@ -1,4 +1,4 @@
-import { matchConstructorName } from "../src/transformers/plugins.ts";
+import { matchConstructorName } from "../../src/transformers/plugins.ts";
 
 class Plugin1 {
     apply() {

@@ -1,8 +1,8 @@
-// import { RuleSetUseItem } from "webpack";
+// import type { Configuration, RuleSetRule, RuleSetUseItem } from "webpack";
 
-// export type ModuleRuleMatcher = (moduleRule: RuleSetRule | RuleSetUseItem, index: number, array: RuleSetRule[] | RuleSetUseItem[]) => boolean;
+// export type LoaderMatcher = (moduleRule: RuleSetRule | RuleSetUseItem, index: number, array: RuleSetRule[] | RuleSetUseItem[]) => boolean;
 
-// export function matchLoaderName(name: string): ModuleRuleMatcher {
+// export function matchLoaderName(name: string): LoaderMatcher {
 //     const matcher = (moduleRule: RuleSetRule | RuleSetUseItem) => {
 //         if (typeof moduleRule === "string") {
 //             return moduleRule.includes(name);
@@ -17,7 +17,7 @@
 //         return false;
 //     };
 
-//     // Add contextual information about the matcher when an error occurs.
+//     // Add contextual information about the matcher for debugging.
 //     matcher.info = {
 //         type: matchLoaderName.name,
 //         value: name
@@ -27,10 +27,17 @@
 // }
 
 
-// export interface ModuleRuleMatch {
-//     moduleRule: RuleSetRule | RuleSetUseItem;
+// export interface LoaderMatch {
+//     loader: string;
 //     index: number;
-//     parent: RuleSetRule;
+//     parent: RuleSetRule | RuleSetUseItem[];
+// }
+
+// export interface LoaderMatch2 {
+//     useItem?: RuleSetUseItem;
+//     moduleRule?: RuleSetRule;
+//     index: number;
+//     parent: RuleSetRule[] | RuleSetUseItem[];
 // }
 
 // function toMatch(moduleRule: RuleSetRule | RuleSetUseItem, index: number, parent: RuleSetRule) {
@@ -53,7 +60,7 @@
 //             } else {
 //                 if (isRuleSetRule(x)) {
 //                     if (x.use) {
-//                         findModuleRulesRecursively(x.use as RuleSetUseItem[], matcher, matches, x);
+//                         findModuleRulesRecursively(x.use as RuleSetUseItem[], matcher, matches, x.use);
 //                     } else if (x.oneOf) {
 //                         findModuleRulesRecursively(x.oneOf, matcher, matches, x);
 //                     }
@@ -63,4 +70,26 @@
 //     });
 
 //     return matches;
+// }
+
+// export function findModuleRule(config: Configuration, matcher: ModuleRuleMatcher) {
+//     const moduleRules = config.module?.rules;
+
+//     if (!moduleRules) {
+//         return;
+//     }
+
+//     const matches: ModuleRuleMatch[] = [];
+
+//     findModuleRulesRecursively(moduleRules as RuleSetRule[], matcher, matches);
+
+//     if (matches.length > 1) {
+//         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+//         // @ts-ignore
+//         const matcherInfo = matcher.info;
+
+//         throw new Error(`[webpack-configs] Found more than 1 matching module rule. Matcher: "${JSON.stringify(matcherInfo)}"`);
+//     }
+
+//     return matches[0];
 // }

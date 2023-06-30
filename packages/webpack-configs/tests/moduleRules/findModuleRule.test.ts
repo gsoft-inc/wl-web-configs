@@ -1,5 +1,5 @@
 import type { Configuration, RuleSetRule } from "webpack";
-import { findModuleRule, matchAssetModuleType } from "../src/transformers/moduleRules.ts";
+import { findModuleRule, matchAssetModuleType, matchLoaderName } from "../../src/transformers/moduleRules.ts";
 
 test("when the webpack configuration doesn't have a module section, return undefined", () => {
     const result = findModuleRule({}, matchAssetModuleType("asset/resource"));
@@ -161,6 +161,135 @@ test("when the matching rule is nested in a \"oneOf\" prop and is the last rule 
 
     expect(match).toBeDefined();
     expect(match.type).toBe("asset/inline");
+});
+
+test("when the matching rule is nested in a \"use\" prop and is the first rule of the array, return the matching rule", () => {
+    const tsModuleRule = {
+        test: /\.(ts|tsx)/i,
+        use: [
+            { loader: "swc-loader" },
+            { loader: "babel-loader" },
+            { loader: "esbuild-loader" }
+        ]
+    };
+
+    const config: Configuration = {
+        module: {
+            rules: [
+                tsModuleRule,
+                {
+                    test: /\.js/i,
+                    include: /node_modules/,
+                    resolve: {
+                        fullySpecified: false
+                    }
+                },
+                {
+                    test: /\.(png|jpe?g|gif)/i,
+                    type: "asset/resource"
+                }
+            ]
+        }
+    };
+
+    const result = findModuleRule(config, matchLoaderName("swc-loader"));
+
+    expect(result).toBeDefined();
+    expect(result?.index).toBe(0);
+    expect(result?.parent).toBe(tsModuleRule.use);
+
+    const match = result?.moduleRule as RuleSetRule;
+
+    expect(match).toBeDefined();
+    expect(match.loader).toBe("swc-loader");
+});
+
+test("when the matching rule is nested in a \"use\" prop and is the last rule of the array, return the matching rule", () => {
+    const tsModuleRule = {
+        test: /\.(ts|tsx)/i,
+        use: [
+            { loader: "babel-loader" },
+            { loader: "esbuild-loader" },
+            { loader: "swc-loader" }
+        ]
+    };
+
+    const config: Configuration = {
+        module: {
+            rules: [
+                {
+                    test: /\.js/i,
+                    include: /node_modules/,
+                    resolve: {
+                        fullySpecified: false
+                    }
+                },
+                {
+                    test: /\.(png|jpe?g|gif)/i,
+                    type: "asset/resource"
+                },
+                tsModuleRule
+            ]
+        }
+    };
+
+    const result = findModuleRule(config, matchLoaderName("swc-loader"));
+
+    expect(result).toBeDefined();
+    expect(result?.index).toBe(2);
+    expect(result?.parent).toBe(tsModuleRule.use);
+
+    const match = result?.moduleRule as RuleSetRule;
+
+    expect(match).toBeDefined();
+    expect(match.loader).toBe("swc-loader");
+});
+
+test("when the matching rule is nested in a \"oneOf\" prop then in a \"use\" prop, return the matching rule", () => {
+    const tsRule = {
+        test: /\.(ts|tsx)/i,
+        use: [
+            { loader: "swc-loader" }
+        ]
+    };
+
+    const config: Configuration = {
+        module: {
+            rules: [
+                {
+                    oneOf: [
+                        tsRule,
+                        {
+                            test: /\.(ts|tsx)/i,
+                            loader: "babel-loader"
+                        }
+                    ]
+                },
+                {
+                    test: /\.js/i,
+                    include: /node_modules/,
+                    resolve: {
+                        fullySpecified: false
+                    }
+                },
+                {
+                    test: /\.(png|jpe?g|gif)/i,
+                    type: "asset/resource"
+                }
+            ]
+        }
+    };
+
+    const result = findModuleRule(config, matchLoaderName("swc-loader"));
+
+    expect(result).toBeDefined();
+    expect(result?.index).toBe(0);
+    expect(result?.parent).toBe(tsRule.use);
+
+    const match = result?.moduleRule as RuleSetRule;
+
+    expect(match).toBeDefined();
+    expect(match.loader).toBe("swc-loader");
 });
 
 test("when there are no matching rule, return undefined", () => {

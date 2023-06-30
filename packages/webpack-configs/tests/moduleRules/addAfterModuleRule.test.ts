@@ -1,7 +1,7 @@
-import type { Configuration, RuleSetRule } from "webpack";
-import { addAfterModuleRule, matchAssetModuleType } from "../src/transformers/moduleRules.ts";
+import type { Configuration, RuleSetRule, RuleSetUseItem } from "webpack";
+import { addAfterModuleRule, matchAssetModuleType, matchLoaderName } from "../../src/transformers/moduleRules.ts";
 
-test("when a matching module rule is found at the root, add after the module rule", () => {
+test("when a matching module rule is found in the rules array, add after the module rule", () => {
     const newRule: RuleSetRule = {
         test: /\.(ts|tsx)/i,
         loader: "swc-loader"
@@ -19,7 +19,7 @@ test("when a matching module rule is found at the root, add after the module rul
                     type: "asset/inline"
                 },
                 {
-                    test: /\.(png|jpe?g|gif)/i,
+                    test: /\.(jpe?g|gif)/i,
                     type: "asset/resource"
                 }
             ]
@@ -71,7 +71,45 @@ test("when a matching module rule is found in a \"oneOf\" prop, add after the mo
     expect((config.module?.rules![1] as RuleSetRule).oneOf![2]).toBe(newRule);
 });
 
+test("when a matching module rule is found in a \"use\" prop, add after the module rule", () => {
+    const newRule: RuleSetUseItem = {
+        loader: "swc-loader"
+    };
+
+    const config: Configuration = {
+        module: {
+            rules: [
+                {
+                    test: /\.(ts|tsx)/i,
+                    use: [
+                        { loader: "babel-loader" },
+                        { loader: "esbuild-loader" }
+                    ]
+                },
+                {
+                    test: /\.js/i,
+                    include: /node_modules/,
+                    resolve: {
+                        fullySpecified: false
+                    }
+                },
+                {
+                    test: /\.(png|jpe?g|gif)/i,
+                    type: "asset/resource"
+                }
+            ]
+        }
+    };
+
+    addAfterModuleRule(config, matchLoaderName("esbuild-loader"), [newRule]);
+
+    expect(((config.module?.rules![0] as RuleSetRule).use as RuleSetUseItem[])!.length).toBe(3);
+    expect(((config.module?.rules![0] as RuleSetRule).use as RuleSetUseItem[])![2]).toBe(newRule);
+});
+
 test("when no matching module rule is found, do nothing", () => {
+    jest.spyOn(console, "log").mockImplementation(jest.fn());
+
     const newRule: RuleSetRule = {
         test: /\.(ts|tsx)/i,
         loader: "swc-loader"
@@ -85,7 +123,7 @@ test("when no matching module rule is found, do nothing", () => {
                     type: "asset/resource"
                 },
                 {
-                    test: /\.(png|jpe?g|gif)/i,
+                    test: /\.(jpe?g|gif)/i,
                     type: "asset/resource"
                 }
             ]
@@ -95,4 +133,6 @@ test("when no matching module rule is found, do nothing", () => {
     addAfterModuleRule(config, matchAssetModuleType("asset/inline"), [newRule]);
 
     expect(config.module?.rules?.length).toBe(2);
+
+    jest.spyOn(console, "log").mockRestore();
 });

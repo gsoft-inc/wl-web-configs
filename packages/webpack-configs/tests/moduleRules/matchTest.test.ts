@@ -1,5 +1,5 @@
 import type { RuleSetRule } from "webpack";
-import { matchTest } from "../src/transformers/moduleRules.ts";
+import { matchTest } from "../../src/transformers/moduleRules.ts";
 
 test("when the module rule test is a string and match the value, return true", () => {
     const moduleRule: RuleSetRule = {

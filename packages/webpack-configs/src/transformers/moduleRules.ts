@@ -1,6 +1,30 @@
-import type { Configuration, RuleSetRule } from "webpack";
+import type { Configuration, RuleSetRule, RuleSetUseItem } from "webpack";
 
-export type ModuleRuleMatcher = (moduleRule: RuleSetRule, index: number, array: RuleSetRule[]) => boolean;
+export type ModuleRuleMatcher = (moduleRule: RuleSetRule | RuleSetUseItem, index: number, array: RuleSetRule[] | RuleSetUseItem[]) => boolean;
+
+export function matchLoaderName(name: string): ModuleRuleMatcher {
+    const matcher = (moduleRule: RuleSetRule | RuleSetUseItem) => {
+        if (typeof moduleRule === "string") {
+            return moduleRule.includes(name);
+        } else {
+            if ("loader" in moduleRule) {
+                if (typeof moduleRule.loader === "string") {
+                    return moduleRule.loader.includes(name);
+                }
+            }
+        }
+
+        return false;
+    };
+
+    // Add contextual information about the matcher for debugging.
+    matcher.info = {
+        type: matchLoaderName.name,
+        value: name
+    };
+
+    return matcher;
+}
 
 export type AssetModuleType =
   | "javascript/auto"
@@ -15,7 +39,7 @@ export type AssetModuleType =
   | "asset/inline";
 
 export function matchAssetModuleType(type: AssetModuleType): ModuleRuleMatcher {
-    const matcher = (moduleRule: RuleSetRule) => {
+    const matcher = (moduleRule: RuleSetRule | RuleSetUseItem) => {
         if (typeof moduleRule !== "string" && "type" in moduleRule) {
             return moduleRule.type === type;
         }
@@ -23,7 +47,7 @@ export function matchAssetModuleType(type: AssetModuleType): ModuleRuleMatcher {
         return false;
     };
 
-    // Add contextual information about the matcher when an error occurs.
+    // Add contextual information about the matcher for debugging.
     matcher.info = {
         type: matchAssetModuleType.name,
         value: type
@@ -33,7 +57,7 @@ export function matchAssetModuleType(type: AssetModuleType): ModuleRuleMatcher {
 }
 
 export function matchTest(test: string | RegExp): ModuleRuleMatcher {
-    const matcher = (moduleRule: RuleSetRule) => {
+    const matcher = (moduleRule: RuleSetRule | RuleSetUseItem) => {
         if (typeof moduleRule !== "string" && "test" in moduleRule) {
             if (typeof moduleRule.test === "object" && typeof test === "object") {
                 // Assuming it's regular expressions
@@ -46,7 +70,7 @@ export function matchTest(test: string | RegExp): ModuleRuleMatcher {
         return false;
     };
 
-    // Add contextual information about the matcher when an error occurs.
+    // Add contextual information about the matcher for debugging.
     matcher.info = {
         type: matchTest.name,
         value: test.toString()
@@ -56,12 +80,12 @@ export function matchTest(test: string | RegExp): ModuleRuleMatcher {
 }
 
 export interface ModuleRuleMatch {
-    moduleRule: RuleSetRule;
+    moduleRule: RuleSetRule | RuleSetUseItem;
     index: number;
-    parent: RuleSetRule[];
+    parent: RuleSetRule[] | RuleSetUseItem[];
 }
 
-function toMatch(moduleRule: RuleSetRule, index: number, parent: RuleSetRule[]) {
+function toMatch(moduleRule: RuleSetRule | RuleSetUseItem, index: number, parent: RuleSetRule[] | RuleSetUseItem[]) {
     return {
         moduleRule,
         index,
@@ -69,13 +93,23 @@ function toMatch(moduleRule: RuleSetRule, index: number, parent: RuleSetRule[]) 
     };
 }
 
-function findModuleRulesRecursively(moduleRules: RuleSetRule[], matcher: ModuleRuleMatcher, parent: RuleSetRule[], matches: ModuleRuleMatch[]) {
+function isRuleSetRule(value: RuleSetRule | RuleSetUseItem): value is RuleSetRule {
+    return (value as RuleSetRule).use !== undefined || (value as RuleSetRule).oneOf !== undefined;
+}
+
+function findModuleRulesRecursively(moduleRules: RuleSetRule[] | RuleSetUseItem[], matcher: ModuleRuleMatcher, parent: RuleSetRule[] | RuleSetUseItem[], matches: ModuleRuleMatch[]) {
     moduleRules.forEach((x, index, array) => {
         if (x) {
             if (matcher(x, index, array)) {
                 matches.push(toMatch(x, index, parent));
-            } else if (x.oneOf) {
-                findModuleRulesRecursively(x.oneOf, matcher, x.oneOf, matches);
+            } else {
+                if (isRuleSetRule(x)) {
+                    if (x.use) {
+                        findModuleRulesRecursively(x.use as RuleSetUseItem[], matcher, x.use as RuleSetUseItem[], matches);
+                    } else if (x.oneOf) {
+                        findModuleRulesRecursively(x.oneOf, matcher, x.oneOf, matches);
+                    }
+                }
             }
         }
     });
@@ -103,7 +137,21 @@ export function findModuleRule(config: Configuration, matcher: ModuleRuleMatcher
     return matches[0];
 }
 
-export function addBeforeModuleRule(config: Configuration, matcher: ModuleRuleMatcher, newModuleRules: RuleSetRule[]) {
+export function findModuleRules(config: Configuration, matcher: ModuleRuleMatcher) {
+    const moduleRules = config.module?.rules;
+
+    if (!moduleRules) {
+        return;
+    }
+
+    const matches: ModuleRuleMatch[] = [];
+
+    findModuleRulesRecursively(moduleRules as RuleSetRule[], matcher, moduleRules as RuleSetRule[], matches);
+
+    return matches;
+}
+
+export function addBeforeModuleRule(config: Configuration, matcher: ModuleRuleMatcher, newModuleRules: RuleSetRule[] | RuleSetUseItem[]) {
     const match = findModuleRule(config, matcher);
 
     if (match) {
@@ -117,7 +165,7 @@ export function addBeforeModuleRule(config: Configuration, matcher: ModuleRuleMa
     }
 }
 
-export function addAfterModuleRule(config: Configuration, matcher: ModuleRuleMatcher, newModuleRules: RuleSetRule[]) {
+export function addAfterModuleRule(config: Configuration, matcher: ModuleRuleMatcher, newModuleRules: RuleSetRule[] | RuleSetUseItem[]) {
     const match = findModuleRule(config, matcher);
 
     if (match) {
@@ -131,7 +179,7 @@ export function addAfterModuleRule(config: Configuration, matcher: ModuleRuleMat
     }
 }
 
-export function replaceModuleRule(config: Configuration, matcher: ModuleRuleMatcher, newModuleRule: RuleSetRule) {
+export function replaceModuleRule(config: Configuration, matcher: ModuleRuleMatcher, newModuleRule: RuleSetRule | RuleSetUseItem) {
     const match = findModuleRule(config, matcher);
 
     if (match) {
@@ -146,19 +194,247 @@ export function replaceModuleRule(config: Configuration, matcher: ModuleRuleMatc
 }
 
 export function removeModuleRules(config: Configuration, matcher: ModuleRuleMatcher) {
+    const moduleRules = config.module?.rules;
 
+    if (!moduleRules) {
+        return;
+    }
 
-    // const countBefore = config.plugins?.length ?? 0;
+    const matches: ModuleRuleMatch[] = [];
 
-    // config.plugins = config.plugins?.filter((...args) => !matcher(...args));
+    findModuleRulesRecursively(moduleRules as RuleSetRule[], matcher, moduleRules as RuleSetRule[], matches);
 
-    // const countAfter = config.plugins?.length ?? 0;
+    if (matches.length > 0) {
+        // Must keep the initial parent arrays' length to calculate the adjustment
+        // once the first match has been deleted.
+        const initialParentLengths = new WeakMap<RuleSetRule[] | RuleSetUseItem[], number>(matches.map(x => [x.parent, x.parent.length]));
 
-    // if (countBefore === countAfter) {
-    //     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    //     // @ts-ignore
-    //     const matcherInfo = matcher.info;
+        matches.forEach(x => {
+            const adjustment = initialParentLengths.get(x.parent)! - x.parent.length;
 
-    //     console.log(`[web-configs] Didn't remove any plugins because no match has been found. Matcher: "${matcherInfo}"`);
-    // }
+            x.parent.splice(x.index - adjustment, 1);
+        });
+    } else {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        const matcherInfo = matcher.info;
+
+        console.log(`[web-configs] Didn't remove any module rules because no match has been found. Matcher: "${matcherInfo}"`);
+    }
 }
+
+
+// import type { Configuration, RuleSetRule, RuleSetUseItem } from "webpack";
+
+// export type ModuleRuleMatcher = (moduleRule: RuleSetRule, index: number, array: RuleSetRule[]) => boolean;
+
+// export function matchLoaderName(name: string): ModuleRuleMatcher {
+//     const matcher = (moduleRule: RuleSetRule | RuleSetUseItem) => {
+//         if (typeof moduleRule === "string") {
+//             return moduleRule.includes(name);
+//         } else {
+//             if ("loader" in moduleRule) {
+//                 if (typeof moduleRule.loader === "string") {
+//                     return moduleRule.loader.includes(name);
+//                 }
+//             }
+//         }
+
+//         return false;
+//     };
+
+//     // Add contextual information about the matcher for debugging.
+//     matcher.info = {
+//         type: matchLoaderName.name,
+//         value: name
+//     };
+
+//     return matcher;
+// }
+
+// export type AssetModuleType =
+//   | "javascript/auto"
+//   | "javascript/dynamic"
+//   | "javascript/esm"
+//   | "json"
+//   | "webassembly/sync"
+//   | "webassembly/async"
+//   | "asset"
+//   | "asset/source"
+//   | "asset/resource"
+//   | "asset/inline";
+
+// export function matchAssetModuleType(type: AssetModuleType): ModuleRuleMatcher {
+//     const matcher = (moduleRule: RuleSetRule) => {
+//         if (typeof moduleRule !== "string" && "type" in moduleRule) {
+//             return moduleRule.type === type;
+//         }
+
+//         return false;
+//     };
+
+//     // Add contextual information about the matcher for debugging.
+//     matcher.info = {
+//         type: matchAssetModuleType.name,
+//         value: type
+//     };
+
+//     return matcher;
+// }
+
+// export function matchTest(test: string | RegExp): ModuleRuleMatcher {
+//     const matcher = (moduleRule: RuleSetRule) => {
+//         if (typeof moduleRule !== "string" && "test" in moduleRule) {
+//             if (typeof moduleRule.test === "object" && typeof test === "object") {
+//                 // Assuming it's regular expressions
+//                 return moduleRule.test.toString() === test.toString();
+//             }
+
+//             return moduleRule.test === test;
+//         }
+
+//         return false;
+//     };
+
+//     // Add contextual information about the matcher for debugging.
+//     matcher.info = {
+//         type: matchTest.name,
+//         value: test.toString()
+//     };
+
+//     return matcher;
+// }
+
+// export interface ModuleRuleMatch {
+//     moduleRule: RuleSetRule;
+//     index: number;
+//     parent: RuleSetRule[];
+// }
+
+// function toMatch(moduleRule: RuleSetRule, index: number, parent: RuleSetRule[]) {
+//     return {
+//         moduleRule,
+//         index,
+//         parent
+//     };
+// }
+
+// function findModuleRulesRecursively(moduleRules: RuleSetRule[], matcher: ModuleRuleMatcher, parent: RuleSetRule[], matches: ModuleRuleMatch[]) {
+//     moduleRules.forEach((x, index, array) => {
+//         if (x) {
+//             if (matcher(x, index, array)) {
+//                 matches.push(toMatch(x, index, parent));
+//             } else if (x.oneOf) {
+//                 findModuleRulesRecursively(x.oneOf, matcher, x.oneOf, matches);
+//             }
+//         }
+//     });
+// }
+
+// export function findModuleRule(config: Configuration, matcher: ModuleRuleMatcher) {
+//     const moduleRules = config.module?.rules;
+
+//     if (!moduleRules) {
+//         return;
+//     }
+
+//     const matches: ModuleRuleMatch[] = [];
+
+//     findModuleRulesRecursively(moduleRules as RuleSetRule[], matcher, moduleRules as RuleSetRule[], matches);
+
+//     if (matches.length > 1) {
+//         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+//         // @ts-ignore
+//         const matcherInfo = matcher.info;
+
+//         throw new Error(`[webpack-configs] Found more than 1 matching module rule. Matcher: "${JSON.stringify(matcherInfo)}"`);
+//     }
+
+//     return matches[0];
+// }
+
+// export function findModuleRules(config: Configuration, matcher: ModuleRuleMatcher) {
+//     const moduleRules = config.module?.rules;
+
+//     if (!moduleRules) {
+//         return;
+//     }
+
+//     const matches: ModuleRuleMatch[] = [];
+
+//     findModuleRulesRecursively(moduleRules as RuleSetRule[], matcher, moduleRules as RuleSetRule[], matches);
+
+//     return matches;
+// }
+
+// export function addBeforeModuleRule(config: Configuration, matcher: ModuleRuleMatcher, newModuleRules: RuleSetRule[]) {
+//     const match = findModuleRule(config, matcher);
+
+//     if (match) {
+//         match.parent.splice(match.index, 0, ...newModuleRules);
+//     } else {
+//         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+//         // @ts-ignore
+//         const matcherInfo = matcher.info;
+
+//         console.log(`[web-configs] Couldn't add the new module rules because no match has been found. Matcher: "${JSON.stringify(matcherInfo)}"`);
+//     }
+// }
+
+// export function addAfterModuleRule(config: Configuration, matcher: ModuleRuleMatcher, newModuleRules: RuleSetRule[]) {
+//     const match = findModuleRule(config, matcher);
+
+//     if (match) {
+//         match.parent.splice(match.index + 1, 0, ...newModuleRules);
+//     } else {
+//         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+//         // @ts-ignore
+//         const matcherInfo = matcher.info;
+
+//         console.log(`[web-configs] Couldn't add the new module rules because no match has been found. Matcher: "${JSON.stringify(matcherInfo)}"`);
+//     }
+// }
+
+// export function replaceModuleRule(config: Configuration, matcher: ModuleRuleMatcher, newModuleRule: RuleSetRule) {
+//     const match = findModuleRule(config, matcher);
+
+//     if (match) {
+//         match.parent[match.index] = newModuleRule;
+//     } else {
+//         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+//         // @ts-ignore
+//         const matcherInfo = matcher.info;
+
+//         console.log(`[web-configs] Couldn't replace the module rule because no match has been found. Matcher: "${JSON.stringify(matcherInfo)}"`);
+//     }
+// }
+
+// export function removeModuleRules(config: Configuration, matcher: ModuleRuleMatcher) {
+//     const moduleRules = config.module?.rules;
+
+//     if (!moduleRules) {
+//         return;
+//     }
+
+//     const matches: ModuleRuleMatch[] = [];
+
+//     findModuleRulesRecursively(moduleRules as RuleSetRule[], matcher, moduleRules as RuleSetRule[], matches);
+
+//     if (matches.length > 0) {
+//         // Must keep the initial parent arrays' length to calculate the adjustment
+//         // once the first match has been deleted.
+//         const initialParentLengths = new WeakMap<RuleSetRule[], number>(matches.map(x => [x.parent, x.parent.length]));
+
+//         matches.forEach(x => {
+//             const adjustment = initialParentLengths.get(x.parent)! - x.parent.length;
+
+//             x.parent.splice(x.index - adjustment, 1);
+//         });
+//     } else {
+//         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+//         // @ts-ignore
+//         const matcherInfo = matcher.info;
+
+//         console.log(`[web-configs] Didn't remove any module rules because no match has been found. Matcher: "${matcherInfo}"`);
+//     }
+// }

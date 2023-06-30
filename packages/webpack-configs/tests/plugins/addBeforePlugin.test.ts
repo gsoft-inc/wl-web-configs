@@ -1,5 +1,5 @@
 import type { Configuration } from "webpack";
-import { addAfterPlugin, matchConstructorName } from "../src/transformers/plugins.ts";
+import { addBeforePlugin, matchConstructorName } from "../../src/transformers/plugins.ts";
 
 class Plugin1 {
     name = "plugin-1";
@@ -33,7 +33,20 @@ test("works", () => {
         ]
     };
 
-    addAfterPlugin(config, matchConstructorName(Plugin1.name), [new Plugin3()]);
+    addBeforePlugin(config, matchConstructorName(Plugin2.name), [new Plugin3()]);
 
     expect(config.plugins![1].name).toBe("plugin-3");
+});
+
+test("when matching plugin is the first plugin, add at the beginning of the array", () => {
+    const config: Configuration = {
+        plugins: [
+            new Plugin1(),
+            new Plugin2()
+        ]
+    };
+
+    addBeforePlugin(config, matchConstructorName(Plugin1.name), [new Plugin3()]);
+
+    expect(config.plugins![0].name).toBe("plugin-3");
 });

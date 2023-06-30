@@ -52,12 +52,12 @@ export interface DefineDevConfigOptions {
 
 function preflight(options: DefineDevConfigOptions = {}) {
     if (!require.resolve("webpack-dev-server")) {
-        throw new Error("To use the \"dev\" config, please install https://www.npmjs.com/package/webpack-dev-server as a \"devDependency\".");
+        throw new Error("To use the \"dev\" config, install https://www.npmjs.com/package/webpack-dev-server as a \"devDependency\".");
     }
 
     if (options.fastRefresh) {
         if (!require.resolve("@pmmmwh/react-refresh-webpack-plugin")) {
-            throw new Error("To use Webpack Fast Refresh, please install https://www.npmjs.com/package/@pmmmwh/react-refresh-webpack-plugin as a \"devDependency\".");
+            throw new Error("To use Webpack Fast Refresh, install https://www.npmjs.com/package/@pmmmwh/react-refresh-webpack-plugin as a \"devDependency\".");
         }
     }
 }
@@ -193,46 +193,10 @@ export function defineDevConfig(options: DefineDevConfigOptions = {}) {
     return transformedConfig;
 }
 
-
 /*
-export default defineDevConfig({
-    swcConfig: defineSwcConfig({
-        fastRefresh: true,
-        targets: browserslistConfig
-    }),
-    postCssConfig: definePostCssConfig({
-        presetEnvOptions: {
-            browsers: browserslistConfig
-        }
-    })
-})
-
 -> While swcConfig, browserslistConfig and postCssConfig could be omitted and the loader will simply load by convention the nearest configuration file, we do recommend
 to provide them and use the "define*" functions provided by our shared web configs
     -> Will only support .swcrc file
     -> SWC will not pickup browserslist config
     -> We already provide browserlist config for SWC, why not also use it for postcss?
-
--> The transformers API could also offer helpers to transform configs
-    -> Similar to CRACO (https://craco.js.org/docs/plugin-api/utility-functions/webpack-loaders/)
-    -> Module Rules:
-        -> findModuleRules
-        -> addBeforeModuleRule
-        -> addAfterModuleRule
-        -> removeModuleRules
-        -> Matchers are:
-            -> matchLoaderName(name)
-            -> matchRuleTest(test) <- MEH
-            -> matchAssetModuleType(type)
-    -> Plugins
-        -> findPlugins
-        -> appendPlugins
-        -> preprendPlugins
-        -> removePlugins
-        -> replacePlugin
-        -> addPluginsAfter    <- Useful?    addAfterPlugin
-        -> addPluginsBefore   <- Useful?    addBeforePlugin
-        -> Matchers are:
-            -> matchPluginName(name)
-
 */

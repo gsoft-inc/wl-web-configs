@@ -1,5 +1,5 @@
 import type { RuleSetRule } from "webpack";
-import { matchAssetModuleType } from "../src/transformers/moduleRules.ts";
+import { matchAssetModuleType } from "../../src/transformers/moduleRules.ts";
 
 test("when the module rule asset module type match type, return true", () => {
     const moduleRule: RuleSetRule = {

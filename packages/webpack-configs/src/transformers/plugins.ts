@@ -9,7 +9,7 @@ export function matchConstructorName(name: string): PluginMatcher {
         return plugin?.constructor.name === name;
     };
 
-    // Add contextual information about the matcher when an error occurs.
+    // Add contextual information about the matcher for debugging.
     matcher.info = {
         type: matchConstructorName.name,
         value: name
