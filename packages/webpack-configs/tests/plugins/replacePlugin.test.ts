@@ -1,5 +1,5 @@
 import type { Configuration } from "webpack";
-import { addBeforePlugin, matchConstructorName } from "../../src/transformers/plugins.ts";
+import { matchConstructorName, replacePlugin } from "../../src/transformers/plugins.ts";
 
 class Plugin1 {
     apply() {
@@ -19,7 +19,7 @@ class Plugin3 {
     }
 }
 
-test("when a matching plugin is found in the plugins array, add before the plugin", () => {
+test("when a matching plugin is found in the plugins array, replace the plugin", () => {
     const newPlugin = new Plugin3();
 
     const config: Configuration = {
@@ -29,10 +29,10 @@ test("when a matching plugin is found in the plugins array, add before the plugi
         ]
     };
 
-    addBeforePlugin(config, matchConstructorName(Plugin2.name), [newPlugin]);
+    replacePlugin(config, matchConstructorName(Plugin1.name), newPlugin);
 
-    expect(config.plugins?.length).toBe(3);
-    expect(config.plugins![1]).toBe(newPlugin);
+    expect(config.plugins?.length).toBe(2);
+    expect(config.plugins![0]).toBe(newPlugin);
 });
 
 test("when no matching plugin is found, do nothing", () => {
@@ -47,9 +47,11 @@ test("when no matching plugin is found, do nothing", () => {
         ]
     };
 
-    addBeforePlugin(config, matchConstructorName("anything"), [newPlugin]);
+    replacePlugin(config, matchConstructorName("anything"), newPlugin);
 
     expect(config.plugins?.length).toBe(2);
 
     jest.spyOn(console, "log").mockRestore();
 });
+
+

@@ -6,14 +6,14 @@ class Plugin1 {
     }
 }
 
-test("return true when the plugin name match", () => {
+test("when the plugin constructor name match name, return true", () => {
     const matcher = matchConstructorName(Plugin1.name);
 
     expect(matcher(new Plugin1(), 0, [])).toBeTruthy();
 });
 
-test("return false when the plugin name doesn't match", () => {
-    const matcher = matchConstructorName("Anything");
+test("when the plugin constructor name doesn't match name, return false", () => {
+    const matcher = matchConstructorName("anything");
 
     expect(matcher(new Plugin1(), 0, [])).toBeFalsy();
 });

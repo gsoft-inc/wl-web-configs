@@ -1,5 +1,5 @@
 import type { Configuration } from "webpack";
-import { addBeforePlugin, matchConstructorName } from "../../src/transformers/plugins.ts";
+import { matchConstructorName, removePlugin } from "../../src/transformers/plugins.ts";
 
 class Plugin1 {
     apply() {
@@ -19,37 +19,35 @@ class Plugin3 {
     }
 }
 
-test("when a matching plugin is found in the plugins array, add before the plugin", () => {
-    const newPlugin = new Plugin3();
-
+test("when a matching plugin is found in the plugins array, remove the plugin", () => {
     const config: Configuration = {
         plugins: [
             new Plugin1(),
-            new Plugin2()
+            new Plugin2(),
+            new Plugin3()
         ]
     };
 
-    addBeforePlugin(config, matchConstructorName(Plugin2.name), [newPlugin]);
+    removePlugin(config, matchConstructorName(Plugin2.name));
 
-    expect(config.plugins?.length).toBe(3);
-    expect(config.plugins![1]).toBe(newPlugin);
+    expect(config.plugins?.length).toBe(2);
+    expect(config.plugins![1].constructor.name).toBe(Plugin3.name);
 });
 
 test("when no matching plugin is found, do nothing", () => {
     jest.spyOn(console, "log").mockImplementation(jest.fn());
 
-    const newPlugin = new Plugin3();
-
     const config: Configuration = {
         plugins: [
             new Plugin1(),
-            new Plugin2()
+            new Plugin2(),
+            new Plugin3()
         ]
     };
 
-    addBeforePlugin(config, matchConstructorName("anything"), [newPlugin]);
+    removePlugin(config, matchConstructorName("anything"));
 
-    expect(config.plugins?.length).toBe(2);
+    expect(config.plugins?.length).toBe(3);
 
     jest.spyOn(console, "log").mockRestore();
 });

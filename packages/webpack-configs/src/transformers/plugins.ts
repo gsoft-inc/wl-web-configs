@@ -1,6 +1,6 @@
 import type { Configuration } from "webpack";
 
-type WebpackPlugin = NonNullable<Configuration["plugins"]>[number];
+export type WebpackPlugin = NonNullable<Configuration["plugins"]>[number];
 
 export type PluginMatcher = (plugin: WebpackPlugin, index: number, array: WebpackPlugin[]) => boolean;
 
@@ -46,20 +46,6 @@ export function findPlugin(config: Configuration, matcher: PluginMatcher) {
     return matches[0];
 }
 
-export function prependPlugins(config: Configuration, newPlugins: WebpackPlugin[]) {
-    config.plugins = [
-        ...newPlugins,
-        ...(config.plugins ?? [])
-    ];
-}
-
-export function appendPlugins(config: Configuration, newPlugins: WebpackPlugin[]) {
-    config.plugins = [
-        ...(config.plugins ?? []),
-        ...newPlugins
-    ];
-}
-
 export function replacePlugin(config: Configuration, matcher: PluginMatcher, newPlugin: WebpackPlugin) {
     const match = findPlugin(config, matcher);
 
@@ -102,7 +88,7 @@ export function addAfterPlugin(config: Configuration, matcher: PluginMatcher, ne
     }
 }
 
-export function removePlugins(config: Configuration, matcher: PluginMatcher) {
+export function removePlugin(config: Configuration, matcher: PluginMatcher) {
     const countBefore = config.plugins?.length ?? 0;
 
     config.plugins = config.plugins?.filter((...args) => !matcher(...args));
@@ -114,6 +100,6 @@ export function removePlugins(config: Configuration, matcher: PluginMatcher) {
         // @ts-ignore
         const matcherInfo = matcher.info;
 
-        console.log(`[web-configs] Didn't remove any plugins because no match has been found. Matcher: "${JSON.stringify(matcherInfo)}"`);
+        console.log(`[web-configs] Didn't remove any plugin because no match has been found. Matcher: "${JSON.stringify(matcherInfo)}"`);
     }
 }
