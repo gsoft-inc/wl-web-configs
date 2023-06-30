@@ -1,15 +1,41 @@
-import type { Config } from "@swc/core";
-import { DefaultDevConfig, defineDevConfig } from "../src/dev.ts";
+import { defineDevConfig } from "../src/dev.ts";
 
-test("when no options are provided, return the default config", () => {
-    const result = defineDevConfig();
+const Browsers = [
+    "last 2 versions",
+    "> 0.2%",
+    "Firefox ESR",
+    "not dead"
+];
 
-    expect(result).toEqual(DefaultDevConfig);
+test("specified \"browsers\" are set as \"env.targets\"", () => {
+    const result = defineDevConfig({
+        browsers: Browsers
+    });
+
+    expect(result).toMatchSnapshot();
 });
 
-test("when \"fastRefresh\" is true, the fast refresh configuration is included", () => {
+test("when \"fastRefresh\" is true, fast refresh is enabled", () => {
     const result = defineDevConfig({
+        browsers: Browsers,
         fastRefresh: true
+    });
+
+    expect(result).toMatchSnapshot();
+});
+
+test("when \"fastRefresh\" is false, fast refresh is disabled", () => {
+    const result = defineDevConfig({
+        browsers: Browsers,
+        fastRefresh: false
+    });
+
+    expect(result).toMatchSnapshot();
+});
+
+test("when \"fastRefresh\" is not set, fast refresh is disabled", () => {
+    const result = defineDevConfig({
+        browsers: Browsers
     });
 
     expect(result).toMatchSnapshot();
@@ -17,40 +43,26 @@ test("when \"fastRefresh\" is true, the fast refresh configuration is included",
 
 test("when \"parser\" is \"ecmascript\", the configuration parser is ecmascript", () => {
     const result = defineDevConfig({
+        browsers: Browsers,
         parser: "ecmascript"
     });
 
     expect(result).toMatchSnapshot();
 });
 
-test("when a config override function is provided, the function argument is the config with the non-config override options applied", () => {
-    const expectedArgument = defineDevConfig({
-        fastRefresh: true
+test("when \"parser\" is \"typescript\", the configuration parser is typescript", () => {
+    const result = defineDevConfig({
+        browsers: Browsers,
+        parser: "typescript"
     });
 
-    const fct = jest.fn<Config, [Config]>(() => ({
-        jsc: {
-            parser: {
-                syntax: "ecmascript"
-            }
-        }
-    }));
-
-    defineDevConfig({
-        fastRefresh: true,
-        configOverride: fct
-    });
-
-    expect(fct).toHaveBeenCalledWith(expectedArgument);
+    expect(result).toMatchSnapshot();
 });
 
-test("providing options doesn't alter the default config object", () => {
-    expect(DefaultDevConfig.jsc.parser.syntax).toBe("typescript");
-
-    defineDevConfig({
-        parser: "ecmascript"
+test("when \"parser\" is not set, the configuration parser is typescript", () => {
+    const result = defineDevConfig({
+        browsers: Browsers
     });
 
-    expect(DefaultDevConfig.jsc.parser.syntax).toBe("typescript");
+    expect(result).toMatchSnapshot();
 });
-

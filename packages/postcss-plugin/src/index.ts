@@ -1,29 +1,41 @@
-import type { PluginCreator } from "postcss";
-import postcssPresetEnv, { type pluginOptions as postcssPresetEnvOptions } from "postcss-preset-env";
+import type { Config } from "postcss-load-config";
+import postcssPresetEnv, { type pluginOptions as PostcssPresetEnvOptions } from "postcss-preset-env";
 
-const PresetEnvOptions: postcssPresetEnvOptions = {
+export const DefaultPresetEnvOptions = {
     autoprefixer: {
         flexbox: "no-2009"
     },
     stage: 3
-};
+} satisfies PostcssPresetEnvOptions;
 
-const DefaultOptions = {
-    presetEnvOptions: PresetEnvOptions
-};
+export interface DefineConfigOptions {
+    browsers?: Required<PostcssPresetEnvOptions["browsers"]>;
+    presetEnvOptions?: Omit<PostcssPresetEnvOptions, "browsers">;
+}
 
-const plugin: PluginCreator<typeof DefaultOptions> = ({ presetEnvOptions } = DefaultOptions) => {
-    return {
-        postcssPlugin: "@workleap/postcss-plugin",
+export function defineConfig(options: DefineConfigOptions = {}) {
+    const {
+        browsers,
+        presetEnvOptions = DefaultPresetEnvOptions
+    } = options;
+
+    let _options: PostcssPresetEnvOptions = presetEnvOptions;
+
+    if (browsers) {
+        _options = {
+            ...presetEnvOptions,
+            browsers
+        };
+    }
+
+    const config: Config = {
         plugins: [
-            postcssPresetEnv(presetEnvOptions)
+            // Typings are wrong, it's callable.
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            postcssPresetEnv(_options)
         ]
     };
-};
 
-plugin.postcss = true;
-
-// Using TypeScript "export" keyword until PostCSS support ESM.
-// Otherwise we must deal with a weird CommonJS output from esbuild which is not worth it.
-// For more info, see: https://github.com/evanw/esbuild/issues/1079
-export = plugin;
+    return config;
+}

@@ -15,10 +15,12 @@
         "url": "git+https://github.com/workleap/wl-web-configs.git",
         "directory": "packages/postcss-plugin"
     },
+    "type": "module",
     "exports": {
         ".": {
-            "require": "./dist/index.js",
-            "types": "./dist/index.d.ts"
+            "import": "./dist/index.js",
+            "types": "./dist/index.d.ts",
+            "default": "./dist/index.js"
         }
     },
     "files": [
@@ -30,12 +32,14 @@
         "build": "tsup"
     },
     "dependencies": {
-        "postcss-preset-env": "*"
+        "postcss-load-config": "4.0.1",
+        "postcss-preset-env": "8.5.1"
     },
     "peerDependencies": {
         "postcss": ">=8.4.6"
     },
     "devDependencies": {
+        "@types/node": "20.3.2",
         "@workleap/eslint-plugin": "workspace:*",
         "@workleap/tsup-configs": "workspace:*",
         "@workleap/typescript-configs": "workspace:*",

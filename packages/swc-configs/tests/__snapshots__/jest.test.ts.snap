@@ -1,13 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`when "parser" is "ecmascript", the configuration parser is ecmascript 1`] = `
+exports[`ecmascript parser when "react" is false, the react transform configuration is not included 1`] = `
 {
   "jsc": {
     "externalHelpers": true,
     "parser": {
+      "jsx": false,
       "syntax": "ecmascript",
     },
     "target": "es2022",
+    "transform": undefined,
   },
   "module": {
     "ignoreDynamic": true,
@@ -17,7 +19,88 @@ exports[`when "parser" is "ecmascript", the configuration parser is ecmascript 1
 }
 `;
 
-exports[`when "react" is true, the react configuration is included 1`] = `
+exports[`ecmascript parser when "react" is not set, the react transform configuration is not included 1`] = `
+{
+  "jsc": {
+    "externalHelpers": true,
+    "parser": {
+      "jsx": false,
+      "syntax": "ecmascript",
+    },
+    "target": "es2022",
+    "transform": undefined,
+  },
+  "module": {
+    "ignoreDynamic": true,
+    "strict": true,
+    "type": "es6",
+  },
+}
+`;
+
+exports[`ecmascript parser when "react" is true, the react transform configuration is included 1`] = `
+{
+  "jsc": {
+    "externalHelpers": true,
+    "parser": {
+      "jsx": true,
+      "syntax": "ecmascript",
+    },
+    "target": "es2022",
+    "transform": {
+      "react": {
+        "runtime": "automatic",
+        "useBuiltins": true,
+      },
+    },
+  },
+  "module": {
+    "ignoreDynamic": true,
+    "strict": true,
+    "type": "es6",
+  },
+}
+`;
+
+exports[`typescript parser when "react" is false, the react transform configuration is not included 1`] = `
+{
+  "jsc": {
+    "externalHelpers": true,
+    "parser": {
+      "syntax": "typescript",
+      "tsx": false,
+    },
+    "target": "es2022",
+    "transform": undefined,
+  },
+  "module": {
+    "ignoreDynamic": true,
+    "strict": true,
+    "type": "es6",
+  },
+}
+`;
+
+exports[`typescript parser when "react" is not set, the react transform configuration is not included 1`] = `
+{
+  "jsc": {
+    "externalHelpers": true,
+    "parser": {
+      "syntax": "typescript",
+      "tsx": false,
+    },
+    "target": "es2022",
+    "transform": undefined,
+  },
+  "module": {
+    "ignoreDynamic": true,
+    "strict": true,
+    "type": "es6",
+  },
+}
+`;
+
+exports[`typescript parser when "react" is true, the react transform configuration is included 1`] = `
 {
   "jsc": {
     "externalHelpers": true,
@@ -32,6 +115,25 @@ exports[`when "react" is true, the react configuration is included 1`] = `
         "useBuiltins": true,
       },
     },
+  },
+  "module": {
+    "ignoreDynamic": true,
+    "strict": true,
+    "type": "es6",
+  },
+}
+`;
+
+exports[`when "parser" is not set, the configuration parser is typescript 1`] = `
+{
+  "jsc": {
+    "externalHelpers": true,
+    "parser": {
+      "syntax": "typescript",
+      "tsx": false,
+    },
+    "target": "es2022",
+    "transform": undefined,
   },
   "module": {
     "ignoreDynamic": true,

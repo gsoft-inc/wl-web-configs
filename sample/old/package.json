@@ -1,0 +1,48 @@
+{
+    "name": "@sample/old",
+    "author": "Workleap",
+    "version": "0.0.0",
+    "description": "Application to try the web configs.",
+    "private": true,
+    "license": "Apache-2.0",
+    "type": "module",
+    "scripts": {
+        "build-old": "webpack --config webpack.build.js",
+        "serve-build": "pnpm build && pnpm http-server dist -p 8080 -P http://localhost:8080? -c-1"
+    },
+    "devDependencies": {
+        "@pmmmwh/react-refresh-webpack-plugin": "0.5.10",
+        "@svgr/webpack": "8.0.1",
+        "@swc/core": "1.3.62",
+        "@swc/helpers": "0.5.1",
+        "@types/react": "18.2.9",
+        "@types/react-dom": "18.2.4",
+        "@types/webpack": "5.28.1",
+        "@workleap/browserslist-config": "workspace:*",
+        "@workleap/eslint-plugin": "workspace:*",
+        "@workleap/postcss-plugin": "workspace:*",
+        "@workleap/stylelint-config": "workspace:*",
+        "@workleap/swc-configs": "workspace:*",
+        "@workleap/typescript-configs": "workspace:*",
+        "browserslist": "4.21.7",
+        "css-loader": "6.8.1",
+        "html-webpack-plugin": "5.5.1",
+        "http-server": "14.1.1",
+        "identity-obj-proxy": "3.0.0",
+        "mini-css-extract-plugin": "2.7.6",
+        "postcss": "8.4.24",
+        "postcss-loader": "7.3.3",
+        "postcss-preset-env": "8.5.1",
+        "swc-loader": "0.2.3",
+        "terser-webpack-plugin": "5.3.9",
+        "typescript": "5.0.4",
+        "webpack": "5.86.0",
+        "webpack-cli": "5.1.4",
+        "webpack-dev-server": "4.15.0"
+    },
+    "dependencies": {
+        "react": "18.2.0",
+        "react-dom": "18.2.0",
+        "react-router-dom": "6.12.1"
+    }
+}

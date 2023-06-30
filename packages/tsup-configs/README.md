@@ -57,6 +57,7 @@ The provided options will be merged with the default options. Given that a provi
 
 ```ts
 // tsup.dev.ts
+
 import { defineDevConfig, DefaultDevOptions } from "@workleap/tsup-configs";
 
 export default defineDevConfig({
@@ -68,6 +69,7 @@ export default defineDevConfig({
 
 ```ts
 // tsup.build.ts
+
 import { defineBuildConfig } from "@workleap/tsup-configs";
 
 export default defineBuildConfig();
@@ -77,6 +79,7 @@ You can override any existing options:
 
 ```ts
 // tsup.build.ts
+
 import { defineBuildConfig } from "@workleap/tsup-configs";
 
 export default defineBuildConfig({
@@ -88,6 +91,7 @@ The provided options will be merged with the default options. Given that a provi
 
 ```ts
 // tsup.build.ts
+
 import { defineBuildConfig, DefaultBuildOptions } from "@workleap/tsup-configs";
 
 export default defineBuildConfig({
@@ -110,6 +114,7 @@ If you want to use additional tsup options or override the default ones, you can
 
 ```ts
 // tsup.config.ts
+
 import { defineBuildConfig } from "@workleap/tsup-configs";
 
 export default defineBuildConfig({

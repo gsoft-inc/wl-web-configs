@@ -39,6 +39,14 @@ Create a `.browserslistrc` file at the root of your project with the following c
 extends @workleap/browserslist-config
 ```
 
+## Maintainers notes
+
+### CJS support
+
+To support CJS projects, this package is build for ESM and CJS formats. To support CJS, `type: "module"` has been temporary removed from the `package.json` file.
+
+Once browserslist and all third parties using browserslist supports ESM, CJS support can be removed.
+
 ## License
 
 Copyright © 2023, GSoft inc. This code is licensed under the Apache License, Version 2.0. You may obtain a copy of this license at https://github.com/gsoft-inc/gsoft-license/blob/master/LICENSE.

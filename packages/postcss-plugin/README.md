@@ -38,11 +38,80 @@ This plugin wraps around the following PostCSS transformations:
 ### Configuration
 
 Create a `postcss.config.js` file at the root of your project with the following content:
+
 ```js
+// postcss.config.js
+
 /** @type {import("postcss").Postcss} */
-module.exports = {
+export default {
     plugins: ["@workleap/postcss-plugin"]
 };
+```
+
+You can override any existing options:
+
+```js
+// postcss.config.js
+
+import postcssWorkleapPlugin from "@workleap/postcss-plugin";
+
+/** @type {import("postcss").Postcss} */
+export default {
+    plugins: [
+        postcssWorkleapPlugin({
+            presetEnvOptions: {
+                stage: 4
+            }
+        })
+    ]
+};
+```
+
+The provided options will be merged with the default options. Given that a provided option match a default option, it will override the default option. If you prefer to extend the default option, you can import the `DefaultPresetEnvOptions` object and handle the merging code in your configuration file:
+
+```js
+// postcss.config.js
+
+import postcssWorkleapPlugin, { DefaultPresetEnvOptions } from "@workleap/postcss-plugin";
+
+/** @type {import("postcss").Postcss} */
+export default {
+    plugins: [
+        postcssWorkleapPlugin({
+            presetEnvOptions: {
+                ...DefaultPresetEnvOptions,
+                stage: 4
+            }
+        })
+    ]
+};
+```
+
+### defineConfig
+
+Alternativelty, the postcss config can be created from a `defineConfig` function:
+
+```js
+// postcss.config.js
+
+import { defineConfig, DefaultPresetEnvOptions } from from "@workleap/postcss-plugin";
+
+export default defineConfig({
+    presetEnvOptions: {
+        ...DefaultPresetEnvOptions,
+        stage: 4
+    }
+});
+```
+
+Or with custom options:
+
+```js
+// postcss.config.js
+
+import { defineConfig } from from "@workleap/postcss-plugin";
+
+export default defineConfig();
 ```
 
 ### Webpack integration
@@ -50,6 +119,8 @@ module.exports = {
 To integrate with Webpack, add the [postcss-loader](https://webpack.js.org/loaders/postcss-loader/) to the development and build configuration file:
 
 ```js
+// webpack.config.js
+
 {
     module: {
         rules: [
