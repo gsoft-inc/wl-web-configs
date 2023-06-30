@@ -3,11 +3,11 @@ import type { Config } from "@swc/core";
 export interface DefineBuildConfigOptions {
     // Any is also used for SWC "targets" type.
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    browsers?: any;
+    browsers: any;
     parser?: "ecmascript" | "typescript";
 }
 
-export function defineBuildConfig(options: DefineBuildConfigOptions = {}) {
+export function defineBuildConfig(options: DefineBuildConfigOptions) {
     const {
         browsers,
         parser = "typescript"

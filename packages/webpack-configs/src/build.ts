@@ -49,11 +49,11 @@ export interface DefineBuildConfigOptions {
     minify?: boolean;
     cssModules?: boolean;
     postcssConfigFilePath?: string;
-    swcConfig?: SwcConfig;
+    swcConfig: SwcConfig;
     transformers?: WebpackConfigTransformer[];
 }
 
-export async function defineBuildConfig(options: DefineBuildConfigOptions = {}) {
+export async function defineBuildConfig(options: DefineBuildConfigOptions) {
     const {
         entry = "./src/index.tsx",
         outputPath = path.resolve("dist"),

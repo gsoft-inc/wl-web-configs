@@ -1,5 +1,38 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`provided "browsers" are set as "env.targets" 1`] = `
+{
+  "env": {
+    "targets": [
+      "last 2 versions",
+      "> 0.2%",
+      "Firefox ESR",
+      "not dead",
+    ],
+  },
+  "jsc": {
+    "externalHelpers": true,
+    "parser": {
+      "syntax": "typescript",
+      "tsx": true,
+    },
+    "target": "es2022",
+    "transform": {
+      "react": {
+        "refresh": false,
+        "runtime": "automatic",
+        "useBuiltins": true,
+      },
+    },
+  },
+  "module": {
+    "ignoreDynamic": true,
+    "strict": true,
+    "type": "es6",
+  },
+}
+`;
+
 exports[`specified "browsers" are set as "env.targets" 1`] = `
 {
   "env": {

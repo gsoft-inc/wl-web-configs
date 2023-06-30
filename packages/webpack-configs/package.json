@@ -34,7 +34,6 @@
         "css-loader": "6.8.1",
         "html-webpack-plugin": "5.5.1",
         "mini-css-extract-plugin": "2.7.6",
-        "postcss-load-config": "4.0.1",
         "postcss-loader": "7.3.3",
         "style-loader": "3.3.3",
         "swc-loader": "0.2.3",

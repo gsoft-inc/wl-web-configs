@@ -42,15 +42,15 @@ export interface DefineDevConfigOptions {
     cacheDirectory?: string;
     moduleRules?: NonNullable<WebpackConfig["module"]>["rules"];
     plugins?: WebpackConfig["plugins"];
-    htmlWebpackPlugin?: HtmlWebpackPlugin.Options;
+    htmlWebpackPluginOptions?: HtmlWebpackPlugin.Options;
     fastRefresh?: boolean | ReactRefreshPluginOptions;
     cssModules?: boolean;
     postcssConfigFilePath?: string;
-    swcConfig?: SwcConfig;
+    swcConfig: SwcConfig;
     transformers?: WebpackConfigTransformer[];
 }
 
-function preflight(options: DefineDevConfigOptions = {}) {
+function preflight(options: DefineDevConfigOptions) {
     if (!require.resolve("webpack-dev-server")) {
         throw new Error("To use the \"dev\" config, install https://www.npmjs.com/package/webpack-dev-server as a \"devDependency\".");
     }
@@ -62,7 +62,7 @@ function preflight(options: DefineDevConfigOptions = {}) {
     }
 }
 
-function tryEnableSwcReactRefresh(config?: SwcConfig) {
+function tryEnableSwcReactRefresh(config: SwcConfig) {
     if (config?.jsc?.transform?.react) {
         config.jsc.transform.react.refresh = true;
     }
@@ -70,7 +70,7 @@ function tryEnableSwcReactRefresh(config?: SwcConfig) {
     return config;
 }
 
-export function defineDevConfig(options: DefineDevConfigOptions = {}) {
+export function defineDevConfig(options: DefineDevConfigOptions) {
     preflight(options);
 
     const {
@@ -82,7 +82,7 @@ export function defineDevConfig(options: DefineDevConfigOptions = {}) {
         cacheDirectory = path.resolve("node_modules/.cache/webpack"),
         moduleRules = [],
         plugins = [],
-        htmlWebpackPlugin = defineDevHtmlWebpackPluginConfig(),
+        htmlWebpackPluginOptions = defineDevHtmlWebpackPluginConfig(),
         fastRefresh = false,
         cssModules = false,
         postcssConfigFilePath,
@@ -180,7 +180,7 @@ export function defineDevConfig(options: DefineDevConfigOptions = {}) {
             extensions: [".js", ".jsx", ".ts", ".tsx", ".css"]
         },
         plugins: [
-            new HtmlWebpackPlugin(htmlWebpackPlugin),
+            new HtmlWebpackPlugin(htmlWebpackPluginOptions),
             fastRefresh && new ReactRefreshWebpackPlugin(isObject(fastRefresh) ? fastRefresh : defineFastRefreshPluginConfig()),
             ...plugins
         ].filter(Boolean) as WebpackConfig["plugins"]

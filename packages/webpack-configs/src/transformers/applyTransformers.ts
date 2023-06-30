@@ -1,6 +1,7 @@
 import type { Configuration } from "webpack";
 
 // TODO: Might want to add stuff like the environment variables?
+// TODO: Add MSW to the sample to find additional use cases for environment variables?
 export interface WebpackConfigTransformerContext {
     env: "dev" | "build";
 }

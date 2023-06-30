@@ -3,12 +3,12 @@ import type { Config } from "@swc/core";
 export interface DefineDevConfigOptions {
     // Any is also used for SWC "targets" type.
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    browsers?: any;
+    browsers: any;
     fastRefresh?: boolean;
     parser?: "ecmascript" | "typescript";
 }
 
-export function defineDevConfig(options: DefineDevConfigOptions = {}) {
+export function defineDevConfig(options: DefineDevConfigOptions) {
     const {
         browsers,
         fastRefresh = false,

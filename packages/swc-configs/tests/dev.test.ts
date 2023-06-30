@@ -7,7 +7,7 @@ const Browsers = [
     "not dead"
 ];
 
-test("specified \"browsers\" are set as \"env.targets\"", () => {
+test("provided \"browsers\" are set as \"env.targets\"", () => {
     const result = defineDevConfig({
         browsers: Browsers
     });

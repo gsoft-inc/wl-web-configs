@@ -1,16 +1,20 @@
+import path from "path";
 import type { Configuration, RuleSetRule, RuleSetUseItem } from "webpack";
 
 export type ModuleRuleMatcher = (moduleRule: RuleSetRule | RuleSetUseItem, index: number, array: RuleSetRule[] | RuleSetUseItem[]) => boolean;
 
+function isNameMatchingLoader(loader: string, name: string) {
+    return loader === name || loader.indexOf(`${path.sep}${name}${path.sep}`) !== -1 || loader.indexOf(`@${name}${path.sep}`) !== -1;
+}
+
 export function matchLoaderName(name: string): ModuleRuleMatcher {
     const matcher = (moduleRule: RuleSetRule | RuleSetUseItem) => {
         if (typeof moduleRule === "string") {
-            return moduleRule.includes(name);
+            return isNameMatchingLoader(moduleRule, name);
+            // return moduleRule.includes(name);
         } else {
-            if ("loader" in moduleRule) {
-                if (typeof moduleRule.loader === "string") {
-                    return moduleRule.loader.includes(name);
-                }
+            if ("loader" in moduleRule && moduleRule.loader) {
+                return isNameMatchingLoader(moduleRule.loader, name);
             }
         }
 
@@ -131,7 +135,7 @@ export function findModuleRule(config: Configuration, matcher: ModuleRuleMatcher
         // @ts-ignore
         const matcherInfo = matcher.info;
 
-        throw new Error(`[webpack-configs] Found more than 1 matching module rule. Matcher: "${JSON.stringify(matcherInfo)}"`);
+        throw new Error(`[webpack-configs] Found more than 1 matching module rule.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"\n[webpack-configs] Matches: "${JSON.stringify(matches.map(x => x.moduleRule))}"`);
     }
 
     return matches[0];
@@ -161,7 +165,7 @@ export function addBeforeModuleRule(config: Configuration, matcher: ModuleRuleMa
         // @ts-ignore
         const matcherInfo = matcher.info;
 
-        console.log(`[web-configs] Couldn't add the new module rules because no match has been found. Matcher: "${JSON.stringify(matcherInfo)}"`);
+        console.log(`[web-configs] Couldn't add the new module rules because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
     }
 }
 
@@ -175,7 +179,7 @@ export function addAfterModuleRule(config: Configuration, matcher: ModuleRuleMat
         // @ts-ignore
         const matcherInfo = matcher.info;
 
-        console.log(`[web-configs] Couldn't add the new module rules because no match has been found. Matcher: "${JSON.stringify(matcherInfo)}"`);
+        console.log(`[web-configs] Couldn't add the new module rules because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
     }
 }
 
@@ -189,7 +193,7 @@ export function replaceModuleRule(config: Configuration, matcher: ModuleRuleMatc
         // @ts-ignore
         const matcherInfo = matcher.info;
 
-        console.log(`[web-configs] Couldn't replace the module rule because no match has been found. Matcher: "${JSON.stringify(matcherInfo)}"`);
+        console.log(`[web-configs] Couldn't replace the module rule because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
     }
 }
 
@@ -219,6 +223,6 @@ export function removeModuleRules(config: Configuration, matcher: ModuleRuleMatc
         // @ts-ignore
         const matcherInfo = matcher.info;
 
-        console.log(`[web-configs] Didn't remove any module rules because no match has been found. Matcher: "${matcherInfo}"`);
+        console.log(`[web-configs] Didn't remove any module rules because no match has been found.\n[webpack-configs] Matcher: "${matcherInfo}"`);
     }
 }
