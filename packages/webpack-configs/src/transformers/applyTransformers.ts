@@ -9,9 +9,5 @@ export interface WebpackConfigTransformerContext {
 export type WebpackConfigTransformer = (config: Configuration, context: WebpackConfigTransformerContext) => Configuration;
 
 export function applyTransformers(config: Configuration, transformers: WebpackConfigTransformer[], context: WebpackConfigTransformerContext) {
-    if (!transformers) {
-        return config;
-    }
-
     return transformers.reduce((acc, transformer) => transformer(acc, context), config);
 }

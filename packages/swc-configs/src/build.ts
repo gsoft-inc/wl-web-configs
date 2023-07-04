@@ -1,16 +1,19 @@
 import type { Config } from "@swc/core";
+import { applyTransformers, type SwcConfigTransformer } from "./applyTransformers";
 
 export interface DefineBuildConfigOptions {
     // Any is also used for SWC "targets" type.
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     browsers: any;
     parser?: "ecmascript" | "typescript";
+    transformers?: SwcConfigTransformer[];
 }
 
 export function defineBuildConfig(options: DefineBuildConfigOptions) {
     const {
         browsers,
-        parser = "typescript"
+        parser = "typescript",
+        transformers = []
     } = options;
 
     const config: Config = {
@@ -40,7 +43,7 @@ export function defineBuildConfig(options: DefineBuildConfigOptions) {
                 }
             },
             // Import shims from an external module rather than inlining them in bundle files to greatly reduce the bundles size.
-            // Requires to add "@swc/helpers" as a project dependency
+            // Requires to add "@swc/helpers" as a project dependency.
             externalHelpers: true
         },
         module: {
@@ -56,5 +59,9 @@ export function defineBuildConfig(options: DefineBuildConfigOptions) {
         }
     };
 
-    return config;
+    const transformedConfig = applyTransformers(config, transformers, {
+        env: "build"
+    });
+
+    return transformedConfig;
 }

@@ -1,14 +1,17 @@
 import type { Config } from "@swc/core";
+import { applyTransformers, type SwcConfigTransformer } from "./applyTransformers";
 
 export interface DefineJestConfigOptions {
     react?: boolean;
     parser?: "ecmascript" | "typescript";
+    transformers?: SwcConfigTransformer[];
 }
 
 export function defineJestConfig(options: DefineJestConfigOptions = {}) {
     const {
         react = false,
-        parser = "typescript"
+        parser = "typescript",
+        transformers = []
     } = options;
 
     const config: Config = {
@@ -33,10 +36,7 @@ export function defineJestConfig(options: DefineJestConfigOptions = {}) {
                         useBuiltins: true
                     }
                 }
-                : undefined,
-            // Import shims from an external module rather than inlining them in bundle files to greatly reduce the bundles size.
-            // Requires to add "@swc/helpers" as a project dependency
-            externalHelpers: true
+                : undefined
         },
         module: {
             // The output module resolution system that the code will be compiled for.
@@ -48,5 +48,9 @@ export function defineJestConfig(options: DefineJestConfigOptions = {}) {
         }
     };
 
-    return config;
+    const transformedConfig = applyTransformers(config, transformers, {
+        env: "dev"
+    });
+
+    return transformedConfig;
 }

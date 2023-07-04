@@ -1,18 +1,32 @@
 import type { Options } from "tsup";
-import { defineConfig, type DefineConfigOptions } from "./defineConfig.ts";
+import { applyTransformers, type TsupConfigTransformer } from "./applyTransformers";
 
-export const DefaultBuildOptions = {
-    clean: true,
-    dts: true,
-    treeshake: true,
-    entry: ["./src"],
-    outDir: "./dist",
-    format: "esm",
-    target: "esnext",
-    platform: "browser"
-} satisfies Options;
+export interface DefineBuildConfigOptions extends Options {
+    transformers?: TsupConfigTransformer[];
+}
 
-export function defineBuildConfig(options?: DefineConfigOptions) {
-    return defineConfig(DefaultBuildOptions, options);
+export function defineBuildConfig(options: DefineBuildConfigOptions = {}) {
+    const {
+        transformers = [],
+        ...rest
+    } = options;
+
+    const config: Options = {
+        clean: true,
+        dts: true,
+        treeshake: true,
+        entry: ["./src"],
+        outDir: "./dist",
+        format: "esm",
+        target: "esnext",
+        platform: "browser",
+        ...rest
+    };
+
+    const transformedConfig = applyTransformers(config, transformers, {
+        env: "build"
+    });
+
+    return transformedConfig;
 }
 
