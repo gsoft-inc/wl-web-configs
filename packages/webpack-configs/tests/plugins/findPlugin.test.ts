@@ -100,7 +100,7 @@ test("when a plugin is undefined, do not throw", () => {
     const config: Configuration = {
         plugins: [
             new Plugin1(),
-            // Since Webpack configs are usually untyped, it's better to test this use case.
+            // Since Webpack configs are usually untyped, it's preferable to test this.
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             undefined,

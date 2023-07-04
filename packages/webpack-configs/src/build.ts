@@ -12,7 +12,7 @@ import { applyTransformers, type WebpackConfigTransformer } from "./transformers
 // is available
 const require = createRequire(import.meta.url);
 
-type MiniCssExtractPluginOptions = NonNullable<ConstructorParameters<typeof MiniCssExtractPlugin>[0]>;
+type MiniCssExtractPluginOptions = NonNullable<ConstructorParameters<typeof MiniCssExtractPlugin>[number]>;
 
 export function defineBuildHtmlWebpackPluginConfig(options: HtmlWebpackPlugin.Options = {}) {
     const {
@@ -25,6 +25,7 @@ export function defineBuildHtmlWebpackPluginConfig(options: HtmlWebpackPlugin.Op
         template
     } as HtmlWebpackPlugin.Options;
 }
+
 
 export function defineMiniCssExtractPluginConfig(options: MiniCssExtractPluginOptions = {}) {
     const {
@@ -53,7 +54,7 @@ export interface DefineBuildConfigOptions {
     transformers?: WebpackConfigTransformer[];
 }
 
-export async function defineBuildConfig(options: DefineBuildConfigOptions) {
+export function defineBuildConfig(options: DefineBuildConfigOptions) {
     const {
         entry = "./src/index.tsx",
         outputPath = path.resolve("dist"),

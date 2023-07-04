@@ -211,12 +211,12 @@ export function removeModuleRules(config: Configuration, matcher: ModuleRuleMatc
     if (matches.length > 0) {
         // Must keep the initial parent arrays' length to calculate the adjustment
         // once the first match has been deleted.
-        const initialParentLengths = new WeakMap<RuleSetRule[] | RuleSetUseItem[], number>(matches.map(x => [x.parent, x.parent.length]));
+        const initialParentLengths = new Map<RuleSetRule[] | RuleSetUseItem[], number>(matches.map(x => [x.parent, x.parent.length]));
 
         matches.forEach(x => {
-            const adjustment = initialParentLengths.get(x.parent)! - x.parent.length;
+            const positionAdjustment = initialParentLengths.get(x.parent)! - x.parent.length;
 
-            x.parent.splice(x.index - adjustment, 1);
+            x.parent.splice(x.index - positionAdjustment, 1);
         });
     } else {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment

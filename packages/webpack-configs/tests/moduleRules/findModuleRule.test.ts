@@ -351,7 +351,7 @@ test("when a module rule is undefined, do not throw", () => {
     const config: Configuration = {
         module: {
             rules: [
-                // Since Webpack configs are usually untyped, it's better to test this use case.
+                // Since Webpack configs are usually untyped, it's preferable to test this.
                 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore
                 undefined,
@@ -376,7 +376,7 @@ test("when an undefined module rule is nested in a \"oneOf\" prop, do not throw"
             rules: [
                 {
                     oneOf: [
-                        // Since Webpack configs are usually untyped, it's better to test this use case.
+                        // Since Webpack configs are usually untyped, it's preferable to test this.
                         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                         // @ts-ignore
                         undefined
