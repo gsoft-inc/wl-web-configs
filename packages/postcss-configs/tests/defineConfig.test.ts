@@ -1,11 +1,10 @@
-import type { Config } from "postcss-load-config";
 import { defineConfig, type PostcssConfigTransformer } from "../src/index.ts";
 
 // NOTE: Since the provided configs are transformed into a PostcssEnv plugin instance, we cannot test the resulting config options.
 // Therefore, only the transformers are tested.
 
 test("when a transformer is provided, the transformer is applied on the tsup config", () => {
-    const weirdPluginsTransformer: PostcssConfigTransformer = (config: Config) => {
+    const weirdPluginsTransformer: PostcssConfigTransformer = config => {
         config.plugins = [false, false, false];
 
         return config;
@@ -22,13 +21,13 @@ test("when a transformer is provided, the transformer is applied on the tsup con
 });
 
 test("when multiple transformers are provided, all the transformers are applied on the webpack config", () => {
-    const weirdPluginsTransformer: PostcssConfigTransformer = (config: Config) => {
+    const weirdPluginsTransformer: PostcssConfigTransformer = config => {
         config.plugins = [false, false, false];
 
         return config;
     };
 
-    const toTransformer: PostcssConfigTransformer = (config: Config) => {
+    const toTransformer: PostcssConfigTransformer = config => {
         config.to = "a-custom-to";
 
         return config;

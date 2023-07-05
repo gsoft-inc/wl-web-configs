@@ -14,7 +14,7 @@ const require = createRequire(import.meta.url);
 
 type MiniCssExtractPluginOptions = NonNullable<ConstructorParameters<typeof MiniCssExtractPlugin>[number]>;
 
-export function defineBuildHtmlWebpackPluginConfig(options: HtmlWebpackPlugin.Options = {}) {
+export function defineBuildHtmlWebpackPluginConfig(options: HtmlWebpackPlugin.Options = {}): HtmlWebpackPlugin.Options {
     const {
         template = path.resolve("./public/index.html"),
         ...rest
@@ -23,11 +23,11 @@ export function defineBuildHtmlWebpackPluginConfig(options: HtmlWebpackPlugin.Op
     return {
         ...rest,
         template
-    } as HtmlWebpackPlugin.Options;
+    };
 }
 
 
-export function defineMiniCssExtractPluginConfig(options: MiniCssExtractPluginOptions = {}) {
+export function defineMiniCssExtractPluginConfig(options: MiniCssExtractPluginOptions = {}): MiniCssExtractPluginOptions {
     const {
         filename = "[name].[fullhash].css",
         ...rest
@@ -36,7 +36,7 @@ export function defineMiniCssExtractPluginConfig(options: MiniCssExtractPluginOp
     return {
         ...rest,
         filename
-    } as MiniCssExtractPluginOptions;
+    };
 }
 
 export interface DefineBuildConfigOptions {

@@ -3,15 +3,21 @@ import type { Configuration, RuleSetRule, RuleSetUseItem } from "webpack";
 
 export type ModuleRuleMatcher = (moduleRule: RuleSetRule | RuleSetUseItem, index: number, array: RuleSetRule[] | RuleSetUseItem[]) => boolean;
 
+export type WithModuleRuleMatcherInfo = {
+    info: {
+        type: string;
+        value: string;
+    };
+} & ModuleRuleMatcher;
+
 function isNameMatchingLoader(loader: string, name: string) {
     return loader === name || loader.indexOf(`${path.sep}${name}${path.sep}`) !== -1 || loader.indexOf(`@${name}${path.sep}`) !== -1;
 }
 
 export function matchLoaderName(name: string): ModuleRuleMatcher {
-    const matcher = (moduleRule: RuleSetRule | RuleSetUseItem) => {
+    const matcher: WithModuleRuleMatcherInfo = moduleRule => {
         if (typeof moduleRule === "string") {
             return isNameMatchingLoader(moduleRule, name);
-            // return moduleRule.includes(name);
         } else {
             if ("loader" in moduleRule && moduleRule.loader) {
                 return isNameMatchingLoader(moduleRule.loader, name);
@@ -43,7 +49,7 @@ export type AssetModuleType =
   | "asset/inline";
 
 export function matchAssetModuleType(type: AssetModuleType): ModuleRuleMatcher {
-    const matcher = (moduleRule: RuleSetRule | RuleSetUseItem) => {
+    const matcher: WithModuleRuleMatcherInfo = moduleRule => {
         if (typeof moduleRule !== "string" && "type" in moduleRule) {
             return moduleRule.type === type;
         }
@@ -61,10 +67,10 @@ export function matchAssetModuleType(type: AssetModuleType): ModuleRuleMatcher {
 }
 
 export function matchTest(test: string | RegExp): ModuleRuleMatcher {
-    const matcher = (moduleRule: RuleSetRule | RuleSetUseItem) => {
+    const matcher: WithModuleRuleMatcherInfo = moduleRule => {
         if (typeof moduleRule !== "string" && "test" in moduleRule) {
             if (typeof moduleRule.test === "object" && typeof test === "object") {
-                // Assuming it's regular expressions
+                // Assuming it's regular expressions.
                 return moduleRule.test.toString() === test.toString();
             }
 
@@ -131,9 +137,7 @@ export function findModuleRule(config: Configuration, matcher: ModuleRuleMatcher
     findModuleRulesRecursively(moduleRules as RuleSetRule[], matcher, moduleRules as RuleSetRule[], matches);
 
     if (matches.length > 1) {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        const matcherInfo = matcher.info;
+        const matcherInfo = (matcher as WithModuleRuleMatcherInfo).info;
 
         throw new Error(`[webpack-configs] Found more than 1 matching module rule.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"\n[webpack-configs] Matches: "${JSON.stringify(matches.map(x => x.moduleRule))}"`);
     }
@@ -161,9 +165,7 @@ export function addBeforeModuleRule(config: Configuration, matcher: ModuleRuleMa
     if (match) {
         match.parent.splice(match.index, 0, ...newModuleRules);
     } else {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        const matcherInfo = matcher.info;
+        const matcherInfo = (matcher as WithModuleRuleMatcherInfo).info;
 
         console.log(`[web-configs] Couldn't add the new module rules because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
     }
@@ -175,9 +177,7 @@ export function addAfterModuleRule(config: Configuration, matcher: ModuleRuleMat
     if (match) {
         match.parent.splice(match.index + 1, 0, ...newModuleRules);
     } else {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        const matcherInfo = matcher.info;
+        const matcherInfo = (matcher as WithModuleRuleMatcherInfo).info;
 
         console.log(`[web-configs] Couldn't add the new module rules because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
     }
@@ -189,9 +189,7 @@ export function replaceModuleRule(config: Configuration, matcher: ModuleRuleMatc
     if (match) {
         match.parent[match.index] = newModuleRule;
     } else {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        const matcherInfo = matcher.info;
+        const matcherInfo = (matcher as WithModuleRuleMatcherInfo).info;
 
         console.log(`[web-configs] Couldn't replace the module rule because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
     }
@@ -219,9 +217,7 @@ export function removeModuleRules(config: Configuration, matcher: ModuleRuleMatc
             x.parent.splice(x.index - positionAdjustment, 1);
         });
     } else {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        const matcherInfo = matcher.info;
+        const matcherInfo = (matcher as WithModuleRuleMatcherInfo).info;
 
         console.log(`[web-configs] Didn't remove any module rules because no match has been found.\n[webpack-configs] Matcher: "${matcherInfo}"`);
     }

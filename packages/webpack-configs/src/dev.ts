@@ -17,7 +17,7 @@ import "webpack-dev-server";
 // is available
 const require = createRequire(import.meta.url);
 
-export function defineDevHtmlWebpackPluginConfig(options: HtmlWebpackPlugin.Options = {}) {
+export function defineDevHtmlWebpackPluginConfig(options: HtmlWebpackPlugin.Options = {}): HtmlWebpackPlugin.Options {
     const {
         template = path.resolve("./public/index.html"),
         ...rest
@@ -26,7 +26,7 @@ export function defineDevHtmlWebpackPluginConfig(options: HtmlWebpackPlugin.Opti
     return {
         ...rest,
         template
-    } as HtmlWebpackPlugin.Options;
+    };
 }
 
 export function defineFastRefreshPluginConfig(options: ReactRefreshPluginOptions = {}) {
