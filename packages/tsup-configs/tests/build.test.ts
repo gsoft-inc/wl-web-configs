@@ -1,0 +1,76 @@
+import type { Options } from "tsup";
+import type { TsupConfigTransformer } from "../src/applyTransformers.ts";
+import { defineBuildConfig } from "../src/build.ts";
+
+test("when options are provided, options are merged with the default options", () => {
+    const result = defineBuildConfig({
+        env: {
+            "foo": "bar"
+        }
+    });
+
+    expect(result.env!["foo"]).toBe("bar");
+    expect(result.dts).toBeTruthy();
+});
+
+test("when a provided option match a default option, override the default option", () => {
+    const result = defineBuildConfig({
+        platform: "node"
+    });
+
+    expect(result.platform).toBe("node");
+});
+
+test("when a format array option is provided, do not merge the provided array with the default format", () => {
+    const result = defineBuildConfig({
+        format: ["cjs"]
+    });
+
+    expect(result.format?.length).toBe(1);
+    expect(result.format![0]).toBe("cjs");
+});
+
+test("when a transformer is provided, the transformer is applied on the tsup config", () => {
+    const platformTransformer: TsupConfigTransformer = (config: Options) => {
+        config.platform = "node";
+
+        return config;
+    };
+
+    const result = defineBuildConfig({
+        transformers: [platformTransformer]
+    });
+
+    expect(result.platform).toBe("node");
+});
+
+test("when multiple transformers are provided, all the transformers are applied on the webpack config", () => {
+    const platformTransformer: TsupConfigTransformer = (config: Options) => {
+        config.platform = "node";
+
+        return config;
+    };
+
+    const nameTransformer: TsupConfigTransformer = (config: Options) => {
+        config.name = "a-custom-name";
+
+        return config;
+    };
+
+    const result = defineBuildConfig({
+        transformers: [platformTransformer, nameTransformer]
+    });
+
+    expect(result.platform).toBe("node");
+    expect(result.name).toBe("a-custom-name");
+});
+
+test("transformers context environment is \"dev\"", () => {
+    const mockTransformer = jest.fn();
+
+    defineBuildConfig({
+        transformers: [mockTransformer]
+    });
+
+    expect(mockTransformer).toHaveBeenCalledWith(expect.anything(), { env: "build" });
+});

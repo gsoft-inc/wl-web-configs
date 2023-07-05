@@ -1,56 +1,115 @@
-import type { Config } from "@swc/core";
-import { DefaultDevConfig, defineDevConfig } from "../src/dev.ts";
+import type { Config, EsParserConfig, TsParserConfig } from "@swc/core";
+import type { SwcConfigTransformer } from "../src/applyTransformers.ts";
+import { defineDevConfig } from "../src/dev.ts";
 
-test("when no options are provided, return the default config", () => {
-    const result = defineDevConfig();
+const Browsers = ["last 2 versions"];
 
-    expect(result).toEqual(DefaultDevConfig);
+test("provided browsers are set as \"env.targets\"", () => {
+    const result = defineDevConfig({
+        browsers: Browsers
+    });
+
+    expect(result.env?.targets).toBe(Browsers);
 });
 
-test("when \"fastRefresh\" is true, the fast refresh configuration is included", () => {
+test("when fastRefresh is true, react refresh is true", () => {
     const result = defineDevConfig({
+        browsers: Browsers,
         fastRefresh: true
     });
 
-    expect(result).toMatchSnapshot();
+    expect(result.jsc?.transform?.react?.refresh).toBeTruthy();
 });
 
-test("when \"parser\" is \"ecmascript\", the configuration parser is ecmascript", () => {
+test("when fastRefresh is false, react refresh is false", () => {
     const result = defineDevConfig({
+        browsers: Browsers,
+        fastRefresh: false
+    });
+
+    expect(result.jsc?.transform?.react?.refresh).toBeFalsy();
+});
+
+test("when parser is \"ecmascript\", the configuration parser is ecmascript", () => {
+    const result = defineDevConfig({
+        browsers: Browsers,
         parser: "ecmascript"
     });
 
-    expect(result).toMatchSnapshot();
+    expect(result.jsc?.parser?.syntax).toBe("ecmascript");
 });
 
-test("when a config override function is provided, the function argument is the config with the non-config override options applied", () => {
-    const expectedArgument = defineDevConfig({
-        fastRefresh: true
-    });
-
-    const fct = jest.fn<Config, [Config]>(() => ({
-        jsc: {
-            parser: {
-                syntax: "ecmascript"
-            }
-        }
-    }));
-
-    defineDevConfig({
-        fastRefresh: true,
-        configOverride: fct
-    });
-
-    expect(fct).toHaveBeenCalledWith(expectedArgument);
-});
-
-test("providing options doesn't alter the default config object", () => {
-    expect(DefaultDevConfig.jsc.parser.syntax).toBe("typescript");
-
-    defineDevConfig({
+test("when parser is \"ecmascript\", jsx parsing is enabled", () => {
+    const result = defineDevConfig({
+        browsers: Browsers,
         parser: "ecmascript"
     });
 
-    expect(DefaultDevConfig.jsc.parser.syntax).toBe("typescript");
+    expect((result.jsc?.parser as EsParserConfig).jsx).toBeTruthy();
 });
 
+test("when parser is \"typescript\", the configuration parser is typescript", () => {
+    const result = defineDevConfig({
+        browsers: Browsers,
+        parser: "typescript"
+    });
+
+    expect(result.jsc?.parser?.syntax).toBe("typescript");
+});
+
+test("when parser is \"typescript\", tsx parsing is enabled", () => {
+    const result = defineDevConfig({
+        browsers: Browsers,
+        parser: "typescript"
+    });
+
+    expect((result.jsc?.parser as TsParserConfig).tsx).toBeTruthy();
+});
+
+test("when a transformer is provided, the transformer is applied on the swc config", () => {
+    const minifyTransformer: SwcConfigTransformer = (config: Config) => {
+        config.minify = true;
+
+        return config;
+    };
+
+    const result = defineDevConfig({
+        browsers: Browsers,
+        transformers: [minifyTransformer]
+    });
+
+    expect(result.minify).toBeTruthy();
+});
+
+test("when multiple transformers are provided, all the transformers are applied on the swc config", () => {
+    const minifyTransformer: SwcConfigTransformer = (config: Config) => {
+        config.minify = true;
+
+        return config;
+    };
+
+    const sourceMapsTransformer: SwcConfigTransformer = (config: Config) => {
+        config.sourceMaps = true;
+
+        return config;
+    };
+
+    const result = defineDevConfig({
+        browsers: Browsers,
+        transformers: [minifyTransformer, sourceMapsTransformer]
+    });
+
+    expect(result.minify).toBeTruthy();
+    expect(result.sourceMaps).toBeTruthy();
+});
+
+test("transformers context environment is \"dev\"", () => {
+    const mockTransformer = jest.fn();
+
+    defineDevConfig({
+        browsers: Browsers,
+        transformers: [mockTransformer]
+    });
+
+    expect(mockTransformer).toHaveBeenCalledWith(expect.anything(), { env: "dev" });
+});

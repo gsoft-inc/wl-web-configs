@@ -1,62 +1,56 @@
-import type { Config, EsParserConfig } from "@swc/core";
-import { cloneObjectExceptFunctions } from "./cloneObjectExceptFunctions.ts";
-import { resolveOverrides, type ConfigOverride } from "./resolveOverrides.ts";
-
-export const DefaultJestConfig = {
-    jsc: {
-        parser: {
-            syntax: "typescript"
-        },
-        // The output environment that the code will be compiled for.
-        target: "es2022",
-        // Import shims from an external module rather than inlining them in bundle files to greatly reduce the bundles size.
-        // Requires to add "@swc/helpers" as a project dependency
-        externalHelpers: true
-    },
-    module: {
-        // The output module resolution system that the code will be compiled for.
-        type: "es6",
-        // Prevent SWC from exporting the `__esModule` property.
-        strict: true,
-        // Preserve dynamic imports.
-        ignoreDynamic: true
-    }
-} satisfies Config;
+import type { Config } from "@swc/core";
+import { applyTransformers, type SwcConfigTransformer } from "./applyTransformers";
 
 export interface DefineJestConfigOptions {
     react?: boolean;
-    parser?: "ecmascript";
-    configOverride?: ConfigOverride;
+    parser?: "ecmascript" | "typescript";
+    transformers?: SwcConfigTransformer[];
 }
 
-export function defineJestConfig({ react, parser, configOverride }: DefineJestConfigOptions = {}) {
-    const config = cloneObjectExceptFunctions(DefaultJestConfig) as Config;
+export function defineJestConfig(options: DefineJestConfigOptions = {}) {
+    const {
+        react = false,
+        parser = "typescript",
+        transformers = []
+    } = options;
 
-    if (react) {
-        config.jsc!.transform = {
-            react: {
-                // Use "react/jsx-runtime".
-                runtime: "automatic",
-                // Use the native "Object.assign()" instead of "_extends".
-                useBuiltins: true
-            }
-        };
-    }
-
-    if (parser === "ecmascript") {
-        const parserConfig: EsParserConfig = { syntax: "ecmascript" };
-
-        if (react) {
-            parserConfig.jsx = true;
+    const config: Config = {
+        jsc: {
+            parser: parser === "ecmascript"
+                ? {
+                    syntax: "ecmascript",
+                    jsx: react
+                }
+                : {
+                    syntax: "typescript",
+                    tsx: react
+                },
+            // The output environment that the code will be compiled for.
+            target: "es2022",
+            transform: react
+                ? {
+                    react: {
+                        // Use "react/jsx-runtime".
+                        runtime: "automatic",
+                        // Use the native "Object.assign()" instead of "_extends".
+                        useBuiltins: true
+                    }
+                }
+                : undefined
+        },
+        module: {
+            // The output module resolution system that the code will be compiled for.
+            type: "es6",
+            // Prevent SWC from exporting the `__esModule` property.
+            strict: true,
+            // Preserve dynamic imports.
+            ignoreDynamic: true
         }
+    };
 
-        config.jsc!.parser = parserConfig;
-    } else if (react) {
-        // The TS compiler is confused between the EsParserConfig and TsParserConfig types.
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        config.jsc!.parser!.tsx = true;
-    }
+    const transformedConfig = applyTransformers(config, transformers, {
+        env: "jest"
+    });
 
-    return resolveOverrides(config, configOverride);
+    return transformedConfig;
 }

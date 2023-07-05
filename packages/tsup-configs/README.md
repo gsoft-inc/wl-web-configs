@@ -12,19 +12,19 @@ Install the following packages:
 **With pnpm**
 
 ```shell
-pnpm add -D @workleap/tsup-configs tsup
+pnpm add -D @workleap/tsup-configs tsup typescript
 ```
 
 **With yarn**
 
 ```shell
-yarn add -D @workleap/tsup-configs tsup
+yarn add -D @workleap/tsup-configs tsup typescript
 ```
 
 **With npm**
 
 ```shell
-npm install -D @workleap/tsup-configs tsup
+npm install -D @workleap/tsup-configs tsup typescript
 ```
 
 ## Usage
@@ -57,6 +57,7 @@ The provided options will be merged with the default options. Given that a provi
 
 ```ts
 // tsup.dev.ts
+
 import { defineDevConfig, DefaultDevOptions } from "@workleap/tsup-configs";
 
 export default defineDevConfig({
@@ -68,6 +69,7 @@ export default defineDevConfig({
 
 ```ts
 // tsup.build.ts
+
 import { defineBuildConfig } from "@workleap/tsup-configs";
 
 export default defineBuildConfig();
@@ -77,6 +79,7 @@ You can override any existing options:
 
 ```ts
 // tsup.build.ts
+
 import { defineBuildConfig } from "@workleap/tsup-configs";
 
 export default defineBuildConfig({
@@ -88,6 +91,7 @@ The provided options will be merged with the default options. Given that a provi
 
 ```ts
 // tsup.build.ts
+
 import { defineBuildConfig, DefaultBuildOptions } from "@workleap/tsup-configs";
 
 export default defineBuildConfig({
@@ -110,6 +114,7 @@ If you want to use additional tsup options or override the default ones, you can
 
 ```ts
 // tsup.config.ts
+
 import { defineBuildConfig } from "@workleap/tsup-configs";
 
 export default defineBuildConfig({
@@ -124,7 +129,7 @@ export default defineBuildConfig({
 
 ### CJS support
 
-To support CJS projects, the package is build for ESM and CJS formats. To support CJS, `type: "module"` has been temporary removed from the `package.json` file.
+To support CJS projects, this package is build for ESM and CJS formats. To support CJS, `type: "module"` has been temporary removed from the `package.json` file.
 
 Once all our projects use ESM, CJS support can be removed.
 

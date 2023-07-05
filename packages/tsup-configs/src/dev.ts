@@ -1,17 +1,31 @@
 import type { Options } from "tsup";
-import { defineConfig, type DefineConfigOptions } from "./defineConfig.ts";
+import { applyTransformers, type TsupConfigTransformer } from "./applyTransformers";
 
-export const DefaultDevOptions = {
-    dts: true,
-    watch: true,
-    entry: ["./src"],
-    outDir: "./dist",
-    format: "esm",
-    target: "esnext",
-    platform: "browser",
-    sourcemap: "inline"
-} satisfies Options;
+export interface DefineDevConfigOptions extends Options {
+    transformers?: TsupConfigTransformer[];
+}
 
-export function defineDevConfig(options?: DefineConfigOptions) {
-    return defineConfig(DefaultDevOptions, options);
+export function defineDevConfig(options: DefineDevConfigOptions = {}) {
+    const {
+        transformers = [],
+        ...rest
+    } = options;
+
+    const config: Options = {
+        dts: true,
+        watch: true,
+        entry: ["./src"],
+        outDir: "./dist",
+        format: "esm",
+        target: "esnext",
+        platform: "browser",
+        sourcemap: "inline",
+        ...rest
+    };
+
+    const transformedConfig = applyTransformers(config, transformers, {
+        env: "dev"
+    });
+
+    return transformedConfig;
 }

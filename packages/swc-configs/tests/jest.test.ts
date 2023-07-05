@@ -1,56 +1,124 @@
-import type { Config } from "@swc/core";
-import { DefaultJestConfig, defineJestConfig } from "../src/jest.ts";
+import type { Config, EsParserConfig, TsParserConfig } from "@swc/core";
+import type { SwcConfigTransformer } from "../src/applyTransformers.ts";
+import { defineJestConfig } from "../src/jest.ts";
 
-test("when no options are provided, return the default config", () => {
-    const result = defineJestConfig();
+describe("typescript parser", () => {
+    test("when react is true, the react transform configuration is included", () => {
+        const result = defineJestConfig({
+            parser: "typescript",
+            react: true
+        });
 
-    expect(result).toEqual(DefaultJestConfig);
+        expect(result.jsc?.transform?.react).toBeDefined();
+    });
+
+    test("when react is true, tsx parsing is enabled", () => {
+        const result = defineJestConfig({
+            parser: "typescript",
+            react: true
+        });
+
+        expect((result.jsc?.parser as TsParserConfig).tsx).toBeTruthy();
+    });
+
+    test("when react is false, the react transform configuration is not included", () => {
+        const result = defineJestConfig({
+            parser: "typescript",
+            react: false
+        });
+
+        expect(result.jsc?.transform?.react).toBeUndefined();
+    });
+
+    test("when react is false, tsx parsing is disabled", () => {
+        const result = defineJestConfig({
+            parser: "typescript",
+            react: false
+        });
+
+        expect((result.jsc?.parser as TsParserConfig).tsx).toBeFalsy();
+    });
 });
 
-test("when \"react\" is true, the react configuration is included", () => {
+describe("ecmascript parser", () => {
+    test("when react is true, the react transform configuration is included", () => {
+        const result = defineJestConfig({
+            parser: "ecmascript",
+            react: true
+        });
+
+        expect(result.jsc?.transform?.react).toBeDefined();
+    });
+
+    test("when react is true, jsx parsing is enabled", () => {
+        const result = defineJestConfig({
+            parser: "ecmascript",
+            react: true
+        });
+
+        expect((result.jsc?.parser as EsParserConfig).jsx).toBeTruthy();
+    });
+
+    test("when react is false, the react transform configuration is not included", () => {
+        const result = defineJestConfig({
+            parser: "ecmascript",
+            react: false
+        });
+
+        expect(result.jsc?.transform?.react).toBeUndefined();
+    });
+
+    test("when react is false, jsx parsing is disabled", () => {
+        const result = defineJestConfig({
+            parser: "ecmascript",
+            react: false
+        });
+
+        expect((result.jsc?.parser as EsParserConfig).jsx).toBeFalsy();
+    });
+});
+
+test("when a transformer is provided, the transformer is applied on the swc config", () => {
+    const minifyTransformer: SwcConfigTransformer = (config: Config) => {
+        config.minify = true;
+
+        return config;
+    };
+
     const result = defineJestConfig({
-        react: true
+        transformers: [minifyTransformer]
     });
 
-    expect(result).toMatchSnapshot();
+    expect(result.minify).toBeTruthy();
 });
 
-test("when \"parser\" is \"ecmascript\", the configuration parser is ecmascript", () => {
+test("when multiple transformers are provided, all the transformers are applied on the swc config", () => {
+    const minifyTransformer: SwcConfigTransformer = (config: Config) => {
+        config.minify = true;
+
+        return config;
+    };
+
+    const sourceMapsTransformer: SwcConfigTransformer = (config: Config) => {
+        config.sourceMaps = true;
+
+        return config;
+    };
+
     const result = defineJestConfig({
-        parser: "ecmascript"
+        transformers: [minifyTransformer, sourceMapsTransformer]
     });
 
-    expect(result).toMatchSnapshot();
+    expect(result.minify).toBeTruthy();
+    expect(result.sourceMaps).toBeTruthy();
 });
 
-test("when a config override function is provided, the function argument is the config with the non-config override options applied", () => {
-    const expectedArgument = defineJestConfig({
-        react: true
-    });
-
-    const fct = jest.fn<Config, [Config]>(() => ({
-        jsc: {
-            parser: {
-                syntax: "ecmascript"
-            }
-        }
-    }));
+test("transformers context environment is \"dev\"", () => {
+    const mockTransformer = jest.fn();
 
     defineJestConfig({
-        react: true,
-        configOverride: fct
+        transformers: [mockTransformer]
     });
 
-    expect(fct).toHaveBeenCalledWith(expectedArgument);
+    expect(mockTransformer).toHaveBeenCalledWith(expect.anything(), { env: "jest" });
 });
-
-test("providing options doesn't alter the default config object", () => {
-    expect(DefaultJestConfig.jsc.parser.syntax).toBe("typescript");
-
-    defineJestConfig({
-        parser: "ecmascript"
-    });
-
-    expect(DefaultJestConfig.jsc.parser.syntax).toBe("typescript");
-});
-

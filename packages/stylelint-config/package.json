@@ -14,7 +14,9 @@
     "exports": {
         ".": {
             "require": "./dist/index.js",
-            "types": "./dist/index.d.ts"
+            "import": "./dist/index.js",
+            "types": "./dist/index.d.ts",
+            "default": "./dist/index.js"
         }
     },
     "files": [
@@ -34,15 +36,6 @@
         "stylelint-config-standard": "*",
         "stylelint-prettier": "*"
     },
-    "devDependencies": {
-        "@workleap/eslint-plugin": "workspace:*",
-        "@workleap/tsup-configs": "workspace:*",
-        "@workleap/typescript-configs": "workspace:*",
-        "prettier": "2.8.7",
-        "stylelint": "15.4.0",
-        "tsup": "6.7.0",
-        "typescript": "5.0.4"
-    },
     "peerDependencies": {
         "prettier": ">=2.0.0",
         "stylelint": ">=15"
@@ -54,6 +47,16 @@
         "stylelint": {
             "optional": true
         }
+    },
+    "devDependencies": {
+        "@types/node": "20.3.2",
+        "@workleap/eslint-plugin": "workspace:*",
+        "@workleap/tsup-configs": "workspace:*",
+        "@workleap/typescript-configs": "workspace:*",
+        "prettier": "2.8.7",
+        "stylelint": "15.4.0",
+        "tsup": "6.7.0",
+        "typescript": "5.0.4"
     },
     "publishConfig": {
         "access": "public",
