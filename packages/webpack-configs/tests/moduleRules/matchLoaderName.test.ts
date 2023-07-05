@@ -14,7 +14,7 @@ test("when module rule loader exactly match name, return true", () => {
 
 test("when module rule loader is a path, return true if the name match an exact path segment", () => {
     const moduleRule: RuleSetRule = {
-        loader: path.resolve("\\node_modules\\.pnpm\\postcss-loader@7.3.3_postcss@8.4.24_webpack@5.86.0\\node_modules\\postcss-loader\\dist\\cjs.js")
+        loader: path.resolve("/node_modules/.pnpm/postcss-loader@7.3.3_postcss@8.4.24_webpack@5.86.0/node_modules/postcss-loader/dist/cjs.js")
     };
 
     const matcher1 = matchLoaderName("css-loader");
