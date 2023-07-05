@@ -16,7 +16,7 @@ type MiniCssExtractPluginOptions = NonNullable<ConstructorParameters<typeof Mini
 
 export function defineBuildHtmlWebpackPluginConfig(options: HtmlWebpackPlugin.Options = {}) {
     const {
-        template = "./public/index.html",
+        template = path.resolve("./public/index.html"),
         ...rest
     } = options;
 
@@ -56,7 +56,7 @@ export interface DefineBuildConfigOptions {
 
 export function defineBuildConfig(options: DefineBuildConfigOptions) {
     const {
-        entry = "./src/index.tsx",
+        entry = path.resolve("./src/index.tsx"),
         outputPath = path.resolve("dist"),
         // The trailing / is very important, otherwise paths will not be resolved correctly.
         publicPath = "http://localhost:8080/",

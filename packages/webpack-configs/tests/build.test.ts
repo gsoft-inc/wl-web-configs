@@ -232,7 +232,7 @@ describe("defineBuildHtmlWebpackPluginConfig", () => {
         });
 
         expect(result.filename).toBe("a-custom-filename");
-        expect(result.template).toBe("./public/index.html");
+        expect(result.template).toMatch(/index.html/);
     });
 
     test("when a template value is provided, override the default template option", () => {

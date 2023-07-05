@@ -19,7 +19,7 @@ const require = createRequire(import.meta.url);
 
 export function defineDevHtmlWebpackPluginConfig(options: HtmlWebpackPlugin.Options = {}) {
     const {
-        template = "./public/index.html",
+        template = path.resolve("./public/index.html"),
         ...rest
     } = options;
 
@@ -74,7 +74,7 @@ export function defineDevConfig(options: DefineDevConfigOptions) {
     preflight(options);
 
     const {
-        entry = "./src/index.tsx",
+        entry = path.resolve("./src/index.tsx"),
         https = false,
         host = "localhost",
         port = 8080,
