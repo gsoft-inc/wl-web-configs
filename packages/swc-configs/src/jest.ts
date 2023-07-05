@@ -49,7 +49,7 @@ export function defineJestConfig(options: DefineJestConfigOptions = {}) {
     };
 
     const transformedConfig = applyTransformers(config, transformers, {
-        env: "dev"
+        env: "jest"
     });
 
     return transformedConfig;

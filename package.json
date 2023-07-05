@@ -31,7 +31,7 @@
         "reset": "pnpm -r --include-workspace-root --parallel exec pnpm dlx rimraf dist node_modules",
 
         "dev-sample": "pnpm --filter ./sample/* -r --parallel dev",
-        "build-sample": "pnpm --filter=./sample/* --filter=!@sample/old -r --parallel build",
+        "build-sample": "pnpm --filter=./sample/* -r --parallel build",
         "serve-sample": "pnpm --filter ./sample/* -r --parallel serve-build",
 
         "list-outdated-deps": "pnpm outdated -r --format list",

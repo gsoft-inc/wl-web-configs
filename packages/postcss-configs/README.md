@@ -1,4 +1,4 @@
-# @workleap/postcss-plugin
+# @workleap/postcss-configs
 
 All of Workleap’s default PostCSS plugins wrapped up in a single, easy-to-use plugin.
 
@@ -12,19 +12,19 @@ Install the following packages:
 **With pnpm**
 
 ```shell
-pnpm add -D @workleap/postcss-plugin postcss
+pnpm add -D @workleap/postcss-configs postcss
 ```
 
 **With yarn**
 
 ```shell
-yarn add -D @workleap/postcss-plugin postcss
+yarn add -D @workleap/postcss-configs postcss
 ```
 
 **With npm**
 
 ```shell
-npm install -D @workleap/postcss-plugin postcss
+npm install -D @workleap/postcss-configs postcss
 ```
 
 ## Features
@@ -67,26 +67,6 @@ export default {
 };
 ```
 
-The provided options will be merged with the default options. Given that a provided option match a default option, it will override the default option. If you prefer to extend the default option, you can import the `DefaultPresetEnvOptions` object and handle the merging code in your configuration file:
-
-```js
-// postcss.config.js
-
-import postcssWorkleapPlugin, { DefaultPresetEnvOptions } from "@workleap/postcss-plugin";
-
-/** @type {import("postcss").Postcss} */
-export default {
-    plugins: [
-        postcssWorkleapPlugin({
-            presetEnvOptions: {
-                ...DefaultPresetEnvOptions,
-                stage: 4
-            }
-        })
-    ]
-};
-```
-
 ### defineConfig
 
 Alternativelty, the postcss config can be created from a `defineConfig` function:
@@ -102,16 +82,6 @@ export default defineConfig({
         stage: 4
     }
 });
-```
-
-Or with custom options:
-
-```js
-// postcss.config.js
-
-import { defineConfig } from from "@workleap/postcss-plugin";
-
-export default defineConfig();
 ```
 
 ### Webpack integration

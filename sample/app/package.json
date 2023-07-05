@@ -24,7 +24,7 @@
         "@types/webpack": "5.28.1",
         "@workleap/browserslist-config": "workspace:*",
         "@workleap/eslint-plugin": "workspace:*",
-        "@workleap/postcss-plugin": "workspace:*",
+        "@workleap/postcss-configs": "workspace:*",
         "@workleap/stylelint-config": "workspace:*",
         "@workleap/swc-configs": "workspace:*",
         "@workleap/typescript-configs": "workspace:*",

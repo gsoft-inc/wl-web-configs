@@ -1,5 +1,5 @@
 // @ts-check
 
-import { defineConfig } from "@workleap/postcss-plugin";
+import { defineConfig } from "@workleap/postcss-configs";
 
 export default defineConfig();

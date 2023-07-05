@@ -1,6 +1,12 @@
 import type { Config } from "postcss-load-config";
 import postcssPresetEnv, { type pluginOptions as PostcssPresetEnvOptions } from "postcss-preset-env";
 
+export type PostcssConfigTransformer = (config: Config) => Config;
+
+function applyTransformers(config: Config, transformers: PostcssConfigTransformer[]) {
+    return transformers.reduce((acc, transformer) => transformer(acc), config);
+}
+
 export const DefaultPresetEnvOptions = {
     autoprefixer: {
         flexbox: "no-2009"
@@ -11,12 +17,14 @@ export const DefaultPresetEnvOptions = {
 export interface DefineConfigOptions {
     browsers?: Required<PostcssPresetEnvOptions["browsers"]>;
     presetEnvOptions?: Omit<PostcssPresetEnvOptions, "browsers">;
+    transformers?: PostcssConfigTransformer[];
 }
 
 export function defineConfig(options: DefineConfigOptions = {}) {
     const {
         browsers,
-        presetEnvOptions = DefaultPresetEnvOptions
+        presetEnvOptions = DefaultPresetEnvOptions,
+        transformers = []
     } = options;
 
     let _options: PostcssPresetEnvOptions = presetEnvOptions;
@@ -37,5 +45,7 @@ export function defineConfig(options: DefineConfigOptions = {}) {
         ]
     };
 
-    return config;
+    const transformedConfig = applyTransformers(config, transformers);
+
+    return transformedConfig;
 }
