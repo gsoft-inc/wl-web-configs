@@ -222,7 +222,7 @@ test("transformers context environment is \"build\"", () => {
         transformers: [mockTransformer]
     });
 
-    expect(mockTransformer).toHaveBeenCalledWith(expect.anything(), { env: "build" });
+    expect(mockTransformer).toHaveBeenCalledWith(expect.anything(), { environment: "build" });
 });
 
 describe("defineBuildHtmlWebpackPluginConfig", () => {

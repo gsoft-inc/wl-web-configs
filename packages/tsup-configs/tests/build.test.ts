@@ -72,5 +72,5 @@ test("transformers context environment is \"dev\"", () => {
         transformers: [mockTransformer]
     });
 
-    expect(mockTransformer).toHaveBeenCalledWith(expect.anything(), { env: "build" });
+    expect(mockTransformer).toHaveBeenCalledWith(expect.anything(), { environment: "build" });
 });

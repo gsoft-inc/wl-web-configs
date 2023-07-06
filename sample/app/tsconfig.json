@@ -6,5 +6,5 @@
             "@sample/utils": ["../utils/src/index.ts"]
         }
     },
-    "exclude": ["dist", "node_modules"]
+    "exclude": ["public", "dist", "node_modules"]
 }

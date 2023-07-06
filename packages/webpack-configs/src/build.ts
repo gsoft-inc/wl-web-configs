@@ -4,8 +4,11 @@ import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import { createRequire } from "node:module";
 import path from "path";
 import TerserPlugin from "terser-webpack-plugin";
-import type { Configuration as WebpackConfig } from "webpack";
+import webpack, { type Configuration as WebpackConfig } from "webpack";
 import { applyTransformers, type WebpackConfigTransformer } from "./transformers/applyTransformers.ts";
+
+// Aliases
+const DefinePlugin = webpack.DefinePlugin;
 
 // Using node:module.createRequire until
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import.meta/resolve
@@ -51,6 +54,9 @@ export interface DefineBuildConfigOptions {
     cssModules?: boolean;
     postcssConfigFilePath?: string;
     swcConfig: SwcConfig;
+    // Only accepting string values because there are lot of issues with the DefinePlugin related to typing errors.
+    // See https://github.com/webpack/webpack/issues/8641
+    environmentVariables?: Record<string, string | undefined>;
     transformers?: WebpackConfigTransformer[];
 }
 
@@ -68,6 +74,7 @@ export function defineBuildConfig(options: DefineBuildConfigOptions) {
         cssModules = false,
         postcssConfigFilePath,
         swcConfig,
+        environmentVariables,
         transformers = []
     } = options;
 
@@ -154,12 +161,17 @@ export function defineBuildConfig(options: DefineBuildConfigOptions) {
         plugins: [
             new HtmlWebpackPlugin(htmlWebpackPlugin),
             new MiniCssExtractPlugin(miniCssExtractPlugin),
+            new DefinePlugin({
+                // Parenthesis around the stringified object are mandatory otherwise it breaks
+                // at build time.
+                "process.env": `(${JSON.stringify(environmentVariables)})`
+            }),
             ...plugins
-        ]
+        ].filter(Boolean) as WebpackConfig["plugins"]
     };
 
     const transformedConfig = applyTransformers(config, transformers, {
-        env: "build"
+        environment: "build"
     });
 
     return transformedConfig;
