@@ -167,7 +167,7 @@ export function addBeforeModuleRule(config: Configuration, matcher: ModuleRuleMa
     } else {
         const matcherInfo = (matcher as WithModuleRuleMatcherInfo).info;
 
-        console.log(`[web-configs] Couldn't add the new module rules because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
+        console.log(`[webpack-configs] Couldn't add the new module rules because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
     }
 }
 
@@ -179,7 +179,7 @@ export function addAfterModuleRule(config: Configuration, matcher: ModuleRuleMat
     } else {
         const matcherInfo = (matcher as WithModuleRuleMatcherInfo).info;
 
-        console.log(`[web-configs] Couldn't add the new module rules because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
+        console.log(`[webpack-configs] Couldn't add the new module rules because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
     }
 }
 
@@ -191,7 +191,7 @@ export function replaceModuleRule(config: Configuration, matcher: ModuleRuleMatc
     } else {
         const matcherInfo = (matcher as WithModuleRuleMatcherInfo).info;
 
-        console.log(`[web-configs] Couldn't replace the module rule because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
+        console.log(`[webpack-configs] Couldn't replace the module rule because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
     }
 }
 
@@ -219,6 +219,6 @@ export function removeModuleRules(config: Configuration, matcher: ModuleRuleMatc
     } else {
         const matcherInfo = (matcher as WithModuleRuleMatcherInfo).info;
 
-        console.log(`[web-configs] Didn't remove any module rules because no match has been found.\n[webpack-configs] Matcher: "${matcherInfo}"`);
+        console.log(`[webpack-configs] Didn't remove any module rules because no match has been found.\n[webpack-configs] Matcher: "${matcherInfo}"`);
     }
 }

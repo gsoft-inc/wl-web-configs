@@ -60,7 +60,7 @@ export function defineDevConfig(options: DefineDevConfigOptions) {
     };
 
     const transformedConfig = applyTransformers(config, transformers, {
-        env: "dev"
+        environment: "dev"
     });
 
     return transformedConfig;

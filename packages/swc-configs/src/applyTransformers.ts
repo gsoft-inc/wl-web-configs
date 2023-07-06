@@ -1,7 +1,7 @@
 import type { Config } from "@swc/core";
 
 export interface SwcConfigTransformerContext {
-    env: "dev" | "build" | "jest";
+    environment: "dev" | "build" | "jest";
 }
 
 export type SwcConfigTransformer = (config: Config, context: SwcConfigTransformerContext) => Config;

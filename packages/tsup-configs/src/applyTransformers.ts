@@ -1,7 +1,7 @@
 import type { Options } from "tsup";
 
 export interface TsupConfigTransformerContext {
-    env: "dev" | "build";
+    environment: "dev" | "build";
 }
 
 export type TsupConfigTransformer = (config: Options, context: TsupConfigTransformerContext) => Options;

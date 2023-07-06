@@ -5,5 +5,8 @@ import { swcConfig } from "./swc.dev.js";
 
 export default defineDevConfig({
     fastRefresh: true,
-    swcConfig
+    swcConfig,
+    environmentVariables: {
+        "USE_MSW": process.env.USE_MSW
+    }
 });

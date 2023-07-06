@@ -5,12 +5,15 @@ import HtmlWebpackPlugin from "html-webpack-plugin";
 import { createRequire } from "node:module";
 import path from "path";
 import { fileURLToPath } from "url";
-import type { Configuration as WebpackConfig } from "webpack";
+import webpack, { type Configuration as WebpackConfig } from "webpack";
 import { applyTransformers, type WebpackConfigTransformer } from "./transformers/applyTransformers.ts";
 import { isObject } from "./utils.ts";
 
 // Add the "devServer" prop to WebpackConfig typings.
 import "webpack-dev-server";
+
+// Aliases
+const DefinePlugin = webpack.DefinePlugin;
 
 // Using node:module.createRequire until
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import.meta/resolve
@@ -47,17 +50,20 @@ export interface DefineDevConfigOptions {
     cssModules?: boolean;
     postcssConfigFilePath?: string;
     swcConfig: SwcConfig;
+    // Only accepting string values because there are lot of issues with the DefinePlugin related to typing errors.
+    // See https://github.com/webpack/webpack/issues/8641
+    environmentVariables?: Record<string, string | undefined>;
     transformers?: WebpackConfigTransformer[];
 }
 
 function preflight(options: DefineDevConfigOptions) {
     if (!require.resolve("webpack-dev-server")) {
-        throw new Error("To use the \"dev\" config, install https://www.npmjs.com/package/webpack-dev-server as a \"devDependency\".");
+        throw new Error("[webpack-configs] To use the \"dev\" config, install https://www.npmjs.com/package/webpack-dev-server as a \"devDependency\".");
     }
 
     if (options.fastRefresh) {
         if (!require.resolve("@pmmmwh/react-refresh-webpack-plugin")) {
-            throw new Error("To use Webpack Fast Refresh, install https://www.npmjs.com/package/@pmmmwh/react-refresh-webpack-plugin as a \"devDependency\".");
+            throw new Error("[webpack-configs] To use Webpack Fast Refresh, install https://www.npmjs.com/package/@pmmmwh/react-refresh-webpack-plugin as a \"devDependency\".");
         }
     }
 }
@@ -87,6 +93,7 @@ export function defineDevConfig(options: DefineDevConfigOptions) {
         cssModules = false,
         postcssConfigFilePath,
         swcConfig,
+        environmentVariables,
         transformers = []
     } = options;
 
@@ -181,22 +188,17 @@ export function defineDevConfig(options: DefineDevConfigOptions) {
         },
         plugins: [
             new HtmlWebpackPlugin(htmlWebpackPluginOptions),
+            new DefinePlugin({
+                "process.env": JSON.stringify(environmentVariables)
+            }),
             fastRefresh && new ReactRefreshWebpackPlugin(isObject(fastRefresh) ? fastRefresh : defineFastRefreshPluginConfig()),
             ...plugins
         ].filter(Boolean) as WebpackConfig["plugins"]
     };
 
     const transformedConfig = applyTransformers(config, transformers, {
-        env: "dev"
+        environment: "dev"
     });
 
     return transformedConfig;
 }
-
-/*
--> While swcConfig, browserslistConfig and postCssConfig could be omitted and the loader will simply load by convention the nearest configuration file, we do recommend
-to provide them and use the "define*" functions provided by our shared web configs
-    -> Will only support .swcrc file
-    -> SWC will not pickup browserslist config
-    -> We already provide browserlist config for SWC, why not also use it for postcss?
-*/

@@ -317,7 +317,7 @@ test("transformers context environment is \"dev\"", () => {
         transformers: [mockTransformer]
     });
 
-    expect(mockTransformer).toHaveBeenCalledWith(expect.anything(), { env: "dev" });
+    expect(mockTransformer).toHaveBeenCalledWith(expect.anything(), { environment: "dev" });
 });
 
 describe("defineDevHtmlWebpackPluginConfig", () => {

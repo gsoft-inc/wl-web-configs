@@ -24,7 +24,7 @@ export function defineBuildConfig(options: DefineBuildConfigOptions = {}) {
     };
 
     const transformedConfig = applyTransformers(config, transformers, {
-        env: "build"
+        environment: "build"
     });
 
     return transformedConfig;

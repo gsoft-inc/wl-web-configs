@@ -1,5 +1,6 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { About } from "./About.tsx";
+import { Fetch } from "./Fetch.tsx";
 import { Home } from "./Home.tsx";
 import { RootLayout } from "./RootLayout.tsx";
 
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
             {
                 path: "/about",
                 element: <About />
+            },
+            {
+                path: "/fetch",
+                element: <Fetch />
             }
         ]
     }

@@ -45,7 +45,7 @@ export function findPlugin(config: Configuration, matcher: PluginMatcher) {
     if (matches.length > 1) {
         const matcherInfo = (matcher as WithPluginMatcherInfo).info;
 
-        throw new Error(`[webpack-configs] Found more than 1 matching plugin.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"\n[webpack-configs] Matches: "${JSON.stringify(matches.map(x => x.plugin))}"`);
+        throw new Error(`[webpack-configs] Found more than 1 matching plugin.\n[webp-configs] Matcher: "${JSON.stringify(matcherInfo)}"\n[webpack-configs] Matches: "${JSON.stringify(matches.map(x => x.plugin))}"`);
     }
 
     return matches[0];
@@ -59,7 +59,7 @@ export function replacePlugin(config: Configuration, matcher: PluginMatcher, new
     } else {
         const matcherInfo = (matcher as WithPluginMatcherInfo).info;
 
-        console.log(`[web-configs] Couldn't replace the plugin because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
+        console.log(`[webpack-configs] Couldn't replace the plugin because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
     }
 }
 
@@ -71,7 +71,7 @@ export function addBeforePlugin(config: Configuration, matcher: PluginMatcher, n
     } else {
         const matcherInfo = (matcher as WithPluginMatcherInfo).info;
 
-        console.log(`[web-configs] Couldn't add the new plugins because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
+        console.log(`[webpack-configs] Couldn't add the new plugins because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
     }
 }
 
@@ -83,7 +83,7 @@ export function addAfterPlugin(config: Configuration, matcher: PluginMatcher, ne
     } else {
         const matcherInfo = (matcher as WithPluginMatcherInfo).info;
 
-        console.log(`[web-configs] Couldn't add the new plugins because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
+        console.log(`[webpack-configs] Couldn't add the new plugins because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
     }
 }
 
@@ -97,6 +97,6 @@ export function removePlugin(config: Configuration, matcher: PluginMatcher) {
     if (countBefore === countAfter) {
         const matcherInfo = (matcher as WithPluginMatcherInfo).info;
 
-        console.log(`[web-configs] Didn't remove any plugin because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
+        console.log(`[webpack-configs] Didn't remove any plugin because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
     }
 }
