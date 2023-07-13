@@ -160,7 +160,7 @@ pnpm update-outdated-deps
 
 We use [GitHub Actions]() for this repository.
 
-The configuration is in the `.github/workflows` folder and the build results available [here](https://github.com/workleap/wl-web-configs/actions).
+The configuration is in the `.github/workflows` folder and the build results available [here](https://github.com/gsoft-inc/wl-web-configs/actions).
 
 We currently have 2 builds configured:
 
