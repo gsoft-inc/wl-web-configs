@@ -2,7 +2,7 @@
 Common configurations for building web apps at Workleap
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](./LICENSE)
-[![CI](https://github.com/workleap/wl-web-configs/actions/workflows/ci.yml/badge.svg)](https://github.com/workleap/wl-web-configs/actions/workflows/ci.yml)
+[![CI](https://github.com/gsoft-inc/wl-web-configs/actions/workflows/ci.yml/badge.svg)](https://github.com/gsoft-inc/wl-web-configs/actions/workflows/ci.yml)
 
 ## Usage
 
