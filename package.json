@@ -30,10 +30,10 @@
         "clean": "pnpm -r --include-workspace-root --parallel exec pnpm dlx rimraf dist node_modules/.cache",
         "reset": "pnpm -r --include-workspace-root --parallel exec pnpm dlx rimraf dist node_modules",
 
-        "dev-sample": "pnpm --filter ./sample/* -r --parallel dev",
-        "dev-sample-msw": "pnpm --filter ./sample/* -r --parallel dev-msw",
-        "build-sample": "pnpm --filter ./sample/* -r --parallel build",
-        "serve-sample": "pnpm --filter ./sample/* -r --parallel serve-build",
+        "dev-sample": "pnpm --filter \"./sample/*\" -r --parallel dev",
+        "dev-sample-msw": "pnpm --filter \"./sample/*\" -r --parallel dev-msw",
+        "build-sample": "pnpm --filter \"./sample/*\" -r --parallel build",
+        "serve-sample": "pnpm --filter \"./sample/*\" -r --parallel serve-build",
 
         "list-outdated-deps": "pnpm outdated -r --format list",
         "update-outdated-deps": "pnpm update -r --latest"
