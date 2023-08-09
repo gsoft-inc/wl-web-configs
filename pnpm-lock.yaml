@@ -32,6 +32,9 @@ importers:
       prettier:
         specifier: 2.8.8
         version: 2.8.8
+      retypeapp:
+        specifier: 3.1.0
+        version: 3.1.0
       stylelint:
         specifier: 15.7.0
         version: 15.7.0
@@ -10998,6 +11001,11 @@ packages:
   /retry@0.13.1:
     resolution: {integrity: sha512-XQBQ3I8W1Cge0Seh+6gjj03LbmRFWuoszgK9ooCpwYIrhhoO80pfq4cUkU5DkknwfOfFteRwlZ56PYOGYyFWdg==}
     engines: {node: '>= 4'}
+    dev: true
+
+  /retypeapp@3.1.0:
+    resolution: {integrity: sha512-8qRO299gucLgcE46yp0ZzFZ5GXuydg141ApbdJYGYQpZBK7V3WS/ENnU3uDvDxlCnKbNxTj+0gR8quAKjsrg6Q==}
+    hasBin: true
     dev: true
 
   /reusify@1.0.4:

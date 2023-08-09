@@ -1,4 +1,4 @@
-import type { Config, ConfigPlugin } from "postcss-load-config";
+import type { Config } from "postcss-load-config";
 import postcssPresetEnv, { type pluginOptions as PostcssPresetEnvOptions } from "postcss-preset-env";
 
 export type PostcssConfigTransformer = (config: Config) => Config;
@@ -15,7 +15,6 @@ export const DefaultPresetEnvOptions = {
 } satisfies PostcssPresetEnvOptions;
 
 export interface DefineConfigOptions {
-    plugins?: ConfigPlugin[];
     browsers?: Required<PostcssPresetEnvOptions["browsers"]>;
     presetEnvOptions?: Omit<PostcssPresetEnvOptions, "browsers">;
     transformers?: PostcssConfigTransformer[];
@@ -23,7 +22,6 @@ export interface DefineConfigOptions {
 
 export function defineConfig(options: DefineConfigOptions = {}) {
     const {
-        plugins = [],
         browsers,
         presetEnvOptions = DefaultPresetEnvOptions,
         transformers = []
@@ -43,8 +41,7 @@ export function defineConfig(options: DefineConfigOptions = {}) {
             // Typings are wrong, it's callable.
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
-            postcssPresetEnv(_options),
-            ...plugins
+            postcssPresetEnv(_options)
         ]
     };
 

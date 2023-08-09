@@ -35,6 +35,8 @@
         "build-sample": "pnpm --filter \"./sample/*\" -r --parallel build",
         "serve-sample": "pnpm --filter \"./sample/*\" -r --parallel serve-build",
 
+        "dev-docs": "retype start",
+
         "list-outdated-deps": "pnpm outdated -r --format list",
         "update-outdated-deps": "pnpm update -r --latest"
     },
@@ -48,6 +50,7 @@
         "jest": "29.5.0",
         "stylelint": "15.7.0",
         "prettier": "2.8.8",
+        "retypeapp": "3.1.0",
         "ts-node": "10.9.1",
         "typescript": "5.0.4"
     },
