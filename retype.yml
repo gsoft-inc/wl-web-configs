@@ -24,7 +24,7 @@ links:
       link: https://github.com/gsoft-inc/wl-web-configs/issues
       target: blank
 
-    - text: Discussions
+    - text: Feature requests
       icon: comment-discussion
       link: https://github.com/gsoft-inc/wl-web-configs/discussions
       target: blank

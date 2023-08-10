@@ -115,9 +115,9 @@ To use this configuration, add the following to your `.eslintrc.json` file:
 }
 ```
 
-### monorepo-root
+### monorepo-workspace
 
-The `monorepo-root` configuration is suitable for the root `tsconfig` file of a monorepo project.
+The `monorepo-workspace` configuration is suitable for the root `tsconfig` file of a monorepo project.
 
 To use this configuration, add the following to your `.eslintrc.json` file:
 
@@ -125,7 +125,7 @@ To use this configuration, add the following to your `.eslintrc.json` file:
 {
     "$schema": "https://json.schemastore.org/eslintrc",
     "root": true,
-    "extends": "plugin:@workleap/monorepo-root"
+    "extends": "plugin:@workleap/monorepo-workspace"
 }
 ```
 

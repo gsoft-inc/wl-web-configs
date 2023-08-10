@@ -59,7 +59,7 @@ Here is an example of a tsconfig.json file extending the Workleap TypeScript con
 }
 ```
 
-### Monorepo Root
+### Monorepo workspace
 
 Before you can build your TypeScript code, you need to make sure that there are no compilation errors. This process involves running the TypeScript compiler in a "linting" mode that only checks for errors, without actually compiling the code.
 
@@ -67,7 +67,7 @@ Here is an example of a tsconfig.json file extending the Workleap TypeScript con
 
 ```json
 {
-  "extends": "@workleap/typescript-configs/monorepo-root",
+  "extends": "@workleap/typescript-configs/monorepo-workspace",
   "exclude": ["packages", "node_modules"]
 }
 ```
@@ -76,7 +76,7 @@ Here is an example of a tsconfig.json file extending the Workleap TypeScript con
 
 ```json
 {
-  "extends": "@workleap/typescript-configs/monorepo-root",
+  "extends": "@workleap/typescript-configs/monorepo-workspace",
   "exclude": ["packages", "node_modules"],
   "references": []
 }

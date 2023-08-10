@@ -6,7 +6,7 @@ label: PostCSS
 
 # PostCSS
 
-## Overview
+## Overview (or A word of caution)
 
 -> Make sure you really need to use postcss, we wish to gradually move out from using PostCSS as the web evolve and also alternative libraries emerge.
 

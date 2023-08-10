@@ -26,30 +26,36 @@ npm create @workleap/project@latest <output-directory>
 
 ## Why
 
-Let's be honest, starting a new web application is still a pain in the a**. There are so many tools to choose from, learn, install and configure.
+Starting a new web application is still an arduous task. There are so many tools to choose from, learn, install and configure, it can be overwhelming.
 
-For an organization like [Workleap](https://workleap.com/), with a large suit of products, it **doesn't make sense to start over everytime** we invest in new idea or add a new vertical to an existing product. Developers working on a new project shouldn't spend their first days figuring out which [ESLint](https://eslint.org/) rules to enable/disable, or how to transpile their [React](https://react.dev/) code, they should rather focus on **writing feature code**.
+For an organization like [Workleap](https://workleap.com/), with a large suite of products, it **doesn't make sense to start over every time** we invest in a new idea or add a new vertical to an existing product. Developers working on a new project shouldn't spend their first day's figuring out which [ESLint](https://eslint.org/) rules to enable/disable, or how to transpile their [React](https://react.dev/) code, they should rather **focus on writing features code**.
 
-While a collection of common configurations get us closer to that goal, on their own, configuration libraries are not enough to achieve it. There is still a need to install and assemble those configurations correctly in the new application. To fill this gap, we also invested in a [CLI]((https://github.com/gsoft-inc/wl-foundry-cli)) to scaffold new web applications.
+While a collection of common configurations gets us closer to that goal, on their own, configuration libraries are not enough to reach it. There is still a need to install and assemble those configurations correctly in the new application, which is not an easy task. To fill this gap, we also invested in a [CLI](https://github.com/gsoft-inc/wl-foundry-cli) to scaffold new web applications.
 
-With the CLI, developers can generate fully configured web applications in a few minutes. However, contrary to configuration libraries, a CLI alone is only good at speeding up the creation of the initial application, it **doesn't help** with the **maintenance** or the **adoption of new features** offered by tools over time.
+With the CLI, developers can generate fully configured web applications in a few minutes. However, contrary to configuration libraries, a CLI alone is only good at creating the initial files of an application, it doesn't help with the **maintenance** or the **adoption of new features** offered by tools over time.
 
-That's why we need both, there's a strong synergy between the configuration libraries and the CLI.
+That's why we need both, there's a strong synergy between a collection of configuration libraries and a CLI.
 
-With configuration libraries distributed through NPM packages and installed with the CLI, when a new feature is available for a tool, the configuration libraries maintainers can spend time learning the new feature, making the necessary changes, and **distributing the changes with a new version** of the package. Then, at their convenience, **product teams can adopt the changes** by bumping the configuration library package version in their respective application.
+With configuration libraries **distributed through NPM packages** and installed with a CLI, when a new feature is available for a tool, the configuration libraries maintainers can spend time learning the new feature, making the necessary changes, and **distributing the changes with a new version** of the package. Then, at their convenience, **product teams can adopt the changes** by bumping the configuration library package version in their respective application.
 
-We hope that having configuration libraries will speed up the creation of new frontend projects and facilite the maintenance overtime.
+We hope that introducing a collection of configuration libraries will facilitate the creation and maintenance of new frontend project overtime.
 
 ## Guiding principles
 
-No locked in, everything is overridable
-
-
-
+While developing the configuration libraries, we kept one guiding principle in mind, **no locked in**. We truly hope that the default configurations will satisfy your application needs, but if it doesn't, there will always be an easy way to extend or override the default configuration.
 
 ## Supported tools
 
-Name - Website - Package
+| Name | NPM | Documentation |
+| --- | --- | --- |
+| ![](./static/browserslist.svg){ class="h-5 w-5 mr-2 -mt-1" }[Browserslist](https://browsersl.ist/){ target="_blank" } | [![npm version](https://img.shields.io/npm/v/@workleap/browserslist-config)](https://www.npmjs.com/package/@workleap/browserslist-config){ target="_blank" } | [Getting started](browserslist.md) |
+| ![](./static/eslint.svg){ class="h-5 w-5 mr-2 -mt-1" }[ESLint](https://eslint.org/){ target="_blank" } | [![npm version](https://img.shields.io/npm/v/@workleap/eslint-plugin)](https://www.npmjs.com/package/@workleap/eslint-plugin){ target="_blank" } | [Getting started](eslint/default.md) |
+| ![](./static/postcss.svg){ class="h-5 w-5 mr-2 -mt-1" }[PostCSS](https://postcss.org/){ target="_blank" } | [![npm version](https://img.shields.io/npm/v/@workleap/postcss-configs)](https://www.npmjs.com/package/@workleap/postcss-configs){ target="_blank" } | [Getting started](postcss.md) |
+| ![](./static/stylelint.svg){ class="h-5 w-5 mr-2 -mt-1" }[Stylelint](https://stylelint.io/){ target="_blank" } | [![npm version](https://img.shields.io/npm/v/@workleap/stylelint-config)](https://www.npmjs.com/package/@workleap/stylelint-config){ target="_blank" } | [Getting started](stylelint/default.md) |
+| ![](./static/swc.svg){ class="h-5 w-5 mr-2 -mt-1" }[SWC](https://swc.rs/){ target="_blank" } | [![npm version](https://img.shields.io/npm/v/@workleap/swc-configs)](https://www.npmjs.com/package/@workleap/swc-configs){ target="_blank" } | [Getting started](swc/default.md) |
+| ![](./static/tsup.svg){ class="h-5 w-5 mr-2 -mt-1" }[tsup](https://tsup.egoist.dev/){ target="_blank" } | [![npm version](https://img.shields.io/npm/v/@workleap/tsup-configs)](https://www.npmjs.com/package/@workleap/tsup-configs){ target="_blank" } | [Getting started](tsup/default.md) |
+| ![](./static/typescript.svg){ class="h-5 w-5 mr-2 -mt-1" }[Typescript](https://www.typescriptlang.org/){ target="_blank" } | [![npm version](https://img.shields.io/npm/v/@workleap/typescript-configs)](https://www.npmjs.com/package/@workleap/typescript-configs){ target="_blank" } | [Getting started](typescript/default.md) |
+| ![](./static/webpack.svg){ class="h-5 w-5 mr-2 -mt-1" }[Webpack](https://webpack.js.org/){ target="_blank" } | [![npm version](https://img.shields.io/npm/v/@workleap/webpack-configs)](https://www.npmjs.com/package/@workleap/webpack-configs){ target="_blank" } | [Getting started](webpack/default.md) |
 
 
 

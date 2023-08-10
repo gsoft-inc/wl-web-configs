@@ -1,11 +1,11 @@
 ---
 order: 130
-icon: heart
-label: Tsup
+icon: /static/tsup.svg
+label: tsup
 expanded: true
 ---
 
-# Tsup
+# tsup
 
 ## Overview
 
