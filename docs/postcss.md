@@ -1,34 +1,32 @@
 ---
-order: 85
+order: 160
 icon: /static/postcss.svg
 label: PostCSS
 ---
+
+# PostCSS
 
 ## Overview
 
 -> Make sure you really need to use postcss, we wish to gradually move out from using PostCSS as the web evolve and also alternative libraries emerge.
 
-## Getting started
+## Install the packages
 
-### 1. Install the packages
+## Configure PostCSS
 
-### 2. Configure PostCSS
-
-- Create configuration file
+- Create a configuration file
 - Define configuration
-
-### 3. Add a Webpack loader
-
-## Custom configuration
 
 ### Predefined options
 
-List of options: (if not good enough, could be a table similar to react aria or a header/value similar to retype documentation)
+List of options: (if not good enough, could be a table similar to react aria or a header/value similar to retype documentation - header/value might be better for deep linking - something similar to Vite config docs)
 - `name`: description
 - `another name`: another description 
 
 Show an example of a predefined option (set different browsers - by default is loaded from .browserslistrc file)
 
-#### Extends Preset Env
+### Extends Preset Env
 
 ### Transformers
+
+## Configure Webpack

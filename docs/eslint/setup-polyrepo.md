@@ -5,27 +5,31 @@ meta:
     title: Configure a polyrepo - ESLint
 ---
 
-## 1. Install the packages
+# Setup a polyrepo
 
-## 2. Configure ESLint
+## Install the packages
+
+## Configure ESLint
 
 - Create a configuration file
 - Extends the configuration
 
-- web-application
-- react-library
-- typescript-library
+### web-application
 
-## 3. Ignore files
+### react-library
+
+### typescript-library
+
+## Ignore files
 
 .eslintignore
 
-## 4. Configure indent style
+## Configure indent style
 
 .editorconfig
 
-## 5. Add a CLI script
+## Add a CLI script
 
-## 6. Try it :rocket:
+## Try it :rocket:
 
 - With the CLI script

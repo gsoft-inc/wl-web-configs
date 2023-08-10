@@ -1,22 +1,20 @@
 ---
-order: 95
+order: 180
 icon: /static/browserslist.svg
 label: Browserslist
 ---
+
+# Browserslist
 
 ## Overview
 
 Supported browsers
 
-## Getting started
+## Install the package
 
-### 1. Install the package
+## Configure Browserslist
 
-### 2. Configure Browserslist
-
+- Create a configuration file
 - Extends the configuration
 
-## Custom configuration
-
-- Add additional browsers
-- Restrict browsers
+### Custom browsers

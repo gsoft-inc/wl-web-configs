@@ -1,5 +1,5 @@
 ---
-order: 90
+order: 170
 icon: /static/eslint.svg
 label: ESLint
 expanded: true

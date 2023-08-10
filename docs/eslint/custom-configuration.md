@@ -4,16 +4,8 @@ meta:
     title: Custom configuration - ESLint
 ---
 
+# Custom configuration
+
 ## Override rules
 
 ## Lint additional files
-
-## Manual composition
-
-- core
-- typescript
-- react
-- jest
-- testing-library
-- storybook
-- mdx

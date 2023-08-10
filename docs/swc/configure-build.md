@@ -5,16 +5,23 @@ meta:
     title: Configure for build - SWC
 ---
 
-## 1. Install the packages
+# Configure for build
 
-## 2. Configure SWC
+## Install the packages
+
+## Configure SWC
 
 - Create a configuration file
-- Define the configuration
-- Always provide targeted browsers to transpile accordingly
+- Define the configuration (Always provide targeted browsers to transpile accordingly)
 
-## 3. Add a Webpack loader
+### Predefined options
 
-## 4. Try it :rocket:
+- List all options
+
+### Transformers
+
+## Configure Webpack
+
+## Try it :rocket:
 
 - Either with Webpack or directly with SWC cli

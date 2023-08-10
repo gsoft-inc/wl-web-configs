@@ -10,6 +10,10 @@ To ask a question or propose an idea, feel free to start a new [discussion](http
 
 Have a look at the [contributor's documentation](https://github.com/gsoft-inc/wl-web-configs/blob/main/CONTRIBUTING.md).
 
+## Acknowledgements
+
+Thanks to the team at [Shopify/web-configs](https://github.com/Shopify/web-configs) for the inspiration to create an umbrella project for all the web configurations.
+
 ## License
 
-See the @squide [LICENSE](https://github.com/gsoft-inc/wl-web-configs/blob/main/LICENSE) on Github.
+See the [LICENSE](https://github.com/gsoft-inc/wl-web-configs/blob/main/LICENSE) on Github.

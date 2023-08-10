@@ -5,22 +5,24 @@ meta:
     title: Setup a polyrepo - Stylelint
 ---
 
-## 1. Install the packages
+# Setup a polyrepo
 
-## 2. Configure Stylelint
+## Install the packages
+
+## Configure Stylelint
 
 - Create configuration file
 - Extends the configuration
 
-## 3. Ignore files
+## Ignore files
 
 - .stylelintignore
 - .prettierignore
 
-## 4. Configure indent style
+## Configure indent style
 
-## 5. Add a CLI script
+## Add a CLI script
 
-## 6. Try it :rocket:
+## Try it :rocket:
 
 - With the CLI script

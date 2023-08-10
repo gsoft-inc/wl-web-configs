@@ -5,34 +5,84 @@ meta:
     title: Configure a monorepo - ESLint
 ---
 
-## 1. Setup the workspace
+# Setup a monorepo
 
-### a. Install the packages
+## Install the workspace packages
 
-### b. Configure ESLint
+## Add ESLint configuration for the workspace
 
 - Create configuration file
 - Extends the configuration with monorepo-root
 
-### c. Ignore files
+## Ignore files
 
-### d. Configure indent style
+## Configure indent style
 
-### e. Add a CLI script
+## Add a CLI script
 
-## 2. Setup a project
+## Install the project package
 
-### a. Install the package
-
-### b. Configure ESLint
+## Configure ESLint
 
 - Create configuration file
 - Extends the configuration
 
-- web-application
-- react-library
-- typescript-library
+<!-- ### Available configurations -->
 
-## 3. Try it :rocket:
+### web-application
+
+### react-library
+
+### typescript-library
+
+<!-- ### Custom configuration 
+
+- View "custom configuration" for blabla -->
+
+## Try it :rocket:
 
 - With the CLI script
+
+<!-- ## Setup the workspace
+
+### Install the packages
+
+### Configure ESLint
+
+- Create configuration file
+- Extends the configuration with monorepo-root
+
+#### Custom configuration 
+
+- View "custom configuration" for blabla
+
+### Ignore files
+
+### Configure indent style
+
+### Add a CLI script
+
+## Setup a project
+
+### Install the package
+
+### Configure ESLint
+
+- Create configuration file
+- Extends the configuration
+
+#### Available configurations
+
+##### web-application
+
+##### react-library
+
+##### typescript-library
+
+#### Custom configuration 
+
+- View "custom configuration" for blabla
+
+## Try it :rocket:
+
+- With the CLI script -->

@@ -5,4 +5,6 @@ meta:
     title: Custom configuration - Stylelint
 ---
 
+# Custom configuration
+
 ## Override rules

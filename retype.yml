@@ -19,6 +19,16 @@ links:
       icon: home
       link: /
 
+    - text: Issues
+      icon: issue-opened
+      link: https://github.com/gsoft-inc/wl-web-configs/issues
+      target: blank
+
+    - text: Discussions
+      icon: comment-discussion
+      link: https://github.com/gsoft-inc/wl-web-configs/discussions
+      target: blank
+
     - text: Github
       icon: mark-github
       link: https://github.com/gsoft-inc/wl-web-configs

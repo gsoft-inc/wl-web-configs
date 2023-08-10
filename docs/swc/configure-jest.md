@@ -5,15 +5,23 @@ meta:
     title: Configure for Jest - SWC
 ---
 
-## 1. Install the packages
+# Configure for Jest
 
-## 2. Configure SWC
+## Install the packages
+
+## Configure SWC
 
 - Create a configuration file
 - Define the configuration
 
-## 3. Add a Webpack loader
+### Predefined options
 
-## 4. Try it :rocket:
+- List all options
+
+### Transformers
+
+## Configure Jest
+
+## Try it :rocket:
 
 - Either with Jest or directly with SWC cli

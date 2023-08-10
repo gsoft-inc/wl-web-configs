@@ -1,9 +1,11 @@
 ---
-order: 80
+order: 150
 icon: /static/stylelint.svg
 label: Stylelint
 expanded: true
 ---
+
+# Stylelint
 
 ## Overview
 

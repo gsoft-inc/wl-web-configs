@@ -5,28 +5,26 @@ meta:
     title: Setup a monorepo - Stylelint
 ---
 
-## 1. Setup the workspace
+# Setup a monorepo
 
-### a. Install the packages
+## Install the workspace packages
 
-### b. Ignore files
+## Ignore files
 
 - .stylelintignore
 - .prettierignore
 
-### c. Configure indent style
+## Configure indent style
 
-### d. Add a CLI script
+## Add a CLI script
 
-## 2. Setup a project
+## Install the project package
 
-### a. Install the package
-
-### b. Configure Stylelint
+## Configure Stylelint
 
 - Create the configuration file
 - Extends the configuration
 
-## 3. Try it :rocket:
+## Try it :rocket:
 
 - With the CLI script
