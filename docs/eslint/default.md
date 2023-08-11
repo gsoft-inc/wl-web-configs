@@ -5,6 +5,22 @@ label: ESLint
 expanded: true
 ---
 
+!!!warning The prefered way for using these ESLint configurations is by scaffolding your application with Workleap's [foundry-cli](https://github.com/gsoft-inc/wl-foundry-cli).
++++ pnpm
+```bash
+pnpm create @workleap/project@latest <output-directory>
+```
++++ yarn
+```bash
+yarn create @workleap/project@latest <output-directory>
+```
++++ npm
+```bash
+npm create @workleap/project@latest <output-directory>
+```
++++
+!!!
+
 ## By project type configurations
 
 Typically, [ESLint](https://eslint.org/) shareable configuration libraries are architectured around the idea that [shared configurations](https://eslint.org/docs/latest/extend/shareable-configs) should be small and composable in an attempt to accomodate any potential use cases that a development team might encounter.
@@ -17,22 +33,24 @@ Have a look at Shopify [ESLint usage section](https://github.com/Shopify/web-con
 
 To improve the experience, rather than delegating the composition of the shared configurations to the consumer, we compose them internally and offer configurations **by project type** instead.
 
-This way, it's pretty straightforward to configure ESLint as it only involves **extending a single shared configuration** per project. For advanced users in need of flexibility, the underlying configuration pieces are also [available](advanced-composition.md).
+This way, it's pretty straightforward to configure ESLint as it only involves **extending a single shared configuration** per project. For advanced users in need of flexibility, the underlying configuration pieces are [also available](advanced-composition.md).
 
 ### Available configurations
 
 | Name | Description |
 | ---  | --- |
-| :icon-mark-github: [web-application](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/by-project-type/web-application.ts) | Recommended for a web application developed with React and TypeScript. |
-| :icon-mark-github: [react-library](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/by-project-type/react-library.ts) | Recommended for a TypeScript library developed **with** React. |
-| :icon-mark-github: [typescript-library](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/by-project-type/typescript-library.ts) | Recommended for a TypeScript library developed **without** React. |
-| :icon-mark-github: [monorepo-workspace](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/by-project-type/typescript-library.ts) | Recommended for the workspace configuration of a monorepo project. |
+| :icon-mark-github: [web-application](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/by-project-type/web-application.ts) | For web applications developed with [React](https://react.dev/) and [TypeScript](https://www.typescriptlang.org/). |
+| :icon-mark-github: [react-library](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/by-project-type/react-library.ts) | For TypeScript libraries developed **with** React. |
+| :icon-mark-github: [typescript-library](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/by-project-type/typescript-library.ts) | For TypeScript libraries developed **without** React. |
+| :icon-mark-github: [monorepo-workspace](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/by-project-type/typescript-library.ts) | For the workspace configuration of a monorepo solution. |
 
 ## Prettier
 
 For a great explanation about why we choosed to stick with [ESLint](https://eslint.org/) rather than migrating to [Prettier](https://prettier.io/), read the following [article](https://antfu.me/posts/why-not-prettier).
 
 ## Getting started
+
+To get started, choose one of the following scenarios :point_down:
 
 ### Setup a new project
 
