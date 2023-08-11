@@ -7,6 +7,8 @@ meta:
 
 # Setup a polyrepo
 
+Execute the following steps to setup [ESLint](https://eslint.org/) for a polyrepo solution (**single project** per repository).
+
 ## 1. Install the packages
 
 Open a terminal at the root of the solution and install the following packages:
@@ -29,18 +31,19 @@ npm install -D @workleap/eslint-plugin eslint @typescript-eslint/parser
 
 ### Configuration file
 
-First, create a configuration file named `.eslintrc.json` at the root of the repository:
+First, create a configuration file named `.eslintrc.json` at the root of the solution:
 
-``` #4
+```#5
 root
 ├── src
 ├──── ...
+├── package.json
 ├── .eslintrc.json
 ```
 
-### Shared configuration
+### Shared configurations
 
-Then, open the newly created file to extend the default configuration with one of the provided [shared configurations](https://eslint.org/docs/latest/extend/shareable-configs) :point_down:
+Then, open the newly created file and extend the default configuration with one of the [shared configurations](/eslint/#available-configurations) provided by this library :point_down:
 
 #### web-application
 
@@ -84,15 +87,16 @@ For a [TypeScript](https://www.typescriptlang.org/) library developed **without*
 
 To do so, first, create an `.eslintignore` file at the root of the solution:
 
-``` #5
+```#6
 root
 ├── src
 ├──── ...
+├── package.json
 ├── .eslintrc.json
 ├── .eslintignore
 ```
 
-Then, paste the following ignore rules to the newly created file:
+Then, open the newly created file and paste the following ignore rules:
 
 ```bash .eslintignore
 **/dist/*
@@ -109,10 +113,11 @@ To garantee a consistent indentation, by default, this library's shared configur
 
 First, create a `.editorconfig` file at the root of the solution:
 
-``` #6
+```#7
 root
 ├── src
 ├──── ...
+├── package.json
 ├── .eslintrc.json
 ├── .eslintignore
 ├── .editorconfig
@@ -141,7 +146,7 @@ Finally, install the [EditorConfig.EditorConfig](https://marketplace.visualstudi
 
 ## 5. Add a CLI script
 
-Sometimes, especially when running the CI build, it's useful to lint the entire solution using a single command. To do so, add the following script to your solution's `package.json` file:
+At times, especially when running the CI build, it's useful to lint the entire solution using a single command. To do so, add the following script to your solution's `package.json` file:
 
 ```json package.json
 {
@@ -153,11 +158,11 @@ Sometimes, especially when running the CI build, it's useful to lint the entire 
 
 ## 6. Custom configuration
 
-New projects shouldn't have to customize the default configurations offered by this library. However, if you are in the process of **migrating** an existing project to use this library or encountering a challenging situation, refer to the [custom configuration](custom-configuration.md) page to understand how to override or extend the default configurations, remember, **no locked in** :heart:
+New projects shouldn't have to customize the default configurations offered by this library. However, if you are in the process of **migrating** an existing project to use this library or encountering a challenging situation, refer to the [custom configuration](custom-configuration.md) page to understand how to override or extend the default configurations, remember, **no locked in** :heart::v:
 
 ## 7. Try it :rocket:
 
-Open a Javascript file, type invalid code (e.g. `var x = 0;`) then save. Open a terminal at the root of the solution and execute the CLI script added earlier:
+Open a JavaScript file, type invalid code (e.g. `var x = 0;`) then save. Open a terminal at the root of the solution and execute the CLI script added earlier:
 
 +++ pnpm
 ```bash
@@ -173,4 +178,4 @@ npm run lint:eslint
 ```
 +++
 
-You should see a linting error in the terminal.
+The terminal should output a linting error.

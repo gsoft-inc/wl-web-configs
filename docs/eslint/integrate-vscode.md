@@ -36,6 +36,6 @@ Finally, install the [EditorConfig.EditorConfig](https://marketplace.visualstudi
 
 ## 4. Try it :rocket:
 
-Restart VS Code, open a Javascript file, type invalid code (e.g. `var x = 0;`) then save. The code should have been formatted automatically (e.g. `const x = 0;`).
+Restart VS Code, open a JavaScript file, type invalid code (e.g. `var x = 0;`) then save. The code should have been formatted automatically (e.g. `const x = 0;`).
 
 
