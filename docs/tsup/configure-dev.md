@@ -1,6 +1,8 @@
 ---
 order: 100
 label: Configure for dev
+meta:
+    title: Configure for dev - tsup
 ---
 
 # Configure for dev

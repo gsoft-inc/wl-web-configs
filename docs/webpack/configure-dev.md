@@ -1,6 +1,8 @@
 ---
 order: 100
 label: Configure for dev
+meta:
+    title: Configure for dev - Webpack
 ---
 
 # Configure for dev

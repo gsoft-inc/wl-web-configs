@@ -39,10 +39,10 @@ This way, it's pretty straightforward to configure ESLint as it only involves **
 
 | Name | Description |
 | ---  | --- |
-| :icon-mark-github: [web-application](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/by-project-type/web-application.ts) | For web applications developed with [React](https://react.dev/) and [TypeScript](https://www.typescriptlang.org/). |
-| :icon-mark-github: [react-library](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/by-project-type/react-library.ts) | For TypeScript libraries developed **with** React. |
-| :icon-mark-github: [typescript-library](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/by-project-type/typescript-library.ts) | For TypeScript libraries developed **without** React. |
-| :icon-mark-github: [monorepo-workspace](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/by-project-type/typescript-library.ts) | For the workspace configuration of a monorepo solution. |
+| :icon-mark-github: [web-application](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/by-project-type/web-application.ts) | For web applications developed with [React](https://react.dev/) and [TypeScript](https://www.typescriptlang.org/){ target="_blank" }. |
+| :icon-mark-github: [react-library](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/by-project-type/react-library.ts){ target="_blank" } | For TypeScript libraries developed **with** React. |
+| :icon-mark-github: [typescript-library](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/by-project-type/typescript-library.ts){ target="_blank" } | For TypeScript libraries developed **without** React. |
+| :icon-mark-github: [monorepo-workspace](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/by-project-type/typescript-library.ts){ target="_blank" } | For the workspace configuration of a monorepo solution. |
 
 ## Prettier
 
@@ -64,4 +64,4 @@ Once configured, to understand how to adapt this library default configurations 
 
 ### Advanced use cases
 
-If you are facing a use case making impractical the _per project type_ configurations offered by this library, have a look at the [advanced composition](advanced-composition.md) page for documentation about how to import and compose the underlying configuration pieces of this library.
+If you are encountering a challenging use case making impractical the _per project type_ configurations offered by this library, have a look at the [advanced composition](advanced-composition.md) page for documentation about how tocompose the underlying configuration pieces of this library.

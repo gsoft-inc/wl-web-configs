@@ -1,6 +1,8 @@
 ---
 order: 90
 label: Configure for build
+meta:
+    title: Configure for build - tsup
 ---
 
 # Configure for build
