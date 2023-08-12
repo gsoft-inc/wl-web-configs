@@ -29,6 +29,11 @@ links:
       link: https://github.com/gsoft-inc/wl-web-configs/discussions
       target: blank
 
+    - text: Releases
+      icon: tag
+      link: https://github.com/gsoft-inc/wl-web-configs/releases
+      target: blank
+
     - text: Github
       icon: mark-github
       link: https://github.com/gsoft-inc/wl-web-configs

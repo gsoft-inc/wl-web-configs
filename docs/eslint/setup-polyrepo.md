@@ -49,7 +49,7 @@ Then, open the newly created file and extend the default configuration with one 
 
 For an application developed with [React](https://react.dev/) and [TypeScript](https://www.typescriptlang.org/), use the following configuration:
 
-```json .eslintrc.json
+```json #4 .eslintrc.json
 {
     "$schema": "https://json.schemastore.org/eslintrc",
     "root": true,
@@ -61,7 +61,7 @@ For an application developed with [React](https://react.dev/) and [TypeScript](h
 
 For a [TypeScript](https://www.typescriptlang.org/) library developed **with** [React](https://react.dev/), use the following configuration:
 
-```json .eslintrc.json
+```json #4 .eslintrc.json
 {
     "$schema": "https://json.schemastore.org/eslintrc",
     "root": true,
@@ -73,7 +73,7 @@ For a [TypeScript](https://www.typescriptlang.org/) library developed **with** [
 
 For a [TypeScript](https://www.typescriptlang.org/) library developed **without** [React](https://react.dev/), use the following configuration:
 
-```json .eslintrc.json
+```json #4 .eslintrc.json
 {
     "$schema": "https://json.schemastore.org/eslintrc",
     "root": true,

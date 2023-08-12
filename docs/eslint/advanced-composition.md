@@ -6,7 +6,7 @@ meta:
 
 # Advanced composition
 
-If the default [by project type shared configurations](/eslint/#available-configurations) doesn't fits your needs, rather than writing your own configuration from scratch, you can **compose a new one** from the underlying configuration pieces of this library.
+If the default [by project type configurations](/eslint/#available-configurations) doesn't fits your needs, rather than writing your own configuration from scratch, you can **compose a new one** from the underlying configuration pieces of this library.
 
 ## Available pieces
 
@@ -22,13 +22,13 @@ If the default [by project type shared configurations](/eslint/#available-config
 
 ## Compose a configuration
 
-Each configuration piece can be extended individually, or in combination with other pieces, to compose your custom ESLint configuration.
+Each configuration piece can be extended individually, or in combination with other pieces, to compose your own custom ESLint configuration.
 
 ### Individual piece
 
 To extend the configuration with an individual piece:
 
-```json #4
+```json #4 .eslintrc.json
 {
     "$schema": "https://json.schemastore.org/eslintrc",
     "root": true,
@@ -40,7 +40,7 @@ To extend the configuration with an individual piece:
 
 To extend the configuration with multiple pieces:
 
-```json #4
+```json #4 .eslintrc.json
 {
     "$schema": "https://json.schemastore.org/eslintrc",
     "root": true,
@@ -48,9 +48,9 @@ To extend the configuration with multiple pieces:
 }
 ```
 
-### Custom rules
+<!-- ### Custom rules
 
-To extend the configuration with pieces and define custom rules:
+To extend the configuration and define custom rules:
 
 ```json #5-7
 {
@@ -63,5 +63,27 @@ To extend the configuration with pieces and define custom rules:
 }
 ```
 
-For additional examples, refer to the [custom configuration](custom-configuration.md) page.
+For additional examples, refer to the [custom configuration](custom-configuration.md) page. -->
+
+## Lint additional files
+
+The configuration pieces already targets which file extensions their linting rules will be applied to. If you wish to lint additional file extensions for a given piece you can add an ESLint [override block](https://eslint.org/docs/latest/use/configure/configuration-files#how-do-overrides-work):
+
+```json #5-10 .eslintrc.json
+{
+    "$schema": "https://json.schemastore.org/eslintrc",
+    "root": true,
+    "extends": ["plugin:@workleap/react"],
+    "overrides": [
+        {
+            "files": ["*.js", "*.jsx"],
+            "extends": "plugin:@workleap/react"
+        }
+    ]
+}
+```
+
+
+
+
 
