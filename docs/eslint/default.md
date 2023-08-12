@@ -29,6 +29,8 @@ While composability provide flexibility, it also increase the complexity on the 
 
 ==- @shopify/web-configs example
 Have a look at Shopify [ESLint usage section](https://github.com/Shopify/web-configs/tree/main/packages/eslint-plugin#usage). To configure ESLint with `@shopify/web-configs`, a consumer must choose whether he want rules for `es5`, `esnext`, `typescript` or `node`, then decide if he should use `@babel/eslint-parser` or `@typescript-eslint/parser`.
+
+A consumer must have advanced front-end skills to use those shared configurations.
 ===
 
 To improve the experience, rather than delegating the composition of the shared configurations to the consumer, we compose them internally and offer configurations **by project type** instead.

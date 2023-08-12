@@ -38,7 +38,7 @@ That's why we need both, there's a strong synergy between a collection of config
 
 With configuration libraries **distributed through NPM packages** and installed with a CLI, when a new feature is available for a tool, the configuration libraries maintainers can spend time learning the new feature, making the necessary changes, and **distributing the changes with a new version** of the package. Then, at their convenience, **product teams can adopt the changes** by bumping the configuration library package version in their respective application.
 
-We hope that introducing a collection of configuration libraries will facilitate the creation and maintenance of frontend project over time.
+We hope that introducing a collection of configuration libraries will facilitate the creation and maintenance of front-end project over time.
 
 ## Guiding principles
 
