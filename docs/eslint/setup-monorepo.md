@@ -9,7 +9,7 @@ meta:
 
 To lint a monorepo solution (**multiple projects** per repository), [ESLint](https://eslint.org/) must be setuped to lint the files at the root of the solution (the monorepo **workspace**) and the files of every project of the monorepo.
 
-Let's execute the following steps to setup ESLint for a monorepo solution.
+Execute the following steps to setup ESLint for a monorepo solution.
 
 ## 1. Install the workspace packages
 
@@ -35,7 +35,7 @@ npm install -D @workleap/eslint-plugin eslint typescript @typescript-eslint/pars
 
 First, create a configuration file named `.eslintrc.json` at the root of the solution workspace:
 
-```#8
+``` !#8
 workspace
 ├── packages
 ├──── app
@@ -50,7 +50,7 @@ workspace
 
 Then, open the newly created file and extend the default configuration with the `monorepo-workspace` shared configurations provided by this library:
 
-```json #4 .eslintrc.json
+```json !#4 .eslintrc.json
 {
     "$schema": "https://json.schemastore.org/eslintrc",
     "root": true,
@@ -64,7 +64,7 @@ Then, open the newly created file and extend the default configuration with the 
 
 To do so, first, create an `.eslintignore` file at the root of the solution workspace:
 
-```#9
+``` !#9
 workspace
 ├── packages
 ├──── app
@@ -93,7 +93,7 @@ To garantee a consistent indentation, by default, this library's shared configur
 
 First, create a `.editorconfig` file at the root of the solution workspace:
 
-```#10
+``` !#10
 workspace
 ├── packages
 ├──── app
@@ -161,7 +161,7 @@ npm install -D @workleap/eslint-plugin
 
 First, create a configuration file named `.eslintrc.json` at the root of the project:
 
-```#7
+``` !#7
 workspace
 ├── packages
 ├──── app
@@ -183,7 +183,7 @@ Then, open the newly created file and extend the default configuration with one 
 
 For an application developed with [React](https://react.dev/) and [TypeScript](https://www.typescriptlang.org/), use the following configuration:
 
-```json #4 packages/app/.eslintrc.json
+```json !#4 packages/app/.eslintrc.json
 {
     "$schema": "https://json.schemastore.org/eslintrc",
     "root": true,
@@ -195,7 +195,7 @@ For an application developed with [React](https://react.dev/) and [TypeScript](h
 
 For a [TypeScript](https://www.typescriptlang.org/) library developed **with** [React](https://react.dev/), use the following configuration:
 
-```json #4 packages/app/.eslintrc.json
+```json !#4 packages/app/.eslintrc.json
 {
     "$schema": "https://json.schemastore.org/eslintrc",
     "root": true,
@@ -207,7 +207,7 @@ For a [TypeScript](https://www.typescriptlang.org/) library developed **with** [
 
 For a [TypeScript](https://www.typescriptlang.org/) library developed **without** [React](https://react.dev/), use the following configuration:
 
-```json #4 packages/app/.eslintrc.json
+```json !#4 packages/app/.eslintrc.json
 {
     "$schema": "https://json.schemastore.org/eslintrc",
     "root": true,

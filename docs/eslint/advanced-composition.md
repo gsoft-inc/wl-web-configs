@@ -28,7 +28,7 @@ Each configuration piece can be extended individually, or in combination with ot
 
 To extend the configuration with an individual piece:
 
-```json #4 .eslintrc.json
+```json !#4 .eslintrc.json
 {
     "$schema": "https://json.schemastore.org/eslintrc",
     "root": true,
@@ -40,7 +40,7 @@ To extend the configuration with an individual piece:
 
 To extend the configuration with multiple pieces:
 
-```json #4 .eslintrc.json
+```json !#4 .eslintrc.json
 {
     "$schema": "https://json.schemastore.org/eslintrc",
     "root": true,
@@ -48,28 +48,11 @@ To extend the configuration with multiple pieces:
 }
 ```
 
-<!-- ### Custom rules
-
-To extend the configuration and define custom rules:
-
-```json #5-7
-{
-    "$schema": "https://json.schemastore.org/eslintrc",
-    "root": true,
-    "extends": ["plugin:@workleap/core", "plugin:@workleap/typescript"],
-    "rules": {
-        "quotes": ["error", "double"]
-    }
-}
-```
-
-For additional examples, refer to the [custom configuration](custom-configuration.md) page. -->
-
 ## Lint additional files
 
 The configuration pieces already targets which file extensions their linting rules will be applied to. If you wish to lint additional file extensions for a given piece you can add an ESLint [override block](https://eslint.org/docs/latest/use/configure/configuration-files#how-do-overrides-work):
 
-```json #5-10 .eslintrc.json
+```json !#5-10 .eslintrc.json
 {
     "$schema": "https://json.schemastore.org/eslintrc",
     "root": true,

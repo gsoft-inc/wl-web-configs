@@ -16,7 +16,7 @@ For a list of the default rules, have a look at this library [config folder](htt
 
 You can disable a default rule by defining the rule locally with the `"off"` value:
 
-```json #5-7 .eslintrc.json
+```json !#5-7 .eslintrc.json
 {
     "$schema": "https://json.schemastore.org/eslintrc",
     "root": true,
@@ -31,7 +31,7 @@ You can disable a default rule by defining the rule locally with the `"off"` val
 
 You can update the severity of a rule by defining the rule locally with either the `"warn"` or `"error"` severity:
 
-```json #5-7 .eslintrc.json
+```json !#5-7 .eslintrc.json
 {
     "$schema": "https://json.schemastore.org/eslintrc",
     "root": true,
@@ -46,7 +46,7 @@ You can update the severity of a rule by defining the rule locally with either t
 
 You can update a default rule value by defining the rule locally with its new value:
 
-```json #5-7 .eslintrc.json
+```json !#5-7 .eslintrc.json
 {
     "$schema": "https://json.schemastore.org/eslintrc",
     "root": true,
@@ -65,7 +65,7 @@ Please, don't update your project configuration to use single quotes :sweat_smil
 
 You can add new rules from a third party [ESLint plugin](https://eslint.org/docs/latest/use/configure/plugins):
 
-```json #4-6,8-10 .eslintrc.json
+```json !#4-6,8-10 .eslintrc.json
 {
     "$schema": "https://json.schemastore.org/eslintrc",
     "root": true,

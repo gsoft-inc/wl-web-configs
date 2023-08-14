@@ -33,7 +33,7 @@ npm install -D @workleap/eslint-plugin eslint @typescript-eslint/parser
 
 First, create a configuration file named `.eslintrc.json` at the root of the solution:
 
-```#5
+```!#5
 root
 ├── src
 ├──── ...
@@ -49,7 +49,7 @@ Then, open the newly created file and extend the default configuration with one 
 
 For an application developed with [React](https://react.dev/) and [TypeScript](https://www.typescriptlang.org/), use the following configuration:
 
-```json #4 .eslintrc.json
+```json !#4 .eslintrc.json
 {
     "$schema": "https://json.schemastore.org/eslintrc",
     "root": true,
@@ -61,7 +61,7 @@ For an application developed with [React](https://react.dev/) and [TypeScript](h
 
 For a [TypeScript](https://www.typescriptlang.org/) library developed **with** [React](https://react.dev/), use the following configuration:
 
-```json #4 .eslintrc.json
+```json !#4 .eslintrc.json
 {
     "$schema": "https://json.schemastore.org/eslintrc",
     "root": true,
@@ -73,7 +73,7 @@ For a [TypeScript](https://www.typescriptlang.org/) library developed **with** [
 
 For a [TypeScript](https://www.typescriptlang.org/) library developed **without** [React](https://react.dev/), use the following configuration:
 
-```json #4 .eslintrc.json
+```json !#4 .eslintrc.json
 {
     "$schema": "https://json.schemastore.org/eslintrc",
     "root": true,
@@ -87,7 +87,7 @@ For a [TypeScript](https://www.typescriptlang.org/) library developed **without*
 
 To do so, first, create an `.eslintignore` file at the root of the solution:
 
-```#6
+``` !#6
 root
 ├── src
 ├──── ...
@@ -113,7 +113,7 @@ To garantee a consistent indentation, by default, this library's shared configur
 
 First, create a `.editorconfig` file at the root of the solution:
 
-```#7
+``` !#7
 root
 ├── src
 ├──── ...

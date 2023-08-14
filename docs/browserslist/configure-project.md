@@ -1,54 +1,14 @@
 ---
-order: 180
-icon: /static/browserslist.svg
-label: Browserslist
+label: Configure a project
+meta:
+    title: Configure a project - Browserslist
 ---
 
-# Browserslist
-
-!!!warning Foundry CLI
-
-The prefered way for using this [Browserslist](https://browsersl.ist/) configuration is by scaffolding your application with Workleap's [foundry-cli](https://github.com/gsoft-inc/wl-foundry-cli).
-+++ pnpm
-```bash
-pnpm create @workleap/project@latest <output-directory>
-```
-+++ yarn
-```bash
-yarn create @workleap/project@latest <output-directory>
-```
-+++ npm
-```bash
-npm create @workleap/project@latest <output-directory>
-```
-+++
-!!!
-
-## Supported browsers
-
-You can find an exhaustive list of the browser versions included with this shared configuration on [https://browsersl.ist](https://browsersl.ist/#q=%3E+0.2%25%2C+last+2+versions%2C+Firefox+ESR%2C+not+dead). 
-
-Alternatively, to list the browser versions supported by a specific configuration file, you can open a terminal at the root of any project including a `.browserslistrc` file and execute the following command:
-
-+++ pnpm
-```bash
-pnpm dlx browserslist
-```
-+++ yarn
-```bash
-yarn dlx browserslist
-```
-+++ npm
-```bash
-npx browserslist
-```
-+++
-
-## Getting started
+# Configure a project
 
 > Only setup [Browserslist](https://browsersl.ist/) for projects that are **emitting application bundles**. For example, a library project shouldn't include Browserslist but a web application project should.
 
-### 1. Install the packages
+## 1. Install the packages
 
 Open a terminal at the root of the project and install the following packages:
 
@@ -66,11 +26,13 @@ npm install -D @workleap/browserslist-configs browserslist
 ```
 +++
 
-### 2. Configure Browserslist
+## 2. Configure Browerslist
+
+### Create a configuration file
 
 First, create a configuration file named `.browserslistrc` at the root of the project:
 
-```#5
+``` !#5
 web-project
 ├── src
 ├──── ...
@@ -78,17 +40,19 @@ web-project
 ├── .browserslistrc
 ```
 
+### Extends the configuration
+
 Then, open the newly created file and extend the default configuration with the shared configuration provided by this library:
 
 ``` .browserslistrc
 extends @workleap/browserslist-configs
 ```
 
-#### Custom browsers
+### Custom browsers
 
 If you are encountering a situation that is not currently handled by this library, you can customize your configuration file to extends this library shared configurations with additional browser versions:
 
-``` .browserslistrc #2-3
+``` !#2-3 .browserslistrc
 extends @workleap/browserslist-configs
 IE 11
 last 2 OperaMobile 12.1 versions
@@ -96,7 +60,7 @@ last 2 OperaMobile 12.1 versions
 
 Refer to the [Browserslist documentation](https://github.com/browserslist/browserslist#full-list) for a full list of available queries.
 
-### 3. Try it :rocket:
+## 4. Try it :rocket:
 
 Open a terminal at the root of the project and execute the following command:
 
@@ -116,7 +80,7 @@ npm browserslist
 
 A list of the selected browser versions shoud be outputted to the terminal:
 
-``` An example of the outputted browser versions (not exactly what you'll get)
+``` An example of the outputted browser versions (you won't get exactly this)
 and_chr 114
 and_ff 113 
 and_qq 13.1
