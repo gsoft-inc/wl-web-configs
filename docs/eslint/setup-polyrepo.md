@@ -41,7 +41,7 @@ root
 ├── .eslintrc.json
 ```
 
-### Shared configurations
+### Available configurations
 
 Then, open the newly created file and extend the default configuration with one of the [shared configurations](/eslint/#available-configurations) provided by this library :point_down:
 

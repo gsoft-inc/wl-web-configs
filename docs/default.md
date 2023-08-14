@@ -8,7 +8,9 @@ label: Getting started
 
 Welcome to `@workleap/web-configs`, a collection of **configuration libraries** for building web applications at [Workleap](https://workleap.com/). In this getting started page, you'll find an overview of the project and a list of supported tools.
 
-!!!warning The prefered way for using these configuration libraries is by scaffolding your application with Workleap's [foundry-cli](https://github.com/gsoft-inc/wl-foundry-cli).
+!!!warning Foundry CLI
+
+The prefered way for using these configuration libraries is by scaffolding your application with Workleap's [foundry-cli](https://github.com/gsoft-inc/wl-foundry-cli).
 +++ pnpm
 ```bash
 pnpm create @workleap/project@latest <output-directory>
@@ -26,7 +28,7 @@ npm create @workleap/project@latest <output-directory>
 
 ## Why
 
-Starting a new web application is still an arduous task. There are so many tools to choose from, learn, install and configure, it can be overwhelming.
+Starting a new web application is still an arduous task. There are so many tools to choose from, learn, install and configure, it can be daunting.
 
 For an organization like [Workleap](https://workleap.com/), with a large suite of products, it **doesn't make sense to start over every time** we invest in a new idea or add a new vertical to an existing product. Developers working on a new project shouldn't spend their first day's figuring out which [ESLint](https://eslint.org/) rules to enable/disable, or how to transpile their [React](https://react.dev/) code, they should rather **focus on writing features code**.
 

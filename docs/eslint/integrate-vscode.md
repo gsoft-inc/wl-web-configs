@@ -24,9 +24,9 @@ Then, add the following settings to your solution [VS Code settings file](https:
         "source.sortImports": true // Let VS Code handle import sorting, it's snappier and more reliable than ESLint
     },
     "editor.formatOnSave": true,
-    "typescript.format.enable": false, // Disables the default formatter, we use ESLint instead
-    "javascript.format.enable": false, // Disables the default formatter, we use ESLint instead
-    "json.format.enable": false, // Disables the default formatter, we use ESLint instead
+    "typescript.format.enable": false, // Disables the default formatter to use ESLint instead
+    "javascript.format.enable": false, // Disables the default formatter to use ESLint instead
+    "json.format.enable": false, // Disables the default formatter to use ESLint instead
 }
 ```
 

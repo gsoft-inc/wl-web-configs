@@ -5,7 +5,11 @@ label: ESLint
 expanded: true
 ---
 
-!!!warning The prefered way for using these ESLint configurations is by scaffolding your application with Workleap's [foundry-cli](https://github.com/gsoft-inc/wl-foundry-cli).
+# ESLint
+
+!!!warning Foundry CLI
+
+The prefered way for using these [ESLint](https://eslint.org/) configurations is by scaffolding your application with Workleap's [foundry-cli](https://github.com/gsoft-inc/wl-foundry-cli).
 +++ pnpm
 ```bash
 pnpm create @workleap/project@latest <output-directory>

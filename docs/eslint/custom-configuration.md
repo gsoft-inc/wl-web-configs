@@ -14,7 +14,7 @@ For a list of the default rules, have a look at this library [config folder](htt
 
 ## Disable a default rule
 
-You can disable a default rule by setting its value to `"off"`:
+You can disable a default rule by defining the rule locally with the `"off"` value:
 
 ```json #5-7 .eslintrc.json
 {
@@ -29,7 +29,7 @@ You can disable a default rule by setting its value to `"off"`:
 
 ## Change a default rule severity
 
-You can change the severity of a rule by settings its value `"warn"` or `"error"`:
+You can update the severity of a rule by defining the rule locally with either the `"warn"` or `"error"` severity:
 
 ```json #5-7 .eslintrc.json
 {
@@ -42,9 +42,9 @@ You can change the severity of a rule by settings its value `"warn"` or `"error"
 }
 ```
 
-## Update a default rule
+## Change a default rule value
 
-You can update a default rule by locally setting its new value:
+You can update a default rule value by defining the rule locally with its new value:
 
 ```json #5-7 .eslintrc.json
 {
