@@ -12,7 +12,7 @@ This repository is managed as a monorepo that is composed of many npm packages, 
 
 | Name | NPM |
 | --- | --- |
-| [@workleap/browserslist-config](packages/browserslist-config/README.md) | [![npm version](https://img.shields.io/npm/v/@workleap/browserslist-config)](https://www.npmjs.com/package/@workleap/browserslist-config) |
+| [@workleap/browserslist-configs](packages/browserslist-configs/README.md) | [![npm version](https://img.shields.io/npm/v/@workleap/browserslist-configs)](https://www.npmjs.com/package/@workleap/browserslist-configs) |
 | [@workleap/eslint-plugin](packages/eslint-plugin/README.md) | [![npm version](https://img.shields.io/npm/v/@workleap/eslint-plugin)](https://www.npmjs.com/package/@workleap/eslint-plugin) |
 | [@workleap/postcss-plugin](packages/postcss-plugin/README.md) | [![npm version](https://img.shields.io/npm/v/@workleap/postcss-plugin)](https://www.npmjs.com/package/@workleap/postcss-plugin) |
 | [@workleap/stylelint-plugin](packages/stylelint-config/README.md) | [![npm version](https://img.shields.io/npm/v/@workleap/stylelint-config)](https://www.npmjs.com/package/@workleap/stylelint-config) |

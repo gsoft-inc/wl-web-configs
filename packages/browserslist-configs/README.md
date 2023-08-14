@@ -1,7 +1,7 @@
-# @workleap/eslint-plugin
+# @workleap/browserslist-configs
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](../../LICENSE)
-[![npm version](https://img.shields.io/npm/v/@workleap/eslint-plugin)](https://www.npmjs.com/package/@workleap/eslint-plugin)
+[![npm version](https://img.shields.io/npm/v/@workleap/browserslist-configs)](https://www.npmjs.com/package/@workleap/browserslist-configs)
 
 ## Usage
 
@@ -10,6 +10,14 @@ View the [user's documentation](https://gsoft-inc.github.io/wl-web-configs/).
 ## 🤝 Contributing
 
 View the [contributor's documentation](../../CONTRIBUTING.md).
+
+### Notes
+
+### CJS support
+
+To support CJS projects, this package is build for ESM and CJS formats. To support CJS, `type: "module"` has been temporary removed from the `package.json` file.
+
+Once browserslist and all third parties using browserslist supports ESM, CJS support can be removed.
 
 ## License
 

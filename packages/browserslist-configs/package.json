@@ -1,7 +1,7 @@
 {
-    "name": "@workleap/browserslist-config",
+    "name": "@workleap/browserslist-configs",
     "author": "Workleap",
-    "description": "Workleap recommended Browserslist config.",
+    "description": "Workleap recommended Browserslist configurations.",
     "version": "1.2.3",
     "license": "Apache-2.0",
     "keywords": [
@@ -11,7 +11,7 @@
     "repository": {
         "type": "git",
         "url": "git+https://github.com/gsoft-inc/wl-web-configs.git",
-        "directory": "packages/browserslist-config"
+        "directory": "packages/browserslist-configs"
     },
     "exports": {
         ".": {

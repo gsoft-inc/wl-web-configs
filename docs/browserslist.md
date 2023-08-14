@@ -54,15 +54,15 @@ Open a terminal at the root of the project and install the following packages:
 
 +++ pnpm
 ```bash
-pnpm add -D @workleap/browserslist-config browserslist
+pnpm add -D @workleap/browserslist-configs browserslist
 ```
 +++ yarn
 ```bash
-yarn add -D @workleap/browserslist-config browserslist
+yarn add -D @workleap/browserslist-configs browserslist
 ```
 +++ npm
 ```bash
-npm install -D @workleap/browserslist-config browserslist
+npm install -D @workleap/browserslist-configs browserslist
 ```
 +++
 
@@ -81,7 +81,7 @@ web-project
 Then, open the newly created file and extend the default configuration with the shared configuration provided by this library:
 
 ``` .browserslistrc
-extends @workleap/browserslist-config
+extends @workleap/browserslist-configs
 ```
 
 #### Custom browsers
@@ -89,7 +89,7 @@ extends @workleap/browserslist-config
 If you are encountering a situation that is not currently handled by this library, you can customize your configuration file to extends this library shared configurations with additional browser versions:
 
 ``` .browserslistrc #2-3
-extends @workleap/browserslist-config
+extends @workleap/browserslist-configs
 IE 11
 last 2 OperaMobile 12.1 versions
 ```
