@@ -52,7 +52,7 @@ This way, it's pretty straightforward to configure ESLint as it only involves **
 
 ## Prettier
 
-For a great explanation about why we choosed to stick with [ESLint](https://eslint.org/) rather than migrating to [Prettier](https://prettier.io/), read the following [article](https://antfu.me/posts/why-not-prettier).
+For a great explanation about why we choosed to stick with [ESLint](https://eslint.org/) for stylistic rules rather than migrating to [Prettier](https://prettier.io/), read the following [article](https://antfu.me/posts/why-not-prettier).
 
 ## Getting started
 

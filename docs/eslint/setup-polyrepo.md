@@ -29,8 +29,6 @@ npm install -D @workleap/eslint-plugin eslint @typescript-eslint/parser
 
 ## 2. Configure ESLint
 
-### Configuration file
-
 First, create a configuration file named `.eslintrc.json` at the root of the solution:
 
 ```!#5
@@ -41,9 +39,9 @@ root
 ├── .eslintrc.json
 ```
 
-### Available configurations
-
 Then, open the newly created file and extend the default configuration with one of the [shared configurations](/eslint/#available-configurations) provided by this library :point_down:
+
+### Available configurations
 
 #### web-application
 

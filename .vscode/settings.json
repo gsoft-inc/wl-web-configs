@@ -30,8 +30,6 @@
     "html.format.enable": false,
 
     "css.validate": false, // Disables the default formatter to use Stylelint instead
-    "less.validate": false, // Disables the default formatter to use Stylelint instead
-    "scss.validate": false, // Disables the default formatter to use Stylelint instead
 
     // Settings for third parties that are frequently used
     "files.associations": {

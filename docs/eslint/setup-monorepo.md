@@ -31,8 +31,6 @@ npm install -D @workleap/eslint-plugin eslint typescript @typescript-eslint/pars
 
 ## 2. Configure ESLint for the workspace
 
-### Configuration file
-
 First, create a configuration file named `.eslintrc.json` at the root of the solution workspace:
 
 ``` !#8
@@ -45,8 +43,6 @@ workspace
 ├── package.json
 ├── .eslintrc.json
 ```
-
-### monorepo-workspace
 
 Then, open the newly created file and extend the default configuration with the `monorepo-workspace` shared configurations provided by this library:
 
@@ -157,8 +153,6 @@ npm install -D @workleap/eslint-plugin
 
 ## 7. Configure ESLint for the project
 
-### Configuration file
-
 First, create a configuration file named `.eslintrc.json` at the root of the project:
 
 ``` !#7
@@ -174,10 +168,9 @@ workspace
 ├── .eslintignore
 ├── .editorconfig
 ```
+Then, open the newly created file and extend the default configuration with one of the [shared configurations](/eslint/#available-configurations) provided by this library :point_down:
 
 ### Available configurations
-
-Then, open the newly created file and extend the default configuration with one of the [shared configurations](/eslint/#available-configurations) provided by this library :point_down:
 
 #### web-application
 

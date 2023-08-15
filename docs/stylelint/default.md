@@ -7,8 +7,55 @@ expanded: true
 
 # Stylelint
 
-## Overview
+!!!warning Foundry CLI
+
+The prefered way for using these [Stylelint](https://stylelint.io/) configurations is by scaffolding your application with Workleap's [foundry-cli](https://github.com/gsoft-inc/wl-foundry-cli).
++++ pnpm
+```bash
+pnpm create @workleap/project@latest <output-directory>
+```
++++ yarn
+```bash
+yarn create @workleap/project@latest <output-directory>
+```
++++ npm
+```bash
+npm create @workleap/project@latest <output-directory>
+```
++++
+!!!
+
+## Sass
+
+While [Sass](https://sass-lang.com/) still offers numerous advantages, as we actively work on improving our build time and **minimize** the number of tools **compiling/transpiling** frontend code, we choose to move away from Sass and not provide any Stylelint's rules for Sass.
+
+- If you are still using Sass for nesting, [native support](https://www.w3.org/TR/css-nesting-1/) is coming soon to CSS.
+
+## Prettier
+
+Since `v15.0.0`, Stylelint's stylistic rules [has been deprecated](https://stylelint.io/migration-guide/to-15#deprecated-stylistic-rules). The current recommendation is to use [Prettier](https://prettier.io/) instead to format CSS files.
+
+For that reason, this library shared configurations includes the [stylelint-prettier](https://github.com/prettier/stylelint-prettier) plugin. Using this plugin, Prettier changes are exposed as Stylelint's rule violations.
+
+Since we choose to [stick with ESLint](../eslint/default.md#prettier) for JavaScript stylistic rules, a `.prettierignore` file must be added at the root of the solution to ignore everything but CSS files:
+
+```
+*
+!**/*.css
+```
+
+Otherwise, Prettier will format your `.js,.json,.ts` files and you'll end up with conflicts between Prettier and [ESLint](https://eslint.org/).
 
 ## Getting started
 
-## Prettier
+To get started, choose one of the following scenarios :point_down:
+
+### Setup a new project
+
+If your are looking to setup a **new** polyrepo solution (single project per repository), follow the guide to [setup a polyrepo](setup-polyrepo.md), otherwise, follow the guide to [setup a monorepo](setup-monorepo.md).
+
+### Setup an existing project
+
+If you are migrating an **existing** polyrepo solution (single project per repository) to `@workleap/web-configs`, follow the guide to [setup a polyrepo](setup-polyrepo.md), otherwise, follow the guide to [setup a monorepo](setup-monorepo.md).
+
+Once configured, to understand how to adapt this library default configurations to your codebase while you are completing the migration, have a look at the [custom configuration](custom-configuration.md) page.

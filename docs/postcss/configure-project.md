@@ -28,8 +28,6 @@ npm install -D @workleap/postcss-configs postcss
 
 ## 2. Configure PostCSS
 
-### Create a configuration file
-
 First, create a configuration file named `postcss.config.ts` at the root of the project:
 
 ``` !#5
@@ -39,8 +37,6 @@ project
 ├── package.json
 ├── postcss.config.ts
 ```
-
-### Define the configuration
 
 Then, open the newly created file and `export` the PostCSS configuration by using the `defineConfig(options)` function provided by this library:
 

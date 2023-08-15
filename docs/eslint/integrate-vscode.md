@@ -7,7 +7,7 @@ meta:
 
 # Integrate with VS Code
 
-[ESLint VS Code extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) greatly improve the developement experience by **automatically linting** your code as you type and **automatically formatting** the code according to your ESLint configuration whenever you save.
+[ESLint VS Code extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) greatly improve the developement experience by **automatically linting** the code as you type and **automatically formatting** the code according to your ESLint configuration whenever you save.
 
 ## 1. Install the ESLint extension
 
@@ -26,7 +26,7 @@ Then, add the following settings to your solution [VS Code settings file](https:
     "editor.formatOnSave": true,
     "typescript.format.enable": false, // Disables the default formatter to use ESLint instead
     "javascript.format.enable": false, // Disables the default formatter to use ESLint instead
-    "json.format.enable": false, // Disables the default formatter to use ESLint instead
+    "json.format.enable": false // Disables the default formatter to use ESLint instead
 }
 ```
 
@@ -36,6 +36,6 @@ Finally, install the [EditorConfig.EditorConfig](https://marketplace.visualstudi
 
 ## 4. Try it :rocket:
 
-Restart VS Code, open a JavaScript file, type invalid code (e.g. `var x = 0;`) then save. The code should have been formatted automatically (e.g. `const x = 0;`).
+Restart VS Code, open a JavaScript file, type invalid code (e.g. `var x = 0;`), then save. The code should have been formatted automatically (e.g. `const x = 0;`).
 
 

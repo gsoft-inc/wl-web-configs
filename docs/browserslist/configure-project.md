@@ -28,8 +28,6 @@ npm install -D @workleap/browserslist-configs browserslist
 
 ## 2. Configure Browerslist
 
-### Create a configuration file
-
 First, create a configuration file named `.browserslistrc` at the root of the project:
 
 ``` !#5
@@ -39,8 +37,6 @@ web-project
 ├── package.json
 ├── .browserslistrc
 ```
-
-### Extends the configuration
 
 Then, open the newly created file and extend the default configuration with the shared configuration provided by this library:
 
