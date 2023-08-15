@@ -33,7 +33,7 @@
         "@types/react-dom": "18.2.4",
         "@testing-library/react": "14.0.0",
         "@workleap/eslint-plugin": "workspace:*",
-        "@workleap/stylelint-config": "workspace:*",
+        "@workleap/stylelint-configs": "workspace:*",
         "@workleap/swc-configs": "workspace:*",
         "@workleap/tsup-configs": "workspace:*",
         "@workleap/typescript-configs": "workspace:*",

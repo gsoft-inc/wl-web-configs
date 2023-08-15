@@ -7,9 +7,11 @@ meta:
 
 # Setup a monorepo
 
-To lint a monorepo solution (**multiple projects** per repository), [ESLint](https://eslint.org/) must be setuped to lint the files at the root of the solution (the monorepo **workspace**) and the files of every project of the monorepo.
+!!!warning
+This monorepo setup is intended to be used with [PNPM workspaces](https://pnpm.io/workspaces). You may need a different setup for [NPM workspaces](https://docs.npmjs.com/cli/v7/using-npm/workspaces) or [Yarn workspaces](https://classic.yarnpkg.com/lang/en/docs/workspaces/) because by default, those package managers hoist dependencies rather than installing them in isolation like PNPM.
+!!!
 
-Execute the following steps to setup ESLint for a monorepo solution.
+To lint a monorepo solution (**multiple projects** per repository), [ESLint](https://eslint.org/) must be setuped to lint the files at the root of the solution (the monorepo **workspace**) and the files of every project of the monorepo. Execute the following steps to setup ESLint for a monorepo solution.
 
 ## 1. Install the workspace packages
 
@@ -85,7 +87,7 @@ pnpm-lock.yaml
 
 [ESLint](https://eslint.org/) offers [built-in rules](https://eslint.org/docs/latest/rules/indent) for configuring the indentation style of a codebase. However, there's a catch: when [VS Code auto-formatting](https://code.visualstudio.com/docs/editor/codebasics#_formatting) feature is enabled, it might conflict with the configured indentation rules if they are set  differently.
 
-To garantee a consistent indentation, by default, this library's shared configurations disable ESLint indent rules in favor of using [EditorConfig](https://editorconfig.org/) on the consumer side. With EditorConfig, the indent style can be configured in a single file and be applied consistently accross various formatting tools, including ESlint and [VS Code](https://code.visualstudio.com/).
+To garantee a consistent indentation, we recommend using [EditorConfig](https://editorconfig.org/) on the consumer side. With EditorConfig, the indent style can be configured in a single file and be applied consistently accross various formatting tools, including ESlint and [VS Code](https://code.visualstudio.com/).
 
 First, create a `.editorconfig` file at the root of the solution workspace:
 
@@ -105,8 +107,6 @@ workspace
 Then, open the newly created file and paste the following configuration:
 
 ```bash .editorconfig
-# editorconfig.org
-
 root = true
 
 [*]
@@ -124,6 +124,19 @@ trim_trailing_whitespace = false
 ## 5. Add a CLI script
 
 At times, especially when running the CI build, it's useful to lint the entire solution using a single command. To do so, add the following script to your solution's workspace `package.json` file:
+
+``` !#7
+workspace
+├── packages
+├──── app
+├────── src
+├──────── ...
+├────── package.json
+├── package.json    <------- (this one!)
+├── .eslintrc.json
+├── .eslintignore
+├── .editorconfig
+```
 
 ```json package.json
 {
@@ -146,7 +159,7 @@ pnpm add -D @workleap/eslint-plugin
 yarn add -D @workleap/eslint-plugin
 ```
 +++ npm
-```bashss
+```bash
 npm install -D @workleap/eslint-plugin
 ```
 +++
@@ -168,6 +181,7 @@ workspace
 ├── .eslintignore
 ├── .editorconfig
 ```
+
 Then, open the newly created file and extend the default configuration with one of the [shared configurations](/eslint/#available-configurations) provided by this library :point_down:
 
 ### Available configurations
@@ -218,7 +232,7 @@ New projects shouldn't have to customize the default configurations offered by t
 
 ## 10. Try it :rocket:
 
-Open a JavaScript file, type invalid code (e.g. `var x = 0;`) then save. Open a terminal at the root of the solution and execute the CLI script added earlier:
+Open a JavaScript file, type invalid code (e.g. `var x = 0;`), then save. Open a terminal at the root of the solution and execute the CLI script added earlier:
 
 +++ pnpm
 ```bash

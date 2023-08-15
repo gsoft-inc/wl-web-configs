@@ -1,4 +1,4 @@
-# @workleap/stylelint-config
+# @workleap/stylelint-configs
 
 Shareable [stylelint](https://stylelint.io/) configuration for Workleap.
 
@@ -14,19 +14,19 @@ Install the following package:
 **With pnpm**
 
 ```shell
-pnpm add -D @workleap/stylelint-config stylelint prettier
+pnpm add -D @workleap/stylelint-configs stylelint prettier
 ```
 
 **With yarn**
 
 ```shell
-yarn add -D @workleap/stylelint-config stylelint prettier
+yarn add -D @workleap/stylelint-configs stylelint prettier
 ```
 
 **With npm**
 
 ```shell
-npm install -D @workleap/stylelint-config stylelint prettier
+npm install -D @workleap/stylelint-configs stylelint prettier
 ```
 
 ### Monorepo
@@ -36,37 +36,37 @@ Install the following packages at the root of the project:
 **With pnpm**
 
 ```shell
-pnpm add -D @workleap/stylelint-config stylelint prettier
+pnpm add -D @workleap/stylelint-configs stylelint prettier
 ```
 
 **With yarn**
 
 ```shell
-yarn add -D @workleap/stylelint-config stylelint prettier
+yarn add -D @workleap/stylelint-configs stylelint prettier
 ```
 
 **With npm**
 
 ```shell
-npm install -D @workleap/stylelint-config stylelint prettier
+npm install -D @workleap/stylelint-configs stylelint prettier
 ```
 
 Install the following packages in every workspace project:
 
 ```shell
-pnpm add -D @workleap/stylelint-config
+pnpm add -D @workleap/stylelint-configs
 ```
 
 **With yarn**
 
 ```shell
-yarn add -D @workleap/stylelint-config
+yarn add -D @workleap/stylelint-configs
 ```
 
 **With npm**
 
 ```shell
-npm install -D @workleap/stylelint-config
+npm install -D @workleap/stylelint-configs
 ```
 
 ## Usage
@@ -78,7 +78,7 @@ Create a `.stylelintrc.json` file at the root of your project with the following
 ```json
 {
     "$schema": "https://json.schemastore.org/stylelintrc",
-    "extends": "@workleap/stylelint-config"
+    "extends": "@workleap/stylelint-configs"
 }
 ```
 
@@ -114,7 +114,7 @@ To integrate with VSCode, install the [stylelint.vscode-stylelint](https://marke
 
 Since Stylelint v15.0.0, stylistic rules are deprecated. They now suggest using Prettier to format your CSS files.
 
-With that in mind, the `@workleap/stylelint-config` includes the [stylelint-prettier plugin](https://github.com/prettier/stylelint-prettier). Using this plugin, prettier changes are exposed as stylelint rule violations.
+With that in mind, the `@workleap/stylelint-configs` includes the [stylelint-prettier plugin](https://github.com/prettier/stylelint-prettier). Using this plugin, prettier changes are exposed as stylelint rule violations.
 
 You should therefore add either a `.editorconfig` or `.prettierrc` file at the root of your project. These rule will be run against your CSS files and will be autofixed when you run stylelint --fix **/*.css.
 

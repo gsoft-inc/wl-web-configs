@@ -9,7 +9,7 @@ meta:
 If you are in the process of **migrating an existing project** to use this library or encountering a challenging situation that is not currently handled by this library, you might want to customize the default shared configurations.
 
 !!!
-For a list of the default rules, have a look at this library [config folder](https://github.com/gsoft-inc/wl-web-configs/tree/main/packages/eslint-plugin/lib/config) on Github.
+For a list of the rules included with the default shared configurations, have a look at this library [folder](https://github.com/gsoft-inc/wl-web-configs/tree/main/packages/eslint-plugin/lib/config) on Github.
 !!!
 
 ## Disable a default rule
@@ -65,13 +65,11 @@ Please, don't update your project configuration to use single quotes :sweat_smil
 
 You can add new rules from a third party [ESLint plugin](https://eslint.org/docs/latest/use/configure/plugins):
 
-```json !#4-6,8-10 .eslintrc.json
+```json !#4,6-8 .eslintrc.json
 {
     "$schema": "https://json.schemastore.org/eslintrc",
     "root": true,
-    "plugins": [
-        "unicorn"
-    ],
+    "plugins": ["unicorn"],
     "extends": "plugin:@workleap/web-application",
     "rules": {
         "unicorn/better-regex": "error"

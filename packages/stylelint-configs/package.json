@@ -1,7 +1,7 @@
 {
-    "name": "@workleap/stylelint-config",
+    "name": "@workleap/stylelint-configs",
     "author": "Workleap",
-    "description": "Workleap recommended stylelint config.",
+    "description": "Workleap recommended Stylelint configurations.",
     "version": "1.2.3",
     "license": "Apache-2.0",
     "keywords": [
@@ -27,7 +27,7 @@
     "repository": {
         "type": "git",
         "url": "git+https://github.com/gsoft-inc/wl-web-configs.git",
-        "directory": "packages/stylelint-config"
+        "directory": "packages/stylelint-configs"
     },
     "scripts": {
         "build": "tsup"
