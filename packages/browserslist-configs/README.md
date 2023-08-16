@@ -13,7 +13,7 @@ View the [contributor's documentation](../../CONTRIBUTING.md).
 
 ### Notes
 
-### CJS support
+#### CJS support
 
 To support CJS projects, this package is build for ESM and CJS formats. To support CJS, `type: "module"` has been temporary removed from the `package.json` file.
 

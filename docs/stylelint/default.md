@@ -27,9 +27,7 @@ npm create @workleap/project@latest <output-directory>
 
 ## Sass
 
-While [Sass](https://sass-lang.com/) still offers numerous advantages, as we actively work on improving our build time and **minimize** the number of tools **compiling/transpiling** frontend code, we choose to move away from Sass and not provide any Stylelint's rules for Sass.
-
-- If you are still using Sass for nesting, [native support](https://www.w3.org/TR/css-nesting-1/) is coming soon to CSS.
+While [Sass](https://sass-lang.com/) still offers numerous advantages, as we actively work on improving our build time and **minimize** the number of tools **compiling/transpiling** frontend code, we choose to move away from Sass and not provide any Stylelint's rules for Sass. If you are still using Sass strictly for nesting, note that [native support for nesting](https://www.w3.org/TR/css-nesting-1/) is coming soon to CSS.
 
 ## Prettier
 

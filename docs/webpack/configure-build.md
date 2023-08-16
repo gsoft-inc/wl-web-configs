@@ -2,7 +2,7 @@
 order: 90
 label: Configure for build
 meta:
-    title: Configure for build - Webpack
+    title: Configure for build - webpack
 ---
 
 # Configure for build

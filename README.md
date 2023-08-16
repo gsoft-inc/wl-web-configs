@@ -1,12 +1,9 @@
 # wl-web-configs
-Common configurations for building web apps at Workleap
+
+Common configurations for building web apps at [Workleap](https://workleap.com/).
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](./LICENSE)
 [![CI](https://github.com/gsoft-inc/wl-web-configs/actions/workflows/ci.yml/badge.svg)](https://github.com/gsoft-inc/wl-web-configs/actions/workflows/ci.yml)
-
-## Usage
-
-This repository is managed as a monorepo that is composed of many npm packages, where each package has its own README describing usage.
 
 ### Packages
 
@@ -19,6 +16,14 @@ This repository is managed as a monorepo that is composed of many npm packages, 
 | [@workleap/typescript-config](packages/typescript-configs/README.md) | [![npm version](https://img.shields.io/npm/v/@workleap/typescript-configs)](https://www.npmjs.com/package/@workleap/typescript-configs) |
 | [@workleap/tsup-configs](packages/tsup-configs/README.md) | [![npm version](https://img.shields.io/npm/v/@workleap/tsup-configs)](https://www.npmjs.com/package/@workleap/tsup-configs) |
 | [@workleap/swc-configs](packages/swc-configs/README.md) | [![npm version](https://img.shields.io/npm/v/@workleap/swc-configs)](https://www.npmjs.com/package/@workleap/swc-configs) |
+
+## Have a question or found an issue?
+
+To ask a question or propose an idea, feel free to start a new [discussion](https://github.com/gsoft-inc/wl-web-configs/discussions). If you found a bug, please open an [issue](https://github.com/gsoft-inc/wl-web-configs/issues).
+
+## Documentation
+
+View the [user's documentation](https://gsoft-inc.github.io/wl-web-configs/).
 
 ## 🤝 Contributing
 
