@@ -1,5 +1,6 @@
-import type { Configuration, RuleSetRule, RuleSetUseItem } from "webpack";
+import type { RuleSetRule, RuleSetUseItem } from "webpack";
 import { addAfterModuleRule, matchAssetModuleType, matchLoaderName } from "../../src/transformers/moduleRules.ts";
+import type { WebpackConfig } from "../../src/types.ts";
 
 test("when a matching module rule is found in the rules array, add after the module rule", () => {
     const newRule: RuleSetRule = {
@@ -7,7 +8,7 @@ test("when a matching module rule is found in the rules array, add after the mod
         loader: "swc-loader"
     };
 
-    const config: Configuration = {
+    const config: WebpackConfig = {
         module: {
             rules: [
                 {
@@ -38,7 +39,7 @@ test("when a matching module rule is found in a \"oneOf\" prop, add after the mo
         type: "json"
     };
 
-    const config: Configuration = {
+    const config: WebpackConfig = {
         module: {
             rules: [
                 {
@@ -76,7 +77,7 @@ test("when a matching module rule is found in a \"use\" prop, add after the modu
         loader: "swc-loader"
     };
 
-    const config: Configuration = {
+    const config: WebpackConfig = {
         module: {
             rules: [
                 {
@@ -115,7 +116,7 @@ test("when no matching module rule is found, do nothing", () => {
         loader: "swc-loader"
     };
 
-    const config: Configuration = {
+    const config: WebpackConfig = {
         module: {
             rules: [
                 {

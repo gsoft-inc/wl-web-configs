@@ -20,8 +20,8 @@ meta:
 
 ### Transformers
 
-## Configure Webpack
+## Configure webpack
 
 ## Try it :rocket:
 
-- Either with Webpack or directly with SWC cli
+- Either with webpack or directly with SWC cli

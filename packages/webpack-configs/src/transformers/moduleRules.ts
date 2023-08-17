@@ -1,5 +1,6 @@
 import path from "path";
-import type { Configuration, RuleSetRule, RuleSetUseItem } from "webpack";
+import type { RuleSetRule, RuleSetUseItem } from "webpack";
+import type { WebpackConfig } from "../types.ts";
 
 export type ModuleRuleMatcher = (moduleRule: RuleSetRule | RuleSetUseItem, index: number, array: RuleSetRule[] | RuleSetUseItem[]) => boolean;
 
@@ -125,7 +126,7 @@ function findModuleRulesRecursively(moduleRules: RuleSetRule[] | RuleSetUseItem[
     });
 }
 
-export function findModuleRule(config: Configuration, matcher: ModuleRuleMatcher) {
+export function findModuleRule(config: WebpackConfig, matcher: ModuleRuleMatcher) {
     const moduleRules = config.module?.rules;
 
     if (!moduleRules) {
@@ -145,7 +146,7 @@ export function findModuleRule(config: Configuration, matcher: ModuleRuleMatcher
     return matches[0];
 }
 
-export function findModuleRules(config: Configuration, matcher: ModuleRuleMatcher) {
+export function findModuleRules(config: WebpackConfig, matcher: ModuleRuleMatcher) {
     const moduleRules = config.module?.rules;
 
     if (!moduleRules) {
@@ -159,7 +160,7 @@ export function findModuleRules(config: Configuration, matcher: ModuleRuleMatche
     return matches;
 }
 
-export function addBeforeModuleRule(config: Configuration, matcher: ModuleRuleMatcher, newModuleRules: RuleSetRule[] | RuleSetUseItem[]) {
+export function addBeforeModuleRule(config: WebpackConfig, matcher: ModuleRuleMatcher, newModuleRules: RuleSetRule[] | RuleSetUseItem[]) {
     const match = findModuleRule(config, matcher);
 
     if (match) {
@@ -171,7 +172,7 @@ export function addBeforeModuleRule(config: Configuration, matcher: ModuleRuleMa
     }
 }
 
-export function addAfterModuleRule(config: Configuration, matcher: ModuleRuleMatcher, newModuleRules: RuleSetRule[] | RuleSetUseItem[]) {
+export function addAfterModuleRule(config: WebpackConfig, matcher: ModuleRuleMatcher, newModuleRules: RuleSetRule[] | RuleSetUseItem[]) {
     const match = findModuleRule(config, matcher);
 
     if (match) {
@@ -183,7 +184,7 @@ export function addAfterModuleRule(config: Configuration, matcher: ModuleRuleMat
     }
 }
 
-export function replaceModuleRule(config: Configuration, matcher: ModuleRuleMatcher, newModuleRule: RuleSetRule | RuleSetUseItem) {
+export function replaceModuleRule(config: WebpackConfig, matcher: ModuleRuleMatcher, newModuleRule: RuleSetRule | RuleSetUseItem) {
     const match = findModuleRule(config, matcher);
 
     if (match) {
@@ -195,7 +196,7 @@ export function replaceModuleRule(config: Configuration, matcher: ModuleRuleMatc
     }
 }
 
-export function removeModuleRules(config: Configuration, matcher: ModuleRuleMatcher) {
+export function removeModuleRules(config: WebpackConfig, matcher: ModuleRuleMatcher) {
     const moduleRules = config.module?.rules;
 
     if (!moduleRules) {

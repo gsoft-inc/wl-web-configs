@@ -46,14 +46,14 @@ import { defineConfig } from "@workleap/postcss-configs";
 export default defineConfig();
 ```
 
-### Predefined options
+## 3. Predefined options
 
-The `defineConfig(options)` function can be used as-is as shown in the previous examples, however, if you wish to customize the default configuration, the function also accept a few predefined options to help with that :point_down:
+The `defineConfig(options)` function can be used as-is as shown in the previous example, however, if you wish to customize the default configuration, the function also accept a few predefined options to help with that :point_down:
 
-#### `browsers`
+### `browsers`
 
 - **Type**: `string | string[]`
-- **Default**: When available, will read the supported browser versions from the closest `.browserslistrc` file
+- **Default**: When available, will load the supported browser versions from the closest `.browserslistrc` file
 
 Set `postcss-preset-env` [browsers option](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env#browsers).
 
@@ -65,9 +65,9 @@ export default defineConfig({
 });
 ```
 
-#### `presetEnvOptions`
+### `presetEnvOptions`
 
-- **Type**: An object literal accepting all `postcss-preset-env` [options](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env#options)
+- **Type**: An object literal accepting any `postcss-preset-env` [option](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env#options)
 - **Default**: `{ autoprefixer: { flexbox: "no-2009" }, stage: 3 }`
 
 Forward the provided object literal to the [postcss-preset-env](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env) plugin.
@@ -82,7 +82,7 @@ export default defineConfig({
 });
 ```
 
-### Extends `presetEnvOptions` options
+#### Extends `presetEnvOptions` options
 
 When provided, the `presetEnvOptions` option will override the default [postcss-preset-env](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env) plugin configuration. If you wish to **extend** the default configuration rather than overriding it, you can do so by importing the `DefaultPresetEnvOptions` object:
 
@@ -101,15 +101,20 @@ export default defineConfig({
 });
 ```
 
-### Transformers
+## 4. Configuration transformers
 
-The [predefined options](#predefined-options) are useful to quickly customize the default configuration of this library, but only covers a subset of a [PostCSS](https://postcss.org/) configuration. If you wish to get full control over the configuration, you can provide **configuration transformer** functions.
+The [predefined options](#3-predefined-options) are useful to quickly customize the default configuration of this library, but only covers a subset of a [PostCSS configuration](https://github.com/postcss/postcss-load-config). If you needfull control over the configuration, you can provide **configuration transformer** functions.
 
 ```ts
-transformer(config: {}) => {}
+transformer(config: PostCSSConfig) => PostCSSConfig
 ```
 
-A configuration transformer function accept a [PostCSS configuration object](https://github.com/postcss/postcss-load-config) and returns a transformed (or not) PostCSS configuration object:
+A configuration transformer function receive a PostCSS configuration object and returns a transformed (or not) PostCSS configuration object.
+
+### `transformers`
+
+- **Type**: `((config: PostCSSConfig ) => PostCSSConfig)[]`
+- **Default**: `[]`
 
 ```ts !#10 postcss.config.ts
 import { defineConfig, type PostcssConfigTransformer, type PostCSSConfig } from "@workleap/postcss-configs";
@@ -127,7 +132,7 @@ export default defineConfig({
 
 #### Additional PostCSS plugins
 
-Configuration transformer functions can be used to configure additional [PostCSS plugins](https://www.postcss.parts/):
+Configuration transformer functions are ideal to configure additional [PostCSS plugins](https://www.postcss.parts/):
 
 ```ts !#11 postcss.config.ts
 import { defineConfig, type PostcssConfigTransformer, type PostCSSConfig } from "@workleap/postcss-configs";
@@ -144,11 +149,11 @@ export default defineConfig({
 });
 ```
 
-## 3. Configure Webpack
+## 5. Configure webpack
 
-To integrate with [Webpack](https://webpack.js.org/), update your configuration file to include a [postcss-loader](https://www.npmjs.com/package/postcss-loader):
+To integrate with [webpack](https://webpack.js.org/), update your configuration file to include a [postcss-loader](https://www.npmjs.com/package/postcss-loader):
 
-```js !#13 webpack.config.js
+```js !#12 webpack.config.js
 // @ts-check
 
 export default {
@@ -168,9 +173,9 @@ export default {
 }
 ```
 
-## 4. Try it :rocket:
+## 6. Try it :rocket:
 
-To test your PostCSS configuration, create and import a CSS file with the following code:
+To test your new PostCSS configuration, create and import a CSS file with the following code:
 
 ```css
 .example {
@@ -181,7 +186,7 @@ To test your PostCSS configuration, create and import a CSS file with the follow
 }
 ```
 
-If you integrated with Webpack, execute your Webpack build and find the outputted `.example` CSS class in your `dist` folder. Otherwise, you can setup [PostCSS CLI](https://github.com/postcss/postcss-cli) to process the CSS file.
+If you integrated PostCSS with webpack, execute your webpack build and find the outputted `.example` CSS class in your `dist` folder. Otherwise, you can setup [PostCSS CLI](https://github.com/postcss/postcss-cli) to process the CSS file.
 
 Most of the CSS properties in the `.example` CSS class should have been prefixed (it can vary based on your [Browserslist](https://browsersl.ist/) configuration):
 

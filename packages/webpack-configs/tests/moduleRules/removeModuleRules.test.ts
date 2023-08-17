@@ -1,8 +1,9 @@
-import type { Configuration, RuleSetRule, RuleSetUseItem } from "webpack";
+import type { RuleSetRule, RuleSetUseItem } from "webpack";
 import { matchLoaderName, matchTest, removeModuleRules } from "../../src/transformers/moduleRules.ts";
+import type { WebpackConfig } from "../../src/types.ts";
 
 test("when a matching module rule is found in the rules array, remove the module rule", () => {
-    const config: Configuration = {
+    const config: WebpackConfig = {
         module: {
             rules: [
                 {
@@ -28,7 +29,7 @@ test("when a matching module rule is found in the rules array, remove the module
 });
 
 test("when a matching module rule is found in a \"oneOf\" prop, remove the module rule", () => {
-    const config: Configuration = {
+    const config: WebpackConfig = {
         module: {
             rules: [
                 {
@@ -58,7 +59,7 @@ test("when a matching module rule is found in a \"oneOf\" prop, remove the modul
 });
 
 test("when a matching module rule is found in a \"use\" prop, remove the module rule", () => {
-    const config: Configuration = {
+    const config: WebpackConfig = {
         module: {
             rules: [
                 {
@@ -94,7 +95,7 @@ test("when a matching module rule is found in a \"use\" prop, remove the module 
 });
 
 test("when multiple matching module rules are found within the same parent, remove all the module rules", () => {
-    const config: Configuration = {
+    const config: WebpackConfig = {
         module: {
             rules: [
                 {
@@ -124,7 +125,7 @@ test("when multiple matching module rules are found within the same parent, remo
 });
 
 test("when multiple matching module rules are found in the rules array and a \"oneOf\" prop, remove all the module rules", () => {
-    const config: Configuration = {
+    const config: WebpackConfig = {
         module: {
             rules: [
                 {
@@ -162,7 +163,7 @@ test("when multiple matching module rules are found in the rules array and a \"o
 });
 
 test("when multiple matching module rules are found in the rules array and a \"use\" prop, remove all the module rules", () => {
-    const config: Configuration = {
+    const config: WebpackConfig = {
         module: {
             rules: [
                 {
@@ -200,7 +201,7 @@ test("when multiple matching module rules are found in the rules array and a \"u
 test("when no matching module rule is found, do nothing", () => {
     jest.spyOn(console, "log").mockImplementation(jest.fn());
 
-    const config: Configuration = {
+    const config: WebpackConfig = {
         module: {
             rules: [
                 {

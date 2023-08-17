@@ -149,7 +149,7 @@ New projects shouldn't have to customize the default configurations offered by t
 
 ## 8. Try it :rocket:
 
-Open a CSS file, type invalid code (e.g. `color: #fff`), then save. Open a terminal at the root of the solution and execute the CLI script added earlier:
+To test your new setup, open a CSS file, type invalid code (e.g. `color: #fff`), then save. Open a terminal at the root of the solution and execute the [CLI script added earlier](#6-add-a-cli-script):
 
 +++ pnpm
 ```bash

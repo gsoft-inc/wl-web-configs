@@ -32,7 +32,7 @@ Starting a new web application is still an arduous task. There are so many tools
 
 For an organization like [Workleap](https://workleap.com/), with a large suite of products, it **doesn't make sense to start over every time** we invest in a new idea or add a new vertical to an existing product. Developers working on a new project shouldn't spend their first day's figuring out which [ESLint](https://eslint.org/) rules to enable/disable, or how to transpile their [React](https://react.dev/) code, they should rather **focus on writing features code**.
 
-While a collection of common configurations gets us closer to that goal, on their own, configuration libraries are not enough to reach it. There is still a need to install and assemble those configurations correctly in the new application, which can also be a challenge. To fill this gap, we choose invest as well in a [CLI](https://github.com/gsoft-inc/wl-foundry-cli) to scaffold new web applications.
+While a collection of common configurations gets us closer to that goal, on their own, configuration libraries are not enough to reach it. There is still a need to install and assemble those configurations correctly in the new application, which can also be a challenge. To fill this gap, we choosed to invest as well in a [CLI](https://github.com/gsoft-inc/wl-foundry-cli) to scaffold new web applications.
 
 With the CLI, developers can generate fully configured web applications in a few minutes. However, contrary to configuration libraries, a CLI alone is only good at creating the initial files of an application, it doesn't help with the **maintenance** or the **adoption of new features** offered by tools over time.
 
@@ -57,7 +57,7 @@ While developing the configuration libraries, we kept one guiding principle in m
 | ![](./static/swc.svg){ class="h-5 w-5 mr-2 -mt-1" }[SWC](https://swc.rs/){ target="_blank" } | [![npm version](https://img.shields.io/npm/v/@workleap/swc-configs)](https://www.npmjs.com/package/@workleap/swc-configs){ target="_blank" } | [Getting started](swc/default.md) |
 | ![](./static/tsup.svg){ class="h-5 w-5 mr-2 -mt-1" }[tsup](https://tsup.egoist.dev/){ target="_blank" } | [![npm version](https://img.shields.io/npm/v/@workleap/tsup-configs)](https://www.npmjs.com/package/@workleap/tsup-configs){ target="_blank" } | [Getting started](tsup/default.md) |
 | ![](./static/typescript.svg){ class="h-5 w-5 mr-2 -mt-1" }[Typescript](https://www.typescriptlang.org/){ target="_blank" } | [![npm version](https://img.shields.io/npm/v/@workleap/typescript-configs)](https://www.npmjs.com/package/@workleap/typescript-configs){ target="_blank" } | [Getting started](typescript/default.md) |
-| ![](./static/webpack.svg){ class="h-5 w-5 mr-2 -mt-1" }[Webpack](https://webpack.js.org/){ target="_blank" } | [![npm version](https://img.shields.io/npm/v/@workleap/webpack-configs)](https://www.npmjs.com/package/@workleap/webpack-configs){ target="_blank" } | [Getting started](webpack/default.md) |
+| ![](./static/webpack.svg){ class="h-5 w-5 mr-2 -mt-1" }[webpack](https://webpack.js.org/){ target="_blank" } | [![npm version](https://img.shields.io/npm/v/@workleap/webpack-configs)](https://www.npmjs.com/package/@workleap/webpack-configs){ target="_blank" } | [Getting started](webpack/default.md) |
 
 
 

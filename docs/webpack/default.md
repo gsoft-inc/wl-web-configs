@@ -27,7 +27,7 @@ npm create @workleap/project@latest <output-directory>
 
 ## A note about Rspack
 
-[Rspack](https://www.rspack.dev/) is a partial rewrite of webpack in [Rust](https://foundation.rust-lang.org/) and will most likely be its successor once it's features complete and stable. Our goal is to **migrate to Rspack** somewhere in 2024 when [Module Federation](https://module-federation.io/) support will be available.
+[Rspack](https://www.rspack.dev/) is a partial rewrite of [webpack](https://webpack.js.org/) in [Rust](https://foundation.rust-lang.org/) and will most likely be its successor once it's features complete and stable. Our goal is to migrate to Rspack somewhere in 2024 when [Module Federation](https://module-federation.io/) support will be available.
 
 Meanwhile, you can **confidently start a new project with webpack** as the **migration** process to Rspack is expected to be **seamless**; Rspack is commited to support the full webpack API and its massive plugin ecosystem.
 
@@ -38,7 +38,7 @@ The shared configurations offered by this library includes the following feature
 ### Language support
 
 - [TypeScript](https://www.typescriptlang.org/)
-- JSX and TSX
+- [JSX](https://react.dev/learn/writing-markup-with-jsx)
 - CSS (with [CSS modules](https://github.com/css-modules/css-modules) and [PostCSS](https://postcss.org/))
 
 ### Framework support
@@ -54,13 +54,13 @@ The shared configurations offered by this library includes the following feature
 
 ### Development
 
-- Dev server
+- [Dev server](https://webpack.js.org/configuration/dev-server/)
 - [React Fast Refresh](https://github.com/pmmmwh/react-refresh-webpack-plugin) or [Hot Module Reload](https://webpack.js.org/concepts/hot-module-replacement/)
-- Sourcemaps
+- [Sourcemap](https://webpack.js.org/configuration/devtool/#devtool)
 
 ### Production
 
-- Minification
+- [Minification](https://webpack.js.org/plugins/terser-webpack-plugin/)
 
 ### Miscellaneous
 

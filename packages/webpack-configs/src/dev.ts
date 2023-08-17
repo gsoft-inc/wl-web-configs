@@ -5,8 +5,9 @@ import HtmlWebpackPlugin from "html-webpack-plugin";
 import { createRequire } from "node:module";
 import path from "path";
 import { fileURLToPath } from "url";
-import webpack, { type Configuration as WebpackConfig } from "webpack";
+import webpack from "webpack";
 import { applyTransformers, type WebpackConfigTransformer } from "./transformers/applyTransformers.ts";
+import type { WebpackConfig } from "./types.ts";
 import { isObject } from "./utils.ts";
 
 // Add the "devServer" prop to WebpackConfig typings.

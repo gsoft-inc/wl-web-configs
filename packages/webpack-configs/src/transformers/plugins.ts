@@ -1,6 +1,6 @@
-import type { Configuration } from "webpack";
+import type { WebpackConfig } from "../types.ts";
 
-export type WebpackPlugin = NonNullable<Configuration["plugins"]>[number];
+export type WebpackPlugin = NonNullable<WebpackConfig["plugins"]>[number];
 
 export type PluginMatcher = (plugin: WebpackPlugin, index: number, array: WebpackPlugin[]) => boolean;
 
@@ -30,7 +30,7 @@ export interface PluginMatch {
     index: number;
 }
 
-export function findPlugin(config: Configuration, matcher: PluginMatcher) {
+export function findPlugin(config: WebpackConfig, matcher: PluginMatcher) {
     const matches: PluginMatch[] = [];
 
     config.plugins?.forEach((x, index, array) => {
@@ -51,7 +51,7 @@ export function findPlugin(config: Configuration, matcher: PluginMatcher) {
     return matches[0];
 }
 
-export function replacePlugin(config: Configuration, matcher: PluginMatcher, newPlugin: WebpackPlugin) {
+export function replacePlugin(config: WebpackConfig, matcher: PluginMatcher, newPlugin: WebpackPlugin) {
     const match = findPlugin(config, matcher);
 
     if (match) {
@@ -63,7 +63,7 @@ export function replacePlugin(config: Configuration, matcher: PluginMatcher, new
     }
 }
 
-export function addBeforePlugin(config: Configuration, matcher: PluginMatcher, newPlugins: WebpackPlugin[]) {
+export function addBeforePlugin(config: WebpackConfig, matcher: PluginMatcher, newPlugins: WebpackPlugin[]) {
     const match = findPlugin(config, matcher);
 
     if (match) {
@@ -75,7 +75,7 @@ export function addBeforePlugin(config: Configuration, matcher: PluginMatcher, n
     }
 }
 
-export function addAfterPlugin(config: Configuration, matcher: PluginMatcher, newPlugins: WebpackPlugin[]) {
+export function addAfterPlugin(config: WebpackConfig, matcher: PluginMatcher, newPlugins: WebpackPlugin[]) {
     const match = findPlugin(config, matcher);
 
     if (match) {
@@ -87,7 +87,7 @@ export function addAfterPlugin(config: Configuration, matcher: PluginMatcher, ne
     }
 }
 
-export function removePlugin(config: Configuration, matcher: PluginMatcher) {
+export function removePlugin(config: WebpackConfig, matcher: PluginMatcher) {
     const countBefore = config.plugins?.length ?? 0;
 
     config.plugins = config.plugins?.filter((...args) => !matcher(...args));

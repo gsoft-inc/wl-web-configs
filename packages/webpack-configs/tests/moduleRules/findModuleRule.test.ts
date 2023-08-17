@@ -1,5 +1,6 @@
-import type { Configuration, RuleSetRule } from "webpack";
+import type { RuleSetRule } from "webpack";
 import { findModuleRule, matchAssetModuleType, matchLoaderName } from "../../src/transformers/moduleRules.ts";
+import type { WebpackConfig } from "../../src/types.ts";
 
 test("when the webpack configuration doesn't have a module section, return undefined", () => {
     const result = findModuleRule({}, matchAssetModuleType("asset/resource"));
@@ -8,7 +9,7 @@ test("when the webpack configuration doesn't have a module section, return undef
 });
 
 test("when the webpack configuration doesn't have a rule section, return undefined", () => {
-    const config: Configuration = {
+    const config: WebpackConfig = {
         module: {}
     };
 
@@ -18,7 +19,7 @@ test("when the webpack configuration doesn't have a rule section, return undefin
 });
 
 test("when the matching rule is the first rule of the rules array, return the matching rule", () => {
-    const config: Configuration = {
+    const config: WebpackConfig = {
         module: {
             rules: [
                 {
@@ -50,7 +51,7 @@ test("when the matching rule is the first rule of the rules array, return the ma
 });
 
 test("when the matching rule is the last rule of the rules array, return the matching rule", () => {
-    const config: Configuration = {
+    const config: WebpackConfig = {
         module: {
             rules: [
                 {
@@ -95,7 +96,7 @@ test("when the matching rule is nested in a \"oneOf\" prop and is the first rule
         ]
     };
 
-    const config: Configuration = {
+    const config: WebpackConfig = {
         module: {
             rules: [
                 oneOfRule,
@@ -136,7 +137,7 @@ test("when the matching rule is nested in a \"oneOf\" prop and is the last rule 
         ]
     };
 
-    const config: Configuration = {
+    const config: WebpackConfig = {
         module: {
             rules: [
                 oneOfRule,
@@ -173,7 +174,7 @@ test("when the matching rule is nested in a \"use\" prop and is the first rule o
         ]
     };
 
-    const config: Configuration = {
+    const config: WebpackConfig = {
         module: {
             rules: [
                 tsModuleRule,
@@ -214,7 +215,7 @@ test("when the matching rule is nested in a \"use\" prop and is the last rule of
         ]
     };
 
-    const config: Configuration = {
+    const config: WebpackConfig = {
         module: {
             rules: [
                 {
@@ -253,7 +254,7 @@ test("when the matching rule is nested in a \"oneOf\" prop then in a \"use\" pro
         ]
     };
 
-    const config: Configuration = {
+    const config: WebpackConfig = {
         module: {
             rules: [
                 {
@@ -293,7 +294,7 @@ test("when the matching rule is nested in a \"oneOf\" prop then in a \"use\" pro
 });
 
 test("when there are no matching rule, return undefined", () => {
-    const config: Configuration = {
+    const config: WebpackConfig = {
         module: {
             rules: [
                 {
@@ -321,7 +322,7 @@ test("when there are no matching rule, return undefined", () => {
 });
 
 test("throw an error when multiple module rules are found", () => {
-    const config: Configuration = {
+    const config: WebpackConfig = {
         module: {
             rules: [
                 {
@@ -348,7 +349,7 @@ test("throw an error when multiple module rules are found", () => {
 });
 
 test("when a module rule is undefined, do not throw", () => {
-    const config: Configuration = {
+    const config: WebpackConfig = {
         module: {
             rules: [
                 // Since Webpack configs are usually untyped, it's preferable to test this.
@@ -371,7 +372,7 @@ test("when a module rule is undefined, do not throw", () => {
 });
 
 test("when an undefined module rule is nested in a \"oneOf\" prop, do not throw", () => {
-    const config: Configuration = {
+    const config: WebpackConfig = {
         module: {
             rules: [
                 {
