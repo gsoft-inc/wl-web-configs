@@ -49,8 +49,8 @@ export interface DefineBuildConfigOptions {
     publicPath?: string;
     moduleRules?: NonNullable<WebpackConfig["module"]>["rules"];
     plugins?: WebpackConfig["plugins"];
-    htmlWebpackPlugin?: HtmlWebpackPlugin.Options;
-    miniCssExtractPlugin?: MiniCssExtractPluginOptions;
+    htmlWebpackPluginOptions?: HtmlWebpackPlugin.Options;
+    miniCssExtractPluginOptions?: MiniCssExtractPluginOptions;
     minify?: boolean;
     cssModules?: boolean;
     swcConfig: SwcConfig;
@@ -68,8 +68,8 @@ export function defineBuildConfig(options: DefineBuildConfigOptions) {
         publicPath = "http://localhost:8080/",
         moduleRules = [],
         plugins = [],
-        htmlWebpackPlugin = defineBuildHtmlWebpackPluginConfig(),
-        miniCssExtractPlugin = defineMiniCssExtractPluginConfig(),
+        htmlWebpackPluginOptions = defineBuildHtmlWebpackPluginConfig(),
+        miniCssExtractPluginOptions = defineMiniCssExtractPluginConfig(),
         minify = true,
         cssModules = false,
         swcConfig,
@@ -149,8 +149,8 @@ export function defineBuildConfig(options: DefineBuildConfigOptions) {
             extensions: [".js", ".jsx", ".ts", ".tsx", ".css"]
         },
         plugins: [
-            new HtmlWebpackPlugin(htmlWebpackPlugin),
-            new MiniCssExtractPlugin(miniCssExtractPlugin),
+            new HtmlWebpackPlugin(htmlWebpackPluginOptions),
+            new MiniCssExtractPlugin(miniCssExtractPluginOptions),
             new DefinePlugin({
                 // Parenthesis around the stringified object are mandatory otherwise it breaks
                 // at build time.

@@ -107,13 +107,15 @@ export default defineConfig({
 We do not guarantee that your configuration transformers won't break after an update. It's your responsability to keep them up to date with new releases.
 !!!
 
-The [predefined options](#3-predefined-options) are useful to quickly customize the default configuration of this library, but only covers a subset of a [PostCSS configuration](https://github.com/postcss/postcss-load-config). If you needfull control over the configuration, you can provide **configuration transformer** functions.
+The [predefined options](#3-predefined-options) are useful to quickly customize the [default configuration](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/postcss-configs/src/index.ts) of this library, but only covers a subset of a [PostCSS configuration](https://github.com/postcss/postcss-load-config). If you need full control over the configuration, you can provide **configuration transformer** functions.
+
+A configuration transformer function receive a PostCSS configuration object and returns a transformed (or not) PostCSS configuration object:
 
 ```ts
 transformer(config: PostCSSConfig) => PostCSSConfig
 ```
 
-A configuration transformer function receive a PostCSS configuration object and returns a transformed (or not) PostCSS configuration object.
+[!ref icon="mark-github" text="View the default configuration on Github"](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/postcss-configs/src/index.ts)
 
 ### `transformers`
 

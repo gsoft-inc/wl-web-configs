@@ -219,7 +219,7 @@ Set webpack [cacheDirectory option](https://webpack.js.org/configuration/cache/#
 
 ### `moduleRules`
 
-- **Type**: An array of webpack [moduleRule](https://webpack.js.org/configuration/module/#modulerules) object
+- **Type**: An array of webpack [moduleRule](https://webpack.js.org/configuration/module/#modulerules) objects
 - **Default**: `[]`
 
 Append the provided webpack module rules to the configuration.
@@ -243,7 +243,7 @@ export default defineDevConfig({
 
 ### `plugins`
 
-- **Type**: An array of webpack [plugin](https://webpack.js.org/configuration/plugins/) object
+- **Type**: An array of webpack [plugin](https://webpack.js.org/configuration/plugins/) instances
 - **Default**: `[]`
 
 Append the provided webpack plugins to the configuration.
@@ -352,13 +352,15 @@ export default defineDevConfig({
 We do not guarantee that your configuration transformers won't break after an update. It's your responsability to keep them up to date with new releases.
 !!!
 
-The [predefined options](#3-predefined-options) are useful to quickly customize the default configuration of this library, but only covers a subset of a [webpack configuration](https://webpack.js.org/configuration/). If you need full control over the configuration, you can provide configuration transformer functions.
+The [predefined options](#3-predefined-options) are useful to quickly customize the [default configuration](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/webpack-configs/src/dev.ts) of this library, but only covers a subset of a [webpack configuration](https://webpack.js.org/configuration/). If you need full control over the configuration, you can provide configuration transformer functions.
+
+A configuration transformer function receive a webpack configuration object and returns a transformed (or not) webpack configuration object:
 
 ```ts
 transformer(config: WebpackConfig ) => WebpackConfig
 ```
 
-A configuration transformer function receive a webpack configuration object and returns a transformed (or not) webpack configuration object.
+[!ref icon="mark-github" text="View the default configuration on Github"](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/webpack-configs/src/dev.ts)
 
 ### `transformers`
 
@@ -379,7 +381,7 @@ const enableInMemoryCache: WebpackConfigTransformer = (config: WebpackConfig) =>
     return config;
 };
 
-export default defineConfig({
+export default defineDevConfig({
     cache: false,
     transformers: [enableInMemoryCache],
     swcConfig
@@ -402,7 +404,7 @@ To easily start the development server, add the following script to your project
 
 ## 6. Environment variables
 
-To deal with environment variables, webpack suggest using the [--env option](https://webpack.js.org/guides/environment-variables/) from it's CLI. While that would work, by using webpack CLI `--env` option, the environment variables would only be available to the webpack configuration file:
+To deal with environment variables, webpack suggest using the [--env option](https://webpack.js.org/guides/environment-variables/) from it's CLI. While that would work, the environment variables would then only be available to the webpack configuration file:
 
 ```js !#6 webpack.dev.js
 // @ts-check
@@ -423,7 +425,7 @@ export default (env) => {
 
 ### cross-env
 
-We recommend instead to define environment variables with [cross-env](https://github.com/kentcdodds/cross-env). That way, the environment variables will also be available to other [Node.js](https://nodejs.org/en) files:
+We recommend instead to define environment variables with [cross-env](https://github.com/kentcdodds/cross-env). That way, the environment variables will be available to any [Node.js](https://nodejs.org/en) files loaded by the script:
 
 ```json package.json
 {
@@ -448,7 +450,7 @@ export default defineDevConfig({
 
 Still, having the environment variables available everywhere doesn't allow the bundled application files to access them. The reason is that those environment variables are only available at build time, not at runtime.
 
-To make them accessible at runtime, they must be included at build time into the application bundle files. This is the purpose of the `environmentVariables` option.
+To make them accessible at runtime, they must be added to the application bundle files. This is the purpose of the `environmentVariables` option.
 
 ### `environmentVariables`
 
