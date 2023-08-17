@@ -59,7 +59,7 @@ export function replacePlugin(config: WebpackConfig, matcher: PluginMatcher, new
     } else {
         const matcherInfo = (matcher as WithPluginMatcherInfo).info;
 
-        console.log(`[webpack-configs] Couldn't replace the plugin because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
+        throw new Error(`[webpack-configs] Couldn't replace the plugin because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
     }
 }
 
@@ -71,7 +71,7 @@ export function addBeforePlugin(config: WebpackConfig, matcher: PluginMatcher, n
     } else {
         const matcherInfo = (matcher as WithPluginMatcherInfo).info;
 
-        console.log(`[webpack-configs] Couldn't add the new plugins because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
+        throw new Error(`[webpack-configs] Couldn't add the new plugins because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
     }
 }
 
@@ -83,7 +83,7 @@ export function addAfterPlugin(config: WebpackConfig, matcher: PluginMatcher, ne
     } else {
         const matcherInfo = (matcher as WithPluginMatcherInfo).info;
 
-        console.log(`[webpack-configs] Couldn't add the new plugins because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
+        throw new Error(`[webpack-configs] Couldn't add the new plugins because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
     }
 }
 
@@ -97,6 +97,6 @@ export function removePlugin(config: WebpackConfig, matcher: PluginMatcher) {
     if (countBefore === countAfter) {
         const matcherInfo = (matcher as WithPluginMatcherInfo).info;
 
-        console.log(`[webpack-configs] Didn't remove any plugin because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
+        throw new Error(`[webpack-configs] Didn't remove any plugin because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
     }
 }

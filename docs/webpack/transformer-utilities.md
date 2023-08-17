@@ -15,7 +15,7 @@ Utility functions for webpack [module rules](https://webpack.js.org/configuratio
 
 ### matchLoaderName
 
-Returns a **matcher function** that can be utilized alongside other module rules utility functions. The returned matcher function will return `true` when it encounters a module rule with a loader **matching** the provided **name** value.
+Returns a **matcher function** that can be utilized alongside module rules utility functions. The returned matcher function will return `true` when it encounters a module rule with a loader **matching** the provided **name** value.
 
 ```ts
 const matcher = matchLoaderName(name: string)
@@ -52,7 +52,7 @@ const matcher = matchLoaderName("swc-loader");
 
 ### matchAssetModuleType
 
-Returns a **matcher function** that can be utilized alongside other module rules utility functions. The returned matcher function will return `true` when it encounters a module rule with a loader **matching** the provided **asset type** value.
+Returns a **matcher function** that can be utilized alongside module rules utility functions. The returned matcher function will return `true` when it encounters a module rule with a loader **matching** the provided **asset type** value.
 
 ```ts
 const matcher = matchAssetModuleType(type: AssetModuleType)
@@ -89,7 +89,7 @@ const matcher = matchAssetModuleType("asset/resource");
 
 ### matchTest
 
-Returns a **matcher function** that can be utilized alongside other module rules utility functions. The returned matcher function will return `true` when it encounters a module rule with a loader **matching** the provided **test** value.
+Returns a **matcher function** that can be utilized alongside module rules utility functions. The returned matcher function will return `true` when it encounters a module rule with a loader **matching** the provided **test** value.
 
 ```ts
 const matcher = matchTest(test: string | RegExp)
@@ -331,12 +331,198 @@ Utility functions for webpack [plugins](https://webpack.js.org/configuration/plu
 
 ### matchConstructorName
 
+Returns a **matcher function** that can be utilized alongside plugin utility functions. The returned matcher function will return `true` when it encounters a plugin **matching** the provided **constructor name** value.
+
+```ts
+const matcher = matchConstructorName(name: string)
+```
+
+#### Parameters
+
+- `name`: A plugin constructor name.
+
+#### Returns
+
+A `PluginMatcher` function.
+
+#### Usage
+
+```ts transformer.ts
+import { matchConstructorName } from "@workleap/webpack-configs";
+import HtmlWebpackPlugin from "html-webpack-plugin";
+
+const matcher = matchConstructorName(HtmlWebpackPlugin.name);
+```
+
 ### findPlugin
 
-### replacePlugin
+Retrieve the **first** plugin for which the matcher function returns true. If there is more than one match, an error will be thrown.
+
+```ts
+const plugin = findPlugin(config: WebpackConfig, matcher: PluginMatcher)
+```
+
+#### Parameters
+
+- `config`: A webpack config
+- `matcher`: A `PluginMatcher` function
+
+#### Returns
+
+A plugin if a match has been found, otherwise `undefined`.
+
+#### Usage
+
+```ts transformer.ts
+import { matchConstructorName, findPlugin, type WebpackConfig } from "@workleap/webpack-configs";
+import HtmlWebpackPlugin from "html-webpack-plugin";
+
+function transformer(config: WebpackConfig) {
+    const plugin = findPlugin(config, matchConstructorName(HtmlWebpackPlugin.name));
+
+    // Do something with the plugin...
+
+    return config;
+}
+```
 
 ### addBeforePlugin
 
+Add the provided plugins **before** the matching plugin. If no plugin has been found, an error will be thrown.
+
+```ts
+addBeforePlugin(config: WebpackConfig, matcher: PluginMatcher, newPlugins: WebpackPlugin[])
+```
+
+#### Parameters
+
+- `config`: A webpack config
+- `matcher`: A `PluginMatcher` function
+- `newPlugins`: An array of plugins
+
+#### Returns
+
+Nothing
+
+#### Usage
+
+```ts !#11 transformer.ts
+import { matchConstructorName, addBeforePlugin, type WebpackConfig } from "@workleap/webpack-configs";
+import CircularDependencyPlugin from "circular-dependency-plugin";
+import HtmlWebpackPlugin from "html-webpack-plugin";
+
+function transformer(config: WebpackConfig) {
+    const newPlugin = new CircularDependencyPlugin({
+        exclude: /node_modules/,
+        include: /src/
+    });
+
+    addBeforePlugin(config, matchConstructorName(HtmlWebpackPlugin.name), [newPlugin]);
+
+    return config;
+}
+```
+
 ### addAfterPlugin
 
+Add the provided plugins **after** the matching plugin. If no plugin has been found, an error will be thrown.
+
+```ts
+addAfterPlugin(config: WebpackConfig, matcher: PluginMatcher, newPlugins: WebpackPlugin[])
+```
+
+#### Parameters
+
+- `config`: A webpack config
+- `matcher`: A `PluginMatcher` function
+- `newPlugins`: An array of plugins
+
+#### Returns
+
+Nothing
+
+#### Usage
+
+```ts !#11 transformer.ts
+import { matchConstructorName, addAfterPlugin, type WebpackConfig } from "@workleap/webpack-configs";
+import CircularDependencyPlugin from "circular-dependency-plugin";
+import HtmlWebpackPlugin from "html-webpack-plugin";
+
+function transformer(config: WebpackConfig) {
+    const newPlugin = new CircularDependencyPlugin({
+        exclude: /node_modules/,
+        include: /src/
+    });
+
+    addAfterPlugin(config, matchConstructorName(HtmlWebpackPlugin.name), [newPlugin]);
+
+    return config;
+}
+```
+
+### replacePlugin
+
+Replace the matching plugin by the new one. If no plugin has been found, an error will be thrown.
+
+```ts
+replacePlugin(config: WebpackConfig, matcher: PluginMatcher, newPlugin: WebpackPlugin)
+```
+
+#### Parameters
+
+- `config`: A webpack config
+- `matcher`: A `PluginMatcher` function
+- `newPlugin`: The new plugin instance
+
+#### Returns
+
+Nothing
+
+#### Usage
+
+```ts !#11 transformer.ts
+import { matchConstructorName, replacePlugin, type WebpackConfig } from "@workleap/webpack-configs";
+import HtmlWebpackPlugin from "html-webpack-plugin";
+
+function transformer(config: WebpackConfig) {
+    const newPlugin = new HtmlWebpackPlugin({
+        template: path.resolve("./my-custom-index.html"),
+        minify: true,
+        hash: true
+    });
+
+    replacePlugin(config, matchConstructorName(HtmlWebpackPlugin.name));
+
+    return config;
+}
+```
+
 ### removePlugin
+
+Remove the matching plugin. If no plugin has been found, an error will be thrown.
+
+```ts
+removePlugin(config: WebpackConfig, matcher: PluginMatcher)
+```
+
+#### Parameters
+
+- `config`: A webpack config
+- `matcher`: A `PluginMatcher` function
+
+#### Returns
+
+Nothing
+
+#### Usage
+
+```ts !#5 transformer.ts
+import { matchConstructorName, removePlugin, type WebpackConfig } from "@workleap/webpack-configs";
+import HtmlWebpackPlugin from "html-webpack-plugin";
+
+function transformer(config: WebpackConfig) {
+    removePlugin(config, matchConstructorName(HtmlWebpackPlugin.name));
+
+    return config;
+}
+```
