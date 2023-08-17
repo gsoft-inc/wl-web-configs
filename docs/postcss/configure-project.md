@@ -103,6 +103,10 @@ export default defineConfig({
 
 ## 4. Configuration transformers
 
+!!!warning
+We do not guarantee that your configuration transformers won't break after an update. It's your responsability to keep them up to date with new releases.
+!!!
+
 The [predefined options](#3-predefined-options) are useful to quickly customize the default configuration of this library, but only covers a subset of a [PostCSS configuration](https://github.com/postcss/postcss-load-config). If you needfull control over the configuration, you can provide **configuration transformer** functions.
 
 ```ts

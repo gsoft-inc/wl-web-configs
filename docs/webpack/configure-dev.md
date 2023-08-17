@@ -352,6 +352,10 @@ export default defineDevConfig({
 
 ## 4. Configuration transformers
 
+!!!warning
+We do not guarantee that your configuration transformers won't break after an update. It's your responsability to keep them up to date with new releases.
+!!!
+
 The [predefined options](#3-predefined-options) are useful to quickly customize the default configuration of this library, but only covers a subset of a [webpack configuration](https://webpack.js.org/configuration/). If you need full control over the configuration, you can provide configuration transformer functions.
 
 ```ts
@@ -386,7 +390,7 @@ export default defineConfig({
 });
 ```
 
-Modifying a webpack configuration object can be an arduous task, to help with that, this library offer [utility functions](transformer-utilities.md) to makes it easier.
+Modifying a webpack configuration object can be an arduous task, to help with that, this library offer [utility functions](transformer-utilities.md) for [modules rules](https://webpack.js.org/configuration/module/#modulerules) and [plugins](https://webpack.js.org/configuration/plugins/).
 
 [!ref Transformer utilities](transformer-utilities.md)
 
@@ -471,7 +475,7 @@ export default defineDevConfig({
 
 Then, the environment variables are available to any application files:
 
-```tsx src/app.tsx
+```tsx !#2 src/app.tsx
 export function App() {
     if (process.env.DEBUG === "true") {
         console.log("The app has been bootstrapped in debug!");

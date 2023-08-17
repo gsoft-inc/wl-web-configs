@@ -37,8 +37,8 @@ The shared configurations offered by this library includes the following feature
 
 ### Language support
 
+- JavaScript
 - [TypeScript](https://www.typescriptlang.org/)
-- [JSX](https://react.dev/learn/writing-markup-with-jsx)
 - CSS (with [CSS modules](https://github.com/css-modules/css-modules) and [PostCSS](https://postcss.org/))
 
 ### Framework support
@@ -54,7 +54,7 @@ The shared configurations offered by this library includes the following feature
 
 ### Development
 
-- [Dev server](https://webpack.js.org/configuration/dev-server/)
+- [Development server](https://webpack.js.org/configuration/dev-server/)
 - [React Fast Refresh](https://github.com/pmmmwh/react-refresh-webpack-plugin) or [Hot Module Reload](https://webpack.js.org/concepts/hot-module-replacement/)
 - [Sourcemap](https://webpack.js.org/configuration/devtool/#devtool)
 
