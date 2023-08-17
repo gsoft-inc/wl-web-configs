@@ -53,7 +53,6 @@ export interface DefineBuildConfigOptions {
     miniCssExtractPlugin?: MiniCssExtractPluginOptions;
     minify?: boolean;
     cssModules?: boolean;
-    postcssConfigFilePath?: string;
     swcConfig: SwcConfig;
     // Only accepting string values because there are lot of issues with the DefinePlugin related to typing errors.
     // See https://github.com/webpack/webpack/issues/8641
@@ -73,7 +72,6 @@ export function defineBuildConfig(options: DefineBuildConfigOptions) {
         miniCssExtractPlugin = defineMiniCssExtractPluginConfig(),
         minify = true,
         cssModules = false,
-        postcssConfigFilePath,
         swcConfig,
         environmentVariables,
         transformers = []
@@ -133,16 +131,7 @@ export function defineBuildConfig(options: DefineBuildConfigOptions) {
                                 }
                                 : undefined
                         },
-                        {
-                            loader: require.resolve("postcss-loader"),
-                            options: postcssConfigFilePath
-                                ? {
-                                    postcssOptions: {
-                                        config: postcssConfigFilePath
-                                    }
-                                }
-                                : undefined
-                        }
+                        { loader: require.resolve("postcss-loader") }
                     ]
                 },
                 {

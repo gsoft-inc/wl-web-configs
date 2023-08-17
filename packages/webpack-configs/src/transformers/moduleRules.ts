@@ -168,7 +168,7 @@ export function addBeforeModuleRule(config: WebpackConfig, matcher: ModuleRuleMa
     } else {
         const matcherInfo = (matcher as WithModuleRuleMatcherInfo).info;
 
-        console.log(`[webpack-configs] Couldn't add the new module rules because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
+        throw new Error(`[webpack-configs] Couldn't add the new module rules because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
     }
 }
 
@@ -180,7 +180,7 @@ export function addAfterModuleRule(config: WebpackConfig, matcher: ModuleRuleMat
     } else {
         const matcherInfo = (matcher as WithModuleRuleMatcherInfo).info;
 
-        console.log(`[webpack-configs] Couldn't add the new module rules because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
+        throw new Error(`[webpack-configs] Couldn't add the new module rules because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
     }
 }
 
@@ -192,7 +192,7 @@ export function replaceModuleRule(config: WebpackConfig, matcher: ModuleRuleMatc
     } else {
         const matcherInfo = (matcher as WithModuleRuleMatcherInfo).info;
 
-        console.log(`[webpack-configs] Couldn't replace the module rule because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
+        throw new Error(`[webpack-configs] Couldn't replace the module rule because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
     }
 }
 
@@ -220,6 +220,6 @@ export function removeModuleRules(config: WebpackConfig, matcher: ModuleRuleMatc
     } else {
         const matcherInfo = (matcher as WithModuleRuleMatcherInfo).info;
 
-        console.log(`[webpack-configs] Didn't remove any module rules because no match has been found.\n[webpack-configs] Matcher: "${matcherInfo}"`);
+        throw new Error(`[webpack-configs] Didn't remove any module rules because no match has been found.\n[webpack-configs] Matcher: "${matcherInfo}"`);
     }
 }

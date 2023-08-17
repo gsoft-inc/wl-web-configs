@@ -198,9 +198,7 @@ test("when multiple matching module rules are found in the rules array and a \"u
     expect(((config.module?.rules![2] as RuleSetRule).use as RuleSetUseItem[]).length).toBe(0);
 });
 
-test("when no matching module rule is found, do nothing", () => {
-    jest.spyOn(console, "log").mockImplementation(jest.fn());
-
+test("when no matching module rule is found, throw an error", () => {
     const config: WebpackConfig = {
         module: {
             rules: [
@@ -220,9 +218,7 @@ test("when no matching module rule is found, do nothing", () => {
         }
     };
 
-    removeModuleRules(config, matchTest(/\.(js|jsx)/i));
+    expect(() => removeModuleRules(config, matchTest(/\.(js|jsx)/i))).toThrow();
 
     expect(config.module?.rules?.length).toBe(3);
-
-    jest.spyOn(console, "log").mockRestore();
 });

@@ -7,7 +7,7 @@ meta:
 
 # Transformer utilities
 
-To help you write configuration transformers, this library provide a suite of utility functions. 
+To help you write configuration transformers for [webpack](https://webpack.js.org/), this library provide a suite of utility functions. 
 
 ## Module rules
 
@@ -16,8 +16,6 @@ Utility functions for webpack [module rules](https://webpack.js.org/configuratio
 ### matchLoaderName
 
 Returns a **matcher function** that can be utilized alongside other module rules utility functions. The returned matcher function will return `true` when it encounters a module rule with a loader **matching** the provided **name** value.
-
-#### Reference
 
 ```ts
 const matcher = matchLoaderName(name: string)
@@ -29,7 +27,7 @@ const matcher = matchLoaderName(name: string)
 
 #### Returns
 
-A matcher function.
+A `ModuleRuleMatcher` function.
 
 #### Usage
 
@@ -56,9 +54,7 @@ const matcher = matchLoaderName("swc-loader");
 
 Returns a **matcher function** that can be utilized alongside other module rules utility functions. The returned matcher function will return `true` when it encounters a module rule with a loader **matching** the provided **asset type** value.
 
-#### Reference
-
-```ts transformer.ts
+```ts
 const matcher = matchAssetModuleType(type: AssetModuleType)
 ```
 
@@ -68,7 +64,7 @@ const matcher = matchAssetModuleType(type: AssetModuleType)
 
 #### Returns
 
-A matcher function.
+A `ModuleRuleMatcher` function.
 
 #### Usage
 
@@ -95,8 +91,6 @@ const matcher = matchAssetModuleType("asset/resource");
 
 Returns a **matcher function** that can be utilized alongside other module rules utility functions. The returned matcher function will return `true` when it encounters a module rule with a loader **matching** the provided **test** value.
 
-#### Reference
-
 ```ts
 const matcher = matchTest(test: string | RegExp)
 ```
@@ -107,7 +101,7 @@ const matcher = matchTest(test: string | RegExp)
 
 #### Returns
 
-A matcher function.
+A `ModuleRuleMatcher` function.
 
 #### Usage
 
@@ -132,15 +126,204 @@ const matcher = matchTest(/\.css/i);
 
 ### findModuleRule
 
+Retrieve the **first** module rule for which the matcher function returns true. If there is more than one match, an error will be thrown.
+
+```ts
+const moduleRule = findModuleRule(config: WebpackConfig, matcher: ModuleRuleMatcher)
+```
+
+#### Parameters
+
+- `config`: A webpack config
+- `matcher`: A `ModuleRuleMatcher` function
+
+#### Returns
+
+A module rule if a match has been found, otherwise `undefined`.
+
+#### Usage
+
+```ts !#4 transformer.ts
+import { matchAssetModuleType, findModuleRule, type WebpackConfig } from "@workleap/webpack-configs";
+
+function transformer(config: WebpackConfig) {
+    const moduleRule = findModuleRule(config, matchLoaderName("swc-loader"));
+
+    // Update the module rule...
+    moduleRule.options.parseMap = true;
+
+    return config;
+}
+```
+
 ### findModuleRules
+
+Retrieve **any** module rules for which the matcher function returns true.
+
+```ts
+const moduleRules = findModuleRules(config: WebpackConfig, matcher: ModuleRuleMatcher)
+```
+
+#### Parameters
+
+- `config`: A webpack config
+- `matcher`: A `ModuleRuleMatcher` function
+
+#### Returns
+
+An array of module rules
+
+#### Usage
+
+```ts !#4 transformer.ts
+import { matchAssetModuleType, findModuleRules, type WebpackConfig } from "@workleap/webpack-configs";
+
+function transformer(config: WebpackConfig) {
+    const moduleRules = findModuleRules(config, matchLoaderName("swc-loader"));
+
+    // Update the module rules...
+    moduleRules.forEach(x => {
+        x.options.parseMap = true;
+    });
+
+    return config;
+}
+```
 
 ### addBeforeModuleRule
 
+Add the provided module rules **before** the matching module rule. If no matching rule has been found, an error will be thrown.
+
+```ts
+addBeforeModuleRule(config: WebpackConfig, matcher: ModuleRuleMatcher, newModuleRules: RuleSetRule[] | RuleSetUseItem[]);
+```
+
+#### Parameters
+
+- `config`: A webpack config
+- `matcher`: A `ModuleRuleMatcher` function
+- `newModuleRules`: An array of module rules
+
+#### Returns
+
+Nothing
+
+#### Usage
+
+```ts !#10 transformer.ts
+import { matchAssetModuleType, addBeforeModuleRule, type WebpackConfig } from "@workleap/webpack-configs";
+import type { RuleSetRule } from "webpack";
+
+function transformer(config: WebpackConfig) {
+    const swcModuleRule: RuleSetRule = {
+        test: /\.(ts|tsx)/i,
+        loader: "swc-loader"
+    };
+
+    addBeforeModuleRule(config, matchLoaderName("css-loader"), [swcModuleRule]);
+
+    return config;
+}
+```
+
 ### addAfterModuleRule
+
+Add the provided module rules **after** the matching module rule. If no matching rule has been found, an error will be thrown.
+
+```ts
+addAfterModuleRule(config: WebpackConfig, matcher: ModuleRuleMatcher, newModuleRules: RuleSetRule[] | RuleSetUseItem[]);
+```
+
+#### Parameters
+
+- `config`: A webpack config
+- `matcher`: A `ModuleRuleMatcher` function
+- `newModuleRules`: An array of module rules
+
+#### Returns
+
+Nothing
+
+#### Usage
+
+```ts !#9 transformer.ts
+import { matchAssetModuleType, addAfterModuleRule, type WebpackConfig } from "@workleap/webpack-configs";
+
+function transformer(config: WebpackConfig) {
+    const swcModuleRule: RuleSetRule = {
+        test: /\.(ts|tsx)/i,
+        loader: "swc-loader"
+    };
+
+    addAfterModuleRule(config, matchLoaderName("css-loader"), [swcModuleRule]);
+
+    return config;
+}
+```
 
 ### replaceModuleRule
 
+Replace the matching module rule by the new one. If no matching rule has been found, an error will be thrown.
+
+```ts
+replaceModuleRule(config: WebpackConfig, matcher: ModuleRuleMatcher, newModuleRule: RuleSetRule | RuleSetUseItem)
+```
+
+#### Parameters
+
+- `config`: A webpack config
+- `matcher`: A `ModuleRuleMatcher` function
+- `newModuleRule`: The new module rule
+
+#### Returns
+
+Nothing
+
+#### Usage
+
+```ts !#9 transformer.ts
+import { matchAssetModuleType, replaceModuleRule, type WebpackConfig } from "@workleap/webpack-configs";
+
+function transformer(config: WebpackConfig) {
+    const swcModuleRule: RuleSetRule = {
+        test: /\.(ts|tsx)/i,
+        loader: "swc-loader"
+    };
+
+    replaceModuleRule(config, matchLoaderName("babel-loader"), swcModuleRule);
+
+    return config;
+}
+```
+
 ### removeModuleRules
+
+Remove the matching module rules. If no matching rule has been found, an error will be thrown.
+
+```ts
+removeModuleRules(config: WebpackConfig, matcher: ModuleRuleMatcher)
+```
+
+#### Parameters
+
+- `config`: A webpack config
+- `matcher`: A `ModuleRuleMatcher` function
+
+#### Returns
+
+Nothing
+
+#### Usage
+
+```ts !#4 transformer.ts
+import { matchAssetModuleType, removeModuleRules, type WebpackConfig } from "@workleap/webpack-configs";
+
+function transformer(config: WebpackConfig) {
+    removeModuleRules(config, matchLoaderName("babel-loader"));
+
+    return config;
+}
+```
 
 ## Plugins
 

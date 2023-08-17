@@ -293,9 +293,9 @@ export default defineDevConfig({
 ### `fastRefresh`
 
 - **Type**: `boolean`
-- **Default**: `false`
+- **Default**: `false` or an object literal accepting any `react-refresh-webpack-plugin` [options](https://github.com/pmmmwh/react-refresh-webpack-plugin/blob/main/docs/API.md)
 
-Disable webpack [HMR](https://webpack.js.org/concepts/hot-module-replacement/) and enable [React Fast Refresh](https://github.com/pmmmwh/react-refresh-webpack-plugin).
+Replace webpack [HMR](https://webpack.js.org/concepts/hot-module-replacement/) by [React Fast Refresh](https://github.com/pmmmwh/react-refresh-webpack-plugin).
 
 !!!info
 If you enable React Fast Refresh, don't forget to install it's [package dependency](#react-fast-refresh).
@@ -309,6 +309,20 @@ import { swcConfig } from "./swc.dev.js";
 
 export default defineDevConfig({
     fastRefresh: true,
+    swcConfig
+});
+```
+
+To extend the default React Fast Refresh configuration, use the `defineFastRefreshPluginConfig(options)` function.
+
+```js !#7 webpack.dev.js
+// @ts-check
+
+import { defineDevConfig, defineFastRefreshPluginConfig } from "@workleap/webpack-configs";
+import { swcConfig } from "./swc.dev.js";
+
+export default defineDevConfig({
+    fastRefresh: defineFastRefreshPluginConfig({ overlay: false }),
     swcConfig
 });
 ```
@@ -328,24 +342,6 @@ import { swcConfig } from "./swc.dev.js";
 
 export default defineDevConfig({
     cssModules: true,
-    swcConfig
-});
-```
-
-### `postcssConfigFilePath`
-
-- **Type**: `string`
-- **Default**: When available, will load the configuration from the closest `postcss.config.ts` file
-
-```js !#8 webpack.dev.js
-// @ts-check
-
-import { defineDevConfig } from "@workleap/webpack-configs";
-import { swcConfig } from "./swc.dev.js";
-import path from "path";
-
-export default defineDevConfig({
-    postcssConfigFilePath: path.resolve("./my-custom-postcss-config-path.ts"),
     swcConfig
 });
 ```
