@@ -64,10 +64,10 @@ Therefore, this library choosed to **delegate** the loading of the Browserslist 
 
 ### `parser`
 
-- **Type**: `string`
-- **Default**: `"ecmascript" | "typescript"`
+- **Type**: `"ecmascript" | "typescript"`
+- **Default**: `"typescript"`
 
-Whether SWC should parse JavaScript or [TypeScript](https://www.typescriptlang.org/) code.
+Whether SWC should expect to parse JavaScript or [TypeScript](https://www.typescriptlang.org/) code.
 
 ```js !#7 swc.build.js
 // @ts-check

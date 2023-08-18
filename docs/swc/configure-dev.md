@@ -85,10 +85,10 @@ export default defineDevConfig({
 
 ### `parser`
 
-- **Type**: `string`
-- **Default**: `"ecmascript" | "typescript"`
+- **Type**: `"ecmascript" | "typescript"`
+- **Default**: `"typescript"`
 
-Whether SWC should parse JavaScript or [TypeScript](https://www.typescriptlang.org/) code.
+Whether SWC should expect to parse JavaScript or [TypeScript](https://www.typescriptlang.org/) code.
 
 ```js !#7 swc.dev.js
 // @ts-check
