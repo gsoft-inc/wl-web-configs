@@ -41,7 +41,7 @@ web-project
 
 Then, open the newly created file and export the SWC configuration by using the `defineDevConfig(options)` function provided by this library:
 
-```js swc.dev.js
+```js !#6-8 swc.dev.js
 // @ts-check
 
 import { defineDevConfig } from "@workleap/swc-configs";
@@ -166,6 +166,8 @@ To integrate with [webpack](https://webpack.js.org/), update your configuration 
 ```js !#10 webpack.config.js
 // @ts-check
 
+import { swcConfig } from "./swc.dev.js";
+
 export default {
     ...
     module: {
@@ -173,7 +175,10 @@ export default {
             {
                 test: /\.(js|jsx|ts|tsx)/i,
                 exclude: /node_modules/,
-                loader: "swc-loader",
+                use: {
+                    loader: "swc-loader",
+                    options: swcConfig
+                }
             }
         ]
     }
@@ -211,7 +216,7 @@ npm install -D @swc/cli @swc/core
 Then, process the file with `@swc/cli` by executing the following command in the same terminal:
 
 ```bash
-npx swc ./say.ts -o say.js
+npx swc ./say.ts -o say.js --config-file swc.build.js
 ```
 
 The generated `say.js` file should include the following transpiled code:

@@ -7,7 +7,7 @@ meta:
 
 # Configure for build
 
-To configure webpack for a build environment, execute the following steps.
+To configure [webpack](https://webpack.js.org/) for a production environment, execute the following steps.
 
 ## 1. Install the packages
 
@@ -59,7 +59,7 @@ web-project
 
 Then, open the newly created file and `export` the webpack configuration by using the `defineBuildConfig(options)` function provided by this library:
 
-```js webpack.build.js
+```js !#6-8 webpack.build.js
 // @ts-check
 
 import { defineBuildConfig } from "@workleap/webpack-configs";

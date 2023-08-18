@@ -7,21 +7,201 @@ meta:
 
 # Configure for build
 
-## Install the packages
+To configure [SWC](https://swc.rs/) for a production environment, execute the following steps.
 
-## Configure SWC
+## 1. Install the packages
 
-- Create a configuration file
-- Define the configuration (Always provide targeted browsers to transpile accordingly)
+Open a terminal at the root of the project and install the following packages:
 
-### Predefined options
++++ pnpm
+```bash
+pnpm add -D @workleap/swc-configs @swc/core @swc/helpers
+```
++++ yarn
+```bash
+yarn add -D @workleap/swc-configs @swc/core @swc/helpers
+```
++++ npm
+```bash
+npm install -D @workleap/swc-configs @swc/core @swc/helpers
+```
++++
 
-- List all options
+## 2. Configure SWC
 
-### Transformers
+First, create a configuration file named `swc.build.js` at the root of the project:
 
-## Configure webpack
+``` !#5
+web-project
+├── src
+├──── ...
+├── package.json
+├── swc.build.js
+```
 
-## Try it :rocket:
+Then, open the newly created file and export the SWC configuration by using the `defineBuildConfig(options)` function provided by this library:
 
-- Either with webpack or directly with SWC cli
+```js !#6-8 swc.build.js
+// @ts-check
+
+import { defineBuildConfig } from "@workleap/swc-configs";
+import browsers from "@workleap/browserslist-configs";
+
+export default defineBuildConfig({
+    browsers
+});
+```
+
+### `browsers`
+
+In the previous code sample, the `defineBuildConfig(options)` function receive a [Browserslist](https://browsersl.ist/) configuration object through the mandatory `browsers` option.
+
+The expected behavior would be for [SWC](https://swc.rs/) to load the browsers configuration from the closest `.browserslistrc` [configuration file](https://github.com/browserslist/browserslist#browserslistrc), but there is currently an [issue](https://github.com/swc-project/swc/issues/3365) preventing SWC from doing so when the `.browserslistrc` configuration is extended by a shared configuration from a package.
+
+Therefore, this library choosed to **delegate** the loading of the Browserslist configuration **to the consumer** by making the `browsers` option required.
+
+## 3. Predefined options
+
+### `parser`
+
+- **Type**: `string`
+- **Default**: `"ecmascript" | "typescript"`
+
+Whether SWC should parse JavaScript or [TypeScript](https://www.typescriptlang.org/) code.
+
+```js !#7 swc.build.js
+// @ts-check
+
+import { defineBuildConfig } from "@workleap/swc-configs";
+import browsers from "@workleap/browserslist-configs";
+
+export default defineBuildConfig({
+    parser: "ecmascript",
+    browsers
+});
+```
+
+## 4. Configuration transformers
+
+!!!warning
+We do not guarantee that your configuration transformers won't break after an update. It's your responsability to keep them up to date with new releases.
+!!!
+
+The [predefined options](#3-predefined-options) are useful to quickly customize the [default build configuration](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/swc-configs/src/build.ts) of this library, but only covers a subset of an [SWC configuration](https://swc.rs/docs/configuration/swcrc). If you need full control over the configuration, you can provide configuration transformer functions.
+
+A configuration transformer function receive an SWC configuration object and returns a transformed (or not) SWC configuration object:
+
+```ts
+transformer(config: SwcConfig, context: SwcConfigTransformerContext) => SwcConfig
+```
+
+To view the default development configuration, have a look at the [configuration file](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/swc-configs/src/build.ts) on Github.
+
+### `transformers`
+
+- **Type**: `((config: SwcConfig, context: SwcConfigTransformerContext) => SwcConfig)[]`
+- **Default**: `[]`
+
+```js !#13 swc.build.js
+// @ts-check
+
+import { defineBuildConfig, SwcConfigTransformer, SwcConfig } from "@workleap/swc-configs";
+import browsers from "@workleap/browserslist-configs";
+
+const mangleMinifiedCode: SwcConfigTransformer = (config: SwcConfig) => {
+    config.jsc.minify.mangle = true;
+
+    return config;
+};
+
+export default defineBuildConfig({
+    transformers: [mangleMinifiedCode],
+    browsers
+});
+```
+
+### Execution context
+
+Generic transformers can use the `context` parameter to gather additional information about their execution context, like the `environment` they are operating in:
+
+```ts !#4 transformer.ts
+import { SwcConfigTransformer, SwcConfigTransformerContext, SwcConfig } from "@workleap/swc-configs";
+
+export const transformer: SwcConfigTransformer = (config: SwcConfig, context: SwcConfigTransformerContext) => {
+    if (context.environment === "build") {
+        config.jsc.minify.mangle = true;
+    }
+
+    return config;
+};
+```
+
+- `environment`: `"dev" | "build" | "jest"`
+
+## 5. Configure webpack
+
+To integrate with [webpack](https://webpack.js.org/), update your configuration file to include an [swc-loader](https://swc.rs/docs/usage/swc-loader):
+
+```js !#10 webpack.config.js
+// @ts-check
+
+import { swcConfig } from "./swc.build.js";
+
+export default {
+    ...
+    module: {
+        rules: [
+            {
+                test: /\.(js|jsx|ts|tsx)/i,
+                exclude: /node_modules/,
+                use: {
+                    loader: "swc-loader",
+                    options: swcConfig
+                }
+            }
+        ]
+    }
+}
+```
+
+## 6. Try it :rocket:
+
+To test your new SWC configuration, create a Typescript file with the following code:
+
+```ts say.ts
+export function say(string: value) {
+    console.log(value);
+}
+```
+
+If you integrated SWC with webpack, make sure to import the previously created file in one of your webpack [entry points](https://webpack.js.org/concepts/entry-points/), then execute your webpack build and find the transpiled code in the generated bundle files of your `dist` folder.
+
+Otherwise, open a terminal at the root of your project and install [@swc/cli](https://swc.rs/docs/usage/cli):
+
++++ pnpm
+```bash
+pnpm add -D @swc/cli @swc/core
+```
++++ yarn
+```bash
+yarn add -D @swc/cli @swc/core
+```
++++ npm
+```bash
+npm install -D @swc/cli @swc/core
+```
++++
+
+Then, process the file with `@swc/cli` by executing the following command in the same terminal:
+
+```bash
+npx swc ./say.ts -o say.js --config-file swc.build.js
+```
+
+Whether you processed the file with webpack or `@swc/cli`, the transpiled code should be:
+
+```js say.js
+export function say(value) {
+    console.log(value);
+}
+```

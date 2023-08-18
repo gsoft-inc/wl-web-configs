@@ -79,7 +79,7 @@ web-project
 
 Then, open the newly created file and `export` the webpack configuration by using the `defineDevConfig(options)` function provided by this library:
 
-```js webpack.dev.js
+```js !#6-8 webpack.dev.js
 // @ts-check
 
 import { defineDevConfig } from "@workleap/webpack-configs";
