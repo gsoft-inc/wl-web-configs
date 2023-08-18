@@ -2,4 +2,5 @@ export type { SwcConfigTransformer, SwcConfigTransformerContext } from "./applyT
 export * from "./build.ts";
 export * from "./dev.ts";
 export * from "./jest.ts";
+export type { SwcConfig } from "./types.ts";
 

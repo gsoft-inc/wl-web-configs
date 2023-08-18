@@ -280,19 +280,19 @@ export default defineBuildConfig({
 We do not guarantee that your configuration transformers won't break after an update. It's your responsability to keep them up to date with new releases.
 !!!
 
-The [predefined options](#3-predefined-options) are useful to quickly customize the [default configuration](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/webpack-configs/src/build.ts) of this library, but only covers a subset of a [webpack configuration](https://webpack.js.org/configuration/). If you need full control over the configuration, you can provide configuration transformer functions.
+The [predefined options](#3-predefined-options) are useful to quickly customize the [default build configuration](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/webpack-configs/src/build.ts) of this library, but only covers a subset of a [webpack configuration](https://webpack.js.org/configuration/). If you need full control over the configuration, you can provide configuration transformer functions.
 
 A configuration transformer function receive a webpack configuration object and returns a transformed (or not) webpack configuration object:
 
 ```ts
-transformer(config: WebpackConfig ) => WebpackConfig
+transformer(config: WebpackConfig, context: WebpackConfigTransformerContext) => WebpackConfig
 ```
 
-[!ref icon="mark-github" text="View the default configuration on Github"](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/webpack-configs/src/build.ts)
+To view the default build configuration, have a look at the [configuration file](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/webpack-configs/src/build.ts) on Github.
 
 ### `transformers`
 
-- **Type**: `((config: WebpackConfig ) => WebpackConfig)[]`
+- **Type**: `((config: WebpackConfig, context: WebpackConfigTransformerContext) => WebpackConfig)[]`
 - **Default**: `[]`
 
 ```js !#13 webpack.build.js
@@ -312,6 +312,26 @@ export default defineBuildConfig({
     swcConfig
 });
 ```
+
+### Execution context
+
+Generic transformers can use the `context` parameter to gather additional information about their execution context, like the `environment` they are operating in:
+
+```ts !#4 transformer.ts
+import { WebpackConfigTransformer, WebpackConfigTransformerContext, WebpackConfig } from "@workleap/webpack-configs";
+
+export const transformer: WebpackConfigTransformer = (config: WebpackConfig, context: WebpackConfigTransformerContext) => {
+    if (context.environment === "build") {
+        config.output.filename = "[name].[contenthash].bundle.js";
+    }
+
+    return config;
+};
+```
+
+- `environment`: `"dev" | "build"`
+
+### Utilities
 
 Modifying a webpack configuration object can be an arduous task, to help with that, this library offer [utility functions](transformer-utilities.md) for [modules rules](https://webpack.js.org/configuration/module/#modulerules) and [plugins](https://webpack.js.org/configuration/plugins/).
 
@@ -410,4 +430,4 @@ export function App() {
 
 ## 7. Try it :rocket:
 
-To test your new configuration, open a terminal at the root of the project and execute the [CLI script added earlier](#5-add-a-cli-script). The build process should complete without outputting any error in the terminal and the bundle files should be available in the `/dist` folder (or any other `outputPath` you provided).
+To test your new configuration, open a terminal at the root of the project and execute the [CLI script added earlier](#5-add-a-cli-script). The build process should complete without outputting any error in the terminal and the bundle files should be available in the `/dist` folder (or any other `outputPath` you configured).

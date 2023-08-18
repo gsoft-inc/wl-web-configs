@@ -7,6 +7,10 @@ meta:
 
 # Transformer utilities
 
+!!!warning
+We do not guarantee that your configuration transformers won't break after an update. It's your responsability to keep them up to date with new releases.
+!!!
+
 To help you write configuration transformers for [webpack](https://webpack.js.org/), this library provide a suite of utility functions. 
 
 ## Module rules

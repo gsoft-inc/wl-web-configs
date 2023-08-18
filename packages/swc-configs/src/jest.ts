@@ -1,5 +1,5 @@
-import type { Config } from "@swc/core";
 import { applyTransformers, type SwcConfigTransformer } from "./applyTransformers";
+import type { SwcConfig } from "./types";
 
 export interface DefineJestConfigOptions {
     react?: boolean;
@@ -14,7 +14,7 @@ export function defineJestConfig(options: DefineJestConfigOptions = {}) {
         transformers = []
     } = options;
 
-    const config: Config = {
+    const config: SwcConfig = {
         jsc: {
             parser: parser === "ecmascript"
                 ? {

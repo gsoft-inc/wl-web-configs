@@ -31,19 +31,9 @@ You can find an exhaustive list of the browser versions included with this share
 
 Alternatively, to list the browser versions supported by a specific configuration file, you can open a terminal at the root of any project including a `.browserslistrc` file and execute the following command:
 
-+++ pnpm
-```bash
-pnpm dlx browserslist
-```
-+++ yarn
-```bash
-yarn dlx browserslist
-```
-+++ npm
 ```bash
 npx browserslist
 ```
-+++
 
 ## Getting started
 

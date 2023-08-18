@@ -183,7 +183,7 @@ export default {
 
 To test your new PostCSS configuration, create and import a CSS file with the following code:
 
-```css
+```css example.css
 .example {
     display: grid;
     transition: all .5s;
@@ -192,11 +192,33 @@ To test your new PostCSS configuration, create and import a CSS file with the fo
 }
 ```
 
-If you integrated PostCSS with webpack, execute your webpack build and find the outputted `.example` CSS class in your `dist` folder. Otherwise, you can setup [PostCSS CLI](https://github.com/postcss/postcss-cli) to process the CSS file.
+If you integrated PostCSS with webpack, execute your webpack build and find the outputted `.example` CSS class in the generated bundle files of your `dist` folder.
 
-Most of the CSS properties in the `.example` CSS class should have been prefixed (it can vary based on your [Browserslist](https://browsersl.ist/) configuration):
+Otherwise, open a terminal at the root of your project and install [postcss-cli](https://github.com/postcss/postcss-cli):
 
-```css
++++ pnpm
+```bash
+pnpm add -D postcss-cli postcss
+```
++++ yarn
+```bash
+yarn add -D postcss-cli postcss
+```
++++ npm
+```bash
+npm install -D postcss-cli postcss
+```
++++
+
+Then, process the file with `postcss-cli` by executing the following command in the same terminal:
+
+```bash
+npx postcss example.css -o out.css
+```
+
+Whether you processed the CSS with webpack or `postcss-cli`, most of the CSS properties in the `.example` CSS class should have been prefixed (it can vary based on your [Browserslist](https://browsersl.ist/) configuration):
+
+```css out.css
 .example {
     display: -ms-grid;
     display: grid;

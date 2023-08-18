@@ -295,7 +295,7 @@ export default defineDevConfig({
 - **Type**: `boolean`
 - **Default**: `false` or an object literal accepting any `react-refresh-webpack-plugin` [options](https://github.com/pmmmwh/react-refresh-webpack-plugin/blob/main/docs/API.md)
 
-Replace webpack [HMR](https://webpack.js.org/concepts/hot-module-replacement/) by [React Fast Refresh](https://github.com/pmmmwh/react-refresh-webpack-plugin).
+Replace webpack [HMR](https://webpack.js.org/concepts/hot-module-replacement/) by [React Fast Refresh](https://github.com/pmmmwh/react-refresh-webpack-plugin). Activating webpack fast refresh will automatically [enable fast refresh for SWC](../swc/configure-dev.md#fastrefresh).
 
 !!!info
 If you enable React Fast Refresh, don't forget to install it's [package dependency](#react-fast-refresh).
@@ -352,19 +352,19 @@ export default defineDevConfig({
 We do not guarantee that your configuration transformers won't break after an update. It's your responsability to keep them up to date with new releases.
 !!!
 
-The [predefined options](#3-predefined-options) are useful to quickly customize the [default configuration](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/webpack-configs/src/dev.ts) of this library, but only covers a subset of a [webpack configuration](https://webpack.js.org/configuration/). If you need full control over the configuration, you can provide configuration transformer functions.
+The [predefined options](#3-predefined-options) are useful to quickly customize the [default development configuration](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/webpack-configs/src/dev.ts) of this library, but only covers a subset of a [webpack configuration](https://webpack.js.org/configuration/). If you need full control over the configuration, you can provide configuration transformer functions.
 
 A configuration transformer function receive a webpack configuration object and returns a transformed (or not) webpack configuration object:
 
 ```ts
-transformer(config: WebpackConfig ) => WebpackConfig
+transformer(config: WebpackConfig, context: WebpackConfigTransformerContext) => WebpackConfig
 ```
 
-[!ref icon="mark-github" text="View the default configuration on Github"](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/webpack-configs/src/dev.ts)
+To view the default development configuration, have a look at the [configuration file](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/webpack-configs/src/dev.ts) on Github.
 
 ### `transformers`
 
-- **Type**: `((config: WebpackConfig ) => WebpackConfig)[]`
+- **Type**: `((config: WebpackConfig, context: WebpackConfigTransformerContext) => WebpackConfig)[]`
 - **Default**: `[]`
 
 ```js !#16 webpack.dev.js
@@ -387,6 +387,28 @@ export default defineDevConfig({
     swcConfig
 });
 ```
+
+### Execution context
+
+Generic transformers can use the `context` parameter to gather additional information about their execution context, like the `environment` they are operating in:
+
+```ts !#4 transformer.ts
+import { WebpackConfigTransformer, WebpackConfigTransformerContext, WebpackConfig } from "@workleap/webpack-configs";
+
+export const transformer: WebpackConfigTransformer = (config: WebpackConfig, context: WebpackConfigTransformerContext) => {
+    if (context.environment === "dev") {
+        config.cache = {
+            type: "memory"
+        };
+    }
+
+    return config;
+};
+```
+
+- `environment`: `"dev" | "build"`
+
+### Utilities
 
 Modifying a webpack configuration object can be an arduous task, to help with that, this library offer [utility functions](transformer-utilities.md) for [modules rules](https://webpack.js.org/configuration/module/#modulerules) and [plugins](https://webpack.js.org/configuration/plugins/).
 

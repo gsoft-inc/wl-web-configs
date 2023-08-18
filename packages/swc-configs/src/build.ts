@@ -1,5 +1,5 @@
-import type { Config } from "@swc/core";
 import { applyTransformers, type SwcConfigTransformer } from "./applyTransformers";
+import type { SwcConfig } from "./types";
 
 export interface DefineBuildConfigOptions {
     // Any is also used for SWC "targets" type.
@@ -16,7 +16,7 @@ export function defineBuildConfig(options: DefineBuildConfigOptions) {
         transformers = []
     } = options;
 
-    const config: Config = {
+    const config: SwcConfig = {
         jsc: {
             parser: parser === "ecmascript"
                 ? {
