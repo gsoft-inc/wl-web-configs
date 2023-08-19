@@ -218,7 +218,7 @@ Then, open the newly created file and extend the default configuration with the 
 
 If you already have multiple projects in your monorepo solution, repeat the steps [7](#7-install-the-project-package) and [8](#8-configure-stylelint-for-the-project) for every project.
 
-## 10. Custom configuration
+## 10. Customize configuration
 
 New projects shouldn't have to customize the default configurations offered by this library. However, if you are in the process of **migrating** an existing project to use this library or encountering a challenging situation, refer to the [custom configuration](custom-configuration.md) page to understand how to override or extend the default configurations. Remember, **no locked in** :heart::v:
 

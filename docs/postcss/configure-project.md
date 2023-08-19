@@ -46,7 +46,7 @@ import { defineConfig } from "@workleap/postcss-configs";
 export default defineConfig();
 ```
 
-## 3. Predefined options
+## 3. Set predefined options
 
 The `defineConfig(options)` function can be used as-is as shown in the previous example, however, if you wish to customize the default configuration, the function also accept a few predefined options to help with that :point_down:
 
@@ -101,13 +101,13 @@ export default defineConfig({
 });
 ```
 
-## 4. Configuration transformers
+## 4. Transform configuration
 
 !!!warning
 We do not guarantee that your configuration transformers won't break after an update. It's your responsability to keep them up to date with new releases.
 !!!
 
-The [predefined options](#3-predefined-options) are useful to quickly customize the [default configuration](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/postcss-configs/src/index.ts) of this library, but only covers a subset of a [PostCSS configuration](https://github.com/postcss/postcss-load-config). If you need full control over the configuration, you can provide **configuration transformer** functions.
+The [predefined options](#3-set-predefined-options) are useful to quickly customize the [default configuration](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/postcss-configs/src/index.ts) of this library, but only covers a subset of a [PostCSS configuration](https://github.com/postcss/postcss-load-config). If you need full control over the configuration, you can provide **configuration transformer** functions, **no locked in** :heart::v:
 
 A configuration transformer function receive a PostCSS configuration object and returns a transformed (or not) PostCSS configuration object:
 

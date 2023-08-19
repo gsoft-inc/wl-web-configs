@@ -41,9 +41,7 @@ root
 
 Then, open the newly created file and extend the default configuration with one of the [shared configurations](/eslint/#available-configurations) provided by this library :point_down:
 
-### Available configurations
-
-#### web-application
+### web-application
 
 For an application developed with [React](https://react.dev/) and [TypeScript](https://www.typescriptlang.org/), use the following configuration:
 
@@ -55,7 +53,7 @@ For an application developed with [React](https://react.dev/) and [TypeScript](h
 }
 ```
 
-#### react-library
+### react-library
 
 For a [TypeScript](https://www.typescriptlang.org/) library developed **with** [React](https://react.dev/), use the following configuration:
 
@@ -67,7 +65,7 @@ For a [TypeScript](https://www.typescriptlang.org/) library developed **with** [
 }
 ```
 
-#### typescript-library
+### typescript-library
 
 For a [TypeScript](https://www.typescriptlang.org/) library developed **without** [React](https://react.dev/), use the following configuration:
 
@@ -152,7 +150,7 @@ At times, especially when running the CI build, it's useful to lint the entire s
 
 > The script definition may vary depending of your needs and your application configuration. For example, you might want to specify specific file extensions such as `--ext .js,.ts,.tsx`.
 
-## 6. Custom configuration
+## 6. Customize configuration
 
 New projects shouldn't have to customize the default configurations offered by this library. However, if you are in the process of **migrating** an existing project to use this library or encountering a challenging situation, refer to the [custom configuration](custom-configuration.md) page to understand how to override or extend the default configurations, remember, **no locked in** :heart::v:
 

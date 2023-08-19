@@ -60,7 +60,7 @@ The expected behavior would be for [SWC](https://swc.rs/) to load the browsers c
 
 Therefore, this library choosed to **delegate** the loading of the Browserslist configuration **to the consumer** by making the `browsers` option required.
 
-## 3. Predefined options
+## 3. Set predefined options
 
 ### `parser`
 
@@ -81,13 +81,13 @@ export default defineBuildConfig({
 });
 ```
 
-## 4. Configuration transformers
+## 4. Transform configuration
 
 !!!warning
 We do not guarantee that your configuration transformers won't break after an update. It's your responsability to keep them up to date with new releases.
 !!!
 
-The [predefined options](#3-predefined-options) are useful to quickly customize the [default build configuration](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/swc-configs/src/build.ts) of this library, but only covers a subset of an [SWC configuration](https://swc.rs/docs/configuration/swcrc). If you need full control over the configuration, you can provide configuration transformer functions.
+The [predefined options](#3-set-predefined-options) are useful to quickly customize the [default build configuration](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/swc-configs/src/build.ts) of this library, but only covers a subset of an [SWC configuration](https://swc.rs/docs/configuration/swcrc). If you need full control over the configuration, you can provide configuration transformer functions, **no locked in** :heart::v:
 
 A configuration transformer function receive an SWC configuration object and returns a transformed (or not) SWC configuration object:
 

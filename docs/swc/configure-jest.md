@@ -52,7 +52,7 @@ import { defineJestConfig } from "@workleap/swc-configs";
 export default defineJestConfig();
 ```
 
-## 3. Predefined options
+## 3. Set predefined options
 
 The `defineJestConfig(options)` function can be used as shown in the previous example, however, if you wish to customize the default configuration, the function also accept a few predefined options to help with that 👇
 
@@ -86,13 +86,13 @@ export default defineJestConfig({
 });
 ```
 
-## 4. Configuration Transformers
+## 4. Transform configuration
 
 !!!warning
 We do not guarantee that your configuration transformers won't break after an update. It's your responsability to keep them up to date with new releases.
 !!!
 
-The [predefined options](#3-predefined-options) are useful to quickly customize the [default development configuration](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/swc-configs/src/jest.ts) of this library, but only covers a subset of an [SWC configuration](https://swc.rs/docs/configuration/swcrc). If you need full control over the configuration, you can provide configuration transformer functions.
+The [predefined options](#3-set-predefined-options) are useful to quickly customize the [default development configuration](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/swc-configs/src/jest.ts) of this library, but only covers a subset of an [SWC configuration](https://swc.rs/docs/configuration/swcrc). If you need full control over the configuration, you can provide configuration transformer functions, **no locked in** :heart::v:
 
 A configuration transformer function receive an SWC configuration object and returns a transformed (or not) SWC configuration object:
 

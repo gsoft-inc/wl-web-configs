@@ -98,7 +98,7 @@ Although the [swc-loader](https://swc.rs/docs/usage/swc-loader) defaults to load
 
 Therefore, this library choosed to **delegate** the loading of the SWC configuration **to the consumer** by making the `swcConfig` option **required**. 
 
-## 3. Predefined options
+## 3. Set predefined options
 
 The `defineDevConfig(options)` function can be used as shown in the previous example, however, if you wish to customize the default configuration, the function also accept a few predefined options to help with that 👇
 
@@ -346,13 +346,13 @@ export default defineDevConfig({
 });
 ```
 
-## 4. Configuration transformers
+## 4. Transform configuration
 
 !!!warning
 We do not guarantee that your configuration transformers won't break after an update. It's your responsability to keep them up to date with new releases.
 !!!
 
-The [predefined options](#3-predefined-options) are useful to quickly customize the [default development configuration](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/webpack-configs/src/dev.ts) of this library, but only covers a subset of a [webpack configuration](https://webpack.js.org/configuration/). If you need full control over the configuration, you can provide configuration transformer functions.
+The [predefined options](#3-set-predefined-options) are useful to quickly customize the [default development configuration](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/webpack-configs/src/dev.ts) of this library, but only covers a subset of a [webpack configuration](https://webpack.js.org/configuration/). If you need full control over the configuration, you can provide configuration transformer functions, **no locked in** :heart::v:
 
 A configuration transformer function receive a webpack configuration object and returns a transformed (or not) webpack configuration object:
 
@@ -424,7 +424,7 @@ To easily start the development server, add the following script to your project
 }
 ```
 
-## 6. Environment variables
+## 6. Set environment variables
 
 To deal with environment variables, webpack suggest using the [--env option](https://webpack.js.org/guides/environment-variables/) from it's CLI. While that would work, the environment variables would then only be available to the webpack configuration file:
 
@@ -498,7 +498,7 @@ Then, the environment variables are available to any application files:
 ```tsx !#2 src/app.tsx
 export function App() {
     if (process.env.DEBUG === "true") {
-        console.log("The app has been bootstrapped in debug!");
+        console.log("The application has been bootstrapped in debug!");
     }
 
     return null;
