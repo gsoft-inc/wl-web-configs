@@ -44,7 +44,7 @@ We hope that introducing a collection of configuration libraries will facilitate
 
 ## Guiding principles
 
-While developing the configuration libraries, we kept one guiding principle in mind, **no locked in**. We truly hope that the default configurations will satisfy your application needs, but if it doesn't, there will always be an easy way to extend or override the default configuration.
+While developing the configuration libraries, we kept one guiding principle in mind, **no locked in** :heart::v:. We truly hope that the default configurations will satisfy your application needs, but if it doesn't, there will always be an easy way to extend or override the default configuration.
 
 ## Supported tools
 
