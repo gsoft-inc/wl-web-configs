@@ -13,11 +13,32 @@ If you are in the process of **migrating an existing project** to use this libra
 For a list of the rules included with the default shared configurations, refer to the configuration files in the following [folder](https://github.com/gsoft-inc/wl-web-configs/tree/main/packages/typescript-configs) on Github.
 !!!
 
-## Disable a default rule
-
-
-
 ## Change a default rule value
+
+You can update a default rule value by defining the rule locally with its new value:
+
+```json !#3-5 tsconfig.json
+{
+    "extends": ["@workleap/typescript-configs/web-application"],
+    "compilerOptions": {
+        "strict": false
+    }
+}
+```
+
+## CommonJS projects
+
+If you are migrating an existing project and you don't want to migrate your project to ESM yet, add the following custom configurations:
+
+```json !#3-6 tsconfig.json
+{
+    "extends": ["@workleap/typescript-configs/web-application"],
+    "compilerOptions": {
+        "module": "commonjs",
+        "moduleResolution": "bundler"
+    }
+}
+```
 
 ## Start from scratch
 

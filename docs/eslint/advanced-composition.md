@@ -22,7 +22,7 @@ If the default [by project type configurations](default.md/#available-configurat
 
 ## Compose a configuration
 
-Each configuration piece can be extended individually, or in combination with other pieces, to compose your own custom ESLint configuration.
+Each configuration piece can be extended individually, or in combination with other pieces, to compose your own custom [ESLint](https://eslint.org/) configuration.
 
 ### Single piece
 
