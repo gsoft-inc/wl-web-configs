@@ -1,124 +1,14 @@
 # @workleap/typescript-configs
 
-Workleap's reusable TypeScript configuration files
-
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](../../LICENSE)
 [![npm version](https://img.shields.io/npm/v/@workleap/typescript-configs)](https://www.npmjs.com/package/@workleap/typescript-configs)
-
-## Installation
-
-Install the following packages:
-
-**With pnpm**
-
-```shell
-pnpm add -D @workleap/typescript-configs typescript
-```
-
-**With yarn**
-
-```shell
-yarn add -D @workleap/typescript-configs typescript
-```
-
-**With npm**
-
-```shell
-npm install -D @workleap/typescript-configs typescript
-```
-
 ## Usage
 
-This package provides TypeScript configurations by project type. By providing configurations by project type, the burden of composing TypeScript configurations is shifted from the consumer to the package maintainers. This approach allows for more accurate defaults and assumptions about the target environment. Additionally, it simplifies the process for consumers who only need to configure a single TypeScript config plugin.
+View the [user's documentation](https://gsoft-inc.github.io/wl-web-configs/).
 
-The following configurations are available:
+## 🤝 Contributing
 
-### Web App Project
-
-To start, create a tsconfig.json in the root of your project.
-
-A typical setup where the application sit in [project root]/src folder is as follow:
-
-```json
-{
-  "extends": "@workleap/typescript-configs/web-application",
-  "exclude": ["dist", "node_modules"]
-}
-```
-
-### React or TypeScript Library Project
-
-Before you can build your TypeScript code, you need to make sure that there are no compilation errors. This process involves running the TypeScript compiler in a "linting" mode that only checks for errors, without actually compiling the code.
-
-Here is an example of a tsconfig.json file extending the Workleap TypeScript configuration for linting:
-
-```json
-{
-  "extends": "@workleap/typescript-configs/library",
-  "exclude": ["dist", "node_modules"]
-}
-```
-
-### Monorepo workspace
-
-Before you can build your TypeScript code, you need to make sure that there are no compilation errors. This process involves running the TypeScript compiler in a "linting" mode that only checks for errors, without actually compiling the code.
-
-Here is an example of a tsconfig.json file extending the Workleap TypeScript configuration for linting:
-
-```json
-{
-  "extends": "@workleap/typescript-configs/monorepo-workspace",
-  "exclude": ["packages", "node_modules"]
-}
-```
-
-**Note**: If you have a tsconfig.json file in your monorepo root and you exclude all packages, you might get a TS18003 error because TypeScript can't find any files to lint. To fix this, you can add an empty `references` property to your tsconfig.json file:
-
-```json
-{
-  "extends": "@workleap/typescript-configs/monorepo-workspace",
-  "exclude": ["packages", "node_modules"],
-  "references": []
-}
-```
-
-### Package.json script
-
-Optionally add the following script to your `package.json` file:
-
-```json
-{
-    "lint:types": "tsc"
-}
-```
-
-If you are in a monorepo setup with PNPM, instead, add the following script:
-
-```json
-{
-    "lint:types": "pnpm -r --parallel --include-workspace-root exec tsc",
-}
-```
-
-## Migrating from existing projects
-
-Migrating a codebase to a new config can be a big task. To help with this, feel free to override any configuration that you need to change. It's alright to iterate on your configuration over time.
-
-The configurations exported via this package are designed to be used by ESM projects. If you are migrating an existing project and you don’t want to migrate your project to ESM, you will need to do the following changes to your TypeScript configuration:
-
-```json
-{
-  "extends": "@workleap/typescript-configs/web-application", // or any other configurations from this package
-  "compilerOptions": {
-    "module": "commonjs",
-    "moduleResolution": "bundler"
-  }
-}
-```
-
-## Advanced Usage
-
-If the default configuration doesn’t fit your needs, you can view the advanced usage documentation [here](./ADVANCED_USAGE.md).
+View the [contributor's documentation](../../CONTRIBUTING.md).
 
 ## License
 
