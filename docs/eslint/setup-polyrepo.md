@@ -39,7 +39,7 @@ root
 ├── .eslintrc.json
 ```
 
-Then, open the newly created file and extend the default configuration with one of the [shared configurations](default.md##available-configurations) provided by this library :point_down:
+Then, open the newly created file and extend the default configuration with one of the [shared configurations](default.md#available-configurations) provided by this library :point_down:
 
 ### web-application
 

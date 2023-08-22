@@ -1,7 +1,7 @@
-# @workleap/browserslist-configs
+# @workleap/browserslist-config
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](../../LICENSE)
-[![npm version](https://img.shields.io/npm/v/@workleap/browserslist-configs)](https://www.npmjs.com/package/@workleap/browserslist-configs)
+[![npm version](https://img.shields.io/npm/v/@workleap/browserslist-config)](https://www.npmjs.com/package/@workleap/browserslist-config)
 
 ## Usage
 

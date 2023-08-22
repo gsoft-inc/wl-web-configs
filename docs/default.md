@@ -54,7 +54,7 @@ While developing the configuration libraries, we kept one guiding principle in m
 
 | Name | NPM | Documentation |
 | --- | --- | --- |
-| ![](./static/browserslist.svg){ class="h-5 w-5 mr-2 -mt-1" }[Browserslist](https://browsersl.ist/){ target="_blank" } | [![npm version](https://img.shields.io/npm/v/@workleap/browserslist-configs)](https://www.npmjs.com/package/@workleap/browserslist-configs){ target="_blank" } | [Getting started](browserslist/default.md) |
+| ![](./static/browserslist.svg){ class="h-5 w-5 mr-2 -mt-1" }[Browserslist](https://browsersl.ist/){ target="_blank" } | [![npm version](https://img.shields.io/npm/v/@workleap/browserslist-config)](https://www.npmjs.com/package/@workleap/browserslist-config){ target="_blank" } | [Getting started](browserslist/default.md) |
 | ![](./static/eslint.svg){ class="h-5 w-5 mr-2 -mt-1" }[ESLint](https://eslint.org/){ target="_blank" } | [![npm version](https://img.shields.io/npm/v/@workleap/eslint-plugin)](https://www.npmjs.com/package/@workleap/eslint-plugin){ target="_blank" } | [Getting started](eslint/default.md) |
 | ![](./static/postcss.svg){ class="h-5 w-5 mr-2 -mt-1" }[PostCSS](https://postcss.org/){ target="_blank" } | [![npm version](https://img.shields.io/npm/v/@workleap/postcss-configs)](https://www.npmjs.com/package/@workleap/postcss-configs){ target="_blank" } | [Getting started](postcss/default.md) |
 | ![](./static/stylelint.svg){ class="h-5 w-5 mr-2 -mt-1" }[Stylelint](https://stylelint.io/){ target="_blank" } | [![npm version](https://img.shields.io/npm/v/@workleap/stylelint-configs)](https://www.npmjs.com/package/@workleap/stylelint-configs){ target="_blank" } | [Getting started](stylelint/default.md) |

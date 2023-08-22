@@ -52,7 +52,7 @@ The shared configurations offered by this library includes the following feature
 ### Target environment
 
 - Web (browser platform)
-- ES6 modules (ESM)
+- ESM
 - ESNext
 
 ## Getting started

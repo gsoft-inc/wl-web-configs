@@ -55,7 +55,7 @@ The shared configurations offered by this library includes the following feature
 
 ### Target environment
 
-- ES6 modules (ESM)
+- ESM
 - ESNext
 
 ## Getting started

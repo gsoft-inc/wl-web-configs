@@ -9,7 +9,7 @@ Common configurations for building web apps at [Workleap](https://workleap.com/)
 
 | Name | NPM |
 | --- | --- |
-| [@workleap/browserslist-configs](packages/browserslist-configs/README.md) | [![npm version](https://img.shields.io/npm/v/@workleap/browserslist-configs)](https://www.npmjs.com/package/@workleap/browserslist-configs) |
+| [@workleap/browserslist-config](packages/browserslist-config/README.md) | [![npm version](https://img.shields.io/npm/v/@workleap/browserslist-config)](https://www.npmjs.com/package/@workleap/browserslist-config) |
 | [@workleap/eslint-plugin](packages/eslint-plugin/README.md) | [![npm version](https://img.shields.io/npm/v/@workleap/eslint-plugin)](https://www.npmjs.com/package/@workleap/eslint-plugin) |
 | [@workleap/postcss-plugin](packages/postcss-plugin/README.md) | [![npm version](https://img.shields.io/npm/v/@workleap/postcss-plugin)](https://www.npmjs.com/package/@workleap/postcss-plugin) |
 | [@workleap/stylelint-plugin](packages/stylelint-configs/README.md) | [![npm version](https://img.shields.io/npm/v/@workleap/stylelint-configs)](https://www.npmjs.com/package/@workleap/stylelint-configs) |

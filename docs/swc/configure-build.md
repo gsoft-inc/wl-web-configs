@@ -45,7 +45,7 @@ Then, open the newly created file and export the [SWC](https://swc.rs/) configur
 // @ts-check
 
 import { defineBuildConfig } from "@workleap/swc-configs";
-import browsers from "@workleap/browserslist-configs";
+import browsers from "@workleap/browserslist-config";
 
 export default defineBuildConfig({
     browsers
@@ -73,7 +73,7 @@ Whether SWC should expect to parse JavaScript or [TypeScript](https://www.typesc
 // @ts-check
 
 import { defineBuildConfig } from "@workleap/swc-configs";
-import browsers from "@workleap/browserslist-configs";
+import browsers from "@workleap/browserslist-config";
 
 export default defineBuildConfig({
     parser: "ecmascript",
@@ -104,7 +104,7 @@ transformer(config: SwcConfig, context: SwcConfigTransformerContext) => SwcConfi
 // @ts-check
 
 import { defineBuildConfig, SwcConfigTransformer, SwcConfig } from "@workleap/swc-configs";
-import browsers from "@workleap/browserslist-configs";
+import browsers from "@workleap/browserslist-config";
 
 const mangleMinifiedCode: SwcConfigTransformer = (config: SwcConfig) => {
     config.jsc.minify.mangle = true;

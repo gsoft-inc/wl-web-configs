@@ -45,7 +45,7 @@ Then, open the newly created file and export the [SWC](https://swc.rs/) configur
 // @ts-check
 
 import { defineDevConfig } from "@workleap/swc-configs";
-import browsers from "@workleap/browserslist-configs";
+import browsers from "@workleap/browserslist-config";
 
 export default defineDevConfig({
     browsers
@@ -75,7 +75,7 @@ Whether or not to enable [Fast Refresh](https://www.npmjs.com/package/react-refr
 // @ts-check
 
 import { defineDevConfig } from "@workleap/swc-configs";
-import browsers from "@workleap/browserslist-configs";
+import browsers from "@workleap/browserslist-config";
 
 export default defineDevConfig({
     fastRefresh: true,
@@ -94,7 +94,7 @@ Whether SWC should expect to parse JavaScript or [TypeScript](https://www.typesc
 // @ts-check
 
 import { defineDevConfig } from "@workleap/swc-configs";
-import browsers from "@workleap/browserslist-configs";
+import browsers from "@workleap/browserslist-config";
 
 export default defineDevConfig({
     parser: "ecmascript",
@@ -125,7 +125,7 @@ transformer(config: SwcConfig, context: SwcConfigTransformerContext) => SwcConfi
 // @ts-check
 
 import { defineDevConfig, SwcConfigTransformer, SwcConfig } from "@workleap/swc-configs";
-import browsers from "@workleap/browserslist-configs";
+import browsers from "@workleap/browserslist-config";
 
 const disableReactBuiltins: SwcConfigTransformer = (config: SwcConfig) => {
     config.jsc.transform.react.useBuiltins = false;
