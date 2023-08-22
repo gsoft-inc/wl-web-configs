@@ -7,7 +7,7 @@ expanded: true
 
 # PostCSS
 
-!!!warning Before you read further...
+!!!warning Before you continue...
 
 The prefered way for using this [PostCSS](https://postcss.org/) shared configuration is **not** by installing it manually, but rather by **scaffolding** your application with Workleap's [foundry-cli](https://github.com/gsoft-inc/wl-foundry-cli).
 

@@ -7,7 +7,7 @@ expanded: true
 
 # Stylelint
 
-!!!warning Before you read further...
+!!!warning Before you continue...
 
 The prefered way for using this [Stylelint](https://stylelint.io/) shared configuration is **not** by installing it manually, but rather by **scaffolding** your application with Workleap's [foundry-cli](https://github.com/gsoft-inc/wl-foundry-cli).
 
@@ -55,6 +55,6 @@ If your are looking to setup a **new** polyrepo solution (single project per rep
 
 ### Setup an existing project
 
-If you are migrating an **existing** polyrepo solution (single project per repository) to `@workleap/web-configs`, follow the guide to [setup a polyrepo](setup-polyrepo.md), otherwise, follow the guide to [setup a monorepo](setup-monorepo.md).
+If you are migrating an **existing** polyrepo solution (single project per repository) to `workleap/web-configs`, follow the guide to [setup a polyrepo](setup-polyrepo.md), otherwise, follow the guide to [setup a monorepo](setup-monorepo.md).
 
 Once configured, to understand how to adapt this library default configurations to your codebase while you are completing the migration, have a look at the [custom configuration](custom-configuration.md) page.

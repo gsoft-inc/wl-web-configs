@@ -9,7 +9,7 @@ meta:
 If you are in the process of **migrating an existing project** to use this library or encountering a challenging situation that is not currently handled by this library, you might want to customize the default shared configurations.
 
 !!!
-For a list of the rules included with the default shared configurations, have a look at this library [folder](https://github.com/gsoft-inc/wl-web-configs/tree/main/packages/eslint-plugin/lib/config) on Github.
+For a list of the rules included with the default shared configurations, refer to the configuration files in the following [folder](https://github.com/gsoft-inc/wl-web-configs/tree/main/packages/eslint-plugin/lib/config) on Github.
 !!!
 
 ## Disable a default rule

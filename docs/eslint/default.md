@@ -7,7 +7,7 @@ expanded: true
 
 # ESLint
 
-!!!warning Before you read further...
+!!!warning Before you continue...
 
 The prefered way for using these [ESLint](https://eslint.org/) shared configurations is **not** by installing them manually, but rather by **scaffolding** your application with Workleap's [foundry-cli](https://github.com/gsoft-inc/wl-foundry-cli).
 
@@ -38,18 +38,18 @@ Have a look at Shopify [ESLint usage section](https://github.com/Shopify/web-con
 To make the right choices and assemble the final configuration correctly, a consumer must have niche front-end skills.
 ===
 
-To improve the experience, rather than delegating the composition of the shared configuration pieces to the consumer, we compose them internally and offer configurations **by project type** instead.
+To improve the experience, rather than delegating the composition of the shared configuration pieces to the consumer, we **compose them internally** and offer configurations by project type instead.
 
-This way, it's pretty straightforward to configure ESLint as it only involves **extending a single shared configuration** per project. For advanced users in need of flexibility, the underlying configuration pieces are [also available](advanced-composition.md).
+This way, it's pretty straightforward for the consumer to configure ESLint as it only involves **extending** a **single** shared **configuration** per project and it allows for more **accurate defaults** and **assumptions** about the target environment. For advanced users in need of flexibility, the underlying configuration pieces are [also available](advanced-composition.md).
 
 ### Available configurations
 
 | Name | Description |
 | ---  | --- |
-| :icon-mark-github: [web-application](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/by-project-type/web-application.ts) | For web applications developed with [React](https://react.dev/) and [TypeScript](https://www.typescriptlang.org/){ target="_blank" }. |
-| :icon-mark-github: [react-library](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/by-project-type/react-library.ts){ target="_blank" } | For TypeScript libraries developed **with** React. |
-| :icon-mark-github: [typescript-library](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/by-project-type/typescript-library.ts){ target="_blank" } | For TypeScript libraries developed **without** React. |
-| :icon-mark-github: [monorepo-workspace](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/by-project-type/typescript-library.ts){ target="_blank" } | For the workspace configuration of a monorepo solution. |
+| :icon-mark-github: [web-application](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/by-project-type/web-application.ts){ target="_blank" } | For web applications developed with [React](https://react.dev/) and [TypeScript](https://www.typescriptlang.org/). |
+| :icon-mark-github: [react-library](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/by-project-type/react-library.ts){ target="_blank" } | For TypeScript libraries developed **with** [React](https://react.dev/). |
+| :icon-mark-github: [typescript-library](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/by-project-type/typescript-library.ts){ target="_blank" } | For TypeScript libraries developed **without** [React](https://react.dev/). |
+| :icon-mark-github: [monorepo-workspace](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/by-project-type/monorepo-workspace.ts){ target="_blank" } | For the workspace configuration of a monorepo solution. |
 
 ## Prettier
 
@@ -65,10 +65,10 @@ If your are looking to setup a **new** polyrepo solution (single project per rep
 
 ### Setup an existing project
 
-If you are migrating an **existing** polyrepo solution (single project per repository) to `@workleap/web-configs`, follow the guide to [setup a polyrepo](setup-polyrepo.md), otherwise, follow the guide to [setup a monorepo](setup-monorepo.md).
+If you are migrating an **existing** polyrepo solution (single project per repository) to `workleap/web-configs`, follow the guide to [setup a polyrepo](setup-polyrepo.md), otherwise, follow the guide to [setup a monorepo](setup-monorepo.md).
 
 Once configured, to understand how to adapt this library default configurations to your codebase while you are completing the migration, have a look at the [custom configuration](custom-configuration.md) page.
 
 ### Advanced use cases
 
-If you are encountering a challenging use case making impractical the _per project type_ configurations offered by this library, have a look at the [advanced composition](advanced-composition.md) page for documentation about how tocompose the underlying configuration pieces of this library.
+If you are encountering a challenging use case making impractical the _per project type_ configurations offered by this library, have a look at the [advanced composition](advanced-composition.md) page for documentation about how to compose the underlying configuration pieces of this library.

@@ -7,7 +7,7 @@ expanded: true
 
 # SWC
 
-!!!warning Before you read further...
+!!!warning Before you continue...
 
 The prefered way for using these [SWC](https://swc.rs/) shared configurations is **not** by installing them manually, but rather by **scaffolding** your application with Workleap's [foundry-cli](https://github.com/gsoft-inc/wl-foundry-cli).
 

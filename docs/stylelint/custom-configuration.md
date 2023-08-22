@@ -10,7 +10,7 @@ meta:
 If you are in the process of **migrating an existing project** to use this library or encountering a challenging situation that is not currently handled by this library, you might want to customize the default shared configurations.
 
 !!!
-For a list of the rules included with the default shared configurations, have a look at the following [file](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/stylelint-config/src/index.ts) on Github.
+For a list of the rules included with the default shared configurations, refer to the following [file](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/stylelint-config/src/index.ts) on Github.
 !!!
 
 ## Disable a default rule

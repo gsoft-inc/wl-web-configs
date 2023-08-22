@@ -49,7 +49,7 @@ export default defineBuildConfig();
 
 ## 3. Set predefined options
 
-The `defineBuildConfig(options)` function can be used as shown in the previous example, however, if you wish to customize the default configuration, the function also accepts **any** tsup [options](https://tsup.egoist.dev/#usage), **no locked in** :heart::v::
+The `defineBuildConfig(options)` function can be used as shown in the previous example, however, if you wish to customize the default configuration, the function also accepts any [tsup options](https://tsup.egoist.dev/#usage), **no locked in** :heart::v::
 
 ```ts !#4 tsup.build.ts
 import { defineBuildConfig } from "@workleap/tsup-configs";
@@ -67,14 +67,14 @@ We do not guarantee that your configuration transformers won't break after an up
 
 Since the [predefined options](#3-set-predefined-options) for tsup already covers all the availables [options](https://tsup.egoist.dev/#usage), configuration transformer functions aren't as useful for a tsup configuration as for other tools like [SWC](../swc/configure-build.md#4-transform-configuration) or [webpack](../webpack/configure-build.md#4-transform-configuration). Nonetheless, they are still valuable, especially for library authors aiming to **distribute** a **default option set** that facilitates the configuration of tsup for specific functionalities of their library.
 
-To view the default build configuration of this library, have a look at the [configuration file](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/tsup-configs/src/build.ts) on Github.
+To view the default build configuration of this library, have a look at the [build.ts configuration file](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/tsup-configs/src/build.ts) on Github.
 
 ### `transformers`
 
 - **Type**: `((config: TsupConfig, context: TsupConfigTransformerContext) => TsupConfig)[]`
 - **Default**: `[]`
 
-```ts transformer.ts
+```ts myCustomTransformer.ts
 import { TsupConfigTransformer, TsupConfig } from "@workleap/tsup-configs";
 
 export const myCustomTsupTransformer: TsupConfigTransformer = (config: TsupConfig) => {
@@ -88,7 +88,7 @@ export const myCustomTsupTransformer: TsupConfigTransformer = (config: TsupConfi
 
 ```ts !#5 tsup.build.ts
 import { defineBuildConfig } from "@workleap/tsup-configs";
-import { myCustomTsupTransformer } from "@my-library/myCustomTsupTransformer;
+import { myCustomTsupTransformer } from "@my-library/myCustomTsupTransformer";
 
 export default defineBuildConfig({
     transformers: [myCustomTsupTransformer]
@@ -99,10 +99,10 @@ export default defineBuildConfig({
 
 Generic transformers can use the `context` parameter to gather additional information about their execution context, like the `environment` they are operating in:
 
-```ts !#4 transformer.ts
+```ts !#4 myCustomTransformer.ts
 import { TsupConfigTransformer, TsupConfigTransformerContext, TsupConfig } from "@workleap/tsup-configs";
 
-export const transformer: TsupConfigTransformer = (config: TsupConfig, context: TsupConfigTransformerContext) => {
+export const myCustomTsupTransformer: TsupConfigTransformer = (config: TsupConfig, context: TsupConfigTransformerContext) => {
     if (context.environment === "build") {
         config.clean = false;
     }

@@ -30,7 +30,7 @@ npm install -D @workleap/swc-configs @swc/jest @swc/core @swc/helpers
 ## 2. Configure SWC
 
 !!!info
-To use [TypeScript](https://www.typescriptlang.org/) files, make sure that you configure properly [ts-jest](https://kulshekhar.github.io/ts-jest/) in your solution.
+To use a [TypeScript](https://www.typescriptlang.org/) configuration file, make sure that your Jest configuration is also in TypeScript.
 !!!
 
 First, create a configuration file named `swc.jest.ts` at the root of the project:
@@ -94,7 +94,7 @@ We do not guarantee that your configuration transformers won't break after an up
 
 The [predefined options](#3-set-predefined-options) are useful to quickly customize the [default development configuration](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/swc-configs/src/jest.ts) of this library, but only covers a subset of an [SWC configuration](https://swc.rs/docs/configuration/swcrc). If you need full control over the configuration, you can provide configuration transformer functions. Remember, **no locked in** :heart::v:.
 
-To view the default Jest configuration of this library, have a look at the [Jest configuration file](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/swc-configs/src/jest.ts) on Github.
+To view the default Jest configuration of this library, have a look at the [jest.ts configuration file](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/swc-configs/src/jest.ts) on Github.
 
 ### `transformers`
 
@@ -137,7 +137,7 @@ const config = {
 
 To test your new [SWC](https://swc.rs/) configuration, create a Jest test in Typescript:
 
-```ts append-world.test.ts
+```ts appendWorld.test.ts
 export function appendWorld(string: value) {
     console.log(`${string} world!`);
 }

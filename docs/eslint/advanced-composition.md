@@ -6,7 +6,7 @@ meta:
 
 # Advanced composition
 
-If the default [by project type configurations](/eslint/#available-configurations) doesn't fits your needs, rather than writing your own configuration from scratch, you can **compose a new one** from the underlying configuration pieces of this library.
+If the default [by project type configurations](default.md/#available-configurations) doesn't fits your needs, rather than writing your own configuration from scratch, you can **compose a new one** from the underlying configuration pieces of this library.
 
 ## Available pieces
 
