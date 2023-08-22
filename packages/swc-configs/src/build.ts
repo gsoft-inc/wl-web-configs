@@ -1,5 +1,5 @@
+import type { Config as SwcConfig } from "@swc/core";
 import { applyTransformers, type SwcConfigTransformer } from "./applyTransformers";
-import type { SwcConfig } from "./types";
 
 export interface DefineBuildConfigOptions {
     // Any is also used for SWC "targets" type.
@@ -28,7 +28,7 @@ export function defineBuildConfig(options: DefineBuildConfigOptions) {
                     tsx: true
                 },
             // The output environment that the code will be compiled for.
-            target: "es2022",
+            target: "esnext",
             // View https://swc.rs/docs/configuration/minification for options.
             minify: {
                 compress: true,

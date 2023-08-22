@@ -7,9 +7,10 @@ expanded: true
 
 # Stylelint
 
-!!!warning Foundry CLI
+!!!warning Before you read further...
 
-The prefered way for using these [Stylelint](https://stylelint.io/) configurations is by scaffolding your application with Workleap's [foundry-cli](https://github.com/gsoft-inc/wl-foundry-cli).
+The prefered way for using this [Stylelint](https://stylelint.io/) shared configuration is **not** by installing it manually, but rather by **scaffolding** your application with Workleap's [foundry-cli](https://github.com/gsoft-inc/wl-foundry-cli).
+
 +++ pnpm
 ```bash
 pnpm create @workleap/project@latest <output-directory>

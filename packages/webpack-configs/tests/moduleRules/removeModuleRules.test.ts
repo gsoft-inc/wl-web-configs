@@ -1,6 +1,5 @@
-import type { RuleSetRule, RuleSetUseItem } from "webpack";
+import type { RuleSetRule, RuleSetUseItem, Configuration as WebpackConfig } from "webpack";
 import { matchLoaderName, matchTest, removeModuleRules } from "../../src/transformers/moduleRules.ts";
-import type { WebpackConfig } from "../../src/types.ts";
 
 test("when a matching module rule is found in the rules array, remove the module rule", () => {
     const config: WebpackConfig = {

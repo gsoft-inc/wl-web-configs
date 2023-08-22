@@ -43,7 +43,7 @@ Then, open the newly created file and extend the default configuration with one 
 
 ### web-application
 
-For an application developed with [React](https://react.dev/) and [TypeScript](https://www.typescriptlang.org/), use the following configuration:
+For an application developed with [TypeScript](https://www.typescriptlang.org/) and [React](https://react.dev/), use the following configuration:
 
 ```json !#4 .eslintrc.json
 {
@@ -152,11 +152,11 @@ At times, especially when running the CI build, it's useful to lint the entire s
 
 ## 6. Customize configuration
 
-New projects shouldn't have to customize the default configurations offered by this library. However, if you are in the process of **migrating** an existing project to use this library or encountering a challenging situation, refer to the [custom configuration](custom-configuration.md) page to understand how to override or extend the default configurations, remember, **no locked in** :heart::v:.
+New projects shouldn't have to customize the default configurations offered by this library. However, if you are in the process of **migrating** an existing project to use this library or encountering a challenging situation, refer to the [custom configuration](custom-configuration.md) page to understand how to override or extend the default configurations. Remember, **no locked in** :heart::v:.
 
 ## 7. Try it :rocket:
 
-To test your new setup, open a JavaScript file, type invalid code (e.g. `var x = 0;`), then save. Open a terminal at the root of the solution and execute the [CLI script added earlier](#5-add-a-cli-script):
+To test your new [ESLint](https://eslint.org/) setup, open a JavaScript file, type invalid code (e.g. `var x = 0;`), then save. Open a terminal at the root of the solution and execute the [CLI script added earlier](#5-add-a-cli-script):
 
 +++ pnpm
 ```bash

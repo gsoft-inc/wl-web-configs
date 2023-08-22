@@ -44,9 +44,9 @@ web-project
 ├── jest.config.ts
 ```
 
-Then, open the newly created file and export the SWC configuration by using the `defineJestConfig(options)` function provided by this library:
+Then, open the newly created file and export the [SWC](https://swc.rs/) configuration by using the `defineJestConfig(options)` function provided by this library:
 
-```js !#6-8 swc.jest.ts
+```ts !#6-8 swc.jest.ts
 import { defineJestConfig } from "@workleap/swc-configs";
 
 export default defineJestConfig();
@@ -63,7 +63,7 @@ The `defineJestConfig(options)` function can be used as shown in the previous ex
 
 Whether or not to transform [React](https://react.dev/) code.
 
-```js !#4 swc.jest.ts
+```ts !#4 swc.jest.ts
 import { defineJestConfig } from "@workleap/swc-configs";
 
 export default defineJestConfig({
@@ -78,7 +78,7 @@ export default defineJestConfig({
 
 Whether SWC should expect to parse JavaScript or [TypeScript](https://www.typescriptlang.org/) code.
 
-```js !#4 swc.jest.ts
+```ts !#4 swc.jest.ts
 import { defineJestConfig } from "@workleap/swc-configs";
 
 export default defineJestConfig({
@@ -92,22 +92,20 @@ export default defineJestConfig({
 We do not guarantee that your configuration transformers won't break after an update. It's your responsability to keep them up to date with new releases.
 !!!
 
-The [predefined options](#3-set-predefined-options) are useful to quickly customize the [default development configuration](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/swc-configs/src/jest.ts) of this library, but only covers a subset of an [SWC configuration](https://swc.rs/docs/configuration/swcrc). If you need full control over the configuration, you can provide configuration transformer functions, **no locked in** :heart::v:.
+The [predefined options](#3-set-predefined-options) are useful to quickly customize the [default development configuration](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/swc-configs/src/jest.ts) of this library, but only covers a subset of an [SWC configuration](https://swc.rs/docs/configuration/swcrc). If you need full control over the configuration, you can provide configuration transformer functions. Remember, **no locked in** :heart::v:.
 
-A configuration transformer function receive an SWC configuration object and returns a transformed (or not) SWC configuration object:
-
-```ts
-transformer(config: SwcConfig, context: SwcConfigTransformerContext) => SwcConfig
-```
-
-To view the default development configuration, have a look at the [configuration file](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/swc-configs/src/jest.ts) on Github.
+To view the default Jest configuration of this library, have a look at the [Jest configuration file](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/swc-configs/src/jest.ts) on Github.
 
 ### `transformers`
 
 - **Type**: `((config: SwcConfig, context: SwcConfigTransformerContext) => SwcConfig)[]`
 - **Default**: `[]`
 
-```js !#10 swc.jest.ts
+```ts
+transformer(config: SwcConfig, context: SwcConfigTransformerContext) => SwcConfig
+```
+
+```ts !#10 swc.jest.ts
 import { defineJestConfig, SwcConfigTransformer, SwcConfig } from "@workleap/swc-configs";
 
 const useCommonJsModules: SwcConfigTransformer = (config: SwcConfig) => {
@@ -125,7 +123,7 @@ export default defineJestConfig({
 
 To configure [Jest](https://jestjs.io/), open the project `jest.config.ts` file and add the following code:
 
-```ts
+```ts !#4-6 jest.config.ts
 import { swcConfig } from "./swc.jest.ts";
 
 const config = {
@@ -137,14 +135,14 @@ const config = {
 
 ## 6. Try it :rocket:
 
-To test your new SWC configuration, create a Jest test in Typescript:
+To test your new [SWC](https://swc.rs/) configuration, create a Jest test in Typescript:
 
 ```ts append-world.test.ts
 export function appendWorld(string: value) {
     console.log(`${string} world!`);
 }
 
-test("should append \"world\"", () => {
+test("should append \"world!\"", () => {
     expect(appendWorld("Hello")).toBe("Hello world!");
 }
 ```

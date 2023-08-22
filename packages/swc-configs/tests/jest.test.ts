@@ -1,7 +1,6 @@
-import type { EsParserConfig, TsParserConfig } from "@swc/core";
+import type { EsParserConfig, Config as SwcConfig, TsParserConfig } from "@swc/core";
 import type { SwcConfigTransformer } from "../src/applyTransformers.ts";
 import { defineJestConfig } from "../src/jest.ts";
-import type { SwcConfig } from "../src/types.ts";
 
 describe("typescript parser", () => {
     test("when react is true, the react transform configuration is included", () => {

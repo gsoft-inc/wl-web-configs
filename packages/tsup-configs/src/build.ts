@@ -1,7 +1,7 @@
-import type { Options } from "tsup";
+import type { Options as TsupConfig } from "tsup";
 import { applyTransformers, type TsupConfigTransformer } from "./applyTransformers";
 
-export interface DefineBuildConfigOptions extends Options {
+export interface DefineBuildConfigOptions extends TsupConfig {
     transformers?: TsupConfigTransformer[];
 }
 
@@ -11,7 +11,7 @@ export function defineBuildConfig(options: DefineBuildConfigOptions = {}) {
         ...rest
     } = options;
 
-    const config: Options = {
+    const config: TsupConfig = {
         clean: true,
         dts: true,
         treeshake: true,

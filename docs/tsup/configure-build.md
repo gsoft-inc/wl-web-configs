@@ -7,17 +7,19 @@ meta:
 
 # Configure for build
 
-## Install the packages
+## 1. Install the packages
 
-## Configure tsup
+## 2. Configure tsup
 
 - Create a configuration file
 - Define configuration
 
-### Predefined options
+## 3. Set predefined options
 
 - List all options (do I list all tsup options?!?! or link to it)
 
-### Transformers
+## 4. Transform configuration
 
-## Try it :rocket:
+## 5. Add a CLI script
+
+## 6. Try it :rocket:

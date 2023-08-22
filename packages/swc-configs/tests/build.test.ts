@@ -1,7 +1,6 @@
-import type { EsParserConfig, TsParserConfig } from "@swc/core";
+import type { EsParserConfig, Config as SwcConfig, TsParserConfig } from "@swc/core";
 import type { SwcConfigTransformer } from "../src/applyTransformers.ts";
 import { defineBuildConfig } from "../src/build.ts";
-import type { SwcConfig } from "../src/types.ts";
 
 const Browsers = ["last 2 versions"];
 

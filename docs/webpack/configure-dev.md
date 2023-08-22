@@ -27,11 +27,11 @@ npm install -D @workleap/webpack-configs webpack webpack-cli webpack-dev-server 
 ```
 +++
 
-### React Fast Refresh
+### Fast Refresh
 
-Because [Module Federation](https://webpack.js.org/concepts/module-federation/) does not support [React Fast Refresh](https://github.com/pmmmwh/react-refresh-webpack-plugin), the default configuration doesn't enable it by default and it's defined as an optional `peerDependency` of this library package.
+Because [Module Federation](https://webpack.js.org/concepts/module-federation/) does not support [Fast Refresh](https://www.npmjs.com/package/react-refresh), the default configuration doesn't enable it by default and it's defined as an optional `peerDependency` of this library package.
 
-If you expect to enable React Fast Refresh, also install the following package at the root of the project:
+If you expect to enable Fast Refresh, also install the following package at the root of the project:
 
 +++ pnpm
 ```bash
@@ -293,12 +293,12 @@ export default defineDevConfig({
 ### `fastRefresh`
 
 - **Type**: `boolean`
-- **Default**: `false` or an object literal accepting any `react-refresh-webpack-plugin` [options](https://github.com/pmmmwh/react-refresh-webpack-plugin/blob/main/docs/API.md)
+- **Default**: `false` or an object literal accepting any `react-refresh-webpack-plugin` [options](https://www.npmjs.com/package/react-refresh/blob/main/docs/API.md)
 
-Replace webpack [HMR](https://webpack.js.org/concepts/hot-module-replacement/) by [React Fast Refresh](https://github.com/pmmmwh/react-refresh-webpack-plugin). Activating webpack fast refresh will automatically [enable fast refresh for SWC](../swc/configure-dev.md#fastrefresh).
+Replace webpack [HMR](https://webpack.js.org/concepts/hot-module-replacement/) by [Fast Refresh](https://www.npmjs.com/package/react-refresh). Activating webpack fast refresh will automatically [enable fast refresh for SWC](../swc/configure-dev.md#fastrefresh).
 
 !!!info
-If you enable React Fast Refresh, don't forget to install it's [package dependency](#react-fast-refresh).
+If you enable Fast Refresh, don't forget to install it's [package dependency](#fast-refresh).
 !!!
 
 ```js !#7 webpack.dev.js
@@ -313,7 +313,7 @@ export default defineDevConfig({
 });
 ```
 
-To extend the default React Fast Refresh configuration, use the `defineFastRefreshPluginConfig(options)` function.
+To extend the default Fast Refresh configuration, use the `defineFastRefreshPluginConfig(options)` function.
 
 ```js !#7 webpack.dev.js
 // @ts-check
@@ -352,20 +352,18 @@ export default defineDevConfig({
 We do not guarantee that your configuration transformers won't break after an update. It's your responsability to keep them up to date with new releases.
 !!!
 
-The [predefined options](#3-set-predefined-options) are useful to quickly customize the [default development configuration](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/webpack-configs/src/dev.ts) of this library, but only covers a subset of a [webpack configuration](https://webpack.js.org/configuration/). If you need full control over the configuration, you can provide configuration transformer functions, **no locked in** :heart::v:.
+The [predefined options](#3-set-predefined-options) are useful to quickly customize the [default development configuration](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/webpack-configs/src/dev.ts) of this library, but only covers a subset of a [webpack configuration](https://webpack.js.org/configuration/). If you need full control over the configuration, you can provide configuration transformer functions. Remember, **no locked in** :heart::v:.
 
-A configuration transformer function receive a webpack configuration object and returns a transformed (or not) webpack configuration object:
-
-```ts
-transformer(config: WebpackConfig, context: WebpackConfigTransformerContext) => WebpackConfig
-```
-
-To view the default development configuration, have a look at the [configuration file](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/webpack-configs/src/dev.ts) on Github.
+To view the default development configuration of this library, have a look at the [dev configuration file](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/webpack-configs/src/dev.ts) on Github.
 
 ### `transformers`
 
 - **Type**: `((config: WebpackConfig, context: WebpackConfigTransformerContext) => WebpackConfig)[]`
 - **Default**: `[]`
+
+```ts
+transformer(config: WebpackConfig, context: WebpackConfigTransformerContext) => WebpackConfig
+```
 
 ```js !#16 webpack.dev.js
 // @ts-check
@@ -416,7 +414,7 @@ Modifying a webpack configuration object can be an arduous task, to help with th
 
 ## 5. Add a CLI script
 
-To easily start the development server, add the following script to your project `package.json` file:
+To initiate the development server, add the following script to your project `package.json` file:
 
 ```json package.json
 {
@@ -507,6 +505,6 @@ export function App() {
 
 ## 7. Try it :rocket:
 
-To test your new configuration, open a terminal at the root of the project and execute the [CLI script added earlier](#5-add-a-cli-script). A development server should start without outputting any error in the terminal.
+To test your new [webpack](https://webpack.js.org/) configuration, open a terminal at the root of the project and execute the [CLI script added earlier](#5-add-a-cli-script). A development server should start without outputting any error in the terminal.
 
 

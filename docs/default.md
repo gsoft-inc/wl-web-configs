@@ -6,11 +6,11 @@ label: Getting started
 
 # Getting started
 
-Welcome to `@workleap/web-configs`, a collection of **configuration libraries** for building web applications at [Workleap](https://workleap.com/). In this getting started page, you'll find an overview of the project and a list of supported tools.
+Welcome to `workleap/web-configs`, a collection of **configuration libraries** for building web applications at [Workleap](https://workleap.com/). In this getting started page, you'll find an overview of the project and a list of supported tools.
 
-!!!warning Foundry CLI
+!!!warning Before you read further...
 
-The prefered way for using these configuration libraries is by scaffolding your application with Workleap's [foundry-cli](https://github.com/gsoft-inc/wl-foundry-cli).
+The prefered way for using these configuration libraries is **not** by installing them manually, but rather by **scaffolding** your application with Workleap's [foundry-cli](https://github.com/gsoft-inc/wl-foundry-cli).
 +++ pnpm
 ```bash
 pnpm create @workleap/project@latest <output-directory>
@@ -26,13 +26,17 @@ npm create @workleap/project@latest <output-directory>
 +++
 !!!
 
-## Why
+## Why?
 
 Starting a new web application is still an arduous task. There are so many tools to choose from, learn, install and configure, it can be daunting.
 
 For an organization like [Workleap](https://workleap.com/), with a large suite of products, it **doesn't make sense to start over every time** we invest in a new idea or add a new vertical to an existing product. Developers working on a new project shouldn't spend their first day's figuring out which [ESLint](https://eslint.org/) rules to enable/disable, or how to transpile their [React](https://react.dev/) code, they should rather **focus on writing features code**.
 
-While a collection of common configurations gets us closer to that goal, on their own, configuration libraries are not enough to reach it. There is still a need to install and assemble those configurations correctly in the new application, which can also be a challenge. To fill this gap, we choosed to invest as well in a [CLI](https://github.com/gsoft-inc/wl-foundry-cli) to scaffold new web applications.
+### Filling the gap
+
+While a collection of common configurations gets us closer to that goal, on their own, configuration libraries are not enough to reach it. There is still a need to install and assemble those configurations correctly in the new application, which can also be a challenge. To fill this gap, we choosed to invest as well in a [CLI](https://github.com/gsoft-inc/wl-foundry-cli) to scaffold new web applications and libraries.
+
+### Best of both worlds
 
 With the CLI, developers can generate fully configured web applications in a few minutes. However, contrary to configuration libraries, a CLI alone is only good at creating the initial files of an application, it doesn't help with the **maintenance** or the **adoption of new features** offered by tools over time.
 
@@ -40,7 +44,7 @@ That's why we need both, there's a strong synergy between a collection of config
 
 With configuration libraries **distributed through NPM packages** and installed with a CLI, when a new feature is available for a tool, the configuration libraries maintainers can spend time learning the new feature, making the necessary changes, and **distributing the changes with a new version** of the package. Then, at their convenience, **product teams can adopt the changes** by bumping the configuration library package version in their respective application.
 
-We hope that introducing a collection of configuration libraries will facilitate the creation and maintenance of front-end projects over time.
+We hope that introducing CLI with a collection of configuration libraries will facilitate the creation and maintenance of front-end projects.
 
 ## Guiding principles
 

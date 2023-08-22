@@ -280,20 +280,18 @@ export default defineBuildConfig({
 We do not guarantee that your configuration transformers won't break after an update. It's your responsability to keep them up to date with new releases.
 !!!
 
-The [predefined options](#3-set-predefined-options) are useful to quickly customize the [default build configuration](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/webpack-configs/src/build.ts) of this library, but only covers a subset of a [webpack configuration](https://webpack.js.org/configuration/). If you need full control over the configuration, you can provide configuration transformer functions, **no locked in** :heart::v:.
+The [predefined options](#3-set-predefined-options) are useful to quickly customize the [default build configuration](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/webpack-configs/src/build.ts) of this library, but only covers a subset of a [webpack configuration](https://webpack.js.org/configuration/). If you need full control over the configuration, you can provide configuration transformer functions. Remember, **no locked in** :heart::v:.
 
-A configuration transformer function receive a webpack configuration object and returns a transformed (or not) webpack configuration object:
-
-```ts
-transformer(config: WebpackConfig, context: WebpackConfigTransformerContext) => WebpackConfig
-```
-
-To view the default build configuration, have a look at the [configuration file](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/webpack-configs/src/build.ts) on Github.
+To view the default build configuration of this library, have a look at the [build configuration file](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/webpack-configs/src/build.ts) on Github.
 
 ### `transformers`
 
 - **Type**: `((config: WebpackConfig, context: WebpackConfigTransformerContext) => WebpackConfig)[]`
 - **Default**: `[]`
+
+```ts
+transformer(config: WebpackConfig, context: WebpackConfigTransformerContext) => WebpackConfig
+```
 
 ```js !#13 webpack.build.js
 // @ts-check
@@ -339,7 +337,7 @@ Modifying a webpack configuration object can be an arduous task, to help with th
 
 ## 5. Add a CLI script
 
-To easily start the development server, add the following script to your project `package.json` file:
+To create the bundle files for production, add the following script to your project `package.json` file:
 
 ```json package.json
 {
@@ -430,4 +428,4 @@ export function App() {
 
 ## 7. Try it :rocket:
 
-To test your new configuration, open a terminal at the root of the project and execute the [CLI script added earlier](#5-add-a-cli-script). The build process should complete without outputting any error in the terminal and the bundle files should be available in the `/dist` folder (or any other `outputPath` you configured).
+To test your new [webpack](https://webpack.js.org/) configuration, open a terminal at the root of the project and execute the [CLI script added earlier](#5-add-a-cli-script). The build process should complete without outputting any error in the terminal and the bundle files should be available in the `/dist` folder (or any other `outputPath` you configured).

@@ -186,7 +186,7 @@ Then, open the newly created file and extend the default configuration with one 
 
 ### web-application
 
-For an application developed with [React](https://react.dev/) and [TypeScript](https://www.typescriptlang.org/), use the following configuration:
+For an application developed with [TypeScript](https://www.typescriptlang.org/) and [React](https://react.dev/), use the following configuration:
 
 ```json !#4 packages/app/.eslintrc.json
 {
@@ -230,7 +230,7 @@ New projects shouldn't have to customize the default configurations offered by t
 
 ## 10. Try it :rocket:
 
-To test your new setup, open a JavaScript file, type invalid code (e.g. `var x = 0;`), then save. Open a terminal at the root of the solution and execute the [CLI script added earlier](#5-add-a-cli-script):
+To test your new [ESLint](https://eslint.org/) setup, open a JavaScript file, type invalid code (e.g. `var x = 0;`), then save. Open a terminal at the root of the solution and execute the [CLI script added earlier](#5-add-a-cli-script):
 
 +++ pnpm
 ```bash

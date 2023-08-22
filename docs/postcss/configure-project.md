@@ -38,7 +38,7 @@ project
 ├── postcss.config.ts
 ```
 
-Then, open the newly created file and `export` the PostCSS configuration by using the `defineConfig(options)` function provided by this library:
+Then, open the newly created file and `export` the [PostCSS](https://postcss.org/) configuration by using the `defineConfig(options)` function provided by this library:
 
 ```ts !#3 postcss.config.ts
 import { defineConfig } from "@workleap/postcss-configs";
@@ -107,20 +107,18 @@ export default defineConfig({
 We do not guarantee that your configuration transformers won't break after an update. It's your responsability to keep them up to date with new releases.
 !!!
 
-The [predefined options](#3-set-predefined-options) are useful to quickly customize the [default configuration](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/postcss-configs/src/index.ts) of this library, but only covers a subset of a [PostCSS configuration](https://github.com/postcss/postcss-load-config). If you need full control over the configuration, you can provide **configuration transformer** functions, **no locked in** :heart::v:.
+The [predefined options](#3-set-predefined-options) are useful to quickly customize the [default configuration](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/postcss-configs/src/index.ts) of this library, but only covers a subset of a [PostCSS configuration](https://github.com/postcss/postcss-load-config). If you need full control over the configuration, you can provide **configuration transformer** functions. Remember, **no locked in** :heart::v:.
 
-A configuration transformer function receive a PostCSS configuration object and returns a transformed (or not) PostCSS configuration object:
-
-```ts
-transformer(config: PostCSSConfig) => PostCSSConfig
-```
-
-[!ref icon="mark-github" text="View the default configuration on Github"](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/postcss-configs/src/index.ts)
+To view the default configuration of this library, have a look at the [configuration file](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/postcss-configs/src/index) on Github.
 
 ### `transformers`
 
 - **Type**: `((config: PostCSSConfig ) => PostCSSConfig)[]`
 - **Default**: `[]`
+
+```ts
+transformer(config: PostCSSConfig) => PostCSSConfig
+```
 
 ```ts !#10 postcss.config.ts
 import { defineConfig, type PostcssConfigTransformer, type PostCSSConfig } from "@workleap/postcss-configs";
@@ -181,7 +179,7 @@ export default {
 
 ## 6. Try it :rocket:
 
-To test your new PostCSS configuration, create and import a CSS file with the following code:
+To test your new [PostCSS](https://postcss.org/) configuration, create and import a CSS file with the following code:
 
 ```css example.css
 .example {

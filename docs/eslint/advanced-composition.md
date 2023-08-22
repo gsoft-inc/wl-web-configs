@@ -24,9 +24,9 @@ If the default [by project type configurations](/eslint/#available-configuration
 
 Each configuration piece can be extended individually, or in combination with other pieces, to compose your own custom ESLint configuration.
 
-### Individual piece
+### Single piece
 
-To extend the configuration with an individual piece:
+To extend the configuration with a single piece:
 
 ```json !#4 .eslintrc.json
 {

@@ -1,4 +1,4 @@
-import type { SwcConfig } from "./types";
+import type { Config as SwcConfig } from "@swc/core";
 
 export interface SwcConfigTransformerContext {
     environment: "dev" | "build" | "jest";

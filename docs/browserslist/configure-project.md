@@ -58,7 +58,7 @@ Refer to the [Browserslist documentation](https://github.com/browserslist/browse
 
 ## 4. Try it :rocket:
 
-To test your new configuration, open a terminal at the root of the project and execute the following command:
+To test your new [Browserslist](https://browsersl.ist/) configuration, open a terminal at the root of the project and execute the following command:
 
 +++ pnpm
 ```bash

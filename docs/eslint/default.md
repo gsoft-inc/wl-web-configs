@@ -7,9 +7,10 @@ expanded: true
 
 # ESLint
 
-!!!warning Foundry CLI
+!!!warning Before you read further...
 
-The prefered way for using these [ESLint](https://eslint.org/) configurations is by scaffolding your application with Workleap's [foundry-cli](https://github.com/gsoft-inc/wl-foundry-cli).
+The prefered way for using these [ESLint](https://eslint.org/) shared configurations is **not** by installing them manually, but rather by **scaffolding** your application with Workleap's [foundry-cli](https://github.com/gsoft-inc/wl-foundry-cli).
+
 +++ pnpm
 ```bash
 pnpm create @workleap/project@latest <output-directory>
@@ -27,17 +28,17 @@ npm create @workleap/project@latest <output-directory>
 
 ## By project type configurations
 
-Typically, [ESLint](https://eslint.org/) shareable configuration libraries are architectured around the idea that [shared configurations](https://eslint.org/docs/latest/extend/shareable-configs) should be small and composable in an attempt to accomodate any potential use cases that a development team might encounter.
+Typically, [ESLint](https://eslint.org/) shareable configuration libraries are architectured around the idea that [shared configurations](https://eslint.org/docs/latest/extend/shareable-configs) should be small and composable to accomodate any potential use cases that a development team might encounter.
 
 While composability provide flexibility, it also increase the complexity on the consumer side as they must understand how [ESLint cascading and hierarchy](https://eslint.org/docs/latest/use/configure/configuration-files#cascading-and-hierarchy) works and how to compose the provided shared configurations correctly. **It can be frustrating at times** when you want to get something up and running quickly.
 
 ==- @shopify/web-configs example
 Have a look at Shopify [ESLint usage section](https://github.com/Shopify/web-configs/tree/main/packages/eslint-plugin#usage). To configure ESLint with `@shopify/web-configs`, a consumer must choose whether he want rules for `es5`, `esnext`, `typescript` or `node`, then decide if he should use `@babel/eslint-parser` or `@typescript-eslint/parser`.
 
-A consumer must have advanced front-end skills to use those shared configurations.
+To make the right choices and assemble the final configuration correctly, a consumer must have niche front-end skills.
 ===
 
-To improve the experience, rather than delegating the composition of the shared configurations to the consumer, we compose them internally and offer configurations **by project type** instead.
+To improve the experience, rather than delegating the composition of the shared configuration pieces to the consumer, we compose them internally and offer configurations **by project type** instead.
 
 This way, it's pretty straightforward to configure ESLint as it only involves **extending a single shared configuration** per project. For advanced users in need of flexibility, the underlying configuration pieces are [also available](advanced-composition.md).
 

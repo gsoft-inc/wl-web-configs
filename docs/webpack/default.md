@@ -7,9 +7,10 @@ expanded: true
 
 # Webpack
 
-!!!warning Foundry CLI
+!!!warning Before you read further...
 
-The prefered way for using these [webpack](https://webpack.js.org/) configurations is by scaffolding your application with Workleap's [foundry-cli](https://github.com/gsoft-inc/wl-foundry-cli).
+The prefered way for using these [webpack](https://webpack.js.org/) shared configurations is **not** by installing them manually, but rather by **scaffolding** your application with Workleap's [foundry-cli](https://github.com/gsoft-inc/wl-foundry-cli).
+
 +++ pnpm
 ```bash
 pnpm create @workleap/project@latest <output-directory>
@@ -38,33 +39,35 @@ The shared configurations offered by this library includes the following feature
 ### Language support
 
 - JavaScript
-- [TypeScript](https://www.typescriptlang.org/)
-- CSS (with [CSS modules](https://github.com/css-modules/css-modules) and [PostCSS](https://postcss.org/))
+- TypeScript
+- CSS (with CSS modules and PostCSS)
 
 ### Framework support
 
-- [React](https://react.dev/)
+- React
 
 ### Asset support
 
-- [SVG as React components](https://react-svgr.com/)
+- SVG as React components
 - PNG
 - JPEG
 - GIF
 
 ### Development
 
-- [Development server](https://webpack.js.org/configuration/dev-server/)
-- [React Fast Refresh](https://github.com/pmmmwh/react-refresh-webpack-plugin) or [Hot Module Reload](https://webpack.js.org/concepts/hot-module-replacement/)
-- [Sourcemap](https://webpack.js.org/configuration/devtool/#devtool)
+- Development server
+- File system caching
+- Fast Refresh or Hot Module Reload
+- Sourcemap
 
 ### Production
 
-- [Minification](https://webpack.js.org/plugins/terser-webpack-plugin/)
+- Minification
+- Output to `/dist`
 
-### Miscellaneous
+### Target environment
 
-- Environment variables
+- Web
 
 ## Getting started
 

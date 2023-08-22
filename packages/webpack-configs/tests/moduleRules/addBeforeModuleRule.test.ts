@@ -1,6 +1,5 @@
-import type { RuleSetRule, RuleSetUseItem } from "webpack";
+import type { RuleSetRule, RuleSetUseItem, Configuration as WebpackConfig } from "webpack";
 import { addBeforeModuleRule, matchAssetModuleType, matchLoaderName } from "../../src/transformers/moduleRules.ts";
-import type { WebpackConfig } from "../../src/types.ts";
 
 test("when a matching module rule is found in the rules array, add before the module rule", () => {
     const newRule: RuleSetRule = {

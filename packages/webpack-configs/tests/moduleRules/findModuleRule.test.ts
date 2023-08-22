@@ -1,6 +1,5 @@
-import type { RuleSetRule } from "webpack";
+import type { RuleSetRule, Configuration as WebpackConfig } from "webpack";
 import { findModuleRule, matchAssetModuleType, matchLoaderName } from "../../src/transformers/moduleRules.ts";
-import type { WebpackConfig } from "../../src/types.ts";
 
 test("when the webpack configuration doesn't have a module section, return undefined", () => {
     const result = findModuleRule({}, matchAssetModuleType("asset/resource"));

@@ -1,6 +1,5 @@
 import path from "path";
-import type { RuleSetRule, RuleSetUseItem } from "webpack";
-import type { WebpackConfig } from "../types.ts";
+import type { RuleSetRule, RuleSetUseItem, Configuration as WebpackConfig } from "webpack";
 
 export type ModuleRuleMatcher = (moduleRule: RuleSetRule | RuleSetUseItem, index: number, array: RuleSetRule[] | RuleSetUseItem[]) => boolean;
 

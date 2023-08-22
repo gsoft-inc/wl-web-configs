@@ -7,9 +7,10 @@ expanded: true
 
 # PostCSS
 
-!!!warning Foundry CLI
+!!!warning Before you read further...
 
-The prefered way for using this [PostCSS](https://postcss.org/) configuration is by scaffolding your application with Workleap's [foundry-cli](https://github.com/gsoft-inc/wl-foundry-cli).
+The prefered way for using this [PostCSS](https://postcss.org/) shared configuration is **not** by installing it manually, but rather by **scaffolding** your application with Workleap's [foundry-cli](https://github.com/gsoft-inc/wl-foundry-cli).
+
 +++ pnpm
 ```bash
 pnpm create @workleap/project@latest <output-directory>
@@ -35,6 +36,12 @@ Here's a couple of ideas to move away from PostCSS:
 - Avoid CSS nesting, it usually makes code harder to read anyway. If you really need nesting, [native support](https://www.w3.org/TR/css-nesting-1/) is coming soon.
 - Force developers to use `rem` by disabling the use of `px` with [Stylelint](https://stylelint.io/).
 - Prefix CSS properties directly in the codebase rather than relying on [Autoprefixer](https://github.com/postcss/autoprefixer). As browser vendors are now [putting experimental features behind a flag](https://github.com/postcss/autoprefixer) rather than using prefixes, there isn't many CSS properties still requiring a prefix.
+
+## Features
+
+The shared configuration offered by this library includes the following features:
+
+- [Autoprefixer](https://github.com/postcss/autoprefixer)
 
 ## Getting started
 
