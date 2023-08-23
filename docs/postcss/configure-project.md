@@ -48,7 +48,7 @@ export default defineConfig();
 
 ## 3. Set predefined options
 
-The `defineConfig(options)` function can be used as-is as shown in the previous example, however, if you wish to customize the default configuration, the function also accept a few predefined options to help with that :point_down:
+The `defineConfig(options)` function can be used as-is as shown in the previous example, however, if you wish to customize the default configuration, the function also accepts a few predefined options to help with that :point_down:
 
 ### `browsers`
 
