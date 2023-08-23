@@ -54,7 +54,7 @@ export default defineBuildConfig({
 
 ### `browsers`
 
-In the previous code sample, the `defineBuildConfig(options)` function receive a [Browserslist](https://browsersl.ist/) configuration object through the mandatory `browsers` option.
+In the previous code sample, the `defineBuildConfig(options)` function receives a [Browserslist](https://browsersl.ist/) configuration object through the mandatory `browsers` option.
 
 The expected behavior would be for [SWC](https://swc.rs/) to load the browsers configuration from the closest `.browserslistrc` [configuration file](https://github.com/browserslist/browserslist#browserslistrc), but there is currently an [issue](https://github.com/swc-project/swc/issues/3365) preventing SWC from doing so when the `.browserslistrc` configuration is extended by a shared configuration from a package.
 
