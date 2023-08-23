@@ -11,6 +11,7 @@ Welcome to `workleap/web-configs`, a collection of **configuration libraries** f
 !!!warning Before you continue...
 
 The prefered way for using these configuration libraries is **not** by installing them manually, but rather by **scaffolding** your application with Workleap's [foundry-cli](https://github.com/gsoft-inc/wl-foundry-cli).
+
 +++ pnpm
 ```bash
 pnpm create @workleap/project@latest <output-directory>
