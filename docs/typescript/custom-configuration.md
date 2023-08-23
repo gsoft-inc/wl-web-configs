@@ -26,6 +26,20 @@ You can update a default rule value by defining the rule locally with its new va
 }
 ```
 
+## CommonJS
+
+If you are migrating an existing project and prefer to wait before moving to ESM, add the following custom configurations:
+
+```json !#3-6 tsconfig.json
+{
+    "extends": ["@workleap/typescript-configs/web-application"],
+    "compilerOptions": {
+        "module": "commonjs",
+        "moduleResolution": "bundler"
+    }
+}
+```
+
 ## Start from scratch
 
 If your situation is so challenging that you must start a new configuration from scratch, refer to the [advanced composition](advanced-composition.md) page.
