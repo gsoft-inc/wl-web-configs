@@ -42,7 +42,7 @@ When you are ready to release the packages, you must follow the following steps:
 
 ### Troubleshooting
 
-#### Github
+#### GitHub
 
 Make sure you're Git is clean (No pending changes).
 

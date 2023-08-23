@@ -109,7 +109,7 @@ We do not guarantee that your configuration transformers won't break after an up
 
 The [predefined options](#3-set-predefined-options) are useful to quickly customize the [default configuration](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/postcss-configs/src/index.ts) of `@workleap/postcss-configs`, but only covers a subset of a [PostCSS configuration](https://github.com/postcss/postcss-load-config). If you need full control over the configuration, you can provide **configuration transformer** functions. Remember, **no locked in** :heart::v:.
 
-To view the default configuration of `@workleap/postcss-configs`, have a look at the [configuration file](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/postcss-configs/src/index) on Github.
+To view the default configuration of `@workleap/postcss-configs`, have a look at the [configuration file](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/postcss-configs/src/index) on GitHub.
 
 ### `transformers`
 

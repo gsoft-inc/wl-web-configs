@@ -67,7 +67,7 @@ We do not guarantee that your configuration transformers won't break after an up
 
 Since the [predefined options](#3-set-predefined-options) for tsup already covers all the availables [options](https://tsup.egoist.dev/#usage), configuration transformer functions aren't as useful for a tsup configuration as for other tools like [SWC](../swc/configure-build.md#4-transform-configuration) or [webpack](../webpack/configure-build.md#4-transform-configuration). Nonetheless, they are still valuable, especially for library authors aiming to **distribute** a **default option set** that facilitates the configuration of tsup for specific functionalities of their library.
 
-To view the default build configuration of `@workleap/tsup-configs`, have a look at the [build.ts configuration file](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/tsup-configs/src/build.ts) on Github.
+To view the default build configuration of `@workleap/tsup-configs`, have a look at the [build.ts configuration file](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/tsup-configs/src/build.ts) on GitHub.
 
 ### `transformers`
 

@@ -16,4 +16,4 @@ Thanks to the team at [Shopify/web-configs](https://github.com/Shopify/web-confi
 
 ## License
 
-See the [LICENSE](https://github.com/gsoft-inc/wl-web-configs/blob/main/LICENSE) on Github.
+See the [LICENSE](https://github.com/gsoft-inc/wl-web-configs/blob/main/LICENSE) on GitHub.
