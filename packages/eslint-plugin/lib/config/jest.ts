@@ -8,9 +8,11 @@ const config: Linter.Config = {
             files: [...testFiles, ...reactTestFiles],
             plugins: ["jest"],
             env: {
-                jest: true,
+                es6: true,
+                node: true,
                 browser: true,
-                node: true
+                commonjs: true,
+                jest: true
             },
             extends: ["plugin:jest/recommended"],
             rules: {

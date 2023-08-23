@@ -65,10 +65,6 @@ The shared configurations offered by this library includes the following feature
 - Minification
 - Output to `/dist`
 
-### Target environment
-
-- Web
-
 ## Getting started
 
 To get started, follow the quick start guide to configure webpack for either a [development environment](configure-dev.md) or a [production environment](configure-build.md).

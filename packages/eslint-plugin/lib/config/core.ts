@@ -12,7 +12,7 @@ const config: Linter.Config = {
     env: {
         es6: true,
         node: true,
-        commonjs : true
+        commonjs: true
     },
     rules: {
         // eslint:recommended overwrite some rules

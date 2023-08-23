@@ -49,9 +49,8 @@ The shared configurations offered by this library includes the following feature
 
 - Output to `/dist`
 
-### Target environment
+## Target environment
 
-- Web (browser platform)
 - ESM
 - ESNext
 

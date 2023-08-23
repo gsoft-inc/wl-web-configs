@@ -48,6 +48,11 @@ The shared configurations offered by this library exclusively focus on code lint
 | :icon-mark-github: [library](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/typescript-configs/library.json){ target="_blank" } | For library project developed with or without [React](https://react.dev/). |
 | :icon-mark-github: [monorepo-workspace](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/typescript-configs/monorepo-workspace.json){ target="_blank" } | For the workspace configuration of a monorepo solution. |
 
+## Target environment
+
+- ESM
+- ESNext
+
 ## Getting started
 
 To get started, choose one of the following scenarios :point_down:

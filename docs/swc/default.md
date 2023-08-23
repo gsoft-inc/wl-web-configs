@@ -53,7 +53,7 @@ The shared configurations offered by this library includes the following feature
 
 - Minification
 
-### Target environment
+## Target environment
 
 - ESM
 - ESNext
