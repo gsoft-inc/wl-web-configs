@@ -34,7 +34,7 @@ Meanwhile, you can **confidently start a new project with webpack** as the **mig
 
 ## Features
 
-The shared configurations offered by this library includes the following features :point_down:
+The shared configurations offered by `@workleap/webpack-configs` includes the following features :point_down:
 
 ### Language support
 

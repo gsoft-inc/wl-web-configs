@@ -34,7 +34,7 @@ Still, the [Jest configuration](configure-jest.md) will continue to be available
 
 ## Features
 
-The shared configurations offered by this library includes the following features 👇
+The shared configurations offered by `@workleap/swc-configs` includes the following features 👇
 
 ### Language support
 

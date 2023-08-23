@@ -38,7 +38,7 @@ project
 ├── postcss.config.ts
 ```
 
-Then, open the newly created file and `export` the [PostCSS](https://postcss.org/) configuration by using the `defineConfig(options)` function provided by this library:
+Then, open the newly created file and `export` the [PostCSS](https://postcss.org/) configuration by using the `defineConfig(options)` function:
 
 ```ts !#3 postcss.config.ts
 import { defineConfig } from "@workleap/postcss-configs";
@@ -107,9 +107,9 @@ export default defineConfig({
 We do not guarantee that your configuration transformers won't break after an update. It's your responsibility to keep them up to date with new releases.
 !!!
 
-The [predefined options](#3-set-predefined-options) are useful to quickly customize the [default configuration](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/postcss-configs/src/index.ts) of this library, but only covers a subset of a [PostCSS configuration](https://github.com/postcss/postcss-load-config). If you need full control over the configuration, you can provide **configuration transformer** functions. Remember, **no locked in** :heart::v:.
+The [predefined options](#3-set-predefined-options) are useful to quickly customize the [default configuration](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/postcss-configs/src/index.ts) of `@workleap/postcss-configs`, but only covers a subset of a [PostCSS configuration](https://github.com/postcss/postcss-load-config). If you need full control over the configuration, you can provide **configuration transformer** functions. Remember, **no locked in** :heart::v:.
 
-To view the default configuration of this library, have a look at the [configuration file](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/postcss-configs/src/index) on Github.
+To view the default configuration of `@workleap/postcss-configs`, have a look at the [configuration file](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/postcss-configs/src/index) on Github.
 
 ### `transformers`
 

@@ -34,7 +34,7 @@ While [Sass](https://sass-lang.com/) still offers numerous advantages, as we act
 
 Since `v15.0.0`, Stylelint's stylistic rules [has been deprecated](https://stylelint.io/migration-guide/to-15#deprecated-stylistic-rules). The current recommendation is to use [Prettier](https://prettier.io/) instead to format CSS files.
 
-For that reason, this library shared configurations includes the [stylelint-prettier](https://github.com/prettier/stylelint-prettier) plugin. Using this plugin, Prettier changes are exposed as Stylelint's rule violations.
+For that reason, `@workleap/stylelint-configs` shared configurations includes the [stylelint-prettier](https://github.com/prettier/stylelint-prettier) plugin. Using this plugin, Prettier changes are exposed as Stylelint's rule violations.
 
 Since we choose to [stick with ESLint for JavaScript and JSON stylistic rules](../eslint/default.md#prettier), a `.prettierignore` file must be added at the root of the solution to ignore everything but CSS files:
 
@@ -57,4 +57,4 @@ If you are looking to setup a **new** polyrepo solution (single project per repo
 
 If you are migrating an **existing** polyrepo solution (single project per repository) to `workleap/web-configs`, follow the guide to [setup a polyrepo](setup-polyrepo.md), otherwise, follow the guide to [setup a monorepo](setup-monorepo.md).
 
-Once configured, to understand how to adapt this library default configurations to your codebase while you are completing the migration, have a look at the [custom configuration](custom-configuration.md) page.
+Once configured, to understand how to adapt `@workleap/stylelint-configs` default configurations to your codebase while you are completing the migration, have a look at the [custom configuration](custom-configuration.md) page.

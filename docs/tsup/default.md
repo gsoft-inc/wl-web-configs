@@ -34,7 +34,7 @@ Given that either TurboSnap requirements or `tsx` CSS imports support change, we
 
 ## Features
 
-The shared configurations offered by this library includes the following features 👇
+The shared configurations offered by `@workleap/tsup-configs` includes the following features 👇
 
 ### TypeScript
 

@@ -39,7 +39,7 @@ root
 ├── .eslintrc.json
 ```
 
-Then, open the newly created file and extend the default configuration with one of the [shared configurations](default.md#available-configurations) provided by this library :point_down:
+Then, open the newly created file and extend the default configuration with one of the [shared configurations](default.md#available-configurations) provided by `@workleap/eslint-plugin` :point_down:
 
 ### web-application
 
@@ -152,7 +152,7 @@ At times, especially when running the CI build, it's useful to lint the entire s
 
 ## 6. Customize configuration
 
-New projects shouldn't have to customize the default configurations offered by this library. However, if you are in the process of **migrating** an existing project to use this library or encountering a challenging situation, refer to the [custom configuration](custom-configuration.md) page to understand how to override or extend the default configurations. Remember, **no locked in** :heart::v:.
+New projects shouldn't have to customize the default configurations offered by `@workleap/eslint-plugin`. However, if you are in the process of **migrating** an existing project to use this library or encountering a challenging situation, refer to the [custom configuration](custom-configuration.md) page to understand how to override or extend the default configurations. Remember, **no locked in** :heart::v:.
 
 ## 7. Try it :rocket:
 

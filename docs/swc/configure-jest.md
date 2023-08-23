@@ -44,7 +44,7 @@ web-project
 ├── jest.config.ts
 ```
 
-Then, open the newly created file and export the [SWC](https://swc.rs/) configuration by using the `defineJestConfig(options)` function provided by this library:
+Then, open the newly created file and export the [SWC](https://swc.rs/) configuration by using the `defineJestConfig(options)` function:
 
 ```ts !#6-8 swc.jest.ts
 import { defineJestConfig } from "@workleap/swc-configs";
@@ -92,9 +92,9 @@ export default defineJestConfig({
 We do not guarantee that your configuration transformers won't break after an update. It's your responsibility to keep them up to date with new releases.
 !!!
 
-The [predefined options](#3-set-predefined-options) are useful to quickly customize the [default development configuration](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/swc-configs/src/jest.ts) of this library, but only covers a subset of an [SWC configuration](https://swc.rs/docs/configuration/swcrc). If you need full control over the configuration, you can provide configuration transformer functions. Remember, **no locked in** :heart::v:.
+The [predefined options](#3-set-predefined-options) are useful to quickly customize the [default development configuration](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/swc-configs/src/jest.ts) of `@workleap/swc-configs`, but only covers a subset of an [SWC configuration](https://swc.rs/docs/configuration/swcrc). If you need full control over the configuration, you can provide configuration transformer functions. Remember, **no locked in** :heart::v:.
 
-To view the default Jest configuration of this library, have a look at the [jest.ts configuration file](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/swc-configs/src/jest.ts) on Github.
+To view the default Jest configuration of `@workleap/swc-configs`, have a look at the [jest.ts configuration file](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/swc-configs/src/jest.ts) on Github.
 
 ### `transformers`
 

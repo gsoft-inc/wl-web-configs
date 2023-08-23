@@ -38,7 +38,7 @@ web-project
 ├── .browserslistrc
 ```
 
-Then, open the newly created file and extend the default configuration with the shared configuration provided by this library:
+Then, open the newly created file and extend the default configuration with the shared configuration provided by `@workleap/browserslist-config`:
 
 ``` .browserslistrc
 extends @workleap/browserslist-config

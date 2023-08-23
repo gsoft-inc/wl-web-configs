@@ -39,7 +39,7 @@ Here's a couple of ideas to move away from PostCSS:
 
 ## Features
 
-The shared configuration offered by this library includes the following features:
+The shared configuration offered by `@workleap/postcss-configs` includes the following features:
 
 - [Autoprefixer](https://github.com/postcss/autoprefixer)
 

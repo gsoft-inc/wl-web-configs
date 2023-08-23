@@ -72,8 +72,8 @@ If you are looking to setup a **new** polyrepo solution (single project per repo
 
 If you are migrating an **existing** polyrepo solution (single project per repository) to `workleap/web-configs`, follow the guide to [setup a polyrepo](setup-polyrepo.md), otherwise, follow the guide to [setup a monorepo](setup-monorepo.md).
 
-Once configured, to understand how to adapt this library default configurations to your codebase while you are completing the migration, have a look at the [custom configuration](custom-configuration.md) page.
+Once configured, to understand how to adapt `@workleap/eslint-plugin` default configurations to your codebase while you are completing the migration, have a look at the [custom configuration](custom-configuration.md) page.
 
 ### Advanced use cases
 
-If you are encountering a challenging use case making impractical the _per project type_ configurations offered by this library, have a look at the [advanced composition](advanced-composition.md) page for documentation about how to compose the underlying configuration pieces of this library.
+If you are encountering a challenging use case making impractical the _per project type_ configurations offered by `@workleap/eslint-plugin`, have a look at the [advanced composition](advanced-composition.md) page for documentation about how to compose the underlying configuration pieces.

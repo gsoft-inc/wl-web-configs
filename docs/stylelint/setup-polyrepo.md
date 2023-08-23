@@ -39,7 +39,7 @@ root
 ├── .stylelintrc.json
 ```
 
-Then, open the newly created file and extend the default configuration with the shared configurations provided by this library:
+Then, open the newly created file and extend the default configuration with the shared configurations provided by `@workleap/stylelint-configs`:
 
 ```json .stylelintrc.json
 {
@@ -145,7 +145,7 @@ At times, especially when running the CI build, it's useful to lint the entire s
 
 ## 7. Customize configuration
 
-New projects shouldn't have to customize the default configurations offered by this library. However, if you are in the process of **migrating** an existing project to use this library or encountering a challenging situation, refer to the [custom configuration](custom-configuration.md) page to understand how to override or extend the default configurations. Remember, **no locked in** :heart::v:.
+New projects shouldn't have to customize the default configurations offered by `@workleap/stylelint-configs`. However, if you are in the process of **migrating** an existing project to use this library or encountering a challenging situation, refer to the [custom configuration](custom-configuration.md) page to understand how to override or extend the default configurations. Remember, **no locked in** :heart::v:.
 
 ## 8. Try it :rocket:
 

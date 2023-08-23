@@ -7,7 +7,7 @@ meta:
 
 # Custom configuration
 
-If you are in the process of **migrating an existing project** to use this library or encountering a challenging situation that is not currently handled by this library, you might want to customize the default shared configurations.
+If you are in the process of **migrating an existing project** to use `@workleap/stylelint-configs` or encountering a challenging situation that is not currently handled by this library, you might want to customize the default shared configurations.
 
 !!!
 For a list of the rules included with the default shared configurations, refer to the following [file](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/stylelint-config/src/index.ts) on Github.

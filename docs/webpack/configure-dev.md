@@ -29,7 +29,7 @@ npm install -D @workleap/webpack-configs webpack webpack-cli webpack-dev-server 
 
 ### Fast Refresh
 
-Because [Module Federation](https://webpack.js.org/concepts/module-federation/) does not support [Fast Refresh](https://www.npmjs.com/package/react-refresh), the default configuration doesn't enable it by default and it's defined as an optional `peerDependency` of this library package.
+Because [Module Federation](https://webpack.js.org/concepts/module-federation/) does not support [Fast Refresh](https://www.npmjs.com/package/react-refresh), the default configuration doesn't enable it by default and it's defined as an optional `peerDependency`.
 
 If you expect to enable Fast Refresh, also install the following package at the root of the project:
 
@@ -77,7 +77,7 @@ web-project
 ├── webpack.dev.js
 ```
 
-Then, open the newly created file and `export` the webpack configuration by using the `defineDevConfig(options)` function provided by this library:
+Then, open the newly created file and `export` the webpack configuration by using the `defineDevConfig(options)` function:
 
 ```js !#6-8 webpack.dev.js
 // @ts-check
@@ -96,7 +96,7 @@ In the previous code sample, the `defineDevConfig(options)` function receive an 
 
 Although the [swc-loader](https://swc.rs/docs/usage/swc-loader) defaults to loading the closest `.swcrc` [configuration file](https://swc.rs/docs/configuration/swcrc) when no configuration object is provided, it lacks support for distinct configuration files by environment like webpack does.
 
-Therefore, this library choosed to **delegate** the loading of the SWC configuration **to the consumer** by making the `swcConfig` option **required**. 
+Therefore, `@workleap/webpack-configs` choosed to **delegate** the loading of the SWC configuration **to the consumer** by making the `swcConfig` option **required**. 
 
 ## 3. Set predefined options
 
@@ -352,9 +352,9 @@ export default defineDevConfig({
 We do not guarantee that your configuration transformers won't break after an update. It's your responsibility to keep them up to date with new releases.
 !!!
 
-The [predefined options](#3-set-predefined-options) are useful to quickly customize the [default development configuration](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/webpack-configs/src/dev.ts) of this library, but only covers a subset of a [webpack configuration](https://webpack.js.org/configuration/). If you need full control over the configuration, you can provide configuration transformer functions. Remember, **no locked in** :heart::v:.
+The [predefined options](#3-set-predefined-options) are useful to quickly customize the [default development configuration](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/webpack-configs/src/dev.ts) of `@workleap/webpack-configs`, but only covers a subset of a [webpack configuration](https://webpack.js.org/configuration/). If you need full control over the configuration, you can provide configuration transformer functions. Remember, **no locked in** :heart::v:.
 
-To view the default development configuration of this library, have a look at the [dev.ts configuration file](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/webpack-configs/src/dev.ts) on Github.
+To view the default development configuration of `@workleap/webpack-configs`, have a look at the [dev.ts configuration file](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/webpack-configs/src/dev.ts) on Github.
 
 ### `transformers`
 
@@ -408,7 +408,7 @@ export const transformer: WebpackConfigTransformer = (config: WebpackConfig, con
 
 ### Utilities
 
-Modifying a webpack configuration object can be an arduous task, to help with that, this library offer [utility functions](transformer-utilities.md) for [modules rules](https://webpack.js.org/configuration/module/#modulerules) and [plugins](https://webpack.js.org/configuration/plugins/).
+Modifying a webpack configuration object can be an arduous task, to help with that, `@workleap/webpack-configs` offer [utility functions](transformer-utilities.md) for [modules rules](https://webpack.js.org/configuration/module/#modulerules) and [plugins](https://webpack.js.org/configuration/plugins/).
 
 [!ref Transformer utilities](transformer-utilities.md)
 
