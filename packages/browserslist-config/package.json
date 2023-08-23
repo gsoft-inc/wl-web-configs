@@ -1,7 +1,7 @@
 {
     "name": "@workleap/browserslist-config",
     "author": "Workleap",
-    "description": "Workleap recommended Browserslist config.",
+    "description": "Workleap recommended Browserslist configuration.",
     "version": "1.2.3",
     "license": "Apache-2.0",
     "keywords": [

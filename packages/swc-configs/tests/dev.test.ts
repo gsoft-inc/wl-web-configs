@@ -1,4 +1,4 @@
-import type { Config, EsParserConfig, TsParserConfig } from "@swc/core";
+import type { EsParserConfig, Config as SwcConfig, TsParserConfig } from "@swc/core";
 import type { SwcConfigTransformer } from "../src/applyTransformers.ts";
 import { defineDevConfig } from "../src/dev.ts";
 
@@ -67,7 +67,7 @@ test("when parser is \"typescript\", tsx parsing is enabled", () => {
 });
 
 test("when a transformer is provided, the transformer is applied on the swc config", () => {
-    const minifyTransformer: SwcConfigTransformer = (config: Config) => {
+    const minifyTransformer: SwcConfigTransformer = (config: SwcConfig) => {
         config.minify = true;
 
         return config;
@@ -82,13 +82,13 @@ test("when a transformer is provided, the transformer is applied on the swc conf
 });
 
 test("when multiple transformers are provided, all the transformers are applied on the swc config", () => {
-    const minifyTransformer: SwcConfigTransformer = (config: Config) => {
+    const minifyTransformer: SwcConfigTransformer = (config: SwcConfig) => {
         config.minify = true;
 
         return config;
     };
 
-    const sourceMapsTransformer: SwcConfigTransformer = (config: Config) => {
+    const sourceMapsTransformer: SwcConfigTransformer = (config: SwcConfig) => {
         config.sourceMaps = true;
 
         return config;

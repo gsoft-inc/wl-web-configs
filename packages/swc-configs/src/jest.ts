@@ -1,4 +1,4 @@
-import type { Config } from "@swc/core";
+import type { Config as SwcConfig } from "@swc/core";
 import { applyTransformers, type SwcConfigTransformer } from "./applyTransformers";
 
 export interface DefineJestConfigOptions {
@@ -14,7 +14,7 @@ export function defineJestConfig(options: DefineJestConfigOptions = {}) {
         transformers = []
     } = options;
 
-    const config: Config = {
+    const config: SwcConfig = {
         jsc: {
             parser: parser === "ecmascript"
                 ? {
@@ -26,7 +26,7 @@ export function defineJestConfig(options: DefineJestConfigOptions = {}) {
                     tsx: react
                 },
             // The output environment that the code will be compiled for.
-            target: "es2022",
+            target: "esnext",
             transform: react
                 ? {
                     react: {

@@ -5,7 +5,7 @@ const plugin: ESLint.Plugin = {
         "strict-css-modules-names": require("./rules/strict-css-modules-names")
     },
     configs: {
-        // base configs
+        // Parts
         core: require("./config/core"),
         jest: require("./config/jest"),
         mdx: require("./config/mdx"),
@@ -14,11 +14,11 @@ const plugin: ESLint.Plugin = {
         "testing-library": require("./config/testing-library"),
         typescript: require("./config/typescript"),
 
-        // by project type
+        // By project type
         "react-library": require("./config/by-project-type/react-library"),
         "typescript-library": require("./config/by-project-type/typescript-library"),
         "web-application": require("./config/by-project-type/web-application"),
-        "monorepo-root": require("./config/by-project-type/monorepo-root")
+        "monorepo-workspace": require("./config/by-project-type/monorepo-workspace")
     }
 };
 

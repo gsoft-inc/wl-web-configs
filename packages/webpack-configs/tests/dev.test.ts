@@ -172,15 +172,6 @@ test("when additional plugins are provided, append the provided plugins at the e
     expect(result.plugins![pluginsCount - 1]).toBe(newPlugin2);
 });
 
-test("when fast refresh is enabled, dev server hot module reload is disabled", () => {
-    const result = defineDevConfig({
-        fastRefresh: true,
-        swcConfig: defineSwcConfig({ browsers: Browsers })
-    });
-
-    expect(result.devServer?.hot).toBeFalsy();
-});
-
 test("when fast refresh is disabled, dev server hot module reload is enabled", () => {
     const result = defineDevConfig({
         fastRefresh: false,
@@ -246,24 +237,10 @@ test("when css modules is disabled, do not include css modules configuration", (
     expect((cssLoader?.moduleRule as RuleSetRule).options).toBeUndefined();
 });
 
-test("when a postcss config file path is provided, use the provided file path", () => {
-    const result = defineDevConfig({
-        postcssConfigFilePath: "a-custom-file-path",
-        swcConfig: defineSwcConfig({ browsers: Browsers })
-    });
-
-    const postcssLoader = findModuleRule(result, matchLoaderName("postcss-loader"));
-
-    // postcss-loader doesn't provide typings.
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    expect(((postcssLoader?.moduleRule as RuleSetRule).options as any).postcssOptions.config).toBe("a-custom-file-path");
-});
-
 test("the provided swc config object is set as the swc-loader options", () => {
     const swcConfig = defineSwcConfig({ browsers: Browsers });
 
     const result = defineDevConfig({
-        postcssConfigFilePath: "a-custom-file-path",
         swcConfig
     });
 

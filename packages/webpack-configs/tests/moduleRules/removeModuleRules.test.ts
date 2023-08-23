@@ -1,8 +1,8 @@
-import type { Configuration, RuleSetRule, RuleSetUseItem } from "webpack";
+import type { RuleSetRule, RuleSetUseItem, Configuration as WebpackConfig } from "webpack";
 import { matchLoaderName, matchTest, removeModuleRules } from "../../src/transformers/moduleRules.ts";
 
 test("when a matching module rule is found in the rules array, remove the module rule", () => {
-    const config: Configuration = {
+    const config: WebpackConfig = {
         module: {
             rules: [
                 {
@@ -28,7 +28,7 @@ test("when a matching module rule is found in the rules array, remove the module
 });
 
 test("when a matching module rule is found in a \"oneOf\" prop, remove the module rule", () => {
-    const config: Configuration = {
+    const config: WebpackConfig = {
         module: {
             rules: [
                 {
@@ -58,7 +58,7 @@ test("when a matching module rule is found in a \"oneOf\" prop, remove the modul
 });
 
 test("when a matching module rule is found in a \"use\" prop, remove the module rule", () => {
-    const config: Configuration = {
+    const config: WebpackConfig = {
         module: {
             rules: [
                 {
@@ -94,7 +94,7 @@ test("when a matching module rule is found in a \"use\" prop, remove the module 
 });
 
 test("when multiple matching module rules are found within the same parent, remove all the module rules", () => {
-    const config: Configuration = {
+    const config: WebpackConfig = {
         module: {
             rules: [
                 {
@@ -124,7 +124,7 @@ test("when multiple matching module rules are found within the same parent, remo
 });
 
 test("when multiple matching module rules are found in the rules array and a \"oneOf\" prop, remove all the module rules", () => {
-    const config: Configuration = {
+    const config: WebpackConfig = {
         module: {
             rules: [
                 {
@@ -162,7 +162,7 @@ test("when multiple matching module rules are found in the rules array and a \"o
 });
 
 test("when multiple matching module rules are found in the rules array and a \"use\" prop, remove all the module rules", () => {
-    const config: Configuration = {
+    const config: WebpackConfig = {
         module: {
             rules: [
                 {
@@ -197,10 +197,8 @@ test("when multiple matching module rules are found in the rules array and a \"u
     expect(((config.module?.rules![2] as RuleSetRule).use as RuleSetUseItem[]).length).toBe(0);
 });
 
-test("when no matching module rule is found, do nothing", () => {
-    jest.spyOn(console, "log").mockImplementation(jest.fn());
-
-    const config: Configuration = {
+test("when no matching module rule is found, throw an error", () => {
+    const config: WebpackConfig = {
         module: {
             rules: [
                 {
@@ -219,9 +217,7 @@ test("when no matching module rule is found, do nothing", () => {
         }
     };
 
-    removeModuleRules(config, matchTest(/\.(js|jsx)/i));
+    expect(() => removeModuleRules(config, matchTest(/\.(js|jsx)/i))).toThrow();
 
     expect(config.module?.rules?.length).toBe(3);
-
-    jest.spyOn(console, "log").mockRestore();
 });

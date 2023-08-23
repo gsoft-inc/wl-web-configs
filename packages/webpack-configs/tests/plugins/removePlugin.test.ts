@@ -34,9 +34,7 @@ test("when a matching plugin is found in the plugins array, remove the plugin", 
     expect(config.plugins![1].constructor.name).toBe(Plugin3.name);
 });
 
-test("when no matching plugin is found, do nothing", () => {
-    jest.spyOn(console, "log").mockImplementation(jest.fn());
-
+test("when no matching plugin is found, throw an error", () => {
     const config: Configuration = {
         plugins: [
             new Plugin1(),
@@ -45,9 +43,5 @@ test("when no matching plugin is found, do nothing", () => {
         ]
     };
 
-    removePlugin(config, matchConstructorName("anything"));
-
-    expect(config.plugins?.length).toBe(3);
-
-    jest.spyOn(console, "log").mockRestore();
+    expect(() => removePlugin(config, matchConstructorName("anything"))).toThrow();
 });

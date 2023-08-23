@@ -1,4 +1,4 @@
-import type { Configuration, RuleSetRule, RuleSetUseItem } from "webpack";
+import type { RuleSetRule, RuleSetUseItem, Configuration as WebpackConfig } from "webpack";
 import { findModuleRules, matchAssetModuleType, matchLoaderName } from "../../src/transformers/moduleRules.ts";
 
 test("when the webpack configuration doesn't have a module section, return undefined", () => {
@@ -8,7 +8,7 @@ test("when the webpack configuration doesn't have a module section, return undef
 });
 
 test("when the webpack configuration doesn't have a rule section, return undefined", () => {
-    const config: Configuration = {
+    const config: WebpackConfig = {
         module: {}
     };
 
@@ -18,7 +18,7 @@ test("when the webpack configuration doesn't have a rule section, return undefin
 });
 
 test("when multiple matching rules are found in the rules array, return the module rules", () => {
-    const config: Configuration = {
+    const config: WebpackConfig = {
         module: {
             rules: [
                 {
@@ -52,7 +52,7 @@ test("when multiple matching rules are found in the rules array, return the modu
 });
 
 test("when multiple matching rules are found in a \"oneOf\" prop, return the module rules", () => {
-    const config: Configuration = {
+    const config: WebpackConfig = {
         module: {
             rules: [
                 {
@@ -90,7 +90,7 @@ test("when multiple matching rules are found in a \"oneOf\" prop, return the mod
 });
 
 test("when multiple matching rules are found in a \"use\" prop, return the module rules", () => {
-    const config: Configuration = {
+    const config: WebpackConfig = {
         module: {
             rules: [
                 {
@@ -134,7 +134,7 @@ test("when multiple matching rules are found in a \"use\" prop, return the modul
 });
 
 test("when multiple matching rules are found in the rules array and a \"oneOf\" prop, return the module rules", () => {
-    const config: Configuration = {
+    const config: WebpackConfig = {
         module: {
             rules: [
                 {
@@ -172,7 +172,7 @@ test("when multiple matching rules are found in the rules array and a \"oneOf\" 
 });
 
 test("when multiple matching rules are found in the rules array and a \"use\" prop, return the module rules", () => {
-    const config: Configuration = {
+    const config: WebpackConfig = {
         module: {
             rules: [
                 {
@@ -214,7 +214,7 @@ test("when multiple matching rules are found in the rules array and a \"use\" pr
 });
 
 test("when there are no matching rule, return an empty array", () => {
-    const config: Configuration = {
+    const config: WebpackConfig = {
         module: {
             rules: [
                 {
@@ -243,7 +243,7 @@ test("when there are no matching rule, return an empty array", () => {
 });
 
 test("when a module rule is undefined, do not throw", () => {
-    const config: Configuration = {
+    const config: WebpackConfig = {
         module: {
             rules: [
                 // Since Webpack configs are usually untyped, it's preferable to test this.
@@ -266,7 +266,7 @@ test("when a module rule is undefined, do not throw", () => {
 });
 
 test("when an undefined module rule is nested in a \"oneOf\" prop, do not throw", () => {
-    const config: Configuration = {
+    const config: WebpackConfig = {
         module: {
             rules: [
                 {

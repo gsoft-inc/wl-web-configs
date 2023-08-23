@@ -1,0 +1,45 @@
+---
+order: 80
+label: Custom configuration
+meta:
+    title: Custom configuration - TypeScript
+---
+
+# Custom configuration
+
+If you are in the process of **migrating an existing project** to use `@workleap/typescript-configs` or encountering a challenging situation that is not currently handled by this library, you might want to customize the default shared configurations.
+
+!!!
+For a list of the rules included with the default shared configurations, refer to the configuration files in the following [folder](https://github.com/gsoft-inc/wl-web-configs/tree/main/packages/typescript-configs) on GitHub.
+!!!
+
+## Change a default rule value
+
+You can update a default rule value by defining the rule locally with its new value:
+
+```json !#3-5 tsconfig.json
+{
+    "extends": ["@workleap/typescript-configs/web-application"],
+    "compilerOptions": {
+        "strict": false
+    }
+}
+```
+
+## CommonJS
+
+If you are migrating an existing project and prefer to wait before moving to ESM, add the following custom configurations:
+
+```json !#3-6 tsconfig.json
+{
+    "extends": ["@workleap/typescript-configs/web-application"],
+    "compilerOptions": {
+        "module": "commonjs",
+        "moduleResolution": "bundler"
+    }
+}
+```
+
+## Start from scratch
+
+If your situation is so challenging that you must start a new configuration from scratch, refer to the [advanced composition](advanced-composition.md) page.

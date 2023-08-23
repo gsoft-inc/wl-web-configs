@@ -16,7 +16,10 @@ const config: Linter.Config = {
                 }
             },
             env: {
-                browser: true
+                es6: true,
+                node: true,
+                browser: true,
+                commonjs: true
             },
             settings: {
                 react: {

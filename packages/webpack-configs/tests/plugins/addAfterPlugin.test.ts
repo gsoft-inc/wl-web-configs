@@ -35,9 +35,7 @@ test("when a matching plugin is found in the plugins array, add after the plugin
     expect(config.plugins![2]).toBe(newPlugin);
 });
 
-test("when no matching plugin is found, do nothing", () => {
-    jest.spyOn(console, "log").mockImplementation(jest.fn());
-
+test("when no matching plugin is found, throw an error", () => {
     const newPlugin = new Plugin3();
 
     const config: Configuration = {
@@ -47,9 +45,5 @@ test("when no matching plugin is found, do nothing", () => {
         ]
     };
 
-    addAfterPlugin(config, matchConstructorName("anything"), [newPlugin]);
-
-    expect(config.plugins?.length).toBe(2);
-
-    jest.spyOn(console, "log").mockRestore();
+    expect(() => addAfterPlugin(config, matchConstructorName("anything"), [newPlugin])).toThrow();
 });

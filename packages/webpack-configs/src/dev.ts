@@ -5,7 +5,8 @@ import HtmlWebpackPlugin from "html-webpack-plugin";
 import { createRequire } from "node:module";
 import path from "path";
 import { fileURLToPath } from "url";
-import webpack, { type Configuration as WebpackConfig } from "webpack";
+import type { Configuration as WebpackConfig } from "webpack";
+import webpack from "webpack";
 import { applyTransformers, type WebpackConfigTransformer } from "./transformers/applyTransformers.ts";
 import { isObject } from "./utils.ts";
 
@@ -48,7 +49,6 @@ export interface DefineDevConfigOptions {
     htmlWebpackPluginOptions?: HtmlWebpackPlugin.Options;
     fastRefresh?: boolean | ReactRefreshPluginOptions;
     cssModules?: boolean;
-    postcssConfigFilePath?: string;
     swcConfig: SwcConfig;
     // Only accepting string values because there are lot of issues with the DefinePlugin related to typing errors.
     // See https://github.com/webpack/webpack/issues/8641
@@ -91,7 +91,6 @@ export function defineDevConfig(options: DefineDevConfigOptions) {
         htmlWebpackPluginOptions = defineDevHtmlWebpackPluginConfig(),
         fastRefresh = false,
         cssModules = false,
-        postcssConfigFilePath,
         swcConfig,
         environmentVariables,
         transformers = []
@@ -102,7 +101,9 @@ export function defineDevConfig(options: DefineDevConfigOptions) {
         target: "web",
         devtool: "eval-cheap-module-source-map",
         devServer: {
-            hot: !fastRefresh,
+            // According to the Fast Refresh plugin documentation, hot should be "true" to enable Fast Refresh:
+            // https://github.com/pmmmwh/react-refresh-webpack-plugin#usage.
+            hot: true,
             https,
             host,
             port,
@@ -160,16 +161,7 @@ export function defineDevConfig(options: DefineDevConfigOptions) {
                                 }
                                 : undefined
                         },
-                        {
-                            loader: require.resolve("postcss-loader"),
-                            options: postcssConfigFilePath
-                                ? {
-                                    postcssOptions: {
-                                        config: postcssConfigFilePath
-                                    }
-                                }
-                                : undefined
-                        }
+                        { loader: require.resolve("postcss-loader") }
                     ]
                 },
                 {

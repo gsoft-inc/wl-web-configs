@@ -1,11 +1,11 @@
-import type { Config } from "@swc/core";
+import type { Config as SwcConfig } from "@swc/core";
 
 export interface SwcConfigTransformerContext {
     environment: "dev" | "build" | "jest";
 }
 
-export type SwcConfigTransformer = (config: Config, context: SwcConfigTransformerContext) => Config;
+export type SwcConfigTransformer = (config: SwcConfig, context: SwcConfigTransformerContext) => SwcConfig;
 
-export function applyTransformers(config: Config, transformers: SwcConfigTransformer[], context: SwcConfigTransformerContext) {
+export function applyTransformers(config: SwcConfig, transformers: SwcConfigTransformer[], context: SwcConfigTransformerContext) {
     return transformers.reduce((acc, transformer) => transformer(acc, context), config);
 }

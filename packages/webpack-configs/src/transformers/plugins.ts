@@ -1,6 +1,6 @@
-import type { Configuration } from "webpack";
+import type { Configuration as WebpackConfig } from "webpack";
 
-export type WebpackPlugin = NonNullable<Configuration["plugins"]>[number];
+export type WebpackPlugin = NonNullable<WebpackConfig["plugins"]>[number];
 
 export type PluginMatcher = (plugin: WebpackPlugin, index: number, array: WebpackPlugin[]) => boolean;
 
@@ -30,7 +30,7 @@ export interface PluginMatch {
     index: number;
 }
 
-export function findPlugin(config: Configuration, matcher: PluginMatcher) {
+export function findPlugin(config: WebpackConfig, matcher: PluginMatcher) {
     const matches: PluginMatch[] = [];
 
     config.plugins?.forEach((x, index, array) => {
@@ -51,7 +51,7 @@ export function findPlugin(config: Configuration, matcher: PluginMatcher) {
     return matches[0];
 }
 
-export function replacePlugin(config: Configuration, matcher: PluginMatcher, newPlugin: WebpackPlugin) {
+export function replacePlugin(config: WebpackConfig, matcher: PluginMatcher, newPlugin: WebpackPlugin) {
     const match = findPlugin(config, matcher);
 
     if (match) {
@@ -59,11 +59,11 @@ export function replacePlugin(config: Configuration, matcher: PluginMatcher, new
     } else {
         const matcherInfo = (matcher as WithPluginMatcherInfo).info;
 
-        console.log(`[webpack-configs] Couldn't replace the plugin because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
+        throw new Error(`[webpack-configs] Couldn't replace the plugin because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
     }
 }
 
-export function addBeforePlugin(config: Configuration, matcher: PluginMatcher, newPlugins: WebpackPlugin[]) {
+export function addBeforePlugin(config: WebpackConfig, matcher: PluginMatcher, newPlugins: WebpackPlugin[]) {
     const match = findPlugin(config, matcher);
 
     if (match) {
@@ -71,11 +71,11 @@ export function addBeforePlugin(config: Configuration, matcher: PluginMatcher, n
     } else {
         const matcherInfo = (matcher as WithPluginMatcherInfo).info;
 
-        console.log(`[webpack-configs] Couldn't add the new plugins because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
+        throw new Error(`[webpack-configs] Couldn't add the new plugins because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
     }
 }
 
-export function addAfterPlugin(config: Configuration, matcher: PluginMatcher, newPlugins: WebpackPlugin[]) {
+export function addAfterPlugin(config: WebpackConfig, matcher: PluginMatcher, newPlugins: WebpackPlugin[]) {
     const match = findPlugin(config, matcher);
 
     if (match) {
@@ -83,11 +83,11 @@ export function addAfterPlugin(config: Configuration, matcher: PluginMatcher, ne
     } else {
         const matcherInfo = (matcher as WithPluginMatcherInfo).info;
 
-        console.log(`[webpack-configs] Couldn't add the new plugins because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
+        throw new Error(`[webpack-configs] Couldn't add the new plugins because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
     }
 }
 
-export function removePlugin(config: Configuration, matcher: PluginMatcher) {
+export function removePlugin(config: WebpackConfig, matcher: PluginMatcher) {
     const countBefore = config.plugins?.length ?? 0;
 
     config.plugins = config.plugins?.filter((...args) => !matcher(...args));
@@ -97,6 +97,6 @@ export function removePlugin(config: Configuration, matcher: PluginMatcher) {
     if (countBefore === countAfter) {
         const matcherInfo = (matcher as WithPluginMatcherInfo).info;
 
-        console.log(`[webpack-configs] Didn't remove any plugin because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
+        throw new Error(`[webpack-configs] Didn't remove any plugin because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
     }
 }

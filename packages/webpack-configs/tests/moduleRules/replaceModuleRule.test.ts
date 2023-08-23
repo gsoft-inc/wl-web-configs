@@ -1,4 +1,4 @@
-import type { Configuration, RuleSetRule, RuleSetUseItem } from "webpack";
+import type { RuleSetRule, RuleSetUseItem, Configuration as WebpackConfig } from "webpack";
 import { matchLoaderName, matchTest, replaceModuleRule } from "../../src/transformers/moduleRules.ts";
 
 test("when a matching module rule is found in the rules array, replace the module rule", () => {
@@ -7,7 +7,7 @@ test("when a matching module rule is found in the rules array, replace the modul
         loader: "swc-loader"
     };
 
-    const config: Configuration = {
+    const config: WebpackConfig = {
         module: {
             rules: [
                 {
@@ -34,7 +34,7 @@ test("when a matching module rule is found in a \"oneOf\" prop, replace the modu
         loader: "swc-loader"
     };
 
-    const config: Configuration = {
+    const config: WebpackConfig = {
         module: {
             rules: [
                 {
@@ -64,7 +64,7 @@ test("when a matching module rule is found in a \"use\" prop, replace the module
         loader: "swc-loader"
     };
 
-    const config: Configuration = {
+    const config: WebpackConfig = {
         module: {
             rules: [
                 {
@@ -94,15 +94,13 @@ test("when a matching module rule is found in a \"use\" prop, replace the module
     expect(((config.module?.rules![0] as RuleSetRule).use as RuleSetUseItem[])[0]).toBe(newRule);
 });
 
-test("when no matching module rule is found, do nothing", () => {
-    jest.spyOn(console, "log").mockImplementation(jest.fn());
-
+test("when no matching module rule is found, throw an error", () => {
     const newRule: RuleSetRule = {
         test: /\.(ts|tsx)/i,
         loader: "swc-loader"
     };
 
-    const config: Configuration = {
+    const config: WebpackConfig = {
         module: {
             rules: [
                 {
@@ -117,9 +115,5 @@ test("when no matching module rule is found, do nothing", () => {
         }
     };
 
-    replaceModuleRule(config, matchTest(/\.(ts|tsx)/i), newRule);
-
-    expect(config.module?.rules?.length).toBe(2);
-
-    jest.spyOn(console, "log").mockRestore();
+    expect(() => replaceModuleRule(config, matchTest(/\.(ts|tsx)/i), newRule)).toThrow();
 });

@@ -1,4 +1,4 @@
-import type { Configuration, RuleSetRule, RuleSetUseItem } from "webpack";
+import type { RuleSetRule, RuleSetUseItem, Configuration as WebpackConfig } from "webpack";
 import { addAfterModuleRule, matchAssetModuleType, matchLoaderName } from "../../src/transformers/moduleRules.ts";
 
 test("when a matching module rule is found in the rules array, add after the module rule", () => {
@@ -7,7 +7,7 @@ test("when a matching module rule is found in the rules array, add after the mod
         loader: "swc-loader"
     };
 
-    const config: Configuration = {
+    const config: WebpackConfig = {
         module: {
             rules: [
                 {
@@ -38,7 +38,7 @@ test("when a matching module rule is found in a \"oneOf\" prop, add after the mo
         type: "json"
     };
 
-    const config: Configuration = {
+    const config: WebpackConfig = {
         module: {
             rules: [
                 {
@@ -76,7 +76,7 @@ test("when a matching module rule is found in a \"use\" prop, add after the modu
         loader: "swc-loader"
     };
 
-    const config: Configuration = {
+    const config: WebpackConfig = {
         module: {
             rules: [
                 {
@@ -107,15 +107,13 @@ test("when a matching module rule is found in a \"use\" prop, add after the modu
     expect(((config.module?.rules![0] as RuleSetRule).use as RuleSetUseItem[])![2]).toBe(newRule);
 });
 
-test("when no matching module rule is found, do nothing", () => {
-    jest.spyOn(console, "log").mockImplementation(jest.fn());
-
+test("when no matching module rule is found, throw an error", () => {
     const newRule: RuleSetRule = {
         test: /\.(ts|tsx)/i,
         loader: "swc-loader"
     };
 
-    const config: Configuration = {
+    const config: WebpackConfig = {
         module: {
             rules: [
                 {
@@ -130,9 +128,5 @@ test("when no matching module rule is found, do nothing", () => {
         }
     };
 
-    addAfterModuleRule(config, matchAssetModuleType("asset/inline"), [newRule]);
-
-    expect(config.module?.rules?.length).toBe(2);
-
-    jest.spyOn(console, "log").mockRestore();
+    expect(() => addAfterModuleRule(config, matchAssetModuleType("asset/inline"), [newRule])).toThrow();
 });

@@ -11,11 +11,11 @@
     "scripts": {
         "postinstall": "pnpm build",
 
-        "build": "pnpm build:tsup && pnpm build:swc && pnpm build:eslint && pnpm build:stylelint && pnpm --filter=!@workleap/tsup-configs --filter=!@workleap/swc-configs --filter !@workleap/eslint-plugin --filter !@workleap/stylelint-config --filter=!./sample/* -r build",
+        "build": "pnpm build:tsup && pnpm build:swc && pnpm build:eslint && pnpm build:stylelint && pnpm --filter=!@workleap/tsup-configs --filter=!@workleap/swc-configs --filter !@workleap/eslint-plugin --filter !@workleap/stylelint-configs --filter=!./sample/* -r build",
         "build:tsup": "pnpm --filter @workleap/tsup-configs build",
         "build:swc": "pnpm --filter @workleap/swc-configs build",
         "build:eslint": "pnpm --filter @workleap/eslint-plugin build",
-        "build:stylelint": "pnpm --filter @workleap/stylelint-config build",
+        "build:stylelint": "pnpm --filter @workleap/stylelint-configs build",
 
         "test": "jest",
 
@@ -35,6 +35,8 @@
         "build-sample": "pnpm --filter \"./sample/*\" -r --parallel build",
         "serve-sample": "pnpm --filter \"./sample/*\" -r --parallel serve-build",
 
+        "dev-docs": "retype start",
+
         "list-outdated-deps": "pnpm outdated -r --format list",
         "update-outdated-deps": "pnpm update -r --latest"
     },
@@ -48,6 +50,7 @@
         "jest": "29.5.0",
         "stylelint": "15.7.0",
         "prettier": "2.8.8",
+        "retypeapp": "3.1.0",
         "ts-node": "10.9.1",
         "typescript": "5.0.4"
     },

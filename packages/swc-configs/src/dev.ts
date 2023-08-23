@@ -1,4 +1,4 @@
-import type { Config } from "@swc/core";
+import type { Config as SwcConfig } from "@swc/core";
 import { applyTransformers, type SwcConfigTransformer } from "./applyTransformers";
 
 export interface DefineDevConfigOptions {
@@ -18,7 +18,7 @@ export function defineDevConfig(options: DefineDevConfigOptions) {
         transformers = []
     } = options;
 
-    const config: Config = {
+    const config: SwcConfig = {
         jsc: {
             parser: parser === "ecmascript"
                 ? {
@@ -30,7 +30,7 @@ export function defineDevConfig(options: DefineDevConfigOptions) {
                     tsx: true
                 },
             // The output environment that the code will be compiled for.
-            target: "es2022",
+            target: "esnext",
             transform: {
                 react: {
                 // Use "react/jsx-runtime".

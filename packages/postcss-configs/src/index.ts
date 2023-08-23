@@ -1,9 +1,11 @@
-import type { Config } from "postcss-load-config";
+import type { Config as PostCSSConfig } from "postcss-load-config";
 import postcssPresetEnv, { type pluginOptions as PostcssPresetEnvOptions } from "postcss-preset-env";
 
-export type PostcssConfigTransformer = (config: Config) => Config;
+export type { PostCSSConfig };
 
-function applyTransformers(config: Config, transformers: PostcssConfigTransformer[]) {
+export type PostcssConfigTransformer = (config: PostCSSConfig) => PostCSSConfig;
+
+function applyTransformers(config: PostCSSConfig, transformers: PostcssConfigTransformer[]) {
     return transformers.reduce((acc, transformer) => transformer(acc), config);
 }
 
@@ -36,7 +38,7 @@ export function defineConfig(options: DefineConfigOptions = {}) {
         };
     }
 
-    const config: Config = {
+    const config: PostCSSConfig = {
         plugins: [
             // Typings are wrong, it's callable.
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment

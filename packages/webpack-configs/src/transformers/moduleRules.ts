@@ -1,5 +1,5 @@
 import path from "path";
-import type { Configuration, RuleSetRule, RuleSetUseItem } from "webpack";
+import type { RuleSetRule, RuleSetUseItem, Configuration as WebpackConfig } from "webpack";
 
 export type ModuleRuleMatcher = (moduleRule: RuleSetRule | RuleSetUseItem, index: number, array: RuleSetRule[] | RuleSetUseItem[]) => boolean;
 
@@ -125,7 +125,7 @@ function findModuleRulesRecursively(moduleRules: RuleSetRule[] | RuleSetUseItem[
     });
 }
 
-export function findModuleRule(config: Configuration, matcher: ModuleRuleMatcher) {
+export function findModuleRule(config: WebpackConfig, matcher: ModuleRuleMatcher) {
     const moduleRules = config.module?.rules;
 
     if (!moduleRules) {
@@ -145,7 +145,7 @@ export function findModuleRule(config: Configuration, matcher: ModuleRuleMatcher
     return matches[0];
 }
 
-export function findModuleRules(config: Configuration, matcher: ModuleRuleMatcher) {
+export function findModuleRules(config: WebpackConfig, matcher: ModuleRuleMatcher) {
     const moduleRules = config.module?.rules;
 
     if (!moduleRules) {
@@ -159,7 +159,7 @@ export function findModuleRules(config: Configuration, matcher: ModuleRuleMatche
     return matches;
 }
 
-export function addBeforeModuleRule(config: Configuration, matcher: ModuleRuleMatcher, newModuleRules: RuleSetRule[] | RuleSetUseItem[]) {
+export function addBeforeModuleRule(config: WebpackConfig, matcher: ModuleRuleMatcher, newModuleRules: RuleSetRule[] | RuleSetUseItem[]) {
     const match = findModuleRule(config, matcher);
 
     if (match) {
@@ -167,11 +167,11 @@ export function addBeforeModuleRule(config: Configuration, matcher: ModuleRuleMa
     } else {
         const matcherInfo = (matcher as WithModuleRuleMatcherInfo).info;
 
-        console.log(`[webpack-configs] Couldn't add the new module rules because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
+        throw new Error(`[webpack-configs] Couldn't add the new module rules because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
     }
 }
 
-export function addAfterModuleRule(config: Configuration, matcher: ModuleRuleMatcher, newModuleRules: RuleSetRule[] | RuleSetUseItem[]) {
+export function addAfterModuleRule(config: WebpackConfig, matcher: ModuleRuleMatcher, newModuleRules: RuleSetRule[] | RuleSetUseItem[]) {
     const match = findModuleRule(config, matcher);
 
     if (match) {
@@ -179,11 +179,11 @@ export function addAfterModuleRule(config: Configuration, matcher: ModuleRuleMat
     } else {
         const matcherInfo = (matcher as WithModuleRuleMatcherInfo).info;
 
-        console.log(`[webpack-configs] Couldn't add the new module rules because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
+        throw new Error(`[webpack-configs] Couldn't add the new module rules because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
     }
 }
 
-export function replaceModuleRule(config: Configuration, matcher: ModuleRuleMatcher, newModuleRule: RuleSetRule | RuleSetUseItem) {
+export function replaceModuleRule(config: WebpackConfig, matcher: ModuleRuleMatcher, newModuleRule: RuleSetRule | RuleSetUseItem) {
     const match = findModuleRule(config, matcher);
 
     if (match) {
@@ -191,11 +191,11 @@ export function replaceModuleRule(config: Configuration, matcher: ModuleRuleMatc
     } else {
         const matcherInfo = (matcher as WithModuleRuleMatcherInfo).info;
 
-        console.log(`[webpack-configs] Couldn't replace the module rule because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
+        throw new Error(`[webpack-configs] Couldn't replace the module rule because no match has been found.\n[webpack-configs] Matcher: "${JSON.stringify(matcherInfo)}"`);
     }
 }
 
-export function removeModuleRules(config: Configuration, matcher: ModuleRuleMatcher) {
+export function removeModuleRules(config: WebpackConfig, matcher: ModuleRuleMatcher) {
     const moduleRules = config.module?.rules;
 
     if (!moduleRules) {
@@ -219,6 +219,6 @@ export function removeModuleRules(config: Configuration, matcher: ModuleRuleMatc
     } else {
         const matcherInfo = (matcher as WithModuleRuleMatcherInfo).info;
 
-        console.log(`[webpack-configs] Didn't remove any module rules because no match has been found.\n[webpack-configs] Matcher: "${matcherInfo}"`);
+        throw new Error(`[webpack-configs] Didn't remove any module rules because no match has been found.\n[webpack-configs] Matcher: "${matcherInfo}"`);
     }
 }

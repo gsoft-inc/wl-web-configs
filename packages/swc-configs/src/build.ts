@@ -1,4 +1,4 @@
-import type { Config } from "@swc/core";
+import type { Config as SwcConfig } from "@swc/core";
 import { applyTransformers, type SwcConfigTransformer } from "./applyTransformers";
 
 export interface DefineBuildConfigOptions {
@@ -16,7 +16,7 @@ export function defineBuildConfig(options: DefineBuildConfigOptions) {
         transformers = []
     } = options;
 
-    const config: Config = {
+    const config: SwcConfig = {
         jsc: {
             parser: parser === "ecmascript"
                 ? {
@@ -28,7 +28,7 @@ export function defineBuildConfig(options: DefineBuildConfigOptions) {
                     tsx: true
                 },
             // The output environment that the code will be compiled for.
-            target: "es2022",
+            target: "esnext",
             // View https://swc.rs/docs/configuration/minification for options.
             minify: {
                 compress: true,

@@ -4,7 +4,8 @@ import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import { createRequire } from "node:module";
 import path from "path";
 import TerserPlugin from "terser-webpack-plugin";
-import webpack, { type Configuration as WebpackConfig } from "webpack";
+import type { Configuration as WebpackConfig } from "webpack";
+import webpack from "webpack";
 import { applyTransformers, type WebpackConfigTransformer } from "./transformers/applyTransformers.ts";
 
 // Aliases
@@ -48,11 +49,10 @@ export interface DefineBuildConfigOptions {
     publicPath?: string;
     moduleRules?: NonNullable<WebpackConfig["module"]>["rules"];
     plugins?: WebpackConfig["plugins"];
-    htmlWebpackPlugin?: HtmlWebpackPlugin.Options;
-    miniCssExtractPlugin?: MiniCssExtractPluginOptions;
+    htmlWebpackPluginOptions?: HtmlWebpackPlugin.Options;
+    miniCssExtractPluginOptions?: MiniCssExtractPluginOptions;
     minify?: boolean;
     cssModules?: boolean;
-    postcssConfigFilePath?: string;
     swcConfig: SwcConfig;
     // Only accepting string values because there are lot of issues with the DefinePlugin related to typing errors.
     // See https://github.com/webpack/webpack/issues/8641
@@ -68,11 +68,10 @@ export function defineBuildConfig(options: DefineBuildConfigOptions) {
         publicPath = "http://localhost:8080/",
         moduleRules = [],
         plugins = [],
-        htmlWebpackPlugin = defineBuildHtmlWebpackPluginConfig(),
-        miniCssExtractPlugin = defineMiniCssExtractPluginConfig(),
+        htmlWebpackPluginOptions = defineBuildHtmlWebpackPluginConfig(),
+        miniCssExtractPluginOptions = defineMiniCssExtractPluginConfig(),
         minify = true,
         cssModules = false,
-        postcssConfigFilePath,
         swcConfig,
         environmentVariables,
         transformers = []
@@ -132,16 +131,7 @@ export function defineBuildConfig(options: DefineBuildConfigOptions) {
                                 }
                                 : undefined
                         },
-                        {
-                            loader: require.resolve("postcss-loader"),
-                            options: postcssConfigFilePath
-                                ? {
-                                    postcssOptions: {
-                                        config: postcssConfigFilePath
-                                    }
-                                }
-                                : undefined
-                        }
+                        { loader: require.resolve("postcss-loader") }
                     ]
                 },
                 {
@@ -159,8 +149,8 @@ export function defineBuildConfig(options: DefineBuildConfigOptions) {
             extensions: [".js", ".jsx", ".ts", ".tsx", ".css"]
         },
         plugins: [
-            new HtmlWebpackPlugin(htmlWebpackPlugin),
-            new MiniCssExtractPlugin(miniCssExtractPlugin),
+            new HtmlWebpackPlugin(htmlWebpackPluginOptions),
+            new MiniCssExtractPlugin(miniCssExtractPluginOptions),
             new DefinePlugin({
                 // Parenthesis around the stringified object are mandatory otherwise it breaks
                 // at build time.
