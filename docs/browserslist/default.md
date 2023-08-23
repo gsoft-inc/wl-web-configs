@@ -38,4 +38,4 @@ npx browserslist
 
 ## Getting started
 
-To get started, follow the [quick start](configure-project.md) guide to configure your first project.
+To get started, follow the [quick start](configure-project.md) guide to configure your project.

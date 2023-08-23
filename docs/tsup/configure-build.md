@@ -19,11 +19,11 @@ pnpm add -D @workleap/tsup-configs tsup typescript
 ```
 +++ yarn
 ```bash
-pnpm add -D @workleap/tsup-configs tsup typescript
+yarn add -D @workleap/tsup-configs tsup typescript
 ```
 +++ npm
 ```bash
-pnpm add -D @workleap/tsup-configs tsup typescript
+npm install -D @workleap/tsup-configs tsup typescript
 ```
 +++
 

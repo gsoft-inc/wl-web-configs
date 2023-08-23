@@ -172,15 +172,6 @@ test("when additional plugins are provided, append the provided plugins at the e
     expect(result.plugins![pluginsCount - 1]).toBe(newPlugin2);
 });
 
-// test("when fast refresh is enabled, dev server hot module reload is disabled", () => {
-//     const result = defineDevConfig({
-//         fastRefresh: true,
-//         swcConfig: defineSwcConfig({ browsers: Browsers })
-//     });
-
-//     expect(result.devServer?.hot).toBeFalsy();
-// });
-
 test("when fast refresh is disabled, dev server hot module reload is enabled", () => {
     const result = defineDevConfig({
         fastRefresh: false,
