@@ -60,7 +60,7 @@ Then, open the newly created file and extend the default configuration with the 
 
 [ESLint](https://eslint.org/) can be configured to [ignore](https://eslint.org/docs/latest/use/configure/ignore) certain files and directories while linting by specifying one or more glob patterns.
 
-To do so, first, create an `.eslintignore` file at the root of the solution workspace:
+To do so, first, create a `.eslintignore` file at the root of the solution workspace:
 
 ``` !#9
 workspace
