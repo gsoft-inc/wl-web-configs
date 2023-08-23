@@ -167,7 +167,7 @@ workspace
 }
 ```
 
-> The script definition may vary depending of your needs and your application configuration. For example, you might want to specify additional file extensions such as `"**/*.{css,scss,sass}"`.
+> The script definition may vary depending on your needs and your application configuration. For example, you might want to specify additional file extensions such as `"**/*.{css,scss,sass}"`.
 
 ## 7. Install the project package
 
