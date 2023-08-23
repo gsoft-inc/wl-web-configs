@@ -7,7 +7,7 @@ meta:
 
 # Integrate with VS Code
 
-[Stylelint VS Code extension](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint) greatly improve the developement experience by **automatically linting** the code as you type and **automatically formatting** the code according to your Stylelint configuration whenever you save.
+[Stylelint VS Code extension](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint) greatly improves the development experience by **automatically linting** the code as you type and **automatically formatting** the code according to your Stylelint configuration whenever you save.
 
 ## 1. Install the Stylelint extension
 
