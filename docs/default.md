@@ -6,7 +6,7 @@ label: Getting started
 
 # Getting started
 
-Welcome to `workleap/web-configs`, a collection of **configuration libraries** for building web applications at [Workleap](https://workleap.com/). In this getting started page, you'll find an overview of the project and a list of supported tools.
+Welcome to `workleap/web-configs`, a collection of **configuration libraries** for building web applications at [Workleap](https://workleap.com/). On this getting started page, you'll find an overview of the project and a list of supported tools.
 
 !!!warning Before you continue...
 
