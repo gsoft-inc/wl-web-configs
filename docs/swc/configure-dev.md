@@ -56,7 +56,7 @@ export default defineDevConfig({
 
 In the previous code sample, the `defineDevConfig(options)` function receive a [Browserslist](https://browsersl.ist/) configuration object through the mandatory `browsers` option.
 
-The expected behavior would be for [SWC](https://swc.rs/) to load the browsers configuration from the closest `.browserslistrc` [configuration file](https://github.com/browserslist/browserslist#browserslistrc), but there is currently an [issue](https://github.com/swc-project/swc/issues/3365) preventing SWC from doing so when the `.browserslistrc` configuration is extended by a shared configuration from a package.
+The expected behavior would be for [SWC](https://swc.rs/) to load the supported browser versions from the closest `.browserslistrc` [configuration file](https://github.com/browserslist/browserslist#browserslistrc), but there is currently an [issue](https://github.com/swc-project/swc/issues/3365) preventing SWC from doing so when the `.browserslistrc` configuration is extended by a shared configuration from a package.
 
 Therefore, `@workleap/swc-configs` choosed to **delegate** the loading of the Browserslist configuration **to the consumer** by making the `browsers` option required.
 
