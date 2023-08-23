@@ -110,7 +110,7 @@ Then, open the newly created file and paste the following ignore rules:
 
 [Prettier](https://prettier.io/) offers [built-in rules](https://prettier.io/docs/en/options#tab-width) for configuring the indentation style of a codebase. However, there's a catch: when [VS Code auto-formatting](https://code.visualstudio.com/docs/editor/codebasics#_formatting) feature is enabled, it might conflict with the configured indentation rules if they are set differently.
 
-To garantee a consistent indentation, we recommend using [EditorConfig](https://editorconfig.org/) on the consumer side. With EditorConfig, the indent style can be configured in a single file and be applied consistently accross various formatting tools, including ESlint and [VS Code](https://code.visualstudio.com/).
+To guarantee a consistent indentation, we recommend using [EditorConfig](https://editorconfig.org/) on the consumer side. With EditorConfig, the indent style can be configured in a single file and be applied consistently across various formatting tools, including ESlint and [VS Code](https://code.visualstudio.com/).
 
 First, create a `.editorconfig` file at the root of the solution workspace:
 
