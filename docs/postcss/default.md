@@ -28,7 +28,7 @@ npm create @workleap/project@latest <output-directory>
 
 ## A word of caution
 
-As we actively work on improving our build time and **minimize** the number of tools **compiling/transpiling** frontend code, we expect [PostCSS](https://postcss.org/) to be one of the first tool that we will **deprecate** from our technology stack. Therefore, before adding PostCSS to your project, make sure that you really need it.
+As we actively work on improving our build time and **minimize** the number of tools **compiling/transpiling** frontend code, we expect [PostCSS](https://postcss.org/) to be one of the first tools that we will **deprecate** from our technology stack. Therefore, before adding PostCSS to your project, make sure that you really need it.
 
 Here's a couple of ideas to move away from PostCSS:
 
