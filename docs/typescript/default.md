@@ -9,7 +9,7 @@ expanded: true
 
 !!!warning Before you continue...
 
-The prefered way for using these [TypeScript](https://www.typescriptlang.org/) shared configurations is **not** by installing them manually, but rather by **scaffolding** your application with Workleap's [foundry-cli](https://github.com/gsoft-inc/wl-foundry-cli).
+The preferred way for using these [TypeScript](https://www.typescriptlang.org/) shared configurations is **not** by installing them manually, but rather by **scaffolding** your application with Workleap's [foundry-cli](https://github.com/gsoft-inc/wl-foundry-cli).
 
 +++ pnpm
 ```bash

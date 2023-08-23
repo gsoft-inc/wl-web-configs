@@ -349,7 +349,7 @@ export default defineDevConfig({
 ## 4. Transform configuration
 
 !!!warning
-We do not guarantee that your configuration transformers won't break after an update. It's your responsability to keep them up to date with new releases.
+We do not guarantee that your configuration transformers won't break after an update. It's your responsibility to keep them up to date with new releases.
 !!!
 
 The [predefined options](#3-set-predefined-options) are useful to quickly customize the [default development configuration](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/webpack-configs/src/dev.ts) of this library, but only covers a subset of a [webpack configuration](https://webpack.js.org/configuration/). If you need full control over the configuration, you can provide configuration transformer functions. Remember, **no locked in** :heart::v:.

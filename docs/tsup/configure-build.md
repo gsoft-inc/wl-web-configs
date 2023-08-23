@@ -62,7 +62,7 @@ export default defineBuildConfig({
 ## 4. Transform configuration
 
 !!!warning
-We do not guarantee that your configuration transformers won't break after an update. It's your responsability to keep them up to date with new releases.
+We do not guarantee that your configuration transformers won't break after an update. It's your responsibility to keep them up to date with new releases.
 !!!
 
 Since the [predefined options](#3-set-predefined-options) for tsup already covers all the availables [options](https://tsup.egoist.dev/#usage), configuration transformer functions aren't as useful for a tsup configuration as for other tools like [SWC](../swc/configure-build.md#4-transform-configuration) or [webpack](../webpack/configure-build.md#4-transform-configuration). Nonetheless, they are still valuable, especially for library authors aiming to **distribute** a **default option set** that facilitates the configuration of tsup for specific functionalities of their library.
