@@ -30,7 +30,7 @@ npm create @workleap/project@latest <output-directory>
 
 Typically, [TypeScript](https://www.typescriptlang.org/) shareable configuration libraries are architectured around the idea that shared configurations should be small and composable to accomodate any potential use cases that a development team might encounter.
 
-While composability provide flexibility, it also increase the complexity on the consumer side as they must understand how [TypeScript configuration inheritance](https://www.typescriptlang.org/tsconfig#extends) works and how to compose the provided shared configurations correctly. **It can be frustrating at times** when you want to get something up and running quickly.
+While composability provides flexibility, it also increases the complexity on the consumer side as they must understand how [TypeScript configuration inheritance](https://www.typescriptlang.org/tsconfig#extends) works and how to compose the provided shared configurations correctly. **It can be frustrating at times** when you want to get something up and running quickly.
 
 To improve the experience, rather than delegating the composition of the shared configuration pieces to the consumer, **we compose them internally** and offer configurations by project type instead.
 
@@ -59,7 +59,7 @@ To get started, choose one of the following scenarios :point_down:
 
 ### Setup a new project
 
-If your are looking to setup a **new** polyrepo solution (single project per repository), follow the guide to [setup a polyrepo](setup-polyrepo.md), otherwise, follow the guide to [setup a monorepo](setup-monorepo.md).
+If you are looking to setup a **new** polyrepo solution (single project per repository), follow the guide to [setup a polyrepo](setup-polyrepo.md), otherwise, follow the guide to [setup a monorepo](setup-monorepo.md).
 
 ### Setup an existing project
 

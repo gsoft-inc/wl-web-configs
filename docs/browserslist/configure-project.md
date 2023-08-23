@@ -46,7 +46,7 @@ extends @workleap/browserslist-config
 
 ### Custom browsers
 
-If you are encountering a situation that is not currently handled by this library, you can customize your configuration file to extends this library shared configurations with additional browser versions:
+If you are encountering a situation that is not currently handled by `@workleap/browserslist-configs`, you can customize your configuration file to extend this library shared configurations with additional browser versions:
 
 ``` !#2-3 .browserslistrc
 extends @workleap/browserslist-config

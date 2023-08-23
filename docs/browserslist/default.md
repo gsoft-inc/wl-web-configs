@@ -9,7 +9,7 @@ expanded: true
 
 !!!warning Before you continue...
 
-The prefered way for using this [Browserslist](https://browsersl.ist/) shared configuration is **not** by installing it manually, but rather by **scaffolding** your application with Workleap's [foundry-cli](https://github.com/gsoft-inc/wl-foundry-cli).
+The preferred way for using this [Browserslist](https://browsersl.ist/) shared configuration is **not** by installing it manually, but rather by **scaffolding** your application with Workleap's [foundry-cli](https://github.com/gsoft-inc/wl-foundry-cli).
 
 +++ pnpm
 ```bash

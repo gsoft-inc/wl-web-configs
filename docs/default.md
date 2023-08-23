@@ -6,11 +6,12 @@ label: Getting started
 
 # Getting started
 
-Welcome to `workleap/web-configs`, a collection of **configuration libraries** for building web applications at [Workleap](https://workleap.com/). In this getting started page, you'll find an overview of the project and a list of supported tools.
+Welcome to `workleap/web-configs`, a collection of **configuration libraries** for building web applications at [Workleap](https://workleap.com/). On this getting started page, you'll find an overview of the project and a list of supported tools.
 
 !!!warning Before you continue...
 
-The prefered way for using these configuration libraries is **not** by installing them manually, but rather by **scaffolding** your application with Workleap's [foundry-cli](https://github.com/gsoft-inc/wl-foundry-cli).
+The preferred way for using these configuration libraries is **not** by installing them manually, but rather by **scaffolding** your application with Workleap's [foundry-cli](https://github.com/gsoft-inc/wl-foundry-cli).
+
 +++ pnpm
 ```bash
 pnpm create @workleap/project@latest <output-directory>

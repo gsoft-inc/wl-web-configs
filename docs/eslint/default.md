@@ -9,7 +9,7 @@ expanded: true
 
 !!!warning Before you continue...
 
-The prefered way for using these [ESLint](https://eslint.org/) shared configurations is **not** by installing them manually, but rather by **scaffolding** your application with Workleap's [foundry-cli](https://github.com/gsoft-inc/wl-foundry-cli).
+The preferred way for using these [ESLint](https://eslint.org/) shared configurations is **not** by installing them manually, but rather by **scaffolding** your application with Workleap's [foundry-cli](https://github.com/gsoft-inc/wl-foundry-cli).
 
 +++ pnpm
 ```bash
@@ -28,12 +28,12 @@ npm create @workleap/project@latest <output-directory>
 
 ## By project type configurations
 
-Typically, [ESLint](https://eslint.org/) shareable configuration libraries are architectured around the idea that [shared configurations](https://eslint.org/docs/latest/extend/shareable-configs) should be small and composable to accomodate any potential use cases that a development team might encounter.
+Typically, [ESLint](https://eslint.org/) shareable configuration libraries are architectured around the idea that [shared configurations](https://eslint.org/docs/latest/extend/shareable-configs) should be small and composable to accommodate any potential use cases that a development team might encounter.
 
-While composability provide flexibility, it also increase the complexity on the consumer side as they must understand how [ESLint cascading and hierarchy](https://eslint.org/docs/latest/use/configure/configuration-files#cascading-and-hierarchy) works and how to compose the provided shared configurations correctly. **It can be frustrating at times** when you want to get something up and running quickly.
+While composability provides flexibility, it also increases the complexity on the consumer side as they must understand how [ESLint cascading and hierarchy](https://eslint.org/docs/latest/use/configure/configuration-files#cascading-and-hierarchy) works and how to compose the provided shared configurations correctly. **It can be frustrating at times** when you want to get something up and running quickly.
 
 ==- @shopify/web-configs example
-Have a look at Shopify [ESLint usage section](https://github.com/Shopify/web-configs/tree/main/packages/eslint-plugin#usage). To configure ESLint with `@shopify/web-configs`, a consumer must choose whether he want rules for `es5`, `esnext`, `typescript` or `node`, then decide if he should use `@babel/eslint-parser` or `@typescript-eslint/parser`.
+Have a look at Shopify [ESLint usage section](https://github.com/Shopify/web-configs/tree/main/packages/eslint-plugin#usage). To configure ESLint with `@shopify/web-configs`, a consumer must choose whether he wants rules for `es5`, `esnext`, `typescript` or `node`, then decide if he should use `@babel/eslint-parser` or `@typescript-eslint/parser`.
 
 To make the right choices and assemble the final configuration correctly, a consumer must have niche front-end skills.
 ===
@@ -53,7 +53,7 @@ This way, it's pretty straightforward for the consumer to configure ESLint as it
 
 ## Prettier
 
-For a great explanation about why we choosed to stick with [ESLint](https://eslint.org/) for stylistic rules rather than migrating to [Prettier](https://prettier.io/), read the following [article](https://antfu.me/posts/why-not-prettier).
+For a complete explanation of why we chose to stick with [ESLint](https://eslint.org/) for stylistic rules rather than migrating to [Prettier](https://prettier.io/), read the following [article](https://antfu.me/posts/why-not-prettier).
 
 ## Target environment
 
@@ -66,7 +66,7 @@ To get started, choose one of the following scenarios :point_down:
 
 ### Setup a new project
 
-If your are looking to setup a **new** polyrepo solution (single project per repository), follow the guide to [setup a polyrepo](setup-polyrepo.md), otherwise, follow the guide to [setup a monorepo](setup-monorepo.md).
+If you are looking to setup a **new** polyrepo solution (single project per repository), follow the guide to [setup a polyrepo](setup-polyrepo.md), otherwise, follow the guide to [setup a monorepo](setup-monorepo.md).
 
 ### Setup an existing project
 

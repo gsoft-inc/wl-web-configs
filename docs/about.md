@@ -4,7 +4,7 @@ layout: page
 
 # About
 
-To ask a question or propose an idea, feel free to start a new [discussion](https://github.com/gsoft-inc/wl-web-configs/discussions) on Github. If you found a bug, please open an [issue](https://github.com/gsoft-inc/wl-web-configs/issues) on Github.
+To ask a question or propose an idea, feel free to start a new [GitHub  discussion](https://github.com/gsoft-inc/wl-web-configs/discussions). If you found a bug, please open a [GitHub issue](https://github.com/gsoft-inc/wl-web-configs/issues).
 
 ## Contributing
 

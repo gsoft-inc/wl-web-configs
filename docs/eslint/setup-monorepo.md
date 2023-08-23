@@ -60,7 +60,7 @@ Then, open the newly created file and extend the default configuration with the 
 
 [ESLint](https://eslint.org/) can be configured to [ignore](https://eslint.org/docs/latest/use/configure/ignore) certain files and directories while linting by specifying one or more glob patterns.
 
-To do so, first, create an `.eslintignore` file at the root of the solution workspace:
+To do so, first, create a `.eslintignore` file at the root of the solution workspace:
 
 ``` !#9
 workspace
@@ -85,9 +85,9 @@ pnpm-lock.yaml
 
 ## 4. Configure indent style
 
-[ESLint](https://eslint.org/) offers [built-in rules](https://eslint.org/docs/latest/rules/indent) for configuring the indentation style of a codebase. However, there's a catch: when [VS Code auto-formatting](https://code.visualstudio.com/docs/editor/codebasics#_formatting) feature is enabled, it might conflict with the configured indentation rules if they are set  differently.
+[ESLint](https://eslint.org/) offers [built-in rules](https://eslint.org/docs/latest/rules/indent) for configuring the indentation style of a codebase. However, there's a catch: when [VS Code auto-formatting](https://code.visualstudio.com/docs/editor/codebasics#_formatting) feature is enabled, it might conflict with the configured indentation rules if they are set differently.
 
-To garantee a consistent indentation, we recommend using [EditorConfig](https://editorconfig.org/) on the consumer side. With EditorConfig, the indent style can be configured in a single file and be applied consistently accross various formatting tools, including ESlint and [VS Code](https://code.visualstudio.com/).
+To guarantee a consistent indentation, we recommend using [EditorConfig](https://editorconfig.org/) on the consumer side. With EditorConfig, the indent style can be configured in a single file and be applied consistently across various formatting tools, including ESlint and [VS Code](https://code.visualstudio.com/).
 
 First, create a `.editorconfig` file at the root of the solution workspace:
 

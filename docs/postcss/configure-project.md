@@ -6,7 +6,7 @@ meta:
 
 # Configure a project
 
-Execute the following steps to setup [PostCSS](https://postcss.org/) for a single projet.
+Execute the following steps to setup [PostCSS](https://postcss.org/) for a single project.
 
 ## 1. Install the packages
 
@@ -48,7 +48,7 @@ export default defineConfig();
 
 ## 3. Set predefined options
 
-The `defineConfig(options)` function can be used as-is as shown in the previous example, however, if you wish to customize the default configuration, the function also accept a few predefined options to help with that :point_down:
+The `defineConfig(options)` function can be used as-is as shown in the previous example, however, if you wish to customize the default configuration, the function also accepts a few predefined options to help with that :point_down:
 
 ### `browsers`
 
@@ -104,7 +104,7 @@ export default defineConfig({
 ## 4. Transform configuration
 
 !!!warning
-We do not guarantee that your configuration transformers won't break after an update. It's your responsability to keep them up to date with new releases.
+We do not guarantee that your configuration transformers won't break after an update. It's your responsibility to keep them up to date with new releases.
 !!!
 
 The [predefined options](#3-set-predefined-options) are useful to quickly customize the [default configuration](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/postcss-configs/src/index.ts) of this library, but only covers a subset of a [PostCSS configuration](https://github.com/postcss/postcss-load-config). If you need full control over the configuration, you can provide **configuration transformer** functions. Remember, **no locked in** :heart::v:.
