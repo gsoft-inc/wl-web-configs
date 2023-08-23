@@ -6,7 +6,7 @@ meta:
 
 # Configure a project
 
-Execute the following steps to setup [PostCSS](https://postcss.org/) for a single projet.
+Execute the following steps to setup [PostCSS](https://postcss.org/) for a single project.
 
 ## 1. Install the packages
 
