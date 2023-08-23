@@ -7,7 +7,7 @@ meta:
 
 # Integrate with VS Code
 
-[ESLint VS Code extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) greatly improve the developement experience by **automatically linting** the code as you type and **automatically formatting** the code according to your ESLint configuration whenever you save.
+[ESLint VS Code extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) greatly improve the development experience by **automatically linting** the code as you type and **automatically formatting** the code according to your ESLint configuration whenever you save.
 
 ## 1. Install the ESLint extension
 
