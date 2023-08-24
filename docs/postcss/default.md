@@ -41,6 +41,9 @@ Here's a couple of ideas to move away from PostCSS:
 
 The shared configuration offered by `@workleap/postcss-configs` includes the following features:
 
+### Preset Env
+
+- [Stage 3](https://preset-env.cssdb.org/features/#stage-3)
 - [Autoprefixer](https://github.com/postcss/autoprefixer)
 
 ## Getting started

@@ -17,7 +17,6 @@ const config: Linter.Config = {
 
                 // additional rules we want
                 "@typescript-eslint/consistent-type-definitions": "warn",
-                "@typescript-eslint/no-implicit-any-catch": "warn",
                 "@typescript-eslint/explicit-member-accessibility": ["warn", { accessibility: "no-public" }],
                 "@typescript-eslint/method-signature-style": "warn",
                 "comma-dangle":"off",
