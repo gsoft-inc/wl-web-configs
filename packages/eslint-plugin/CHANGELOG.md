@@ -1,5 +1,11 @@
 # @workleap/eslint-plugin
 
+## 2.0.1
+
+### Patch Changes
+
+- [#101](https://github.com/gsoft-inc/wl-web-configs/pull/101) [`dc63a37`](https://github.com/gsoft-inc/wl-web-configs/commit/dc63a37b333e5799f2cd377a3c92f15379052037) Thanks [@patricklafrance](https://github.com/patricklafrance)! - Removed the deprecated @typescript-eslint/no-implicit-any-catch rule
+
 ## 2.0.0
 
 ### Major Changes
