@@ -51,6 +51,10 @@ We hope that introducing CLI with a collection of configuration libraries will f
 
 While developing the configuration libraries, we kept one guiding principle in mind, **no locked in** :heart::v:. We truly hope that the default configurations will satisfy your application needs, but if it doesn't, there will always be an easy way to extend or override the default configuration.
 
+## Target environment
+
+The majority of the shared tooling configurations targets [ESM](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) and the latest [ECMAScript](https://en.wikipedia.org/wiki/ECMAScript) version (ESNext). If you are in the process of migrating an existing project to `workleap/web-configs`, and would rather delay transitioning to ESM, have a look at the _Target environment_ section of each tool for additional information about how to support **non ESM compliant** solutions.
+
 ## Supported tools
 
 | Name | NPM | Documentation |

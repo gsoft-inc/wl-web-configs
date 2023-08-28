@@ -8,7 +8,7 @@ const config: Linter.Config = {
             files: [...testFiles, ...reactTestFiles],
             plugins: ["jest"],
             env: {
-                es6: true,
+                es2024: true,
                 node: true,
                 browser: true,
                 commonjs: true,

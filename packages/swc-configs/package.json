@@ -37,6 +37,7 @@
         "@workleap/eslint-plugin": "workspace:*",
         "@workleap/tsup-configs": "workspace:*",
         "@workleap/typescript-configs": "workspace:*",
+        "browserslist": "4.21.10",
         "jest": "29.5.0",
         "ts-node": "10.9.1",
         "tsup": "6.7.0",
@@ -45,10 +46,14 @@
     "peerDependencies": {
         "@swc/core": "*",
         "@swc/helpers": "*",
-        "@swc/jest": "*"
+        "@swc/jest": "*",
+        "browserslist": "*"
     },
     "peerDependenciesMeta": {
         "@swc/jest": {
+            "optional": true
+        },
+        "browserslist": {
             "optional": true
         }
     },

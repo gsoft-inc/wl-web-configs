@@ -51,14 +51,17 @@ This way, it's pretty straightforward for the consumer to configure ESLint as it
 | :icon-mark-github: [typescript-library](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/by-project-type/typescript-library.ts){ target="_blank" } | For TypeScript libraries developed **without** [React](https://react.dev/). |
 | :icon-mark-github: [monorepo-workspace](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/by-project-type/monorepo-workspace.ts){ target="_blank" } | For the workspace configuration of a monorepo solution. |
 
+### Target environment
+
+The provided shared configurations targets the following environment:
+
+- ESM / CommonJS
+- ESNext
+- Node
+
 ## Prettier
 
 For a complete explanation of why we chose to stick with [ESLint](https://eslint.org/) for stylistic rules rather than migrating to [Prettier](https://prettier.io/), read the following [article](https://antfu.me/posts/why-not-prettier).
-
-## Target environment
-
-- ESM
-- ESNext
 
 ## Getting started
 

@@ -49,7 +49,7 @@ The shared configurations offered by `@workleap/tsup-configs` includes the follo
 
 - Output to `/dist`
 
-## Target environment
+### Target environment
 
 - ESM
 - ESNext

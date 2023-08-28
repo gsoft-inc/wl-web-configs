@@ -27,8 +27,6 @@ export function defineBuildConfig(options: DefineBuildConfigOptions) {
                     syntax: "typescript",
                     tsx: true
                 },
-            // The output environment that the code will be compiled for.
-            target: "esnext",
             // View https://swc.rs/docs/configuration/minification for options.
             minify: {
                 compress: true,
@@ -55,6 +53,7 @@ export function defineBuildConfig(options: DefineBuildConfigOptions) {
             ignoreDynamic: true
         },
         env: {
+            // jsc.target is not provided because the provided browsers takes precedence.
             targets: browsers
         }
     };

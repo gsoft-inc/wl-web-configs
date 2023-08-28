@@ -103,14 +103,14 @@ transformer(config: SwcConfig, context: SwcConfigTransformerContext) => SwcConfi
 ```js !#13 swc.build.js
 // @ts-check
 
-import { defineBuildConfig, SwcConfigTransformer, SwcConfig } from "@workleap/swc-configs";
+import { defineBuildConfig } from "@workleap/swc-configs";
 import browsers from "@workleap/browserslist-config";
 
-const mangleMinifiedCode: SwcConfigTransformer = (config: SwcConfig) => {
-    config.jsc.minify.mangle = true;
+function mangleMinifiedCode(config) {
+        config.jsc.minify.mangle = true;
 
     return config;
-};
+}
 
 export default defineBuildConfig({
     transformers: [mangleMinifiedCode],

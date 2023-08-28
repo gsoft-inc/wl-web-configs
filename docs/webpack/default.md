@@ -65,6 +65,10 @@ The shared configurations offered by `@workleap/webpack-configs` includes the fo
 - Minification
 - Output to `/dist`
 
+### Target environment
+
+As per the [PostCSS](../postcss/default.md) and [SWC](../swc/default.md) configurations
+
 ## Getting started
 
 To get started, follow the quick start guide to configure webpack for either a [development environment](configure-dev.md) or a [production environment](configure-build.md).

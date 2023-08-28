@@ -29,8 +29,6 @@ export function defineDevConfig(options: DefineDevConfigOptions) {
                     syntax: "typescript",
                     tsx: true
                 },
-            // The output environment that the code will be compiled for.
-            target: "esnext",
             transform: {
                 react: {
                 // Use "react/jsx-runtime".
@@ -55,6 +53,7 @@ export function defineDevConfig(options: DefineDevConfigOptions) {
             ignoreDynamic: true
         },
         env: {
+            // jsc.target is not provided because the provided browsers takes precedence.
             targets: browsers
         }
     };

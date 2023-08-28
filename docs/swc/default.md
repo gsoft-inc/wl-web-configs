@@ -26,12 +26,6 @@ npm create @workleap/project@latest <output-directory>
 +++
 !!!
 
-## A note about Rspack
-
-Somewhere in 2024, [we expect to migrate from webpack to Rspack](../webpack/default.md#a-note-about-rspack). Once the migration is completed, the SWC [development](configure-dev.md) and [production](configure-build.md) configurations will not be required anymore as [Rspack](https://www.rspack.dev/) offers out of the box support for [React](https://react.dev/) and [TypeScript](https://www.typescriptlang.org/). 
-
-Still, the [Jest configuration](configure-jest.md) will continue to be available as there is no integration between Rspack and [Jest](https://jestjs.io/).
-
 ## Features
 
 The shared configurations offered by `@workleap/swc-configs` includes the following features 👇
@@ -53,11 +47,17 @@ The shared configurations offered by `@workleap/swc-configs` includes the follow
 
 - Minification
 
-## Target environment
+### Target environment
 
 - ESM
-- ESNext
+- ECMAScript features matching the provided `browsers`
+
+## A note about Rspack
+
+Somewhere in 2024, [we expect to migrate from webpack to Rspack](../webpack/default.md#a-note-about-rspack). Once the migration is completed, the SWC [development](configure-dev.md) and [production](configure-build.md) configurations will not be required anymore as [Rspack](https://www.rspack.dev/) offers out of the box support for [React](https://react.dev/) and [TypeScript](https://www.typescriptlang.org/). 
+
+Still, the [Jest configuration](configure-jest.md) will continue to be available as there is no integration between Rspack and [Jest](https://jestjs.io/).
 
 ## Getting started
 
-To get started, follow the quick start guide to configure SWC for either a [development environment](configure-dev.md), a [production environment](configure-build.md) or to run [Jest environment](configure-jest.md).
+To get started, follow the quick start guide to configure SWC for either a [development environment](configure-dev.md), a [production environment](configure-build.md) or to run [Jest tests](configure-jest.md).

@@ -48,10 +48,14 @@ The shared configurations offered by `@workleap/typescript-configs` exclusively 
 | :icon-mark-github: [library](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/typescript-configs/library.json){ target="_blank" } | For library project developed with or without [React](https://react.dev/). |
 | :icon-mark-github: [monorepo-workspace](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/typescript-configs/monorepo-workspace.json){ target="_blank" } | For the workspace configuration of a monorepo solution. |
 
-## Target environment
+### Target environment
+
+The provided shared configurations targets the following environment:
 
 - ESM
 - ESNext
+
+<!-- If you are in the process of migrating an existing project to `@workleap/typescript-configs`, and would rather delay transitioning to ESM, refer to the [custom configuration](custom-configuration.md#commonjs) page for information about how to support CommonJS. -->
 
 ## Getting started
 

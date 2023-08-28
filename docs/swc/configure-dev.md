@@ -124,14 +124,14 @@ transformer(config: SwcConfig, context: SwcConfigTransformerContext) => SwcConfi
 ```js !#13 swc.dev.js
 // @ts-check
 
-import { defineDevConfig, SwcConfigTransformer, SwcConfig } from "@workleap/swc-configs";
+import { defineDevConfig } from "@workleap/swc-configs";
 import browsers from "@workleap/browserslist-config";
 
-const disableReactBuiltins: SwcConfigTransformer = (config: SwcConfig) => {
+function disableReactBuiltins(config) {
     config.jsc.transform.react.useBuiltins = false;
 
     return config;
-};
+}
 
 export default defineDevConfig({
     transformers: [disableReactBuiltins],
