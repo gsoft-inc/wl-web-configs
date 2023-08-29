@@ -2,19 +2,21 @@ import type { EsParserConfig, Config as SwcConfig, TsParserConfig } from "@swc/c
 import type { SwcConfigTransformer } from "../src/applyTransformers.ts";
 import { defineDevConfig } from "../src/dev.ts";
 
-const Browsers = ["last 2 versions"];
+const Targets = {
+    chrome: "116"
+};
 
 test("provided browsers are set as \"env.targets\"", () => {
     const result = defineDevConfig({
-        browsers: Browsers
+        targets: Targets
     });
 
-    expect(result.env?.targets).toBe(Browsers);
+    expect(result.env?.targets).toBe(Targets);
 });
 
 test("when fastRefresh is true, react refresh is true", () => {
     const result = defineDevConfig({
-        browsers: Browsers,
+        targets: Targets,
         fastRefresh: true
     });
 
@@ -23,7 +25,7 @@ test("when fastRefresh is true, react refresh is true", () => {
 
 test("when fastRefresh is false, react refresh is false", () => {
     const result = defineDevConfig({
-        browsers: Browsers,
+        targets: Targets,
         fastRefresh: false
     });
 
@@ -32,7 +34,7 @@ test("when fastRefresh is false, react refresh is false", () => {
 
 test("when parser is \"ecmascript\", the configuration parser is ecmascript", () => {
     const result = defineDevConfig({
-        browsers: Browsers,
+        targets: Targets,
         parser: "ecmascript"
     });
 
@@ -41,7 +43,7 @@ test("when parser is \"ecmascript\", the configuration parser is ecmascript", ()
 
 test("when parser is \"ecmascript\", jsx parsing is enabled", () => {
     const result = defineDevConfig({
-        browsers: Browsers,
+        targets: Targets,
         parser: "ecmascript"
     });
 
@@ -50,7 +52,7 @@ test("when parser is \"ecmascript\", jsx parsing is enabled", () => {
 
 test("when parser is \"typescript\", the configuration parser is typescript", () => {
     const result = defineDevConfig({
-        browsers: Browsers,
+        targets: Targets,
         parser: "typescript"
     });
 
@@ -59,7 +61,7 @@ test("when parser is \"typescript\", the configuration parser is typescript", ()
 
 test("when parser is \"typescript\", tsx parsing is enabled", () => {
     const result = defineDevConfig({
-        browsers: Browsers,
+        targets: Targets,
         parser: "typescript"
     });
 
@@ -74,7 +76,7 @@ test("when a transformer is provided, the transformer is applied on the swc conf
     };
 
     const result = defineDevConfig({
-        browsers: Browsers,
+        targets: Targets,
         transformers: [minifyTransformer]
     });
 
@@ -95,7 +97,7 @@ test("when multiple transformers are provided, all the transformers are applied 
     };
 
     const result = defineDevConfig({
-        browsers: Browsers,
+        targets: Targets,
         transformers: [minifyTransformer, sourceMapsTransformer]
     });
 
@@ -107,7 +109,7 @@ test("transformers context environment is \"dev\"", () => {
     const mockTransformer = jest.fn();
 
     defineDevConfig({
-        browsers: Browsers,
+        targets: Targets,
         transformers: [mockTransformer]
     });
 

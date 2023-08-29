@@ -56,20 +56,7 @@ exports[`createSwcTargetsFromBrowserslistEntries when there are multiple version
 }
 `;
 
-exports[`when no queries are provided, load the closest .browserslistrc file 1`] = `
-{
-  "android": "116",
-  "chrome": "109",
-  "edge": "114",
-  "firefox": "102",
-  "ios": "16",
-  "opera": "73",
-  "safari": "15.6",
-  "samsung": "20",
-}
-`;
-
-exports[`when queries are provided, process the queries 1`] = `
+exports[`when queries are provided, use the queries 1`] = `
 {
   "chrome": "113",
   "firefox": "107",

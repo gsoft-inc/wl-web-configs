@@ -4,12 +4,14 @@ import { defineBuildConfig, defineBuildHtmlWebpackPluginConfig, defineMiniCssExt
 import type { WebpackConfigTransformer } from "../src/transformers/applyTransformers.ts";
 import { findModuleRule, matchLoaderName } from "../src/transformers/moduleRules.ts";
 
-const Browsers = ["last 2 versions"];
+const Targets = {
+    chrome: "116"
+};
 
 test("when an entry prop is provided, use the provided entry value", () => {
     const result = defineBuildConfig({
         entry: "./a-new-entry.ts",
-        swcConfig: defineSwcConfig({ browsers: Browsers })
+        swcConfig: defineSwcConfig({ targets: Targets })
     });
 
     expect(result.entry).toBe("./a-new-entry.ts");
@@ -18,7 +20,7 @@ test("when an entry prop is provided, use the provided entry value", () => {
 test("when an output path is provided, use the provided ouput path value", () => {
     const result = defineBuildConfig({
         outputPath: "./a-new-output-path",
-        swcConfig: defineSwcConfig({ browsers: Browsers })
+        swcConfig: defineSwcConfig({ targets: Targets })
     });
 
     expect(result.output?.path).toBe("./a-new-output-path");
@@ -27,7 +29,7 @@ test("when an output path is provided, use the provided ouput path value", () =>
 test("when a public path is provided, use the provided public path value", () => {
     const result = defineBuildConfig({
         publicPath: "./a-new-public-path",
-        swcConfig: defineSwcConfig({ browsers: Browsers })
+        swcConfig: defineSwcConfig({ targets: Targets })
     });
 
     expect(result.output?.publicPath).toBe("./a-new-public-path");
@@ -49,7 +51,7 @@ test("when additional module rules are provided, append the provided rules at th
             newModuleRule1,
             newModuleRule2
         ],
-        swcConfig: defineSwcConfig({ browsers: Browsers })
+        swcConfig: defineSwcConfig({ targets: Targets })
     });
 
     const rulesCount = result.module!.rules!.length;
@@ -79,7 +81,7 @@ test("when additional plugins are provided, append the provided plugins at the e
             newPlugin1,
             newPlugin2
         ],
-        swcConfig: defineSwcConfig({ browsers: Browsers })
+        swcConfig: defineSwcConfig({ targets: Targets })
     });
 
     const pluginsCount = result.plugins!.length;
@@ -91,7 +93,7 @@ test("when additional plugins are provided, append the provided plugins at the e
 test("when minify is true, minimize is set to true", () => {
     const result = defineBuildConfig({
         minify: true,
-        swcConfig: defineSwcConfig({ browsers: Browsers })
+        swcConfig: defineSwcConfig({ targets: Targets })
     });
 
     expect(result.optimization?.minimize).toBeTruthy();
@@ -100,7 +102,7 @@ test("when minify is true, minimize is set to true", () => {
 test("when minify is false, minimize is set to false", () => {
     const result = defineBuildConfig({
         minify: false,
-        swcConfig: defineSwcConfig({ browsers: Browsers })
+        swcConfig: defineSwcConfig({ targets: Targets })
     });
 
     expect(result.optimization?.minimize).toBeFalsy();
@@ -109,7 +111,7 @@ test("when minify is false, minimize is set to false", () => {
 test("when minify is true, include minify configuration", () => {
     const result = defineBuildConfig({
         minify: true,
-        swcConfig: defineSwcConfig({ browsers: Browsers })
+        swcConfig: defineSwcConfig({ targets: Targets })
     });
 
     expect(result.optimization?.minimizer).toBeDefined();
@@ -118,7 +120,7 @@ test("when minify is true, include minify configuration", () => {
 test("when minify is false, do not include minify configuration", () => {
     const result = defineBuildConfig({
         minify: false,
-        swcConfig: defineSwcConfig({ browsers: Browsers })
+        swcConfig: defineSwcConfig({ targets: Targets })
     });
 
     expect(result.optimization?.minimizer).toBeUndefined();
@@ -127,7 +129,7 @@ test("when minify is false, do not include minify configuration", () => {
 test("when css modules is enabled, include css modules configuration", () => {
     const result = defineBuildConfig({
         cssModules: true,
-        swcConfig: defineSwcConfig({ browsers: Browsers })
+        swcConfig: defineSwcConfig({ targets: Targets })
     });
 
     const cssLoader = findModuleRule(result, matchLoaderName("css-loader"));
@@ -143,7 +145,7 @@ test("when css modules is enabled, include css modules configuration", () => {
 test("when css modules is disabled, do not include css modules configuration", () => {
     const result = defineBuildConfig({
         cssModules: false,
-        swcConfig: defineSwcConfig({ browsers: Browsers })
+        swcConfig: defineSwcConfig({ targets: Targets })
     });
 
     const cssLoader = findModuleRule(result, matchLoaderName("css-loader"));
@@ -152,7 +154,7 @@ test("when css modules is disabled, do not include css modules configuration", (
 });
 
 test("the provided swc config object is set as the swc-loader options", () => {
-    const swcConfig = defineSwcConfig({ browsers: Browsers });
+    const swcConfig = defineSwcConfig({ targets: Targets });
 
     const result = defineBuildConfig({
         swcConfig
@@ -171,7 +173,7 @@ test("when a transformer is provided, the transformer is applied on the webpack 
     };
 
     const result = defineBuildConfig({
-        swcConfig: defineSwcConfig({ browsers: Browsers }),
+        swcConfig: defineSwcConfig({ targets: Targets }),
         transformers: [entryTransformer]
     });
 
@@ -192,7 +194,7 @@ test("when multiple transformers are provided, all the transformers are applied 
     };
 
     const result = defineBuildConfig({
-        swcConfig: defineSwcConfig({ browsers: Browsers }),
+        swcConfig: defineSwcConfig({ targets: Targets }),
         transformers: [entryTransformer, devToolTransformer]
     });
 
@@ -204,7 +206,7 @@ test("transformers context environment is \"build\"", () => {
     const mockTransformer = jest.fn();
 
     defineBuildConfig({
-        swcConfig: defineSwcConfig({ browsers: Browsers }),
+        swcConfig: defineSwcConfig({ targets: Targets }),
         transformers: [mockTransformer]
     });
 
