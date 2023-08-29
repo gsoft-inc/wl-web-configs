@@ -1,5 +1,5 @@
 import type { Options as TsupConfig } from "tsup";
-import { applyTransformers, type TsupConfigTransformer } from "./applyTransformers";
+import { applyTransformers, type TsupConfigTransformer } from "./applyTransformers.ts";
 
 export interface DefineBuildConfigOptions extends TsupConfig {
     transformers?: TsupConfigTransformer[];

@@ -61,7 +61,7 @@ const SwcSupportedBrowsers = [
     "chrome",
     "safari",
     "opera",
-    "ios_saf",
+    "ios",
     "android",
     "op_mob",
     "and_chr",
@@ -70,8 +70,8 @@ const SwcSupportedBrowsers = [
     "samsung"
 ] as const;
 
-// SWC browsers mapping (https://github.com/swc-project/swc/blob/main/crates/preset_env_base/src/lib.rs#L90)
-const SwcBrowserMapping: Record<string, string> = {
+// SWC browsers aliases (https://github.com/swc-project/swc/blob/main/crates/preset_env_base/src/lib.rs#L90).
+const SwcMobileBrowserAliases: Record<string, string> = {
     "and_chr": "chrome",
     "and_ff": "firefox",
     "ie_mob": "ie",
@@ -87,8 +87,8 @@ function parseBrowserslistEntry(entry: string) {
     let version = values[1];
 
     // "and_chr" --> "chrome"
-    if (SwcBrowserMapping[browser]) {
-        browser = SwcBrowserMapping[browser];
+    if (SwcMobileBrowserAliases[browser]) {
+        browser = SwcMobileBrowserAliases[browser];
     }
 
     // "11.0-12.0" --> "11.0"
@@ -107,21 +107,8 @@ function parseBrowserslistEntry(entry: string) {
     };
 }
 
-export interface BrowserslistToSwcOptions extends Omit<browserslist.Options, "path"> {
-    queries?: string | string[];
-}
-
-export function browserslistToSwc(options: BrowserslistToSwcOptions = {}) {
-    const {
-        queries,
-        ...browserlistsOptions
-    } = options;
-
-    // Will return the entries matching the "queries" prop is provided, otherwise,
-    // will load the closest ".browserslistrc" file.
-    const entries = browserslist(queries, browserlistsOptions);
-
-    const targets = entries.reduce((acc, x: string) => {
+export function createSwcTargetsFromBrowserslistEntries(entries: string[]) {
+    return entries.reduce((acc, x: string) => {
         const { browser, version } = parseBrowserslistEntry(x);
 
         // Exclude browsers that are not supported by SWC.
@@ -145,6 +132,24 @@ export function browserslistToSwc(options: BrowserslistToSwcOptions = {}) {
 
         return acc;
     }, {} as Record<keyof typeof SwcSupportedBrowsers, string>);
+}
 
-    return targets;
+export interface BrowserslistToSwcOptions extends Omit<browserslist.Options, "path"> {
+    queries?: string | string[];
+}
+
+export function browserslistToSwc(options: BrowserslistToSwcOptions = {}) {
+    const {
+        queries,
+        ...browserlistsOptions
+    } = options;
+
+    // Will return the entries matching the "queries" prop when provided, otherwise,
+    // the function will load the closest ".browserslistrc" file.
+    const entries = browserslist(queries, {
+        path: "./browserslistrc",
+        ...browserlistsOptions
+    });
+
+    return createSwcTargetsFromBrowserslistEntries(entries);
 }

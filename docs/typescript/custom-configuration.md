@@ -22,7 +22,8 @@ You can update a default rule value by defining the rule locally with its new va
     "extends": ["@workleap/typescript-configs/web-application"],
     "compilerOptions": {
         "strict": false
-    }
+    },
+    "exclude": ["dist", "node_modules"]
 }
 ```
 
@@ -46,7 +47,7 @@ If you are migrating an existing project and prefer to wait before moving to ESM
 
 ## Monorepo support
 
-If you are developing a monorepo solution and need to reference projects within the solution, you'll need to add [compilerOptions](https://www.typescriptlang.org/tsconfig#compilerOptions) to the projects' `tsconfig.json` files.
+If you are developing a monorepo solution and need to **reference projects within** the **solution**, you'll need to add [compilerOptions.paths](https://www.typescriptlang.org/tsconfig#compilerOptions) to the projects' `tsconfig.json` files.
 
 For example, given the following project structure:
 
@@ -72,9 +73,9 @@ workspace
 ├── tsconfig.json
 ```
 
-If the `packages/components` project is referencing the `packages/utils` project, and the `packages/app` project is referencing the `packages/components` project, you'll need to add the following `compilerOptions`:
+If the `packages/components` project is referencing the `packages/utils` project, and the `packages/app` project is referencing the `packages/components` project, you'll need to add the following `compilerOptions.paths`:
 
-```json packages/app/tsconfig.json
+```json !#4-7 packages/app/tsconfig.json
 {
     "extends": "@workleap/typescript-configs/web-application.json",
     "compilerOptions": {
@@ -82,18 +83,20 @@ If the `packages/components` project is referencing the `packages/utils` project
             "@sample/components": ["../components/index.ts"],
             "@sample/utils": ["../utils/index.ts"]
         }
-    }
+    },
+    "exclude": ["dist", "node_modules"]
 }
 ```
 
-```json packages/components/tsconfig.json
+```json !#4-6 packages/components/tsconfig.json
 {
     "extends": "@workleap/typescript-configs/library.json",
     "compilerOptions": {
         "paths": {
             "@sample/utils": ["../utils/index.ts"]
         }
-    }
+    },
+    "exclude": ["dist", "node_modules"]
 }
 ```
 

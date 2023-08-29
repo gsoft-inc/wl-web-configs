@@ -52,9 +52,9 @@ The shared configurations offered by `@workleap/swc-configs` includes the follow
 - ESM
 - ECMAScript features matching the provided `browsers`
 
-## A note about Rspack
+## Upcoming deprecations
 
-Somewhere in 2024, [we expect to migrate from webpack to Rspack](../webpack/default.md#a-note-about-rspack). Once the migration is completed, the SWC [development](configure-dev.md) and [production](configure-build.md) configurations will not be required anymore as [Rspack](https://www.rspack.dev/) offers out of the box support for [React](https://react.dev/) and [TypeScript](https://www.typescriptlang.org/). 
+Somewhere in 2024, [we expect to migrate from webpack to Rspack](../webpack/default.md#a-note-about-rspack). Once the migration is completed, the SWC [development](configure-dev.md) and [production](configure-build.md) configurations will not be used anymore as [Rspack](https://www.rspack.dev/) offers out of the box support for [React](https://react.dev/) and [TypeScript](https://www.typescriptlang.org/). 
 
 Still, the [Jest configuration](configure-jest.md) will continue to be available as there is no integration between Rspack and [Jest](https://jestjs.io/).
 

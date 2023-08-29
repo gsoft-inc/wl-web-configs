@@ -1,10 +1,8 @@
 import type { Config as SwcConfig } from "@swc/core";
-import { applyTransformers, type SwcConfigTransformer } from "./applyTransformers";
+import { applyTransformers, type SwcConfigTransformer } from "./applyTransformers.ts";
 
 export interface DefineDevConfigOptions {
-    // Any is also used for SWC "targets" type.
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    browsers: any;
+    targets: Record<string, string>;
     fastRefresh?: boolean;
     parser?: "ecmascript" | "typescript";
     transformers?: SwcConfigTransformer[];
@@ -12,7 +10,7 @@ export interface DefineDevConfigOptions {
 
 export function defineDevConfig(options: DefineDevConfigOptions) {
     const {
-        browsers,
+        targets,
         fastRefresh = false,
         parser = "typescript",
         transformers = []
@@ -53,8 +51,8 @@ export function defineDevConfig(options: DefineDevConfigOptions) {
             ignoreDynamic: true
         },
         env: {
-            // jsc.target is not provided because the provided browsers takes precedence.
-            targets: browsers
+            // jsc.target is not provided because the provided targets takes precedence.
+            targets
         }
     };
 
