@@ -31,7 +31,7 @@ test("when a matching plugin is found in the plugins array, remove the plugin", 
     removePlugin(config, matchConstructorName(Plugin2.name));
 
     expect(config.plugins?.length).toBe(2);
-    expect(config.plugins![1].constructor.name).toBe(Plugin3.name);
+    expect(config.plugins![1]!.constructor.name).toBe(Plugin3.name);
 });
 
 test("when no matching plugin is found, throw an error", () => {

@@ -117,6 +117,10 @@ function findModuleRulesRecursively(moduleRules: RuleSetRule[] | RuleSetUseItem[
                     if (x.use) {
                         findModuleRulesRecursively(x.use as RuleSetUseItem[], matcher, x.use as RuleSetUseItem[], matches);
                     } else if (x.oneOf) {
+                        // This error seems to have been introduced by either TS 5.2. or webpack 5.88.1 (https://github.com/webpack/webpack/releases/tag/v5.88.1),
+                        // I am not sure what changed thought.
+                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                        // @ts-ignore
                         findModuleRulesRecursively(x.oneOf, matcher, x.oneOf, matches);
                     }
                 }

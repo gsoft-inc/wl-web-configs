@@ -39,7 +39,7 @@ If you are migrating an existing project and prefer to wait before moving to ESM
 {
     "extends": ["@workleap/typescript-configs/web-application"],
     "compilerOptions": {
-        "module": "commonjs",
+        "module": "CommonJS",
         "moduleResolution": "bundler"
     }
 }

@@ -189,7 +189,7 @@ test("when fast refresh is enabled, add the fast refresh plugin", () => {
         swcConfig: defineSwcConfig({ targets: Targets })
     });
 
-    expect(result.plugins?.some(x => x.constructor.name === ReactRefreshWebpackPlugin.name)).toBeTruthy();
+    expect(result.plugins?.some(x => x!.constructor.name === ReactRefreshWebpackPlugin.name)).toBeTruthy();
 });
 
 test("when fast refresh is disabled, do not add the fast refresh plugin", () => {
@@ -198,7 +198,7 @@ test("when fast refresh is disabled, do not add the fast refresh plugin", () => 
         swcConfig: defineSwcConfig({ targets: Targets })
     });
 
-    expect(result.plugins?.some(x => x.constructor.name === ReactRefreshWebpackPlugin.name)).toBeFalsy();
+    expect(result.plugins?.some(x => x!.constructor.name === ReactRefreshWebpackPlugin.name)).toBeFalsy();
 });
 
 test("when fast refresh is enabled, enable swc fast refresh", () => {

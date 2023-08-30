@@ -1,11 +1,11 @@
 {
     "$schema": "https://json.schemastore.org/tsconfig",
     "compilerOptions": {
-        "moduleResolution": "nodenext",
         "allowImportingTsExtensions": true,
-        "module": "ESNext",
+        "moduleResolution": "NodeNext",
+        "module": "NodeNext",
         "target": "ESNext",
-        "lib": ["esnext"],
+        "lib": ["ESNext"],
 
         "isolatedModules": true,
         "allowSyntheticDefaultImports": true,

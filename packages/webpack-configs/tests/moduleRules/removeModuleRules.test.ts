@@ -54,7 +54,7 @@ test("when a matching module rule is found in a \"oneOf\" prop, remove the modul
     removeModuleRules(config, matchTest(/\.svg/i));
 
     expect((config.module?.rules![1] as RuleSetRule).oneOf!.length).toBe(1);
-    expect((config.module?.rules![1] as RuleSetRule).oneOf![0].type).toBe("asset/resource");
+    expect(((config.module?.rules![1] as RuleSetRule).oneOf![0] as RuleSetRule).type).toBe("asset/resource");
 });
 
 test("when a matching module rule is found in a \"use\" prop, remove the module rule", () => {
