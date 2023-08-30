@@ -15,12 +15,16 @@
     },
     "exports": {
         ".": {
-            "require": "./dist/index.js",
-            "import": "./dist/index.mjs",
-            "types": "./dist/index.d.mts"
+            "require": {
+                "default": "./dist/index.js",
+                "types": "./dist/index.d.ts"
+            },
+            "import": {
+                "default": "./dist/index.mjs",
+                "types": "./dist/index.d.mts"
+            }
         }
     },
-    "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
     "files": [
         "dist",
