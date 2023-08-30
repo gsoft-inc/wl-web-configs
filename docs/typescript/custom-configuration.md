@@ -13,9 +13,9 @@ If you are in the process of **migrating an existing project** to use `@workleap
 For a list of the rules included with the default shared configurations, refer to the configuration files in the following [folder](https://github.com/gsoft-inc/wl-web-configs/tree/main/packages/typescript-configs) on GitHub.
 !!!
 
-## Change a default rule value
+## Change a default field value
 
-You can update a default rule value by defining the rule locally with its new value:
+You can update a default field value by defining the field locally with its new value:
 
 ```json !#3-5 tsconfig.json
 {
@@ -43,9 +43,9 @@ If you are **migrating** an existing project and prefer to wait before moving to
 
 ## Monorepo support
 
-If you are developing a monorepo solution and need to **reference projects within** the **solution**, you'll need to add [compilerOptions.paths](https://www.typescriptlang.org/tsconfig#compilerOptions) to the projects' `tsconfig.json` files.
+If you are developing a monorepo solution and need to **reference projects within** the **workspace**, you'll need to define [paths](https://www.typescriptlang.org/tsconfig#compilerOptions) for every impacted project.
 
-For example, given the following project structure:
+Given the following workspace:
 
 ``` !#3,8,13
 workspace
