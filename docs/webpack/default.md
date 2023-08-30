@@ -26,7 +26,7 @@ npm create @workleap/project@latest <output-directory>
 +++
 !!!
 
-## Deprecation warning
+## A word about Rspack
 
 [Rspack](https://www.rspack.dev/) is a partial rewrite of [webpack](https://webpack.js.org/) in [Rust](https://foundation.rust-lang.org/) and will most likely be its successor once it's features complete and stable. Our goal is to migrate to Rspack somewhere in 2024 when [Module Federation](https://module-federation.io/) support will be available.
 

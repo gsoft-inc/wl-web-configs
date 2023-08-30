@@ -26,7 +26,7 @@ npm create @workleap/project@latest <output-directory>
 +++
 !!!
 
-## Deprecation warning
+## A word about Rspack
 
 Somewhere in 2024, [we expect to migrate from webpack to Rspack](../webpack/default.md#deprecation-warning). Once the migration is completed, the SWC [development](configure-dev.md) and [production](configure-build.md) configurations will not be used anymore as [Rspack](https://www.rspack.dev/) offers out of the box support for [React](https://react.dev/) and [TypeScript](https://www.typescriptlang.org/). 
 
