@@ -1,5 +1,11 @@
 # @workleap/typescript-configs
 
+## 3.0.1
+
+### Patch Changes
+
+- [#106](https://github.com/gsoft-inc/wl-web-configs/pull/106) [`a747302`](https://github.com/gsoft-inc/wl-web-configs/commit/a74730233d78c71e45bcd8911a706630d359a67c) Thanks [@patricklafrance](https://github.com/patricklafrance)! - Fixed SWC targets and support TS 5.2
+
 ## 3.0.0
 
 ### Major Changes
