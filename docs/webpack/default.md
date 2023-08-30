@@ -67,7 +67,7 @@ The shared configurations offered by `@workleap/webpack-configs` includes the fo
 
 ### Target environment
 
-As per the [PostCSS](../postcss/default.md) and [SWC](../swc/default.md) configurations
+As per the [PostCSS](../postcss/default.md) and [SWC](../swc/default.md) configurations.
 
 ## Getting started
 
