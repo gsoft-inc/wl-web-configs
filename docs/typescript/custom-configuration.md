@@ -27,23 +27,19 @@ You can update a default rule value by defining the rule locally with its new va
 }
 ```
 
-<!-- I know commented code/text is bad, I will go back later to this in my next PR. The goal will be to provide a configuration for
-     project using the "import" keyword but without specifying file extensions.
- -->
+## Non ESM projects
 
-<!-- ## CommonJS
-
-If you are migrating an existing project and prefer to wait before moving to ESM, add the following custom configurations:
+If you are **migrating** an existing project and prefer to wait before moving to ESM, add the following custom configurations to allow `import` statements without specifying a file extension:
 
 ```json !#3-6 tsconfig.json
 {
     "extends": ["@workleap/typescript-configs/web-application"],
     "compilerOptions": {
-        "module": "CommonJS",
-        "moduleResolution": "bundler"
+        "moduleResolution": "Bundler",
+        "module": "ESNext",
     }
 }
-``` -->
+```
 
 ## Monorepo support
 

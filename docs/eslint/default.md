@@ -42,6 +42,14 @@ To improve the experience, rather than delegating the composition of the shared 
 
 This way, it's pretty straightforward for the consumer to configure ESLint as it only involves **extending** a **single** shared **configuration** per project and it allows for more **accurate defaults** and **assumptions** about the target environment. For advanced users in need of flexibility, the underlying configuration pieces are [also available](advanced-composition.md).
 
+### Target environment
+
+`@workleap/eslint-plugin` by project type shared configurations targets the following environment:
+
+- ESM / CommonJS
+- ESNext
+- Node
+
 ### Available configurations
 
 | Name | Description |
@@ -50,14 +58,6 @@ This way, it's pretty straightforward for the consumer to configure ESLint as it
 | :icon-mark-github: [react-library](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/by-project-type/react-library.ts){ target="_blank" } | For TypeScript libraries developed **with** [React](https://react.dev/). |
 | :icon-mark-github: [typescript-library](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/by-project-type/typescript-library.ts){ target="_blank" } | For TypeScript libraries developed **without** [React](https://react.dev/). |
 | :icon-mark-github: [monorepo-workspace](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/by-project-type/monorepo-workspace.ts){ target="_blank" } | For the workspace configuration of a monorepo solution. |
-
-### Target environment
-
-The provided shared configurations targets the following environment:
-
-- ESM / CommonJS
-- ESNext
-- Node
 
 ## Prettier
 
@@ -77,6 +77,6 @@ If you are migrating an **existing** polyrepo solution (single project per repos
 
 Once configured, to understand how to adapt `@workleap/eslint-plugin` default configurations to your codebase while you are completing the migration, have a look at the [custom configuration](custom-configuration.md) page.
 
-### Advanced use cases
+### Advanced configuration
 
-If you are encountering a challenging use case making impractical the _per project type_ configurations offered by `@workleap/eslint-plugin`, have a look at the [advanced composition](advanced-composition.md) page for documentation about how to compose the underlying configuration pieces.
+If you are encountering a challenging use case making impractical the [per project type configurations](#available-configurations) offered by `@workleap/eslint-plugin`, have a look at the [advanced composition](advanced-composition.md) page for documentation about how to compose the underlying configuration pieces.
