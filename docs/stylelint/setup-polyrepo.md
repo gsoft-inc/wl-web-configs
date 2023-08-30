@@ -15,7 +15,7 @@ Open a terminal at the root of the solution and install the following packages:
 
 +++ pnpm
 ```bash
-pnpm add -D @workleap/stylelint-configs prettier
+pnpm add -D @workleap/stylelint-configs stylelint prettier
 ```
 +++ yarn
 ```bash
