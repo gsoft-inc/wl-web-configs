@@ -79,8 +79,9 @@ Then, open the newly created file and paste the following ignore rules:
 ```bash .eslintignore
 **/dist/*
 node_modules
-pnpm-lock.yaml
 *.md
+*.yml
+*.yaml
 ```
 
 ## 4. Configure indent style

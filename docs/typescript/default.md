@@ -53,9 +53,9 @@ If you are in the process of migrating an existing project to `@workleap/typescr
 
 | Name | Description |
 | ---  | --- |
-| :icon-mark-github: [web-application](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/typescript-configs/web-application.json){ target="_blank" } | For web applications developed with [React](https://react.dev/). |
-| :icon-mark-github: [library](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/typescript-configs/library.json){ target="_blank" } | For library project developed with or without [React](https://react.dev/). |
-| :icon-mark-github: [monorepo-workspace](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/typescript-configs/monorepo-workspace.json){ target="_blank" } | For the workspace configuration of a monorepo solution. |
+| :icon-mark-github: [web-application](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/typescript-configs/web-application.json) | For web applications developed with [React](https://react.dev/). |
+| :icon-mark-github: [library](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/typescript-configs/library.json) | For library project developed with or without [React](https://react.dev/). |
+| :icon-mark-github: [monorepo-workspace](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/typescript-configs/monorepo-workspace.json) | For the workspace configuration of a monorepo solution. |
 
 ## Getting started
 

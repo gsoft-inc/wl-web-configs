@@ -32,6 +32,18 @@ To install the project, open a terminal at the root of the workspace and execute
 pnpm install
 ```
 
+### Setup Retype
+
+[Retype](https://retype.com/) is the documentation platform that `workleap/web-configs` is using for the documentation. As this project is leveraging a few [Pro features](https://retype.com/pro/) of Retype, you must first setup your [Retype wallet](https://retype.com/guides/cli/#retype-wallet).
+
+To do so, first make sure that you retrieve the Retype license from your Vault (or ask IT).
+
+Then, open a terminal at the root of the workspace and execute the following command:
+
+```bash
+npx retype wallet --add <your-license-key-here>
+```
+
 ## Release the packages
 
 When you are ready to release the packages, you must follow the following steps:
@@ -70,7 +82,7 @@ From the project root, you have access to many commands the main ones are:
 
 ### dev-sample
 
-Build the sample application for development and start the dev servers.
+Build the sample application for development and start the dev server.
 
 ```bash
 pnpm dev-sample
@@ -98,6 +110,14 @@ Build the sample application for deployment and start a local web server to serv
 
 ```bash
 pnpm serve-sample
+```
+
+### dev-docs
+
+Build the [Retype](https://retype.com/) documentation for development and start the Retype dev server. If you are experiencing issue with the license, refer to the [setup Retype section](#setup-retype).
+
+```bash
+pnpm dev-docs
 ```
 
 ### test
@@ -162,15 +182,21 @@ We use [GitHub Actions]() for this repository.
 
 The configuration is in the `.github/workflows` folder and the build results available [here](https://github.com/gsoft-inc/wl-web-configs/actions).
 
-We currently have 2 builds configured:
+We currently have 3 builds configured:
 
 ### Changesets
 
-This build run on a push on the `main` branch, and if theirs a file present in the `.changeset` folder, will publish the new package version on npm.
+This action run on a push on the `main` branch, and if theirs a file present in the `.changeset` folder, will publish the new package version on npm.
 
 ### CI
 
-This build will trigger when a commit is done in a PR to `main` or after a push to `main` and will run `build`, `lint` and `test` commands on the source code.
+This action will trigger when a commit is done in a PR to `main` or after a push to `main`. The action will run `build`, `lint` and `test` commands on the source code.
+
+### Retype
+
+This action will trigger when a commit is done in a PR to `main` or after a push to `main`. The action will generate the documentation website into the `retype` branch. This repository [Github Pages](https://github.com/gsoft-inc/wl-web-configs/settings/pages) is configured to automatically deploy the website from the `retype` branch.
+
+If you are having issue with the Retype license, make sure the `RETYPE_API_KEY` Github secret contains a valid Retype license.
 
 ## Add a new package to the monorepo
 
