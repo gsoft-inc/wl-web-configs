@@ -10,7 +10,7 @@ const config: Linter.Config = {
         ecmaVersion: "latest"
     },
     env: {
-        es6: true,
+        es2024: true,
         node: true,
         commonjs: true
     },

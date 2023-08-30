@@ -9,7 +9,7 @@ expanded: true
 
 !!!warning Before you continue...
 
-The preferred way for using these [TypeScript](https://www.typescriptlang.org/) shared configurations is **not** by installing them manually, but rather by **scaffolding** your application with Workleap's [foundry-cli](https://github.com/gsoft-inc/wl-foundry-cli).
+The preferred way for using `@workleap/typescript-configs` is **not** by installing the library manually, but rather by **scaffolding** your application with Workleap's [foundry-cli](https://github.com/gsoft-inc/wl-foundry-cli).
 
 +++ pnpm
 ```bash
@@ -38,20 +38,24 @@ This way, it's pretty straightforward for the consumer to configure TypeScript, 
 
 ### Linting only
 
-The shared configurations offered by `@workleap/typescript-configs` exclusively focus on code linting, as [tsup](../tsup/default.md) is handling the transpilation process.
+`@workleap/typescript-configs` by project type shared configurations exclusively focus on code linting, as [tsup](../tsup/default.md) is handling the transpilation process.
+
+### Target environment
+
+`@workleap/typescript-configs` by project type shared configurations targets the following environment:
+
+- ESM
+- ESNext
+
+If you are in the process of migrating an existing project to `@workleap/typescript-configs`, and would rather delay transitioning to ESM, refer to the [custom configuration](custom-configuration.md#non-esm-projects) page for information about how to support non ESM projects.
 
 ### Available configurations
 
 | Name | Description |
 | ---  | --- |
-| :icon-mark-github: [web-application](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/typescript-configs/web-application.json){ target="_blank" } | For web applications developed with [React](https://react.dev/). |
-| :icon-mark-github: [library](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/typescript-configs/library.json){ target="_blank" } | For library project developed with or without [React](https://react.dev/). |
-| :icon-mark-github: [monorepo-workspace](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/typescript-configs/monorepo-workspace.json){ target="_blank" } | For the workspace configuration of a monorepo solution. |
-
-## Target environment
-
-- ESM
-- ESNext
+| :icon-mark-github: [web-application](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/typescript-configs/web-application.json) | For web applications developed with [React](https://react.dev/). |
+| :icon-mark-github: [library](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/typescript-configs/library.json) | For library project developed with or without [React](https://react.dev/). |
+| :icon-mark-github: [monorepo-workspace](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/typescript-configs/monorepo-workspace.json) | For the workspace configuration of a monorepo solution. |
 
 ## Getting started
 
@@ -67,6 +71,6 @@ If you are migrating an **existing** polyrepo solution (single project per repos
 
 Once configured, to understand how to adapt `@workleap/typescript-configs` default configurations to your codebase while you are completing the migration, have a look at the [custom configuration](custom-configuration.md) page.
 
-### Advanced use cases
+### Advanced configuration
 
-If you are encountering a challenging use case making impractical the _per project type_ configurations offered by `@workleap/typescript-configs`, have a look at the [advanced composition](advanced-composition.md) page for documentation about how to compose the underlying configuration pieces of this library.
+If you are encountering a challenging use case making impractical the [per project type configurations](#available-configurations) offered by `@workleap/typescript-configs`, have a look at the [advanced composition](advanced-composition.md) page for documentation about how to compose the underlying configuration pieces of this library.

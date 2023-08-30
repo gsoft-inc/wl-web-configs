@@ -41,24 +41,63 @@ web-project
 
 Then, open the newly created file and export the [SWC](https://swc.rs/) configuration by using the `defineDevConfig(options)` function:
 
-```js !#6-8 swc.dev.js
+```js !#5-7 swc.dev.js
 // @ts-check
 
-import { defineDevConfig } from "@workleap/swc-configs";
-import browsers from "@workleap/browserslist-config";
+import { browserslistToSwc, defineDevConfig } from "@workleap/swc-configs";
 
 export default defineDevConfig({
-    browsers
+    targets: browserslistToSwc()
 });
 ```
 
-### `browsers`
+### `targets`
 
-In the previous code sample, the `defineDevConfig(options)` function receive a [Browserslist](https://browsersl.ist/) configuration object through the mandatory `browsers` option.
+In the previous code sample, the `defineDevConfig(options)` function receives a list of **minimal browser versions to support** through the mandatory `targets` option.
 
-The expected behavior would be for [SWC](https://swc.rs/) to load the supported browser versions from the closest `.browserslistrc` [configuration file](https://github.com/browserslist/browserslist#browserslistrc), but there is currently an [issue](https://github.com/swc-project/swc/issues/3365) preventing SWC from doing so when the `.browserslistrc` configuration is extended by a shared configuration from a package.
+The expected behavior for the supported browsers would be for [SWC](https://swc.rs/) to automatically load the minimal browser versions from the closest `.browserslistrc` [configuration file](https://github.com/browserslist/browserslist#browserslistrc). However, there is currently an [issue](https://github.com/swc-project/swc/issues/3365) preventing SWC from doing so when the configuration file include a query referencing an external [Browserslist](https://browsersl.ist/) configuration:
 
-Therefore, `@workleap/swc-configs` choosed to **delegate** the loading of the Browserslist configuration **to the consumer** by making the `browsers` option required.
+```.browserslistrc
+extends @workleap/browserslist-config
+```
+
+Therefore, `@workleap/swc-configs` has chosen to **delegate** the loading of the Browserslist configuration **to the consumer** by making the `targets` option required.
+
+### `browserslistToSwc`
+
+To help consumers provide SWC [targets](https://swc.rs/docs/configuration/supported-browsers#targets) from a [Browserslist](https://browsersl.ist/) configuration, `@workleap/swc-configs` offers the `browserslistToSwc(options)` utility function.
+
+This function can either transform an array of Browserslist [queries](https://github.com/browserslist/browserslist#queries) to SWC targets:
+
+```js !#6 swc.dev.js
+// @ts-check
+
+import { browserslistToSwc, defineDevConfig } from "@workleap/swc-configs";
+
+export default defineDevConfig({
+    targets: browserslistToSwc({ queries: ["extends @workleap/browserslist-config"] })
+});
+```
+
+Or load the closest `.browserslistrc` configuration file and convert the queries into SWC targets:
+
+```.browserslistrc
+extends @workleap/browserslist-config
+```
+
+```js !#6 swc.dev.js
+// @ts-check
+
+import { browserslistToSwc, defineDevConfig } from "@workleap/swc-configs";
+
+export default defineDevConfig({
+    targets: browserslistToSwc()
+});
+```
+
+The `browserslistToSwc(options)` utility function accepts any option supported by Browserslist [JS API](https://github.com/browserslist/browserslist#js-api) in addition to a `queries` option:
+
+- `queries`: `string | string[]`
 
 ## 3. Set predefined options
 
@@ -71,15 +110,14 @@ The `defineDevConfig(options)` function can be used as shown in the previous exa
 
 Whether or not to enable [Fast Refresh](https://www.npmjs.com/package/react-refresh).
 
-```js !#7 swc.dev.js
+```js !#6 swc.dev.js
 // @ts-check
 
-import { defineDevConfig } from "@workleap/swc-configs";
-import browsers from "@workleap/browserslist-config";
+import { browserslistToSwc, defineDevConfig } from "@workleap/swc-configs";
 
 export default defineDevConfig({
     fastRefresh: true,
-    browsers
+    targets: browserslistToSwc()
 });
 ```
 
@@ -90,15 +128,14 @@ export default defineDevConfig({
 
 Whether SWC should expect to parse JavaScript or [TypeScript](https://www.typescriptlang.org/) code.
 
-```js !#7 swc.dev.js
+```js !#6 swc.dev.js
 // @ts-check
 
-import { defineDevConfig } from "@workleap/swc-configs";
-import browsers from "@workleap/browserslist-config";
+import { browserslistToSwc, defineDevConfig } from "@workleap/swc-configs";
 
 export default defineDevConfig({
     parser: "ecmascript",
-    browsers
+    targets: browserslistToSwc()
 });
 ```
 
@@ -121,21 +158,20 @@ To view the default development configuration of `@workleap/swc-configs`, have a
 transformer(config: SwcConfig, context: SwcConfigTransformerContext) => SwcConfig
 ```
 
-```js !#13 swc.dev.js
+```js !#12 swc.dev.js
 // @ts-check
 
-import { defineDevConfig, SwcConfigTransformer, SwcConfig } from "@workleap/swc-configs";
-import browsers from "@workleap/browserslist-config";
+import { browserslistToSwc, defineDevConfig } from "@workleap/swc-configs";
 
-const disableReactBuiltins: SwcConfigTransformer = (config: SwcConfig) => {
+function disableReactBuiltins(config) {
     config.jsc.transform.react.useBuiltins = false;
 
     return config;
-};
+}
 
 export default defineDevConfig({
     transformers: [disableReactBuiltins],
-    browsers
+    targets: browserslistToSwc()
 });
 ```
 

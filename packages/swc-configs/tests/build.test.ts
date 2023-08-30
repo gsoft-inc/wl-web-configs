@@ -2,19 +2,21 @@ import type { EsParserConfig, Config as SwcConfig, TsParserConfig } from "@swc/c
 import type { SwcConfigTransformer } from "../src/applyTransformers.ts";
 import { defineBuildConfig } from "../src/build.ts";
 
-const Browsers = ["last 2 versions"];
+const Targets = {
+    chrome: "116"
+};
 
 test("provided browsers are set as \"env.targets\"", () => {
     const result = defineBuildConfig({
-        browsers: Browsers
+        targets: Targets
     });
 
-    expect(result.env?.targets).toBe(Browsers);
+    expect(result.env?.targets).toBe(Targets);
 });
 
 test("when parser is \"ecmascript\", the configuration parser is ecmascript", () => {
     const result = defineBuildConfig({
-        browsers: Browsers,
+        targets: Targets,
         parser: "ecmascript"
     });
 
@@ -23,7 +25,7 @@ test("when parser is \"ecmascript\", the configuration parser is ecmascript", ()
 
 test("when parser is \"ecmascript\", jsx parsing is enabled", () => {
     const result = defineBuildConfig({
-        browsers: Browsers,
+        targets: Targets,
         parser: "ecmascript"
     });
 
@@ -32,7 +34,7 @@ test("when parser is \"ecmascript\", jsx parsing is enabled", () => {
 
 test("when parser is \"typescript\", the configuration parser is typescript", () => {
     const result = defineBuildConfig({
-        browsers: Browsers,
+        targets: Targets,
         parser: "typescript"
     });
 
@@ -41,7 +43,7 @@ test("when parser is \"typescript\", the configuration parser is typescript", ()
 
 test("when parser is \"typescript\", tsx parsing is enabled", () => {
     const result = defineBuildConfig({
-        browsers: Browsers,
+        targets: Targets,
         parser: "typescript"
     });
 
@@ -56,7 +58,7 @@ test("when a transformer is provided, the transformer is applied on the swc conf
     };
 
     const result = defineBuildConfig({
-        browsers: Browsers,
+        targets: Targets,
         transformers: [minifyTransformer]
     });
 
@@ -77,7 +79,7 @@ test("when multiple transformers are provided, all the transformers are applied 
     };
 
     const result = defineBuildConfig({
-        browsers: Browsers,
+        targets: Targets,
         transformers: [minifyTransformer, sourceMapsTransformer]
     });
 
@@ -89,7 +91,7 @@ test("transformers context environment is \"build\"", () => {
     const mockTransformer = jest.fn();
 
     defineBuildConfig({
-        browsers: Browsers,
+        targets: Targets,
         transformers: [mockTransformer]
     });
 

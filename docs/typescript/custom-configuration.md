@@ -22,21 +22,77 @@ You can update a default rule value by defining the rule locally with its new va
     "extends": ["@workleap/typescript-configs/web-application"],
     "compilerOptions": {
         "strict": false
-    }
+    },
+    "exclude": ["dist", "node_modules"]
 }
 ```
 
-## CommonJS
+## Non ESM projects
 
-If you are migrating an existing project and prefer to wait before moving to ESM, add the following custom configurations:
+If you are **migrating** an existing project and prefer to wait before moving to ESM, add the following custom configurations to allow `import` statements without specifying a file extension:
 
 ```json !#3-6 tsconfig.json
 {
     "extends": ["@workleap/typescript-configs/web-application"],
     "compilerOptions": {
-        "module": "commonjs",
-        "moduleResolution": "bundler"
+        "moduleResolution": "Bundler",
+        "module": "ESNext",
     }
+}
+```
+
+## Monorepo support
+
+If you are developing a monorepo solution and need to **reference projects within** the **solution**, you'll need to add [compilerOptions.paths](https://www.typescriptlang.org/tsconfig#compilerOptions) to the projects' `tsconfig.json` files.
+
+For example, given the following project structure:
+
+``` !#3,8,13
+workspace
+├── packages
+├──── app
+├────── src
+├──────── ...
+├────── package.json
+├────── tsconfig.json
+├──── components (@sample/components)
+├────── src
+├──────── index.ts
+├────── package.json
+├────── tsconfig.json
+├──── utils (@sample/utils)
+├────── src
+├──────── index.ts
+├────── package.json
+├────── tsconfig.json
+├── package.json
+├── tsconfig.json
+```
+
+If the `packages/components` project is referencing the `packages/utils` project, and the `packages/app` project is referencing the `packages/components` project, you'll need to add the following `compilerOptions.paths`:
+
+```json !#4-7 packages/app/tsconfig.json
+{
+    "extends": "@workleap/typescript-configs/web-application.json",
+    "compilerOptions": {
+        "paths": {
+            "@sample/components": ["../components/index.ts"],
+            "@sample/utils": ["../utils/index.ts"]
+        }
+    },
+    "exclude": ["dist", "node_modules"]
+}
+```
+
+```json !#4-6 packages/components/tsconfig.json
+{
+    "extends": "@workleap/typescript-configs/library.json",
+    "compilerOptions": {
+        "paths": {
+            "@sample/utils": ["../utils/index.ts"]
+        }
+    },
+    "exclude": ["dist", "node_modules"]
 }
 ```
 

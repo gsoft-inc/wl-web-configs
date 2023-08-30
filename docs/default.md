@@ -51,18 +51,22 @@ We hope that introducing CLI with a collection of configuration libraries will f
 
 While developing the configuration libraries, we kept one guiding principle in mind, **no locked in** :heart::v:. We truly hope that the default configurations will satisfy your application needs, but if it doesn't, there will always be an easy way to extend or override the default configuration.
 
+## Target environment
+
+The majority of the shared tooling configurations targets [ESM](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) and the latest [ECMAScript](https://en.wikipedia.org/wiki/ECMAScript) version (ESNext). If you are in the process of migrating an existing project to `workleap/web-configs`, and would rather delay transitioning to ESM, have a look at the _Target environment_ section of each tool for additional information about how to support **non ESM compliant** solutions.
+
 ## Supported tools
 
 | Name | NPM | Documentation |
 | --- | --- | --- |
-| ![](./static/browserslist.svg){ class="h-5 w-5 mr-2 -mt-1" }[Browserslist](https://browsersl.ist/){ target="_blank" } | [![npm version](https://img.shields.io/npm/v/@workleap/browserslist-config)](https://www.npmjs.com/package/@workleap/browserslist-config){ target="_blank" } | [Getting started](browserslist/default.md) |
-| ![](./static/eslint.svg){ class="h-5 w-5 mr-2 -mt-1" }[ESLint](https://eslint.org/){ target="_blank" } | [![npm version](https://img.shields.io/npm/v/@workleap/eslint-plugin)](https://www.npmjs.com/package/@workleap/eslint-plugin){ target="_blank" } | [Getting started](eslint/default.md) |
-| ![](./static/postcss.svg){ class="h-5 w-5 mr-2 -mt-1" }[PostCSS](https://postcss.org/){ target="_blank" } | [![npm version](https://img.shields.io/npm/v/@workleap/postcss-configs)](https://www.npmjs.com/package/@workleap/postcss-configs){ target="_blank" } | [Getting started](postcss/default.md) |
-| ![](./static/stylelint.svg){ class="h-5 w-5 mr-2 -mt-1" }[Stylelint](https://stylelint.io/){ target="_blank" } | [![npm version](https://img.shields.io/npm/v/@workleap/stylelint-configs)](https://www.npmjs.com/package/@workleap/stylelint-configs){ target="_blank" } | [Getting started](stylelint/default.md) |
-| ![](./static/swc.svg){ class="h-5 w-5 mr-2 -mt-1" }[SWC](https://swc.rs/){ target="_blank" } | [![npm version](https://img.shields.io/npm/v/@workleap/swc-configs)](https://www.npmjs.com/package/@workleap/swc-configs){ target="_blank" } | [Getting started](swc/default.md) |
-| ![](./static/tsup.svg){ class="h-5 w-5 mr-2 -mt-1" }[tsup](https://tsup.egoist.dev/){ target="_blank" } | [![npm version](https://img.shields.io/npm/v/@workleap/tsup-configs)](https://www.npmjs.com/package/@workleap/tsup-configs){ target="_blank" } | [Getting started](tsup/default.md) |
-| ![](./static/typescript.svg){ class="h-5 w-5 mr-2 -mt-1" }[Typescript](https://www.typescriptlang.org/){ target="_blank" } | [![npm version](https://img.shields.io/npm/v/@workleap/typescript-configs)](https://www.npmjs.com/package/@workleap/typescript-configs){ target="_blank" } | [Getting started](typescript/default.md) |
-| ![](./static/webpack.svg){ class="h-5 w-5 mr-2 -mt-1" }[webpack](https://webpack.js.org/){ target="_blank" } | [![npm version](https://img.shields.io/npm/v/@workleap/webpack-configs)](https://www.npmjs.com/package/@workleap/webpack-configs){ target="_blank" } | [Getting started](webpack/default.md) |
+| ![](./static/browserslist.svg){ class="h-5 w-5 mr-2 -mt-1" }[Browserslist](https://browsersl.ist/) | [![npm version](https://img.shields.io/npm/v/@workleap/browserslist-config)](https://www.npmjs.com/package/@workleap/browserslist-config) | [Getting started](browserslist/default.md) |
+| ![](./static/eslint.svg){ class="h-5 w-5 mr-2 -mt-1" }[ESLint](https://eslint.org/) | [![npm version](https://img.shields.io/npm/v/@workleap/eslint-plugin)](https://www.npmjs.com/package/@workleap/eslint-plugin) | [Getting started](eslint/default.md) |
+| ![](./static/postcss.svg){ class="h-5 w-5 mr-2 -mt-1" }[PostCSS](https://postcss.org/) | [![npm version](https://img.shields.io/npm/v/@workleap/postcss-configs)](https://www.npmjs.com/package/@workleap/postcss-configs) | [Getting started](postcss/default.md) |
+| ![](./static/stylelint.svg){ class="h-5 w-5 mr-2 -mt-1" }[Stylelint](https://stylelint.io/) | [![npm version](https://img.shields.io/npm/v/@workleap/stylelint-configs)](https://www.npmjs.com/package/@workleap/stylelint-configs) | [Getting started](stylelint/default.md) |
+| ![](./static/swc.svg){ class="h-5 w-5 mr-2 -mt-1" }[SWC](https://swc.rs/) | [![npm version](https://img.shields.io/npm/v/@workleap/swc-configs)](https://www.npmjs.com/package/@workleap/swc-configs) | [Getting started](swc/default.md) |
+| ![](./static/tsup.svg){ class="h-5 w-5 mr-2 -mt-1" }[tsup](https://tsup.egoist.dev/) | [![npm version](https://img.shields.io/npm/v/@workleap/tsup-configs)](https://www.npmjs.com/package/@workleap/tsup-configs) | [Getting started](tsup/default.md) |
+| ![](./static/typescript.svg){ class="h-5 w-5 mr-2 -mt-1" }[Typescript](https://www.typescriptlang.org/) | [![npm version](https://img.shields.io/npm/v/@workleap/typescript-configs)](https://www.npmjs.com/package/@workleap/typescript-configs) | [Getting started](typescript/default.md) |
+| ![](./static/webpack.svg){ class="h-5 w-5 mr-2 -mt-1" }[webpack](https://webpack.js.org/) | [![npm version](https://img.shields.io/npm/v/@workleap/webpack-configs)](https://www.npmjs.com/package/@workleap/webpack-configs) | [Getting started](webpack/default.md) |
 
 
 

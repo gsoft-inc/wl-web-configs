@@ -12,13 +12,13 @@ If the default [by project type configurations](default.md/#available-configurat
 
 | Name | Description |
 | ---  | --- |
-| :icon-mark-github: [core](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/core.ts){ target="_blank" } | Basic rules shared by every configuration. |
-| :icon-mark-github: [typescript](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/typescript.ts){ target="_blank" } | Rules for [TypeScript](https://www.typescriptlang.org/) files. |
-| :icon-mark-github: [react](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/react.ts){ target="_blank" } | Rules for [React](https://react.dev/) files. |
-| :icon-mark-github: [jest](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/jest.ts){ target="_blank" } | Rules for [Jest](https://jestjs.io/) files. |
-| :icon-mark-github: [testing-library](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/testing-library.ts){ target="_blank" } | Rules for Jest files using [testing-library](https://testing-library.com/). |
-| :icon-mark-github: [storybook](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/storybook.ts){ target="_blank" } | Rules for [Storybook](https://storybook.js.org/) story files. |
-| :icon-mark-github: [mdx](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/mdx.ts){ target="_blank" } | Rules for [MDX](https://mdxjs.com/) files (used for Storybook MDX stories). |
+| :icon-mark-github: [core](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/core.ts) | Basic rules shared by every configuration. |
+| :icon-mark-github: [typescript](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/typescript.ts) | Rules for [TypeScript](https://www.typescriptlang.org/) files. |
+| :icon-mark-github: [react](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/react.ts) | Rules for [React](https://react.dev/) files. |
+| :icon-mark-github: [jest](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/jest.ts) | Rules for [Jest](https://jestjs.io/) files. |
+| :icon-mark-github: [testing-library](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/testing-library.ts) | Rules for Jest files using [testing-library](https://testing-library.com/). |
+| :icon-mark-github: [storybook](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/storybook.ts) | Rules for [Storybook](https://storybook.js.org/) story files. |
+| :icon-mark-github: [mdx](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/mdx.ts) | Rules for [MDX](https://mdxjs.com/) files (used for Storybook MDX stories). |
 
 ## Compose a configuration
 

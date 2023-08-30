@@ -16,7 +16,7 @@ const config: Linter.Config = {
                 }
             },
             env: {
-                es6: true,
+                es2024: true,
                 node: true,
                 browser: true,
                 commonjs: true

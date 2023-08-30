@@ -1,5 +1,5 @@
 import type { Config as SwcConfig } from "@swc/core";
-import { applyTransformers, type SwcConfigTransformer } from "./applyTransformers";
+import { applyTransformers, type SwcConfigTransformer } from "./applyTransformers.ts";
 
 export interface DefineJestConfigOptions {
     react?: boolean;

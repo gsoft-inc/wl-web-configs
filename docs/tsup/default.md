@@ -9,7 +9,7 @@ expanded: true
 
 !!!warning Before you continue...
 
-The preferred way for using these [tsup](https://tsup.egoist.dev/) shared configurations is **not** by installing them manually, but rather by **scaffolding** your application with Workleap's [foundry-cli](https://github.com/gsoft-inc/wl-foundry-cli).
+The preferred way for using `@workleap/tsup-configs` is **not** by installing the library manually, but rather by **scaffolding** your application with Workleap's [foundry-cli](https://github.com/gsoft-inc/wl-foundry-cli).
 
 +++ pnpm
 ```bash
@@ -49,7 +49,7 @@ The shared configurations offered by `@workleap/tsup-configs` includes the follo
 
 - Output to `/dist`
 
-## Target environment
+### Target environment
 
 - ESM
 - ESNext

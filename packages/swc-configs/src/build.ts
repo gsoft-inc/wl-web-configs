@@ -1,17 +1,15 @@
 import type { Config as SwcConfig } from "@swc/core";
-import { applyTransformers, type SwcConfigTransformer } from "./applyTransformers";
+import { applyTransformers, type SwcConfigTransformer } from "./applyTransformers.ts";
 
 export interface DefineBuildConfigOptions {
-    // Any is also used for SWC "targets" type.
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    browsers: any;
+    targets: Record<string, string>;
     parser?: "ecmascript" | "typescript";
     transformers?: SwcConfigTransformer[];
 }
 
 export function defineBuildConfig(options: DefineBuildConfigOptions) {
     const {
-        browsers,
+        targets,
         parser = "typescript",
         transformers = []
     } = options;
@@ -27,8 +25,6 @@ export function defineBuildConfig(options: DefineBuildConfigOptions) {
                     syntax: "typescript",
                     tsx: true
                 },
-            // The output environment that the code will be compiled for.
-            target: "esnext",
             // View https://swc.rs/docs/configuration/minification for options.
             minify: {
                 compress: true,
@@ -55,7 +51,8 @@ export function defineBuildConfig(options: DefineBuildConfigOptions) {
             ignoreDynamic: true
         },
         env: {
-            targets: browsers
+            // jsc.target is not provided because the provided targets takes precedence.
+            targets
         }
     };
 

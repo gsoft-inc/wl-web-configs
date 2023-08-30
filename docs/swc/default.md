@@ -9,7 +9,7 @@ expanded: true
 
 !!!warning Before you continue...
 
-The preferred way for using these [SWC](https://swc.rs/) shared configurations are **not** by installing them manually, but rather by **scaffolding** your application with Workleap's [foundry-cli](https://github.com/gsoft-inc/wl-foundry-cli).
+The preferred way for using `@workleap/swc-configs` is **not** by installing the library manually, but rather by **scaffolding** your application with Workleap's [foundry-cli](https://github.com/gsoft-inc/wl-foundry-cli).
 
 +++ pnpm
 ```bash
@@ -26,11 +26,11 @@ npm create @workleap/project@latest <output-directory>
 +++
 !!!
 
-## A note about Rspack
+## A word about Rspack
 
-Somewhere in 2024, [we expect to migrate from webpack to Rspack](../webpack/default.md#a-note-about-rspack). Once the migration is completed, the SWC [development](configure-dev.md) and [production](configure-build.md) configurations will not be required anymore as [Rspack](https://www.rspack.dev/) offers out of the box support for [React](https://react.dev/) and [TypeScript](https://www.typescriptlang.org/). 
+Somewhere in 2024, [we expect to migrate from webpack to Rspack](../webpack/default.md#a-word-about-rspack). Once the migration is completed, the SWC [development](configure-dev.md) and [production](configure-build.md) configurations will not be used anymore as [Rspack](https://www.rspack.dev/) offers out of the box support for [React](https://react.dev/) and [TypeScript](https://www.typescriptlang.org/). 
 
-Still, the [Jest configuration](configure-jest.md) will continue to be available as there is no integration between Rspack and [Jest](https://jestjs.io/).
+Meanwhile, you can **confidently start a new project with these SWC configurations** as the migration process to Rspack is expected to be seamless.
 
 ## Features
 
@@ -53,11 +53,11 @@ The shared configurations offered by `@workleap/swc-configs` includes the follow
 
 - Minification
 
-## Target environment
+### Target environment
 
 - ESM
-- ESNext
+- ECMAScript features matching the provided `browsers`
 
 ## Getting started
 
-To get started, follow the quick start guide to configure SWC for either a [development environment](configure-dev.md), a [production environment](configure-build.md) or to run [Jest environment](configure-jest.md).
+To get started, follow the quick start guide to configure SWC for either a [development environment](configure-dev.md), a [production environment](configure-build.md) or to run [Jest tests](configure-jest.md).
