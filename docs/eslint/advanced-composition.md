@@ -32,7 +32,10 @@ To extend the configuration with a single piece:
 {
     "$schema": "https://json.schemastore.org/eslintrc",
     "root": true,
-    "extends": "plugin:@workleap/typescript"
+    "extends": "plugin:@workleap/typescript",
+    "rules": {
+        ...
+    }
 }
 ```
 
@@ -44,7 +47,10 @@ To extend the configuration with multiple pieces:
 {
     "$schema": "https://json.schemastore.org/eslintrc",
     "root": true,
-    "extends": ["plugin:@workleap/core", "plugin:@workleap/typescript"]
+    "extends": ["plugin:@workleap/core", "plugin:@workleap/typescript"],
+    "rules": {
+        ...
+    }
 }
 ```
 

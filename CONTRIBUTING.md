@@ -245,3 +245,62 @@ There are cyclic workspace dependencies: C:\Dev\gsoft\wl-web-configs\packages\es
 ```
 
 It is expected as we are dog fooding our own packages to build, lint and tests.
+
+### TS moduleResolution
+
+Packages compiled for CommonJS (`browserlists-config`, `eslint-plugin`, `stylelint-configs`) cannot use `moduleResolution: "NodeNext"` because with TS 5.2, it requires to be used in conjuction with `module: "NodeNext"` (but we want `module: "CommonJS"`).
+
+Those package also cannot use `moduleResolution: "Bundler"` because it requires to use at a minimum `module: "ES2015"`, but again, we want `module: "CommonJS"`.
+
+Therefore, we must use `moduleResolution: "Node"`, which is the equivalent of `Node v10`. A `Node v10` environment doesn't support an `"exports"` field in the `package.json` file according to this [issue](https://github.com/microsoft/TypeScript/issues/51862#issuecomment-1358049778).
+
+Therefore, we must add the `"types"` field to the `package.json` file of the projects that are also compiled for CommonJS.
+
+ESM only package:
+
+```json
+{
+    "exports": {
+        ".": {
+            "import": "./dist/index.js",
+            "types": "./dist/index.d.ts"
+        }
+    }
+}
+```
+
+CommonJS only package:
+
+```json
+{
+    "exports": {
+        ".": {
+            "require": "./dist/index.js",
+            "import": "./dist/index.js",
+            "types": "./dist/index.d.ts"
+        }
+    },
+    "types": "./dist/index.d.ts" (for moduleResolution: "Node")
+}
+```
+
+Dual ESM & CommonJS package:
+
+```json
+{
+    "exports": {
+        ".": {
+            "require": {
+                "default": "./dist/index.js",
+                "types": "./dist/index.d.ts"
+            },
+            "import": {
+                "default": "./dist/index.mjs",
+                "types": "./dist/index.d.mts"
+            }
+        }
+    },
+    "types": "./dist/index.d.ts" (for moduleResolution: "Node")
+}
+```
+

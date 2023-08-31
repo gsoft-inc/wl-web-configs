@@ -347,28 +347,11 @@ To create the bundle files for production, add the following script to your proj
 
 ## 6. Set environment variables
 
-To deal with environment variables, webpack suggest using the [--env option](https://webpack.js.org/guides/environment-variables/) from it's CLI. While that would work, the environment variables would then only be available to the webpack configuration file:
-
-```js !#6 webpack.build.js
-// @ts-check
-
-import { defineBuildConfig } from "@workleap/webpack-configs";
-import { swcConfig } from "./swc.build.js";
-
-export default (env) => {
-    if (env.DEBUG === "true") {
-        console.log("Configuring webpack in debug mode!");
-    }
-
-    return defineBuildConfig({
-        swcConfig
-    });
-}
-```
+To deal with environment variables, the [webpack](https://webpack.js.org/) documentation suggest using the [--env option](https://webpack.js.org/guides/environment-variables/) from it's CLI. While that would work, by using webpack `--env` CLI option, the environment variables would only be made available to the webpack configuration files (.e.g. `webpack.config.js`) rather than any [Node.js](https://nodejs.org/en) files. Therefore we **do not recommend** using webpack `--env` CLI option.
 
 ### cross-env
 
-We recommend instead to define environment variables with [cross-env](https://github.com/kentcdodds/cross-env). That way, the environment variables will be available to any [Node.js](https://nodejs.org/en) files loaded by the script:
+We recommend instead to define environment variables using [cross-env](https://github.com/kentcdodds/cross-env). With `cross-env`, the environment variables will be made available to any [Node.js](https://nodejs.org/en) files that are executed by the script process (`build` in the example below :point_down:):
 
 ```json package.json
 {
@@ -391,14 +374,16 @@ export default defineBuildConfig({
 });
 ```
 
-Still, having the environment variables available everywhere doesn't allow the bundled application files to access them. The reason is that those environment variables are only available at build time, not at runtime.
+However, there's a catch. When using `cross-env`, the variables will not be available in the application files because `cross-env` only makes them available to files that are executed by the process at **build time** while the application files are executed at **runtime** by a browser.
 
-To make them accessible at runtime, they must be added to the application bundle files. This is the purpose of the `environmentVariables` option.
+To make them accessible to the application files, webpack must be aware of those environment variables and **render** them into the **compiled application files**. This is the purpose of the `environmentVariables` option.
 
 ### `environmentVariables`
 
 - **Type**: `Record<string, string | undefined>`
 - **Default**: `undefined`
+
+First, define the variables with `environmentVariables`:
 
 ```js !#8-10 webpack.build.js
 // @ts-check
@@ -414,7 +399,7 @@ export default defineBuildConfig({
 });
 ```
 
-Then, the environment variables are available to any application files:
+Then, use the variables in any application files:
 
 ```tsx !#2 src/app.tsx
 export function App() {
