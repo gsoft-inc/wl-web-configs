@@ -41,61 +41,6 @@ If you are **migrating** an existing project and prefer to wait before moving to
 }
 ```
 
-## Monorepo support
-
-If you are developing a monorepo solution and need to **reference projects within** the **workspace**, you'll need to define [paths](https://www.typescriptlang.org/tsconfig#compilerOptions) for every impacted project.
-
-Given the following workspace:
-
-``` !#3,8,13
-workspace
-├── packages
-├──── app
-├────── src
-├──────── ...
-├────── package.json
-├────── tsconfig.json
-├──── components (@sample/components)
-├────── src
-├──────── index.ts
-├────── package.json
-├────── tsconfig.json
-├──── utils (@sample/utils)
-├────── src
-├──────── index.ts
-├────── package.json
-├────── tsconfig.json
-├── package.json
-├── tsconfig.json
-```
-
-If the `packages/components` project is referencing the `packages/utils` project, and the `packages/app` project is referencing the `packages/components` project, you'll need to add the following `compilerOptions.paths`:
-
-```json !#4-7 packages/app/tsconfig.json
-{
-    "extends": "@workleap/typescript-configs/web-application.json",
-    "compilerOptions": {
-        "paths": {
-            "@sample/components": ["../components/index.ts"],
-            "@sample/utils": ["../utils/index.ts"]
-        }
-    },
-    "exclude": ["dist", "node_modules"]
-}
-```
-
-```json !#4-6 packages/components/tsconfig.json
-{
-    "extends": "@workleap/typescript-configs/library.json",
-    "compilerOptions": {
-        "paths": {
-            "@sample/utils": ["../utils/index.ts"]
-        }
-    },
-    "exclude": ["dist", "node_modules"]
-}
-```
-
 ## Start from scratch
 
 If your situation is so challenging that you must start a new configuration from scratch, refer to the [advanced composition](advanced-composition.md) page.

@@ -50,7 +50,7 @@ When you are ready to release the packages, you must follow the following steps:
 1. Run `pnpm changeset` and follow the prompt. For versioning, always follow the [SemVer standard](https://semver.org/).
 2. Commit the newly generated file in your branch and submit a new Pull Request(PR). Changesets will automatically detect the changes and post a message in your pull request telling you that once the PR closes, the versions will be released.
 3. Find someone to review your PR.
-4. Merge the Pull request into `main`. A GitHub action will automatically trigger and update the version of the packages and publish them to [npm]https://www.npmjs.com/). A tag will also be created on GitHub tagging your PR merge commit.
+4. Merge the Pull request into `main`. A GitHub action will automatically trigger and update the version of the packages and publish them to [npm](https://www.npmjs.com/). A tag will also be created on GitHub tagging your PR merge commit.
 
 ### Troubleshooting
 
@@ -178,15 +178,15 @@ pnpm update-outdated-deps
 
 ## CI
 
-We use [GitHub Actions]() for this repository.
+We use [GitHub Actions](https://docs.github.com/en/actions) for this repository.
 
-The configuration is in the `.github/workflows` folder and the build results available [here](https://github.com/gsoft-inc/wl-web-configs/actions).
+You can find the configuration is in the `.github/workflows` folder and the build results are available [here](https://github.com/gsoft-inc/wl-web-configs/actions).
 
 We currently have 3 builds configured:
 
 ### Changesets
 
-This action run on a push on the `main` branch, and if theirs a file present in the `.changeset` folder, will publish the new package version on npm.
+This action runs on a push on the `main` branch. If there is a file present in the `.changeset` folder, it will publish the new package version on npm.
 
 ### CI
 
