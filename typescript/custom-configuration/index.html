@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/wl-web-configs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.2.0.746739849086">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.2.0.746803471945">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.2.0">
@@ -32,12 +32,12 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("/wl-web-configs/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../static/favicon.png" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.2.0.746739849086" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.2.0.746803471945" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.2.0.746739849086" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.2.0.746803471945" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.2.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.2.0.746739849086" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.2.0.746739849086" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.2.0.746803471945" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.2.0.746803471945" defer></script>
 
     <style>
         .docs-markdown ol, .docs-markdown ul {
@@ -305,13 +305,13 @@
         </div>
     </div>
 </div>
-<doc-anchor-target id="change-a-default-rule-value">
+<doc-anchor-target id="change-a-default-field-value">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#change-a-default-rule-value">#</doc-anchor-trigger>
-        <span>Change a default rule value</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#change-a-default-field-value">#</doc-anchor-trigger>
+        <span>Change a default field value</span>
     </h2>
 </doc-anchor-target>
-<p>You can update a default rule value by defining the rule locally with its new value:</p>
+<p>You can update a default field value by defining the field locally with its new value:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <div class="codeblock-title">tsconfig.json</div>
 <pre class="language-json" data-line="3-5"><code v-pre class="language-json">{
@@ -345,8 +345,8 @@
         <span>Monorepo support</span>
     </h2>
 </doc-anchor-target>
-<p>If you are developing a monorepo solution and need to <strong>reference projects within</strong> the <strong>solution</strong>, you&#x27;ll need to add <a href="https://www.typescriptlang.org/tsconfig#compilerOptions" class="outbound" target="_blank">compilerOptions.paths</a> to the projects&#x27; <code v-pre>tsconfig.json</code> files.</p>
-<p>For example, given the following project structure:</p>
+<p>If you are developing a monorepo solution and need to <strong>reference projects within</strong> the <strong>workspace</strong>, you&#x27;ll need to define <a href="https://www.typescriptlang.org/tsconfig#compilerOptions" class="outbound" target="_blank">paths</a> for every impacted project.</p>
+<p>Given the following workspace:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-none" data-line="3,8,13"><code v-pre class="language-none">workspace
 ├── packages
