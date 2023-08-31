@@ -1,12 +1,14 @@
 input: ./docs
 output: .retype
 
+# Pro features
 poweredByRetype: false
 
 outbound:
     enabled: true
     icon: ""
 
+# Regular features
 edit:
     repo: "https://github.com/gsoft-inc/wl-web-configs"
     base: /docs
