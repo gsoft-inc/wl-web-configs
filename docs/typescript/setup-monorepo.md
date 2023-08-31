@@ -140,7 +140,7 @@ If you already have multiple projects in your monorepo solution, repeat the step
 
 ## 7. Customize configuration
 
-New projects shouldn't have to customize most the default configurations offered by `@workleap/typescript-configs`. However, if you are in the process of **migrating** an existing project to use this library or encountering a challenging situation, refer to the [custom configuration](custom-configuration.md) page to understand how to override or extend the default configurations. Remember, **no locked in** :heart::v:.
+New projects shouldn't have to customize most of the default configurations offered by `@workleap/typescript-configs`. However, if you are in the process of **migrating** an existing project to use this library or encountering a challenging situation, refer to the [custom configuration](custom-configuration.md) page to understand how to override or extend the default configurations. Remember, **no locked in** :heart::v:.
 
 ### Compiler paths
 
