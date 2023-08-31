@@ -144,7 +144,7 @@ New projects shouldn't have to customize most the default configurations offered
 
 ### Compiler paths
 
-If any projects of your solution are referencing other projects of the monorepo workspace, chances are that you'll need to define [paths](https://www.typescriptlang.org/tsconfig#compilerOptions) in their `tsconfig.json` file.
+If any projects of your solution are referencing other projects of the monorepo workspace (e.g. `"@sample/components": "workspace:*"`), chances are that you'll need to define [paths](https://www.typescriptlang.org/tsconfig#compilerOptions) in their `tsconfig.json` file.
 
 Given the following solution:
 
