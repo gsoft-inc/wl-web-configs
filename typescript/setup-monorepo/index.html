@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/wl-web-configs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.2.0.746805738090">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.2.0.746813006587">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.2.0">
@@ -32,12 +32,12 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("/wl-web-configs/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../static/favicon.png" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.2.0.746805738090" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.2.0.746813006587" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.2.0.746805738090" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.2.0.746813006587" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.2.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.2.0.746805738090" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.2.0.746805738090" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.2.0.746813006587" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.2.0.746813006587" defer></script>
 
     <style>
         .docs-markdown ol, .docs-markdown ul {
@@ -466,7 +466,62 @@
         <span>7. Customize configuration</span>
     </h2>
 </doc-anchor-target>
-<p>New projects shouldn&#x27;t have to customize the default configurations offered by <code v-pre>@workleap/typescript-configs</code>. However, if you are in the process of <strong>migrating</strong> an existing project to use this library or encountering a challenging situation, refer to the <a href="../custom-configuration/">custom configuration</a> page to understand how to override or extend the default configurations. Remember, <strong>no locked in</strong> <span class="docs-emoji">&#x2764;&#xFE0F;</span><span class="docs-emoji">&#x270C;&#xFE0F;</span>.</p>
+<p>New projects shouldn&#x27;t have to customize most of the default configurations offered by <code v-pre>@workleap/typescript-configs</code>. However, if you are in the process of <strong>migrating</strong> an existing project to use this library or encountering a challenging situation, refer to the <a href="../custom-configuration/">custom configuration</a> page to understand how to override or extend the default configurations. Remember, <strong>no locked in</strong> <span class="docs-emoji">&#x2764;&#xFE0F;</span><span class="docs-emoji">&#x270C;&#xFE0F;</span>.</p>
+<doc-anchor-target id="compiler-paths">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#compiler-paths">#</doc-anchor-trigger>
+        <span>Compiler paths</span>
+    </h3>
+</doc-anchor-target>
+<p>If any projects of your solution are referencing other projects of the monorepo workspace (e.g. <code v-pre>&quot;@sample/components&quot;: &quot;workspace:*&quot;</code>), chances are that you&#x27;ll need to define <a href="https://www.typescriptlang.org/tsconfig#compilerOptions" class="outbound" target="_blank">paths</a> in their <code v-pre>tsconfig.json</code> file.</p>
+<p>Given the following solution:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none" data-line="3,8,13"><code v-pre class="language-none">workspace
+├── packages
+├──── app
+├────── src
+├──────── ...
+├────── package.json
+├────── tsconfig.json
+├──── components (@sample/components)
+├────── src
+├──────── index.ts
+├────── package.json
+├────── tsconfig.json
+├──── utils (@sample/utils)
+├────── src
+├──────── index.ts
+├────── package.json
+├────── tsconfig.json
+├── package.json
+├── tsconfig.json</code></pre>
+</doc-codeblock></div>
+<p>If the <code v-pre>packages/components</code> project is referencing the <code v-pre>packages/utils</code> project, and the <code v-pre>packages/app</code> project is referencing the <code v-pre>packages/components</code> project, you&#x27;ll need to add the following <code v-pre>compilerOptions.paths</code>:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<div class="codeblock-title">packages/app/tsconfig.json</div>
+<pre class="language-json" data-line="4-7"><code v-pre class="language-json">{
+    &quot;extends&quot;: &quot;@workleap/typescript-configs/web-application.json&quot;,
+    &quot;compilerOptions&quot;: {
+        &quot;paths&quot;: {
+            &quot;@sample/components&quot;: [&quot;../components/index.ts&quot;],
+            &quot;@sample/utils&quot;: [&quot;../utils/index.ts&quot;]
+        }
+    },
+    &quot;exclude&quot;: [&quot;dist&quot;, &quot;node_modules&quot;]
+}</code></pre>
+</doc-codeblock></div>
+<div class="codeblock-wrapper"><doc-codeblock>
+<div class="codeblock-title">packages/components/tsconfig.json</div>
+<pre class="language-json" data-line="4-6"><code v-pre class="language-json">{
+    &quot;extends&quot;: &quot;@workleap/typescript-configs/library.json&quot;,
+    &quot;compilerOptions&quot;: {
+        &quot;paths&quot;: {
+            &quot;@sample/utils&quot;: [&quot;../utils/index.ts&quot;]
+        }
+    },
+    &quot;exclude&quot;: [&quot;dist&quot;, &quot;node_modules&quot;]
+}</code></pre>
+</doc-codeblock></div>
 <doc-anchor-target id="8-try-it">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#8-try-it">#</doc-anchor-trigger>
