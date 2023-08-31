@@ -1,5 +1,11 @@
 # @workleap/typescript-configs
 
+## 3.0.2
+
+### Patch Changes
+
+- [#109](https://github.com/gsoft-inc/wl-web-configs/pull/109) [`375af60`](https://github.com/gsoft-inc/wl-web-configs/commit/375af604654d2f67cbf59945525461137b83a060) Thanks [@patricklafrance](https://github.com/patricklafrance)! - Disable TS lint of JS files
+
 ## 3.0.1
 
 ### Patch Changes
