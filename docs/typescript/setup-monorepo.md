@@ -140,7 +140,62 @@ If you already have multiple projects in your monorepo solution, repeat the step
 
 ## 7. Customize configuration
 
-New projects shouldn't have to customize the default configurations offered by `@workleap/typescript-configs`. However, if you are in the process of **migrating** an existing project to use this library or encountering a challenging situation, refer to the [custom configuration](custom-configuration.md) page to understand how to override or extend the default configurations. Remember, **no locked in** :heart::v:.
+New projects shouldn't have to customize most the default configurations offered by `@workleap/typescript-configs`. However, if you are in the process of **migrating** an existing project to use this library or encountering a challenging situation, refer to the [custom configuration](custom-configuration.md) page to understand how to override or extend the default configurations. Remember, **no locked in** :heart::v:.
+
+### Compiler paths
+
+If any projects of your solution are referencing other projects of the monorepo workspace, chances are that you'll need to define [paths](https://www.typescriptlang.org/tsconfig#compilerOptions) in their `tsconfig.json` file.
+
+Given the following solution:
+
+``` !#3,8,13
+workspace
+├── packages
+├──── app
+├────── src
+├──────── ...
+├────── package.json
+├────── tsconfig.json
+├──── components (@sample/components)
+├────── src
+├──────── index.ts
+├────── package.json
+├────── tsconfig.json
+├──── utils (@sample/utils)
+├────── src
+├──────── index.ts
+├────── package.json
+├────── tsconfig.json
+├── package.json
+├── tsconfig.json
+```
+
+If the `packages/components` project is referencing the `packages/utils` project, and the `packages/app` project is referencing the `packages/components` project, you'll need to add the following `compilerOptions.paths`:
+
+```json !#4-7 packages/app/tsconfig.json
+{
+    "extends": "@workleap/typescript-configs/web-application.json",
+    "compilerOptions": {
+        "paths": {
+            "@sample/components": ["../components/index.ts"],
+            "@sample/utils": ["../utils/index.ts"]
+        }
+    },
+    "exclude": ["dist", "node_modules"]
+}
+```
+
+```json !#4-6 packages/components/tsconfig.json
+{
+    "extends": "@workleap/typescript-configs/library.json",
+    "compilerOptions": {
+        "paths": {
+            "@sample/utils": ["../utils/index.ts"]
+        }
+    },
+    "exclude": ["dist", "node_modules"]
+}
+```
 
 ## 8. Try it :rocket:
 
