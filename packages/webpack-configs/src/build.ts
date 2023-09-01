@@ -96,7 +96,6 @@ export function defineBuildConfig(options: DefineBuildConfigOptions) {
         cache: cache && {
             type: "filesystem",
             allowCollectingMemory: false,
-            // version: "production",
             buildDependencies: {
                 config: [fileURLToPath(import.meta.url)]
             },
@@ -172,6 +171,24 @@ export function defineBuildConfig(options: DefineBuildConfigOptions) {
             }),
             ...plugins
         ].filter(Boolean) as WebpackConfig["plugins"],
+        snapshot: {
+            buildDependencies: {
+                hash: true,
+                timestamp: true
+            },
+            module: {
+                hash: true,
+                timestamp: true
+            },
+            resolve: {
+                hash: true,
+                timestamp: true
+            },
+            resolveBuildDependencies: {
+                hash: true,
+                timestamp: true
+            }
+        },
         infrastructureLogging: profile ? {
             appendOnly: true,
             level: "verbose",

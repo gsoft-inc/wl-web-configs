@@ -119,7 +119,6 @@ export function defineDevConfig(options: DefineDevConfigOptions) {
         cache: cache && {
             type: "filesystem",
             allowCollectingMemory: true,
-            // version: "development",
             maxMemoryGenerations: 1,
             buildDependencies: {
                 config: [fileURLToPath(import.meta.url)]
