@@ -254,7 +254,7 @@ Those package also cannot use `moduleResolution: "Bundler"` because it requires 
 
 Therefore, we must use `moduleResolution: "Node"`, which is the equivalent of `Node v10`. A `Node v10` environment doesn't support an `"exports"` field in the `package.json` file according to this [issue](https://github.com/microsoft/TypeScript/issues/51862#issuecomment-1358049778).
 
-Therefore, we must add the `"types"` field to the `package.json` file of the projects that are also compiled for CommonJS.
+Consequently, we must add the `"types"` field to the `package.json` file of the projects that are also compiled for CommonJS.
 
 ESM only package:
 
