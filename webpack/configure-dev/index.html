@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/wl-web-configs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.3.0.746911554651">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.3.0.746918856556">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.3.0">
@@ -32,12 +32,12 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("/wl-web-configs/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../static/favicon.png" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.3.0.746911554651" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.3.0.746918856556" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.3.0.746911554651" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.3.0.746918856556" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.3.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.3.0.746911554651" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.3.0.746911554651" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.3.0.746918856556" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.3.0.746918856556" defer></script>
 
     <style>
         .docs-markdown > ol, .docs-markdown > ul {
@@ -332,34 +332,6 @@
 </doc-codeblock></div>
 </doc-tab>
 </doc-tabs>
-<doc-anchor-target id="fast-refresh">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#fast-refresh">#</doc-anchor-trigger>
-        <span>Fast Refresh</span>
-    </h3>
-</doc-anchor-target>
-<p>Because <a href="https://webpack.js.org/concepts/module-federation/" class="outbound" target="_blank">Module Federation</a> does not support <a href="https://www.npmjs.com/package/react-refresh" class="outbound" target="_blank">Fast Refresh</a>, the default configuration doesn&#x27;t enable it by default and it&#x27;s defined as an optional <code v-pre>peerDependency</code>.</p>
-<p>If you expect to enable Fast Refresh, also install the following package at the root of the project:</p>
-<doc-tabs>
-<doc-tab v-cloak id="pnpm">
-<template #title>pnpm</template>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">pnpm add -D @pmmmwh/react-refresh-webpack-plugin</code></pre>
-</doc-codeblock></div>
-</doc-tab>
-<doc-tab v-cloak id="yarn">
-<template #title>yarn</template>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">yarn add -D @pmmmwh/react-refresh-webpack-plugin</code></pre>
-</doc-codeblock></div>
-</doc-tab>
-<doc-tab v-cloak id="npm">
-<template #title>npm</template>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">npm install -D @pmmmwh/react-refresh-webpack-plugin</code></pre>
-</doc-codeblock></div>
-</doc-tab>
-</doc-tabs>
 <doc-anchor-target id="monorepo-support">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#monorepo-support">#</doc-anchor-trigger>
@@ -401,7 +373,7 @@
 ├── package.json
 ├── webpack.dev.js</code></pre>
 </doc-codeblock></div>
-<p>Then, open the newly created file and <code v-pre>export</code> the webpack configuration by using the <code v-pre>defineDevConfig(options)</code> function:</p>
+<p>Then, open the newly created file and <code v-pre>export</code> the webpack configuration by using the <code v-pre>defineDevConfig(swcConfig, options)</code> function:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <div class="codeblock-title">webpack.dev.js</div>
 <pre class="language-javascript" data-line="6-8"><code v-pre class="language-javascript">// @ts-check
@@ -409,9 +381,7 @@
 import { defineDevConfig } from &quot;@workleap/webpack-configs&quot;;
 import { swcConfig } from &quot;./swc.dev.js&quot;;
 
-export default defineDevConfig({
-    swcConfig
-});</code></pre>
+export default defineDevConfig(swcConfig);</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="swcconfig">
     <h3>
@@ -419,7 +389,7 @@ export default defineDevConfig({
         <span><code v-pre>swcConfig</code></span>
     </h3>
 </doc-anchor-target>
-<p>In the previous code sample, the <code v-pre>defineDevConfig(options)</code> function receive an <a href="https://swc.rs" class="outbound" target="_blank">SWC</a> configuration object through the mandatory <code v-pre>swcConfig</code> option.</p>
+<p>In the previous code sample, the <code v-pre>defineDevConfig(swcConfig, options)</code> function receive an <a href="https://swc.rs" class="outbound" target="_blank">SWC</a> configuration object through the mandatory <code v-pre>swcConfig</code> option.</p>
 <p>Although the <a href="https://swc.rs/docs/usage/swc-loader" class="outbound" target="_blank">swc-loader</a> defaults to loading the closest <code v-pre>.swcrc</code> <a href="https://swc.rs/docs/configuration/swcrc" class="outbound" target="_blank">configuration file</a> when no configuration object is provided, it lacks support for distinct configuration files by environment like webpack does.</p>
 <p>Therefore, <code v-pre>@workleap/webpack-configs</code> choosed to <strong>delegate</strong> the loading of the SWC configuration <strong>to the consumer</strong> by making the <code v-pre>swcConfig</code> option <strong>required</strong>.</p>
 <doc-anchor-target id="3-set-predefined-options">
@@ -428,7 +398,7 @@ export default defineDevConfig({
         <span>3. Set predefined options</span>
     </h2>
 </doc-anchor-target>
-<p>The <code v-pre>defineDevConfig(options)</code> function can be used as shown in the previous example, however, if you wish to customize the default configuration, the function also accept a few predefined options to help with that <span class="docs-emoji">&#x1F447;</span></p>
+<p>The <code v-pre>defineDevConfig(swcConfig, options)</code> function can be used as shown in the previous example, however, if you wish to customize the default configuration, the function also accept a few predefined options to help with that <span class="docs-emoji">&#x1F447;</span></p>
 <doc-anchor-target id="entry">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#entry">#</doc-anchor-trigger>
@@ -447,9 +417,8 @@ export default defineDevConfig({
 import { defineDevConfig } from &quot;@workleap/webpack-configs&quot;;
 import { swcConfig } from &quot;./swc.dev.js&quot;;
 
-export default defineDevConfig({
-    entry: &quot;./src/another-entry.tsx&quot;,
-    swcConfig
+export default defineDevConfig(swcConfig, {
+    entry: &quot;./src/another-entry.tsx&quot;
 });</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="https">
@@ -470,9 +439,8 @@ export default defineDevConfig({
 import { defineDevConfig } from &quot;@workleap/webpack-configs&quot;;
 import { swcConfig } from &quot;./swc.dev.js&quot;;
 
-export default defineDevConfig({
-    https: true,
-    swcConfig
+export default defineDevConfig(swcConfig, {
+    https: true
 });</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="host">
@@ -493,9 +461,8 @@ export default defineDevConfig({
 import { defineDevConfig } from &quot;@workleap/webpack-configs&quot;;
 import { swcConfig } from &quot;./swc.dev.js&quot;;
 
-export default defineDevConfig({
-    host: &quot;my-custom-host&quot;,
-    swcConfig
+export default defineDevConfig(swcConfig, {
+    host: &quot;my-custom-host&quot;
 });</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="port">
@@ -516,9 +483,8 @@ export default defineDevConfig({
 import { defineDevConfig } from &quot;@workleap/webpack-configs&quot;;
 import { swcConfig } from &quot;./swc.dev.js&quot;;
 
-export default defineDevConfig({
-    port: 1234,
-    swcConfig
+export default defineDevConfig(swcConfig, {
+    port: 1234
 });</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="cache">
@@ -539,9 +505,8 @@ export default defineDevConfig({
 import { defineDevConfig } from &quot;@workleap/webpack-configs&quot;;
 import { swcConfig } from &quot;./swc.dev.js&quot;;
 
-export default defineDevConfig({
-    cache: false,
-    swcConfig
+export default defineDevConfig(swcConfig, {
+    cache: false
 });</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="cachedirectory">
@@ -562,9 +527,8 @@ import { defineDevConfig } from &quot;@workleap/webpack-configs&quot;;
 import { swcConfig } from &quot;./swc.dev.js&quot;;
 import path from &quot;path&quot;;
 
-export default defineDevConfig({
-    cacheDirectory: path.resolve(&quot;./custom-webpack-cache&quot;),
-    swcConfig
+export default defineDevConfig(swcConfig, {
+    cacheDirectory: path.resolve(&quot;./custom-webpack-cache&quot;)
 });</code></pre>
 </doc-codeblock></div>
 <p>Set webpack <a href="https://webpack.js.org/configuration/cache/#cachecachedirectory" class="outbound" target="_blank">cacheDirectory option</a> when <code v-pre>cache</code> is enabled.</p>
@@ -586,14 +550,13 @@ export default defineDevConfig({
 import { defineDevConfig } from &quot;@workleap/webpack-configs&quot;;
 import { swcConfig } from &quot;./swc.dev.js&quot;;
 
-export default defineDevConfig({
+export default defineDevConfig(swcConfig, {
     moduleRules: [
         {
             test: /\.s[ac]ss$/i,
             use: [&quot;style-loader&quot;, &quot;css-loader&quot;, &quot;sass-loader&quot;]
         }
-    ],
-    swcConfig
+    ]
 });</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="plugins">
@@ -615,14 +578,13 @@ import { defineDevConfig } from &quot;@workleap/webpack-configs&quot;;
 import { swcConfig } from &quot;./swc.dev.js&quot;;
 import CircularDependencyPlugin from &quot;circular-dependency-plugin&quot;;
 
-export default defineDevConfig({
+export default defineDevConfig(swcConfig, {
     plugins: [
         new CircularDependencyPlugin({
             exclude: /node_modules/,
             include: /src/
         });
-    ],
-    swcConfig
+    ]
 });</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="htmlwebpackpluginoptions">
@@ -644,13 +606,12 @@ import { defineDevConfig, defineDevHtmlWebpackPluginConfig } from &quot;@worklea
 import { swcConfig } from &quot;./swc.dev.js&quot;;
 import path from &quot;path&quot;;
 
-export default defineDevConfig({
+export default defineDevConfig(swcConfig, {
     htmlWebpackPluginOptions: defineDevHtmlWebpackPluginConfig({
         template: path.resolve(&quot;./my-custom-index.html&quot;),
         minify: true,
         hash: true
-    }),
-    swcConfig
+    })
 });</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="fastrefresh">
@@ -688,9 +649,8 @@ export default defineDevConfig({
 import { defineDevConfig } from &quot;@workleap/webpack-configs&quot;;
 import { swcConfig } from &quot;./swc.dev.js&quot;;
 
-export default defineDevConfig({
-    fastRefresh: true,
-    swcConfig
+export default defineDevConfig(swcConfig, {
+    fastRefresh: true
 });</code></pre>
 </doc-codeblock></div>
 <p>To extend the default Fast Refresh configuration, use the <code v-pre>defineFastRefreshPluginConfig(options)</code> function.</p>
@@ -701,9 +661,8 @@ export default defineDevConfig({
 import { defineDevConfig, defineFastRefreshPluginConfig } from &quot;@workleap/webpack-configs&quot;;
 import { swcConfig } from &quot;./swc.dev.js&quot;;
 
-export default defineDevConfig({
-    fastRefresh: defineFastRefreshPluginConfig({ overlay: false }),
-    swcConfig
+export default defineDevConfig(swcConfig, {
+    fastRefresh: defineFastRefreshPluginConfig({ overlay: false })
 });</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="cssmodules">
@@ -724,9 +683,8 @@ export default defineDevConfig({
 import { defineDevConfig } from &quot;@workleap/webpack-configs&quot;;
 import { swcConfig } from &quot;./swc.dev.js&quot;;
 
-export default defineDevConfig({
-    cssModules: true,
-    swcConfig
+export default defineDevConfig(swcConfig, {
+    cssModules: true
 });</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="4-transform-configuration">
@@ -781,10 +739,9 @@ const enableInMemoryCache: WebpackConfigTransformer = (config: WebpackConfig) =&
     return config;
 };
 
-export default defineDevConfig({
+export default defineDevConfig(swcConfig, {
     cache: false,
-    transformers: [enableInMemoryCache],
-    swcConfig
+    transformers: [enableInMemoryCache]
 });</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="execution-context">
@@ -851,7 +808,7 @@ export const transformer: WebpackConfigTransformer = (config: WebpackConfig, con
         <span>6. Set environment variables</span>
     </h2>
 </doc-anchor-target>
-<p>To deal with environment variables, the <a href="https://webpack.js.org/" class="outbound" target="_blank">webpack</a> documentation suggests using the <a href="https://webpack.js.org/guides/environment-variables/" class="outbound" target="_blank">--env option</a> from its CLI. While that would work, by using webpack <code v-pre>--env</code> CLI option, the environment variables would only be made available to the webpack configuration files (.e.g. <code v-pre>webpack.config.js</code>) rather than any <a href="https://nodejs.org/en" class="outbound" target="_blank">Node.js</a> files. Therefore we <strong>do not recommend</strong> using webpack <code v-pre>--env</code> CLI option.</p>
+<p>To deal with environment variables, the <a href="https://webpack.js.org/" class="outbound" target="_blank">webpack</a> documentation suggests using the <a href="https://webpack.js.org/guides/environment-variables/" class="outbound" target="_blank">--env option</a> from its CLI. While that would work, by using webpack <code v-pre>--env</code> CLI option, the environment variables would only be made available to the webpack configuration files (.e.g. <code v-pre>webpack.dev.js</code>) rather than any <a href="https://nodejs.org/en" class="outbound" target="_blank">Node.js</a> files. Therefore we <strong>do not recommend</strong> using webpack <code v-pre>--env</code> CLI option.</p>
 <doc-anchor-target id="cross-env">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#cross-env">#</doc-anchor-trigger>
@@ -876,9 +833,7 @@ if (process.env.DEBUG === &quot;true&quot;) {
     console.log(&quot;Configuring webpack in debug mode!&quot;);
 }
 
-export default defineDevConfig({
-    swcConfig
-});</code></pre>
+export default defineDevConfig(swcConfig);</code></pre>
 </doc-codeblock></div>
 <p>However, there&#x27;s a catch. When using <code v-pre>cross-env</code>, the variables will not be available in the application files because <code v-pre>cross-env</code> only makes them available to files that are executed by the process at <strong>build time</strong> while the application files are executed at <strong>runtime</strong> by a browser.</p>
 <p>To make them accessible to the application files, webpack must be aware of those environment variables and <strong>render</strong> them into the <strong>compiled application files</strong>. This is the purpose of the <code v-pre>environmentVariables</code> option.</p>
@@ -900,8 +855,7 @@ export default defineDevConfig({
 import { defineDevConfig } from &quot;@workleap/webpack-configs&quot;;
 import { swcConfig } from &quot;./swc.dev.js&quot;;
 
-export default defineDevConfig({
-    swcConfig,
+export default defineDevConfig(swcConfig, {
     environmentVariables: {
         &quot;DEBUG&quot;: process.env.DEBUG
     }

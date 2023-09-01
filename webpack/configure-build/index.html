@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/wl-web-configs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.3.0.746911554651">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.3.0.746918856556">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.3.0">
@@ -32,12 +32,12 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("/wl-web-configs/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../static/favicon.png" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.3.0.746911554651" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.3.0.746918856556" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.3.0.746911554651" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.3.0.746918856556" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.3.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.3.0.746911554651" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.3.0.746911554651" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.3.0.746918856556" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.3.0.746918856556" defer></script>
 
     <style>
         .docs-markdown > ol, .docs-markdown > ul {
@@ -373,7 +373,7 @@
 ├── package.json
 ├── webpack.build.js</code></pre>
 </doc-codeblock></div>
-<p>Then, open the newly created file and <code v-pre>export</code> the webpack configuration by using the <code v-pre>defineBuildConfig(options)</code> function:</p>
+<p>Then, open the newly created file and <code v-pre>export</code> the webpack configuration by using the <code v-pre>defineBuildConfig(swcConfig, options)</code> function:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <div class="codeblock-title">webpack.build.js</div>
 <pre class="language-javascript" data-line="6-8"><code v-pre class="language-javascript">// @ts-check
@@ -381,9 +381,7 @@
 import { defineBuildConfig } from &quot;@workleap/webpack-configs&quot;;
 import { swcConfig } from &quot;./swc.build.js&quot;;
 
-export default defineBuildConfig({
-    swcConfig
-});</code></pre>
+export default defineBuildConfig(swcConfig);</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="swcconfig">
     <h3>
@@ -391,7 +389,7 @@ export default defineBuildConfig({
         <span><code v-pre>swcConfig</code></span>
     </h3>
 </doc-anchor-target>
-<p>In the previous code sample, the <code v-pre>defineBuildConfig(options)</code> function receive an <a href="https://swc.rs" class="outbound" target="_blank">SWC</a> configuration object through the mandatory <code v-pre>swcConfig</code> option.</p>
+<p>In the previous code sample, the <code v-pre>defineBuildConfig(swcConfig, options)</code> function receive an <a href="https://swc.rs" class="outbound" target="_blank">SWC</a> configuration object through the mandatory <code v-pre>swcConfig</code> option.</p>
 <p>Although the <a href="https://swc.rs/docs/usage/swc-loader" class="outbound" target="_blank">swc-loader</a> defaults to loading the closest <code v-pre>.swcrc</code> <a href="https://swc.rs/docs/configuration/swcrc" class="outbound" target="_blank">configuration file</a> when no configuration object is provided, it lacks support for distinct configuration files by environment like webpack does.</p>
 <p>Therefore, <code v-pre>@workleap/webpack-configs</code> choosed to <strong>delegate</strong> the loading of the SWC configuration <strong>to the consumer</strong> by making the <code v-pre>swcConfig</code> option <strong>required</strong>.</p>
 <doc-anchor-target id="3-set-predefined-options">
@@ -400,7 +398,7 @@ export default defineBuildConfig({
         <span>3. Set predefined options</span>
     </h2>
 </doc-anchor-target>
-<p>The <code v-pre>defineBuildConfig(options)</code> function can be used as shown in the previous example, however, if you wish to customize the default configuration, the function also accept a few predefined options to help with that <span class="docs-emoji">&#x1F447;</span></p>
+<p>The <code v-pre>defineBuildConfig(swcConfig, options)</code> function can be used as shown in the previous example, however, if you wish to customize the default configuration, the function also accept a few predefined options to help with that <span class="docs-emoji">&#x1F447;</span></p>
 <doc-anchor-target id="entry">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#entry">#</doc-anchor-trigger>
@@ -419,9 +417,8 @@ export default defineBuildConfig({
 import { defineBuildConfig } from &quot;@workleap/webpack-configs&quot;;
 import { swcConfig } from &quot;./swc.build.js&quot;;
 
-export default defineBuildConfig({
-    entry: &quot;./src/another-entry.tsx&quot;,
-    swcConfig
+export default defineBuildConfig(swcConfig, {
+    entry: &quot;./src/another-entry.tsx&quot;
 });</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="outputpath">
@@ -443,9 +440,8 @@ import { defineBuildConfig } from &quot;@workleap/webpack-configs&quot;;
 import { swcConfig } from &quot;./swc.build.js&quot;;
 import path from &quot;path&quot;;
 
-export default defineBuildConfig({
-    outputPath: path.resolve(&quot;./a-custom-folder&quot;),
-    swcConfig
+export default defineBuildConfig(swcConfig, {
+    outputPath: path.resolve(&quot;./a-custom-folder&quot;)
 });</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="publicpath">
@@ -466,10 +462,9 @@ export default defineBuildConfig({
 import { defineBuildConfig } from &quot;@workleap/webpack-configs&quot;;
 import { swcConfig } from &quot;./swc.build.js&quot;;
 
-export default defineBuildConfig({
+export default defineBuildConfig(swcConfig, {
     // The ending &quot;/&quot; is very important.
-    publicPath: &quot;https://my-app.netlify.app/&quot;,
-    swcConfig
+    publicPath: &quot;https://my-app.netlify.app/&quot;
 });</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="modulerules">
@@ -490,14 +485,13 @@ export default defineBuildConfig({
 import { defineBuildConfig } from &quot;@workleap/webpack-configs&quot;;
 import { swcConfig } from &quot;./swc.build.js&quot;;
 
-export default defineBuildConfig({
+export default defineBuildConfig(swcConfig, {
     moduleRules: [
         {
             test: /\.s[ac]ss$/i,
             use: [&quot;style-loader&quot;, &quot;css-loader&quot;, &quot;sass-loader&quot;]
         }
-    ],
-    swcConfig
+    ]
 });</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="plugins">
@@ -519,14 +513,13 @@ import { defineBuildConfig } from &quot;@workleap/webpack-configs&quot;;
 import { swcConfig } from &quot;./swc.build.js&quot;;
 import CircularDependencyPlugin from &quot;circular-dependency-plugin&quot;;
 
-export default defineBuildConfig({
+export default defineBuildConfig(swcConfig, {
     plugins: [
         new CircularDependencyPlugin({
             exclude: /node_modules/,
             include: /src/
         });
-    ],
-    swcConfig
+    ]
 });</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="htmlwebpackpluginoptions">
@@ -548,13 +541,12 @@ import { defineBuildConfig, defineBuildHtmlWebpackPluginConfig } from &quot;@wor
 import { swcConfig } from &quot;./swc.build.js&quot;;
 import path from &quot;path&quot;;
 
-export default defineBuildConfig({
+export default defineBuildConfig(swcConfig, {
     htmlWebpackPluginOptions: defineBuildHtmlWebpackPluginConfig({
         template: path.resolve(&quot;./my-custom-index.html&quot;),
         minify: true,
         hash: true
-    }),
-    swcConfig
+    })
 });</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="minicssextractpluginoptions">
@@ -576,11 +568,10 @@ import { defineBuildConfig, defineMiniCssExtractPluginConfig } from &quot;@workl
 import { swcConfig } from &quot;./swc.build.js&quot;;
 import path from &quot;path&quot;;
 
-export default defineBuildConfig({
+export default defineBuildConfig(swcConfig, {
     htmlWebpackPluginOptions: defineMiniCssExtractPluginConfig({
         ignoreOrder: true
-    }),
-    swcConfig
+    })
 });</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="minify">
@@ -601,9 +592,8 @@ export default defineBuildConfig({
 import { defineBuildConfig } from &quot;@workleap/webpack-configs&quot;;
 import { swcConfig } from &quot;./swc.build.js&quot;;
 
-export default defineBuildConfig({
-    minify: false,
-    swcConfig
+export default defineBuildConfig(swcConfig, {
+    minify: false
 });</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="cssmodules">
@@ -624,9 +614,8 @@ export default defineBuildConfig({
 import { defineBuildConfig } from &quot;@workleap/webpack-configs&quot;;
 import { swcConfig } from &quot;./swc.build.js&quot;;
 
-export default defineBuildConfig({
-    cssModules: true,
-    swcConfig
+export default defineBuildConfig(swcConfig, {
+    cssModules: true
 });</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="4-transform-configuration">
@@ -679,9 +668,8 @@ const useContentHashOutputFilename: WebpackConfigTransformer = (config: WebpackC
     return config;
 }:
 
-export default defineBuildConfig({
-    transformers: [useContentHashOutputFilename],
-    swcConfig
+export default defineBuildConfig(swcConfig, {
+    transformers: [useContentHashOutputFilename]
 });</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="execution-context">
@@ -746,14 +734,14 @@ export const transformer: WebpackConfigTransformer = (config: WebpackConfig, con
         <span>6. Set environment variables</span>
     </h2>
 </doc-anchor-target>
-<p>To deal with environment variables, the <a href="https://webpack.js.org/" class="outbound" target="_blank">webpack</a> documentation suggests using the <a href="https://webpack.js.org/guides/environment-variables/" class="outbound" target="_blank">--env option</a> from its CLI. While that would work, by using webpack <code v-pre>--env</code> CLI option, the environment variables would only be made available to the webpack configuration files (.e.g. <code v-pre>webpack.config.js</code>) rather than any <a href="https://nodejs.org/en" class="outbound" target="_blank">Node.js</a> files. Therefore we <strong>do not recommend</strong> using webpack <code v-pre>--env</code> CLI option.</p>
+<p>To deal with environment variables, the <a href="https://webpack.js.org/" class="outbound" target="_blank">webpack</a> documentation suggests using the <a href="https://webpack.js.org/guides/environment-variables/" class="outbound" target="_blank">--env option</a> from its CLI. While that would work, by using webpack <code v-pre>--env</code> CLI option, the environment variables would only be made available to the webpack configuration files (.e.g. <code v-pre>webpack.build.js</code>) rather than any <a href="https://nodejs.org/en" class="outbound" target="_blank">Node.js</a> files. Therefore we <strong>do not recommend</strong> using webpack <code v-pre>--env</code> CLI option.</p>
 <doc-anchor-target id="cross-env">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#cross-env">#</doc-anchor-trigger>
         <span>cross-env</span>
     </h3>
 </doc-anchor-target>
-<p>We recommend instead to define environment variables using <a href="https://github.com/kentcdodds/cross-env" class="outbound" target="_blank">cross-env</a>. With <code v-pre>cross-env</code>, the environment variables will be made available to any <a href="https://nodejs.org/en" class="outbound" target="_blank">Node.js</a> files that are executed by the script process (<code v-pre>build</code> in the example below <span class="docs-emoji">&#x1F447;</span>):</p>
+<p>We recommend instead to define environment variables using <a href="https://github.com/kentcdodds/cross-env" class="outbound" target="_blank">cross-env</a>. With <code v-pre>cross-env</code>, the environment variables will be made available to any <a href="https://nodejs.org/en" class="outbound" target="_blank">Node.js</a> files that are executed by the script process (<code v-pre>dev</code> in the example below <span class="docs-emoji">&#x1F447;</span>):</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <div class="codeblock-title">package.json</div>
 <pre class="language-json"><code v-pre class="language-json">{
@@ -771,9 +759,7 @@ if (process.env.DEBUG === &quot;true&quot;) {
     console.log(&quot;Configuring webpack in debug mode!&quot;);
 }
 
-export default defineBuildConfig({
-    swcConfig
-});</code></pre>
+export default defineBuildConfig(swcConfig);</code></pre>
 </doc-codeblock></div>
 <p>However, there&#x27;s a catch. When using <code v-pre>cross-env</code>, the variables will not be available in the application files because <code v-pre>cross-env</code> only makes them available to files that are executed by the process at <strong>build time</strong> while the application files are executed at <strong>runtime</strong> by a browser.</p>
 <p>To make them accessible to the application files, webpack must be aware of those environment variables and <strong>render</strong> them into the <strong>compiled application files</strong>. This is the purpose of the <code v-pre>environmentVariables</code> option.</p>
@@ -795,8 +781,7 @@ export default defineBuildConfig({
 import { defineBuildConfig } from &quot;@workleap/webpack-configs&quot;;
 import { swcConfig } from &quot;./swc.build.js&quot;;
 
-export default defineBuildConfig({
-    swcConfig,
+export default defineBuildConfig(swcConfig, {
     environmentVariables: {
         &quot;DEBUG&quot;: process.env.DEBUG
     }
