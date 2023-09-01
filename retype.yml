@@ -1,18 +1,23 @@
-input: ./docs
-output: .retype
+# -------------------
+# Retype Pro
+# -------------------
 
-# Pro features
 poweredByRetype: false
 
 outbound:
     enabled: true
     icon: ""
 
-# Regular features
-edit:
-    repo: "https://github.com/gsoft-inc/wl-web-configs"
-    base: /docs
-    branch: main
+breadcrumb:
+    enabled: true
+    home: false
+
+# -------------------
+# Retype
+# -------------------
+
+input: ./docs
+output: .retype
 
 url: https://gsoft-inc.github.io/wl-web-configs
 
@@ -21,6 +26,11 @@ branding:
     logo: ./static/logo.png
 
 favicon: ./static/favicon.png
+
+edit:
+    repo: "https://github.com/gsoft-inc/wl-web-configs"
+    base: /docs
+    branch: main
 
 links:
     - text: Home
