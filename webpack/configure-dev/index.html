@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/wl-web-configs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.2.0.746813006587">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.3.0.746906560346">
 
     <!-- See retype.com -->
-    <meta name="generator" content="Retype 3.2.0">
+    <meta name="generator" content="Retype 3.3.0">
 
     <!-- Primary Meta Tags -->
     <title>Configure for dev - webpack</title>
@@ -32,12 +32,12 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("/wl-web-configs/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../static/favicon.png" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.2.0.746813006587" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.3.0.746906560346" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.2.0.746813006587" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../../resources/js/retype.js?v=3.2.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.2.0.746813006587" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.2.0.746813006587" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.3.0.746906560346" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/retype.js?v=3.3.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.3.0.746906560346" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.3.0.746906560346" defer></script>
 
     <style>
         .docs-markdown ol, .docs-markdown ul {
@@ -279,6 +279,31 @@
                             <div class="docs-markdown" id="docs-content">
                                 <!-- Rendered if sidebar right is enabled -->
                                 <div id="docs-sidebar-right-toggle"></div>
+                                <nav class="breadcrumb" aria-label="Breadcrumb">
+                                    <ol role="list">
+                                        <li class="pr-4">
+                                            <a href="../../" class="pr-4">
+                                                Getting started
+                                            </a>
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                                                <path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"/>
+                                            </svg>
+                                        </li>
+                                        <li class="pr-4">
+                                            <a href="../../webpack/" class="pr-4">
+                                                Webpack
+                                            </a>
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                                                <path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"/>
+                                            </svg>
+                                        </li>
+                                        <li class="pr-4">
+                                            <a href="../../webpack/configure-dev/" class="pr-4">
+                                                Configure for dev
+                                            </a>
+                                        </li>
+                                    </ol>
+                                </nav>
                 
                                 <!-- Page content  -->
 <doc-anchor-target id="configure-for-dev" class="break-words">
@@ -834,31 +859,14 @@ export const transformer: WebpackConfigTransformer = (config: WebpackConfig, con
         <span>6. Set environment variables</span>
     </h2>
 </doc-anchor-target>
-<p>To deal with environment variables, webpack suggest using the <a href="https://webpack.js.org/guides/environment-variables/" class="outbound" target="_blank">--env option</a> from it&#x27;s CLI. While that would work, the environment variables would then only be available to the webpack configuration file:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<div class="codeblock-title">webpack.dev.js</div>
-<pre class="language-javascript" data-line="6"><code v-pre class="language-javascript">// @ts-check
-
-import { defineDevConfig } from &quot;@workleap/webpack-configs&quot;;
-import { swcConfig } from &quot;./swc.dev.js&quot;;
-
-export default (env) =&gt; {
-    if (env.DEBUG === &quot;true&quot;) {
-        console.log(&quot;Configuring webpack in debug mode!&quot;);
-    }
-
-    return defineDevConfig({
-        swcConfig
-    });
-}</code></pre>
-</doc-codeblock></div>
+<p>To deal with environment variables, the <a href="https://webpack.js.org/" class="outbound" target="_blank">webpack</a> documentation suggests using the <a href="https://webpack.js.org/guides/environment-variables/" class="outbound" target="_blank">--env option</a> from its CLI. While that would work, by using webpack <code v-pre>--env</code> CLI option, the environment variables would only be made available to the webpack configuration files (.e.g. <code v-pre>webpack.config.js</code>) rather than any <a href="https://nodejs.org/en" class="outbound" target="_blank">Node.js</a> files. Therefore we <strong>do not recommend</strong> using webpack <code v-pre>--env</code> CLI option.</p>
 <doc-anchor-target id="cross-env">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#cross-env">#</doc-anchor-trigger>
         <span>cross-env</span>
     </h3>
 </doc-anchor-target>
-<p>We recommend instead to define environment variables with <a href="https://github.com/kentcdodds/cross-env" class="outbound" target="_blank">cross-env</a>. That way, the environment variables will be available to any <a href="https://nodejs.org/en" class="outbound" target="_blank">Node.js</a> files loaded by the script:</p>
+<p>We recommend instead to define environment variables using <a href="https://github.com/kentcdodds/cross-env" class="outbound" target="_blank">cross-env</a>. With <code v-pre>cross-env</code>, the environment variables will be made available to any <a href="https://nodejs.org/en" class="outbound" target="_blank">Node.js</a> files that are executed by the script process (<code v-pre>dev</code> in the example below <span class="docs-emoji">&#x1F447;</span>):</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <div class="codeblock-title">package.json</div>
 <pre class="language-json"><code v-pre class="language-json">{
@@ -880,8 +888,8 @@ export default defineDevConfig({
     swcConfig
 });</code></pre>
 </doc-codeblock></div>
-<p>Still, having the environment variables available everywhere doesn&#x27;t allow the bundled application files to access them. The reason is that those environment variables are only available at build time, not at runtime.</p>
-<p>To make them accessible at runtime, they must be added to the application bundle files. This is the purpose of the <code v-pre>environmentVariables</code> option.</p>
+<p>However, there&#x27;s a catch. When using <code v-pre>cross-env</code>, the variables will not be available in the application files because <code v-pre>cross-env</code> only makes them available to files that are executed by the process at <strong>build time</strong> while the application files are executed at <strong>runtime</strong> by a browser.</p>
+<p>To make them accessible to the application files, webpack must be aware of those environment variables and <strong>render</strong> them into the <strong>compiled application files</strong>. This is the purpose of the <code v-pre>environmentVariables</code> option.</p>
 <doc-anchor-target id="environmentvariables">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#environmentvariables">#</doc-anchor-trigger>
@@ -892,6 +900,7 @@ export default defineDevConfig({
 <li><strong>Type</strong>: <code v-pre>Record&lt;string, string | undefined&gt;</code></li>
 <li><strong>Default</strong>: <code v-pre>undefined</code></li>
 </ul>
+<p>First, define the variables with <code v-pre>environmentVariables</code>:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <div class="codeblock-title">webpack.dev.js</div>
 <pre class="language-javascript" data-line="8-10"><code v-pre class="language-javascript">// @ts-check
@@ -906,7 +915,7 @@ export default defineDevConfig({
     }
 });</code></pre>
 </doc-codeblock></div>
-<p>Then, the environment variables are available to any application files:</p>
+<p>Then, use the variables in any application files:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <div class="codeblock-title">src/app.tsx</div>
 <pre class="language-tsx" data-line="2"><code v-pre class="language-tsx">export function App() {
