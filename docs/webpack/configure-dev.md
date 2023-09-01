@@ -27,26 +27,6 @@ npm install -D @workleap/webpack-configs webpack webpack-cli webpack-dev-server 
 ```
 +++
 
-### Fast Refresh
-
-Because [Module Federation](https://webpack.js.org/concepts/module-federation/) does not support [Fast Refresh](https://www.npmjs.com/package/react-refresh), the default configuration doesn't enable it by default and it's defined as an optional `peerDependency`.
-
-If you expect to enable Fast Refresh, also install the following package at the root of the project:
-
-+++ pnpm
-```bash
-pnpm add -D @pmmmwh/react-refresh-webpack-plugin
-```
-+++ yarn
-```bash
-yarn add -D @pmmmwh/react-refresh-webpack-plugin
-```
-+++ npm
-```bash
-npm install -D @pmmmwh/react-refresh-webpack-plugin
-```
-+++
-
 ### Monorepo support
 
 For monorepo solutions, **all the projects** containing React code which are referenced by the web application (the one with the webpack configuration) must also install the `@swc/helpers` package as a `devDependency`:
@@ -77,7 +57,7 @@ web-project
 ├── webpack.dev.js
 ```
 
-Then, open the newly created file and `export` the webpack configuration by using the `defineDevConfig(options)` function:
+Then, open the newly created file and `export` the webpack configuration by using the `defineDevConfig(swcConfig, options)` function:
 
 ```js !#6-8 webpack.dev.js
 // @ts-check
@@ -85,14 +65,12 @@ Then, open the newly created file and `export` the webpack configuration by usin
 import { defineDevConfig } from "@workleap/webpack-configs";
 import { swcConfig } from "./swc.dev.js";
 
-export default defineDevConfig({
-    swcConfig
-});
+export default defineDevConfig(swcConfig);
 ```
 
 ### `swcConfig`
 
-In the previous code sample, the `defineDevConfig(options)` function receive an [SWC](https://swc.rs) configuration object through the mandatory `swcConfig` option. 
+In the previous code sample, the `defineDevConfig(swcConfig, options)` function receive an [SWC](https://swc.rs) configuration object through the mandatory `swcConfig` option. 
 
 Although the [swc-loader](https://swc.rs/docs/usage/swc-loader) defaults to loading the closest `.swcrc` [configuration file](https://swc.rs/docs/configuration/swcrc) when no configuration object is provided, it lacks support for distinct configuration files by environment like webpack does.
 
@@ -100,7 +78,7 @@ Therefore, `@workleap/webpack-configs` choosed to **delegate** the loading of th
 
 ## 3. Set predefined options
 
-The `defineDevConfig(options)` function can be used as shown in the previous example, however, if you wish to customize the default configuration, the function also accept a few predefined options to help with that 👇
+The `defineDevConfig(swcConfig, options)` function can be used as shown in the previous example, however, if you wish to customize the default configuration, the function also accept a few predefined options to help with that 👇
 
 ### `entry`
 
@@ -115,9 +93,8 @@ Set webpack [entry option](https://webpack.js.org/configuration/entry-context/#e
 import { defineDevConfig } from "@workleap/webpack-configs";
 import { swcConfig } from "./swc.dev.js";
 
-export default defineDevConfig({
-    entry: "./src/another-entry.tsx",
-    swcConfig
+export default defineDevConfig(swcConfig, {
+    entry: "./src/another-entry.tsx"
 });
 ```
 
@@ -134,9 +111,8 @@ Set webpack DevServer [https option](https://webpack.js.org/configuration/dev-se
 import { defineDevConfig } from "@workleap/webpack-configs";
 import { swcConfig } from "./swc.dev.js";
 
-export default defineDevConfig({
-    https: true,
-    swcConfig
+export default defineDevConfig(swcConfig, {
+    https: true
 });
 ```
 
@@ -153,9 +129,8 @@ Set webpack DevServer [host option](https://webpack.js.org/configuration/dev-ser
 import { defineDevConfig } from "@workleap/webpack-configs";
 import { swcConfig } from "./swc.dev.js";
 
-export default defineDevConfig({
-    host: "my-custom-host",
-    swcConfig
+export default defineDevConfig(swcConfig, {
+    host: "my-custom-host"
 });
 ```
 
@@ -172,9 +147,8 @@ Set webpack DevServer [port option](https://webpack.js.org/configuration/dev-ser
 import { defineDevConfig } from "@workleap/webpack-configs";
 import { swcConfig } from "./swc.dev.js";
 
-export default defineDevConfig({
-    port: 1234,
-    swcConfig
+export default defineDevConfig(swcConfig, {
+    port: 1234
 });
 ```
 
@@ -191,9 +165,8 @@ Whether or not webpack [filesystem cache](https://webpack.js.org/configuration/c
 import { defineDevConfig } from "@workleap/webpack-configs";
 import { swcConfig } from "./swc.dev.js";
 
-export default defineDevConfig({
-    cache: false,
-    swcConfig
+export default defineDevConfig(swcConfig, {
+    cache: false
 });
 ```
 
@@ -209,9 +182,8 @@ import { defineDevConfig } from "@workleap/webpack-configs";
 import { swcConfig } from "./swc.dev.js";
 import path from "path";
 
-export default defineDevConfig({
-    cacheDirectory: path.resolve("./custom-webpack-cache"),
-    swcConfig
+export default defineDevConfig(swcConfig, {
+    cacheDirectory: path.resolve("./custom-webpack-cache")
 });
 ```
 
@@ -230,14 +202,13 @@ Append the provided webpack module rules to the configuration.
 import { defineDevConfig } from "@workleap/webpack-configs";
 import { swcConfig } from "./swc.dev.js";
 
-export default defineDevConfig({
+export default defineDevConfig(swcConfig, {
     moduleRules: [
         {
             test: /\.s[ac]ss$/i,
             use: ["style-loader", "css-loader", "sass-loader"]
         }
-    ],
-    swcConfig
+    ]
 });
 ```
 
@@ -255,14 +226,13 @@ import { defineDevConfig } from "@workleap/webpack-configs";
 import { swcConfig } from "./swc.dev.js";
 import CircularDependencyPlugin from "circular-dependency-plugin";
 
-export default defineDevConfig({
+export default defineDevConfig(swcConfig, {
     plugins: [
         new CircularDependencyPlugin({
             exclude: /node_modules/,
             include: /src/
         });
-    ],
-    swcConfig
+    ]
 });
 ```
 
@@ -280,13 +250,12 @@ import { defineDevConfig, defineDevHtmlWebpackPluginConfig } from "@workleap/web
 import { swcConfig } from "./swc.dev.js";
 import path from "path";
 
-export default defineDevConfig({
+export default defineDevConfig(swcConfig, {
     htmlWebpackPluginOptions: defineDevHtmlWebpackPluginConfig({
         template: path.resolve("./my-custom-index.html"),
         minify: true,
         hash: true
-    }),
-    swcConfig
+    })
 });
 ```
 
@@ -307,9 +276,8 @@ If you enable Fast Refresh, don't forget to install it's [package dependency](#f
 import { defineDevConfig } from "@workleap/webpack-configs";
 import { swcConfig } from "./swc.dev.js";
 
-export default defineDevConfig({
-    fastRefresh: true,
-    swcConfig
+export default defineDevConfig(swcConfig, {
+    fastRefresh: true
 });
 ```
 
@@ -321,9 +289,8 @@ To extend the default Fast Refresh configuration, use the `defineFastRefreshPlug
 import { defineDevConfig, defineFastRefreshPluginConfig } from "@workleap/webpack-configs";
 import { swcConfig } from "./swc.dev.js";
 
-export default defineDevConfig({
-    fastRefresh: defineFastRefreshPluginConfig({ overlay: false }),
-    swcConfig
+export default defineDevConfig(swcConfig, {
+    fastRefresh: defineFastRefreshPluginConfig({ overlay: false })
 });
 ```
 
@@ -340,9 +307,8 @@ Enable `css-loader` [modules](https://webpack.js.org/loaders/css-loader/#modules
 import { defineDevConfig } from "@workleap/webpack-configs";
 import { swcConfig } from "./swc.dev.js";
 
-export default defineDevConfig({
-    cssModules: true,
-    swcConfig
+export default defineDevConfig(swcConfig, {
+    cssModules: true
 });
 ```
 
@@ -379,10 +345,9 @@ const enableInMemoryCache: WebpackConfigTransformer = (config: WebpackConfig) =>
     return config;
 };
 
-export default defineDevConfig({
+export default defineDevConfig(swcConfig, {
     cache: false,
-    transformers: [enableInMemoryCache],
-    swcConfig
+    transformers: [enableInMemoryCache]
 });
 ```
 
@@ -424,7 +389,7 @@ To initiate the development server, add the following script to your project `pa
 
 ## 6. Set environment variables
 
-To deal with environment variables, the [webpack](https://webpack.js.org/) documentation suggests using the [--env option](https://webpack.js.org/guides/environment-variables/) from its CLI. While that would work, by using webpack `--env` CLI option, the environment variables would only be made available to the webpack configuration files (.e.g. `webpack.config.js`) rather than any [Node.js](https://nodejs.org/en) files. Therefore we **do not recommend** using webpack `--env` CLI option.
+To deal with environment variables, the [webpack](https://webpack.js.org/) documentation suggests using the [--env option](https://webpack.js.org/guides/environment-variables/) from its CLI. While that would work, by using webpack `--env` CLI option, the environment variables would only be made available to the webpack configuration files (.e.g. `webpack.dev.js`) rather than any [Node.js](https://nodejs.org/en) files. Therefore we **do not recommend** using webpack `--env` CLI option.
 
 ### cross-env
 
@@ -446,9 +411,7 @@ if (process.env.DEBUG === "true") {
     console.log("Configuring webpack in debug mode!");
 }
 
-export default defineDevConfig({
-    swcConfig
-});
+export default defineDevConfig(swcConfig);
 ```
 
 However, there's a catch. When using `cross-env`, the variables will not be available in the application files because `cross-env` only makes them available to files that are executed by the process at **build time** while the application files are executed at **runtime** by a browser.
@@ -468,8 +431,7 @@ First, define the variables with `environmentVariables`:
 import { defineDevConfig } from "@workleap/webpack-configs";
 import { swcConfig } from "./swc.dev.js";
 
-export default defineDevConfig({
-    swcConfig,
+export default defineDevConfig(swcConfig, {
     environmentVariables: {
         "DEBUG": process.env.DEBUG
     }

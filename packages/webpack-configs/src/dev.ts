@@ -49,7 +49,6 @@ export interface DefineDevConfigOptions {
     htmlWebpackPluginOptions?: HtmlWebpackPlugin.Options;
     fastRefresh?: boolean | ReactRefreshPluginOptions;
     cssModules?: boolean;
-    swcConfig: SwcConfig;
     // Only accepting string values because there are lot of issues with the DefinePlugin related to typing errors.
     // See https://github.com/webpack/webpack/issues/8641
     environmentVariables?: Record<string, string | undefined>;
@@ -76,7 +75,7 @@ function tryEnableSwcReactRefresh(config: SwcConfig) {
     return config;
 }
 
-export function defineDevConfig(options: DefineDevConfigOptions) {
+export function defineDevConfig(swcConfig: SwcConfig, options: DefineDevConfigOptions = {}) {
     preflight(options);
 
     const {
@@ -91,7 +90,6 @@ export function defineDevConfig(options: DefineDevConfigOptions) {
         htmlWebpackPluginOptions = defineDevHtmlWebpackPluginConfig(),
         fastRefresh = false,
         cssModules = false,
-        swcConfig,
         environmentVariables,
         transformers = []
     } = options;

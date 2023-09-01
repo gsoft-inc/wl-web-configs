@@ -9,27 +9,24 @@ const Targets = {
 };
 
 test("when an entry prop is provided, use the provided entry value", () => {
-    const result = defineBuildConfig({
-        entry: "./a-new-entry.ts",
-        swcConfig: defineSwcConfig({ targets: Targets })
+    const result = defineBuildConfig(defineSwcConfig({ targets: Targets }), {
+        entry: "./a-new-entry.ts"
     });
 
     expect(result.entry).toBe("./a-new-entry.ts");
 });
 
 test("when an output path is provided, use the provided ouput path value", () => {
-    const result = defineBuildConfig({
-        outputPath: "./a-new-output-path",
-        swcConfig: defineSwcConfig({ targets: Targets })
+    const result = defineBuildConfig(defineSwcConfig({ targets: Targets }), {
+        outputPath: "./a-new-output-path"
     });
 
     expect(result.output?.path).toBe("./a-new-output-path");
 });
 
 test("when a public path is provided, use the provided public path value", () => {
-    const result = defineBuildConfig({
-        publicPath: "./a-new-public-path",
-        swcConfig: defineSwcConfig({ targets: Targets })
+    const result = defineBuildConfig(defineSwcConfig({ targets: Targets }), {
+        publicPath: "./a-new-public-path"
     });
 
     expect(result.output?.publicPath).toBe("./a-new-public-path");
@@ -46,12 +43,11 @@ test("when additional module rules are provided, append the provided rules at th
         type: "asset/inline"
     };
 
-    const result = defineBuildConfig({
+    const result = defineBuildConfig(defineSwcConfig({ targets: Targets }), {
         moduleRules: [
             newModuleRule1,
             newModuleRule2
-        ],
-        swcConfig: defineSwcConfig({ targets: Targets })
+        ]
     });
 
     const rulesCount = result.module!.rules!.length;
@@ -76,12 +72,11 @@ test("when additional plugins are provided, append the provided plugins at the e
     const newPlugin1 = new Plugin1();
     const newPlugin2 = new Plugin2();
 
-    const result = defineBuildConfig({
+    const result = defineBuildConfig(defineSwcConfig({ targets: Targets }), {
         plugins: [
             newPlugin1,
             newPlugin2
-        ],
-        swcConfig: defineSwcConfig({ targets: Targets })
+        ]
     });
 
     const pluginsCount = result.plugins!.length;
@@ -91,45 +86,40 @@ test("when additional plugins are provided, append the provided plugins at the e
 });
 
 test("when minify is true, minimize is set to true", () => {
-    const result = defineBuildConfig({
-        minify: true,
-        swcConfig: defineSwcConfig({ targets: Targets })
+    const result = defineBuildConfig(defineSwcConfig({ targets: Targets }), {
+        minify: true
     });
 
     expect(result.optimization?.minimize).toBeTruthy();
 });
 
 test("when minify is false, minimize is set to false", () => {
-    const result = defineBuildConfig({
-        minify: false,
-        swcConfig: defineSwcConfig({ targets: Targets })
+    const result = defineBuildConfig(defineSwcConfig({ targets: Targets }), {
+        minify: false
     });
 
     expect(result.optimization?.minimize).toBeFalsy();
 });
 
 test("when minify is true, include minify configuration", () => {
-    const result = defineBuildConfig({
-        minify: true,
-        swcConfig: defineSwcConfig({ targets: Targets })
+    const result = defineBuildConfig(defineSwcConfig({ targets: Targets }), {
+        minify: true
     });
 
     expect(result.optimization?.minimizer).toBeDefined();
 });
 
 test("when minify is false, do not include minify configuration", () => {
-    const result = defineBuildConfig({
-        minify: false,
-        swcConfig: defineSwcConfig({ targets: Targets })
+    const result = defineBuildConfig(defineSwcConfig({ targets: Targets }), {
+        minify: false
     });
 
     expect(result.optimization?.minimizer).toBeUndefined();
 });
 
 test("when css modules is enabled, include css modules configuration", () => {
-    const result = defineBuildConfig({
-        cssModules: true,
-        swcConfig: defineSwcConfig({ targets: Targets })
+    const result = defineBuildConfig(defineSwcConfig({ targets: Targets }), {
+        cssModules: true
     });
 
     const cssLoader = findModuleRule(result, matchLoaderName("css-loader"));
@@ -143,9 +133,8 @@ test("when css modules is enabled, include css modules configuration", () => {
 });
 
 test("when css modules is disabled, do not include css modules configuration", () => {
-    const result = defineBuildConfig({
-        cssModules: false,
-        swcConfig: defineSwcConfig({ targets: Targets })
+    const result = defineBuildConfig(defineSwcConfig({ targets: Targets }), {
+        cssModules: false
     });
 
     const cssLoader = findModuleRule(result, matchLoaderName("css-loader"));
@@ -156,9 +145,7 @@ test("when css modules is disabled, do not include css modules configuration", (
 test("the provided swc config object is set as the swc-loader options", () => {
     const swcConfig = defineSwcConfig({ targets: Targets });
 
-    const result = defineBuildConfig({
-        swcConfig
-    });
+    const result = defineBuildConfig(swcConfig);
 
     const swcLoader = findModuleRule(result, matchLoaderName("swc-loader"));
 
@@ -172,8 +159,7 @@ test("when a transformer is provided, the transformer is applied on the webpack 
         return config;
     };
 
-    const result = defineBuildConfig({
-        swcConfig: defineSwcConfig({ targets: Targets }),
+    const result = defineBuildConfig(defineSwcConfig({ targets: Targets }), {
         transformers: [entryTransformer]
     });
 
@@ -193,8 +179,7 @@ test("when multiple transformers are provided, all the transformers are applied 
         return config;
     };
 
-    const result = defineBuildConfig({
-        swcConfig: defineSwcConfig({ targets: Targets }),
+    const result = defineBuildConfig(defineSwcConfig({ targets: Targets }), {
         transformers: [entryTransformer, devToolTransformer]
     });
 
@@ -205,8 +190,7 @@ test("when multiple transformers are provided, all the transformers are applied 
 test("transformers context environment is \"build\"", () => {
     const mockTransformer = jest.fn();
 
-    defineBuildConfig({
-        swcConfig: defineSwcConfig({ targets: Targets }),
+    defineBuildConfig(defineSwcConfig({ targets: Targets }), {
         transformers: [mockTransformer]
     });
 
