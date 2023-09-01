@@ -424,7 +424,7 @@ To initiate the development server, add the following script to your project `pa
 
 ## 6. Set environment variables
 
-To deal with environment variables, the [webpack](https://webpack.js.org/) documentation suggest using the [--env option](https://webpack.js.org/guides/environment-variables/) from it's CLI. While that would work, by using webpack `--env` CLI option, the environment variables would only be made available to the webpack configuration files (.e.g. `webpack.config.js`) rather than any [Node.js](https://nodejs.org/en) files. Therefore we **do not recommend** using webpack `--env` CLI option.
+To deal with environment variables, the [webpack](https://webpack.js.org/) documentation suggests using the [--env option](https://webpack.js.org/guides/environment-variables/) from its CLI. While that would work, by using webpack `--env` CLI option, the environment variables would only be made available to the webpack configuration files (.e.g. `webpack.config.js`) rather than any [Node.js](https://nodejs.org/en) files. Therefore we **do not recommend** using webpack `--env` CLI option.
 
 ### cross-env
 
