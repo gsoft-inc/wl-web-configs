@@ -1,5 +1,11 @@
 # @workleap/webpack-configs
 
+## 1.0.1
+
+### Patch Changes
+
+- [#116](https://github.com/gsoft-inc/wl-web-configs/pull/116) [`5d7f448`](https://github.com/gsoft-inc/wl-web-configs/commit/5d7f4486b80f397efb59361935c8e944fcd00d97) Thanks [@patricklafrance](https://github.com/patricklafrance)! - Move fast-refresh package to a dependency rather than an optional peerDependency and move webpack config swcConfig as the first param
+
 ## 1.0.0
 
 ### Major Changes
