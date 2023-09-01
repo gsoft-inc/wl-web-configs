@@ -248,7 +248,7 @@ It is expected as we are dog fooding our own packages to build, lint and tests.
 
 ### TS moduleResolution
 
-Packages compiled for CommonJS (`browserlists-config`, `eslint-plugin`, `stylelint-configs`) cannot use `moduleResolution: "NodeNext"` because with TS 5.2, it requires to be used in conjuction with `module: "NodeNext"` (but we want `module: "CommonJS"`).
+Packages compiled for CommonJS (`browserlists-config`, `eslint-plugin`, `stylelint-configs`) cannot use `moduleResolution: "NodeNext"` because with TS 5.2, it requires to be used in conjunction with `module: "NodeNext"` (but we want `module: "CommonJS"`).
 
 Those package also cannot use `moduleResolution: "Bundler"` because it requires to use at a minimum `module: "ES2015"`, but again, we want `module: "CommonJS"`.
 
