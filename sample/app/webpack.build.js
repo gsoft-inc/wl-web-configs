@@ -5,6 +5,7 @@ import { swcConfig } from "./swc.build.js";
 
 export default defineBuildConfig({
     swcConfig,
+    profile: process.env.PROFILE === "true",
     environmentVariables: {
         "USE_MSW": "false"
     }
