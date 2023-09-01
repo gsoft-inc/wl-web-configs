@@ -250,7 +250,7 @@ It is expected as we are dog fooding our own packages to build, lint and tests.
 
 Packages compiled for CommonJS (`browserlists-config`, `eslint-plugin`, `stylelint-configs`) cannot use `moduleResolution: "NodeNext"` because with TS 5.2, it requires to be used in conjunction with `module: "NodeNext"` (but we want `module: "CommonJS"`).
 
-Those package also cannot use `moduleResolution: "Bundler"` because it requires to use at a minimum `module: "ES2015"`, but again, we want `module: "CommonJS"`.
+Those packages also cannot use `moduleResolution: "Bundler"` because it requires to use at a minimum `module: "ES2015"`, but again, we want `module: "CommonJS"`.
 
 Therefore, we must use `moduleResolution: "Node"`, which is the equivalent of `Node v10`. A `Node v10` environment doesn't support an `"exports"` field in the `package.json` file according to this [issue](https://github.com/microsoft/TypeScript/issues/51862#issuecomment-1358049778).
 
