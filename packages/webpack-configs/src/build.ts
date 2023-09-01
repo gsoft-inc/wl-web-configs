@@ -1,4 +1,5 @@
 import { createRequire } from "node:module";
+import { fileURLToPath } from "node:url";
 import path from "node:path";
 import type { Config as SwcConfig } from "@swc/core";
 import HtmlWebpackPlugin from "html-webpack-plugin";
@@ -7,7 +8,6 @@ import TerserPlugin from "terser-webpack-plugin";
 import type { Configuration as WebpackConfig } from "webpack";
 import webpack from "webpack";
 import { applyTransformers, type WebpackConfigTransformer } from "./transformers/applyTransformers.ts";
-import { fileURLToPath } from "node:url";
 
 // Aliases
 const DefinePlugin = webpack.DefinePlugin;
@@ -30,7 +30,6 @@ export function defineBuildHtmlWebpackPluginConfig(options: HtmlWebpackPlugin.Op
         template
     };
 }
-
 
 export function defineMiniCssExtractPluginConfig(options: MiniCssExtractPluginOptions = {}): MiniCssExtractPluginOptions {
     const {
