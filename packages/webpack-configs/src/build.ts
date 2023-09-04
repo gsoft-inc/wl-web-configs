@@ -1,9 +1,9 @@
-import { createRequire } from "node:module";
-import { fileURLToPath } from "node:url";
-import path from "node:path";
 import type { Config as SwcConfig } from "@swc/core";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import { createRequire } from "node:module";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import TerserPlugin from "terser-webpack-plugin";
 import type { Configuration as WebpackConfig } from "webpack";
 import webpack from "webpack";
@@ -99,6 +99,24 @@ export function defineBuildConfig(swcConfig: SwcConfig, options: DefineBuildConf
             },
             cacheDirectory: cacheDirectory
         },
+        snapshot: {
+            buildDependencies: {
+                hash: true,
+                timestamp: true
+            },
+            module: {
+                hash: true,
+                timestamp: true
+            },
+            resolve: {
+                hash: true,
+                timestamp: true
+            },
+            resolveBuildDependencies: {
+                hash: true,
+                timestamp: true
+            }
+        }
         optimization: minify
             ? {
                 minimize: true,
@@ -113,6 +131,11 @@ export function defineBuildConfig(swcConfig: SwcConfig, options: DefineBuildConf
                 ]
             }
             : undefined,
+        infrastructureLogging: profile ? {
+            appendOnly: true,
+            level: "verbose",
+            debug: /PackFileCache/
+        } : undefined,
         module: {
             rules: [
                 {
@@ -169,34 +192,11 @@ export function defineBuildConfig(swcConfig: SwcConfig, options: DefineBuildConf
             htmlWebpackPlugin && new HtmlWebpackPlugin(htmlWebpackPlugin as HtmlWebpackPlugin.Options),
             new MiniCssExtractPlugin(miniCssExtractPluginOptions),
             new DefinePlugin({
-                // Since we pass an object, webpack will automatically do JSON.stringify
+                // Webpack automatically stringify object literals.
                 "process.env": environmentVariables
             }),
             ...plugins
-        ].filter(Boolean) as WebpackConfig["plugins"],
-        snapshot: {
-            buildDependencies: {
-                hash: true,
-                timestamp: true
-            },
-            module: {
-                hash: true,
-                timestamp: true
-            },
-            resolve: {
-                hash: true,
-                timestamp: true
-            },
-            resolveBuildDependencies: {
-                hash: true,
-                timestamp: true
-            }
-        },
-        infrastructureLogging: profile ? {
-            appendOnly: true,
-            level: "verbose",
-            debug: /PackFileCache/
-        } : undefined
+        ].filter(Boolean) as WebpackConfig["plugins"]
     };
 
     const transformedConfig = applyTransformers(config, transformers, {

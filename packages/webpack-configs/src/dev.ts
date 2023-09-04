@@ -123,6 +123,24 @@ export function defineDevConfig(swcConfig: SwcConfig, options: DefineDevConfigOp
             },
             cacheDirectory: cacheDirectory
         },
+        snapshot: {
+            buildDependencies: {
+                hash: true,
+                timestamp: true
+            },
+            module: {
+                hash: true,
+                timestamp: true
+            },
+            resolve: {
+                hash: true,
+                timestamp: true
+            },
+            resolveBuildDependencies: {
+                hash: true,
+                timestamp: true
+            }
+        },
         optimization: {
             // See: https://webpack.js.org/guides/build-performance/#avoid-extra-optimization-steps
             runtimeChunk: true,
@@ -130,6 +148,11 @@ export function defineDevConfig(swcConfig: SwcConfig, options: DefineDevConfigOp
             removeEmptyChunks: false,
             splitChunks: false
         },
+        infrastructureLogging: profile ? {
+            appendOnly: true,
+            level: "verbose",
+            debug: /PackFileCache/
+        } : undefined,
         module: {
             rules: [
                 {
@@ -185,35 +208,12 @@ export function defineDevConfig(swcConfig: SwcConfig, options: DefineDevConfigOp
         plugins: [
             htmlWebpackPlugin && new HtmlWebpackPlugin(htmlWebpackPlugin as HtmlWebpackPlugin.Options),
             new DefinePlugin({
-                // Since we pass an object, webpack will automatically do JSON.stringify
+                // Webpack automatically stringify object literals.
                 "process.env": environmentVariables
             }),
             fastRefresh && new ReactRefreshWebpackPlugin(isObject(fastRefresh) ? fastRefresh : defineFastRefreshPluginConfig()),
             ...plugins
-        ].filter(Boolean) as WebpackConfig["plugins"],
-        snapshot: {
-            buildDependencies: {
-                hash: true,
-                timestamp: true
-            },
-            module: {
-                hash: true,
-                timestamp: true
-            },
-            resolve: {
-                hash: true,
-                timestamp: true
-            },
-            resolveBuildDependencies: {
-                hash: true,
-                timestamp: true
-            }
-        },
-        infrastructureLogging: profile ? {
-            appendOnly: true,
-            level: "verbose",
-            debug: /PackFileCache/
-        } : undefined
+        ].filter(Boolean) as WebpackConfig["plugins"]
     };
 
     const transformedConfig = applyTransformers(config, transformers, {
