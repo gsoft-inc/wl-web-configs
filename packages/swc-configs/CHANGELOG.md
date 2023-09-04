@@ -1,5 +1,11 @@
 # @workleap/swc-configs
 
+## 2.1.1
+
+### Patch Changes
+
+- [#120](https://github.com/gsoft-inc/wl-web-configs/pull/120) [`0e66000`](https://github.com/gsoft-inc/wl-web-configs/commit/0e66000b2028cad9c606d3523e3bcf540e6350e2) Thanks [@patricklafrance](https://github.com/patricklafrance)! - Updated configs
+
 ## 2.1.0
 
 ### Minor Changes
