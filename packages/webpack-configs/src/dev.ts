@@ -91,7 +91,9 @@ export function defineDevConfig(swcConfig: SwcConfig, options: DefineDevConfigOp
         htmlWebpackPlugin = defineDevHtmlWebpackPluginConfig(),
         fastRefresh = true,
         cssModules = false,
-        environmentVariables,
+        // Using an empty object literal as the default value to ensure
+        // "process.env" is always available.
+        environmentVariables = {},
         transformers = [],
         profile = false
     } = options;
@@ -125,7 +127,7 @@ export function defineDevConfig(swcConfig: SwcConfig, options: DefineDevConfigOp
         },
         // Fixes caching for environmental variables using the DefinePlugin by forcing
         // webpack caching to prioritize hashes over timestamps.
-        snapshot: {
+        snapshot: cache ? {
             buildDependencies: {
                 hash: true,
                 timestamp: true
@@ -142,10 +144,12 @@ export function defineDevConfig(swcConfig: SwcConfig, options: DefineDevConfigOp
                 hash: true,
                 timestamp: true
             }
-        },
+        } : undefined,
+        // See: https://webpack.js.org/guides/build-performance/#avoid-extra-optimization-steps
         optimization: {
-            // See: https://webpack.js.org/guides/build-performance/#avoid-extra-optimization-steps
-            runtimeChunk: true,
+            // Keep "runtimeChunk" to false, otherwise it breaks module federation
+            // (at least for the remote application).
+            runtimeChunk: false,
             removeAvailableModules: false,
             removeEmptyChunks: false,
             splitChunks: false
@@ -219,7 +223,8 @@ export function defineDevConfig(swcConfig: SwcConfig, options: DefineDevConfigOp
     };
 
     const transformedConfig = applyTransformers(config, transformers, {
-        environment: "dev"
+        environment: "dev",
+        profile
     });
 
     return transformedConfig;

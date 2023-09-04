@@ -76,7 +76,9 @@ export function defineBuildConfig(swcConfig: SwcConfig, options: DefineBuildConf
         miniCssExtractPluginOptions = defineMiniCssExtractPluginConfig(),
         minify = true,
         cssModules = false,
-        environmentVariables,
+        // Using an empty object literal as the default value to ensure
+        // "process.env" is always available.
+        environmentVariables = {},
         transformers = [],
         profile = false
     } = options;
@@ -101,7 +103,7 @@ export function defineBuildConfig(swcConfig: SwcConfig, options: DefineBuildConf
         },
         // Fixes caching for environmental variables using the DefinePlugin by forcing
         // webpack caching to prioritize hashes over timestamps.
-        snapshot: {
+        snapshot: cache ? {
             buildDependencies: {
                 hash: true,
                 timestamp: true
@@ -118,7 +120,7 @@ export function defineBuildConfig(swcConfig: SwcConfig, options: DefineBuildConf
                 hash: true,
                 timestamp: true
             }
-        },
+        } : undefined,
         optimization: minify
             ? {
                 minimize: true,
@@ -202,7 +204,8 @@ export function defineBuildConfig(swcConfig: SwcConfig, options: DefineBuildConf
     };
 
     const transformedConfig = applyTransformers(config, transformers, {
-        environment: "build"
+        environment: "build",
+        profile
     });
 
     return transformedConfig;
