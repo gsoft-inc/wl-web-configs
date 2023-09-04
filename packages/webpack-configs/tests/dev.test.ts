@@ -281,7 +281,18 @@ test("transformers context environment is \"dev\"", () => {
         transformers: [mockTransformer]
     });
 
-    expect(mockTransformer).toHaveBeenCalledWith(expect.anything(), { environment: "dev" });
+    expect(mockTransformer).toHaveBeenCalledWith(expect.anything(), { environment: "dev", profile: false });
+});
+
+test("when the profile option is true, the transformers context profile value is \"true\"", () => {
+    const mockTransformer = jest.fn();
+
+    defineDevConfig(defineSwcConfig(Targets), {
+        profile: true,
+        transformers: [mockTransformer]
+    });
+
+    expect(mockTransformer).toHaveBeenCalledWith(expect.anything(), { environment: "dev", profile: true });
 });
 
 describe("defineDevHtmlWebpackPluginConfig", () => {
