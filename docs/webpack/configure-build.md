@@ -118,6 +118,43 @@ export default defineBuildConfig(swcConfig, {
 });
 ```
 
+### `cache`
+
+- **Type**: `boolean`
+- **Default**: `true`
+
+Whether or not webpack [filesystem cache](https://webpack.js.org/configuration/cache/) is enabled.
+
+```js !#7 webpack.build.js
+// @ts-check
+
+import { defineDevConfig } from "@workleap/webpack-configs";
+import { swcConfig } from "./swc.build.js";
+
+export default defineBuildConfig(swcConfig, {
+    cache: false
+});
+```
+
+### `cacheDirectory`
+
+- **Type**: `string`
+- **Default**: `node_modules/.cache/webpack`
+
+```js !#8 webpack.build.js
+// @ts-check
+
+import { defineBuildConfig } from "@workleap/webpack-configs";
+import { swcConfig } from "./swc.build.js";
+import path from "path";
+
+export default defineBuildConfig(swcConfig, {
+    cacheDirectory: path.resolve("./custom-webpack-cache")
+});
+```
+
+Set webpack [cacheDirectory option](https://webpack.js.org/configuration/cache/#cachecachedirectory) when `cache` is enabled.
+
 ### `moduleRules`
 
 - **Type**: An array of webpack [moduleRule](https://webpack.js.org/configuration/module/#modulerules) objects
@@ -254,6 +291,24 @@ import { swcConfig } from "./swc.build.js";
 
 export default defineBuildConfig(swcConfig, {
     cssModules: true
+});
+```
+
+### `profile`
+
+- **Type**: `boolean`
+- **Default**: `false`
+
+Start the webpack process with profiling options turned on.
+
+```js !#7 webpack.dev.js
+// @ts-check
+
+import { defineDevConfig } from "@workleap/webpack-configs";
+import { swcConfig } from "./swc.dev.js";
+
+export default defineDevConfig(swcConfig, {
+    profile: true
 });
 ```
 
