@@ -17,7 +17,7 @@ For a list of the rules included with the default shared configurations, refer t
 
 You can update a default field value by defining the field locally with its new value:
 
-```json !#3-5 tsconfig.json
+```json !#4 tsconfig.json
 {
     "extends": ["@workleap/typescript-configs/web-application"],
     "compilerOptions": {
@@ -31,13 +31,14 @@ You can update a default field value by defining the field locally with its new 
 
 If you are **migrating** an existing project and prefer to wait before moving to ESM, add the following custom configurations to allow `import` statements without specifying a file extension:
 
-```json !#3-6 tsconfig.json
+```json !#4-5 tsconfig.json
 {
     "extends": ["@workleap/typescript-configs/web-application"],
     "compilerOptions": {
         "moduleResolution": "Bundler",
         "module": "ESNext",
-    }
+    },
+    "exclude": ["dist", "node_modules"]
 }
 ```
 

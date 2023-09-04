@@ -55,7 +55,6 @@ export interface DefineBuildConfigOptions {
     miniCssExtractPluginOptions?: MiniCssExtractPluginOptions;
     minify?: boolean;
     cssModules?: boolean;
-    swcConfig: SwcConfig;
     // Only accepting string values because there are lot of issues with the DefinePlugin related to typing errors.
     // See https://github.com/webpack/webpack/issues/8641
     environmentVariables?: Record<string, string | undefined>;
@@ -63,7 +62,7 @@ export interface DefineBuildConfigOptions {
     profile?: boolean;
 }
 
-export function defineBuildConfig(options: DefineBuildConfigOptions) {
+export function defineBuildConfig(swcConfig: SwcConfig, options: DefineBuildConfigOptions = {}) {
     const {
         entry = path.resolve("./src/index.tsx"),
         outputPath = path.resolve("dist"),
@@ -77,7 +76,6 @@ export function defineBuildConfig(options: DefineBuildConfigOptions) {
         miniCssExtractPluginOptions = defineMiniCssExtractPluginConfig(),
         minify = true,
         cssModules = false,
-        swcConfig,
         environmentVariables,
         transformers = [],
         profile = false

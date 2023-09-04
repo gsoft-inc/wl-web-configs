@@ -23,13 +23,12 @@ Each configuration piece can be extended individually, or in combination with ot
 
 To extend the base configuration for a [React](https://react.dev/) project:
 
-```json tsconfig.json
+```json !#2 tsconfig.json
 {
     "extends": "@workleap/typescript-configs/react",
     "compilerOptions": {
-        "baseUrl": ".",
+        ...
     },
-    "include": ["src"],
     "exclude": ["dist", "node_modules"]
 }
 ```
@@ -38,13 +37,12 @@ To extend the base configuration for a [React](https://react.dev/) project:
 
 To extend the core configuration for a regular TypeScript project:
 
-```json tsconfig.json
+```json !#2 tsconfig.json
 {
     "extends": "@workleap/typescript-configs/core",
     "compilerOptions": {
-        "baseUrl": ".",
+        ...
     },
-    "include": ["src"],
     "exclude": ["dist", "node_modules"]
 }
 ```

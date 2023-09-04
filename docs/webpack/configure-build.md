@@ -57,7 +57,7 @@ web-project
 ├── webpack.build.js
 ```
 
-Then, open the newly created file and `export` the webpack configuration by using the `defineBuildConfig(options)` function:
+Then, open the newly created file and `export` the webpack configuration by using the `defineBuildConfig(swcConfig, options)` function:
 
 ```js !#6-8 webpack.build.js
 // @ts-check
@@ -65,14 +65,12 @@ Then, open the newly created file and `export` the webpack configuration by usin
 import { defineBuildConfig } from "@workleap/webpack-configs";
 import { swcConfig } from "./swc.build.js";
 
-export default defineBuildConfig({
-    swcConfig
-});
+export default defineBuildConfig(swcConfig);
 ```
 
 ### `swcConfig`
 
-In the previous code sample, the `defineBuildConfig(options)` function receive an [SWC](https://swc.rs) configuration object through the mandatory `swcConfig` option. 
+In the previous code sample, the `defineBuildConfig(swcConfig, options)` function receive an [SWC](https://swc.rs) configuration object through the mandatory `swcConfig` option. 
 
 Although the [swc-loader](https://swc.rs/docs/usage/swc-loader) defaults to loading the closest `.swcrc` [configuration file](https://swc.rs/docs/configuration/swcrc) when no configuration object is provided, it lacks support for distinct configuration files by environment like webpack does.
 
@@ -80,7 +78,7 @@ Therefore, `@workleap/webpack-configs` choosed to **delegate** the loading of th
 
 ## 3. Set predefined options
 
-The `defineBuildConfig(options)` function can be used as shown in the previous example, however, if you wish to customize the default configuration, the function also accept a few predefined options to help with that 👇
+The `defineBuildConfig(swcConfig, options)` function can be used as shown in the previous example, however, if you wish to customize the default configuration, the function also accept a few predefined options to help with that 👇
 
 ### `entry`
 
@@ -95,9 +93,8 @@ Set webpack [entry option](https://webpack.js.org/configuration/entry-context/#e
 import { defineBuildConfig } from "@workleap/webpack-configs";
 import { swcConfig } from "./swc.build.js";
 
-export default defineBuildConfig({
-    entry: "./src/another-entry.tsx",
-    swcConfig
+export default defineBuildConfig(swcConfig, {
+    entry: "./src/another-entry.tsx"
 });
 ```
 
@@ -115,9 +112,8 @@ import { defineBuildConfig } from "@workleap/webpack-configs";
 import { swcConfig } from "./swc.build.js";
 import path from "path";
 
-export default defineBuildConfig({
-    outputPath: path.resolve("./a-custom-folder"),
-    swcConfig
+export default defineBuildConfig(swcConfig, {
+    outputPath: path.resolve("./a-custom-folder")
 });
 ```
 
@@ -134,10 +130,9 @@ Set webpack [public path](https://webpack.js.org/configuration/output/#outputpub
 import { defineBuildConfig } from "@workleap/webpack-configs";
 import { swcConfig } from "./swc.build.js";
 
-export default defineBuildConfig({
+export default defineBuildConfig(swcConfig, {
     // The ending "/" is very important.
-    publicPath: "https://my-app.netlify.app/",
-    swcConfig
+    publicPath: "https://my-app.netlify.app/"
 });
 ```
 
@@ -154,14 +149,13 @@ Append the provided webpack module rules to the configuration.
 import { defineBuildConfig } from "@workleap/webpack-configs";
 import { swcConfig } from "./swc.build.js";
 
-export default defineBuildConfig({
+export default defineBuildConfig(swcConfig, {
     moduleRules: [
         {
             test: /\.s[ac]ss$/i,
             use: ["style-loader", "css-loader", "sass-loader"]
         }
-    ],
-    swcConfig
+    ]
 });
 ```
 
@@ -179,14 +173,13 @@ import { defineBuildConfig } from "@workleap/webpack-configs";
 import { swcConfig } from "./swc.build.js";
 import CircularDependencyPlugin from "circular-dependency-plugin";
 
-export default defineBuildConfig({
+export default defineBuildConfig(swcConfig, {
     plugins: [
         new CircularDependencyPlugin({
             exclude: /node_modules/,
             include: /src/
         });
-    ],
-    swcConfig
+    ]
 });
 ```
 
@@ -204,13 +197,12 @@ import { defineBuildConfig, defineBuildHtmlWebpackPluginConfig } from "@workleap
 import { swcConfig } from "./swc.build.js";
 import path from "path";
 
-export default defineBuildConfig({
+export default defineBuildConfig(swcConfig, {
     htmlWebpackPluginOptions: defineBuildHtmlWebpackPluginConfig({
         template: path.resolve("./my-custom-index.html"),
         minify: true,
         hash: true
-    }),
-    swcConfig
+    })
 });
 ```
 
@@ -228,11 +220,10 @@ import { defineBuildConfig, defineMiniCssExtractPluginConfig } from "@workleap/w
 import { swcConfig } from "./swc.build.js";
 import path from "path";
 
-export default defineBuildConfig({
+export default defineBuildConfig(swcConfig, {
     htmlWebpackPluginOptions: defineMiniCssExtractPluginConfig({
         ignoreOrder: true
-    }),
-    swcConfig
+    })
 });
 ```
 
@@ -249,9 +240,8 @@ Whether or not to enable [code minification](https://webpack.js.org/configuratio
 import { defineBuildConfig } from "@workleap/webpack-configs";
 import { swcConfig } from "./swc.build.js";
 
-export default defineBuildConfig({
-    minify: false,
-    swcConfig
+export default defineBuildConfig(swcConfig, {
+    minify: false
 });
 ```
 
@@ -268,9 +258,8 @@ Enable `css-loader` [modules](https://webpack.js.org/loaders/css-loader/#modules
 import { defineBuildConfig } from "@workleap/webpack-configs";
 import { swcConfig } from "./swc.build.js";
 
-export default defineBuildConfig({
-    cssModules: true,
-    swcConfig
+export default defineBuildConfig(swcConfig, {
+    cssModules: true
 });
 ```
 
@@ -305,9 +294,8 @@ const useContentHashOutputFilename: WebpackConfigTransformer = (config: WebpackC
     return config;
 }:
 
-export default defineBuildConfig({
-    transformers: [useContentHashOutputFilename],
-    swcConfig
+export default defineBuildConfig(swcConfig, {
+    transformers: [useContentHashOutputFilename]
 });
 ```
 
@@ -347,28 +335,11 @@ To create the bundle files for production, add the following script to your proj
 
 ## 6. Set environment variables
 
-To deal with environment variables, webpack suggest using the [--env option](https://webpack.js.org/guides/environment-variables/) from it's CLI. While that would work, the environment variables would then only be available to the webpack configuration file:
-
-```js !#6 webpack.build.js
-// @ts-check
-
-import { defineBuildConfig } from "@workleap/webpack-configs";
-import { swcConfig } from "./swc.build.js";
-
-export default (env) => {
-    if (env.DEBUG === "true") {
-        console.log("Configuring webpack in debug mode!");
-    }
-
-    return defineBuildConfig({
-        swcConfig
-    });
-}
-```
+To deal with environment variables, the [webpack](https://webpack.js.org/) documentation suggests using the [--env option](https://webpack.js.org/guides/environment-variables/) from its CLI. While that would work, by using webpack `--env` CLI option, the environment variables would only be made available to the webpack configuration files (.e.g. `webpack.build.js`) rather than any [Node.js](https://nodejs.org/en) files. Therefore we **do not recommend** using webpack `--env` CLI option.
 
 ### cross-env
 
-We recommend instead to define environment variables with [cross-env](https://github.com/kentcdodds/cross-env). That way, the environment variables will be available to any [Node.js](https://nodejs.org/en) files loaded by the script:
+We recommend instead to define environment variables using [cross-env](https://github.com/kentcdodds/cross-env). With `cross-env`, the environment variables will be made available to any [Node.js](https://nodejs.org/en) files that are executed by the script process (`dev` in the example below :point_down:):
 
 ```json package.json
 {
@@ -386,19 +357,19 @@ if (process.env.DEBUG === "true") {
     console.log("Configuring webpack in debug mode!");
 }
 
-export default defineBuildConfig({
-    swcConfig
-});
+export default defineBuildConfig(swcConfig);
 ```
 
-Still, having the environment variables available everywhere doesn't allow the bundled application files to access them. The reason is that those environment variables are only available at build time, not at runtime.
+However, there's a catch. When using `cross-env`, the variables will not be available in the application files because `cross-env` only makes them available to files that are executed by the process at **build time** while the application files are executed at **runtime** by a browser.
 
-To make them accessible at runtime, they must be added to the application bundle files. This is the purpose of the `environmentVariables` option.
+To make them accessible to the application files, webpack must be aware of those environment variables and **render** them into the **compiled application files**. This is the purpose of the `environmentVariables` option.
 
 ### `environmentVariables`
 
 - **Type**: `Record<string, string | undefined>`
 - **Default**: `undefined`
+
+First, define the variables with `environmentVariables`:
 
 ```js !#8-10 webpack.build.js
 // @ts-check
@@ -406,15 +377,14 @@ To make them accessible at runtime, they must be added to the application bundle
 import { defineBuildConfig } from "@workleap/webpack-configs";
 import { swcConfig } from "./swc.build.js";
 
-export default defineBuildConfig({
-    swcConfig,
+export default defineBuildConfig(swcConfig, {
     environmentVariables: {
         "DEBUG": process.env.DEBUG
     }
 });
 ```
 
-Then, the environment variables are available to any application files:
+Then, use the variables in any application files:
 
 ```tsx !#2 src/app.tsx
 export function App() {

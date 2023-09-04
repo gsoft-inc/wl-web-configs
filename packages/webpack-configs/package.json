@@ -2,7 +2,7 @@
     "name": "@workleap/webpack-configs",
     "author": "Workleap",
     "description": "Workleap recommended webpack config.",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "license": "Apache-2.0",
     "keywords": [
         "workleap",
@@ -30,6 +30,7 @@
         "build": "tsup"
     },
     "dependencies": {
+        "@pmmmwh/react-refresh-webpack-plugin": "0.5.11",
         "css-loader": "6.8.1",
         "html-webpack-plugin": "5.5.3",
         "mini-css-extract-plugin": "2.7.6",
@@ -39,7 +40,6 @@
         "terser-webpack-plugin": "5.3.9"
     },
     "peerDependencies": {
-        "@pmmmwh/react-refresh-webpack-plugin": "*",
         "@svgr/webpack": "*",
         "@swc/core": "*",
         "@swc/helpers": "*",
@@ -49,17 +49,13 @@
         "webpack-dev-server": "*"
     },
     "peerDependenciesMeta": {
-        "@pmmmwh/react-refresh-webpack-plugin": {
-            "optional": true
-        },
         "webpack-dev-server": {
             "optional": true
         }
     },
     "devDependencies": {
-        "@pmmmwh/react-refresh-webpack-plugin": "0.5.11",
         "@svgr/webpack": "8.1.0",
-        "@swc/core": "1.3.80",
+        "@swc/core": "1.3.82",
         "@swc/helpers": "0.5.1",
         "@swc/jest": "0.2.29",
         "@types/jest": "29.5.4",
