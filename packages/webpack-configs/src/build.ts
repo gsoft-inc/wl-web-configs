@@ -1,8 +1,9 @@
+import { createRequire } from "node:module";
+import { fileURLToPath } from "node:url";
+import path from "node:path";
 import type { Config as SwcConfig } from "@swc/core";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import { createRequire } from "node:module";
-import path from "path";
 import TerserPlugin from "terser-webpack-plugin";
 import type { Configuration as WebpackConfig } from "webpack";
 import webpack from "webpack";
@@ -30,7 +31,6 @@ export function defineBuildHtmlWebpackPluginConfig(options: HtmlWebpackPlugin.Op
     };
 }
 
-
 export function defineMiniCssExtractPluginConfig(options: MiniCssExtractPluginOptions = {}): MiniCssExtractPluginOptions {
     const {
         filename = "[name].[fullhash].css",
@@ -47,6 +47,8 @@ export interface DefineBuildConfigOptions {
     entry?: string;
     outputPath?: string;
     publicPath?: string;
+    cache?: boolean;
+    cacheDirectory?: string;
     moduleRules?: NonNullable<WebpackConfig["module"]>["rules"];
     plugins?: WebpackConfig["plugins"];
     htmlWebpackPlugin?: false | HtmlWebpackPlugin.Options;
@@ -57,6 +59,7 @@ export interface DefineBuildConfigOptions {
     // See https://github.com/webpack/webpack/issues/8641
     environmentVariables?: Record<string, string | undefined>;
     transformers?: WebpackConfigTransformer[];
+    profile?: boolean;
 }
 
 export function defineBuildConfig(swcConfig: SwcConfig, options: DefineBuildConfigOptions = {}) {
@@ -65,6 +68,8 @@ export function defineBuildConfig(swcConfig: SwcConfig, options: DefineBuildConf
         outputPath = path.resolve("dist"),
         // The trailing / is very important, otherwise paths will not be resolved correctly.
         publicPath = "http://localhost:8080/",
+        cache = true,
+        cacheDirectory = path.resolve("node_modules/.cache/webpack"),
         moduleRules = [],
         plugins = [],
         htmlWebpackPlugin = defineBuildHtmlWebpackPluginConfig(),
@@ -72,7 +77,8 @@ export function defineBuildConfig(swcConfig: SwcConfig, options: DefineBuildConf
         minify = true,
         cssModules = false,
         environmentVariables,
-        transformers = []
+        transformers = [],
+        profile = false
     } = options;
 
     const config: WebpackConfig = {
@@ -84,6 +90,14 @@ export function defineBuildConfig(swcConfig: SwcConfig, options: DefineBuildConf
             filename: "[name].[fullhash].js",
             publicPath,
             clean: true
+        },
+        cache: cache && {
+            type: "filesystem",
+            allowCollectingMemory: false,
+            buildDependencies: {
+                config: [fileURLToPath(import.meta.url)]
+            },
+            cacheDirectory: cacheDirectory
         },
         optimization: minify
             ? {
@@ -155,12 +169,34 @@ export function defineBuildConfig(swcConfig: SwcConfig, options: DefineBuildConf
             htmlWebpackPlugin && new HtmlWebpackPlugin(htmlWebpackPlugin as HtmlWebpackPlugin.Options),
             new MiniCssExtractPlugin(miniCssExtractPluginOptions),
             new DefinePlugin({
-                // Parenthesis around the stringified object are mandatory otherwise it breaks
-                // at build time.
-                "process.env": `(${JSON.stringify(environmentVariables)})`
+                // Since we pass an object, webpack will automatically do JSON.stringify
+                "process.env": environmentVariables
             }),
             ...plugins
-        ].filter(Boolean) as WebpackConfig["plugins"]
+        ].filter(Boolean) as WebpackConfig["plugins"],
+        snapshot: {
+            buildDependencies: {
+                hash: true,
+                timestamp: true
+            },
+            module: {
+                hash: true,
+                timestamp: true
+            },
+            resolve: {
+                hash: true,
+                timestamp: true
+            },
+            resolveBuildDependencies: {
+                hash: true,
+                timestamp: true
+            }
+        },
+        infrastructureLogging: profile ? {
+            appendOnly: true,
+            level: "verbose",
+            debug: /PackFileCache/
+        } : undefined
     };
 
     const transformedConfig = applyTransformers(config, transformers, {

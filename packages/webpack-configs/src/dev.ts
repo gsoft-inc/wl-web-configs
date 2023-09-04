@@ -3,8 +3,8 @@ import type { ReactRefreshPluginOptions } from "@pmmmwh/react-refresh-webpack-pl
 import type { Config as SwcConfig } from "@swc/core";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import { createRequire } from "node:module";
-import path from "path";
-import { fileURLToPath } from "url";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import type { Configuration as WebpackConfig } from "webpack";
 import webpack from "webpack";
 import { applyTransformers, type WebpackConfigTransformer } from "./transformers/applyTransformers.ts";
@@ -49,10 +49,11 @@ export interface DefineDevConfigOptions {
     htmlWebpackPlugin?: false | HtmlWebpackPlugin.Options;
     fastRefresh?: boolean | ReactRefreshPluginOptions;
     cssModules?: boolean;
-    // Only accepting string values because there are lot of issues with the DefinePlugin related to typing errors.
+    // Only accepting string values because there are a lot of issues with the DefinePlugin related to typing errors.
     // See https://github.com/webpack/webpack/issues/8641
     environmentVariables?: Record<string, string | undefined>;
     transformers?: WebpackConfigTransformer[];
+    profile?: boolean;
 }
 
 function preflight(options: DefineDevConfigOptions) {
@@ -91,7 +92,8 @@ export function defineDevConfig(swcConfig: SwcConfig, options: DefineDevConfigOp
         fastRefresh = true,
         cssModules = false,
         environmentVariables,
-        transformers = []
+        transformers = [],
+        profile = false
     } = options;
 
     const config: WebpackConfig = {
@@ -112,9 +114,10 @@ export function defineDevConfig(swcConfig: SwcConfig, options: DefineDevConfigOp
             // The trailing / is very important, otherwise paths will not be resolved correctly.
             publicPath: `${https ? "https" : "http"}://${host}:${port}/`
         },
-        cache: cache !== false && {
+        cache: cache && {
             type: "filesystem",
             allowCollectingMemory: true,
+            maxMemoryGenerations: 1,
             buildDependencies: {
                 config: [fileURLToPath(import.meta.url)]
             },
@@ -182,11 +185,35 @@ export function defineDevConfig(swcConfig: SwcConfig, options: DefineDevConfigOp
         plugins: [
             htmlWebpackPlugin && new HtmlWebpackPlugin(htmlWebpackPlugin as HtmlWebpackPlugin.Options),
             new DefinePlugin({
-                "process.env": JSON.stringify(environmentVariables)
+                // Since we pass an object, webpack will automatically do JSON.stringify
+                "process.env": environmentVariables
             }),
             fastRefresh && new ReactRefreshWebpackPlugin(isObject(fastRefresh) ? fastRefresh : defineFastRefreshPluginConfig()),
             ...plugins
-        ].filter(Boolean) as WebpackConfig["plugins"]
+        ].filter(Boolean) as WebpackConfig["plugins"],
+        snapshot: {
+            buildDependencies: {
+                hash: true,
+                timestamp: true
+            },
+            module: {
+                hash: true,
+                timestamp: true
+            },
+            resolve: {
+                hash: true,
+                timestamp: true
+            },
+            resolveBuildDependencies: {
+                hash: true,
+                timestamp: true
+            }
+        },
+        infrastructureLogging: profile ? {
+            appendOnly: true,
+            level: "verbose",
+            debug: /PackFileCache/
+        } : undefined
     };
 
     const transformedConfig = applyTransformers(config, transformers, {
