@@ -180,7 +180,7 @@ export function defineDevConfig(swcConfig: SwcConfig, options: DefineDevConfigOp
             }
         },
         plugins: [
-            htmlWebpackPlugin !== false && new HtmlWebpackPlugin(htmlWebpackPlugin as HtmlWebpackPlugin.Options),
+            htmlWebpackPlugin && new HtmlWebpackPlugin(htmlWebpackPlugin as HtmlWebpackPlugin.Options),
             new DefinePlugin({
                 "process.env": JSON.stringify(environmentVariables)
             }),

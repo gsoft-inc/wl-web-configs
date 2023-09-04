@@ -152,7 +152,7 @@ export function defineBuildConfig(swcConfig: SwcConfig, options: DefineBuildConf
             }
         },
         plugins: [
-            htmlWebpackPlugin !== false && new HtmlWebpackPlugin(htmlWebpackPlugin as HtmlWebpackPlugin.Options),
+            htmlWebpackPlugin && new HtmlWebpackPlugin(htmlWebpackPlugin as HtmlWebpackPlugin.Options),
             new MiniCssExtractPlugin(miniCssExtractPluginOptions),
             new DefinePlugin({
                 // Parenthesis around the stringified object are mandatory otherwise it breaks
