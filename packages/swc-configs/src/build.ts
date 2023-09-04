@@ -2,14 +2,12 @@ import type { Config as SwcConfig } from "@swc/core";
 import { applyTransformers, type SwcConfigTransformer } from "./applyTransformers.ts";
 
 export interface DefineBuildConfigOptions {
-    targets: Record<string, string>;
     parser?: "ecmascript" | "typescript";
     transformers?: SwcConfigTransformer[];
 }
 
-export function defineBuildConfig(options: DefineBuildConfigOptions) {
+export function defineBuildConfig(targets: Record<string, string>, options: DefineBuildConfigOptions = {}) {
     const {
-        targets,
         parser = "typescript",
         transformers = []
     } = options;

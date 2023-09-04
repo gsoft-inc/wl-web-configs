@@ -39,21 +39,21 @@ web-project
 ├── swc.build.js
 ```
 
-Then, open the newly created file and export the [SWC](https://swc.rs/) configuration by using the `defineBuildConfig(options)` function:
+Then, open the newly created file and export the [SWC](https://swc.rs/) configuration by using the `defineBuildConfig(targets, options)` function:
 
-```js !#6 swc.build.js
+```js !#5,7 swc.build.js
 // @ts-check
 
 import { browserslistToSwc, defineBuildConfig } from "@workleap/swc-configs";
 
-export default defineBuildConfig({
-    targets: browserslistToSwc()
-});
+const targets = browserslistToSwc();
+
+export default defineBuildConfig(targets);
 ```
 
 ### `targets`
 
-In the previous code sample, the `defineBuildConfig(options)` function receives a list of **minimal browser versions to support** through the mandatory `targets` option.
+In the previous code sample, the `defineBuildConfig(targets, options)` function receives a list of **minimal browser versions to support** through the `targets` parameter.
 
 The expected behavior for the supported browsers would be for [SWC](https://swc.rs/) to automatically load the minimal browser versions from the closest `.browserslistrc` [configuration file](https://github.com/browserslist/browserslist#browserslistrc). However, there is currently an [issue](https://github.com/swc-project/swc/issues/3365) preventing SWC from doing so when the configuration file include a query referencing an external [Browserslist](https://browsersl.ist/) configuration:
 
@@ -69,14 +69,14 @@ To help consumers provide SWC [targets](https://swc.rs/docs/configuration/suppor
 
 This function can either transform an array of Browserslist [queries](https://github.com/browserslist/browserslist#queries) to SWC targets:
 
-```js !#6 swc.dev.js
+```js !#5 swc.dev.js
 // @ts-check
 
 import { browserslistToSwc, defineBuildConfig } from "@workleap/swc-configs";
 
-export default defineBuildConfig({
-    targets: browserslistToSwc({ queries: ["extends @workleap/browserslist-config"] })
-});
+const targets = browserslistToSwc({ queries: ["extends @workleap/browserslist-config"] })
+
+export default defineBuildConfig(targets);
 ```
 
 Or load the closest `.browserslistrc` configuration file and convert the queries into SWC targets:
@@ -85,14 +85,14 @@ Or load the closest `.browserslistrc` configuration file and convert the queries
 extends @workleap/browserslist-config
 ```
 
-```js !#6 swc.build.js
+```js !#5 swc.build.js
 // @ts-check
 
 import { browserslistToSwc, defineBuildConfig } from "@workleap/swc-configs";
 
-export default defineBuildConfig({
-    targets: browserslistToSwc()
-});
+const targets = browserslistToSwc();
+
+export default defineBuildConfig(targets);
 ```
 
 The `browserslistToSwc(options)` utility function accepts any option supported by Browserslist [JS API](https://github.com/browserslist/browserslist#js-api) in addition to a `queries` option:
@@ -101,6 +101,8 @@ The `browserslistToSwc(options)` utility function accepts any option supported b
 
 ## 3. Set predefined options
 
+The `defineBuildConfig(targets, options)` function can be used as shown in the previous example, however, if you wish to customize the default configuration, the function also accept a few predefined options to help with that 👇
+
 ### `parser`
 
 - **Type**: `"ecmascript" | "typescript"`
@@ -108,14 +110,15 @@ The `browserslistToSwc(options)` utility function accepts any option supported b
 
 Whether SWC should expect to parse JavaScript or [TypeScript](https://www.typescriptlang.org/) code.
 
-```js !#6 swc.build.js
+```js !#8 swc.build.js
 // @ts-check
 
 import { browserslistToSwc, defineBuildConfig } from "@workleap/swc-configs";
 
-export default defineBuildConfig({
-    parser: "ecmascript",
-    targets: browserslistToSwc()
+const targets = browserslistToSwc();
+
+export default defineBuildConfig(targets, {
+    parser: "ecmascript"
 });
 ```
 
@@ -138,20 +141,21 @@ To view the default development configuration of `@workleap/swc-configs`, have a
 transformer(config: SwcConfig, context: SwcConfigTransformerContext) => SwcConfig
 ```
 
-```js !#12 swc.build.js
+```js !#7-11,14 swc.build.js
 // @ts-check
 
 import { browserslistToSwc, defineBuildConfig } from "@workleap/swc-configs";
 
+const targets = browserslistToSwc();
+
 function mangleMinifiedCode(config) {
-        config.jsc.minify.mangle = true;
+    config.jsc.minify.mangle = true;
 
     return config;
 }
 
-export default defineBuildConfig({
-    transformers: [mangleMinifiedCode],
-    targets: browserslistToSwc()
+export default defineBuildConfig(targets, {
+    transformers: [mangleMinifiedCode]
 });
 ```
 

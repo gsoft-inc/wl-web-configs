@@ -46,7 +46,7 @@ export interface DefineDevConfigOptions {
     cacheDirectory?: string;
     moduleRules?: NonNullable<WebpackConfig["module"]>["rules"];
     plugins?: WebpackConfig["plugins"];
-    htmlWebpackPluginOptions?: HtmlWebpackPlugin.Options;
+    htmlWebpackPlugin?: false | HtmlWebpackPlugin.Options;
     fastRefresh?: boolean | ReactRefreshPluginOptions;
     cssModules?: boolean;
     // Only accepting string values because there are a lot of issues with the DefinePlugin related to typing errors.
@@ -68,9 +68,9 @@ function preflight(options: DefineDevConfigOptions) {
     }
 }
 
-function tryEnableSwcReactRefresh(config: SwcConfig) {
+function trySetSwcFastRefresh(config: SwcConfig, enabled: boolean) {
     if (config?.jsc?.transform?.react) {
-        config.jsc.transform.react.refresh = true;
+        config.jsc.transform.react.refresh = enabled;
     }
 
     return config;
@@ -88,8 +88,8 @@ export function defineDevConfig(swcConfig: SwcConfig, options: DefineDevConfigOp
         cacheDirectory = path.resolve("node_modules/.cache/webpack"),
         moduleRules = [],
         plugins = [],
-        htmlWebpackPluginOptions = defineDevHtmlWebpackPluginConfig(),
-        fastRefresh = false,
+        htmlWebpackPlugin = defineDevHtmlWebpackPluginConfig(),
+        fastRefresh = true,
         cssModules = false,
         environmentVariables,
         transformers = [],
@@ -123,6 +123,26 @@ export function defineDevConfig(swcConfig: SwcConfig, options: DefineDevConfigOp
             },
             cacheDirectory: cacheDirectory
         },
+        // Fixes caching for environmental variables using the DefinePlugin by forcing
+        // webpack caching to prioritize hashes over timestamps.
+        snapshot: {
+            buildDependencies: {
+                hash: true,
+                timestamp: true
+            },
+            module: {
+                hash: true,
+                timestamp: true
+            },
+            resolve: {
+                hash: true,
+                timestamp: true
+            },
+            resolveBuildDependencies: {
+                hash: true,
+                timestamp: true
+            }
+        },
         optimization: {
             // See: https://webpack.js.org/guides/build-performance/#avoid-extra-optimization-steps
             runtimeChunk: true,
@@ -130,15 +150,18 @@ export function defineDevConfig(swcConfig: SwcConfig, options: DefineDevConfigOp
             removeEmptyChunks: false,
             splitChunks: false
         },
+        infrastructureLogging: profile ? {
+            appendOnly: true,
+            level: "verbose",
+            debug: /PackFileCache/
+        } : undefined,
         module: {
             rules: [
                 {
                     test: /\.(js|jsx|ts|tsx)/i,
                     exclude: /node_modules/,
                     loader: require.resolve("swc-loader"),
-                    options: fastRefresh
-                        ? tryEnableSwcReactRefresh(swcConfig)
-                        : swcConfig
+                    options: trySetSwcFastRefresh(swcConfig, fastRefresh !== false)
                 },
                 {
                     // https://stackoverflow.com/questions/69427025/programmatic-webpack-jest-esm-cant-resolve-module-without-js-file-exten
@@ -177,40 +200,22 @@ export function defineDevConfig(swcConfig: SwcConfig, options: DefineDevConfigOp
             ]
         },
         resolve: {
-            extensions: [".js", ".jsx", ".ts", ".tsx", ".css"]
+            extensions: [".js", ".jsx", ".ts", ".tsx", ".css"],
+            alias: {
+                // Fixes Module not found: Error: Can't resolve '@swc/helpers/_/_class_private_field_init'.
+                // View https://github.com/vercel/next.js/pull/38174 for more information and https://github.com/vercel/next.js/issues/48593.
+                "@swc/helpers": path.dirname(require.resolve("@swc/helpers/package.json"))
+            }
         },
         plugins: [
-            new HtmlWebpackPlugin(htmlWebpackPluginOptions),
+            htmlWebpackPlugin && new HtmlWebpackPlugin(htmlWebpackPlugin as HtmlWebpackPlugin.Options),
             new DefinePlugin({
-                // Since we pass an object, webpack will automatically do JSON.stringify
+                // Webpack automatically stringify object literals.
                 "process.env": environmentVariables
             }),
             fastRefresh && new ReactRefreshWebpackPlugin(isObject(fastRefresh) ? fastRefresh : defineFastRefreshPluginConfig()),
             ...plugins
-        ].filter(Boolean) as WebpackConfig["plugins"],
-        snapshot: {
-            buildDependencies: {
-                hash: true,
-                timestamp: true
-            },
-            module: {
-                hash: true,
-                timestamp: true
-            },
-            resolve: {
-                hash: true,
-                timestamp: true
-            },
-            resolveBuildDependencies: {
-                hash: true,
-                timestamp: true
-            }
-        },
-        infrastructureLogging: profile ? {
-            appendOnly: true,
-            level: "verbose",
-            debug: /PackFileCache/
-        } : undefined
+        ].filter(Boolean) as WebpackConfig["plugins"]
     };
 
     const transformedConfig = applyTransformers(config, transformers, {

@@ -12,9 +12,11 @@
     "scripts": {
         "dev": "webpack serve --config webpack.dev.js",
         "dev-msw": "cross-env USE_MSW=true webpack serve --config webpack.dev.js",
+        "profile-dev": "cross-env PROFILE=true webpack serve --config webpack.dev.js",
+        "profile-dev-msw": "cross-env USE_MSW=true PROFILE=true webpack serve --config webpack.dev.js",
         "build": "webpack --config webpack.build.js",
-        "profile": "cross-env PROFILE=true webpack --config webpack.build.js",
-        "serve-build": "pnpm build && pnpm http-server dist -p 8080 -P http://localhost:8080? -c-1"
+        "serve-build": "pnpm build && pnpm http-server dist -p 8080 -P http://localhost:8080? -c-1",
+        "profile-build": "cross-env PROFILE=true webpack --config webpack.build.js"
     },
     "devDependencies": {
         "@svgr/webpack": "8.1.0",

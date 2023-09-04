@@ -27,24 +27,6 @@ npm install -D @workleap/webpack-configs webpack webpack-cli @swc/core @swc/help
 ```
 +++
 
-### Monorepo support
-
-For monorepo solutions, **all the projects** containing React code which are referenced by the web application (the one with the webpack configuration) must also install the `@swc/helpers` package as a `devDependency`:
-
-+++ pnpm
-```bash
-pnpm add -D @swc/helpers
-```
-+++ yarn
-```bash
-yarn add -D @swc/helpers
-```
-+++ npm
-```bash
-npm install -D @swc/helpers
-```
-+++
-
 ## 2. Configure webpack
 
 First, create a configuration file named `webpack.build.js` at the root of the project:
@@ -59,7 +41,7 @@ web-project
 
 Then, open the newly created file and `export` the webpack configuration by using the `defineBuildConfig(swcConfig, options)` function:
 
-```js !#6-8 webpack.build.js
+```js !#6 webpack.build.js
 // @ts-check
 
 import { defineBuildConfig } from "@workleap/webpack-configs";
@@ -70,7 +52,7 @@ export default defineBuildConfig(swcConfig);
 
 ### `swcConfig`
 
-In the previous code sample, the `defineBuildConfig(swcConfig, options)` function receive an [SWC](https://swc.rs) configuration object through the mandatory `swcConfig` option. 
+In the previous code sample, the `defineBuildConfig(swcConfig, options)` function receive an [SWC](https://swc.rs) configuration object through the `swcConfig` parameter. 
 
 Although the [swc-loader](https://swc.rs/docs/usage/swc-loader) defaults to loading the closest `.swcrc` [configuration file](https://swc.rs/docs/configuration/swcrc) when no configuration object is provided, it lacks support for distinct configuration files by environment like webpack does.
 
@@ -136,6 +118,43 @@ export default defineBuildConfig(swcConfig, {
 });
 ```
 
+### `cache`
+
+- **Type**: `boolean`
+- **Default**: `true`
+
+Whether or not webpack [filesystem cache](https://webpack.js.org/configuration/cache/) is enabled.
+
+```js !#7 webpack.build.js
+// @ts-check
+
+import { defineDevConfig } from "@workleap/webpack-configs";
+import { swcConfig } from "./swc.build.js";
+
+export default defineBuildConfig(swcConfig, {
+    cache: false
+});
+```
+
+### `cacheDirectory`
+
+- **Type**: `string`
+- **Default**: `node_modules/.cache/webpack`
+
+```js !#8 webpack.build.js
+// @ts-check
+
+import { defineBuildConfig } from "@workleap/webpack-configs";
+import { swcConfig } from "./swc.build.js";
+import path from "path";
+
+export default defineBuildConfig(swcConfig, {
+    cacheDirectory: path.resolve("./custom-webpack-cache")
+});
+```
+
+Set webpack [cacheDirectory option](https://webpack.js.org/configuration/cache/#cachecachedirectory) when `cache` is enabled.
+
 ### `moduleRules`
 
 - **Type**: An array of webpack [moduleRule](https://webpack.js.org/configuration/module/#modulerules) objects
@@ -183,14 +202,27 @@ export default defineBuildConfig(swcConfig, {
 });
 ```
 
-### `htmlWebpackPluginOptions`
+### `htmlWebpackPlugin`
 
-- **Type**: An object literal accepting any `html-webpack-plugin` [option](https://github.com/jantimon/html-webpack-plugin#options)
+- **Type**: `false` or an object literal accepting any `html-webpack-plugin` [option](https://github.com/jantimon/html-webpack-plugin#options)
 - **Default**: `{ template: "./public/index.html" }`
 
-Forward the provided object literal to the [html-webpack-plugin](https://webpack.js.org/plugins/html-webpack-plugin/).
+To remove the default instance of [html-webpack-plugin](https://webpack.js.org/plugins/html-webpack-plugin/), set the property to `false`.
 
-```js !#8-12 webpack.build.js
+```js !#7 webpack.build.js
+// @ts-check
+
+import { defineBuildConfig } from "@workleap/webpack-configs";
+import { swcConfig } from "./swc.dev.js";
+
+export default defineBuildConfig(swcConfig, {
+    htmlWebpackPlugin: false
+});
+```
+
+To extend/replace the default `html-webpack-plugin` configuration, use the `defineBuildHtmlWebpackPluginConfig(options)` function.
+
+```js !#8-11 webpack.build.js
 // @ts-check
 
 import { defineBuildConfig, defineBuildHtmlWebpackPluginConfig } from "@workleap/webpack-configs";
@@ -198,10 +230,9 @@ import { swcConfig } from "./swc.build.js";
 import path from "path";
 
 export default defineBuildConfig(swcConfig, {
-    htmlWebpackPluginOptions: defineBuildHtmlWebpackPluginConfig({
+    htmlWebpackPlugin: defineBuildHtmlWebpackPluginConfig({
         template: path.resolve("./my-custom-index.html"),
-        minify: true,
-        hash: true
+        minify: true
     })
 });
 ```
@@ -263,6 +294,24 @@ export default defineBuildConfig(swcConfig, {
 });
 ```
 
+### `profile`
+
+- **Type**: `boolean`
+- **Default**: `false`
+
+Start the webpack process with profiling options turned on.
+
+```js !#7 webpack.dev.js
+// @ts-check
+
+import { defineDevConfig } from "@workleap/webpack-configs";
+import { swcConfig } from "./swc.dev.js";
+
+export default defineDevConfig(swcConfig, {
+    profile: true
+});
+```
+
 ## 4. Transform configuration
 
 !!!warning
@@ -282,7 +331,7 @@ To view the default build configuration of `@workleap/webpack-configs`, have a l
 transformer(config: WebpackConfig, context: WebpackConfigTransformerContext) => WebpackConfig
 ```
 
-```js !#13 webpack.build.js
+```js !#6-10,13 webpack.build.js
 // @ts-check
 
 import { defineBuildConfig, WebpackConfigTransformer, WebpackConfig } from "@workleap/webpack-configs";
@@ -371,7 +420,7 @@ To make them accessible to the application files, webpack must be aware of those
 
 First, define the variables with `environmentVariables`:
 
-```js !#8-10 webpack.build.js
+```js !#7-9 webpack.build.js
 // @ts-check
 
 import { defineBuildConfig } from "@workleap/webpack-configs";

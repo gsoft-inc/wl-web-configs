@@ -27,24 +27,6 @@ npm install -D @workleap/webpack-configs webpack webpack-cli webpack-dev-server 
 ```
 +++
 
-### Monorepo support
-
-For monorepo solutions, **all the projects** containing React code which are referenced by the web application (the one with the webpack configuration) must also install the `@swc/helpers` package as a `devDependency`:
-
-+++ pnpm
-```bash
-pnpm add -D @swc/helpers
-```
-+++ yarn
-```bash
-yarn add -D @swc/helpers
-```
-+++ npm
-```bash
-npm install -D @swc/helpers
-```
-+++
-
 ## 2. Configure webpack
 
 First, create a configuration file named `webpack.dev.js` at the root of the project:
@@ -59,7 +41,7 @@ web-project
 
 Then, open the newly created file and `export` the webpack configuration by using the `defineDevConfig(swcConfig, options)` function:
 
-```js !#6-8 webpack.dev.js
+```js !#6 webpack.dev.js
 // @ts-check
 
 import { defineDevConfig } from "@workleap/webpack-configs";
@@ -70,7 +52,7 @@ export default defineDevConfig(swcConfig);
 
 ### `swcConfig`
 
-In the previous code sample, the `defineDevConfig(swcConfig, options)` function receive an [SWC](https://swc.rs) configuration object through the mandatory `swcConfig` option. 
+In the previous code sample, the `defineDevConfig(swcConfig, options)` function receive an [SWC](https://swc.rs) configuration object through the `swcConfig` parameter. 
 
 Although the [swc-loader](https://swc.rs/docs/usage/swc-loader) defaults to loading the closest `.swcrc` [configuration file](https://swc.rs/docs/configuration/swcrc) when no configuration object is provided, it lacks support for distinct configuration files by environment like webpack does.
 
@@ -236,39 +218,12 @@ export default defineDevConfig(swcConfig, {
 });
 ```
 
-### `htmlWebpackPluginOptions`
+### `htmlWebpackPlugin`
 
-- **Type**: An object literal accepting any `html-webpack-plugin` [option](https://github.com/jantimon/html-webpack-plugin#options)
+- **Type**: `false` or an object literal accepting any `html-webpack-plugin` [option](https://github.com/jantimon/html-webpack-plugin#options)
 - **Default**: `{ template: "./public/index.html" }`
 
-Forward the provided object literal to the [html-webpack-plugin](https://webpack.js.org/plugins/html-webpack-plugin/).
-
-```js !#8-12 webpack.dev.js
-// @ts-check
-
-import { defineDevConfig, defineDevHtmlWebpackPluginConfig } from "@workleap/webpack-configs";
-import { swcConfig } from "./swc.dev.js";
-import path from "path";
-
-export default defineDevConfig(swcConfig, {
-    htmlWebpackPluginOptions: defineDevHtmlWebpackPluginConfig({
-        template: path.resolve("./my-custom-index.html"),
-        minify: true,
-        hash: true
-    })
-});
-```
-
-### `fastRefresh`
-
-- **Type**: `boolean`
-- **Default**: `false` or an object literal accepting any `react-refresh-webpack-plugin` [options](https://www.npmjs.com/package/react-refresh/blob/main/docs/API.md)
-
-Replace webpack [HMR](https://webpack.js.org/concepts/hot-module-replacement/) by [Fast Refresh](https://www.npmjs.com/package/react-refresh). Activating webpack fast refresh will automatically [enable fast refresh for SWC](../swc/configure-dev.md#fastrefresh).
-
-!!!info
-If you enable Fast Refresh, don't forget to install it's [package dependency](#fast-refresh).
-!!!
+To remove the default instance of [html-webpack-plugin](https://webpack.js.org/plugins/html-webpack-plugin/), set the property to `false`.
 
 ```js !#7 webpack.dev.js
 // @ts-check
@@ -277,11 +232,46 @@ import { defineDevConfig } from "@workleap/webpack-configs";
 import { swcConfig } from "./swc.dev.js";
 
 export default defineDevConfig(swcConfig, {
-    fastRefresh: true
+    htmlWebpackPlugin: false
 });
 ```
 
-To extend the default Fast Refresh configuration, use the `defineFastRefreshPluginConfig(options)` function.
+To extend/replace the default `html-webpack-plugin` configuration, use the `defineDevHtmlWebpackPluginConfig(options)` function.
+
+```js !#8-11 webpack.dev.js
+// @ts-check
+
+import { defineDevConfig, defineDevHtmlWebpackPluginConfig } from "@workleap/webpack-configs";
+import { swcConfig } from "./swc.dev.js";
+import path from "path";
+
+export default defineDevConfig(swcConfig, {
+    htmlWebpackPlugin: defineDevHtmlWebpackPluginConfig({
+        template: path.resolve("./my-custom-index.html"),
+        minify: true
+    })
+});
+```
+
+### `fastRefresh`
+
+- **Type**: `boolean` or an object literal accepting any `react-refresh-webpack-plugin` [option](https://www.npmjs.com/package/react-refresh/blob/main/docs/API.md)
+- **Default**: `true`
+
+Replace webpack [HMR](https://webpack.js.org/concepts/hot-module-replacement/) by [Fast Refresh](https://www.npmjs.com/package/react-refresh). Desactivating webpack fast refresh will automatically [disable fast refresh for SWC](../swc/configure-dev.md#fastrefresh).
+
+```js !#7 webpack.dev.js
+// @ts-check
+
+import { defineDevConfig } from "@workleap/webpack-configs";
+import { swcConfig } from "./swc.dev.js";
+
+export default defineDevConfig(swcConfig, {
+    fastRefresh: false
+});
+```
+
+To extend/replace the default Fast Refresh configuration, use the `defineFastRefreshPluginConfig(options)` function.
 
 ```js !#7 webpack.dev.js
 // @ts-check
@@ -293,6 +283,8 @@ export default defineDevConfig(swcConfig, {
     fastRefresh: defineFastRefreshPluginConfig({ overlay: false })
 });
 ```
+
+- `options`: An object literal accepting any `react-refresh-webpack-plugin` [option](https://www.npmjs.com/package/react-refresh/blob/main/docs/API.md)
 
 ### `cssModules`
 
@@ -309,6 +301,24 @@ import { swcConfig } from "./swc.dev.js";
 
 export default defineDevConfig(swcConfig, {
     cssModules: true
+});
+```
+
+### `profile`
+
+- **Type**: `boolean`
+- **Default**: `false`
+
+Start the webpack process with profiling options turned on.
+
+```js !#7 webpack.dev.js
+// @ts-check
+
+import { defineDevConfig } from "@workleap/webpack-configs";
+import { swcConfig } from "./swc.dev.js";
+
+export default defineDevConfig(swcConfig, {
+    profile: true
 });
 ```
 
@@ -331,7 +341,7 @@ To view the default development configuration of `@workleap/webpack-configs`, ha
 transformer(config: WebpackConfig, context: WebpackConfigTransformerContext) => WebpackConfig
 ```
 
-```js !#16 webpack.dev.js
+```js !#6-12,16 webpack.dev.js
 // @ts-check
 
 import { defineDevConfig, WebpackConfigTransformer, WebpackConfig } from "@workleap/webpack-configs";
@@ -425,7 +435,7 @@ To make them accessible to the application files, webpack must be aware of those
 
 First, define the variables with `environmentVariables`:
 
-```js !#8-10 webpack.dev.js
+```js !#7-9 webpack.dev.js
 // @ts-check
 
 import { defineDevConfig } from "@workleap/webpack-configs";

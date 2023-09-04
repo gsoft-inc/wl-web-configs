@@ -105,7 +105,7 @@ To view the default Jest configuration of `@workleap/swc-configs`, have a look a
 transformer(config: SwcConfig, context: SwcConfigTransformerContext) => SwcConfig
 ```
 
-```ts !#10 swc.jest.ts
+```ts !#3-7,10 swc.jest.ts
 import { defineJestConfig, SwcConfigTransformer, SwcConfig } from "@workleap/swc-configs";
 
 const useCommonJsModules: SwcConfigTransformer = (config: SwcConfig) => {

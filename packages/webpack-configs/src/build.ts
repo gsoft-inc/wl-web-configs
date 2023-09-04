@@ -1,9 +1,9 @@
-import { createRequire } from "node:module";
-import { fileURLToPath } from "node:url";
-import path from "node:path";
 import type { Config as SwcConfig } from "@swc/core";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import { createRequire } from "node:module";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import TerserPlugin from "terser-webpack-plugin";
 import type { Configuration as WebpackConfig } from "webpack";
 import webpack from "webpack";
@@ -51,7 +51,7 @@ export interface DefineBuildConfigOptions {
     cacheDirectory?: string;
     moduleRules?: NonNullable<WebpackConfig["module"]>["rules"];
     plugins?: WebpackConfig["plugins"];
-    htmlWebpackPluginOptions?: HtmlWebpackPlugin.Options;
+    htmlWebpackPlugin?: false | HtmlWebpackPlugin.Options;
     miniCssExtractPluginOptions?: MiniCssExtractPluginOptions;
     minify?: boolean;
     cssModules?: boolean;
@@ -72,7 +72,7 @@ export function defineBuildConfig(swcConfig: SwcConfig, options: DefineBuildConf
         cacheDirectory = path.resolve("node_modules/.cache/webpack"),
         moduleRules = [],
         plugins = [],
-        htmlWebpackPluginOptions = defineBuildHtmlWebpackPluginConfig(),
+        htmlWebpackPlugin = defineBuildHtmlWebpackPluginConfig(),
         miniCssExtractPluginOptions = defineMiniCssExtractPluginConfig(),
         minify = true,
         cssModules = false,
@@ -99,6 +99,26 @@ export function defineBuildConfig(swcConfig: SwcConfig, options: DefineBuildConf
             },
             cacheDirectory: cacheDirectory
         },
+        // Fixes caching for environmental variables using the DefinePlugin by forcing
+        // webpack caching to prioritize hashes over timestamps.
+        snapshot: {
+            buildDependencies: {
+                hash: true,
+                timestamp: true
+            },
+            module: {
+                hash: true,
+                timestamp: true
+            },
+            resolve: {
+                hash: true,
+                timestamp: true
+            },
+            resolveBuildDependencies: {
+                hash: true,
+                timestamp: true
+            }
+        },
         optimization: minify
             ? {
                 minimize: true,
@@ -113,6 +133,11 @@ export function defineBuildConfig(swcConfig: SwcConfig, options: DefineBuildConf
                 ]
             }
             : undefined,
+        infrastructureLogging: profile ? {
+            appendOnly: true,
+            level: "verbose",
+            debug: /PackFileCache/
+        } : undefined,
         module: {
             rules: [
                 {
@@ -158,40 +183,22 @@ export function defineBuildConfig(swcConfig: SwcConfig, options: DefineBuildConf
             ]
         },
         resolve: {
-            extensions: [".js", ".jsx", ".ts", ".tsx", ".css"]
+            extensions: [".js", ".jsx", ".ts", ".tsx", ".css"],
+            alias: {
+                // Fixes Module not found: Error: Can't resolve '@swc/helpers/_/_class_private_field_init'.
+                // View https://github.com/vercel/next.js/pull/38174 for more information and https://github.com/vercel/next.js/issues/48593.
+                "@swc/helpers": path.dirname(require.resolve("@swc/helpers/package.json"))
+            }
         },
         plugins: [
-            new HtmlWebpackPlugin(htmlWebpackPluginOptions),
+            htmlWebpackPlugin && new HtmlWebpackPlugin(htmlWebpackPlugin as HtmlWebpackPlugin.Options),
             new MiniCssExtractPlugin(miniCssExtractPluginOptions),
             new DefinePlugin({
-                // Since we pass an object, webpack will automatically do JSON.stringify
+                // Webpack automatically stringify object literals.
                 "process.env": environmentVariables
             }),
             ...plugins
-        ].filter(Boolean) as WebpackConfig["plugins"],
-        snapshot: {
-            buildDependencies: {
-                hash: true,
-                timestamp: true
-            },
-            module: {
-                hash: true,
-                timestamp: true
-            },
-            resolve: {
-                hash: true,
-                timestamp: true
-            },
-            resolveBuildDependencies: {
-                hash: true,
-                timestamp: true
-            }
-        },
-        infrastructureLogging: profile ? {
-            appendOnly: true,
-            level: "verbose",
-            debug: /PackFileCache/
-        } : undefined
+        ].filter(Boolean) as WebpackConfig["plugins"]
     };
 
     const transformedConfig = applyTransformers(config, transformers, {
