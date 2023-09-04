@@ -2,16 +2,14 @@ import type { Config as SwcConfig } from "@swc/core";
 import { applyTransformers, type SwcConfigTransformer } from "./applyTransformers.ts";
 
 export interface DefineDevConfigOptions {
-    targets: Record<string, string>;
     fastRefresh?: boolean;
     parser?: "ecmascript" | "typescript";
     transformers?: SwcConfigTransformer[];
 }
 
-export function defineDevConfig(options: DefineDevConfigOptions) {
+export function defineDevConfig(targets: Record<string, string>, options: DefineDevConfigOptions = {}) {
     const {
-        targets,
-        fastRefresh = false,
+        fastRefresh = true,
         parser = "typescript",
         transformers = []
     } = options;

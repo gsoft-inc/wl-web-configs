@@ -7,16 +7,13 @@ const Targets = {
 };
 
 test("provided browsers are set as \"env.targets\"", () => {
-    const result = defineBuildConfig({
-        targets: Targets
-    });
+    const result = defineBuildConfig(Targets);
 
     expect(result.env?.targets).toBe(Targets);
 });
 
 test("when parser is \"ecmascript\", the configuration parser is ecmascript", () => {
-    const result = defineBuildConfig({
-        targets: Targets,
+    const result = defineBuildConfig(Targets, {
         parser: "ecmascript"
     });
 
@@ -24,8 +21,7 @@ test("when parser is \"ecmascript\", the configuration parser is ecmascript", ()
 });
 
 test("when parser is \"ecmascript\", jsx parsing is enabled", () => {
-    const result = defineBuildConfig({
-        targets: Targets,
+    const result = defineBuildConfig(Targets, {
         parser: "ecmascript"
     });
 
@@ -33,8 +29,7 @@ test("when parser is \"ecmascript\", jsx parsing is enabled", () => {
 });
 
 test("when parser is \"typescript\", the configuration parser is typescript", () => {
-    const result = defineBuildConfig({
-        targets: Targets,
+    const result = defineBuildConfig(Targets, {
         parser: "typescript"
     });
 
@@ -42,8 +37,7 @@ test("when parser is \"typescript\", the configuration parser is typescript", ()
 });
 
 test("when parser is \"typescript\", tsx parsing is enabled", () => {
-    const result = defineBuildConfig({
-        targets: Targets,
+    const result = defineBuildConfig(Targets, {
         parser: "typescript"
     });
 
@@ -57,8 +51,7 @@ test("when a transformer is provided, the transformer is applied on the swc conf
         return config;
     };
 
-    const result = defineBuildConfig({
-        targets: Targets,
+    const result = defineBuildConfig(Targets, {
         transformers: [minifyTransformer]
     });
 
@@ -78,8 +71,7 @@ test("when multiple transformers are provided, all the transformers are applied 
         return config;
     };
 
-    const result = defineBuildConfig({
-        targets: Targets,
+    const result = defineBuildConfig(Targets, {
         transformers: [minifyTransformer, sourceMapsTransformer]
     });
 
@@ -90,8 +82,7 @@ test("when multiple transformers are provided, all the transformers are applied 
 test("transformers context environment is \"build\"", () => {
     const mockTransformer = jest.fn();
 
-    defineBuildConfig({
-        targets: Targets,
+    defineBuildConfig(Targets, {
         transformers: [mockTransformer]
     });
 

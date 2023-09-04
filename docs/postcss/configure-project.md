@@ -120,7 +120,7 @@ To view the default configuration of `@workleap/postcss-configs`, have a look at
 transformer(config: PostCSSConfig) => PostCSSConfig
 ```
 
-```ts !#10 postcss.config.ts
+```ts !#3-7,10 postcss.config.ts
 import { defineConfig, type PostcssConfigTransformer, type PostCSSConfig } from "@workleap/postcss-configs";
 
 const overrideBrowsers: PostcssConfigTransformer = (config: PostCSSConfig) => {

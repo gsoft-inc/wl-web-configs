@@ -11,7 +11,7 @@ const Targets = {
 };
 
 test("when an entry prop is provided, use the provided entry value", () => {
-    const result = defineDevConfig(defineSwcConfig({ targets: Targets }), {
+    const result = defineDevConfig(defineSwcConfig(Targets), {
         entry: "./a-new-entry.ts"
     });
 
@@ -19,7 +19,7 @@ test("when an entry prop is provided, use the provided entry value", () => {
 });
 
 test("when https is enabled, the dev server is configured for https", () => {
-    const result = defineDevConfig(defineSwcConfig({ targets: Targets }), {
+    const result = defineDevConfig(defineSwcConfig(Targets), {
         https: true
     });
 
@@ -27,7 +27,7 @@ test("when https is enabled, the dev server is configured for https", () => {
 });
 
 test("when https is disabled, the dev server is not configured for https", () => {
-    const result = defineDevConfig(defineSwcConfig({ targets: Targets }), {
+    const result = defineDevConfig(defineSwcConfig(Targets), {
         https: false
     });
 
@@ -35,7 +35,7 @@ test("when https is disabled, the dev server is not configured for https", () =>
 });
 
 test("when https is enabled, the public path starts with https", () => {
-    const result = defineDevConfig(defineSwcConfig({ targets: Targets }), {
+    const result = defineDevConfig(defineSwcConfig(Targets), {
         https: true
     });
 
@@ -43,7 +43,7 @@ test("when https is enabled, the public path starts with https", () => {
 });
 
 test("when https is disabled, the public path starts with http", () => {
-    const result = defineDevConfig(defineSwcConfig({ targets: Targets }), {
+    const result = defineDevConfig(defineSwcConfig(Targets), {
         https: false
     });
 
@@ -51,7 +51,7 @@ test("when https is disabled, the public path starts with http", () => {
 });
 
 test("when an host is provided, the dev server host is the provided host value", () => {
-    const result = defineDevConfig(defineSwcConfig({ targets: Targets }), {
+    const result = defineDevConfig(defineSwcConfig(Targets), {
         host: "a-custom-host"
     });
 
@@ -59,7 +59,7 @@ test("when an host is provided, the dev server host is the provided host value",
 });
 
 test("when an host is provided, the public path include the provided host value", () => {
-    const result = defineDevConfig(defineSwcConfig({ targets: Targets }), {
+    const result = defineDevConfig(defineSwcConfig(Targets), {
         host: "a-custom-host"
     });
 
@@ -67,7 +67,7 @@ test("when an host is provided, the public path include the provided host value"
 });
 
 test("when a port is provided, the dev server port is the provided port value", () => {
-    const result = defineDevConfig(defineSwcConfig({ targets: Targets }), {
+    const result = defineDevConfig(defineSwcConfig(Targets), {
         port: 1234
     });
 
@@ -75,7 +75,7 @@ test("when a port is provided, the dev server port is the provided port value", 
 });
 
 test("when a port is provided, the public path include the provided port", () => {
-    const result = defineDevConfig(defineSwcConfig({ targets: Targets }), {
+    const result = defineDevConfig(defineSwcConfig(Targets), {
         port: 1234
     });
 
@@ -83,7 +83,7 @@ test("when a port is provided, the public path include the provided port", () =>
 });
 
 test("when cache is enabled, the cache configuration is included", () => {
-    const result = defineDevConfig(defineSwcConfig({ targets: Targets }), {
+    const result = defineDevConfig(defineSwcConfig(Targets), {
         cache: true
     });
 
@@ -91,7 +91,7 @@ test("when cache is enabled, the cache configuration is included", () => {
 });
 
 test("when cache is disabled, the cache prop is false", () => {
-    const result = defineDevConfig(defineSwcConfig({ targets: Targets }), {
+    const result = defineDevConfig(defineSwcConfig(Targets), {
         cache: false
     });
 
@@ -99,7 +99,7 @@ test("when cache is disabled, the cache prop is false", () => {
 });
 
 test("when a cache directory is provided and cache is enabled, use the provided cache directory value", () => {
-    const result = defineDevConfig(defineSwcConfig({ targets: Targets }), {
+    const result = defineDevConfig(defineSwcConfig(Targets), {
         cache: true,
         cacheDirectory: "a-custom-path"
     });
@@ -118,7 +118,7 @@ test("when additional module rules are provided, append the provided rules at th
         type: "asset/inline"
     };
 
-    const result = defineDevConfig(defineSwcConfig({ targets: Targets }), {
+    const result = defineDevConfig(defineSwcConfig(Targets), {
         moduleRules: [
             newModuleRule1,
             newModuleRule2
@@ -147,7 +147,7 @@ test("when additional plugins are provided, append the provided plugins at the e
     const newPlugin1 = new Plugin1();
     const newPlugin2 = new Plugin2();
 
-    const result = defineDevConfig(defineSwcConfig({ targets: Targets }), {
+    const result = defineDevConfig(defineSwcConfig(Targets), {
         plugins: [
             newPlugin1,
             newPlugin2
@@ -161,7 +161,7 @@ test("when additional plugins are provided, append the provided plugins at the e
 });
 
 test("when fast refresh is disabled, dev server hot module reload is enabled", () => {
-    const result = defineDevConfig(defineSwcConfig({ targets: Targets }), {
+    const result = defineDevConfig(defineSwcConfig(Targets), {
         fastRefresh: false
     });
 
@@ -169,7 +169,7 @@ test("when fast refresh is disabled, dev server hot module reload is enabled", (
 });
 
 test("when fast refresh is enabled, add the fast refresh plugin", () => {
-    const result = defineDevConfig(defineSwcConfig({ targets: Targets }), {
+    const result = defineDevConfig(defineSwcConfig(Targets), {
         fastRefresh: true
     });
 
@@ -177,7 +177,7 @@ test("when fast refresh is enabled, add the fast refresh plugin", () => {
 });
 
 test("when fast refresh is disabled, do not add the fast refresh plugin", () => {
-    const result = defineDevConfig(defineSwcConfig({ targets: Targets }), {
+    const result = defineDevConfig(defineSwcConfig(Targets), {
         fastRefresh: false
     });
 
@@ -185,7 +185,7 @@ test("when fast refresh is disabled, do not add the fast refresh plugin", () => 
 });
 
 test("when fast refresh is enabled, enable swc fast refresh", () => {
-    const result = defineDevConfig(defineSwcConfig({ targets: Targets }), {
+    const result = defineDevConfig(defineSwcConfig(Targets), {
         fastRefresh: true
     });
 
@@ -194,8 +194,18 @@ test("when fast refresh is enabled, enable swc fast refresh", () => {
     expect(((swcLoader?.moduleRule as RuleSetRule).options as SwcConfig).jsc?.transform?.react?.refresh).toBeTruthy();
 });
 
+test("when fast refresh is disabled, disable swc fast refresh", () => {
+    const result = defineDevConfig(defineSwcConfig(Targets), {
+        fastRefresh: false
+    });
+
+    const swcLoader = findModuleRule(result, matchLoaderName("swc-loader"));
+
+    expect(((swcLoader?.moduleRule as RuleSetRule).options as SwcConfig).jsc?.transform?.react?.refresh).toBeFalsy();
+});
+
 test("when css modules is enabled, include css modules configuration", () => {
-    const result = defineDevConfig(defineSwcConfig({ targets: Targets }), {
+    const result = defineDevConfig(defineSwcConfig(Targets), {
         cssModules: true
     });
 
@@ -210,7 +220,7 @@ test("when css modules is enabled, include css modules configuration", () => {
 });
 
 test("when css modules is disabled, do not include css modules configuration", () => {
-    const result = defineDevConfig(defineSwcConfig({ targets: Targets }), {
+    const result = defineDevConfig(defineSwcConfig(Targets), {
         cssModules: false
     });
 
@@ -220,7 +230,7 @@ test("when css modules is disabled, do not include css modules configuration", (
 });
 
 test("the provided swc config object is set as the swc-loader options", () => {
-    const swcConfig = defineSwcConfig({ targets: Targets });
+    const swcConfig = defineSwcConfig(Targets);
 
     const result = defineDevConfig(swcConfig);
 
@@ -236,7 +246,7 @@ test("when a transformer is provided, the transformer is applied on the webpack 
         return config;
     };
 
-    const result = defineDevConfig(defineSwcConfig({ targets: Targets }), {
+    const result = defineDevConfig(defineSwcConfig(Targets), {
         transformers: [entryTransformer]
     });
 
@@ -256,7 +266,7 @@ test("when multiple transformers are provided, all the transformers are applied 
         return config;
     };
 
-    const result = defineDevConfig(defineSwcConfig({ targets: Targets }), {
+    const result = defineDevConfig(defineSwcConfig(Targets), {
         transformers: [entryTransformer, devToolTransformer]
     });
 
@@ -267,7 +277,7 @@ test("when multiple transformers are provided, all the transformers are applied 
 test("transformers context environment is \"dev\"", () => {
     const mockTransformer = jest.fn();
 
-    defineDevConfig(defineSwcConfig({ targets: Targets }), {
+    defineDevConfig(defineSwcConfig(Targets), {
         transformers: [mockTransformer]
     });
 

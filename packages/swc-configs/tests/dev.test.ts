@@ -7,16 +7,13 @@ const Targets = {
 };
 
 test("provided browsers are set as \"env.targets\"", () => {
-    const result = defineDevConfig({
-        targets: Targets
-    });
+    const result = defineDevConfig(Targets);
 
     expect(result.env?.targets).toBe(Targets);
 });
 
 test("when fastRefresh is true, react refresh is true", () => {
-    const result = defineDevConfig({
-        targets: Targets,
+    const result = defineDevConfig(Targets, {
         fastRefresh: true
     });
 
@@ -24,8 +21,7 @@ test("when fastRefresh is true, react refresh is true", () => {
 });
 
 test("when fastRefresh is false, react refresh is false", () => {
-    const result = defineDevConfig({
-        targets: Targets,
+    const result = defineDevConfig(Targets, {
         fastRefresh: false
     });
 
@@ -33,8 +29,7 @@ test("when fastRefresh is false, react refresh is false", () => {
 });
 
 test("when parser is \"ecmascript\", the configuration parser is ecmascript", () => {
-    const result = defineDevConfig({
-        targets: Targets,
+    const result = defineDevConfig(Targets, {
         parser: "ecmascript"
     });
 
@@ -42,8 +37,7 @@ test("when parser is \"ecmascript\", the configuration parser is ecmascript", ()
 });
 
 test("when parser is \"ecmascript\", jsx parsing is enabled", () => {
-    const result = defineDevConfig({
-        targets: Targets,
+    const result = defineDevConfig(Targets, {
         parser: "ecmascript"
     });
 
@@ -51,8 +45,7 @@ test("when parser is \"ecmascript\", jsx parsing is enabled", () => {
 });
 
 test("when parser is \"typescript\", the configuration parser is typescript", () => {
-    const result = defineDevConfig({
-        targets: Targets,
+    const result = defineDevConfig(Targets, {
         parser: "typescript"
     });
 
@@ -60,8 +53,7 @@ test("when parser is \"typescript\", the configuration parser is typescript", ()
 });
 
 test("when parser is \"typescript\", tsx parsing is enabled", () => {
-    const result = defineDevConfig({
-        targets: Targets,
+    const result = defineDevConfig(Targets, {
         parser: "typescript"
     });
 
@@ -75,8 +67,7 @@ test("when a transformer is provided, the transformer is applied on the swc conf
         return config;
     };
 
-    const result = defineDevConfig({
-        targets: Targets,
+    const result = defineDevConfig(Targets, {
         transformers: [minifyTransformer]
     });
 
@@ -96,8 +87,7 @@ test("when multiple transformers are provided, all the transformers are applied 
         return config;
     };
 
-    const result = defineDevConfig({
-        targets: Targets,
+    const result = defineDevConfig(Targets, {
         transformers: [minifyTransformer, sourceMapsTransformer]
     });
 
@@ -108,8 +98,7 @@ test("when multiple transformers are provided, all the transformers are applied 
 test("transformers context environment is \"dev\"", () => {
     const mockTransformer = jest.fn();
 
-    defineDevConfig({
-        targets: Targets,
+    defineDevConfig(Targets, {
         transformers: [mockTransformer]
     });
 

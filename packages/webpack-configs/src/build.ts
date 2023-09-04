@@ -49,7 +49,7 @@ export interface DefineBuildConfigOptions {
     publicPath?: string;
     moduleRules?: NonNullable<WebpackConfig["module"]>["rules"];
     plugins?: WebpackConfig["plugins"];
-    htmlWebpackPluginOptions?: HtmlWebpackPlugin.Options;
+    htmlWebpackPlugin?: false | HtmlWebpackPlugin.Options;
     miniCssExtractPluginOptions?: MiniCssExtractPluginOptions;
     minify?: boolean;
     cssModules?: boolean;
@@ -67,7 +67,7 @@ export function defineBuildConfig(swcConfig: SwcConfig, options: DefineBuildConf
         publicPath = "http://localhost:8080/",
         moduleRules = [],
         plugins = [],
-        htmlWebpackPluginOptions = defineBuildHtmlWebpackPluginConfig(),
+        htmlWebpackPlugin = defineBuildHtmlWebpackPluginConfig(),
         miniCssExtractPluginOptions = defineMiniCssExtractPluginConfig(),
         minify = true,
         cssModules = false,
@@ -144,10 +144,15 @@ export function defineBuildConfig(swcConfig: SwcConfig, options: DefineBuildConf
             ]
         },
         resolve: {
-            extensions: [".js", ".jsx", ".ts", ".tsx", ".css"]
+            extensions: [".js", ".jsx", ".ts", ".tsx", ".css"],
+            alias: {
+                // Fixes Module not found: Error: Can't resolve '@swc/helpers/_/_class_private_field_init'.
+                // View https://github.com/vercel/next.js/pull/38174 for more information and https://github.com/vercel/next.js/issues/48593.
+                "@swc/helpers": path.dirname(require.resolve("@swc/helpers/package.json"))
+            }
         },
         plugins: [
-            new HtmlWebpackPlugin(htmlWebpackPluginOptions),
+            htmlWebpackPlugin !== false && new HtmlWebpackPlugin(htmlWebpackPlugin as HtmlWebpackPlugin.Options),
             new MiniCssExtractPlugin(miniCssExtractPluginOptions),
             new DefinePlugin({
                 // Parenthesis around the stringified object are mandatory otherwise it breaks
