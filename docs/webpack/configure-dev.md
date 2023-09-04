@@ -380,6 +380,7 @@ export const transformer: WebpackConfigTransformer = (config: WebpackConfig, con
 ```
 
 - `environment`: `"dev" | "build"`
+- `profile`: `boolean`
 
 ### Utilities
 
@@ -431,7 +432,7 @@ To make them accessible to the application files, webpack must be aware of those
 ### `environmentVariables`
 
 - **Type**: `Record<string, string | undefined>`
-- **Default**: `undefined`
+- **Default**: `{}`
 
 First, define the variables with `environmentVariables`:
 

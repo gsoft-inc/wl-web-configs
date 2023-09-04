@@ -1,5 +1,5 @@
 import { defineBuildConfig as defineSwcConfig } from "@workleap/swc-configs";
-import type { Configuration, RuleSetRule } from "webpack";
+import type { Configuration, FileCacheOptions, RuleSetRule } from "webpack";
 import { defineBuildConfig, defineBuildHtmlWebpackPluginConfig, defineMiniCssExtractPluginConfig } from "../src/build.ts";
 import type { WebpackConfigTransformer } from "../src/transformers/applyTransformers.ts";
 import { findModuleRule, matchLoaderName } from "../src/transformers/moduleRules.ts";
@@ -117,6 +117,31 @@ test("when minify is false, do not include minify configuration", () => {
     expect(result.optimization?.minimizer).toBeUndefined();
 });
 
+test("when cache is enabled, the cache configuration is included", () => {
+    const result = defineBuildConfig(defineSwcConfig(Targets), {
+        cache: true
+    });
+
+    expect(result.cache).toBeDefined();
+});
+
+test("when cache is disabled, the cache prop is false", () => {
+    const result = defineBuildConfig(defineSwcConfig(Targets), {
+        cache: false
+    });
+
+    expect(result.cache).toBeFalsy();
+});
+
+test("when a cache directory is provided and cache is enabled, use the provided cache directory value", () => {
+    const result = defineBuildConfig(defineSwcConfig(Targets), {
+        cache: true,
+        cacheDirectory: "a-custom-path"
+    });
+
+    expect((result.cache as FileCacheOptions).cacheDirectory).toBe("a-custom-path");
+});
+
 test("when css modules is enabled, include css modules configuration", () => {
     const result = defineBuildConfig(defineSwcConfig(Targets), {
         cssModules: true
@@ -194,7 +219,18 @@ test("transformers context environment is \"build\"", () => {
         transformers: [mockTransformer]
     });
 
-    expect(mockTransformer).toHaveBeenCalledWith(expect.anything(), { environment: "build" });
+    expect(mockTransformer).toHaveBeenCalledWith(expect.anything(), { environment: "build", profile: false });
+});
+
+test("when the profile option is true, the transformers context profile value is \"true\"", () => {
+    const mockTransformer = jest.fn();
+
+    defineBuildConfig(defineSwcConfig(Targets), {
+        profile: true,
+        transformers: [mockTransformer]
+    });
+
+    expect(mockTransformer).toHaveBeenCalledWith(expect.anything(), { environment: "build", profile: true });
 });
 
 describe("defineBuildHtmlWebpackPluginConfig", () => {
