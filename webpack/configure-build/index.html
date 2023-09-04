@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/wl-web-configs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.3.0.747161426947">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.3.0.747170492740">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.3.0">
@@ -32,12 +32,12 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("/wl-web-configs/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../static/favicon.png" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.3.0.747161426947" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.3.0.747170492740" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.3.0.747161426947" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.3.0.747170492740" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.3.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.3.0.747161426947" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.3.0.747161426947" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.3.0.747170492740" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.3.0.747170492740" defer></script>
 
     <style>
         .docs-markdown > ol, .docs-markdown > ul {
@@ -744,6 +744,7 @@ export const transformer: WebpackConfigTransformer = (config: WebpackConfig, con
 </doc-codeblock></div>
 <ul>
 <li><code v-pre>environment</code>: <code v-pre>&quot;dev&quot; | &quot;build&quot;</code></li>
+<li><code v-pre>profile</code>: <code v-pre>boolean</code></li>
 </ul>
 <doc-anchor-target id="utilities">
     <h3>
@@ -822,7 +823,7 @@ export default defineBuildConfig(swcConfig);</code></pre>
 </doc-anchor-target>
 <ul>
 <li><strong>Type</strong>: <code v-pre>Record&lt;string, string | undefined&gt;</code></li>
-<li><strong>Default</strong>: <code v-pre>undefined</code></li>
+<li><strong>Default</strong>: <code v-pre>{}</code></li>
 </ul>
 <p>First, define the variables with <code v-pre>environmentVariables</code>:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
