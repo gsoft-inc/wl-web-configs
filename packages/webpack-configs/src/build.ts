@@ -99,6 +99,8 @@ export function defineBuildConfig(swcConfig: SwcConfig, options: DefineBuildConf
             },
             cacheDirectory: cacheDirectory
         },
+        // Fixes caching for environmental variables using the DefinePlugin by forcing
+        // webpack caching to prioritize hashes over timestamps.
         snapshot: {
             buildDependencies: {
                 hash: true,
@@ -116,7 +118,7 @@ export function defineBuildConfig(swcConfig: SwcConfig, options: DefineBuildConf
                 hash: true,
                 timestamp: true
             }
-        }
+        },
         optimization: minify
             ? {
                 minimize: true,
