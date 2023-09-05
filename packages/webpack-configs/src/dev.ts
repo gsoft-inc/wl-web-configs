@@ -51,7 +51,7 @@ export interface DefineDevConfigOptions {
     cssModules?: boolean;
     environmentVariables?: Record<string, unknown>;
     transformers?: WebpackConfigTransformer[];
-    profile?: boolean;
+    verbose?: boolean;
 }
 
 function preflight(options: DefineDevConfigOptions) {
@@ -93,7 +93,7 @@ export function defineDevConfig(swcConfig: SwcConfig, options: DefineDevConfigOp
         // "process.env" is always available.
         environmentVariables = {},
         transformers = [],
-        profile = false
+        verbose = false
     } = options;
 
     const config: WebpackConfig = {
@@ -152,7 +152,7 @@ export function defineDevConfig(swcConfig: SwcConfig, options: DefineDevConfigOp
             removeEmptyChunks: false,
             splitChunks: false
         },
-        infrastructureLogging: profile ? {
+        infrastructureLogging: verbose ? {
             appendOnly: true,
             level: "verbose",
             debug: /PackFileCache/
@@ -228,7 +228,7 @@ export function defineDevConfig(swcConfig: SwcConfig, options: DefineDevConfigOp
 
     const transformedConfig = applyTransformers(config, transformers, {
         environment: "dev",
-        profile
+        verbose
     });
 
     return transformedConfig;

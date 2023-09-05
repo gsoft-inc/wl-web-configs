@@ -294,12 +294,12 @@ export default defineBuildConfig(swcConfig, {
 });
 ```
 
-### `profile`
+### `verbose`
 
 - **Type**: `boolean`
 - **Default**: `false`
 
-Start the webpack process with profiling options turned on.
+Start the webpack process with verbose logging turned on.
 
 ```js !#7 webpack.dev.js
 // @ts-check
@@ -308,7 +308,7 @@ import { defineDevConfig } from "@workleap/webpack-configs";
 import { swcConfig } from "./swc.dev.js";
 
 export default defineDevConfig(swcConfig, {
-    profile: true
+    verbose: true
 });
 ```
 
@@ -365,7 +365,7 @@ export const transformer: WebpackConfigTransformer = (config: WebpackConfig, con
 ```
 
 - `environment`: `"dev" | "build"`
-- `profile`: `boolean`
+- `verbose`: `boolean`
 
 ### Utilities
 

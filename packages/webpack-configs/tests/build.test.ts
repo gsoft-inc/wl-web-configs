@@ -241,18 +241,18 @@ test("transformers context environment is \"build\"", () => {
         transformers: [mockTransformer]
     });
 
-    expect(mockTransformer).toHaveBeenCalledWith(expect.anything(), { environment: "build", profile: false });
+    expect(mockTransformer).toHaveBeenCalledWith(expect.anything(), { environment: "build", verbose: false });
 });
 
-test("when the profile option is true, the transformers context profile value is \"true\"", () => {
+test("when the verbose option is true, the transformers context verbose value is \"true\"", () => {
     const mockTransformer = jest.fn();
 
     defineBuildConfig(defineSwcConfig(Targets), {
-        profile: true,
+        verbose: true,
         transformers: [mockTransformer]
     });
 
-    expect(mockTransformer).toHaveBeenCalledWith(expect.anything(), { environment: "build", profile: true });
+    expect(mockTransformer).toHaveBeenCalledWith(expect.anything(), { environment: "build", verbose: true });
 });
 
 describe("defineBuildHtmlWebpackPluginConfig", () => {
