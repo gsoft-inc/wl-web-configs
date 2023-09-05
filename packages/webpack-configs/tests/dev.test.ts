@@ -1,10 +1,12 @@
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 import type { Config as SwcConfig } from "@swc/core";
 import { defineDevConfig as defineSwcConfig } from "@workleap/swc-configs";
+import HtmlWebpackPlugin from "html-webpack-plugin";
 import type { Configuration, FileCacheOptions, RuleSetRule } from "webpack";
 import { defineDevConfig, defineDevHtmlWebpackPluginConfig, defineFastRefreshPluginConfig } from "../src/dev.ts";
 import type { WebpackConfigTransformer } from "../src/transformers/applyTransformers.ts";
 import { findModuleRule, matchLoaderName } from "../src/transformers/moduleRules.ts";
+import { findPlugin, matchConstructorName } from "../src/transformers/plugins.ts";
 
 const Targets = {
     chrome: "116"
@@ -158,6 +160,26 @@ test("when additional plugins are provided, append the provided plugins at the e
 
     expect(result.plugins![pluginsCount - 2]).toBe(newPlugin1);
     expect(result.plugins![pluginsCount - 1]).toBe(newPlugin2);
+});
+
+test("when htmlWebpackPlugin is \"false\", no html-webpack-plugin instance is added to the plugin array", () => {
+    const config = defineDevConfig(defineSwcConfig(Targets), {
+        htmlWebpackPlugin: false
+    });
+
+    const result = findPlugin(config, matchConstructorName(HtmlWebpackPlugin.name));
+
+    expect(result).toBeUndefined();
+});
+
+test("when htmlWebpackPlugin is \"true\", an html-webpack-plugin instance is added to the plugin array", () => {
+    const config = defineDevConfig(defineSwcConfig(Targets), {
+        htmlWebpackPlugin: true
+    });
+
+    const result = findPlugin(config, matchConstructorName(HtmlWebpackPlugin.name));
+
+    expect(result).toBeDefined();
 });
 
 test("when fast refresh is disabled, dev server hot module reload is enabled", () => {

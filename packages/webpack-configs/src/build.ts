@@ -8,6 +8,7 @@ import TerserPlugin from "terser-webpack-plugin";
 import type { Configuration as WebpackConfig } from "webpack";
 import webpack from "webpack";
 import { applyTransformers, type WebpackConfigTransformer } from "./transformers/applyTransformers.ts";
+import { isObject } from "./utils.ts";
 
 // Aliases
 const DefinePlugin = webpack.DefinePlugin;
@@ -51,13 +52,11 @@ export interface DefineBuildConfigOptions {
     cacheDirectory?: string;
     moduleRules?: NonNullable<WebpackConfig["module"]>["rules"];
     plugins?: WebpackConfig["plugins"];
-    htmlWebpackPlugin?: false | HtmlWebpackPlugin.Options;
+    htmlWebpackPlugin?: boolean | HtmlWebpackPlugin.Options;
     miniCssExtractPluginOptions?: MiniCssExtractPluginOptions;
     minify?: boolean;
     cssModules?: boolean;
-    // Only accepting string values because there are lot of issues with the DefinePlugin related to typing errors.
-    // See https://github.com/webpack/webpack/issues/8641
-    environmentVariables?: Record<string, string | undefined>;
+    environmentVariables?: Record<string, unknown>;
     transformers?: WebpackConfigTransformer[];
     profile?: boolean;
 }
@@ -193,11 +192,17 @@ export function defineBuildConfig(swcConfig: SwcConfig, options: DefineBuildConf
             }
         },
         plugins: [
-            htmlWebpackPlugin && new HtmlWebpackPlugin(htmlWebpackPlugin as HtmlWebpackPlugin.Options),
+            htmlWebpackPlugin && new HtmlWebpackPlugin(isObject(htmlWebpackPlugin) ? htmlWebpackPlugin : defineBuildHtmlWebpackPluginConfig()),
             new MiniCssExtractPlugin(miniCssExtractPluginOptions),
+            // Stringify the environment variables because the plugin does a direct text replacement. Otherwise, "production" would become production
+            // after replacement and cause an undefined var error because the production var doesn't exist.
+            // For more information, view: https://webpack.js.org/plugins/define-plugin.
             new DefinePlugin({
-                // Webpack automatically stringify object literals.
-                "process.env": environmentVariables
+                "process.env": Object.keys(environmentVariables).reduce((acc, key) => {
+                    acc[key] = JSON.stringify(environmentVariables[key]);
+
+                    return acc;
+                }, {} as Record<string, string>)
             }),
             ...plugins
         ].filter(Boolean) as WebpackConfig["plugins"]
