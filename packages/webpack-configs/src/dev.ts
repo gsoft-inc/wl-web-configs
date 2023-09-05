@@ -46,12 +46,10 @@ export interface DefineDevConfigOptions {
     cacheDirectory?: string;
     moduleRules?: NonNullable<WebpackConfig["module"]>["rules"];
     plugins?: WebpackConfig["plugins"];
-    htmlWebpackPlugin?: false | HtmlWebpackPlugin.Options;
+    htmlWebpackPlugin?: boolean | HtmlWebpackPlugin.Options;
     fastRefresh?: boolean | ReactRefreshPluginOptions;
     cssModules?: boolean;
-    // Only accepting string values because there are a lot of issues with the DefinePlugin related to typing errors.
-    // See https://github.com/webpack/webpack/issues/8641
-    environmentVariables?: Record<string, string | undefined>;
+    environmentVariables?: Record<string, unknown>;
     transformers?: WebpackConfigTransformer[];
     profile?: boolean;
 }
@@ -212,10 +210,16 @@ export function defineDevConfig(swcConfig: SwcConfig, options: DefineDevConfigOp
             }
         },
         plugins: [
-            htmlWebpackPlugin && new HtmlWebpackPlugin(htmlWebpackPlugin as HtmlWebpackPlugin.Options),
+            htmlWebpackPlugin && new HtmlWebpackPlugin(isObject(htmlWebpackPlugin) ? htmlWebpackPlugin : defineDevHtmlWebpackPluginConfig()),
+            // Stringify the environment variables because the plugin does a direct text replacement. Otherwise, "production" would become production
+            // after replacement and cause an undefined var error.
+            // For more information, view: https://webpack.js.org/plugins/define-plugin/.
             new DefinePlugin({
-                // Webpack automatically stringify object literals.
-                "process.env": environmentVariables
+                "process.env": Object.keys(environmentVariables).reduce((acc, key) => {
+                    acc[key] = JSON.stringify(environmentVariables[key]);
+
+                    return acc;
+                }, {} as Record<string, string>)
             }),
             fastRefresh && new ReactRefreshWebpackPlugin(isObject(fastRefresh) ? fastRefresh : defineFastRefreshPluginConfig()),
             ...plugins

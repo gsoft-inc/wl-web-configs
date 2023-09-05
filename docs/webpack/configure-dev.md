@@ -220,7 +220,7 @@ export default defineDevConfig(swcConfig, {
 
 ### `htmlWebpackPlugin`
 
-- **Type**: `false` or an object literal accepting any `html-webpack-plugin` [option](https://github.com/jantimon/html-webpack-plugin#options)
+- **Type**: `boolean` or an object literal accepting any `html-webpack-plugin` [option](https://github.com/jantimon/html-webpack-plugin#options)
 - **Default**: `{ template: "./public/index.html" }`
 
 To remove the default instance of [html-webpack-plugin](https://webpack.js.org/plugins/html-webpack-plugin/), set the property to `false`.
@@ -418,7 +418,7 @@ We recommend instead to define environment variables using [cross-env](https://g
 import { defineDevConfig } from "@workleap/webpack-configs";
 import { swcConfig } from "./swc.dev.js";
 
-if (process.env.DEBUG === "true") {
+if (process.env.DEBUG) {
     console.log("Configuring webpack in debug mode!");
 }
 
@@ -431,7 +431,7 @@ To make them accessible to the application files, webpack must be aware of those
 
 ### `environmentVariables`
 
-- **Type**: `Record<string, string | undefined>`
+- **Type**: `Record<string, unknown>`
 - **Default**: `{}`
 
 First, define the variables with `environmentVariables`:
@@ -444,7 +444,7 @@ import { swcConfig } from "./swc.dev.js";
 
 export default defineDevConfig(swcConfig, {
     environmentVariables: {
-        "DEBUG": process.env.DEBUG
+        "DEBUG": process.env.DEBUG === "true"
     }
 });
 ```
@@ -453,13 +453,17 @@ Then, use the variables in any application files:
 
 ```tsx !#2 src/app.tsx
 export function App() {
-    if (process.env.DEBUG === "true") {
+    if (process.env.DEBUG) {
         console.log("The application has been bootstrapped in debug!");
     }
 
     return null;
 }
 ```
+
+!!!
+The `=== "true"` part of `"DEBUG": process.env.DEBUG === "true"` is very important, otherwise the environment variable value would be `"true"` instead of `true`.
+!!!
 
 ## 7. Try it :rocket:
 

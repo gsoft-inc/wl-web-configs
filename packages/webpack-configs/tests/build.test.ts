@@ -1,8 +1,10 @@
 import { defineBuildConfig as defineSwcConfig } from "@workleap/swc-configs";
+import HtmlWebpackPlugin from "html-webpack-plugin";
 import type { Configuration, FileCacheOptions, RuleSetRule } from "webpack";
 import { defineBuildConfig, defineBuildHtmlWebpackPluginConfig, defineMiniCssExtractPluginConfig } from "../src/build.ts";
 import type { WebpackConfigTransformer } from "../src/transformers/applyTransformers.ts";
 import { findModuleRule, matchLoaderName } from "../src/transformers/moduleRules.ts";
+import { findPlugin, matchConstructorName } from "../src/transformers/plugins.ts";
 
 const Targets = {
     chrome: "116"
@@ -140,6 +142,26 @@ test("when a cache directory is provided and cache is enabled, use the provided 
     });
 
     expect((result.cache as FileCacheOptions).cacheDirectory).toBe("a-custom-path");
+});
+
+test("when htmlWebpackPlugin is \"false\", no html-webpack-plugin instance is added to the plugin array", () => {
+    const config = defineBuildConfig(defineSwcConfig(Targets), {
+        htmlWebpackPlugin: false
+    });
+
+    const result = findPlugin(config, matchConstructorName(HtmlWebpackPlugin.name));
+
+    expect(result).toBeUndefined();
+});
+
+test("when htmlWebpackPlugin is \"true\", an html-webpack-plugin instance is added to the plugin array", () => {
+    const config = defineBuildConfig(defineSwcConfig(Targets), {
+        htmlWebpackPlugin: true
+    });
+
+    const result = findPlugin(config, matchConstructorName(HtmlWebpackPlugin.name));
+
+    expect(result).toBeDefined();
 });
 
 test("when css modules is enabled, include css modules configuration", () => {
