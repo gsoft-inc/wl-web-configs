@@ -66,7 +66,7 @@ export interface DefineBuildConfigOptions {
     cssModules?: boolean;
     environmentVariables?: Record<string, unknown>;
     transformers?: WebpackConfigTransformer[];
-    profile?: boolean;
+    verbose?: boolean;
 }
 
 export function defineBuildConfig(swcConfig: SwcConfig, options: DefineBuildConfigOptions = {}) {
@@ -89,7 +89,7 @@ export function defineBuildConfig(swcConfig: SwcConfig, options: DefineBuildConf
         // "process.env" is always available.
         environmentVariables = {},
         transformers = [],
-        profile = false
+        verbose = false
     } = options;
 
     const config: WebpackConfig = {
@@ -144,7 +144,7 @@ export function defineBuildConfig(swcConfig: SwcConfig, options: DefineBuildConf
                 ]
             }
             : undefined,
-        infrastructureLogging: profile ? {
+        infrastructureLogging: verbose ? {
             appendOnly: true,
             level: "verbose",
             debug: /PackFileCache/
@@ -220,7 +220,7 @@ export function defineBuildConfig(swcConfig: SwcConfig, options: DefineBuildConf
 
     const transformedConfig = applyTransformers(config, transformers, {
         environment: "build",
-        profile
+        verbose
     });
 
     return transformedConfig;

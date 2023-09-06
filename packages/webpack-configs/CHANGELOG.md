@@ -1,5 +1,11 @@
 # @workleap/webpack-configs
 
+## 1.0.4
+
+### Patch Changes
+
+- [#127](https://github.com/gsoft-inc/wl-web-configs/pull/127) [`f440b12`](https://github.com/gsoft-inc/wl-web-configs/commit/f440b1251e2b3c1960dfc7f68bd090f573ec67d6) Thanks [@patricklafrance](https://github.com/patricklafrance)! - Fix environment variables
+
 ## 1.0.3
 
 ### Patch Changes
