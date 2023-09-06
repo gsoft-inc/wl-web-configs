@@ -2,7 +2,7 @@ import type { Configuration as WebpackConfig } from "webpack";
 
 export interface WebpackConfigTransformerContext {
     environment: "dev" | "build";
-    profile: boolean;
+    verbose: boolean;
 }
 
 export type WebpackConfigTransformer = (config: WebpackConfig, context: WebpackConfigTransformerContext) => WebpackConfig;
@@ -18,7 +18,7 @@ export function applyTransformers(config: WebpackConfig, transformers: WebpackCo
         return acc;
     }, config);
 
-    if (context.profile) {
+    if (context.verbose) {
         if (count > 0) {
             console.log(`[webpack-configs] Applied ${count} configuration transformers.`);
         }
