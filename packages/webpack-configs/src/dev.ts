@@ -54,15 +54,9 @@ export interface DefineDevConfigOptions {
     profile?: boolean;
 }
 
-function preflight(options: DefineDevConfigOptions) {
+function preflight() {
     if (!require.resolve("webpack-dev-server")) {
         throw new Error("[webpack-configs] To use the \"dev\" config, install https://www.npmjs.com/package/webpack-dev-server as a \"devDependency\".");
-    }
-
-    if (options.fastRefresh) {
-        if (!require.resolve("@pmmmwh/react-refresh-webpack-plugin")) {
-            throw new Error("[webpack-configs] To use Webpack Fast Refresh, install https://www.npmjs.com/package/@pmmmwh/react-refresh-webpack-plugin as a \"devDependency\".");
-        }
     }
 }
 
@@ -75,7 +69,7 @@ function trySetSwcFastRefresh(config: SwcConfig, enabled: boolean) {
 }
 
 export function defineDevConfig(swcConfig: SwcConfig, options: DefineDevConfigOptions = {}) {
-    preflight(options);
+    preflight();
 
     const {
         entry = path.resolve("./src/index.tsx"),

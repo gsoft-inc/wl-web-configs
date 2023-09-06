@@ -377,7 +377,7 @@ A plugin if a match has been found, otherwise `undefined`.
 
 #### Usage
 
-```ts transformer.ts
+```ts !#5 transformer.ts
 import { matchConstructorName, findPlugin, type WebpackConfig } from "@workleap/webpack-configs";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 
