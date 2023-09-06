@@ -44,6 +44,14 @@ export function defineMiniCssExtractPluginConfig(options: MiniCssExtractPluginOp
     };
 }
 
+function preflight(options: DefineBuildConfigOptions) {
+    if (options.publicPath) {
+        if (!options.publicPath.endsWith("/")) {
+            throw new Error("[webpack-configs] The \"publicPath\" must end with a \"/\".");
+        }
+    }
+}
+
 export interface DefineBuildConfigOptions {
     entry?: string;
     outputPath?: string;
@@ -62,6 +70,8 @@ export interface DefineBuildConfigOptions {
 }
 
 export function defineBuildConfig(swcConfig: SwcConfig, options: DefineBuildConfigOptions = {}) {
+    preflight(options);
+
     const {
         entry = path.resolve("./src/index.tsx"),
         outputPath = path.resolve("dist"),
