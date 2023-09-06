@@ -247,7 +247,7 @@ test("transformers context environment is \"build\"", () => {
 test("when the verbose option is true, the transformers context verbose value is \"true\"", () => {
     const mockTransformer = jest.fn();
 
-    defineBuildConfig(defineSwcConfig(Targets), {
+    defineBuildConfig(SwcConfig, {
         verbose: true,
         transformers: [mockTransformer]
     });
