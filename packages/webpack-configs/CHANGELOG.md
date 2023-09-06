@@ -1,5 +1,11 @@
 # @workleap/webpack-configs
 
+## 1.0.5
+
+### Patch Changes
+
+- [#131](https://github.com/gsoft-inc/wl-web-configs/pull/131) [`11bb287`](https://github.com/gsoft-inc/wl-web-configs/commit/11bb287847b4f525faa83abd23e46c56f58e41f4) Thanks [@patricklafrance](https://github.com/patricklafrance)! - Added a default key to exports
+
 ## 1.0.4
 
 ### Patch Changes
