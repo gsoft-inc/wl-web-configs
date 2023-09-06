@@ -26,12 +26,16 @@ test("when an output path is provided, use the provided ouput path value", () =>
     expect(result.output?.path).toBe("./a-new-output-path");
 });
 
-test("when a public path is provided, use the provided public path value", () => {
+test("when a public path not ending with a trailing slash is provided, throw an error", () => {
+    expect(() => defineBuildConfig(SwcConfig, { publicPath: "an-invalid-public-path" })).toThrow();
+});
+
+test("when a valid public path is provided, use the provided public path value", () => {
     const result = defineBuildConfig(SwcConfig, {
-        publicPath: "./a-new-public-path"
+        publicPath: "a-valid-public-path-ending-with-a-trailing-slash/"
     });
 
-    expect(result.output?.publicPath).toBe("./a-new-public-path");
+    expect(result.output?.publicPath).toBe("a-valid-public-path-ending-with-a-trailing-slash/");
 });
 
 test("when additional module rules are provided, append the provided rules at the end of the module rules array", () => {
