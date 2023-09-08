@@ -104,9 +104,6 @@ export function defineBuildConfig(swcConfig: SwcConfig, options: DefineBuildConf
         cache: cache && {
             type: "filesystem",
             allowCollectingMemory: false,
-            // buildDependencies: {
-            //     config: [fileURLToPath(import.meta.url)]
-            // },
             cacheDirectory: cacheDirectory
         },
         // Fixes caching for environmental variables using the DefinePlugin by forcing

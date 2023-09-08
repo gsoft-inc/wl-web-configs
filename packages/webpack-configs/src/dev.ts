@@ -111,9 +111,6 @@ export function defineDevConfig(swcConfig: SwcConfig, options: DefineDevConfigOp
             type: "filesystem",
             allowCollectingMemory: true,
             maxMemoryGenerations: 1,
-            // buildDependencies: {
-            //     config: [fileURLToPath(import.meta.url)]
-            // },
             cacheDirectory: cacheDirectory
         },
         // Fixes caching for environmental variables using the DefinePlugin by forcing
