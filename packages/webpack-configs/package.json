@@ -2,7 +2,7 @@
     "name": "@workleap/webpack-configs",
     "author": "Workleap",
     "description": "Workleap recommended webpack config.",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "license": "Apache-2.0",
     "keywords": [
         "workleap",
