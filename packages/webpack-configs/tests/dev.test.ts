@@ -318,7 +318,7 @@ test("when the verbose option is true, the transformers context verbose value is
 });
 
 describe("defineDevHtmlWebpackPluginConfig", () => {
-    test("merge the default options with the provided values", () => {
+    test("merge the default options with the provided options", () => {
         const result = defineDevHtmlWebpackPluginConfig({
             filename: "a-custom-filename"
         });
@@ -337,7 +337,7 @@ describe("defineDevHtmlWebpackPluginConfig", () => {
 });
 
 describe("defineFastRefreshPluginConfig", () => {
-    test("merge the default options with the provided values", () => {
+    test("merge the default options with the provided options", () => {
         const result = defineFastRefreshPluginConfig({
             exclude: "a-custom-exclude"
         });

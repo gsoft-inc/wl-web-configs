@@ -1,11 +1,11 @@
 ---
 order: 100
-label: Configure for dev
+label: Configure for development
 meta:
-    title: Configure for dev - SWC
+    title: Configure for development - SWC
 ---
 
-# Configure for dev
+# Configure for development
 
 To configure [SWC](https://swc.rs/) for a development environment, execute the following steps.
 

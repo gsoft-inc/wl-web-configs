@@ -4,7 +4,6 @@ import type { Config as SwcConfig } from "@swc/core";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import { createRequire } from "node:module";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
 import type { Configuration as WebpackConfig } from "webpack";
 import webpack from "webpack";
 import { applyTransformers, type WebpackConfigTransformer } from "./transformers/applyTransformers.ts";
@@ -112,9 +111,9 @@ export function defineDevConfig(swcConfig: SwcConfig, options: DefineDevConfigOp
             type: "filesystem",
             allowCollectingMemory: true,
             maxMemoryGenerations: 1,
-            buildDependencies: {
-                config: [fileURLToPath(import.meta.url)]
-            },
+            // buildDependencies: {
+            //     config: [fileURLToPath(import.meta.url)]
+            // },
             cacheDirectory: cacheDirectory
         },
         // Fixes caching for environmental variables using the DefinePlugin by forcing

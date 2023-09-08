@@ -62,6 +62,7 @@ The shared configurations offered by `@workleap/webpack-configs` includes the fo
 
 ### Production
 
+- File system caching
 - Minification
 - Output to `/dist`
 
