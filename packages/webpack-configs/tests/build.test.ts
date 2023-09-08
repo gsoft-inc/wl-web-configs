@@ -260,7 +260,7 @@ test("when the verbose option is true, the transformers context verbose value is
 });
 
 describe("defineBuildHtmlWebpackPluginConfig", () => {
-    test("merge the default options with the provided values", () => {
+    test("merge the default options with the provided options", () => {
         const result = defineBuildHtmlWebpackPluginConfig({
             filename: "a-custom-filename"
         });
@@ -279,7 +279,7 @@ describe("defineBuildHtmlWebpackPluginConfig", () => {
 });
 
 describe("defineMiniCssExtractPluginConfig", () => {
-    test("merge the default options with the provided values", () => {
+    test("merge the default options with the provided options", () => {
         const result = defineMiniCssExtractPluginConfig({
             chunkFilename: "a-custom-chunk-filename"
         });

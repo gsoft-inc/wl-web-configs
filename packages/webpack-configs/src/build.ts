@@ -3,7 +3,6 @@ import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import { createRequire } from "node:module";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
 import TerserPlugin from "terser-webpack-plugin";
 import type { Configuration as WebpackConfig } from "webpack";
 import webpack from "webpack";
@@ -105,9 +104,6 @@ export function defineBuildConfig(swcConfig: SwcConfig, options: DefineBuildConf
         cache: cache && {
             type: "filesystem",
             allowCollectingMemory: false,
-            buildDependencies: {
-                config: [fileURLToPath(import.meta.url)]
-            },
             cacheDirectory: cacheDirectory
         },
         // Fixes caching for environmental variables using the DefinePlugin by forcing

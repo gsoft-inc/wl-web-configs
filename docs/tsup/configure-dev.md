@@ -1,11 +1,11 @@
 ---
 order: 100
-label: Configure for dev
+label: Configure for development
 meta:
-    title: Configure for dev - tsup
+    title: Configure for development - tsup
 ---
 
-# Configure for dev
+# Configure for development
 
 To configure [tsup](https://tsup.egoist.dev/) for a development environment, execute the following steps.
 

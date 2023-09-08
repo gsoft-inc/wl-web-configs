@@ -15,21 +15,48 @@ Open a terminal at the root of the project and install the following packages:
 
 +++ pnpm
 ```bash
-pnpm add -D @workleap/webpack-configs webpack webpack-cli @swc/core @swc/helpers browserslist postcss @svgr/webpack
+pnpm add -D @workleap/webpack-configs webpack webpack-cli @swc/core @swc/helpers browserslist postcss
 ```
 +++ yarn
 ```bash
-yarn add -D @workleap/webpack-configs webpack webpack-cli @swc/core @swc/helpers browserslist postcss @svgr/webpack
+yarn add -D @workleap/webpack-configs webpack webpack-cli @swc/core @swc/helpers browserslist postcss
 ```
 +++ npm
 ```bash
-npm install -D @workleap/webpack-configs webpack webpack-cli @swc/core @swc/helpers browserslist postcss @svgr/webpack
+npm install -D @workleap/webpack-configs webpack webpack-cli @swc/core @swc/helpers browserslist postcss
 ```
 +++
 
 ## 2. Configure webpack
 
-First, create a configuration file named `webpack.build.js` at the root of the project:
+First, create a `public` folder with an `index.html` file at the root of the project:
+
+``` !#2-3
+web-project
+├── public
+├──── index.html
+├── src
+├──── ...
+├── package.json
+├── webpack.build.js
+```
+
+Then, open the newly created `index.html` file and copy/paste the following content:
+
+```html public/index.html
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <div id="root"></div>
+    </body>
+</html>
+```
+
+The content of the `public/index.html` file is the default template that will be used by [HtmlWebpackPlugin](https://webpack.js.org/plugins/html-webpack-plugin/).
+
+Next, create a configuration file named `webpack.build.js` at the root of the project:
 
 ``` !#5
 web-project
