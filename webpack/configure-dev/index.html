@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/wl-web-configs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.3.0.747337532045">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.3.0.747496768740">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.3.0">
 
     <!-- Primary Meta Tags -->
-    <title>Configure for dev - webpack</title>
-    <meta name="title" content="Configure for dev - webpack">
+    <title>Configure for development - webpack</title>
+    <meta name="title" content="Configure for development - webpack">
     <meta name="description" content="To configure webpack for a development environment, execute the following steps.">
 
     <!-- Canonical -->
@@ -20,24 +20,24 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://gsoft-inc.github.io/wl-web-configs/webpack/configure-dev/">
-    <meta property="og:title" content="Configure for dev - webpack">
+    <meta property="og:title" content="Configure for development - webpack">
     <meta property="og:description" content="To configure webpack for a development environment, execute the following steps.">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://gsoft-inc.github.io/wl-web-configs/webpack/configure-dev/">
-    <meta property="twitter:title" content="Configure for dev - webpack">
+    <meta property="twitter:title" content="Configure for development - webpack">
     <meta property="twitter:description" content="To configure webpack for a development environment, execute the following steps.">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("/wl-web-configs/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../static/favicon.png" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.3.0.747337532045" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.3.0.747496768740" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.3.0.747337532045" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.3.0.747496768740" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.3.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.3.0.747337532045" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.3.0.747337532045" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.3.0.747496768740" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.3.0.747496768740" defer></script>
 
     <style>
         .docs-markdown > ol, .docs-markdown > ul {
@@ -291,17 +291,17 @@
                                         </li>
                                         <li class="pr-4">
                                             <a href="../../webpack/configure-dev/" class="pr-4">
-                                                Configure for dev
+                                                Configure for development
                                             </a>
                                         </li>
                                     </ol>
                                 </nav>
                 
                                 <!-- Page content  -->
-<doc-anchor-target id="configure-for-dev" class="break-words">
+<doc-anchor-target id="configure-for-development" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#configure-for-dev">#</doc-anchor-trigger>
-        <span>Configure for dev</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#configure-for-development">#</doc-anchor-trigger>
+        <span>Configure for development</span>
     </h1>
 </doc-anchor-target>
 <p>To configure <a href="https://webpack.js.org/" class="outbound" target="_blank">webpack</a> for a development environment, execute the following steps.</p>
@@ -316,19 +316,19 @@
 <doc-tab v-cloak id="pnpm">
 <template #title>pnpm</template>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">pnpm add -D @workleap/webpack-configs webpack webpack-cli webpack-dev-server @swc/core @swc/helpers browserslist postcss @svgr/webpack</code></pre>
+<pre class="language-bash"><code v-pre class="language-bash">pnpm add -D @workleap/webpack-configs webpack webpack-cli webpack-dev-server @swc/core @swc/helpers browserslist postcss</code></pre>
 </doc-codeblock></div>
 </doc-tab>
 <doc-tab v-cloak id="yarn">
 <template #title>yarn</template>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">yarn add -D @workleap/webpack-configs webpack webpack-cli webpack-dev-server @swc/core @swc/helpers browserslist postcss @svgr/webpack</code></pre>
+<pre class="language-bash"><code v-pre class="language-bash">yarn add -D @workleap/webpack-configs webpack webpack-cli webpack-dev-server @swc/core @swc/helpers browserslist postcss</code></pre>
 </doc-codeblock></div>
 </doc-tab>
 <doc-tab v-cloak id="npm">
 <template #title>npm</template>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">npm install -D @workleap/webpack-configs webpack webpack-cli webpack-dev-server @swc/core @swc/helpers browserslist postcss @svgr/webpack</code></pre>
+<pre class="language-bash"><code v-pre class="language-bash">npm install -D @workleap/webpack-configs webpack webpack-cli webpack-dev-server @swc/core @swc/helpers browserslist postcss</code></pre>
 </doc-codeblock></div>
 </doc-tab>
 </doc-tabs>
@@ -338,7 +338,30 @@
         <span>2. Configure webpack</span>
     </h2>
 </doc-anchor-target>
-<p>First, create a configuration file named <code v-pre>webpack.dev.js</code> at the root of the project:</p>
+<p>First, create a <code v-pre>public</code> folder with an <code v-pre>index.html</code> file at the root of the project:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none" data-line="2-3"><code v-pre class="language-none">web-project
+├── public
+├──── index.html
+├── src
+├──── ...
+├── package.json
+├── webpack.dev.js</code></pre>
+</doc-codeblock></div>
+<p>Then, open the newly created <code v-pre>index.html</code> file and copy/paste the following content:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<div class="codeblock-title">public/index.html</div>
+<pre class="language-markup"><code v-pre class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id=&quot;root&quot;&gt;&lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</doc-codeblock></div>
+<p>The content of the <code v-pre>public/index.html</code> file is the default template that will be used by <a href="https://webpack.js.org/plugins/html-webpack-plugin/" class="outbound" target="_blank">HtmlWebpackPlugin</a>.</p>
+<p>Next, create a configuration file named <code v-pre>webpack.dev.js</code> at the root of the project:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-none" data-line="5"><code v-pre class="language-none">web-project
 ├── src
@@ -981,6 +1004,6 @@ export default defineDevConfig(swcConfig, {
 
     <div id="docs-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "Configure for dev", level: 2, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Configure for development", level: 2, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
 </body>
 </html>
