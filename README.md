@@ -28,3 +28,7 @@ View the [user's documentation](https://gsoft-inc.github.io/wl-web-configs/).
 ## 🤝 Contributing
 
 View the [contributors documentation](./CONTRIBUTING.md).
+
+## License
+
+Copyright © 2023, Workleap This code is licensed under the Apache License, Version 2.0. You may obtain a copy of this license at https://github.com/gsoft-inc/workleap-license/blob/master/LICENSE.
