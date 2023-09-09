@@ -12,6 +12,10 @@ breadcrumb:
     enabled: true
     home: false
 
+hub:
+    link: https://gsoft-inc.github.io/wl-idp-docs-hub/
+    alt: Go to the IDP hub root site
+
 # -------------------
 # Retype
 # -------------------
