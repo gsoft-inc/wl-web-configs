@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/wl-web-configs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.4.1.747713964525">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.4.1.747760102894">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.4.1">
@@ -32,12 +32,12 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("/wl-web-configs/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../static/favicon.png" rel="icon">
-    <link href="../resources/css/retype.css?v=3.4.1.747713964525" rel="stylesheet">
+    <link href="../resources/css/retype.css?v=3.4.1.747760102894" rel="stylesheet">
 
-    <script data-cfasync="false" src="../resources/js/config.js?v=3.4.1.747713964525" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../resources/js/config.js?v=3.4.1.747760102894" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../resources/js/retype.js?v=3.4.1" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../resources/js/lunr.js?v=3.4.1.747713964525" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../resources/js/prism.js?v=3.4.1.747713964525" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../resources/js/lunr.js?v=3.4.1.747760102894" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../resources/js/prism.js?v=3.4.1.747760102894" defer></script>
 
     <link href="https://gsoft-inc.github.io/wl-idp-docs-hub/static/retype_customization.css" rel="stylesheet" />
 
@@ -333,7 +333,7 @@
 <p>As we actively work on improving our build time and <strong>minimize</strong> the number of tools <strong>compiling/transpiling</strong> frontend code, we expect <a href="https://postcss.org/" class="outbound" target="_blank">PostCSS</a> to be one of the first tools that we will <strong>deprecate</strong> from our technology stack. Therefore, before adding PostCSS to your project, make sure that you really need it.</p>
 <p>Here&#x27;s a couple of ideas to move away from PostCSS:</p>
 <ul>
-<li>Prefer native CSS to <a href="https://sass-lang.com/documentation/syntax/" class="outbound" target="_blank">SCSS</a>.</li>
+<li>Prefer native CSS to SCSS.</li>
 <li>Avoid CSS nesting, it usually makes code harder to read anyway. If you really need nesting, <a href="https://www.w3.org/TR/css-nesting-1/" class="outbound" target="_blank">native support</a> is coming soon.</li>
 <li>Force developers to use <code v-pre>rem</code> by disabling the use of <code v-pre>px</code> with <a href="https://stylelint.io/" class="outbound" target="_blank">Stylelint</a>.</li>
 <li>Prefix CSS properties directly in the codebase rather than relying on <a href="https://github.com/postcss/autoprefixer" class="outbound" target="_blank">Autoprefixer</a>. As browser vendors are now <a href="https://github.com/postcss/autoprefixer" class="outbound" target="_blank">putting experimental features behind a flag</a> rather than using prefixes, there aren&#x27;t many CSS properties still requiring a prefix.</li>

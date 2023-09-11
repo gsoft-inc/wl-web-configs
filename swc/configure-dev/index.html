@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/wl-web-configs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.4.1.747713964525">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.4.1.747760102894">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.4.1">
@@ -32,12 +32,12 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("/wl-web-configs/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../static/favicon.png" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.4.1.747713964525" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.4.1.747760102894" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.4.1.747713964525" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.4.1.747760102894" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.4.1" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.4.1.747713964525" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.4.1.747713964525" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.4.1.747760102894" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.4.1.747760102894" defer></script>
 
     <link href="https://gsoft-inc.github.io/wl-idp-docs-hub/static/retype_customization.css" rel="stylesheet" />
 
@@ -347,7 +347,7 @@
 ├── package.json
 ├── swc.dev.js</code></pre>
 </doc-codeblock></div>
-<p>Then, open the newly created file and export the <a href="https://swc.rs/" class="outbound" target="_blank">SWC</a> configuration by using the <code v-pre>defineDevConfig(targets, options)</code> function:</p>
+<p>Then, open the newly created file and export the SWC configuration by using the <code v-pre>defineDevConfig(targets, options)</code> function:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <div class="codeblock-title">swc.dev.js</div>
 <pre class="language-javascript" data-line="5,7"><code v-pre class="language-javascript">// @ts-check
@@ -365,7 +365,7 @@ export default defineDevConfig(targets);</code></pre>
     </h3>
 </doc-anchor-target>
 <p>In the previous code sample, the <code v-pre>defineDevConfig(targets, options)</code> function receives a list of <strong>minimal browser versions to support</strong> through the <code v-pre>targets</code> parameter.</p>
-<p>The expected behavior for the supported browsers would be for <a href="https://swc.rs/" class="outbound" target="_blank">SWC</a> to automatically load the minimal browser versions from the closest <code v-pre>.browserslistrc</code> <a href="https://github.com/browserslist/browserslist#browserslistrc" class="outbound" target="_blank">configuration file</a>. However, there is currently an <a href="https://github.com/swc-project/swc/issues/3365" class="outbound" target="_blank">issue</a> preventing SWC from doing so when the configuration file include a query referencing an external <a href="https://browsersl.ist/" class="outbound" target="_blank">Browserslist</a> configuration:</p>
+<p>The expected behavior for the supported browsers would be for SWC to automatically load the minimal browser versions from the closest <code v-pre>.browserslistrc</code> <a href="https://github.com/browserslist/browserslist#browserslistrc" class="outbound" target="_blank">configuration file</a>. However, there is currently an <a href="https://github.com/swc-project/swc/issues/3365" class="outbound" target="_blank">issue</a> preventing SWC from doing so when the configuration file include a query referencing an external <a href="https://browsersl.ist/" class="outbound" target="_blank">Browserslist</a> configuration:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <div class="codeblock-title">.browserslistrc</div>
 <pre class="language-none"><code v-pre class="language-none">extends @workleap/browserslist-config</code></pre>
@@ -377,7 +377,7 @@ export default defineDevConfig(targets);</code></pre>
         <span><code v-pre>browserslistToSwc</code></span>
     </h3>
 </doc-anchor-target>
-<p>To help consumers provide SWC <a href="https://swc.rs/docs/configuration/supported-browsers#targets" class="outbound" target="_blank">targets</a> from a <a href="https://browsersl.ist/" class="outbound" target="_blank">Browserslist</a> configuration, <code v-pre>@workleap/swc-configs</code> offers the <code v-pre>browserslistToSwc(options)</code> utility function.</p>
+<p>To help consumers provide SWC <a href="https://swc.rs/docs/configuration/supported-browsers#targets" class="outbound" target="_blank">targets</a> from a Browserslist configuration, <code v-pre>@workleap/swc-configs</code> offers the <code v-pre>browserslistToSwc(options)</code> utility function.</p>
 <p>This function can either transform an array of Browserslist <a href="https://github.com/browserslist/browserslist#queries" class="outbound" target="_blank">queries</a> to SWC targets:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <div class="codeblock-title">swc.dev.js</div>
@@ -448,7 +448,7 @@ export default defineDevConfig(targets, {
 <li><strong>Type</strong>: <code v-pre>&quot;ecmascript&quot; | &quot;typescript&quot;</code></li>
 <li><strong>Default</strong>: <code v-pre>&quot;typescript&quot;</code></li>
 </ul>
-<p>Whether SWC should expect to parse JavaScript or <a href="https://www.typescriptlang.org/" class="outbound" target="_blank">TypeScript</a> code.</p>
+<p>Whether SWC should expect to parse JavaScript or TypeScript code.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <div class="codeblock-title">swc.dev.js</div>
 <pre class="language-javascript" data-line="8"><code v-pre class="language-javascript">// @ts-check
@@ -544,7 +544,7 @@ export const transformer: SwcConfigTransformer = (config: SwcConfig, context: Sw
         <span>5. Configure webpack</span>
     </h2>
 </doc-anchor-target>
-<p>To integrate with <a href="https://webpack.js.org/" class="outbound" target="_blank">webpack</a>, update your configuration file to include an <a href="https://swc.rs/docs/usage/swc-loader" class="outbound" target="_blank">swc-loader</a>:</p>
+<p>To integrate with webpack, update your configuration file to include an <a href="https://swc.rs/docs/usage/swc-loader" class="outbound" target="_blank">swc-loader</a>:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <div class="codeblock-title">webpack.config.js</div>
 <pre class="language-javascript" data-line="10"><code v-pre class="language-javascript">// @ts-check
@@ -573,7 +573,7 @@ export default {
         <span>6. Try it <span class="docs-emoji">&#x1F680;</span></span>
     </h2>
 </doc-anchor-target>
-<p>To test your new <a href="https://swc.rs/" class="outbound" target="_blank">SWC</a> configuration, create a Typescript file with the following code:</p>
+<p>To test your new SWC configuration, create a Typescript file with the following code:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <div class="codeblock-title">say.ts</div>
 <pre class="language-typescript"><code v-pre class="language-typescript">export function say(string: value) {

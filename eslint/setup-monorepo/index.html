@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/wl-web-configs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.4.1.747713964525">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.4.1.747760102894">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.4.1">
@@ -32,12 +32,12 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("/wl-web-configs/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../static/favicon.png" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.4.1.747713964525" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.4.1.747760102894" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.4.1.747713964525" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.4.1.747760102894" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.4.1" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.4.1.747713964525" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.4.1.747713964525" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.4.1.747760102894" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.4.1.747760102894" defer></script>
 
     <link href="https://gsoft-inc.github.io/wl-idp-docs-hub/static/retype_customization.css" rel="stylesheet" />
 
@@ -381,7 +381,7 @@
         <span>3. Ignore files</span>
     </h2>
 </doc-anchor-target>
-<p><a href="https://eslint.org/" class="outbound" target="_blank">ESLint</a> can be configured to <a href="https://eslint.org/docs/latest/use/configure/ignore" class="outbound" target="_blank">ignore</a> certain files and directories while linting by specifying one or more glob patterns.</p>
+<p>ESLint can be configured to <a href="https://eslint.org/docs/latest/use/configure/ignore" class="outbound" target="_blank">ignore</a> certain files and directories while linting by specifying one or more glob patterns.</p>
 <p>To do so, first, create a <code v-pre>.eslintignore</code> file at the root of the solution workspace:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-none" data-line="9"><code v-pre class="language-none">workspace
@@ -409,7 +409,7 @@ node_modules
         <span>4. Configure indent style</span>
     </h2>
 </doc-anchor-target>
-<p><a href="https://eslint.org/" class="outbound" target="_blank">ESLint</a> offers <a href="https://eslint.org/docs/latest/rules/indent" class="outbound" target="_blank">built-in rules</a> for configuring the indentation style of a codebase. However, there&#x27;s a catch: when <a href="https://code.visualstudio.com/docs/editor/codebasics#_formatting" class="outbound" target="_blank">VS Code auto-formatting</a> feature is enabled, it might conflict with the configured indentation rules if they are set differently.</p>
+<p>ESLint offers <a href="https://eslint.org/docs/latest/rules/indent" class="outbound" target="_blank">built-in rules</a> for configuring the indentation style of a codebase. However, there&#x27;s a catch: when <a href="https://code.visualstudio.com/docs/editor/codebasics#_formatting" class="outbound" target="_blank">VS Code auto-formatting</a> feature is enabled, it might conflict with the configured indentation rules if they are set differently.</p>
 <p>To guarantee a consistent indentation, we recommend using <a href="https://editorconfig.org/" class="outbound" target="_blank">EditorConfig</a> on the consumer side. With EditorConfig, the indent style can be configured in a single file and be applied consistently across various formatting tools, including ESlint and <a href="https://code.visualstudio.com/" class="outbound" target="_blank">VS Code</a>.</p>
 <p>First, create a <code v-pre>.editorconfig</code> file at the root of the solution workspace:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
@@ -522,7 +522,7 @@ trim_trailing_whitespace = false</code></pre>
         <span>web-application</span>
     </h3>
 </doc-anchor-target>
-<p>For an application developed with <a href="https://www.typescriptlang.org/" class="outbound" target="_blank">TypeScript</a> and <a href="https://react.dev/" class="outbound" target="_blank">React</a>, use the following configuration:</p>
+<p>For an application developed with TypeScript and React, use the following configuration:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <div class="codeblock-title">packages/app/.eslintrc.json</div>
 <pre class="language-json" data-line="4"><code v-pre class="language-json">{
@@ -537,7 +537,7 @@ trim_trailing_whitespace = false</code></pre>
         <span>react-library</span>
     </h3>
 </doc-anchor-target>
-<p>For a <a href="https://www.typescriptlang.org/" class="outbound" target="_blank">TypeScript</a> library developed <strong>with</strong> <a href="https://react.dev/" class="outbound" target="_blank">React</a>, use the following configuration:</p>
+<p>For a TypeScript library developed <strong>with</strong> React, use the following configuration:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <div class="codeblock-title">packages/app/.eslintrc.json</div>
 <pre class="language-json" data-line="4"><code v-pre class="language-json">{
@@ -552,7 +552,7 @@ trim_trailing_whitespace = false</code></pre>
         <span>typescript-library</span>
     </h3>
 </doc-anchor-target>
-<p>For a <a href="https://www.typescriptlang.org/" class="outbound" target="_blank">TypeScript</a> library developed <strong>without</strong> <a href="https://react.dev/" class="outbound" target="_blank">React</a>, use the following configuration:</p>
+<p>For a TypeScript library developed <strong>without</strong> React, use the following configuration:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <div class="codeblock-title">packages/app/.eslintrc.json</div>
 <pre class="language-json" data-line="4"><code v-pre class="language-json">{
@@ -581,7 +581,7 @@ trim_trailing_whitespace = false</code></pre>
         <span>10. Try it <span class="docs-emoji">&#x1F680;</span></span>
     </h2>
 </doc-anchor-target>
-<p>To test your new <a href="https://eslint.org/" class="outbound" target="_blank">ESLint</a> setup, open a JavaScript file, type invalid code (e.g. <code v-pre>var x = 0;</code>), then save. Open a terminal at the root of the solution and execute the <doc-anchor-trigger to="#5-add-a-cli-script">CLI script added earlier</doc-anchor-trigger>:</p>
+<p>To test your new ESLint setup, open a JavaScript file, type invalid code (e.g. <code v-pre>var x = 0;</code>), then save. Open a terminal at the root of the solution and execute the <doc-anchor-trigger to="#5-add-a-cli-script">CLI script added earlier</doc-anchor-trigger>:</p>
 <doc-tabs>
 <doc-tab v-cloak id="pnpm">
 <template #title>pnpm</template>

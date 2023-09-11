@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/wl-web-configs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.4.1.747713964525">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.4.1.747760102894">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.4.1">
@@ -32,12 +32,12 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("/wl-web-configs/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../static/favicon.png" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.4.1.747713964525" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.4.1.747760102894" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.4.1.747713964525" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.4.1.747760102894" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.4.1" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.4.1.747713964525" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.4.1.747713964525" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.4.1.747760102894" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.4.1.747760102894" defer></script>
 
     <link href="https://gsoft-inc.github.io/wl-idp-docs-hub/static/retype_customization.css" rel="stylesheet" />
 
@@ -380,7 +380,7 @@
         <span>3. Ignore files</span>
     </h2>
 </doc-anchor-target>
-<p><a href="https://stylelint.io/" class="outbound" target="_blank">Stylelint</a> can be configured to <a href="https://stylelint.io/user-guide/ignore-code#files-entirely" class="outbound" target="_blank">ignore</a> certain files and directories while linting by specifying one or more glob patterns.</p>
+<p>Stylelint can be configured to <a href="https://stylelint.io/user-guide/ignore-code#files-entirely" class="outbound" target="_blank">ignore</a> certain files and directories while linting by specifying one or more glob patterns.</p>
 <p>To do so, first, create an <code v-pre>.stylelintignore</code> file at the root of the solution workspace:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-none" data-line="9"><code v-pre class="language-none">workspace
@@ -431,8 +431,8 @@ node_modules</code></pre>
         <span>5. Configure indent style</span>
     </h2>
 </doc-anchor-target>
-<p><a href="https://prettier.io/" class="outbound" target="_blank">Prettier</a> offers <a href="https://prettier.io/docs/en/options#tab-width" class="outbound" target="_blank">built-in rules</a> for configuring the indentation style of a codebase. However, there&#x27;s a catch: when <a href="https://code.visualstudio.com/docs/editor/codebasics#_formatting" class="outbound" target="_blank">VS Code auto-formatting</a> feature is enabled, it might conflict with the configured indentation rules if they are set differently.</p>
-<p>To guarantee a consistent indentation, we recommend using <a href="https://editorconfig.org/" class="outbound" target="_blank">EditorConfig</a> on the consumer side. With EditorConfig, the indent style can be configured in a single file and be applied consistently across various formatting tools, including ESlint and <a href="https://code.visualstudio.com/" class="outbound" target="_blank">VS Code</a>.</p>
+<p>Prettier offers <a href="https://prettier.io/docs/en/options#tab-width" class="outbound" target="_blank">built-in rules</a> for configuring the indentation style of a codebase. However, there&#x27;s a catch: when <a href="https://code.visualstudio.com/docs/editor/codebasics#_formatting" class="outbound" target="_blank">VS Code auto-formatting</a> feature is enabled, it might conflict with the configured indentation rules if they are set differently.</p>
+<p>To guarantee a consistent indentation, we recommend using <a href="https://editorconfig.org/" class="outbound" target="_blank">EditorConfig</a> on the consumer side. With EditorConfig, the indent style can be configured in a single file and be applied consistently across various formatting tools, including ESlint and VS Code.</p>
 <p>First, create a <code v-pre>.editorconfig</code> file at the root of the solution workspace:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-none" data-line="10"><code v-pre class="language-none">workspace

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/wl-web-configs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.4.1.747713964525">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.4.1.747760102894">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.4.1">
@@ -32,12 +32,12 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("/wl-web-configs/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../static/favicon.png" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.4.1.747713964525" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.4.1.747760102894" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.4.1.747713964525" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.4.1.747760102894" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.4.1" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.4.1.747713964525" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.4.1.747713964525" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.4.1.747760102894" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.4.1.747760102894" defer></script>
 
     <link href="https://gsoft-inc.github.io/wl-idp-docs-hub/static/retype_customization.css" rel="stylesheet" />
 
@@ -386,7 +386,7 @@ export default defineDevConfig(swcConfig);</code></pre>
         <span><code v-pre>swcConfig</code></span>
     </h3>
 </doc-anchor-target>
-<p>In the previous code sample, the <code v-pre>defineDevConfig(swcConfig, options)</code> function receive an <a href="https://swc.rs" class="outbound" target="_blank">SWC</a> configuration object through the <code v-pre>swcConfig</code> parameter.</p>
+<p>In the previous code sample, the <code v-pre>defineDevConfig(swcConfig, options)</code> function receive an SWC <a href="https://swc.rs/docs/configuration/swcrc" class="outbound" target="_blank">configuration object</a> through the <code v-pre>swcConfig</code> parameter.</p>
 <p>Although the <a href="https://swc.rs/docs/usage/swc-loader" class="outbound" target="_blank">swc-loader</a> defaults to loading the closest <code v-pre>.swcrc</code> <a href="https://swc.rs/docs/configuration/swcrc" class="outbound" target="_blank">configuration file</a> when no configuration object is provided, it lacks support for distinct configuration files by environment like webpack does.</p>
 <p>Therefore, <code v-pre>@workleap/webpack-configs</code> choosed to <strong>delegate</strong> the loading of the SWC configuration <strong>to the consumer</strong> by making the <code v-pre>swcConfig</code> option <strong>required</strong>.</p>
 <doc-anchor-target id="3-set-predefined-options">
@@ -563,7 +563,7 @@ export default defineDevConfig(swcConfig, {
     </h3>
 </doc-anchor-target>
 <ul>
-<li><strong>Type</strong>: An array of webpack <a href="https://webpack.js.org/configuration/plugins/" class="outbound" target="_blank">plugin</a> instances</li>
+<li><strong>Type</strong>: An array of webpack <a href="https://webpack.js.org/configuration/plugins/" class="outbound" target="_blank">plugin instances</a></li>
 <li><strong>Default</strong>: <code v-pre>[]</code></li>
 </ul>
 <p>Append the provided webpack plugins to the configuration.</p>
@@ -825,14 +825,14 @@ export const transformer: WebpackConfigTransformer = (config: WebpackConfig, con
         <span>6. Set environment variables</span>
     </h2>
 </doc-anchor-target>
-<p>To deal with environment variables, the <a href="https://webpack.js.org/" class="outbound" target="_blank">webpack</a> documentation suggests using the <a href="https://webpack.js.org/guides/environment-variables/" class="outbound" target="_blank">--env option</a> from its CLI. While that would work, by using webpack <code v-pre>--env</code> CLI option, the environment variables would only be made available to the webpack configuration files (.e.g. <code v-pre>webpack.dev.js</code>) rather than any <a href="https://nodejs.org/en" class="outbound" target="_blank">Node.js</a> files. Therefore we <strong>do not recommend</strong> using webpack <code v-pre>--env</code> CLI option.</p>
+<p>To deal with environment variables, the webpack documentation suggests using the <a href="https://webpack.js.org/guides/environment-variables/" class="outbound" target="_blank">--env option</a> from its CLI. While that would work, by using webpack <code v-pre>--env</code> CLI option, the environment variables would only be made available to the webpack configuration files (.e.g. <code v-pre>webpack.dev.js</code>) rather than any Node.js files. Therefore we <strong>do not recommend</strong> using webpack <code v-pre>--env</code> CLI option.</p>
 <doc-anchor-target id="cross-env">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#cross-env">#</doc-anchor-trigger>
         <span>cross-env</span>
     </h3>
 </doc-anchor-target>
-<p>We recommend instead to define environment variables using <a href="https://github.com/kentcdodds/cross-env" class="outbound" target="_blank">cross-env</a>. With <code v-pre>cross-env</code>, the environment variables will be made available to any <a href="https://nodejs.org/en" class="outbound" target="_blank">Node.js</a> files that are executed by the script process (<code v-pre>dev</code> in the example below <span class="docs-emoji">&#x1F447;</span>):</p>
+<p>We recommend instead to define environment variables using <a href="https://github.com/kentcdodds/cross-env" class="outbound" target="_blank">cross-env</a>. With <code v-pre>cross-env</code>, the environment variables will be made available to any Node.js files that are executed by the script process (<code v-pre>dev</code> in the example below <span class="docs-emoji">&#x1F447;</span>):</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <div class="codeblock-title">package.json</div>
 <pre class="language-json"><code v-pre class="language-json">{
@@ -912,7 +912,7 @@ export default defineDevConfig(swcConfig, {
         <span>7. Try it <span class="docs-emoji">&#x1F680;</span></span>
     </h2>
 </doc-anchor-target>
-<p>To test your new <a href="https://webpack.js.org/" class="outbound" target="_blank">webpack</a> configuration, open a terminal at the root of the project and execute the <doc-anchor-trigger to="#5-add-a-cli-script">CLI script added earlier</doc-anchor-trigger>. A development server should start without outputting any error in the terminal.</p>
+<p>To test your new webpack configuration, open a terminal at the root of the project and execute the <doc-anchor-trigger to="#5-add-a-cli-script">CLI script added earlier</doc-anchor-trigger>. A development server should start without outputting any error in the terminal.</p>
 
                                 
                                 <!-- Required only on API pages -->

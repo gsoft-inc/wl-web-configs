@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/wl-web-configs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.4.1.747713964525">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.4.1.747760102894">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.4.1">
@@ -32,12 +32,12 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("/wl-web-configs/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../static/favicon.png" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.4.1.747713964525" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.4.1.747760102894" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.4.1.747713964525" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.4.1.747760102894" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.4.1" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.4.1.747713964525" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.4.1.747713964525" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.4.1.747760102894" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.4.1.747760102894" defer></script>
 
     <link href="https://gsoft-inc.github.io/wl-idp-docs-hub/static/retype_customization.css" rel="stylesheet" />
 
@@ -352,7 +352,7 @@
             </svg>
         </div>
         <div class="pr-5 ml-3 w-full">
-<p>To use a <a href="https://www.typescriptlang.org/" class="outbound" target="_blank">TypeScript</a> configuration file, make sure that your Jest configuration is also in TypeScript.</p>
+<p>To use a TypeScript configuration file, make sure that your Jest configuration is also in TypeScript.</p>
         </div>
     </div>
 </div>
@@ -365,7 +365,7 @@
 ├── swc.jest.ts
 ├── jest.config.ts</code></pre>
 </doc-codeblock></div>
-<p>Then, open the newly created file and export the <a href="https://swc.rs/" class="outbound" target="_blank">SWC</a> configuration by using the <code v-pre>defineJestConfig(options)</code> function:</p>
+<p>Then, open the newly created file and export the SWC configuration by using the <code v-pre>defineJestConfig(options)</code> function:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <div class="codeblock-title">swc.jest.ts</div>
 <pre class="language-typescript" data-line="6-8"><code v-pre class="language-typescript">import { defineJestConfig } from &quot;@workleap/swc-configs&quot;;
@@ -389,7 +389,7 @@ export default defineJestConfig();</code></pre>
 <li><strong>Type</strong>: <code v-pre>boolean</code></li>
 <li><strong>Default</strong>: <code v-pre>false</code></li>
 </ul>
-<p>Whether or not to transform <a href="https://react.dev/" class="outbound" target="_blank">React</a> code.</p>
+<p>Whether or not to transform React code.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <div class="codeblock-title">swc.jest.ts</div>
 <pre class="language-typescript" data-line="4"><code v-pre class="language-typescript">import { defineJestConfig } from &quot;@workleap/swc-configs&quot;;
@@ -408,7 +408,7 @@ export default defineJestConfig({
 <li><strong>Type</strong>: <code v-pre>&quot;ecmascript&quot; | &quot;typescript&quot;</code></li>
 <li><strong>Default</strong>: <code v-pre>&quot;typescript&quot;</code></li>
 </ul>
-<p>Whether SWC should expect to parse JavaScript or <a href="https://www.typescriptlang.org/" class="outbound" target="_blank">TypeScript</a> code.</p>
+<p>Whether SWC should expect to parse JavaScript or TypeScript code.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <div class="codeblock-title">swc.jest.ts</div>
 <pre class="language-typescript" data-line="4"><code v-pre class="language-typescript">import { defineJestConfig } from &quot;@workleap/swc-configs&quot;;
@@ -474,7 +474,7 @@ export default defineJestConfig({
         <span>5. Configure Jest</span>
     </h2>
 </doc-anchor-target>
-<p>To configure <a href="https://jestjs.io/" class="outbound" target="_blank">Jest</a>, open the project <code v-pre>jest.config.ts</code> file and add the following code:</p>
+<p>To configure Jest, open the project <code v-pre>jest.config.ts</code> file and add the following code:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <div class="codeblock-title">jest.config.ts</div>
 <pre class="language-typescript" data-line="4-6"><code v-pre class="language-typescript">import { swcConfig } from &quot;./swc.jest.ts&quot;;
@@ -491,7 +491,7 @@ const config = {
         <span>6. Try it <span class="docs-emoji">&#x1F680;</span></span>
     </h2>
 </doc-anchor-target>
-<p>To test your new <a href="https://swc.rs/" class="outbound" target="_blank">SWC</a> configuration, create a Jest test in Typescript:</p>
+<p>To test your new SWC configuration, create a Jest test in Typescript:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <div class="codeblock-title">appendWorld.test.ts</div>
 <pre class="language-typescript"><code v-pre class="language-typescript">export function appendWorld(string: value) {
