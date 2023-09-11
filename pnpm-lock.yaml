@@ -33,8 +33,8 @@ importers:
         specifier: 3.0.3
         version: 3.0.3
       retypeapp:
-        specifier: 3.4.0
-        version: 3.4.0
+        specifier: 3.4.1
+        version: 3.4.1
       stylelint:
         specifier: 15.10.3
         version: 15.10.3(typescript@5.2.2)
@@ -9841,8 +9841,8 @@ packages:
     resolution: {integrity: sha512-XQBQ3I8W1Cge0Seh+6gjj03LbmRFWuoszgK9ooCpwYIrhhoO80pfq4cUkU5DkknwfOfFteRwlZ56PYOGYyFWdg==}
     engines: {node: '>= 4'}
 
-  /retypeapp@3.4.0:
-    resolution: {integrity: sha512-Sxa9FUAfTrRhGYU/YQoJ51/7+lS/GB9PdpWeYj4CAA6wAo2Q/BVigaaSvMoqf7wbqpq3PCRuM1DrQ4YdiGG97Q==}
+  /retypeapp@3.4.1:
+    resolution: {integrity: sha512-2mYz7oJJQrSX1JE+7K30f5amN6+9Sa6kXlqurEDsMkQNW9EMXgeiDLdAuyYanXf1AAQ1dnZPHh7+0l+7Os3dNA==}
     hasBin: true
     dev: true
 
