@@ -11,7 +11,7 @@ meta:
 
 ## 1. Install the Stylelint extension
 
-Open [VS Code](https://code.visualstudio.com/) and install the [stylelint.vscode-stylelint](https://marketplace.visualstudio.com/items?stylelint.vscode-stylelint.vscode-eslint) extension.
+Open VS Code and install the [stylelint.vscode-stylelint](https://marketplace.visualstudio.com/items?stylelint.vscode-stylelint.vscode-eslint) extension.
 
 ## 2. Configure VS Code
 

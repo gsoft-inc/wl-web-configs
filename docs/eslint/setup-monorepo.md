@@ -58,7 +58,7 @@ Then, open the newly created file and extend the default configuration with the 
 
 ## 3. Ignore files
 
-[ESLint](https://eslint.org/) can be configured to [ignore](https://eslint.org/docs/latest/use/configure/ignore) certain files and directories while linting by specifying one or more glob patterns.
+ESLint can be configured to [ignore](https://eslint.org/docs/latest/use/configure/ignore) certain files and directories while linting by specifying one or more glob patterns.
 
 To do so, first, create a `.eslintignore` file at the root of the solution workspace:
 
@@ -86,7 +86,7 @@ node_modules
 
 ## 4. Configure indent style
 
-[ESLint](https://eslint.org/) offers [built-in rules](https://eslint.org/docs/latest/rules/indent) for configuring the indentation style of a codebase. However, there's a catch: when [VS Code auto-formatting](https://code.visualstudio.com/docs/editor/codebasics#_formatting) feature is enabled, it might conflict with the configured indentation rules if they are set differently.
+ESLint offers [built-in rules](https://eslint.org/docs/latest/rules/indent) for configuring the indentation style of a codebase. However, there's a catch: when [VS Code auto-formatting](https://code.visualstudio.com/docs/editor/codebasics#_formatting) feature is enabled, it might conflict with the configured indentation rules if they are set differently.
 
 To guarantee a consistent indentation, we recommend using [EditorConfig](https://editorconfig.org/) on the consumer side. With EditorConfig, the indent style can be configured in a single file and be applied consistently across various formatting tools, including ESlint and [VS Code](https://code.visualstudio.com/).
 
@@ -187,7 +187,7 @@ Then, open the newly created file and extend the default configuration with one 
 
 ### web-application
 
-For an application developed with [TypeScript](https://www.typescriptlang.org/) and [React](https://react.dev/), use the following configuration:
+For an application developed with TypeScript and React, use the following configuration:
 
 ```json !#4 packages/app/.eslintrc.json
 {
@@ -199,7 +199,7 @@ For an application developed with [TypeScript](https://www.typescriptlang.org/) 
 
 ### react-library
 
-For a [TypeScript](https://www.typescriptlang.org/) library developed **with** [React](https://react.dev/), use the following configuration:
+For a TypeScript library developed **with** React, use the following configuration:
 
 ```json !#4 packages/app/.eslintrc.json
 {
@@ -211,7 +211,7 @@ For a [TypeScript](https://www.typescriptlang.org/) library developed **with** [
 
 ### typescript-library
 
-For a [TypeScript](https://www.typescriptlang.org/) library developed **without** [React](https://react.dev/), use the following configuration:
+For a TypeScript library developed **without** React, use the following configuration:
 
 ```json !#4 packages/app/.eslintrc.json
 {
@@ -231,7 +231,7 @@ New projects shouldn't have to customize the default configurations offered by `
 
 ## 10. Try it :rocket:
 
-To test your new [ESLint](https://eslint.org/) setup, open a JavaScript file, type invalid code (e.g. `var x = 0;`), then save. Open a terminal at the root of the solution and execute the [CLI script added earlier](#5-add-a-cli-script):
+To test your new ESLint setup, open a JavaScript file, type invalid code (e.g. `var x = 0;`), then save. Open a terminal at the root of the solution and execute the [CLI script added earlier](#5-add-a-cli-script):
 
 +++ pnpm
 ```bash

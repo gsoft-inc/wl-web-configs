@@ -39,7 +39,7 @@ web-project
 ├── tsup.build.ts
 ```
 
-Then, open the newly created file and export the [tsup](https://tsup.egoist.dev/) configuration by using the `defineBuildConfig(options)` function:
+Then, open the newly created file and export the tsup configuration by using the `defineBuildConfig(options)` function:
 
 ```ts tsup.build.ts
 import { defineBuildConfig } from "@workleap/tsup-configs";
@@ -129,4 +129,4 @@ To build the bundle files for production, add the following script to your proje
 
 ## 6. Try it :rocket:
 
-To test your new [tsup](https://tsup.egoist.dev/) configuration, open a terminal at the root of the project and execute the [CLI script added previously](#5-add-a-cli-script). The build process should complete without outputting any error in the terminal and the bundle files should be available in the `/dist` folder (or any other `outputDir` you configured).
+To test your new tsup configuration, open a terminal at the root of the project and execute the [CLI script added previously](#5-add-a-cli-script). The build process should complete without outputting any error in the terminal and the bundle files should be available in the `/dist` folder (or any other `outputDir` you configured).

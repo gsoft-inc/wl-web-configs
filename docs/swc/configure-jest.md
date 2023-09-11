@@ -30,7 +30,7 @@ npm install -D @workleap/swc-configs @swc/jest @swc/core @swc/helpers
 ## 2. Configure SWC
 
 !!!info
-To use a [TypeScript](https://www.typescriptlang.org/) configuration file, make sure that your Jest configuration is also in TypeScript.
+To use a TypeScript configuration file, make sure that your Jest configuration is also in TypeScript.
 !!!
 
 First, create a configuration file named `swc.jest.ts` at the root of the project:
@@ -44,7 +44,7 @@ web-project
 ├── jest.config.ts
 ```
 
-Then, open the newly created file and export the [SWC](https://swc.rs/) configuration by using the `defineJestConfig(options)` function:
+Then, open the newly created file and export the SWC configuration by using the `defineJestConfig(options)` function:
 
 ```ts !#6-8 swc.jest.ts
 import { defineJestConfig } from "@workleap/swc-configs";
@@ -61,7 +61,7 @@ The `defineJestConfig(options)` function can be used as shown in the previous ex
 - **Type**: `boolean`
 - **Default**: `false`
 
-Whether or not to transform [React](https://react.dev/) code.
+Whether or not to transform React code.
 
 ```ts !#4 swc.jest.ts
 import { defineJestConfig } from "@workleap/swc-configs";
@@ -76,7 +76,7 @@ export default defineJestConfig({
 - **Type**: `"ecmascript" | "typescript"`
 - **Default**: `"typescript"`
 
-Whether SWC should expect to parse JavaScript or [TypeScript](https://www.typescriptlang.org/) code.
+Whether SWC should expect to parse JavaScript or TypeScript code.
 
 ```ts !#4 swc.jest.ts
 import { defineJestConfig } from "@workleap/swc-configs";
@@ -121,7 +121,7 @@ export default defineJestConfig({
 
 ## 5. Configure Jest
 
-To configure [Jest](https://jestjs.io/), open the project `jest.config.ts` file and add the following code:
+To configure Jest, open the project `jest.config.ts` file and add the following code:
 
 ```ts !#4-6 jest.config.ts
 import { swcConfig } from "./swc.jest.ts";
@@ -135,7 +135,7 @@ const config = {
 
 ## 6. Try it :rocket:
 
-To test your new [SWC](https://swc.rs/) configuration, create a Jest test in Typescript:
+To test your new SWC configuration, create a Jest test in Typescript:
 
 ```ts appendWorld.test.ts
 export function appendWorld(string: value) {

@@ -39,7 +39,7 @@ web-project
 ├── tsup.dev.ts
 ```
 
-Then, open the newly created file and export the [tsup](https://tsup.egoist.dev/) configuration by using the `defineDevConfig(options)` function:
+Then, open the newly created file and export the tsup configuration by using the `defineDevConfig(options)` function:
 
 ```ts tsup.dev.ts
 import { defineDevConfig } from "@workleap/tsup-configs";
@@ -129,4 +129,4 @@ To initiate the development process, add the following script to your project `p
 
 ## 6. Try it :rocket:
 
-To test your new [tsup](https://tsup.egoist.dev/) configuration, open a terminal at the root of the project and execute the [CLI script added previously](#5-add-a-cli-script). A development process should start without outputting any error in the terminal.
+To test your new tsup configuration, open a terminal at the root of the project and execute the [CLI script added previously](#5-add-a-cli-script). A development process should start without outputting any error in the terminal.

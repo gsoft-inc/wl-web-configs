@@ -79,7 +79,7 @@ export default defineBuildConfig(swcConfig);
 
 ### `swcConfig`
 
-In the previous code sample, the `defineBuildConfig(swcConfig, options)` function receive an [SWC](https://swc.rs) configuration object through the `swcConfig` parameter. 
+In the previous code sample, the `defineBuildConfig(swcConfig, options)` function receive an SWC [configuration object](https://swc.rs/docs/configuration/swcrc) through the `swcConfig` parameter. 
 
 Although the [swc-loader](https://swc.rs/docs/usage/swc-loader) defaults to loading the closest `.swcrc` [configuration file](https://swc.rs/docs/configuration/swcrc) when no configuration object is provided, it lacks support for distinct configuration files by environment like webpack does.
 
@@ -207,7 +207,7 @@ export default defineBuildConfig(swcConfig, {
 
 ### `plugins`
 
-- **Type**: An array of webpack [plugin](https://webpack.js.org/configuration/plugins/) instances
+- **Type**: An array of webpack [plugin instances](https://webpack.js.org/configuration/plugins/)
 - **Default**: `[]`
 
 Append the provided webpack plugins to the configuration.
@@ -412,11 +412,11 @@ To create the bundle files for production, add the following script to your proj
 
 ## 6. Set environment variables
 
-To deal with environment variables, the [webpack](https://webpack.js.org/) documentation suggests using the [--env option](https://webpack.js.org/guides/environment-variables/) from its CLI. While that would work, by using webpack `--env` CLI option, the environment variables would only be made available to the webpack configuration files (.e.g. `webpack.build.js`) rather than any [Node.js](https://nodejs.org/en) files. Therefore we **do not recommend** using webpack `--env` CLI option.
+To deal with environment variables, the webpack documentation suggests using the [--env option](https://webpack.js.org/guides/environment-variables/) from its CLI. While that would work, by using webpack `--env` CLI option, the environment variables would only be made available to the webpack configuration files (.e.g. `webpack.build.js`) rather than any Node.js files. Therefore we **do not recommend** using webpack `--env` CLI option.
 
 ### cross-env
 
-We recommend instead to define environment variables using [cross-env](https://github.com/kentcdodds/cross-env). With `cross-env`, the environment variables will be made available to any [Node.js](https://nodejs.org/en) files that are executed by the script process (`dev` in the example below :point_down:):
+We recommend instead to define environment variables using [cross-env](https://github.com/kentcdodds/cross-env). With `cross-env`, the environment variables will be made available to any Node.js files that are executed by the script process (`dev` in the example below :point_down:):
 
 ```json package.json
 {
@@ -479,4 +479,4 @@ The `=== "true"` part of `"DEBUG": process.env.DEBUG === "true"` is very importa
 
 ## 7. Try it :rocket:
 
-To test your new [webpack](https://webpack.js.org/) configuration, open a terminal at the root of the project and execute the [CLI script added earlier](#5-add-a-cli-script). The build process should complete without outputting any error in the terminal and the bundle files should be available in the `/dist` folder (or any other `outputPath` you configured).
+To test your new webpack configuration, open a terminal at the root of the project and execute the [CLI script added earlier](#5-add-a-cli-script). The build process should complete without outputting any error in the terminal and the bundle files should be available in the `/dist` folder (or any other `outputPath` you configured).

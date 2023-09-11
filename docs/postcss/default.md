@@ -32,7 +32,7 @@ As we actively work on improving our build time and **minimize** the number of t
 
 Here's a couple of ideas to move away from PostCSS:
 
-- Prefer native CSS to [SCSS](https://sass-lang.com/documentation/syntax/).
+- Prefer native CSS to SCSS.
 - Avoid CSS nesting, it usually makes code harder to read anyway. If you really need nesting, [native support](https://www.w3.org/TR/css-nesting-1/) is coming soon.
 - Force developers to use `rem` by disabling the use of `px` with [Stylelint](https://stylelint.io/).
 - Prefix CSS properties directly in the codebase rather than relying on [Autoprefixer](https://github.com/postcss/autoprefixer). As browser vendors are now [putting experimental features behind a flag](https://github.com/postcss/autoprefixer) rather than using prefixes, there aren't many CSS properties still requiring a prefix.

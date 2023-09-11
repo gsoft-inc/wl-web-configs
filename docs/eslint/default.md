@@ -54,14 +54,14 @@ This way, it's pretty straightforward for the consumer to configure ESLint as it
 
 | Name | Description |
 | ---  | --- |
-| :icon-mark-github: [web-application](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/by-project-type/web-application.ts) | For web applications developed with [React](https://react.dev/) and [TypeScript](https://www.typescriptlang.org/). |
-| :icon-mark-github: [react-library](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/by-project-type/react-library.ts) | For TypeScript libraries developed **with** [React](https://react.dev/). |
-| :icon-mark-github: [typescript-library](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/by-project-type/typescript-library.ts) | For TypeScript libraries developed **without** [React](https://react.dev/). |
+| :icon-mark-github: [web-application](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/by-project-type/web-application.ts) | For web applications developed with React and TypeScript. |
+| :icon-mark-github: [react-library](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/by-project-type/react-library.ts) | For TypeScript libraries developed **with** React. |
+| :icon-mark-github: [typescript-library](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/by-project-type/typescript-library.ts) | For TypeScript libraries developed **without** React. |
 | :icon-mark-github: [monorepo-workspace](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/by-project-type/monorepo-workspace.ts) | For the workspace configuration of a monorepo solution. |
 
 ## Prettier
 
-For a complete explanation of why we chose to stick with [ESLint](https://eslint.org/) for stylistic rules rather than migrating to [Prettier](https://prettier.io/), read the following [article](https://antfu.me/posts/why-not-prettier).
+For a complete explanation of why we chose to stick with ESLint for stylistic rules rather than migrating to Prettier, read the following [article](https://antfu.me/posts/why-not-prettier).
 
 ## Getting started
 

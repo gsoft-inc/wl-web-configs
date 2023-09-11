@@ -11,7 +11,7 @@ meta:
 
 ## 1. Install the ESLint extension
 
-Open [VS Code](https://code.visualstudio.com/) and install the [dbaeumer.vscode-eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) extension.
+Open VS Code and install the [dbaeumer.vscode-eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) extension.
 
 ## 2. Configure VS Code
 

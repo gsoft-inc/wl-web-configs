@@ -114,7 +114,7 @@ Then, open the newly created file and extend the default configuration with one 
 
 ### web-application
 
-For an applications developed with [React](https://react.dev/), use the following configuration:
+For an applications developed with React, use the following configuration:
 
 ```json !#2 tsconfig.json
 {
@@ -125,7 +125,7 @@ For an applications developed with [React](https://react.dev/), use the followin
 
 ### library
 
-For a library project developed with or without [React](https://react.dev/), use the following configuration:
+For a library project developed with or without React, use the following configuration:
 
 ```json !#2 tsconfig.json
 {
@@ -199,4 +199,4 @@ If the `packages/components` project is referencing the `packages/utils` project
 
 ## 8. Try it :rocket:
 
-To test your new [TypeScript](https://www.typescriptlang.org/) setup, open a TypeScript file, type invalid code (e.g. `import { App } from "./App"`), then wait for the IDE to flag the error. Fix the error (e.g. `import { App } from "./App.tsx"`), then wait for the IDE to remove the error.
+To test your new TypeScript setup, open a TypeScript file, type invalid code (e.g. `import { App } from "./App"`), then wait for the IDE to flag the error. Fix the error (e.g. `import { App } from "./App.tsx"`), then wait for the IDE to remove the error.
