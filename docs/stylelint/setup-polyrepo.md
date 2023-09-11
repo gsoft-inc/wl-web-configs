@@ -50,7 +50,7 @@ Then, open the newly created file and extend the default configuration with the 
 
 ## 3. Ignore files
 
-[Stylelint](https://stylelint.io/) can be configured to [ignore](https://stylelint.io/user-guide/ignore-code#files-entirely) certain files and directories while linting by specifying one or more glob patterns.
+Stylelint can be configured to [ignore](https://stylelint.io/user-guide/ignore-code#files-entirely) certain files and directories while linting by specifying one or more glob patterns.
 
 To do so, first, create a `.stylelintignore` file at the root of the solution:
 
@@ -95,9 +95,9 @@ Then, open the newly created file and paste the following ignore rules:
 
 ## 5. Configure indent style
 
-[Prettier](https://prettier.io/) offers [built-in rules](https://prettier.io/docs/en/options#tab-width) for configuring the indentation style of a codebase. However, there's a catch: when [VS Code auto-formatting](https://code.visualstudio.com/docs/editor/codebasics#_formatting) feature is enabled, it might conflict with the configured indentation rules if they are set  differently.
+Prettier offers [built-in rules](https://prettier.io/docs/en/options#tab-width) for configuring the indentation style of a codebase. However, there's a catch: when [VS Code auto-formatting](https://code.visualstudio.com/docs/editor/codebasics#_formatting) feature is enabled, it might conflict with the configured indentation rules if they are set  differently.
 
-To guarantees a consistent indentation, we recommend using [EditorConfig](https://editorconfig.org/) on the consumer side. With EditorConfig, the indent style can be configured in a single file and be applied consistently across various formatting tools, including Prettier and [VS Code](https://code.visualstudio.com/).
+To guarantees a consistent indentation, we recommend using [EditorConfig](https://editorconfig.org/) on the consumer side. With EditorConfig, the indent style can be configured in a single file and be applied consistently across various formatting tools, including Prettier and VS Code.
 
 First, create a `.editorconfig` file at the root of the solution:
 

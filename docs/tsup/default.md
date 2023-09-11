@@ -28,7 +28,7 @@ npm create @workleap/project@latest <output-directory>
 
 ## TypeScript CLI
 
-Out of the box, `tsc`, the native [TypeScript CLI](https://www.typescriptlang.org/docs/handbook/compiler-options.html), offers pretty much everything that we need to compile and bundle our [TypeScript](https://www.typescriptlang.org/) libraries. We opted for [tsup](https://tsup.egoist.dev/) due to `tsc` lacks of support for CSS imports, a requirement for enabling Chromatic's [TurboSnap](https://www.chromatic.com/docs/turbosnap) feature.
+Out of the box, `tsc`, the native [TypeScript CLI](https://www.typescriptlang.org/docs/handbook/compiler-options.html), offers pretty much everything that we need to compile and bundle our TypeScript libraries. We opted for [tsup](https://tsup.egoist.dev/) due to `tsc` lacks of support for CSS imports, a requirement for enabling Chromatic's [TurboSnap](https://www.chromatic.com/docs/turbosnap) feature.
 
 Given that either TurboSnap requirements or `tsx` CSS imports support change, we will reevaluate this decision.
 

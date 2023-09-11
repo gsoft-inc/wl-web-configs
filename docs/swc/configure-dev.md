@@ -39,7 +39,7 @@ web-project
 ├── swc.dev.js
 ```
 
-Then, open the newly created file and export the [SWC](https://swc.rs/) configuration by using the `defineDevConfig(targets, options)` function:
+Then, open the newly created file and export the SWC configuration by using the `defineDevConfig(targets, options)` function:
 
 ```js !#5,7 swc.dev.js
 // @ts-check
@@ -55,7 +55,7 @@ export default defineDevConfig(targets);
 
 In the previous code sample, the `defineDevConfig(targets, options)` function receives a list of **minimal browser versions to support** through the `targets` parameter.
 
-The expected behavior for the supported browsers would be for [SWC](https://swc.rs/) to automatically load the minimal browser versions from the closest `.browserslistrc` [configuration file](https://github.com/browserslist/browserslist#browserslistrc). However, there is currently an [issue](https://github.com/swc-project/swc/issues/3365) preventing SWC from doing so when the configuration file include a query referencing an external [Browserslist](https://browsersl.ist/) configuration:
+The expected behavior for the supported browsers would be for SWC to automatically load the minimal browser versions from the closest `.browserslistrc` [configuration file](https://github.com/browserslist/browserslist#browserslistrc). However, there is currently an [issue](https://github.com/swc-project/swc/issues/3365) preventing SWC from doing so when the configuration file include a query referencing an external [Browserslist](https://browsersl.ist/) configuration:
 
 ```.browserslistrc
 extends @workleap/browserslist-config
@@ -65,7 +65,7 @@ Therefore, `@workleap/swc-configs` has chosen to **delegate** the loading of the
 
 ### `browserslistToSwc`
 
-To help consumers provide SWC [targets](https://swc.rs/docs/configuration/supported-browsers#targets) from a [Browserslist](https://browsersl.ist/) configuration, `@workleap/swc-configs` offers the `browserslistToSwc(options)` utility function.
+To help consumers provide SWC [targets](https://swc.rs/docs/configuration/supported-browsers#targets) from a Browserslist configuration, `@workleap/swc-configs` offers the `browserslistToSwc(options)` utility function.
 
 This function can either transform an array of Browserslist [queries](https://github.com/browserslist/browserslist#queries) to SWC targets:
 
@@ -127,7 +127,7 @@ export default defineDevConfig(targets, {
 - **Type**: `"ecmascript" | "typescript"`
 - **Default**: `"typescript"`
 
-Whether SWC should expect to parse JavaScript or [TypeScript](https://www.typescriptlang.org/) code.
+Whether SWC should expect to parse JavaScript or TypeScript code.
 
 ```js !#8 swc.dev.js
 // @ts-check
@@ -198,7 +198,7 @@ export const transformer: SwcConfigTransformer = (config: SwcConfig, context: Sw
 
 ## 5. Configure webpack
 
-To integrate with [webpack](https://webpack.js.org/), update your configuration file to include an [swc-loader](https://swc.rs/docs/usage/swc-loader):
+To integrate with webpack, update your configuration file to include an [swc-loader](https://swc.rs/docs/usage/swc-loader):
 
 ```js !#10 webpack.config.js
 // @ts-check
@@ -224,7 +224,7 @@ export default {
 
 ## 6. Try it :rocket:
 
-To test your new [SWC](https://swc.rs/) configuration, create a Typescript file with the following code:
+To test your new SWC configuration, create a Typescript file with the following code:
 
 ```ts say.ts
 export function say(string: value) {

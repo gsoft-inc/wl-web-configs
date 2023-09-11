@@ -31,7 +31,7 @@ npm create @workleap/project@latest <output-directory>
 
 Starting a new web application is still an arduous task. There are so many tools to choose from, learn, install and configure, it can be daunting.
 
-For an organization like [Workleap](https://workleap.com/), with a large suite of products, it **doesn't make sense to start over every time** we invest in a new idea or add a new vertical to an existing product. Developers working on a new project shouldn't spend their first day's figuring out which [ESLint](https://eslint.org/) rules to enable/disable, or how to transpile their [React](https://react.dev/) code, they should rather **focus on writing features code**.
+For an organization like Workleap, with a large suite of products, it **doesn't make sense to start over every time** we invest in a new idea or add a new vertical to an existing product. Developers working on a new project shouldn't spend their first day's figuring out which ESLint rules to enable/disable, or how to transpile their React code, they should rather **focus on writing features code**.
 
 ### Filling the gap
 

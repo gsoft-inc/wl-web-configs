@@ -38,7 +38,7 @@ project
 ├── postcss.config.ts
 ```
 
-Then, open the newly created file and `export` the [PostCSS](https://postcss.org/) configuration by using the `defineConfig(options)` function:
+Then, open the newly created file and `export` the PostCSS configuration by using the `defineConfig(options)` function:
 
 ```ts !#3 postcss.config.ts
 import { defineConfig } from "@workleap/postcss-configs";
@@ -155,7 +155,7 @@ export default defineConfig({
 
 ## 5. Configure webpack
 
-To integrate with [webpack](https://webpack.js.org/), update your configuration file to include a [postcss-loader](https://www.npmjs.com/package/postcss-loader):
+To integrate with webpack, update your configuration file to include a [postcss-loader](https://www.npmjs.com/package/postcss-loader):
 
 ```js !#12 webpack.config.js
 // @ts-check
@@ -179,7 +179,7 @@ export default {
 
 ## 6. Try it :rocket:
 
-To test your new [PostCSS](https://postcss.org/) configuration, create and import a CSS file with the following code:
+To test your new PostCSS configuration, create and import a CSS file with the following code:
 
 ```css example.css
 .example {
@@ -214,7 +214,7 @@ Then, process the file with `postcss-cli` by executing the following command in 
 npx postcss example.css -o out.css
 ```
 
-Whether you processed the CSS with webpack or `postcss-cli`, most of the CSS properties in the `.example` CSS class should have been prefixed (it can vary based on your [Browserslist](https://browsersl.ist/) configuration):
+Whether you processed the CSS with webpack or `postcss-cli`, most of the CSS properties in the `.example` CSS class should have been prefixed (it can vary based on your Browserslist configuration):
 
 ```css out.css
 .example {

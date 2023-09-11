@@ -17,11 +17,11 @@ If the default [by project type configurations](default.md/#available-configurat
 
 ## Compose a new configuration
 
-Each configuration piece can be extended individually, or in combination with other pieces, to compose your own custom [TypeScript](https://www.typescriptlang.org/) configuration.
+Each configuration piece can be extended individually, or in combination with other pieces, to compose your own custom TypeScript configuration.
 
 ### React configuration
 
-To extend the base configuration for a [React](https://react.dev/) project:
+To extend the base configuration for a React project:
 
 ```json !#2 tsconfig.json
 {
