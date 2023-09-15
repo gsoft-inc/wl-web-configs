@@ -4,6 +4,7 @@ import type { Config as SwcConfig } from "@swc/core";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import { createRequire } from "node:module";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 import type { Configuration as WebpackConfig } from "webpack";
 import webpack from "webpack";
 import { applyTransformers, type WebpackConfigTransformer } from "./transformers/applyTransformers.ts";
@@ -19,6 +20,9 @@ const DefinePlugin = webpack.DefinePlugin;
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import.meta/resolve
 // is available
 const require = createRequire(import.meta.url);
+
+// The equivalent of __filename for CommonJS.
+const __filename = fileURLToPath(import.meta.url);
 
 export function defineDevHtmlWebpackPluginConfig(options: HtmlWebpackPlugin.Options = {}): HtmlWebpackPlugin.Options {
     const {
@@ -111,8 +115,13 @@ export function defineDevConfig(swcConfig: SwcConfig, options: DefineDevConfigOp
             type: "filesystem",
             allowCollectingMemory: true,
             maxMemoryGenerations: 1,
-            cacheDirectory: cacheDirectory
+            cacheDirectory: cacheDirectory,
+            // Took from https://webpack.js.org/configuration/cache/#cachebuilddependencies.
+            buildDependencies: {
+                config: [__filename]
+            }
         },
+        // (ACTUALLY NOT FIXING ANYTHING AT THE MOMENT)
         // Fixes caching for environmental variables using the DefinePlugin by forcing
         // webpack caching to prioritize hashes over timestamps.
         snapshot: cache ? {

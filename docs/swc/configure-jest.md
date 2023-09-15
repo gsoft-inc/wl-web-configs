@@ -49,7 +49,7 @@ Then, open the newly created file and export the SWC configuration by using the 
 ```ts !#6-8 swc.jest.ts
 import { defineJestConfig } from "@workleap/swc-configs";
 
-export default defineJestConfig();
+export const swcConfig = defineJestConfig();
 ```
 
 ## 3. Set predefined options
@@ -66,7 +66,7 @@ Whether or not to transform React code.
 ```ts !#4 swc.jest.ts
 import { defineJestConfig } from "@workleap/swc-configs";
 
-export default defineJestConfig({
+export const swcConfig = defineJestConfig({
     react: true
 });
 ```
@@ -81,7 +81,7 @@ Whether SWC should expect to parse JavaScript or TypeScript code.
 ```ts !#4 swc.jest.ts
 import { defineJestConfig } from "@workleap/swc-configs";
 
-export default defineJestConfig({
+export const swcConfig = defineJestConfig({
     parser: "ecmascript"
 });
 ```
@@ -114,7 +114,7 @@ const useCommonJsModules: SwcConfigTransformer = (config: SwcConfig) => {
     return config;
 };
 
-export default defineJestConfig({
+export const swcConfig = defineJestConfig({
     transformers: [useCommonJsModules]
 });
 ```

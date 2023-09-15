@@ -15,19 +15,21 @@ Open a terminal at the root of the project and install the following packages:
 
 +++ pnpm
 ```bash
-pnpm add -D @workleap/webpack-configs webpack webpack-cli webpack-dev-server @swc/core @swc/helpers browserslist postcss
+pnpm add -D @workleap/webpack-configs webpack webpack-cli webpack-dev-server @swc/core @swc/helpers browserslist postcss nodemon
 ```
 +++ yarn
 ```bash
-yarn add -D @workleap/webpack-configs webpack webpack-cli webpack-dev-server @swc/core @swc/helpers browserslist postcss
+yarn add -D @workleap/webpack-configs webpack webpack-cli webpack-dev-server @swc/core @swc/helpers browserslist postcss nodemon
 ```
 +++ npm
 ```bash
-npm install -D @workleap/webpack-configs webpack webpack-cli webpack-dev-server @swc/core @swc/helpers browserslist postcss
+npm install -D @workleap/webpack-configs webpack webpack-cli webpack-dev-server @swc/core @swc/helpers browserslist postcss nodemon
 ```
 +++
 
 ## 2. Configure webpack
+
+### HTML template
 
 First, create a `public` folder with an `index.html` file at the root of the project:
 
@@ -38,7 +40,6 @@ web-project
 ├── src
 ├──── ...
 ├── package.json
-├── webpack.dev.js
 ```
 
 Then, open the newly created `index.html` file and copy/paste the following content:
@@ -56,10 +57,44 @@ Then, open the newly created `index.html` file and copy/paste the following cont
 
 The content of the `public/index.html` file is the default template that will be used by [HtmlWebpackPlugin](https://webpack.js.org/plugins/html-webpack-plugin/).
 
+#### Adding local assets
+
+To link local assets such as a `favicon.png` in the default HTML template, it is recommended to preprend the **relative** path of every asset with the `publicPath` of the webpack config.
+
+First, add the asset to the `public` folder at the root of the project:
+
+``` !#4
+web-project
+├── public
+├──── index.html
+├──── favicon.png
+├── src
+├──── ...
+├── package.json
+```
+
+Then, add the assets to the `index.html` file:
+
+```html !#4 public/index.html
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="<%=webpackConfig.output.publicPath%>favicon.png" rel="icon">
+    </head>
+    <body>
+        <div id="root"></div>
+    </body>
+</html>
+```
+
+### defineDevConfig
+
 Next, create a configuration file named `webpack.dev.js` at the root of the project:
 
-``` !#5
+``` !#7
 web-project
+├── public
+├──── index.html
 ├── src
 ├──── ...
 ├── package.json
@@ -77,7 +112,7 @@ import { swcConfig } from "./swc.dev.js";
 export default defineDevConfig(swcConfig);
 ```
 
-### `swcConfig`
+### swcConfig
 
 In the previous code sample, the `defineDevConfig(swcConfig, options)` function receive an SWC [configuration object](https://swc.rs/docs/configuration/swcrc) through the `swcConfig` parameter. 
 
@@ -415,17 +450,45 @@ Modifying a webpack configuration object can be an arduous task, to help with th
 
 [!ref Transformer utilities](transformer-utilities.md)
 
-## 5. Add a CLI script
+## 5. Setup nodemon
+
+[Nodemon](https://nodemon.io/) is a utility that will monitor for any changes in the `swc.dev.js` and `webpack.dev.dev.js` files and restart the webpack development server whenever a change occurs.
+
+First, add a `nodemon.json` file at the root of the project:
+
+``` !#8
+web-project
+├── public
+├──── index.html
+├── src
+├──── ...
+├── package.json
+├── webpack.dev.js
+├── nodemon.json
+```
+
+Then, open the `nodemon.json` file and copy/paste the following content:
+
+```json nodemon.json
+{
+    "watch": ["swc.dev.js", "webpack.dev.js"],
+    "exec": "webpack serve --config webpack.dev.js"
+}
+```
+
+Finally, add a CLI script at the [next step](#6-add-a-cli-script) of this guide.
+
+## 6. Add a CLI script
 
 To initiate the development server, add the following script to your project `package.json` file:
 
 ```json package.json
 {
-    "dev": "webpack serve --config webpack.dev.js"
+    "dev": "nodemon"
 }
 ```
 
-## 6. Set environment variables
+## 7. Set environment variables
 
 To deal with environment variables, the webpack documentation suggests using the [--env option](https://webpack.js.org/guides/environment-variables/) from its CLI. While that would work, by using webpack `--env` CLI option, the environment variables would only be made available to the webpack configuration files (.e.g. `webpack.dev.js`) rather than any Node.js files. Therefore we **do not recommend** using webpack `--env` CLI option.
 
@@ -435,7 +498,7 @@ We recommend instead to define environment variables using [cross-env](https://g
 
 ```json package.json
 {
-    "dev": "cross-env DEBUG=true webpack serve --config webpack.dev.js"
+    "dev": "cross-env DEBUG=true nodemon"
 }
 ```
 
@@ -492,8 +555,8 @@ export function App() {
 The `=== "true"` part of `"DEBUG": process.env.DEBUG === "true"` is very important, otherwise the environment variable value would be `"true"` instead of `true`.
 !!!
 
-## 7. Try it :rocket:
+## 8. Try it :rocket:
 
-To test your new webpack configuration, open a terminal at the root of the project and execute the [CLI script added earlier](#5-add-a-cli-script). A development server should start without outputting any error in the terminal.
+To test your new webpack configuration, open a terminal at the root of the project and execute the [CLI script added earlier](#6-add-a-cli-script). A development server should start without outputting any error in the terminal.
 
 
