@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/wl-web-configs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.4.1.747760102894">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.4.1.748126086189">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.4.1">
@@ -32,12 +32,12 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("/wl-web-configs/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../static/favicon.png" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.4.1.747760102894" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.4.1.748126086189" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.4.1.747760102894" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.4.1.748126086189" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.4.1" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.4.1.747760102894" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.4.1.747760102894" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.4.1.748126086189" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.4.1.748126086189" defer></script>
 
     <link href="https://gsoft-inc.github.io/wl-idp-docs-hub/static/retype_customization.css" rel="stylesheet" />
 
@@ -317,19 +317,19 @@
 <doc-tab v-cloak id="pnpm">
 <template #title>pnpm</template>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">pnpm add -D @workleap/webpack-configs webpack webpack-cli webpack-dev-server @swc/core @swc/helpers browserslist postcss</code></pre>
+<pre class="language-bash"><code v-pre class="language-bash">pnpm add -D @workleap/webpack-configs webpack webpack-cli webpack-dev-server @swc/core @swc/helpers browserslist postcss nodemon</code></pre>
 </doc-codeblock></div>
 </doc-tab>
 <doc-tab v-cloak id="yarn">
 <template #title>yarn</template>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">yarn add -D @workleap/webpack-configs webpack webpack-cli webpack-dev-server @swc/core @swc/helpers browserslist postcss</code></pre>
+<pre class="language-bash"><code v-pre class="language-bash">yarn add -D @workleap/webpack-configs webpack webpack-cli webpack-dev-server @swc/core @swc/helpers browserslist postcss nodemon</code></pre>
 </doc-codeblock></div>
 </doc-tab>
 <doc-tab v-cloak id="npm">
 <template #title>npm</template>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">npm install -D @workleap/webpack-configs webpack webpack-cli webpack-dev-server @swc/core @swc/helpers browserslist postcss</code></pre>
+<pre class="language-bash"><code v-pre class="language-bash">npm install -D @workleap/webpack-configs webpack webpack-cli webpack-dev-server @swc/core @swc/helpers browserslist postcss nodemon</code></pre>
 </doc-codeblock></div>
 </doc-tab>
 </doc-tabs>
@@ -339,6 +339,12 @@
         <span>2. Configure webpack</span>
     </h2>
 </doc-anchor-target>
+<doc-anchor-target id="html-template">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#html-template">#</doc-anchor-trigger>
+        <span>HTML template</span>
+    </h3>
+</doc-anchor-target>
 <p>First, create a <code v-pre>public</code> folder with an <code v-pre>index.html</code> file at the root of the project:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-none" data-line="2-3"><code v-pre class="language-none">web-project
@@ -346,8 +352,7 @@
 ├──── index.html
 ├── src
 ├──── ...
-├── package.json
-├── webpack.dev.js</code></pre>
+├── package.json</code></pre>
 </doc-codeblock></div>
 <p>Then, open the newly created <code v-pre>index.html</code> file and copy/paste the following content:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
@@ -362,9 +367,47 @@
 &lt;/html&gt;</code></pre>
 </doc-codeblock></div>
 <p>The content of the <code v-pre>public/index.html</code> file is the default template that will be used by <a href="https://webpack.js.org/plugins/html-webpack-plugin/" class="outbound" target="_blank">HtmlWebpackPlugin</a>.</p>
+<doc-anchor-target id="adding-local-assets">
+    <h4>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#adding-local-assets">#</doc-anchor-trigger>
+        <span>Adding local assets</span>
+    </h4>
+</doc-anchor-target>
+<p>To link local assets such as a <code v-pre>favicon.png</code> in the default HTML template, it is recommended to preprend the <strong>relative</strong> path of every asset with the <code v-pre>publicPath</code> of the webpack config.</p>
+<p>First, add the asset to the <code v-pre>public</code> folder at the root of the project:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none" data-line="4"><code v-pre class="language-none">web-project
+├── public
+├──── index.html
+├──── favicon.png
+├── src
+├──── ...
+├── package.json</code></pre>
+</doc-codeblock></div>
+<p>Then, add the assets to the <code v-pre>index.html</code> file:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<div class="codeblock-title">public/index.html</div>
+<pre class="language-markup" data-line="4"><code v-pre class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;link href=&quot;&lt;%=webpackConfig.output.publicPath%&gt;favicon.png&quot; rel=&quot;icon&quot;&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id=&quot;root&quot;&gt;&lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="definedevconfig">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#definedevconfig">#</doc-anchor-trigger>
+        <span>defineDevConfig</span>
+    </h3>
+</doc-anchor-target>
 <p>Next, create a configuration file named <code v-pre>webpack.dev.js</code> at the root of the project:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none" data-line="5"><code v-pre class="language-none">web-project
+<pre class="language-none" data-line="7"><code v-pre class="language-none">web-project
+├── public
+├──── index.html
 ├── src
 ├──── ...
 ├── package.json
@@ -383,7 +426,7 @@ export default defineDevConfig(swcConfig);</code></pre>
 <doc-anchor-target id="swcconfig">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#swcconfig">#</doc-anchor-trigger>
-        <span><code v-pre>swcConfig</code></span>
+        <span>swcConfig</span>
     </h3>
 </doc-anchor-target>
 <p>In the previous code sample, the <code v-pre>defineDevConfig(swcConfig, options)</code> function receive an SWC <a href="https://swc.rs/docs/configuration/swcrc" class="outbound" target="_blank">configuration object</a> through the <code v-pre>swcConfig</code> parameter.</p>
@@ -806,23 +849,50 @@ export const transformer: WebpackConfigTransformer = (config: WebpackConfig, con
     <a href="../transformer-utilities/" class="absolute block inset-0"></a>
 </div>
 </p>
-<doc-anchor-target id="5-add-a-cli-script">
+<doc-anchor-target id="5-setup-nodemon">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#5-add-a-cli-script">#</doc-anchor-trigger>
-        <span>5. Add a CLI script</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#5-setup-nodemon">#</doc-anchor-trigger>
+        <span>5. Setup nodemon</span>
+    </h2>
+</doc-anchor-target>
+<p><a href="https://nodemon.io/" class="outbound" target="_blank">Nodemon</a> is a utility that will monitor for any changes in the <code v-pre>swc.dev.js</code> and <code v-pre>webpack.dev.dev.js</code> files and restart the webpack development server whenever a change occurs.</p>
+<p>First, add a <code v-pre>nodemon.json</code> file at the root of the project:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none" data-line="8"><code v-pre class="language-none">web-project
+├── public
+├──── index.html
+├── src
+├──── ...
+├── package.json
+├── webpack.dev.js
+├── nodemon.json</code></pre>
+</doc-codeblock></div>
+<p>Then, open the <code v-pre>nodemon.json</code> file and copy/paste the following content:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<div class="codeblock-title">nodemon.json</div>
+<pre class="language-json"><code v-pre class="language-json">{
+    &quot;watch&quot;: [&quot;swc.dev.js&quot;, &quot;webpack.dev.js&quot;],
+    &quot;exec&quot;: &quot;webpack serve --config webpack.dev.js&quot;
+}</code></pre>
+</doc-codeblock></div>
+<p>Finally, add a CLI script at the <doc-anchor-trigger to="#6-add-a-cli-script">next step</doc-anchor-trigger> of this guide.</p>
+<doc-anchor-target id="6-add-a-cli-script">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#6-add-a-cli-script">#</doc-anchor-trigger>
+        <span>6. Add a CLI script</span>
     </h2>
 </doc-anchor-target>
 <p>To initiate the development server, add the following script to your project <code v-pre>package.json</code> file:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <div class="codeblock-title">package.json</div>
 <pre class="language-json"><code v-pre class="language-json">{
-    &quot;dev&quot;: &quot;webpack serve --config webpack.dev.js&quot;
+    &quot;dev&quot;: &quot;nodemon&quot;
 }</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="6-set-environment-variables">
+<doc-anchor-target id="7-set-environment-variables">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#6-set-environment-variables">#</doc-anchor-trigger>
-        <span>6. Set environment variables</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#7-set-environment-variables">#</doc-anchor-trigger>
+        <span>7. Set environment variables</span>
     </h2>
 </doc-anchor-target>
 <p>To deal with environment variables, the webpack documentation suggests using the <a href="https://webpack.js.org/guides/environment-variables/" class="outbound" target="_blank">--env option</a> from its CLI. While that would work, by using webpack <code v-pre>--env</code> CLI option, the environment variables would only be made available to the webpack configuration files (.e.g. <code v-pre>webpack.dev.js</code>) rather than any Node.js files. Therefore we <strong>do not recommend</strong> using webpack <code v-pre>--env</code> CLI option.</p>
@@ -836,7 +906,7 @@ export const transformer: WebpackConfigTransformer = (config: WebpackConfig, con
 <div class="codeblock-wrapper"><doc-codeblock>
 <div class="codeblock-title">package.json</div>
 <pre class="language-json"><code v-pre class="language-json">{
-    &quot;dev&quot;: &quot;cross-env DEBUG=true webpack serve --config webpack.dev.js&quot;
+    &quot;dev&quot;: &quot;cross-env DEBUG=true nodemon&quot;
 }</code></pre>
 </doc-codeblock></div>
 <div class="codeblock-wrapper"><doc-codeblock>
@@ -906,13 +976,13 @@ export default defineDevConfig(swcConfig, {
         </div>
     </div>
 </div>
-<doc-anchor-target id="7-try-it">
+<doc-anchor-target id="8-try-it">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#7-try-it">#</doc-anchor-trigger>
-        <span>7. Try it <span class="docs-emoji">&#x1F680;</span></span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#8-try-it">#</doc-anchor-trigger>
+        <span>8. Try it <span class="docs-emoji">&#x1F680;</span></span>
     </h2>
 </doc-anchor-target>
-<p>To test your new webpack configuration, open a terminal at the root of the project and execute the <doc-anchor-trigger to="#5-add-a-cli-script">CLI script added earlier</doc-anchor-trigger>. A development server should start without outputting any error in the terminal.</p>
+<p>To test your new webpack configuration, open a terminal at the root of the project and execute the <doc-anchor-trigger to="#6-add-a-cli-script">CLI script added earlier</doc-anchor-trigger>. A development server should start without outputting any error in the terminal.</p>
 
                                 
                                 <!-- Required only on API pages -->
