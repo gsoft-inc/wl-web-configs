@@ -48,7 +48,7 @@ import { browserslistToSwc, defineDevConfig } from "@workleap/swc-configs";
 
 const targets = browserslistToSwc();
 
-export default defineDevConfig(targets);
+export const swcConfig = defineDevConfig(targets);
 ```
 
 ### `targets`
@@ -76,7 +76,7 @@ import { browserslistToSwc, defineDevConfig } from "@workleap/swc-configs";
 
 const targets = browserslistToSwc({ queries: ["extends @workleap/browserslist-config"] });
 
-export default defineDevConfig(targets);
+export const swcConfig = defineDevConfig(targets);
 ```
 
 Or load the closest `.browserslistrc` configuration file and convert the queries into SWC targets:
@@ -92,7 +92,7 @@ import { browserslistToSwc, defineDevConfig } from "@workleap/swc-configs";
 
 const targets = browserslistToSwc();
 
-export default defineDevConfig(targets);
+export const swcConfig = defineDevConfig(targets);
 ```
 
 The `browserslistToSwc(options)` utility function accepts any option supported by Browserslist [JS API](https://github.com/browserslist/browserslist#js-api) in addition to a `queries` option:
@@ -117,7 +117,7 @@ import { browserslistToSwc, defineDevConfig } from "@workleap/swc-configs";
 
 const targets = browserslistToSwc();
 
-export default defineDevConfig(targets, {
+export const swcConfig = defineDevConfig(targets, {
     fastRefresh: false
 });
 ```
@@ -136,7 +136,7 @@ import { browserslistToSwc, defineDevConfig } from "@workleap/swc-configs";
 
 const targets = browserslistToSwc();
 
-export default defineDevConfig(targets, {
+export const swcConfig = defineDevConfig(targets, {
     parser: "ecmascript"
 });
 ```
@@ -173,7 +173,7 @@ function disableReactBuiltins(config) {
     return config;
 }
 
-export default defineDevConfig(targets, {
+export const swcConfig = defineDevConfig(targets, {
     transformers: [disableReactBuiltins]
 });
 ```

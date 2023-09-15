@@ -3,6 +3,7 @@ import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import { createRequire } from "node:module";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 import TerserPlugin from "terser-webpack-plugin";
 import type { Configuration as WebpackConfig } from "webpack";
 import webpack from "webpack";
@@ -16,6 +17,9 @@ const DefinePlugin = webpack.DefinePlugin;
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import.meta/resolve
 // is available
 const require = createRequire(import.meta.url);
+
+// The equivalent of __filename for CommonJS.
+const __filename = fileURLToPath(import.meta.url);
 
 type MiniCssExtractPluginOptions = NonNullable<ConstructorParameters<typeof MiniCssExtractPlugin>[number]>;
 
@@ -104,8 +108,14 @@ export function defineBuildConfig(swcConfig: SwcConfig, options: DefineBuildConf
         cache: cache && {
             type: "filesystem",
             allowCollectingMemory: false,
-            cacheDirectory: cacheDirectory
+            cacheDirectory: cacheDirectory,
+            maxMemoryGenerations: 1,
+            // Took from https://webpack.js.org/configuration/cache/#cachebuilddependencies.
+            buildDependencies: {
+                config: [__filename]
+            }
         },
+        // (ACTUALLY NOT FIXING ANYTHING AT THE MOMENT)
         // Fixes caching for environmental variables using the DefinePlugin by forcing
         // webpack caching to prioritize hashes over timestamps.
         snapshot: cache ? {

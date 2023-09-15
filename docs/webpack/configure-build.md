@@ -29,6 +29,8 @@ npm install -D @workleap/webpack-configs webpack webpack-cli @swc/core @swc/help
 
 ## 2. Configure webpack
 
+### HTML template
+
 First, create a `public` folder with an `index.html` file at the root of the project:
 
 ``` !#2-3
@@ -56,6 +58,8 @@ Then, open the newly created `index.html` file and copy/paste the following cont
 
 The content of the `public/index.html` file is the default template that will be used by [HtmlWebpackPlugin](https://webpack.js.org/plugins/html-webpack-plugin/).
 
+### defineBuildConfig
+
 Next, create a configuration file named `webpack.build.js` at the root of the project:
 
 ``` !#5
@@ -77,7 +81,7 @@ import { swcConfig } from "./swc.build.js";
 export default defineBuildConfig(swcConfig);
 ```
 
-### `swcConfig`
+### swcConfig
 
 In the previous code sample, the `defineBuildConfig(swcConfig, options)` function receive an SWC [configuration object](https://swc.rs/docs/configuration/swcrc) through the `swcConfig` parameter. 
 

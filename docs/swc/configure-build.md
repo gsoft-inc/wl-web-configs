@@ -48,7 +48,7 @@ import { browserslistToSwc, defineBuildConfig } from "@workleap/swc-configs";
 
 const targets = browserslistToSwc();
 
-export default defineBuildConfig(targets);
+export const swcConfig = defineBuildConfig(targets);
 ```
 
 ### `targets`
@@ -76,7 +76,7 @@ import { browserslistToSwc, defineBuildConfig } from "@workleap/swc-configs";
 
 const targets = browserslistToSwc({ queries: ["extends @workleap/browserslist-config"] })
 
-export default defineBuildConfig(targets);
+export const swcConfig = defineBuildConfig(targets);
 ```
 
 Or load the closest `.browserslistrc` configuration file and convert the queries into SWC targets:
@@ -92,7 +92,7 @@ import { browserslistToSwc, defineBuildConfig } from "@workleap/swc-configs";
 
 const targets = browserslistToSwc();
 
-export default defineBuildConfig(targets);
+export const swcConfig = defineBuildConfig(targets);
 ```
 
 The `browserslistToSwc(options)` utility function accepts any option supported by Browserslist [JS API](https://github.com/browserslist/browserslist#js-api) in addition to a `queries` option:
@@ -117,7 +117,7 @@ import { browserslistToSwc, defineBuildConfig } from "@workleap/swc-configs";
 
 const targets = browserslistToSwc();
 
-export default defineBuildConfig(targets, {
+export const swcConfig = defineBuildConfig(targets, {
     parser: "ecmascript"
 });
 ```
@@ -154,7 +154,7 @@ function mangleMinifiedCode(config) {
     return config;
 }
 
-export default defineBuildConfig(targets, {
+export const swcConfig = defineBuildConfig(targets, {
     transformers: [mangleMinifiedCode]
 });
 ```
