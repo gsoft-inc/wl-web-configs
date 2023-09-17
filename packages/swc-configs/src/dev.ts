@@ -42,9 +42,7 @@ export function defineDevConfig(targets: Record<string, string>, options: Define
         },
         module: {
             // The output module resolution system that the code will be compiled for.
-            type: "es6",
-            // Preserve dynamic imports.
-            ignoreDynamic: true
+            type: "es6"
         },
         env: {
             // jsc.target is not provided because the provided targets takes precedence.

@@ -40,9 +40,7 @@ export function defineJestConfig(options: DefineJestConfigOptions = {}) {
         },
         module: {
             // The output module resolution system that the code will be compiled for.
-            type: "es6",
-            // Preserve dynamic imports.
-            ignoreDynamic: true
+            type: "es6"
         }
     };
 
