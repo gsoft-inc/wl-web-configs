@@ -58,6 +58,36 @@ Then, open the newly created `index.html` file and copy/paste the following cont
 
 The content of the `public/index.html` file is the default template that will be used by [HtmlWebpackPlugin](https://webpack.js.org/plugins/html-webpack-plugin/).
 
+#### Adding local assets
+
+To link local assets such as a `favicon.png` in the default HTML template, it is recommended to preprend the **relative** path of every asset with the `publicPath` of the webpack config.
+
+First, add the asset to the `public` folder at the root of the project:
+
+``` !#4
+web-project
+├── public
+├──── index.html
+├──── favicon.png
+├── src
+├──── ...
+├── package.json
+```
+
+Then, add the assets to the `index.html` file:
+
+```html !#4 public/index.html
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="<%=webpackConfig.output.publicPath%>favicon.png" rel="icon">
+    </head>
+    <body>
+        <div id="root"></div>
+    </body>
+</html>
+```
+
 ### defineBuildConfig
 
 Next, create a configuration file named `webpack.build.js` at the root of the project:
