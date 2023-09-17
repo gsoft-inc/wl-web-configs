@@ -43,8 +43,6 @@ export function defineBuildConfig(targets: Record<string, string>, options: Defi
         module: {
             // The output module resolution system that the code will be compiled for.
             type: "es6",
-            // Prevent SWC from exporting the `__esModule` property.
-            strict: true,
             // Preserve dynamic imports.
             ignoreDynamic: true
         },
