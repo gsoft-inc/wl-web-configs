@@ -3,6 +3,8 @@ order: 90
 label: Setup a monorepo
 meta:
     title: Configure a monorepo - ESLint
+toc:
+    depth: 2-4
 ---
 
 # Setup a monorepo
@@ -13,7 +15,9 @@ This monorepo setup is intended to be used with [PNPM workspaces](https://pnpm.i
 
 To lint a monorepo solution (**multiple projects** per repository), [ESLint](https://eslint.org/) must be setuped to lint the files at the root of the solution (the monorepo **workspace**) and the files of every project of the monorepo. Execute the following steps to setup ESLint for a monorepo solution.
 
-## 1. Install the workspace packages
+## Setup the workspace
+
+### Install the packages
 
 Open a terminal at the root of the solution workspace (the **root** of the repository) and install the following packages:
 
@@ -31,7 +35,7 @@ npm install -D @workleap/eslint-plugin eslint typescript @typescript-eslint/pars
 ```
 +++
 
-## 2. Configure ESLint for the workspace
+### Configure ESLint
 
 First, create a configuration file named `.eslintrc.json` at the root of the solution workspace:
 
@@ -56,7 +60,7 @@ Then, open the newly created file and extend the default configuration with the 
 }
 ```
 
-## 3. Ignore files
+#### .eslintignore
 
 ESLint can be configured to [ignore](https://eslint.org/docs/latest/use/configure/ignore) certain files and directories while linting by specifying one or more glob patterns.
 
@@ -84,7 +88,7 @@ node_modules
 *.yaml
 ```
 
-## 4. Configure indent style
+### Configure indent style
 
 ESLint offers [built-in rules](https://eslint.org/docs/latest/rules/indent) for configuring the indentation style of a codebase. However, there's a catch: when [VS Code auto-formatting](https://code.visualstudio.com/docs/editor/codebasics#_formatting) feature is enabled, it might conflict with the configured indentation rules if they are set differently.
 
@@ -122,7 +126,7 @@ indent_size = 4
 trim_trailing_whitespace = false
 ```
 
-## 5. Add a CLI script
+### Add a CLI script
 
 At times, especially when running the CI build, it's useful to lint the entire solution using a single command. To do so, add the following script to your solution's workspace `package.json` file:
 
@@ -147,7 +151,9 @@ workspace
 
 > The script definition may vary depending of your needs and your application configuration. For example, you might want to specify specific file extensions such as `--ext .js,.ts,.tsx`.
 
-## 6. Install the project package
+## Setup a project
+
+### Install the package
 
 Open a terminal at the root of the project (`packages/app` for this example) and install the following package:
 
@@ -165,7 +171,7 @@ npm install -D @workleap/eslint-plugin
 ```
 +++
 
-## 7. Configure ESLint for the project
+### Configure ESLint
 
 First, create a configuration file named `.eslintrc.json` at the root of the project:
 
@@ -185,7 +191,7 @@ workspace
 
 Then, open the newly created file and extend the default configuration with one of the [shared configurations](/eslint/#available-configurations) provided by `@workleap/eslint-plugin` :point_down:
 
-### web-application
+#### `web-application`
 
 For an application developed with TypeScript and React, use the following configuration:
 
@@ -197,7 +203,7 @@ For an application developed with TypeScript and React, use the following config
 }
 ```
 
-### react-library
+#### `react-library`
 
 For a TypeScript library developed **with** React, use the following configuration:
 
@@ -209,7 +215,7 @@ For a TypeScript library developed **with** React, use the following configurati
 }
 ```
 
-### typescript-library
+#### `typescript-library`
 
 For a TypeScript library developed **without** React, use the following configuration:
 
@@ -221,17 +227,13 @@ For a TypeScript library developed **without** React, use the following configur
 }
 ```
 
-## 8. Repeat for every project
-
-If you already have multiple projects in your monorepo solution, repeat the steps [6](#6-install-the-project-package) and [7](#7-configure-eslint-for-the-project) for every project.
-
-## 9. Customize configuration
+## Custom configuration
 
 New projects shouldn't have to customize the default configurations offered by `@workleap/eslint-plugin`. However, if you are in the process of **migrating** an existing project to use this library or encountering a challenging situation, refer to the [custom configuration](custom-configuration.md) page to understand how to override or extend the default configurations. Remember, **no locked in** :heart::v:.
 
-## 10. Try it :rocket:
+## Try it :rocket:
 
-To test your new ESLint setup, open a JavaScript file, type invalid code (e.g. `var x = 0;`), then save. Open a terminal at the root of the solution and execute the [CLI script added earlier](#5-add-a-cli-script):
+To test your new ESLint setup, open a JavaScript file, type invalid code (e.g. `var x = 0;`), then save. Open a terminal at the root of the solution and execute the [CLI script added earlier](#add-a-cli-script):
 
 +++ pnpm
 ```bash
