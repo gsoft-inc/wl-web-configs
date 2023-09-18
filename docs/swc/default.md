@@ -32,7 +32,7 @@ Somewhere in 2024, [we expect to migrate from webpack to Rspack](../webpack/defa
 
 Meanwhile, you can **confidently start a new project with these SWC configurations** as the migration process to Rspack is expected to be seamless.
 
-## Features
+## Main features
 
 The shared configurations offered by `@workleap/swc-configs` includes the following features 👇
 

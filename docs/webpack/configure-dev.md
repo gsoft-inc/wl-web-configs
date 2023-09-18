@@ -9,7 +9,7 @@ meta:
 
 To configure [webpack](https://webpack.js.org/) for a development environment, execute the following steps.
 
-## 1. Install the packages
+## Install the packages
 
 Open a terminal at the root of the project and install the following packages:
 
@@ -27,7 +27,7 @@ npm install -D @workleap/webpack-configs webpack webpack-cli webpack-dev-server 
 ```
 +++
 
-## 2. Configure webpack
+## Configure webpack
 
 ### HTML template
 
@@ -57,9 +57,9 @@ Then, open the newly created `index.html` file and copy/paste the following cont
 
 The content of the `public/index.html` file is the default template that will be used by [HtmlWebpackPlugin](https://webpack.js.org/plugins/html-webpack-plugin/).
 
-#### Adding local assets
+#### Reference local assets
 
-To link local assets such as a `favicon.png` in the default HTML template, it is recommended to preprend the **relative** path of every asset with the `publicPath` of the webpack config.
+To reference local assets such as a `favicon.png` in the default HTML template, it is recommended to preprend the **relative** path of every asset with the `publicPath` of the webpack config.
 
 First, add the asset to the `public` folder at the root of the project:
 
@@ -87,7 +87,7 @@ Then, add the assets to the `index.html` file:
 </html>
 ```
 
-### defineDevConfig
+### `defineDevConfig`
 
 Next, create a configuration file named `webpack.dev.js` at the root of the project:
 
@@ -112,7 +112,7 @@ import { swcConfig } from "./swc.dev.js";
 export default defineDevConfig(swcConfig);
 ```
 
-### swcConfig
+### `swcConfig`
 
 In the previous code sample, the `defineDevConfig(swcConfig, options)` function receive an SWC [configuration object](https://swc.rs/docs/configuration/swcrc) through the `swcConfig` parameter. 
 
@@ -120,7 +120,7 @@ Although the [swc-loader](https://swc.rs/docs/usage/swc-loader) defaults to load
 
 Therefore, `@workleap/webpack-configs` choosed to **delegate** the loading of the SWC configuration **to the consumer** by making the `swcConfig` option **required**. 
 
-## 3. Set predefined options
+## Use predefined options
 
 The `defineDevConfig(swcConfig, options)` function can be used as shown in the previous example, however, if you wish to customize the default configuration, the function also accept a few predefined options to help with that 👇
 
@@ -384,13 +384,13 @@ export default defineDevConfig(swcConfig, {
 });
 ```
 
-## 4. Transform configuration
+## Configuration transformers
 
 !!!warning
 We do not guarantee that your configuration transformers won't break after an update. It's your responsibility to keep them up to date with new releases.
 !!!
 
-The [predefined options](#3-set-predefined-options) are useful to quickly customize the [default development configuration](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/webpack-configs/src/dev.ts) of `@workleap/webpack-configs`, but only covers a subset of a [webpack configuration](https://webpack.js.org/configuration/). If you need full control over the configuration, you can provide configuration transformer functions. Remember, **no locked in** :heart::v:.
+The [predefined options](#use-predefined-options) are useful to quickly customize the [default development configuration](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/webpack-configs/src/dev.ts) of `@workleap/webpack-configs`, but only covers a subset of a [webpack configuration](https://webpack.js.org/configuration/). If you need full control over the configuration, you can provide configuration transformer functions through the `transformers` option of the `defineDevConfig` function. Remember, **no locked in** :heart::v:.
 
 To view the default development configuration of `@workleap/webpack-configs`, have a look at the [dev.ts configuration file](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/webpack-configs/src/dev.ts) on GitHub.
 
@@ -450,7 +450,7 @@ Modifying a webpack configuration object can be an arduous task, to help with th
 
 [!ref Transformer utilities](transformer-utilities.md)
 
-## 5. Setup nodemon
+## Setup nodemon
 
 [Nodemon](https://nodemon.io/) is a utility that will monitor for any changes in the `swc.dev.js` and `webpack.dev.dev.js` files and restart the webpack development server whenever a change occurs.
 
@@ -476,9 +476,9 @@ Then, open the `nodemon.json` file and copy/paste the following content:
 }
 ```
 
-Finally, add a CLI script at the [next step](#6-add-a-cli-script) of this guide.
+Finally, add a CLI script at the [next step](#add-a-cli-script) of this guide.
 
-## 6. Add a CLI script
+## Add a CLI script
 
 To initiate the development server, add the following script to your project `package.json` file:
 
@@ -488,7 +488,7 @@ To initiate the development server, add the following script to your project `pa
 }
 ```
 
-## 7. Set environment variables
+## Define environment variables
 
 To deal with environment variables, the webpack documentation suggests using the [--env option](https://webpack.js.org/guides/environment-variables/) from its CLI. While that would work, by using webpack `--env` CLI option, the environment variables would only be made available to the webpack configuration files (.e.g. `webpack.dev.js`) rather than any Node.js files. Therefore we **do not recommend** using webpack `--env` CLI option.
 
@@ -555,8 +555,8 @@ export function App() {
 The `=== "true"` part of `"DEBUG": process.env.DEBUG === "true"` is very important, otherwise the environment variable value would be `"true"` instead of `true`.
 !!!
 
-## 8. Try it :rocket:
+## Try it :rocket:
 
-To test your new webpack configuration, open a terminal at the root of the project and execute the [CLI script added earlier](#6-add-a-cli-script). A development server should start without outputting any error in the terminal.
+To test your new webpack configuration, open a terminal at the root of the project and execute the [CLI script added earlier](#add-a-cli-script). A development server should start without outputting any error in the terminal.
 
 

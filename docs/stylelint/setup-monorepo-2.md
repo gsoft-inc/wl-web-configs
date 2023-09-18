@@ -1,8 +1,10 @@
 ---
 order: 90
-label: Setup a monorepo
+label: Setup a monorepo 2
 meta:
     title: Setup a monorepo - Stylelint
+toc:
+    depth: 2-4
 ---
 
 # Setup a monorepo
@@ -13,7 +15,9 @@ This monorepo setup is intended to be used with [PNPM workspaces](https://pnpm.i
 
 To lint a monorepo solution (**multiple projects** per repository), [Stylelint](https://stylelint.io/) must be setuped to lint the files at the root of the solution (the monorepo **workspace**) and the files of every project of the monorepo. Execute the following steps to setup Stylelint for a monorepo solution.
 
-## Install the workspace packages
+## Setup the workspace
+
+### Install the packages
 
 Open a terminal at the root of the solution workspace (the **root** of the repository) and install the following packages:
 
@@ -31,7 +35,7 @@ npm install -D @workleap/stylelint-config stylelint prettier
 ```
 +++
 
-## Configure Stylelint for the workspace
+### Configure Stylelint
 
 First, create a configuration file named `.stylelintrc.json` at the root of the solution workspace:
 
@@ -55,7 +59,7 @@ Then, open the newly created file and extend the default configuration with the 
 }
 ```
 
-## Ignore files
+#### .stylelintignore
 
 Stylelint can be configured to [ignore](https://stylelint.io/user-guide/ignore-code#files-entirely) certain files and directories while linting by specifying one or more glob patterns.
 
@@ -80,7 +84,7 @@ Then, open the newly created file and paste the following ignore rules:
 node_modules
 ```
 
-## Configure Prettier
+#### .prettierignore
 
 Since we choose to [stick with ESLint for JavaScript and JSON stylistic rules](../eslint/default.md#prettier), a `.prettierignore` file must be added at the root of the solution workspace to ignore everything but CSS files.
 
@@ -106,7 +110,7 @@ Then, open the newly created file and paste the following ignore rules:
 !**/*.css
 ```
 
-## Configure indent style
+### Configure the indent style
 
 Prettier offers [built-in rules](https://prettier.io/docs/en/options#tab-width) for configuring the indentation style of a codebase. However, there's a catch: when [VS Code auto-formatting](https://code.visualstudio.com/docs/editor/codebasics#_formatting) feature is enabled, it might conflict with the configured indentation rules if they are set differently.
 
@@ -144,7 +148,7 @@ indent_size = 4
 trim_trailing_whitespace = false
 ```
 
-## Add a CLI script
+### Add a CLI script
 
 At times, especially when running the CI build, it's useful to lint the entire solution using a single command. To do so, add the following script to your solution's workspace `package.json` file:
 
@@ -169,7 +173,9 @@ workspace
 
 > The script definition may vary depending on your needs and your application configuration. For example, you might want to specify additional file extensions such as `"**/*.{css,scss,sass}"`.
 
-## Install the packages for a project
+## Setup a project
+
+### Install the packages
 
 Open a terminal at the root of the project (`packages/app` for this example) and install the following package:
 
@@ -187,7 +193,7 @@ npm install -D @workleap/stylelint-config
 ```
 +++
 
-## Configure Stylelint for the project
+### Configure Stylelint
 
 First, create a configuration file named `.stylelintrc.json` at the root of the project:
 
@@ -214,11 +220,7 @@ Then, open the newly created file and extend the default configuration with the 
 }
 ```
 
-## Repeat for every project
-
-If you have multiple projects in your monorepo solution, repeat the steps [#7](#install-the-packages-for-a-project) and [#8](#configure-stylelint-for-the-project) for every project.
-
-## Customize configuration
+## Custom configuration
 
 New projects shouldn't have to customize the default configurations offered by `@workleap/stylelint-configs`. However, if you are in the process of **migrating** an existing project to use this library or encountering a challenging situation, refer to the [custom configuration](custom-configuration.md) page to understand how to override or extend the default configurations. Remember, **no locked in** :heart::v:.
 

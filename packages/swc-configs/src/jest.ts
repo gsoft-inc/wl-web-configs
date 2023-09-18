@@ -40,11 +40,7 @@ export function defineJestConfig(options: DefineJestConfigOptions = {}) {
         },
         module: {
             // The output module resolution system that the code will be compiled for.
-            type: "es6",
-            // Prevent SWC from exporting the `__esModule` property.
-            strict: true,
-            // Preserve dynamic imports.
-            ignoreDynamic: true
+            type: "es6"
         }
     };
 

@@ -9,7 +9,7 @@ meta:
 
 Execute the following steps to setup [ESLint](https://eslint.org/) for a polyrepo solution (**single project** per repository).
 
-## 1. Install the packages
+## Install the packages
 
 Open a terminal at the root of the solution and install the following packages:
 
@@ -27,7 +27,7 @@ npm install -D @workleap/eslint-plugin eslint @typescript-eslint/parser
 ```
 +++
 
-## 2. Configure ESLint
+## Configure ESLint
 
 First, create a configuration file named `.eslintrc.json` at the root of the solution:
 
@@ -41,7 +41,7 @@ root
 
 Then, open the newly created file and extend the default configuration with one of the [shared configurations](default.md#available-configurations) provided by `@workleap/eslint-plugin` :point_down:
 
-### web-application
+### `web-application`
 
 For an application developed with TypeScript and React, use the following configuration:
 
@@ -53,7 +53,7 @@ For an application developed with TypeScript and React, use the following config
 }
 ```
 
-### react-library
+### `react-library`
 
 For a TypeScript library developed **with** React, use the following configuration:
 
@@ -65,7 +65,7 @@ For a TypeScript library developed **with** React, use the following configurati
 }
 ```
 
-### typescript-library
+### `typescript-library`
 
 For a TypeScript library developed **without** React, use the following configuration:
 
@@ -77,7 +77,7 @@ For a TypeScript library developed **without** React, use the following configur
 }
 ```
 
-## 3. Ignore files
+### .eslintignore
 
 ESLint can be configured to [ignore](https://eslint.org/docs/latest/use/configure/ignore) certain files and directories while linting by specifying one or more glob patterns.
 
@@ -102,7 +102,7 @@ node_modules
 *.yaml
 ```
 
-## 4. Configure indent style
+## Configure the indent style
 
 [ESLint](https://eslint.org/) offers [built-in rules](https://eslint.org/docs/latest/rules/indent) for configuring the indentation style of a codebase. However, there's a catch: when [VS Code auto-formatting](https://code.visualstudio.com/docs/editor/codebasics#_formatting) feature is enabled, it might conflict with the configured indentation rules if they are set differently.
 
@@ -139,7 +139,7 @@ trim_trailing_whitespace = false
 
 Finally, install the [EditorConfig.EditorConfig](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig) VS Code extension.
 
-## 5. Add a CLI script
+## Add a CLI script
 
 At times, especially when running the CI build, it's useful to lint the entire solution using a single command. To do so, add the following script to your solution's `package.json` file:
 
@@ -151,13 +151,13 @@ At times, especially when running the CI build, it's useful to lint the entire s
 
 > The script definition may vary depending of your needs and your application configuration. For example, you might want to specify specific file extensions such as `--ext .js,.ts,.tsx`.
 
-## 6. Customize configuration
+## Custom configuration
 
 New projects shouldn't have to customize the default configurations offered by `@workleap/eslint-plugin`. However, if you are in the process of **migrating** an existing project to use this library or encountering a challenging situation, refer to the [custom configuration](custom-configuration.md) page to understand how to override or extend the default configurations. Remember, **no locked in** :heart::v:.
 
-## 7. Try it :rocket:
+## Try it :rocket:
 
-To test your new ESLint setup, open a JavaScript file, type invalid code (e.g. `var x = 0;`), then save. Open a terminal at the root of the solution and execute the [CLI script added earlier](#5-add-a-cli-script):
+To test your new ESLint setup, open a JavaScript file, type invalid code (e.g. `var x = 0;`), then save. Open a terminal at the root of the solution and execute the [CLI script added earlier](#add-a-cli-script):
 
 +++ pnpm
 ```bash

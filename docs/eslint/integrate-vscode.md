@@ -9,11 +9,11 @@ meta:
 
 [ESLint VS Code extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) greatly improve the development experience by **automatically linting** the code as you type and **automatically formatting** the code according to your ESLint configuration whenever you save.
 
-## 1. Install the ESLint extension
+## Install ESLint extension
 
 Open VS Code and install the [dbaeumer.vscode-eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) extension.
 
-## 2. Configure VS Code
+## Configure VS Code
 
 Then, add the following settings to your solution [VS Code settings file](https://code.visualstudio.com/docs/getstarted/settings):
 
@@ -30,11 +30,11 @@ Then, add the following settings to your solution [VS Code settings file](https:
 }
 ```
 
-## 3. Install the EditorConfig extension
+## Install EditorConfig extension
 
 Finally, install the [EditorConfig.EditorConfig](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig) extension.
 
-## 4. Try it :rocket:
+## Try it :rocket:
 
 Restart VS Code, open a JavaScript file, type invalid code (e.g. `var x = 0;`), then save. The code should have been formatted automatically (e.g. `const x = 0;`).
 

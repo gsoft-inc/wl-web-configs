@@ -9,7 +9,7 @@ meta:
 
 Execute the following steps to setup [TypeScript](https://www.typescriptlang.org/) for a polyrepo solution (**single project** per repository).
 
-## 1. Install the packages
+## Install the packages
 
 Open a terminal at the root of the solution and install the following packages:
 
@@ -27,7 +27,7 @@ npm install -D @workleap/typescript-configs typescript
 ```
 +++
 
-## 2. Configure TypeScript
+## Configure TypeScript
 
 First, create a configuration file named `tsconfig.json` at the root of the solution:
 
@@ -41,7 +41,7 @@ root
 
 Then, open the newly created file and extend the default configuration with one of the [shared configurations](default.md#available-configurations) provided by `@workleap/typescript-configs` :point_down:
 
-### web-application
+### `web-application`
 
 For an applications developed with React, use the following configuration:
 
@@ -52,7 +52,7 @@ For an applications developed with React, use the following configuration:
 }
 ```
 
-### library
+### `library`
 
 For a library project developed with or without React, use the following configuration:
 
@@ -63,7 +63,7 @@ For a library project developed with or without React, use the following configu
 }
 ```
 
-## 3. Add a CLI script
+## Add a CLI script
 
 At times, especially when running the CI build, it's useful to lint the entire solution using a single command. To do so, add the following script to your solution's `package.json` file:
 
@@ -73,10 +73,10 @@ At times, especially when running the CI build, it's useful to lint the entire s
 }
 ```
 
-## 4. Customize configuration
+## Custom configuration
 
 New projects shouldn't have to customize the default configurations offered by `@workleap/typescript-configs`. However, if you are in the process of **migrating** an existing project to use this library or encountering a challenging situation, refer to the [custom configuration](custom-configuration.md) page to understand how to override or extend the default configurations. Remember, **no locked in** :heart::v:.
 
-## 5. Try it :rocket:
+## Try it :rocket:
 
 To test your new TypeScript setup, open a TypeScript file, type invalid code (e.g. `import { App } from "./App"`), then wait for the IDE to flag the error. Fix the error (e.g. `import { App } from "./App.tsx"`), then wait for the IDE to remove the error.

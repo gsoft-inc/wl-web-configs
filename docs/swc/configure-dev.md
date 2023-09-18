@@ -9,7 +9,7 @@ meta:
 
 To configure [SWC](https://swc.rs/) for a development environment, execute the following steps.
 
-## 1. Install the packages
+## Install the packages
 
 Open a terminal at the root of the project and install the following packages:
 
@@ -27,7 +27,7 @@ npm install -D @workleap/swc-configs @swc/core @swc/helpers
 ```
 +++
 
-## 2. Configure SWC
+## Configure SWC
 
 First, create a configuration file named `swc.dev.js` at the root of the project:
 
@@ -99,7 +99,7 @@ The `browserslistToSwc(options)` utility function accepts any option supported b
 
 - `queries`: `string | string[]`
 
-## 3. Set predefined options
+## Use predefined options
 
 The `defineDevConfig(targets, options)` function can be used as shown in the previous example, however, if you wish to customize the default configuration, the function also accept a few predefined options to help with that 👇
 
@@ -141,13 +141,13 @@ export const swcConfig = defineDevConfig(targets, {
 });
 ```
 
-## 4. Transform configuration
+## Configuration transformers
 
 !!!warning
 We do not guarantee that your configuration transformers won't break after an update. It's your responsibility to keep them up to date with new releases.
 !!!
 
-The [predefined options](#3-set-predefined-options) are useful to quickly customize the [default development configuration](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/swc-configs/src/dev.ts) of `@workleap/swc-configs`, but only covers a subset of an [SWC configuration](https://swc.rs/docs/configuration/swcrc). If you need full control over the configuration, you can provide configuration transformer functions. Remember, **no locked in** :heart::v:.
+The [predefined options](#use-predefined-options) are useful to quickly customize the [default development configuration](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/swc-configs/src/dev.ts) of `@workleap/swc-configs`, but only covers a subset of an [SWC configuration](https://swc.rs/docs/configuration/swcrc). If you need full control over the configuration, you can provide configuration transformer functions through the `transformers` option of the `defineDevConfig` function. Remember, **no locked in** :heart::v:.
 
 To view the default development configuration of `@workleap/swc-configs`, have a look at the [dev.ts configuration file](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/swc-configs/src/dev.ts) on GitHub.
 
@@ -196,7 +196,7 @@ export const transformer: SwcConfigTransformer = (config: SwcConfig, context: Sw
 
 - `environment`: `"dev" | "build" | "jest"`
 
-## 5. Configure webpack
+## Configure webpack
 
 To integrate with webpack, update your configuration file to include an [swc-loader](https://swc.rs/docs/usage/swc-loader):
 
@@ -222,7 +222,7 @@ export default {
 }
 ```
 
-## 6. Try it :rocket:
+## Try it :rocket:
 
 To test your new SWC configuration, create a Typescript file with the following code:
 
