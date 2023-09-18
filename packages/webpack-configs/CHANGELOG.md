@@ -1,5 +1,11 @@
 # @workleap/webpack-configs
 
+## 1.0.7
+
+### Patch Changes
+
+- [#143](https://github.com/gsoft-inc/wl-web-configs/pull/143) [`334088f`](https://github.com/gsoft-inc/wl-web-configs/commit/334088fac63aad6cc245ee3300da076e5c201287) Thanks [@patricklafrance](https://github.com/patricklafrance)! - Updated to SWC 1.3.85
+
 ## 1.0.6
 
 ### Patch Changes

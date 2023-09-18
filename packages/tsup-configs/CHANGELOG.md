@@ -1,5 +1,11 @@
 # @workleap/tsup-configs
 
+## 3.0.1
+
+### Patch Changes
+
+- [#143](https://github.com/gsoft-inc/wl-web-configs/pull/143) [`334088f`](https://github.com/gsoft-inc/wl-web-configs/commit/334088fac63aad6cc245ee3300da076e5c201287) Thanks [@patricklafrance](https://github.com/patricklafrance)! - Updated to SWC 1.3.85
+
 ## 3.0.0
 
 ### Major Changes
