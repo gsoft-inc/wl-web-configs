@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/wl-web-configs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.748235847005">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.748359594266">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -32,12 +32,12 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../static/favicon.png" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.5.0.748235847005" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.5.0.748359594266" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.748235847005" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.748359594266" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.748235847005" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.5.0.748235847005" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.748359594266" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.5.0.748359594266" defer></script>
 
     <link href="https://gsoft-inc.github.io/wl-idp-docs-hub/static/retype_customization.css" rel="stylesheet" />
 
@@ -306,10 +306,10 @@
     </h1>
 </doc-anchor-target>
 <p>To configure <a href="https://swc.rs/" class="outbound" target="_blank">SWC</a> for a production environment, execute the following steps.</p>
-<doc-anchor-target id="1-install-the-packages">
+<doc-anchor-target id="install-the-packages">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#1-install-the-packages">#</doc-anchor-trigger>
-        <span>1. Install the packages</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#install-the-packages">#</doc-anchor-trigger>
+        <span>Install the packages</span>
     </h2>
 </doc-anchor-target>
 <p>Open a terminal at the root of the project and install the following packages:</p>
@@ -333,10 +333,10 @@
 </doc-codeblock></div>
 </doc-tab>
 </doc-tabs>
-<doc-anchor-target id="2-configure-swc">
+<doc-anchor-target id="configure-swc">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#2-configure-swc">#</doc-anchor-trigger>
-        <span>2. Configure SWC</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#configure-swc">#</doc-anchor-trigger>
+        <span>Configure SWC</span>
     </h2>
 </doc-anchor-target>
 <p>First, create a configuration file named <code v-pre>swc.build.js</code> at the root of the project:</p>
@@ -408,10 +408,10 @@ export const swcConfig = defineBuildConfig(targets);</code></pre>
 <ul>
 <li><code v-pre>queries</code>: <code v-pre>string | string[]</code></li>
 </ul>
-<doc-anchor-target id="3-set-predefined-options">
+<doc-anchor-target id="use-predefined-options">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#3-set-predefined-options">#</doc-anchor-trigger>
-        <span>3. Set predefined options</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#use-predefined-options">#</doc-anchor-trigger>
+        <span>Use predefined options</span>
     </h2>
 </doc-anchor-target>
 <p>The <code v-pre>defineBuildConfig(targets, options)</code> function can be used as shown in the previous example, however, if you wish to customize the default configuration, the function also accept a few predefined options to help with that <span class="docs-emoji">&#x1F447;</span></p>
@@ -438,10 +438,10 @@ export const swcConfig = defineBuildConfig(targets, {
     parser: &quot;ecmascript&quot;
 });</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="4-transform-configuration">
+<doc-anchor-target id="configuration-transformers">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#4-transform-configuration">#</doc-anchor-trigger>
-        <span>4. Transform configuration</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#configuration-transformers">#</doc-anchor-trigger>
+        <span>Configuration transformers</span>
     </h2>
 </doc-anchor-target>
 <div class="flex mb-6">
@@ -460,7 +460,7 @@ export const swcConfig = defineBuildConfig(targets, {
         </div>
     </div>
 </div>
-<p>The <doc-anchor-trigger to="#3-set-predefined-options">predefined options</doc-anchor-trigger> are useful to quickly customize the <a href="https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/swc-configs/src/build.ts" class="outbound" target="_blank">default build configuration</a> of <code v-pre>@workleap/swc-configs</code>, but only covers a subset of an <a href="https://swc.rs/docs/configuration/swcrc" class="outbound" target="_blank">SWC configuration</a>. If you need full control over the configuration, you can provide configuration transformer functions. Remember, <strong>no locked in</strong> <span class="docs-emoji">&#x2764;&#xFE0F;</span><span class="docs-emoji">&#x270C;&#xFE0F;</span>.</p>
+<p>The <doc-anchor-trigger to="#use-predefined-options">predefined options</doc-anchor-trigger> are useful to quickly customize the <a href="https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/swc-configs/src/build.ts" class="outbound" target="_blank">default build configuration</a> of <code v-pre>@workleap/swc-configs</code>, but only covers a subset of an <a href="https://swc.rs/docs/configuration/swcrc" class="outbound" target="_blank">SWC configuration</a>. If you need full control over the configuration, you can provide configuration transformer functions through the <code v-pre>transformers</code> option of the <code v-pre>defineBuildConfig</code> function. Remember, <strong>no locked in</strong> <span class="docs-emoji">&#x2764;&#xFE0F;</span><span class="docs-emoji">&#x270C;&#xFE0F;</span>.</p>
 <p>To view the default development configuration of <code v-pre>@workleap/swc-configs</code>, have a look at the <a href="https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/swc-configs/src/build.ts" class="outbound" target="_blank">build.ts configuration file</a> on GitHub.</p>
 <doc-anchor-target id="transformers">
     <h3>
@@ -515,10 +515,10 @@ export const transformer: SwcConfigTransformer = (config: SwcConfig, context: Sw
 <ul>
 <li><code v-pre>environment</code>: <code v-pre>&quot;dev&quot; | &quot;build&quot; | &quot;jest&quot;</code></li>
 </ul>
-<doc-anchor-target id="5-configure-webpack">
+<doc-anchor-target id="configure-webpack">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#5-configure-webpack">#</doc-anchor-trigger>
-        <span>5. Configure webpack</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#configure-webpack">#</doc-anchor-trigger>
+        <span>Configure webpack</span>
     </h2>
 </doc-anchor-target>
 <p>To integrate with webpack, update your configuration file to include an <a href="https://swc.rs/docs/usage/swc-loader" class="outbound" target="_blank">swc-loader</a>:</p>
@@ -544,10 +544,10 @@ export default {
     }
 }</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="6-try-it">
+<doc-anchor-target id="try-it">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#6-try-it">#</doc-anchor-trigger>
-        <span>6. Try it <span class="docs-emoji">&#x1F680;</span></span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#try-it">#</doc-anchor-trigger>
+        <span>Try it <span class="docs-emoji">&#x1F680;</span></span>
     </h2>
 </doc-anchor-target>
 <p>To test your new <a href="https://swc.rs/" class="outbound" target="_blank">SWC</a> configuration, create a Typescript file with the following code:</p>

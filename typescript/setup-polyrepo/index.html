@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/wl-web-configs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.748235847005">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.748359594266">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -32,12 +32,12 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../static/favicon.png" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.5.0.748235847005" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.5.0.748359594266" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.748235847005" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.748359594266" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.748235847005" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.5.0.748235847005" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.748359594266" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.5.0.748359594266" defer></script>
 
     <link href="https://gsoft-inc.github.io/wl-idp-docs-hub/static/retype_customization.css" rel="stylesheet" />
 
@@ -306,10 +306,10 @@
     </h1>
 </doc-anchor-target>
 <p>Execute the following steps to setup <a href="https://www.typescriptlang.org/" class="outbound" target="_blank">TypeScript</a> for a polyrepo solution (<strong>single project</strong> per repository).</p>
-<doc-anchor-target id="1-install-the-packages">
+<doc-anchor-target id="install-the-packages">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#1-install-the-packages">#</doc-anchor-trigger>
-        <span>1. Install the packages</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#install-the-packages">#</doc-anchor-trigger>
+        <span>Install the packages</span>
     </h2>
 </doc-anchor-target>
 <p>Open a terminal at the root of the solution and install the following packages:</p>
@@ -333,10 +333,10 @@
 </doc-codeblock></div>
 </doc-tab>
 </doc-tabs>
-<doc-anchor-target id="2-configure-typescript">
+<doc-anchor-target id="configure-typescript">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#2-configure-typescript">#</doc-anchor-trigger>
-        <span>2. Configure TypeScript</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#configure-typescript">#</doc-anchor-trigger>
+        <span>Configure TypeScript</span>
     </h2>
 </doc-anchor-target>
 <p>First, create a configuration file named <code v-pre>tsconfig.json</code> at the root of the solution:</p>
@@ -351,7 +351,7 @@
 <doc-anchor-target id="web-application">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#web-application">#</doc-anchor-trigger>
-        <span>web-application</span>
+        <span><code v-pre>web-application</code></span>
     </h3>
 </doc-anchor-target>
 <p>For an applications developed with React, use the following configuration:</p>
@@ -365,7 +365,7 @@
 <doc-anchor-target id="library">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#library">#</doc-anchor-trigger>
-        <span>library</span>
+        <span><code v-pre>library</code></span>
     </h3>
 </doc-anchor-target>
 <p>For a library project developed with or without React, use the following configuration:</p>
@@ -376,10 +376,10 @@
     &quot;exclude&quot;: [&quot;dist&quot;, &quot;node_modules&quot;]
 }</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="3-add-a-cli-script">
+<doc-anchor-target id="add-a-cli-script">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#3-add-a-cli-script">#</doc-anchor-trigger>
-        <span>3. Add a CLI script</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#add-a-cli-script">#</doc-anchor-trigger>
+        <span>Add a CLI script</span>
     </h2>
 </doc-anchor-target>
 <p>At times, especially when running the CI build, it&#x27;s useful to lint the entire solution using a single command. To do so, add the following script to your solution&#x27;s <code v-pre>package.json</code> file:</p>
@@ -389,17 +389,17 @@
     &quot;lint:types&quot;: &quot;tsc&quot;
 }</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="4-customize-configuration">
+<doc-anchor-target id="custom-configuration">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#4-customize-configuration">#</doc-anchor-trigger>
-        <span>4. Customize configuration</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#custom-configuration">#</doc-anchor-trigger>
+        <span>Custom configuration</span>
     </h2>
 </doc-anchor-target>
 <p>New projects shouldn&#x27;t have to customize the default configurations offered by <code v-pre>@workleap/typescript-configs</code>. However, if you are in the process of <strong>migrating</strong> an existing project to use this library or encountering a challenging situation, refer to the <a href="../custom-configuration/">custom configuration</a> page to understand how to override or extend the default configurations. Remember, <strong>no locked in</strong> <span class="docs-emoji">&#x2764;&#xFE0F;</span><span class="docs-emoji">&#x270C;&#xFE0F;</span>.</p>
-<doc-anchor-target id="5-try-it">
+<doc-anchor-target id="try-it">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#5-try-it">#</doc-anchor-trigger>
-        <span>5. Try it <span class="docs-emoji">&#x1F680;</span></span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#try-it">#</doc-anchor-trigger>
+        <span>Try it <span class="docs-emoji">&#x1F680;</span></span>
     </h2>
 </doc-anchor-target>
 <p>To test your new TypeScript setup, open a TypeScript file, type invalid code (e.g. <code v-pre>import { App } from &quot;./App&quot;</code>), then wait for the IDE to flag the error. Fix the error (e.g. <code v-pre>import { App } from &quot;./App.tsx&quot;</code>), then wait for the IDE to remove the error.</p>

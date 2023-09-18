@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/wl-web-configs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.748235847005">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.748359594266">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -32,12 +32,12 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../static/favicon.png" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.5.0.748235847005" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.5.0.748359594266" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.748235847005" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.748359594266" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.748235847005" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.5.0.748235847005" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.748359594266" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.5.0.748359594266" defer></script>
 
     <link href="https://gsoft-inc.github.io/wl-idp-docs-hub/static/retype_customization.css" rel="stylesheet" />
 
@@ -306,10 +306,10 @@
     </h1>
 </doc-anchor-target>
 <p>To configure <a href="https://webpack.js.org/" class="outbound" target="_blank">webpack</a> for a development environment, execute the following steps.</p>
-<doc-anchor-target id="1-install-the-packages">
+<doc-anchor-target id="install-the-packages">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#1-install-the-packages">#</doc-anchor-trigger>
-        <span>1. Install the packages</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#install-the-packages">#</doc-anchor-trigger>
+        <span>Install the packages</span>
     </h2>
 </doc-anchor-target>
 <p>Open a terminal at the root of the project and install the following packages:</p>
@@ -333,10 +333,10 @@
 </doc-codeblock></div>
 </doc-tab>
 </doc-tabs>
-<doc-anchor-target id="2-configure-webpack">
+<doc-anchor-target id="configure-webpack">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#2-configure-webpack">#</doc-anchor-trigger>
-        <span>2. Configure webpack</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#configure-webpack">#</doc-anchor-trigger>
+        <span>Configure webpack</span>
     </h2>
 </doc-anchor-target>
 <doc-anchor-target id="html-template">
@@ -367,13 +367,13 @@
 &lt;/html&gt;</code></pre>
 </doc-codeblock></div>
 <p>The content of the <code v-pre>public/index.html</code> file is the default template that will be used by <a href="https://webpack.js.org/plugins/html-webpack-plugin/" class="outbound" target="_blank">HtmlWebpackPlugin</a>.</p>
-<doc-anchor-target id="adding-local-assets">
+<doc-anchor-target id="reference-local-assets">
     <h4>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#adding-local-assets">#</doc-anchor-trigger>
-        <span>Adding local assets</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#reference-local-assets">#</doc-anchor-trigger>
+        <span>Reference local assets</span>
     </h4>
 </doc-anchor-target>
-<p>To link local assets such as a <code v-pre>favicon.png</code> in the default HTML template, it is recommended to preprend the <strong>relative</strong> path of every asset with the <code v-pre>publicPath</code> of the webpack config.</p>
+<p>To reference local assets such as a <code v-pre>favicon.png</code> in the default HTML template, it is recommended to preprend the <strong>relative</strong> path of every asset with the <code v-pre>publicPath</code> of the webpack config.</p>
 <p>First, add the asset to the <code v-pre>public</code> folder at the root of the project:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-none" data-line="4"><code v-pre class="language-none">web-project
@@ -400,7 +400,7 @@
 <doc-anchor-target id="definedevconfig">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#definedevconfig">#</doc-anchor-trigger>
-        <span>defineDevConfig</span>
+        <span><code v-pre>defineDevConfig</code></span>
     </h3>
 </doc-anchor-target>
 <p>Next, create a configuration file named <code v-pre>webpack.dev.js</code> at the root of the project:</p>
@@ -426,16 +426,16 @@ export default defineDevConfig(swcConfig);</code></pre>
 <doc-anchor-target id="swcconfig">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#swcconfig">#</doc-anchor-trigger>
-        <span>swcConfig</span>
+        <span><code v-pre>swcConfig</code></span>
     </h3>
 </doc-anchor-target>
 <p>In the previous code sample, the <code v-pre>defineDevConfig(swcConfig, options)</code> function receive an SWC <a href="https://swc.rs/docs/configuration/swcrc" class="outbound" target="_blank">configuration object</a> through the <code v-pre>swcConfig</code> parameter.</p>
 <p>Although the <a href="https://swc.rs/docs/usage/swc-loader" class="outbound" target="_blank">swc-loader</a> defaults to loading the closest <code v-pre>.swcrc</code> <a href="https://swc.rs/docs/configuration/swcrc" class="outbound" target="_blank">configuration file</a> when no configuration object is provided, it lacks support for distinct configuration files by environment like webpack does.</p>
 <p>Therefore, <code v-pre>@workleap/webpack-configs</code> choosed to <strong>delegate</strong> the loading of the SWC configuration <strong>to the consumer</strong> by making the <code v-pre>swcConfig</code> option <strong>required</strong>.</p>
-<doc-anchor-target id="3-set-predefined-options">
+<doc-anchor-target id="use-predefined-options">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#3-set-predefined-options">#</doc-anchor-trigger>
-        <span>3. Set predefined options</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#use-predefined-options">#</doc-anchor-trigger>
+        <span>Use predefined options</span>
     </h2>
 </doc-anchor-target>
 <p>The <code v-pre>defineDevConfig(swcConfig, options)</code> function can be used as shown in the previous example, however, if you wish to customize the default configuration, the function also accept a few predefined options to help with that <span class="docs-emoji">&#x1F447;</span></p>
@@ -746,10 +746,10 @@ export default defineDevConfig(swcConfig, {
     verbose: true
 });</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="4-transform-configuration">
+<doc-anchor-target id="configuration-transformers">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#4-transform-configuration">#</doc-anchor-trigger>
-        <span>4. Transform configuration</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#configuration-transformers">#</doc-anchor-trigger>
+        <span>Configuration transformers</span>
     </h2>
 </doc-anchor-target>
 <div class="flex mb-6">
@@ -768,7 +768,7 @@ export default defineDevConfig(swcConfig, {
         </div>
     </div>
 </div>
-<p>The <doc-anchor-trigger to="#3-set-predefined-options">predefined options</doc-anchor-trigger> are useful to quickly customize the <a href="https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/webpack-configs/src/dev.ts" class="outbound" target="_blank">default development configuration</a> of <code v-pre>@workleap/webpack-configs</code>, but only covers a subset of a <a href="https://webpack.js.org/configuration/" class="outbound" target="_blank">webpack configuration</a>. If you need full control over the configuration, you can provide configuration transformer functions. Remember, <strong>no locked in</strong> <span class="docs-emoji">&#x2764;&#xFE0F;</span><span class="docs-emoji">&#x270C;&#xFE0F;</span>.</p>
+<p>The <doc-anchor-trigger to="#use-predefined-options">predefined options</doc-anchor-trigger> are useful to quickly customize the <a href="https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/webpack-configs/src/dev.ts" class="outbound" target="_blank">default development configuration</a> of <code v-pre>@workleap/webpack-configs</code>, but only covers a subset of a <a href="https://webpack.js.org/configuration/" class="outbound" target="_blank">webpack configuration</a>. If you need full control over the configuration, you can provide configuration transformer functions through the <code v-pre>transformers</code> option of the <code v-pre>defineDevConfig</code> function. Remember, <strong>no locked in</strong> <span class="docs-emoji">&#x2764;&#xFE0F;</span><span class="docs-emoji">&#x270C;&#xFE0F;</span>.</p>
 <p>To view the default development configuration of <code v-pre>@workleap/webpack-configs</code>, have a look at the <a href="https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/webpack-configs/src/dev.ts" class="outbound" target="_blank">dev.ts configuration file</a> on GitHub.</p>
 <doc-anchor-target id="transformers">
     <h3>
@@ -849,10 +849,10 @@ export const transformer: WebpackConfigTransformer = (config: WebpackConfig, con
     <a href="../transformer-utilities/" class="absolute block inset-0"></a>
 </div>
 </p>
-<doc-anchor-target id="5-setup-nodemon">
+<doc-anchor-target id="setup-nodemon">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#5-setup-nodemon">#</doc-anchor-trigger>
-        <span>5. Setup nodemon</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#setup-nodemon">#</doc-anchor-trigger>
+        <span>Setup nodemon</span>
     </h2>
 </doc-anchor-target>
 <p><a href="https://nodemon.io/" class="outbound" target="_blank">Nodemon</a> is a utility that will monitor for any changes in the <code v-pre>swc.dev.js</code> and <code v-pre>webpack.dev.dev.js</code> files and restart the webpack development server whenever a change occurs.</p>
@@ -875,11 +875,11 @@ export const transformer: WebpackConfigTransformer = (config: WebpackConfig, con
     &quot;exec&quot;: &quot;webpack serve --config webpack.dev.js&quot;
 }</code></pre>
 </doc-codeblock></div>
-<p>Finally, add a CLI script at the <doc-anchor-trigger to="#6-add-a-cli-script">next step</doc-anchor-trigger> of this guide.</p>
-<doc-anchor-target id="6-add-a-cli-script">
+<p>Finally, add a CLI script at the <doc-anchor-trigger to="#add-a-cli-script">next step</doc-anchor-trigger> of this guide.</p>
+<doc-anchor-target id="add-a-cli-script">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#6-add-a-cli-script">#</doc-anchor-trigger>
-        <span>6. Add a CLI script</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#add-a-cli-script">#</doc-anchor-trigger>
+        <span>Add a CLI script</span>
     </h2>
 </doc-anchor-target>
 <p>To initiate the development server, add the following script to your project <code v-pre>package.json</code> file:</p>
@@ -889,10 +889,10 @@ export const transformer: WebpackConfigTransformer = (config: WebpackConfig, con
     &quot;dev&quot;: &quot;nodemon&quot;
 }</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="7-set-environment-variables">
+<doc-anchor-target id="define-environment-variables">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#7-set-environment-variables">#</doc-anchor-trigger>
-        <span>7. Set environment variables</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#define-environment-variables">#</doc-anchor-trigger>
+        <span>Define environment variables</span>
     </h2>
 </doc-anchor-target>
 <p>To deal with environment variables, the webpack documentation suggests using the <a href="https://webpack.js.org/guides/environment-variables/" class="outbound" target="_blank">--env option</a> from its CLI. While that would work, by using webpack <code v-pre>--env</code> CLI option, the environment variables would only be made available to the webpack configuration files (.e.g. <code v-pre>webpack.dev.js</code>) rather than any Node.js files. Therefore we <strong>do not recommend</strong> using webpack <code v-pre>--env</code> CLI option.</p>
@@ -976,13 +976,13 @@ export default defineDevConfig(swcConfig, {
         </div>
     </div>
 </div>
-<doc-anchor-target id="8-try-it">
+<doc-anchor-target id="try-it">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#8-try-it">#</doc-anchor-trigger>
-        <span>8. Try it <span class="docs-emoji">&#x1F680;</span></span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#try-it">#</doc-anchor-trigger>
+        <span>Try it <span class="docs-emoji">&#x1F680;</span></span>
     </h2>
 </doc-anchor-target>
-<p>To test your new webpack configuration, open a terminal at the root of the project and execute the <doc-anchor-trigger to="#6-add-a-cli-script">CLI script added earlier</doc-anchor-trigger>. A development server should start without outputting any error in the terminal.</p>
+<p>To test your new webpack configuration, open a terminal at the root of the project and execute the <doc-anchor-trigger to="#add-a-cli-script">CLI script added earlier</doc-anchor-trigger>. A development server should start without outputting any error in the terminal.</p>
 
                                 
                                 <!-- Required only on API pages -->
