@@ -37,7 +37,7 @@ Here's a couple of ideas to move away from PostCSS:
 - Force developers to use `rem` by disabling the use of `px` with [Stylelint](https://stylelint.io/).
 - Prefix CSS properties directly in the codebase rather than relying on [Autoprefixer](https://github.com/postcss/autoprefixer). As browser vendors are now [putting experimental features behind a flag](https://github.com/postcss/autoprefixer) rather than using prefixes, there aren't many CSS properties still requiring a prefix.
 
-## Features
+## Main features
 
 The shared configuration offered by `@workleap/postcss-configs` includes the following features:
 

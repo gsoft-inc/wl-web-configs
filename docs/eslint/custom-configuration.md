@@ -63,7 +63,7 @@ Please, don't update your project configuration to use single quotes :sweat_smil
 
 ## Add a plugin
 
-You can add new rules from a third party [ESLint plugin](https://eslint.org/docs/latest/use/configure/plugins):
+You can add configure additional rules from a third party [ESLint plugin](https://eslint.org/docs/latest/use/configure/plugins):
 
 ```json !#4,6-8 .eslintrc.json
 {

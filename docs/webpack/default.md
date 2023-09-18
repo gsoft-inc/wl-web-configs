@@ -32,7 +32,7 @@ npm create @workleap/project@latest <output-directory>
 
 Meanwhile, you can **confidently start a new project with webpack** as the **migration** process to Rspack is expected to be **seamless**; Rspack is committed to support the full webpack API and its massive plugin ecosystem.
 
-## Features
+## Main features
 
 The shared configurations offered by `@workleap/webpack-configs` includes the following features :point_down:
 

@@ -9,7 +9,7 @@ meta:
 
 Execute the following steps to setup [Stylelint](https://stylelint.io/) for a polyrepo solution (**single project** per repository).
 
-## 1. Install the packages
+## Install the packages
 
 Open a terminal at the root of the solution and install the following packages:
 
@@ -27,7 +27,7 @@ npm install -D @workleap/stylelint-configs stylelint prettier
 ```
 +++
 
-## 2. Configure Stylelint
+## Configure Stylelint
 
 First, create a configuration file named `.stylelintrc.json` at the root of the solution:
 
@@ -48,7 +48,7 @@ Then, open the newly created file and extend the default configuration with the 
 }
 ```
 
-## 3. Ignore files
+### .stylelintignore
 
 Stylelint can be configured to [ignore](https://stylelint.io/user-guide/ignore-code#files-entirely) certain files and directories while linting by specifying one or more glob patterns.
 
@@ -70,7 +70,7 @@ Then, open the newly created file and paste the following ignore rules:
 node_modules
 ```
 
-## 4. Configure Prettier
+### .prettierignore
 
 Since we choose to [stick with ESLint for JavaScript and JSON stylistic rules](../eslint/default.md#prettier), a `.prettierignore` file must be added at the root of the solution to ignore everything but CSS files.
 
@@ -93,7 +93,7 @@ Then, open the newly created file and paste the following ignore rules:
 !**/*.css
 ```
 
-## 5. Configure indent style
+## Configure indent style
 
 Prettier offers [built-in rules](https://prettier.io/docs/en/options#tab-width) for configuring the indentation style of a codebase. However, there's a catch: when [VS Code auto-formatting](https://code.visualstudio.com/docs/editor/codebasics#_formatting) feature is enabled, it might conflict with the configured indentation rules if they are set  differently.
 
@@ -131,7 +131,7 @@ trim_trailing_whitespace = false
 
 Finally, install the [EditorConfig.EditorConfig](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig) VS Code extension.
 
-## 6. Add a CLI script
+## Add a CLI script
 
 At times, especially when running the CI build, it's useful to lint the entire solution using a single command. To do so, add the following script to your solution's `package.json` file:
 
@@ -143,13 +143,13 @@ At times, especially when running the CI build, it's useful to lint the entire s
 
 > The script definition may vary depending on your needs and your application configuration. For example, you might want to specify additional file extensions such as `"**/*.{css,scss,sass}"`.
 
-## 7. Customize configuration
+## Custom configuration
 
 New projects shouldn't have to customize the default configurations offered by `@workleap/stylelint-configs`. However, if you are in the process of **migrating** an existing project to use this library or encountering a challenging situation, refer to the [custom configuration](custom-configuration.md) page to understand how to override or extend the default configurations. Remember, **no locked in** :heart::v:.
 
-## 8. Try it :rocket:
+## Try it :rocket:
 
-To test your new setup, open a CSS file, type invalid code (e.g. `color: #fff`), then save. Open a terminal at the root of the solution and execute the [CLI script added earlier](#6-add-a-cli-script):
+To test your new setup, open a CSS file, type invalid code (e.g. `color: #fff`), then save. Open a terminal at the root of the solution and execute the [CLI script added earlier](#add-a-cli-script):
 
 +++ pnpm
 ```bash

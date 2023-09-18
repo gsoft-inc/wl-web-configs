@@ -8,7 +8,7 @@ meta:
 
 Execute the following steps to setup [PostCSS](https://postcss.org/) for a single project.
 
-## 1. Install the packages
+## Install the packages
 
 Open a terminal at the root of the project and install the following packages:
 
@@ -26,7 +26,7 @@ npm install -D @workleap/postcss-configs postcss
 ```
 +++
 
-## 2. Configure PostCSS
+## Configure PostCSS
 
 First, create a configuration file named `postcss.config.ts` at the root of the project:
 
@@ -46,7 +46,7 @@ import { defineConfig } from "@workleap/postcss-configs";
 export default defineConfig();
 ```
 
-## 3. Set predefined options
+## Use predefined options
 
 The `defineConfig(options)` function can be used as-is as shown in the previous example, however, if you wish to customize the default configuration, the function also accepts a few predefined options to help with that :point_down:
 
@@ -101,13 +101,13 @@ export default defineConfig({
 });
 ```
 
-## 4. Transform configuration
+## Configuration transformers
 
 !!!warning
 We do not guarantee that your configuration transformers won't break after an update. It's your responsibility to keep them up to date with new releases.
 !!!
 
-The [predefined options](#3-set-predefined-options) are useful to quickly customize the [default configuration](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/postcss-configs/src/index.ts) of `@workleap/postcss-configs`, but only covers a subset of a [PostCSS configuration](https://github.com/postcss/postcss-load-config). If you need full control over the configuration, you can provide **configuration transformer** functions. Remember, **no locked in** :heart::v:.
+The [predefined options](#use-predefined-options) are useful to quickly customize the [default configuration](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/postcss-configs/src/index.ts) of `@workleap/postcss-configs`, but only covers a subset of a [PostCSS configuration](https://github.com/postcss/postcss-load-config). If you need full control over the configuration, you can provide **configuration transformer** functions through the `transformers` option of the `defineConfig` function. Remember, **no locked in** :heart::v:.
 
 To view the default configuration of `@workleap/postcss-configs`, have a look at the [configuration file](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/postcss-configs/src/index) on GitHub.
 
@@ -153,7 +153,7 @@ export default defineConfig({
 });
 ```
 
-## 5. Configure webpack
+## Configure webpack
 
 To integrate with webpack, update your configuration file to include a [postcss-loader](https://www.npmjs.com/package/postcss-loader):
 
@@ -177,7 +177,7 @@ export default {
 }
 ```
 
-## 6. Try it :rocket:
+## Try it :rocket:
 
 To test your new PostCSS configuration, create and import a CSS file with the following code:
 

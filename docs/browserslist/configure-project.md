@@ -8,7 +8,7 @@ meta:
 
 > Only setup [Browserslist](https://browsersl.ist/) for projects that are **emitting application bundles**. For example, a library project shouldn't include Browserslist but a web application project should.
 
-## 1. Install the packages
+## Install the packages
 
 Open a terminal at the root of the project and install the following packages:
 
@@ -26,7 +26,7 @@ npm install -D @workleap/browserslist-config browserslist
 ```
 +++
 
-## 2. Configure Browserslist
+## Configure Browserslist
 
 First, create a configuration file named `.browserslistrc` at the root of the project:
 
@@ -44,7 +44,7 @@ Then, open the newly created file and extend the default configuration with the 
 extends @workleap/browserslist-config
 ```
 
-### Custom browsers
+## Support custom browsers
 
 If you are encountering a situation that is not currently handled by `@workleap/browserslist-configs`, you can customize your configuration file to extend this library shared configurations with additional browser versions:
 
@@ -56,7 +56,7 @@ last 2 OperaMobile 12.1 versions
 
 Refer to the [Browserslist documentation](https://github.com/browserslist/browserslist#full-list) for a full list of available queries.
 
-## 4. Try it :rocket:
+## Try it :rocket:
 
 To test your new Browserslist configuration, open a terminal at the root of the project and execute the following command:
 

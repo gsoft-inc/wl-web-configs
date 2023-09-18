@@ -32,7 +32,7 @@ Out of the box, `tsc`, the native [TypeScript CLI](https://www.typescriptlang.or
 
 Given that either TurboSnap requirements or `tsx` CSS imports support change, we will reevaluate this decision.
 
-## Features
+## Main features
 
 The shared configurations offered by `@workleap/tsup-configs` includes the following features 👇
 

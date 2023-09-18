@@ -59,7 +59,7 @@ You can update a default rule value by defining the rule locally with its new va
 
 ## Add a plugin
 
-You can add new rules from a third party [Stylelint plugin](https://stylelint.io/user-guide/configure#plugins):
+You can configure additional rules from a third party [Stylelint plugin](https://stylelint.io/user-guide/configure#plugins):
 
 ```json !#3,5-10 .stylelintrc.json
 {
