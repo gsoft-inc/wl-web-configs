@@ -1,5 +1,11 @@
 # @workleap/webpack-configs
 
+## 1.0.8
+
+### Patch Changes
+
+- [#146](https://github.com/gsoft-inc/wl-web-configs/pull/146) [`0b259b0`](https://github.com/gsoft-inc/wl-web-configs/commit/0b259b0849e32c49f78be2f9869a5daea0b4c6f3) Thanks [@patricklafrance](https://github.com/patricklafrance)! - Replaced build option "minify" for "optimize"
+
 ## 1.0.7
 
 ### Patch Changes
