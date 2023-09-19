@@ -65,7 +65,7 @@ export interface DefineBuildConfigOptions {
     plugins?: WebpackConfig["plugins"];
     htmlWebpackPlugin?: boolean | HtmlWebpackPlugin.Options;
     miniCssExtractPluginOptions?: MiniCssExtractPluginOptions;
-    minify?: boolean;
+    optimize?: boolean;
     cssModules?: boolean;
     environmentVariables?: Record<string, unknown>;
     transformers?: WebpackConfigTransformer[];
@@ -86,7 +86,7 @@ export function defineBuildConfig(swcConfig: SwcConfig, options: DefineBuildConf
         plugins = [],
         htmlWebpackPlugin = defineBuildHtmlWebpackPluginConfig(),
         miniCssExtractPluginOptions = defineMiniCssExtractPluginConfig(),
-        minify = true,
+        optimize = true,
         cssModules = false,
         // Using an empty object literal as the default value to ensure
         // "process.env" is always available.
@@ -136,7 +136,7 @@ export function defineBuildConfig(swcConfig: SwcConfig, options: DefineBuildConf
                 timestamp: true
             }
         } : undefined,
-        optimization: minify
+        optimization: optimize
             ? {
                 minimize: true,
                 minimizer: [
@@ -149,7 +149,11 @@ export function defineBuildConfig(swcConfig: SwcConfig, options: DefineBuildConf
                     })
                 ]
             }
-            : undefined,
+            : {
+                minimize: false,
+                chunkIds: "named",
+                moduleIds: "named"
+            },
         infrastructureLogging: verbose ? {
             appendOnly: true,
             level: "verbose",
