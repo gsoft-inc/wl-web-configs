@@ -319,12 +319,12 @@ export default defineBuildConfig(swcConfig, {
 });
 ```
 
-### `minify`
+### `optimize`
 
 - **Type**: `boolean`
 - **Default**: `true`
 
-Whether or not to enable [code minification](https://webpack.js.org/configuration/optimization/#optimizationminimize).
+Whether or not to enable webpack production optimizations like [code minification](https://webpack.js.org/configuration/optimization/#optimizationminimize). This option can be quite usefull when debugging an issue with webpack bundling.
 
 ```js !#7 webpack.build.js
 // @ts-check
@@ -333,7 +333,7 @@ import { defineBuildConfig } from "@workleap/webpack-configs";
 import { swcConfig } from "./swc.build.js";
 
 export default defineBuildConfig(swcConfig, {
-    minify: false
+    optimize: false
 });
 ```
 

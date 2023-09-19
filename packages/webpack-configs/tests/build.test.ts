@@ -91,33 +91,49 @@ test("when additional plugins are provided, append the provided plugins at the e
     expect(result.plugins![pluginsCount - 1]).toBe(newPlugin2);
 });
 
-test("when minify is true, minimize is set to true", () => {
+test("when optimize is true, minimize is set to true", () => {
     const result = defineBuildConfig(SwcConfig, {
-        minify: true
+        optimize: true
     });
 
     expect(result.optimization?.minimize).toBeTruthy();
 });
 
-test("when minify is false, minimize is set to false", () => {
+test("when optimize is false, minimize is set to false", () => {
     const result = defineBuildConfig(SwcConfig, {
-        minify: false
+        optimize: false
     });
 
     expect(result.optimization?.minimize).toBeFalsy();
 });
 
-test("when minify is true, include minify configuration", () => {
+test("when optimize is false, chunkIds is set to \"named\"", () => {
     const result = defineBuildConfig(SwcConfig, {
-        minify: true
+        optimize: false
+    });
+
+    expect(result.optimization?.chunkIds).toBe("named");
+});
+
+test("when optimize is false, moduleIds is set to \"named\"", () => {
+    const result = defineBuildConfig(SwcConfig, {
+        optimize: false
+    });
+
+    expect(result.optimization?.chunkIds).toBe("named");
+});
+
+test("when optimize is true, include minify configuration", () => {
+    const result = defineBuildConfig(SwcConfig, {
+        optimize: true
     });
 
     expect(result.optimization?.minimizer).toBeDefined();
 });
 
-test("when minify is false, do not include minify configuration", () => {
+test("when optimize is false, do not include minify configuration", () => {
     const result = defineBuildConfig(SwcConfig, {
-        minify: false
+        optimize: false
     });
 
     expect(result.optimization?.minimizer).toBeUndefined();
