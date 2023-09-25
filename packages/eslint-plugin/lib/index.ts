@@ -10,6 +10,7 @@ const plugin: ESLint.Plugin = {
         jest: require("./config/jest"),
         mdx: require("./config/mdx"),
         react: require("./config/react"),
+        "jsx-a11y": require("./config/jsx-a11y"),
         storybook: require("./config/storybook"),
         "testing-library": require("./config/testing-library"),
         typescript: require("./config/typescript"),

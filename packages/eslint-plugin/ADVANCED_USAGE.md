@@ -7,6 +7,7 @@ The `@workleap/eslint-plugin` package exposes the following configuration parts:
 - **`core`**: Basic rules shared by every configuration
 - **`typescript`**: TypeScript specific rules, using @typescript-eslint/parser
 - **`react`**: React specific rules
+- **`jsx-a11y`**: Accessibility specific rules
 - **`jest`**: Jest specific rules
 - **`testing-library`**: Testing library specific rules
 - **`storybook`**: Storybook specific rules
