@@ -7,7 +7,7 @@ expanded: true
 
 # Browserslist
 
-!!!warning Before you continue...
+<!-- !!!warning Before you continue...
 
 The preferred way for using `@workleap/browserslist-plugin` is **not** by installing the library manually, but rather by **scaffolding** your application with Workleap's [foundry-cli](https://github.com/gsoft-inc/wl-foundry-cli).
 
@@ -24,7 +24,7 @@ yarn create @workleap/project@latest <output-directory>
 npm create @workleap/project@latest <output-directory>
 ```
 +++
-!!!
+!!! -->
 
 ## Supported browsers
 

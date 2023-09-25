@@ -8,7 +8,7 @@ label: Getting started
 
 Welcome to `workleap/web-configs`, a collection of **configuration libraries** for building web applications at [Workleap](https://workleap.com/). On this getting started page, you'll find an overview of the project and a list of supported tools.
 
-!!!warning Before you continue...
+<!-- !!!warning Before you continue...
 
 The preferred way for using these configuration libraries is **not** by installing them manually, but rather by **scaffolding** your application with Workleap's [foundry-cli](https://github.com/gsoft-inc/wl-foundry-cli).
 
@@ -25,7 +25,7 @@ yarn create @workleap/project@latest <output-directory>
 npm create @workleap/project@latest <output-directory>
 ```
 +++
-!!!
+!!! -->
 
 ## Why?
 
