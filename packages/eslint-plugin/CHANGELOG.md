@@ -1,5 +1,11 @@
 # @workleap/eslint-plugin
 
+## 3.0.0
+
+### Major Changes
+
+- [#148](https://github.com/gsoft-inc/wl-web-configs/pull/148) [`fdae0cd`](https://github.com/gsoft-inc/wl-web-configs/commit/fdae0cdc4248278541c1740c556baf6ccdcf04e1) Thanks [@alexasselin008](https://github.com/alexasselin008)! - Added accessibility rules to the eslint config
+
 ## 2.1.1
 
 ### Patch Changes
