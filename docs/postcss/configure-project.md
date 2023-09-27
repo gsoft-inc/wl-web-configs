@@ -2,6 +2,8 @@
 label: Configure a project
 meta:
     title: Configure a project - PostCSS
+toc:
+    depth: 2-3
 ---
 
 # Configure a project

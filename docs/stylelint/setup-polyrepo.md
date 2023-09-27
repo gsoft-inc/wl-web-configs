@@ -3,6 +3,8 @@ order: 100
 label: Setup a polyrepo
 meta:
     title: Setup a polyrepo - Stylelint
+toc:
+    depth: 2
 ---
 
 # Setup a polyrepo

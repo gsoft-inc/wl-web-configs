@@ -3,6 +3,8 @@ order: 100
 label: Setup a polyrepo
 meta:
     title: Configure a polyrepo - ESLint
+toc:
+    depth: 2
 ---
 
 # Setup a polyrepo

@@ -4,7 +4,7 @@ label: Setup a monorepo
 meta:
     title: Setup a monorepo - TypeScript
 toc:
-    depth: 2-4
+    depth: 2-3
 ---
 
 # Setup a monorepo

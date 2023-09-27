@@ -3,6 +3,8 @@ order: 110
 icon: /static/webpack.svg
 label: Webpack
 expanded: true
+toc:
+    depth: 2-3
 ---
 
 # Webpack
@@ -53,14 +55,14 @@ The shared configurations offered by `@workleap/webpack-configs` includes the fo
 - JPEG
 - GIF
 
-### Development
+### Development features
 
 - Development server
 - File system caching
 - Fast Refresh or Hot Module Reload
 - Sourcemap
 
-### Production
+### Production features
 
 - File system caching
 - Minification

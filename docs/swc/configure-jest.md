@@ -3,6 +3,8 @@ order: 80
 label: Configure for Jest
 meta:
     title: Configure for Jest - SWC
+toc:
+    depth: 2-3
 ---
 
 # Configure for Jest

@@ -2,6 +2,8 @@
 order: 70
 meta:
     title: Advanced composition - ESLint
+toc:
+    depth: 2
 ---
 
 # Advanced composition

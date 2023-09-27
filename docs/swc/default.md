@@ -3,6 +3,8 @@ order: 140
 icon: /static/swc.svg
 label: SWC
 expanded: true
+toc:
+    depth: 2-3
 ---
 
 # SWC
@@ -26,12 +28,6 @@ npm create @workleap/project@latest <output-directory>
 +++
 !!! -->
 
-## A word about Rspack
-
-Somewhere in 2024, [we expect to migrate from webpack to Rspack](../webpack/default.md#a-word-about-rspack). Once the migration is completed, the SWC [development](configure-dev.md) and [production](configure-build.md) configurations will not be used anymore as [Rspack](https://www.rspack.dev/) offers out of the box support for React and TypeScript. 
-
-Meanwhile, you can **confidently start a new project with these SWC configurations** as the migration process to Rspack is expected to be seamless.
-
 ## Main features
 
 The shared configurations offered by `@workleap/swc-configs` includes the following features 👇
@@ -45,11 +41,11 @@ The shared configurations offered by `@workleap/swc-configs` includes the follow
 
 - React
 
-### Development
+### Development features
 
 - Fast Refresh
 
-### Production
+### Production features
 
 - Minification
 
