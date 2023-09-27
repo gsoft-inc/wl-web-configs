@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/wl-web-configs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.748979641655">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.749148463101">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -32,13 +32,13 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../static/favicon.png" rel="icon">
-    <link href="../resources/css/retype.css?v=3.5.0.748979641655" rel="stylesheet">
+    <link href="../resources/css/retype.css?v=3.5.0.749148463101" rel="stylesheet">
 
-    <script data-cfasync="false" src="../resources/js/config.js?v=3.5.0.748979641655" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../resources/js/config.js?v=3.5.0.749148463101" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../resources/js/lunr.js?v=3.5.0.748979641655" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../resources/js/lunr.js?v=3.5.0.749148463101" data-turbo-eval="false" defer></script>
 
-    <link href="https://gsoft-inc.github.io/wl-idp-docs-hub/static/retype_customization.css" rel="stylesheet" />
+    <link href="https://gsoft-inc.github.io/wl-idp-docs-hub/static/retype-customization.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -304,17 +304,17 @@ npm create @workleap/project@latest <output-directory>
 ```
 +++
 !!! -->
-<doc-anchor-target id="scss">
+<doc-anchor-target id="scss-support">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#scss">#</doc-anchor-trigger>
-        <span>SCSS</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#scss-support">#</doc-anchor-trigger>
+        <span>SCSS support</span>
     </h2>
 </doc-anchor-target>
-<p>While SCSS still offers numerous advantages, as we actively work on improving our build time and <strong>minimize</strong> the number of tools <strong>compiling/transpiling</strong> frontend code, we choose to move away from Sass and not provide any Stylelint&#x27;s rules for Sass. If you are still using Sass strictly for nesting, note that <a href="https://www.w3.org/TR/css-nesting-1/" class="outbound" target="_blank">native support for nesting</a> is coming soon to CSS.</p>
-<doc-anchor-target id="prettier">
+<p>While SCSS still offers numerous advantages, as we actively work on improving our build time and <strong>minimize</strong> the number of tools <strong>compiling/transpiling</strong> frontend code, we choose to <strong>move away from Sass</strong> and not provide any Stylelint&#x27;s rules for Sass. If you are still using Sass strictly for nesting, note that <a href="https://www.w3.org/TR/css-nesting-1/" class="outbound" target="_blank">native support for nesting</a> is coming soon to CSS.</p>
+<doc-anchor-target id="embedding-prettier">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#prettier">#</doc-anchor-trigger>
-        <span>Prettier</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#embedding-prettier">#</doc-anchor-trigger>
+        <span>Embedding Prettier</span>
     </h2>
 </doc-anchor-target>
 <p>Since <code v-pre>v15.0.0</code>, Stylelint&#x27;s stylistic rules <a href="https://stylelint.io/migration-guide/to-15#deprecated-stylistic-rules" class="outbound" target="_blank">has been deprecated</a>. The current recommendation is to use <a href="https://prettier.io/" class="outbound" target="_blank">Prettier</a> instead to format CSS files.</p>
