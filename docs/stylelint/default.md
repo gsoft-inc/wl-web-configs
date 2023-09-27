@@ -3,6 +3,8 @@ order: 150
 icon: /static/stylelint.svg
 label: Stylelint
 expanded: true
+toc:
+    depth: 2-3
 ---
 
 # Stylelint
@@ -26,11 +28,11 @@ npm create @workleap/project@latest <output-directory>
 +++
 !!! -->
 
-## SCSS
+## SCSS support
 
-While SCSS still offers numerous advantages, as we actively work on improving our build time and **minimize** the number of tools **compiling/transpiling** frontend code, we choose to move away from Sass and not provide any Stylelint's rules for Sass. If you are still using Sass strictly for nesting, note that [native support for nesting](https://www.w3.org/TR/css-nesting-1/) is coming soon to CSS.
+While SCSS still offers numerous advantages, as we actively work on improving our build time and **minimize** the number of tools **compiling/transpiling** frontend code, we choose to **move away from Sass** and not provide any Stylelint's rules for Sass. If you are still using Sass strictly for nesting, note that [native support for nesting](https://www.w3.org/TR/css-nesting-1/) is coming soon to CSS.
 
-## Prettier
+## Embedding Prettier
 
 Since `v15.0.0`, Stylelint's stylistic rules [has been deprecated](https://stylelint.io/migration-guide/to-15#deprecated-stylistic-rules). The current recommendation is to use [Prettier](https://prettier.io/) instead to format CSS files.
 

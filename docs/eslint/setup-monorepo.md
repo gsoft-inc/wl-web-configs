@@ -4,7 +4,7 @@ label: Setup a monorepo
 meta:
     title: Configure a monorepo - ESLint
 toc:
-    depth: 2-4
+    depth: 2-3
 ---
 
 # Setup a monorepo

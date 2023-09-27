@@ -3,6 +3,8 @@ order: 130
 icon: /static/tsup.svg
 label: tsup
 expanded: true
+toc:
+    depth: 2-3
 ---
 
 # tsup
@@ -26,26 +28,26 @@ npm create @workleap/project@latest <output-directory>
 +++
 !!! -->
 
-## TypeScript CLI
+## Issues with `tsc`
 
-Out of the box, `tsc`, the native [TypeScript CLI](https://www.typescriptlang.org/docs/handbook/compiler-options.html), offers pretty much everything that we need to compile and bundle our TypeScript libraries. We opted for [tsup](https://tsup.egoist.dev/) due to `tsc` lacks of support for CSS imports, a requirement for enabling Chromatic's [TurboSnap](https://www.chromatic.com/docs/turbosnap) feature.
+`tsc`, the native [TypeScript CLI](https://www.typescriptlang.org/docs/handbook/compiler-options.html), pretty much offers everything that we need to compile and bundle our TypeScript libraries. We opted for [tsup](https://tsup.egoist.dev/) due to `tsc` lacks of support for CSS imports, a requirement for enabling Chromatic's [TurboSnap](https://www.chromatic.com/docs/turbosnap) feature.
 
-Given that either TurboSnap requirements or `tsx` CSS imports support change, we will reevaluate this decision.
+Given that either TurboSnap requirements or `tsc` CSS imports support change, we will reevaluate this decision.
 
 ## Main features
 
 The shared configurations offered by `@workleap/tsup-configs` includes the following features 👇
 
-### TypeScript
+### TypeScript features
 
 - Emits declaration files
 
-### Development
+### Development features
 
 - Watch mode
 - Sourcemaps
 
-### Production
+### Production features
 
 - Output to `/dist`
 

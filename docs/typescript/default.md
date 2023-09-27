@@ -3,6 +3,8 @@ order: 120
 icon: /static/typescript.svg
 label: Typescript
 expanded: true
+toc:
+    depth: 2-3
 ---
 
 # Typescript

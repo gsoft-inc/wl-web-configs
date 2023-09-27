@@ -3,6 +3,8 @@ order: 70
 label: Transformer utilities
 meta:
     title: Transformer utilities - webpack
+toc:
+    depth: 2-3
 ---
 
 # Transformer utilities
