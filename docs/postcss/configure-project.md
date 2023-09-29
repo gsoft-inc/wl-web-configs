@@ -157,6 +157,10 @@ export default defineConfig({
 
 ## Configure webpack
 
+!!!info
+If your project is using `@workleap/wepack-config`, you don't have to configure `postcss-loader` as the [defineDevConfig](../webpack/configure-dev.md#definedevconfig) and [defineBuildConfig](../webpack/configure-build.md#definebuildconfig) functions already takes care of configuring PostCSS.
+!!!
+
 To integrate with webpack, update your configuration file to include a [postcss-loader](https://www.npmjs.com/package/postcss-loader):
 
 ```js !#12 webpack.config.js
