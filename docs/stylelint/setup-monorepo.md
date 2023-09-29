@@ -23,15 +23,15 @@ Open a terminal at the root of the solution workspace (the **root** of the repos
 
 +++ pnpm
 ```bash
-pnpm add -D @workleap/stylelint-config stylelint prettier
+pnpm add -D @workleap/stylelint-configs stylelint prettier
 ```
 +++ yarn
 ```bash
-yarn add -D @workleap/stylelint-config stylelint prettier
+yarn add -D @workleap/stylelint-configs stylelint prettier
 ```
 +++ npm
 ```bash
-npm install -D @workleap/stylelint-config stylelint prettier
+npm install -D @workleap/stylelint-configs stylelint prettier
 ```
 +++
 
@@ -181,15 +181,15 @@ Open a terminal at the root of the project (`packages/app` for this example) and
 
 +++ pnpm
 ```bash
-pnpm add -D @workleap/stylelint-config
+pnpm add -D @workleap/stylelint-configs
 ```
 +++ yarn
 ```bash
-yarn add -D @workleap/stylelint-config
+yarn add -D @workleap/stylelint-configs
 ```
 +++ npm
 ```bash
-npm install -D @workleap/stylelint-config
+npm install -D @workleap/stylelint-configs
 ```
 +++
 
