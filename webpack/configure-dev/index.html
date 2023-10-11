@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/wl-web-configs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.749323713301">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.750383866455">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -32,12 +32,12 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../static/favicon.png" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.5.0.749323713301" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.5.0.750383866455" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.749323713301" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.750383866455" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.749323713301" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.5.0.749323713301" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.750383866455" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.5.0.750383866455" defer></script>
 
     <link href="https://gsoft-inc.github.io/wl-idp-docs-hub/static/retype-customization.css" rel="stylesheet" />
 
@@ -724,6 +724,28 @@ export default defineDevConfig(swcConfig, {
     cssModules: true
 });</code></pre>
 </doc-codeblock></div>
+<doc-anchor-target id="overlay">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#overlay">#</doc-anchor-trigger>
+        <span><code v-pre>overlay</code></span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Type</strong>: <code v-pre>false</code></li>
+<li><strong>Default</strong>: <code v-pre>undefined</code></li>
+</ul>
+<p>Whether or not a full-screen overlay should be in the browser when there are compiler errors or warnings.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<div class="codeblock-title">webpack.dev.js</div>
+<pre class="language-javascript" data-line="7"><code v-pre class="language-javascript">// @ts-check
+
+import { defineDevConfig } from &quot;@workleap/webpack-configs&quot;;
+import { swcConfig } from &quot;./swc.dev.js&quot;;
+
+export default defineDevConfig(swcConfig, {
+    overlay: false
+});</code></pre>
+</doc-codeblock></div>
 <doc-anchor-target id="verbose">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#verbose">#</doc-anchor-trigger>
@@ -787,7 +809,7 @@ export default defineDevConfig(swcConfig, {
 <div class="codeblock-title">webpack.dev.js</div>
 <pre class="language-javascript" data-line="6-12,16"><code v-pre class="language-javascript">// @ts-check
 
-import { defineDevConfig, WebpackConfigTransformer, WebpackConfig } from &quot;@workleap/webpack-configs&quot;;
+import { defineDevConfig, type WebpackConfigTransformer, type WebpackConfig } from &quot;@workleap/webpack-configs&quot;;
 import { swcConfig } from &quot;./swc.dev.js&quot;;
 
 const enableInMemoryCache: WebpackConfigTransformer = (config: WebpackConfig) =&gt; {
@@ -812,7 +834,7 @@ export default defineDevConfig(swcConfig, {
 <p>Generic transformers can use the <code v-pre>context</code> parameter to gather additional information about their execution context, like the <code v-pre>environment</code> they are operating in:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <div class="codeblock-title">transformer.ts</div>
-<pre class="language-typescript" data-line="4"><code v-pre class="language-typescript">import { WebpackConfigTransformer, WebpackConfigTransformerContext, WebpackConfig } from &quot;@workleap/webpack-configs&quot;;
+<pre class="language-typescript" data-line="4"><code v-pre class="language-typescript">import type { WebpackConfigTransformer, WebpackConfigTransformerContext, WebpackConfig } from &quot;@workleap/webpack-configs&quot;;
 
 export const transformer: WebpackConfigTransformer = (config: WebpackConfig, context: WebpackConfigTransformerContext) =&gt; {
     if (context.environment === &quot;dev&quot;) {
