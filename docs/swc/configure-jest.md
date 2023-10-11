@@ -108,7 +108,7 @@ transformer(config: SwcConfig, context: SwcConfigTransformerContext) => SwcConfi
 ```
 
 ```ts !#3-7,10 swc.jest.ts
-import { defineJestConfig, SwcConfigTransformer, SwcConfig } from "@workleap/swc-configs";
+import { defineJestConfig, type SwcConfigTransformer, type SwcConfig } from "@workleap/swc-configs";
 
 const useCommonJsModules: SwcConfigTransformer = (config: SwcConfig) => {
     config.module.type = "commonjs";

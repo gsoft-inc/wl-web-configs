@@ -397,7 +397,7 @@ transformer(config: WebpackConfig, context: WebpackConfigTransformerContext) => 
 ```js !#6-10,13 webpack.build.js
 // @ts-check
 
-import { defineBuildConfig, WebpackConfigTransformer, WebpackConfig } from "@workleap/webpack-configs";
+import { defineBuildConfig, type WebpackConfigTransformer, type WebpackConfig } from "@workleap/webpack-configs";
 import { swcConfig } from "./swc.build.js";
 
 const useContentHashOutputFilename: WebpackConfigTransformer = (config: WebpackConfig) => {
@@ -416,7 +416,7 @@ export default defineBuildConfig(swcConfig, {
 Generic transformers can use the `context` parameter to gather additional information about their execution context, like the `environment` they are operating in:
 
 ```ts !#4 transformer.ts
-import { WebpackConfigTransformer, WebpackConfigTransformerContext, WebpackConfig } from "@workleap/webpack-configs";
+import type { WebpackConfigTransformer, WebpackConfigTransformerContext, WebpackConfig } from "@workleap/webpack-configs";
 
 export const transformer: WebpackConfigTransformer = (config: WebpackConfig, context: WebpackConfigTransformerContext) => {
     if (context.environment === "build") {

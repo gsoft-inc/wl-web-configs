@@ -8,7 +8,7 @@ import { fileURLToPath } from "node:url";
 import type { Configuration as WebpackConfig } from "webpack";
 import webpack from "webpack";
 import { applyTransformers, type WebpackConfigTransformer } from "./transformers/applyTransformers.ts";
-import { isObject } from "./utils.ts";
+import { isNil, isObject } from "./utils.ts";
 
 // Add the "devServer" prop to WebpackConfig typings.
 import "webpack-dev-server";
@@ -52,6 +52,7 @@ export interface DefineDevConfigOptions {
     htmlWebpackPlugin?: boolean | HtmlWebpackPlugin.Options;
     fastRefresh?: boolean | ReactRefreshPluginOptions;
     cssModules?: boolean;
+    overlay?: false;
     environmentVariables?: Record<string, unknown>;
     transformers?: WebpackConfigTransformer[];
     verbose?: boolean;
@@ -71,6 +72,14 @@ function trySetSwcFastRefresh(config: SwcConfig, enabled: boolean) {
     return config;
 }
 
+function trySetFastRefreshOverlay(options: ReactRefreshPluginOptions, overlay?: boolean) {
+    if (overlay === false && isNil(options.overlay)) {
+        options.overlay = false;
+    }
+
+    return options;
+}
+
 export function defineDevConfig(swcConfig: SwcConfig, options: DefineDevConfigOptions = {}) {
     preflight();
 
@@ -86,6 +95,7 @@ export function defineDevConfig(swcConfig: SwcConfig, options: DefineDevConfigOp
         htmlWebpackPlugin = defineDevHtmlWebpackPluginConfig(),
         fastRefresh = true,
         cssModules = false,
+        overlay,
         // Using an empty object literal as the default value to ensure
         // "process.env" is always available.
         environmentVariables = {},
@@ -104,7 +114,10 @@ export function defineDevConfig(swcConfig: SwcConfig, options: DefineDevConfigOp
             https,
             host,
             port,
-            historyApiFallback: true
+            historyApiFallback: true,
+            client: (overlay === false || fastRefresh) ? {
+                overlay: false
+            } : undefined
         },
         entry,
         output: {
@@ -220,7 +233,7 @@ export function defineDevConfig(swcConfig: SwcConfig, options: DefineDevConfigOp
                     return acc;
                 }, {} as Record<string, string>)
             }),
-            fastRefresh && new ReactRefreshWebpackPlugin(isObject(fastRefresh) ? fastRefresh : defineFastRefreshPluginConfig()),
+            fastRefresh && new ReactRefreshWebpackPlugin(trySetFastRefreshOverlay(isObject(fastRefresh) ? fastRefresh : defineFastRefreshPluginConfig(), overlay)),
             ...plugins
         ].filter(Boolean) as WebpackConfig["plugins"]
     };

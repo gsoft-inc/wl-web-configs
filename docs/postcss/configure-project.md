@@ -115,7 +115,7 @@ To view the default configuration of `@workleap/postcss-configs`, have a look at
 
 ### `transformers`
 
-- **Type**: `((config: PostCSSConfig ) => PostCSSConfig)[]`
+- **Type**: `((config: PostCSSConfig) => PostCSSConfig)[]`
 - **Default**: `[]`
 
 ```ts

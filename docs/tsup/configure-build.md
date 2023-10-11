@@ -77,7 +77,7 @@ To view the default build configuration of `@workleap/tsup-configs`, have a look
 - **Default**: `[]`
 
 ```ts myCustomTransformer.ts
-import { TsupConfigTransformer, TsupConfig } from "@workleap/tsup-configs";
+import { type TsupConfigTransformer, type TsupConfig } from "@workleap/tsup-configs";
 
 export const myCustomTsupTransformer: TsupConfigTransformer = (config: TsupConfig) => {
     config.dts = false;
@@ -102,7 +102,7 @@ export default defineBuildConfig({
 Generic transformers can use the `context` parameter to gather additional information about their execution context, like the `environment` they are operating in:
 
 ```ts !#4 myCustomTransformer.ts
-import { TsupConfigTransformer, TsupConfigTransformerContext, TsupConfig } from "@workleap/tsup-configs";
+import type { TsupConfigTransformer, TsupConfigTransformerContext, TsupConfig } from "@workleap/tsup-configs";
 
 export const myCustomTsupTransformer: TsupConfigTransformer = (config: TsupConfig, context: TsupConfigTransformerContext) => {
     if (context.environment === "build") {

@@ -368,6 +368,24 @@ export default defineDevConfig(swcConfig, {
 });
 ```
 
+### `overlay`
+
+- **Type**: `false`
+- **Default**: `undefined` 
+
+Whether or not a full-screen overlay should be in the browser when there are compiler errors or warnings.
+
+```js !#7 webpack.dev.js
+// @ts-check
+
+import { defineDevConfig } from "@workleap/webpack-configs";
+import { swcConfig } from "./swc.dev.js";
+
+export default defineDevConfig(swcConfig, {
+    overlay: false
+});
+```
+
 ### `verbose`
 
 - **Type**: `boolean`
@@ -408,7 +426,7 @@ transformer(config: WebpackConfig, context: WebpackConfigTransformerContext) => 
 ```js !#6-12,16 webpack.dev.js
 // @ts-check
 
-import { defineDevConfig, WebpackConfigTransformer, WebpackConfig } from "@workleap/webpack-configs";
+import { defineDevConfig, type WebpackConfigTransformer, type WebpackConfig } from "@workleap/webpack-configs";
 import { swcConfig } from "./swc.dev.js";
 
 const enableInMemoryCache: WebpackConfigTransformer = (config: WebpackConfig) => {
@@ -430,7 +448,7 @@ export default defineDevConfig(swcConfig, {
 Generic transformers can use the `context` parameter to gather additional information about their execution context, like the `environment` they are operating in:
 
 ```ts !#4 transformer.ts
-import { WebpackConfigTransformer, WebpackConfigTransformerContext, WebpackConfig } from "@workleap/webpack-configs";
+import type { WebpackConfigTransformer, WebpackConfigTransformerContext, WebpackConfig } from "@workleap/webpack-configs";
 
 export const transformer: WebpackConfigTransformer = (config: WebpackConfig, context: WebpackConfigTransformerContext) => {
     if (context.environment === "dev") {
