@@ -3,6 +3,7 @@ import { Config as SwcConfig } from "@swc/core";
 import { defineDevConfig as defineSwcConfig } from "@workleap/swc-configs";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import type { Configuration, FileCacheOptions, RuleSetRule } from "webpack";
+import type { ClientConfiguration } from "webpack-dev-server";
 import { defineDevConfig, defineDevHtmlWebpackPluginConfig, defineFastRefreshPluginConfig } from "../src/dev.ts";
 import type { WebpackConfigTransformer } from "../src/transformers/applyTransformers.ts";
 import { findModuleRule, matchLoaderName } from "../src/transformers/moduleRules.ts";
@@ -249,6 +250,30 @@ test("when css modules is disabled, do not include css modules configuration", (
     const cssLoader = findModuleRule(result, matchLoaderName("css-loader"));
 
     expect((cssLoader?.moduleRule as RuleSetRule).options).toBeUndefined();
+});
+
+test("when the overlay option is not provided and fast refresh is disabled, the devserver overlay option is undefined", () => {
+    const result = defineDevConfig(SwcConfig, {
+        fastRefresh: false
+    });
+
+    expect(result.devServer!.client).toBeUndefined();
+});
+
+test("when fast refresh is enabled, the devserver overlay option is false", () => {
+    const result = defineDevConfig(SwcConfig, {
+        fastRefresh: true
+    });
+
+    expect((result.devServer!.client as ClientConfiguration).overlay).toBeFalsy();
+});
+
+test("when the overlay is disabled, the devserver overlay option is false", () => {
+    const result = defineDevConfig(SwcConfig, {
+        overlay: false
+    });
+
+    expect((result.devServer!.client as ClientConfiguration).overlay).toBeFalsy();
 });
 
 test("the provided swc config object is set as the swc-loader options", () => {

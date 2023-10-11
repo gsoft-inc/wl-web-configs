@@ -146,11 +146,11 @@ transformer(config: SwcConfig, context: SwcConfigTransformerContext) => SwcConfi
 ```js !#7-11,14 swc.build.js
 // @ts-check
 
-import { browserslistToSwc, defineBuildConfig } from "@workleap/swc-configs";
+import { browserslistToSwc, defineBuildConfig, type SwcConfigTransformer, type SwcConfig } from "@workleap/swc-configs";
 
 const targets = browserslistToSwc();
 
-function mangleMinifiedCode(config) {
+const mangleMinifiedCode: SwcConfigTransformer = (config: SwcConfig) => {
     config.jsc.minify.mangle = true;
 
     return config;
@@ -166,7 +166,7 @@ export const swcConfig = defineBuildConfig(targets, {
 Generic transformers can use the `context` parameter to gather additional information about their execution context, like the `environment` they are operating in:
 
 ```ts !#4 transformer.ts
-import { SwcConfigTransformer, SwcConfigTransformerContext, SwcConfig } from "@workleap/swc-configs";
+import type { SwcConfigTransformer, SwcConfigTransformerContext, SwcConfig } from "@workleap/swc-configs";
 
 export const transformer: SwcConfigTransformer = (config: SwcConfig, context: SwcConfigTransformerContext) => {
     if (context.environment === "build") {

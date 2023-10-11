@@ -165,11 +165,11 @@ transformer(config: SwcConfig, context: SwcConfigTransformerContext) => SwcConfi
 ```js !#7-11,14 swc.dev.js
 // @ts-check
 
-import { browserslistToSwc, defineDevConfig } from "@workleap/swc-configs";
+import { browserslistToSwc, defineDevConfig, type SwcConfigTransformer, type SwcConfig } from "@workleap/swc-configs";
 
 const targets = browserslistToSwc();
 
-function disableReactBuiltins(config) {
+const disableReactBuiltins: SwcConfigTransformer = (config: SwcConfig) => {
     config.jsc.transform.react.useBuiltins = false;
 
     return config;
@@ -185,7 +185,7 @@ export const swcConfig = defineDevConfig(targets, {
 Generic transformers can use the `context` parameter to gather additional information about their execution context, like the `environment` they are operating in:
 
 ```ts !#4 transformer.ts
-import { SwcConfigTransformer, SwcConfigTransformerContext, SwcConfig } from "@workleap/swc-configs";
+import type { SwcConfigTransformer, SwcConfigTransformerContext, SwcConfig } from "@workleap/swc-configs";
 
 export const transformer: SwcConfigTransformer = (config: SwcConfig, context: SwcConfigTransformerContext) => {
     if (context.environment === "dev") {
