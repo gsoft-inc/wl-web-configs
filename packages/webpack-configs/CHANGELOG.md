@@ -1,5 +1,11 @@
 # @workleap/webpack-configs
 
+## 1.1.0
+
+### Minor Changes
+
+- [#155](https://github.com/gsoft-inc/wl-web-configs/pull/155) [`5a02365`](https://github.com/gsoft-inc/wl-web-configs/commit/5a02365e18b002c48c20e4ae23114d7063027b2f) Thanks [@patricklafrance](https://github.com/patricklafrance)! - Added an overlay predefined options for the webpack config.
+
 ## 1.0.8
 
 ### Patch Changes
