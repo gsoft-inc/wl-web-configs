@@ -49,7 +49,7 @@ export function defineMiniCssExtractPluginConfig(options: MiniCssExtractPluginOp
 
 function preflight(options: DefineBuildConfigOptions) {
     if (options.publicPath) {
-        if (!options.publicPath.endsWith("/") || options.publicPath === "auto") {
+        if (options.publicPath !== "auto" && !options.publicPath.endsWith("/")) {
             throw new Error("[webpack-configs] The \"publicPath\" must end with a \"/\".");
         }
     }
