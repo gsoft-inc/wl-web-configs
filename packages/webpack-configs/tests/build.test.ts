@@ -32,6 +32,10 @@ test("when a public path not ending with a trailing slash is provided, throw an 
     expect(() => defineBuildConfig(SwcConfig, { publicPath: "an-invalid-public-path" })).toThrow();
 });
 
+test("when a public path is set to \"auto\", should not throw an error", () => {
+    expect(() => defineBuildConfig(SwcConfig, { publicPath: "auto" })).not.toThrow();
+});
+
 test("when a valid public path is provided, use the provided public path value", () => {
     const result = defineBuildConfig(SwcConfig, {
         publicPath: "a-valid-public-path-ending-with-a-trailing-slash/"
