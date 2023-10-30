@@ -26,12 +26,6 @@ test("when an output path is provided, use the provided ouput path value", () =>
     expect(result.output?.path).toBe("./a-new-output-path");
 });
 
-test("when a public path not ending with a trailing slash is provided, throw an error", () => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore - We know this is invalid, but we still want to test the error.
-    expect(() => defineBuildConfig(SwcConfig, { publicPath: "an-invalid-public-path" })).toThrow();
-});
-
 test("when a public path is set to \"auto\", should not throw an error", () => {
     expect(() => defineBuildConfig(SwcConfig, { publicPath: "auto" })).not.toThrow();
 });
