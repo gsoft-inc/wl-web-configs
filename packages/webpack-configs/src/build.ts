@@ -54,7 +54,7 @@ export function defineMiniCssExtractPluginConfig(options: MiniCssExtractPluginOp
 
 function preflight(options: DefineBuildConfigOptions) {
     if (options.publicPath) {
-        if (!options.publicPath.endsWith("/")) {
+        if (options.publicPath !== "auto" && !options.publicPath.endsWith("/")) {
             throw new Error("[webpack-configs] The \"publicPath\" must end with a \"/\".");
         }
     }
@@ -63,7 +63,7 @@ function preflight(options: DefineBuildConfigOptions) {
 export interface DefineBuildConfigOptions {
     entry?: string;
     outputPath?: string;
-    publicPath?: string;
+    publicPath?: `${string}/` | "auto";
     cache?: boolean;
     cacheDirectory?: string;
     moduleRules?: NonNullable<WebpackConfig["module"]>["rules"];
