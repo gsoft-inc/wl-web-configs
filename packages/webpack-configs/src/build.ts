@@ -21,8 +21,6 @@ const require = createRequire(import.meta.url);
 // The equivalent of __filename for CommonJS.
 const __filename = fileURLToPath(import.meta.url);
 
-type MiniCssExtractPluginOptions = NonNullable<ConstructorParameters<typeof MiniCssExtractPlugin>[number]>;
-
 export function defineBuildHtmlWebpackPluginConfig(options: HtmlWebpackPlugin.Options = {}): HtmlWebpackPlugin.Options {
     const {
         template = path.resolve("./public/index.html"),
@@ -34,6 +32,8 @@ export function defineBuildHtmlWebpackPluginConfig(options: HtmlWebpackPlugin.Op
         template
     };
 }
+
+type MiniCssExtractPluginOptions = NonNullable<ConstructorParameters<typeof MiniCssExtractPlugin>[number]>;
 
 export function defineMiniCssExtractPluginConfig(options: MiniCssExtractPluginOptions = {}): MiniCssExtractPluginOptions {
     const {

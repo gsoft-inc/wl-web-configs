@@ -45,6 +45,7 @@ export interface DefineDevConfigOptions {
     https?: NonNullable<WebpackConfig["devServer"]>["https"];
     host?: string;
     port?: number;
+    publicPath?: `${string}/` | "auto";
     cache?: boolean;
     cacheDirectory?: string;
     moduleRules?: NonNullable<WebpackConfig["module"]>["rules"];
@@ -88,6 +89,7 @@ export function defineDevConfig(swcConfig: SwcConfig, options: DefineDevConfigOp
         https = false,
         host = "localhost",
         port = 8080,
+        publicPath,
         cache = true,
         cacheDirectory = path.resolve("node_modules/.cache/webpack"),
         moduleRules = [],
@@ -122,7 +124,7 @@ export function defineDevConfig(swcConfig: SwcConfig, options: DefineDevConfigOp
         entry,
         output: {
             // The trailing / is very important, otherwise paths will not be resolved correctly.
-            publicPath: `${https ? "https" : "http"}://${host}:${port}/`
+            publicPath: publicPath ?? `${https ? "https" : "http"}://${host}:${port}/`
         },
         cache: cache && {
             type: "filesystem",

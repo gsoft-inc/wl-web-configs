@@ -181,6 +181,24 @@ export default defineBuildConfig(swcConfig, {
 });
 ```
 
+Or for an [automatic](https://webpack.js.org/guides/public-path/#automatic-publicpath) public path:
+
+```js !#7,11 webpack.build.js
+// @ts-check
+
+import { defineBuildConfig, defineBuildHtmlWebpackPluginConfig  } from "@workleap/webpack-configs";
+import { swcConfig } from "./swc.build.js";
+
+export default defineBuildConfig(swcConfig, {
+    publicPath: "auto",
+    // If you are using the html webpack plugin, make sure to also set the plugin
+    // public path option to "/".
+    htmlWebpackPlugin: defineBuildHtmlWebpackPluginConfig({
+        publicPath: "/"
+    })
+});
+```
+
 ### `cache`
 
 - **Type**: `boolean`
