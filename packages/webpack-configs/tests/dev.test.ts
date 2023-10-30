@@ -85,6 +85,14 @@ test("when a port is provided, the public path include the provided port", () =>
     expect(result.output?.publicPath).toMatch(/1234/);
 });
 
+test("when a public path is provided, use the provided public path", () => {
+    const result = defineDevConfig(SwcConfig, {
+        publicPath: "http://my-dev-host.com/"
+    });
+
+    expect(result.output?.publicPath).toBe("http://my-dev-host.com/");
+});
+
 test("when cache is enabled, the cache configuration is included", () => {
     const result = defineDevConfig(SwcConfig, {
         cache: true

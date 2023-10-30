@@ -198,6 +198,43 @@ export default defineDevConfig(swcConfig, {
 });
 ```
 
+### `publicPath`
+
+- **Type**: `boolean`
+- **Default**: `${https ? "https" : "http"}://${host}:${port}/`
+
+Set webpack [public path](https://webpack.js.org/configuration/output/#outputpublicpath).
+
+```js !#8 webpack.dev.js
+// @ts-check
+
+import { defineDevConfig } from "@workleap/webpack-configs";
+import { swcConfig } from "./swc.dev.js";
+
+export default defineDevConfig(swcConfig, {
+    // The ending "/" is very important.
+    publicPath: "http://dev-host:8080/"
+});
+```
+
+Or for an [automatic](https://webpack.js.org/guides/public-path/#automatic-publicpath) public path:
+
+```js !#7,11 webpack.build.js
+// @ts-check
+
+import { defineDevConfig, defineDevHtmlWebpackPluginConfig  } from "@workleap/webpack-configs";
+import { swcConfig } from "./swc.dev.js";
+
+export default defineDevConfig(swcConfig, {
+    publicPath: "auto",
+    // If you are using the html webpack plugin, make sure to also set the plugin
+    // public path option to "/".
+    htmlWebpackPlugin: defineDevHtmlWebpackPluginConfig({
+        publicPath: "/"
+    })
+});
+```
+
 ### `cache`
 
 - **Type**: `boolean`
