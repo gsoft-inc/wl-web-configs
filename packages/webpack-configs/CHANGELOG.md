@@ -1,5 +1,11 @@
 # @workleap/webpack-configs
 
+## 1.2.0
+
+### Minor Changes
+
+- [#164](https://github.com/gsoft-inc/wl-web-configs/pull/164) [`b747f5b`](https://github.com/gsoft-inc/wl-web-configs/commit/b747f5b1d1bc7f0b7935e04ab971dad256e8ed8c) Thanks [@patricklafrance](https://github.com/patricklafrance)! - - Added a `publicPath` prop to the development configuration.
+
 ## 1.1.1
 
 ### Patch Changes
