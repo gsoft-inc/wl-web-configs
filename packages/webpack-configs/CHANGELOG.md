@@ -1,5 +1,12 @@
 # @workleap/webpack-configs
 
+## 1.1.1
+
+### Patch Changes
+
+- [#162](https://github.com/gsoft-inc/wl-web-configs/pull/162) [`fff9d08`](https://github.com/gsoft-inc/wl-web-configs/commit/fff9d087ebfe941fb38de8a46b3af79258f7f80d) Thanks [@patricklafrance](https://github.com/patricklafrance)! - - Removed the `build` config `preflight` function because it's not enforced by TypeScript typings.
+  - Updated the `build` config non-optimized options.
+
 ## 1.1.0
 
 ### Minor Changes
