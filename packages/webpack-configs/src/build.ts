@@ -23,11 +23,6 @@ const __filename = fileURLToPath(import.meta.url);
 
 type MiniCssExtractPluginOptions = NonNullable<ConstructorParameters<typeof MiniCssExtractPlugin>[number]>;
 
-// export interface OptimizeOptions {
-//     minimize?: boolean;
-//     chunkIds?: NonNullable<WebpackConfig["optimization"]>["chunkIds"];
-// }
-
 export function defineBuildHtmlWebpackPluginConfig(options: HtmlWebpackPlugin.Options = {}): HtmlWebpackPlugin.Options {
     const {
         template = path.resolve("./public/index.html"),
