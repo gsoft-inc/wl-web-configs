@@ -1,5 +1,11 @@
 # @workleap/webpack-configs
 
+## 1.2.1
+
+### Patch Changes
+
+- [#167](https://github.com/gsoft-inc/wl-web-configs/pull/167) [`55e0bd4`](https://github.com/gsoft-inc/wl-web-configs/commit/55e0bd4a7574f3cc6c138474eca90b84a62ad16f) Thanks [@tjosepo](https://github.com/tjosepo)! - Fix file extension RegEx rules being too lenient
+
 ## 1.2.0
 
 ### Minor Changes
