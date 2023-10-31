@@ -174,21 +174,21 @@ export function defineDevConfig(swcConfig: SwcConfig, options: DefineDevConfigOp
         module: {
             rules: [
                 {
-                    test: /\.(js|jsx|ts|tsx)/i,
+                    test: /\.(js|jsx|ts|tsx)$/i,
                     exclude: /node_modules/,
                     loader: require.resolve("swc-loader"),
                     options: trySetSwcFastRefresh(swcConfig, fastRefresh !== false)
                 },
                 {
                     // https://stackoverflow.com/questions/69427025/programmatic-webpack-jest-esm-cant-resolve-module-without-js-file-exten
-                    test: /\.js/i,
+                    test: /\.js$/i,
                     include: /node_modules/,
                     resolve: {
                         fullySpecified: false
                     }
                 },
                 {
-                    test: /\.css/i,
+                    test: /\.css$/i,
                     use: [
                         { loader: require.resolve("style-loader") },
                         {
@@ -205,11 +205,11 @@ export function defineDevConfig(swcConfig: SwcConfig, options: DefineDevConfigOp
                     ]
                 },
                 {
-                    test: /\.svg/i,
+                    test: /\.svg$/i,
                     loader: require.resolve("@svgr/webpack")
                 },
                 {
-                    test: /\.(png|jpe?g|gif)/i,
+                    test: /\.(png|jpe?g|gif)$/i,
                     type: "asset/resource"
                 },
                 ...moduleRules
