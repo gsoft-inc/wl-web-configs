@@ -90,6 +90,10 @@ Then, add the assets to the `index.html` file:
 </html>
 ```
 
+!!!info
+If `output.publicPath` is set to `auto`, use `href="favicon.png"` instead.
+!!!
+
 ### `defineBuildConfig`
 
 Next, create a configuration file named `webpack.build.js` at the root of the project:

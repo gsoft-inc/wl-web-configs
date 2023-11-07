@@ -15,7 +15,7 @@ export function Fetch() {
             .then(data => {
                 setPokemons(data);
             })
-            .catch(() => {
+            .catch((error: unknown) => {
                 console.error("An error occured while fetching pokemons.");
             });
     }, []);

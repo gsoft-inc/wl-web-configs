@@ -89,6 +89,10 @@ Then, add the assets to the `index.html` file:
 </html>
 ```
 
+!!!info
+If `output.publicPath` is set to `auto`, use `href="favicon.png"` instead.
+!!!
+
 ### `defineDevConfig`
 
 Next, create a configuration file named `webpack.dev.js` at the root of the project:
