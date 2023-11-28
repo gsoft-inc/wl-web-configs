@@ -226,7 +226,7 @@ New projects shouldn't have to customize the default configurations offered by `
 
 ## Try it :rocket:
 
-To test your new setup, open a CSS file, type invalid code (e.g. `color: #fff`), then save. Open a terminal at the root of the solution and execute the [CLI script added earlier](#add-a-cli-script):
+To test your new setup, open a CSS file, type invalid code (e.g. `color: #fff`), then save. Open a terminal at the root of the solution and execute the CLI script added earlier:
 
 +++ pnpm
 ```bash

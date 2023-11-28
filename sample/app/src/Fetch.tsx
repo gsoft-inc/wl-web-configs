@@ -4,7 +4,7 @@ export function Fetch() {
     const [pokemons, setPokemons] = useState<string[]>([]);
 
     useEffect(() => {
-        fetch("/pokemons")
+        fetch("/api/pokemons")
             .then(res => {
                 if (res.ok) {
                     return res.json();
