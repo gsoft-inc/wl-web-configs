@@ -1,7 +1,7 @@
 import { HttpResponse, http, type HttpHandler } from "msw";
 
 export const handlers: HttpHandler[] = [
-    http.get("/pokemons", () => {
+    http.get("/api/pokemons", () => {
         return HttpResponse.json([
             "Bulbasaur",
             "Ivysaur",

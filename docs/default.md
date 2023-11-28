@@ -6,7 +6,7 @@ label: Getting started
 
 # Getting started
 
-Welcome to `workleap/web-configs`, a collection of **configuration libraries** for building web applications at [Workleap](https://workleap.com/). On this getting started page, you'll find an overview of the project and a list of supported tools.
+Welcome to `@workleap/web-configs`, a collection of **configuration libraries** for building web applications at [Workleap](https://workleap.com/). On this getting started page, you'll find an overview of the project and a list of supported tools.
 
 <!-- !!!warning Before you continue...
 
@@ -27,7 +27,7 @@ npm create @workleap/project@latest <output-directory>
 +++
 !!! -->
 
-## Why?
+## Why we built these libraries?
 
 Starting a new web application is still an arduous task. There are so many tools to choose from, learn, install and configure, it can be daunting.
 

@@ -1,7 +1,7 @@
 ---
 order: 110
 icon: /static/webpack.svg
-label: Webpack
+label: webpack
 expanded: true
 toc:
     depth: 2-3
@@ -30,7 +30,7 @@ npm create @workleap/project@latest <output-directory>
 
 ## A word about Rspack
 
-[Rspack](https://www.rspack.dev/) is a partial rewrite of [webpack](https://webpack.js.org/) in Rust and will most likely be its successor once it's features complete and stable. Our goal is to migrate to Rspack somewhere in 2024 when [Module Federation](https://module-federation.io/) support will be available.
+[Rspack](https://www.rspack.dev/) is a partial rewrite of [webpack](https://webpack.js.org/) in Rust and will most likely be its successor once it's features complete and stable. Our goal is to migrate to Rspack somewhere in 2024 or 2025 when a `1.0` version is released and [Module Federation](https://module-federation.io/) support is available.
 
 Meanwhile, you can **confidently start a new project with webpack** as the **migration** process to Rspack is expected to be **seamless**; Rspack is committed to support the full webpack API and its massive plugin ecosystem.
 
