@@ -93,6 +93,7 @@ Then, open the newly created file and paste the following ignore rules:
 ``` .prettierignore
 *
 !**/*.css
+!.storybook
 ```
 
 ## Configure indent style

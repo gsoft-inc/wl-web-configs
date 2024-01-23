@@ -426,7 +426,7 @@ const useContentHashOutputFilename: WebpackConfigTransformer = (config: WebpackC
     config.output.filename = "[name].[contenthash].bundle.js";
 
     return config;
-}:
+};
 
 export default defineBuildConfig(swcConfig, {
     transformers: [useContentHashOutputFilename]

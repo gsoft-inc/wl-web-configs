@@ -54,6 +54,16 @@ For an applications developed with React, use the following configuration:
 }
 ```
 
+If your application is using [Storybook](https://storybook.js.org/), make sure to include the `.storybook` folder:
+
+```json !#3 tsconfig.json
+{
+    "extends": ["@workleap/typescript-configs/web-application.json"],
+    "include": ["**/*", ".storybook/*"],
+    "exclude": ["dist", "node_modules"]
+}
+```
+
 ### `library`
 
 For a library project developed with or without React, use the following configuration:
@@ -61,6 +71,16 @@ For a library project developed with or without React, use the following configu
 ```json !#2 tsconfig.json
 {
     "extends": ["@workleap/typescript-configs/library.json"],
+    "exclude": ["dist", "node_modules"]
+}
+```
+
+If your application is using [Storybook](https://storybook.js.org/), make sure to include the `.storybook` folder:
+
+```json !#3 tsconfig.json
+{
+    "extends": ["@workleap/typescript-configs/library.json"],
+    "include": ["**/*", ".storybook/*"],
     "exclude": ["dist", "node_modules"]
 }
 ```
