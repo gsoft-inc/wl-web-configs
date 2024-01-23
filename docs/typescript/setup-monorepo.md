@@ -59,6 +59,16 @@ Then, open the newly created file and extend the default configuration with the 
 }
 ```
 
+If your application is using [Storybook](https://storybook.js.org/), make sure to include the `.storybook` folder:
+
+```json !#3 tsconfig.json
+{
+    "extends": "@workleap/typescript-configs/monorepo-workspace.json",
+    "include": ["**/*", ".storybook/*"],
+    "exclude": ["packages", "node_modules"]
+}
+```
+
 ### Add a CLI script
 
 At times, especially when running the CI build, it's useful to lint the entire solution using a single command. To do so, add the following script to your solution's workspace `package.json` file:

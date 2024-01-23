@@ -102,6 +102,7 @@ node_modules
 *.md
 *.yml
 *.yaml
+!.storybook
 ```
 
 ## Configure the indent style
