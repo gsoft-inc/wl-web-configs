@@ -59,13 +59,13 @@ Then, open the newly created file and extend the default configuration with the 
 }
 ```
 
-If your application is using [Storybook](https://storybook.js.org/), make sure to include the `.storybook` folder:
+If your application is using [Storybook](https://storybook.js.org/), make sure to include the `.storybook` folder and exclude the `.storybook/storybook-static` folder:
 
 ```json !#3 tsconfig.json
 {
     "extends": "@workleap/typescript-configs/monorepo-workspace.json",
     "include": ["**/*", ".storybook/*"],
-    "exclude": ["packages", "node_modules"]
+    "exclude": ["packages", "node_modules", ".storybook/storybook-static"]
 }
 ```
 

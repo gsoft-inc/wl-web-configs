@@ -2,20 +2,26 @@ import type { Config as SwcConfig } from "@swc/core";
 import { applyTransformers, type SwcConfigTransformer } from "./applyTransformers.ts";
 
 export interface DefineDevConfigOptions {
+    baseUrl?: NonNullable<SwcConfig["jsc"]>["baseUrl"];
     fastRefresh?: boolean;
     parser?: "ecmascript" | "typescript";
+    paths?: NonNullable<SwcConfig["jsc"]>["paths"];
     transformers?: SwcConfigTransformer[];
 }
 
 export function defineDevConfig(targets: Record<string, string>, options: DefineDevConfigOptions = {}) {
     const {
+        baseUrl,
         fastRefresh = true,
         parser = "typescript",
+        paths,
         transformers = []
     } = options;
 
     const config: SwcConfig = {
         jsc: {
+            baseUrl,
+            paths,
             parser: parser === "ecmascript"
                 ? {
                     syntax: "ecmascript",

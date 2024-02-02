@@ -2,18 +2,24 @@ import type { Config as SwcConfig } from "@swc/core";
 import { applyTransformers, type SwcConfigTransformer } from "./applyTransformers.ts";
 
 export interface DefineBuildConfigOptions {
+    baseUrl?: NonNullable<SwcConfig["jsc"]>["baseUrl"];
     parser?: "ecmascript" | "typescript";
+    paths?: NonNullable<SwcConfig["jsc"]>["paths"];
     transformers?: SwcConfigTransformer[];
 }
 
 export function defineBuildConfig(targets: Record<string, string>, options: DefineBuildConfigOptions = {}) {
     const {
+        baseUrl,
         parser = "typescript",
+        paths,
         transformers = []
     } = options;
 
     const config: SwcConfig = {
         jsc: {
+            baseUrl,
+            paths,
             parser: parser === "ecmascript"
                 ? {
                     syntax: "ecmascript",

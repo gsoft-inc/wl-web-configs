@@ -75,13 +75,13 @@ For a library project developed with or without React, use the following configu
 }
 ```
 
-If your application is using [Storybook](https://storybook.js.org/), make sure to include the `.storybook` folder:
+If your application is using [Storybook](https://storybook.js.org/), make sure to include the `.storybook` folder and exclude the `.storybook/storybook-static` folder:
 
-```json !#3 tsconfig.json
+```json !#3-4 tsconfig.json
 {
     "extends": ["@workleap/typescript-configs/library.json"],
     "include": ["**/*", ".storybook/*"],
-    "exclude": ["dist", "node_modules"]
+    "exclude": ["dist", "node_modules", ".storybook/storybook-static"]
 }
 ```
 
