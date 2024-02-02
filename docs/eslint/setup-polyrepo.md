@@ -99,6 +99,8 @@ Then, open the newly created file and paste the following ignore rules:
 ```bash .eslintignore
 **/dist/*
 node_modules
+__snapshots__
+storybook-static
 *.md
 *.yml
 *.yaml

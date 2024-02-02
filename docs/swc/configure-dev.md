@@ -105,6 +105,25 @@ The `browserslistToSwc(options)` utility function accepts any option supported b
 
 The `defineDevConfig(targets, options)` function can be used as shown in the previous example, however, if you wish to customize the default configuration, the function also accept a few predefined options to help with that 👇
 
+### `baseUrl`
+
+- **Type**: `string`
+
+Sets a base directory from which to resolve module names. This option is usually provided when custom [paths](#paths) are provided. Note that SWC requires the `baseUrl` to be an absolute path.
+
+```js !#9 swc.dev.js
+// @ts-check
+
+import path from "node:path";
+import { browserslistToSwc, defineDevConfig } from "@workleap/swc-configs";
+
+const targets = browserslistToSwc();
+
+export const swcConfig = defineDevConfig(targets, {
+    baseUrl: path.resolve("src")
+});
+```
+
 ### `fastRefresh`
 
 - **Type**: `boolean`
@@ -143,6 +162,28 @@ export const swcConfig = defineDevConfig(targets, {
 });
 ```
 
+### `paths`
+
+- **Type**: `Record<string, string[]>`
+
+A series of entries which re-map imports to lookup locations relative to the [baseUrl](#baseurl) if set.
+
+```js !#10-12 swc.dev.js
+// @ts-check
+
+import path from "node:path";
+import { browserslistToSwc, defineDevConfig } from "@workleap/swc-configs";
+
+const targets = browserslistToSwc();
+
+export const swcConfig = defineDevConfig(targets, {
+    baseUrl: path.resolve("src"),
+    paths: {
+        "@/*": ["*"]
+    }
+});
+```
+
 ## Configuration transformers
 
 !!!warning
@@ -162,14 +203,17 @@ To view the default development configuration of `@workleap/swc-configs`, have a
 transformer(config: SwcConfig, context: SwcConfigTransformerContext) => SwcConfig
 ```
 
-```js !#7-11,14 swc.dev.js
+```js !#10-14,17 swc.dev.js
 // @ts-check
 
-import { browserslistToSwc, defineDevConfig, type SwcConfigTransformer, type SwcConfig } from "@workleap/swc-configs";
+import { browserslistToSwc, defineDevConfig } from "@workleap/swc-configs";
 
 const targets = browserslistToSwc();
 
-const disableReactBuiltins: SwcConfigTransformer = (config: SwcConfig) => {
+/**
+ * @type {import("@workleap/swc-configs").SwcConfigTransformer}
+ */
+function disableReactBuiltins(config) {
     config.jsc.transform.react.useBuiltins = false;
 
     return config;
@@ -184,10 +228,13 @@ export const swcConfig = defineDevConfig(targets, {
 
 Generic transformers can use the `context` parameter to gather additional information about their execution context, like the `environment` they are operating in:
 
-```ts !#4 transformer.ts
-import type { SwcConfigTransformer, SwcConfigTransformerContext, SwcConfig } from "@workleap/swc-configs";
+```ts !#7 transformer.js
+// @ts-check
 
-export const transformer: SwcConfigTransformer = (config: SwcConfig, context: SwcConfigTransformerContext) => {
+/**
+ * @type {import("@workleap/swc-configs").SwcConfigTransformer}
+ */
+export function transformer(config, context) {
     if (context.environment === "dev") {
         config.jsc.transform.react.useBuiltins = false;
     }

@@ -70,6 +70,8 @@ Then, open the newly created file and paste the following ignore rules:
 ```bash .stylelintignore
 **/dist/*
 node_modules
+storybook-static
+!.storybook
 ```
 
 ### .prettierignore
@@ -93,7 +95,6 @@ Then, open the newly created file and paste the following ignore rules:
 ``` .prettierignore
 *
 !**/*.css
-!.storybook
 ```
 
 ## Configure indent style

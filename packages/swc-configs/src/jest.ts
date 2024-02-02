@@ -2,20 +2,26 @@ import type { Config as SwcConfig } from "@swc/core";
 import { applyTransformers, type SwcConfigTransformer } from "./applyTransformers.ts";
 
 export interface DefineJestConfigOptions {
-    react?: boolean;
+    baseUrl?: NonNullable<SwcConfig["jsc"]>["baseUrl"];
     parser?: "ecmascript" | "typescript";
+    paths?: NonNullable<SwcConfig["jsc"]>["paths"];
+    react?: boolean;
     transformers?: SwcConfigTransformer[];
 }
 
 export function defineJestConfig(options: DefineJestConfigOptions = {}) {
     const {
-        react = false,
+        baseUrl,
         parser = "typescript",
+        paths,
+        react = false,
         transformers = []
     } = options;
 
     const config: SwcConfig = {
         jsc: {
+            baseUrl,
+            paths,
             parser: parser === "ecmascript"
                 ? {
                     syntax: "ecmascript",

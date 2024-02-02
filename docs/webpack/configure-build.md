@@ -416,13 +416,16 @@ To view the default build configuration of `@workleap/webpack-configs`, have a l
 transformer(config: WebpackConfig, context: WebpackConfigTransformerContext) => WebpackConfig
 ```
 
-```js !#6-10,13 webpack.build.js
+```js !#9-13,16 webpack.build.js
 // @ts-check
 
-import { defineBuildConfig, type WebpackConfigTransformer, type WebpackConfig } from "@workleap/webpack-configs";
+import { defineBuildConfig } from "@workleap/webpack-configs";
 import { swcConfig } from "./swc.build.js";
 
-const useContentHashOutputFilename: WebpackConfigTransformer = (config: WebpackConfig) => {
+/**
+ * @type {import("@workleap/webpack-configs").WebpackConfigTransformer}
+ */
+function useContentHashOutputFilename(config) {
     config.output.filename = "[name].[contenthash].bundle.js";
 
     return config;
@@ -437,10 +440,13 @@ export default defineBuildConfig(swcConfig, {
 
 Generic transformers can use the `context` parameter to gather additional information about their execution context, like the `environment` they are operating in:
 
-```ts !#4 transformer.ts
-import type { WebpackConfigTransformer, WebpackConfigTransformerContext, WebpackConfig } from "@workleap/webpack-configs";
+```ts !#7 transformer.js
+// @ts-check
 
-export const transformer: WebpackConfigTransformer = (config: WebpackConfig, context: WebpackConfigTransformerContext) => {
+/**
+ * @type {import("@workleap/webpack-configs").WebpackConfigTransformer}
+ */
+export function transformer(config, context) {
     if (context.environment === "build") {
         config.output.filename = "[name].[contenthash].bundle.js";
     }

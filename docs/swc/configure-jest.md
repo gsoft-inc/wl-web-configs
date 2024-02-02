@@ -58,6 +58,25 @@ export const swcConfig = defineJestConfig();
 
 The `defineJestConfig(options)` function can be used as shown in the previous example, however, if you wish to customize the default configuration, the function also accept a few predefined options to help with that 👇
 
+### `baseUrl`
+
+- **Type**: `string`
+
+Sets a base directory from which to resolve module names. This option is usually provided when custom [paths](#paths) are provided. Note that SWC requires the `baseUrl` to be an absolute path.
+
+```js !#9 swc.build.js
+// @ts-check
+
+import path from "node:path";
+import { browserslistToSwc, defineJestConfig } from "@workleap/swc-configs";
+
+const targets = browserslistToSwc();
+
+export const swcConfig = defineJestConfig(targets, {
+    baseUrl: path.resolve("src")
+});
+```
+
 ### `react`
 
 - **Type**: `boolean`
@@ -85,6 +104,28 @@ import { defineJestConfig } from "@workleap/swc-configs";
 
 export const swcConfig = defineJestConfig({
     parser: "ecmascript"
+});
+```
+
+### `paths`
+
+- **Type**: `Record<string, string[]>`
+
+A series of entries which re-map imports to lookup locations relative to the [baseUrl](#baseurl) if set.
+
+```js !#10-12 swc.dev.js
+// @ts-check
+
+import path from "node:path";
+import { browserslistToSwc, defineJestConfig } from "@workleap/swc-configs";
+
+const targets = browserslistToSwc();
+
+export const swcConfig = defineJestConfig(targets, {
+    baseUrl: path.resolve("src"),
+    paths: {
+        "@/*": ["*"]
+    }
 });
 ```
 

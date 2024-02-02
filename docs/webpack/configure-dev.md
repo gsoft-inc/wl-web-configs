@@ -464,13 +464,16 @@ To view the default development configuration of `@workleap/webpack-configs`, ha
 transformer(config: WebpackConfig, context: WebpackConfigTransformerContext) => WebpackConfig
 ```
 
-```js !#6-12,16 webpack.dev.js
+```js !#9-15,19 webpack.dev.js
 // @ts-check
 
-import { defineDevConfig, type WebpackConfigTransformer, type WebpackConfig } from "@workleap/webpack-configs";
+import { defineDevConfig } from "@workleap/webpack-configs";
 import { swcConfig } from "./swc.dev.js";
 
-const enableInMemoryCache: WebpackConfigTransformer = (config: WebpackConfig) => {
+/**
+ * @type {import("@workleap/webpack-configs").WebpackConfigTransformer}
+ */
+function enableInMemoryCache(config) {
     config.cache = {
         type: "memory"
     };
@@ -488,10 +491,13 @@ export default defineDevConfig(swcConfig, {
 
 Generic transformers can use the `context` parameter to gather additional information about their execution context, like the `environment` they are operating in:
 
-```ts !#4 transformer.ts
-import type { WebpackConfigTransformer, WebpackConfigTransformerContext, WebpackConfig } from "@workleap/webpack-configs";
+```ts !#7 transformer.js
+// @ts-check
 
-export const transformer: WebpackConfigTransformer = (config: WebpackConfig, context: WebpackConfigTransformerContext) => {
+/**
+ * @type {import("@workleap/webpack-configs").WebpackConfigTransformer}
+ */
+export function transformer(config, context) {
     if (context.environment === "dev") {
         config.cache = {
             type: "memory"
