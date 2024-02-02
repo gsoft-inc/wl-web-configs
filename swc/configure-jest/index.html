@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/wl-web-configs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.759334755967">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.760220674341">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -32,12 +32,12 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../static/favicon.png" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.5.0.759334755967" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.5.0.760220674341" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.759334755967" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.760220674341" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.759334755967" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.5.0.759334755967" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.760220674341" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.5.0.760220674341" defer></script>
 
     <link href="https://gsoft-inc.github.io/wl-idp-docs-hub/static/retype-customization.css" rel="stylesheet" />
 
@@ -379,6 +379,29 @@ export const swcConfig = defineJestConfig();</code></pre>
     </h2>
 </doc-anchor-target>
 <p>The <code v-pre>defineJestConfig(options)</code> function can be used as shown in the previous example, however, if you wish to customize the default configuration, the function also accept a few predefined options to help with that <span class="docs-emoji">&#x1F447;</span></p>
+<doc-anchor-target id="baseurl">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#baseurl">#</doc-anchor-trigger>
+        <span><code v-pre>baseUrl</code></span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Type</strong>: <code v-pre>string</code></li>
+</ul>
+<p>Sets a base directory from which to resolve module names. This option is usually provided when custom <doc-anchor-trigger to="#paths">paths</doc-anchor-trigger> are provided. Note that SWC requires the <code v-pre>baseUrl</code> to be an absolute path.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<div class="codeblock-title">swc.build.js</div>
+<pre class="language-javascript" data-line="9"><code v-pre class="language-javascript">// @ts-check
+
+import path from &quot;node:path&quot;;
+import { browserslistToSwc, defineJestConfig } from &quot;@workleap/swc-configs&quot;;
+
+const targets = browserslistToSwc();
+
+export const swcConfig = defineJestConfig(targets, {
+    baseUrl: path.resolve(&quot;src&quot;)
+});</code></pre>
+</doc-codeblock></div>
 <doc-anchor-target id="react">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#react">#</doc-anchor-trigger>
@@ -415,6 +438,32 @@ export const swcConfig = defineJestConfig({
 
 export const swcConfig = defineJestConfig({
     parser: &quot;ecmascript&quot;
+});</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="paths">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#paths">#</doc-anchor-trigger>
+        <span><code v-pre>paths</code></span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Type</strong>: <code v-pre>Record&lt;string, string[]&gt;</code></li>
+</ul>
+<p>A series of entries which re-map imports to lookup locations relative to the <doc-anchor-trigger to="#baseurl">baseUrl</doc-anchor-trigger> if set.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<div class="codeblock-title">swc.dev.js</div>
+<pre class="language-javascript" data-line="10-12"><code v-pre class="language-javascript">// @ts-check
+
+import path from &quot;node:path&quot;;
+import { browserslistToSwc, defineJestConfig } from &quot;@workleap/swc-configs&quot;;
+
+const targets = browserslistToSwc();
+
+export const swcConfig = defineJestConfig(targets, {
+    baseUrl: path.resolve(&quot;src&quot;),
+    paths: {
+        &quot;@/*&quot;: [&quot;*&quot;]
+    }
 });</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="configuration-transformers">
