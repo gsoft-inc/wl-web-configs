@@ -1,5 +1,11 @@
 # @workleap/swc-configs
 
+## 2.2.0
+
+### Minor Changes
+
+- [#173](https://github.com/gsoft-inc/wl-web-configs/pull/173) [`65df9e7`](https://github.com/gsoft-inc/wl-web-configs/commit/65df9e7bd00bf631c0769d9abe90a5029f5187a0) Thanks [@patricklafrance](https://github.com/patricklafrance)! - Added the `baseUrl` and `paths` predefined options.
+
 ## 2.1.2
 
 ### Patch Changes
