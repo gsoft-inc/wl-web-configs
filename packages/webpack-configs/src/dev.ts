@@ -1,5 +1,6 @@
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 import type { ReactRefreshPluginOptions } from "@pmmmwh/react-refresh-webpack-plugin/types/lib/types.d.ts";
+import type { Config as SvgrOptions } from "@svgr/core";
 import type { Config as SwcConfig } from "@swc/core";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import { createRequire } from "node:module";
@@ -54,6 +55,7 @@ export interface DefineDevConfigOptions {
     fastRefresh?: boolean | ReactRefreshPluginOptions;
     cssModules?: boolean;
     overlay?: false;
+    svgr?: boolean | SvgrOptions;
     environmentVariables?: Record<string, unknown>;
     transformers?: WebpackConfigTransformer[];
     verbose?: boolean;
@@ -98,6 +100,7 @@ export function defineDevConfig(swcConfig: SwcConfig, options: DefineDevConfigOp
         fastRefresh = true,
         cssModules = false,
         overlay,
+        svgr = true,
         // Using an empty object literal as the default value to ensure
         // "process.env" is always available.
         environmentVariables = {},
@@ -204,14 +207,24 @@ export function defineDevConfig(swcConfig: SwcConfig, options: DefineDevConfigOp
                         { loader: require.resolve("postcss-loader") }
                     ]
                 },
-                {
-                    test: /\.svg$/i,
-                    loader: require.resolve("@svgr/webpack")
-                },
-                {
-                    test: /\.(png|jpe?g|gif)$/i,
-                    type: "asset/resource"
-                },
+                ...(svgr
+                    ? [
+                        {
+                            test: /\.svg$/i,
+                            loader: require.resolve("@svgr/webpack"),
+                            options: isObject(svgr) ? svgr : undefined
+                        },
+                        {
+                            test: /\.(png|jpe?g|gif)$/i,
+                            type: "asset/resource"
+                        }
+                    ]
+                    : [
+                        {
+                            test: /\.(png|jpe?g|gif|svg)$/i,
+                            type: "asset/resource"
+                        }
+                    ]),
                 ...moduleRules
             ]
         },

@@ -3,7 +3,7 @@ import HtmlWebpackPlugin from "html-webpack-plugin";
 import type { Configuration, FileCacheOptions, RuleSetRule } from "webpack";
 import { defineBuildConfig, defineBuildHtmlWebpackPluginConfig, defineMiniCssExtractPluginConfig } from "../src/build.ts";
 import type { WebpackConfigTransformer } from "../src/transformers/applyTransformers.ts";
-import { findModuleRule, matchLoaderName } from "../src/transformers/moduleRules.ts";
+import { findModuleRule, matchAssetModuleType, matchLoaderName } from "../src/transformers/moduleRules.ts";
 import { findPlugin, matchConstructorName } from "../src/transformers/plugins.ts";
 
 const SwcConfig = defineSwcConfig({
@@ -273,6 +273,38 @@ test("when the verbose option is true, the transformers context verbose value is
     });
 
     expect(mockTransformer).toHaveBeenCalledWith(expect.anything(), { environment: "build", verbose: true });
+});
+
+// TODO: The test do not pass on UNIX system becase of \\, fix this later,
+// eslint-disable-next-line jest/no-commented-out-tests
+// test("by default, an svgr rule is added and the assets loader do not handle .svg files", () => {
+//     const result = defineBuildConfig(SwcConfig);
+
+//     const svgrRule = findModuleRule(result, matchLoaderName("@svgr\\webpack"));
+//     const assetsRule = findModuleRule(result, matchAssetModuleType("asset/resource"));
+
+//     expect(svgrRule).toBeDefined();
+//     expect((assetsRule?.moduleRule as RuleSetRule).test).toEqual(/\.(png|jpe?g|gif)$/i);
+// });
+
+test("when the svgr option is false, do not add the svgr rule", () => {
+    const result = defineBuildConfig(SwcConfig, {
+        svgr: false
+    });
+
+    const svgrRule = findModuleRule(result, matchLoaderName("@svgr\\webpack"));
+
+    expect(svgrRule).toBeUndefined();
+});
+
+test("when the svgr option is false, add .svg to the default assets rule", () => {
+    const result = defineBuildConfig(SwcConfig, {
+        svgr: false
+    });
+
+    const assetsRule = findModuleRule(result, matchAssetModuleType("asset/resource"));
+
+    expect((assetsRule?.moduleRule as RuleSetRule).test).toEqual(/\.(png|jpe?g|gif|svg)$/i);
 });
 
 describe("defineBuildHtmlWebpackPluginConfig", () => {

@@ -379,6 +379,39 @@ export default defineBuildConfig(swcConfig, {
 });
 ```
 
+### `svgr`
+
+- **Type**: `boolean` or an object literal accepting any `@svgr/webpack` [option](https://react-svgr.com/docs/options/)
+- **Default**: `true`
+
+Whether or not to handle `.svg` files with `@svgr/webpack`. If `@svgr/webpack` is desactived, the `.svg` files will are handled by the `asset/resource` rule.
+
+```js !#7 webpack.dev.js
+// @ts-check
+
+import { defineDevConfig } from "@workleap/webpack-configs";
+import { swcConfig } from "./swc.dev.js";
+
+export default defineDevConfig(swcConfig, {
+    svgr: false
+});
+```
+
+To extends the `@svgr/webpack` rule configuration, provide an object literal instead.
+
+```js !#7-9 webpack.dev.js
+// @ts-check
+
+import { defineDevConfig } from "@workleap/webpack-configs";
+import { swcConfig } from "./swc.dev.js";
+
+export default defineDevConfig(swcConfig, {
+    svgr: {
+        ref: true
+    }
+});
+```
+
 ### `verbose`
 
 - **Type**: `boolean`
