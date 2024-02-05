@@ -1,3 +1,4 @@
+import type { Config as SvgrOptions } from "@svgr/core";
 import type { Config as SwcConfig } from "@swc/core";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
@@ -59,6 +60,7 @@ export interface DefineBuildConfigOptions {
     miniCssExtractPluginOptions?: MiniCssExtractPluginOptions;
     optimize?: boolean;
     cssModules?: boolean;
+    svgr?: boolean | SvgrOptions;
     environmentVariables?: Record<string, unknown>;
     transformers?: WebpackConfigTransformer[];
     verbose?: boolean;
@@ -78,6 +80,7 @@ export function defineBuildConfig(swcConfig: SwcConfig, options: DefineBuildConf
         miniCssExtractPluginOptions = defineMiniCssExtractPluginConfig(),
         optimize = true,
         cssModules = false,
+        svgr = true,
         // Using an empty object literal as the default value to ensure
         // "process.env" is always available.
         environmentVariables = {},
@@ -187,14 +190,24 @@ export function defineBuildConfig(swcConfig: SwcConfig, options: DefineBuildConf
                         { loader: require.resolve("postcss-loader") }
                     ]
                 },
-                {
-                    test: /\.svg$/i,
-                    loader: require.resolve("@svgr/webpack")
-                },
-                {
-                    test: /\.(png|jpe?g|gif)$/i,
-                    type: "asset/resource"
-                },
+                ...(svgr
+                    ? [
+                        {
+                            test: /\.svg$/i,
+                            loader: require.resolve("@svgr/webpack"),
+                            options: isObject(svgr) ? svgr : undefined
+                        },
+                        {
+                            test: /\.(png|jpe?g|gif)$/i,
+                            type: "asset/resource"
+                        }
+                    ]
+                    : [
+                        {
+                            test: /\.(png|jpe?g|gif|svg)$/i,
+                            type: "asset/resource"
+                        }
+                    ]),
                 ...moduleRules
             ]
         },

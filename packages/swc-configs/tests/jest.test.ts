@@ -122,3 +122,23 @@ test("transformers context environment is \"dev\"", () => {
 
     expect(mockTransformer).toHaveBeenCalledWith(expect.anything(), { environment: "jest" });
 });
+
+test("when a baseUrl is provided, the baseUrl value is added to the configuration", () => {
+    const result = defineJestConfig({
+        baseUrl: "./src"
+    });
+
+    expect(result.jsc?.baseUrl).toBe("./src");
+});
+
+test("when a paths is provided, the paths value is added to the configuration", () => {
+    const paths = {
+        "@/*": ["*"]
+    };
+
+    const result = defineJestConfig({
+        paths
+    });
+
+    expect(result.jsc?.paths).toBe(paths);
+});

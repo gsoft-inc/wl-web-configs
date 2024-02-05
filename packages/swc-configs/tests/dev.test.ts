@@ -104,3 +104,23 @@ test("transformers context environment is \"dev\"", () => {
 
     expect(mockTransformer).toHaveBeenCalledWith(expect.anything(), { environment: "dev" });
 });
+
+test("when a baseUrl is provided, the baseUrl value is added to the configuration", () => {
+    const result = defineDevConfig(Targets, {
+        baseUrl: "./src"
+    });
+
+    expect(result.jsc?.baseUrl).toBe("./src");
+});
+
+test("when a paths is provided, the paths value is added to the configuration", () => {
+    const paths = {
+        "@/*": ["*"]
+    };
+
+    const result = defineDevConfig(Targets, {
+        paths
+    });
+
+    expect(result.jsc?.paths).toBe(paths);
+});
