@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/wl-web-configs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.760222204629">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.760476157913">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -32,12 +32,12 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../static/favicon.png" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.5.0.760222204629" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.5.0.760476157913" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.760222204629" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.760476157913" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.760222204629" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.5.0.760222204629" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.760476157913" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.5.0.760476157913" defer></script>
 
     <link href="https://gsoft-inc.github.io/wl-idp-docs-hub/static/retype-customization.css" rel="stylesheet" />
 
@@ -801,6 +801,42 @@ import { swcConfig } from &quot;./swc.dev.js&quot;;
 
 export default defineDevConfig(swcConfig, {
     overlay: false
+});</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="svgr">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#svgr">#</doc-anchor-trigger>
+        <span><code v-pre>svgr</code></span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><strong>Type</strong>: <code v-pre>boolean</code> or an object literal accepting any <code v-pre>@svgr/webpack</code> <a href="https://react-svgr.com/docs/options/" class="outbound" target="_blank">option</a></li>
+<li><strong>Default</strong>: <code v-pre>true</code></li>
+</ul>
+<p>Whether or not to handle <code v-pre>.svg</code> files with <code v-pre>@svgr/webpack</code>. If <code v-pre>@svgr/webpack</code> is desactived, the <code v-pre>.svg</code> files will are handled by the <code v-pre>asset/resource</code> rule.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<div class="codeblock-title">webpack.dev.js</div>
+<pre class="language-javascript" data-line="7"><code v-pre class="language-javascript">// @ts-check
+
+import { defineDevConfig } from &quot;@workleap/webpack-configs&quot;;
+import { swcConfig } from &quot;./swc.dev.js&quot;;
+
+export default defineDevConfig(swcConfig, {
+    svgr: false
+});</code></pre>
+</doc-codeblock></div>
+<p>To extends the <code v-pre>@svgr/webpack</code> rule configuration, provide an object literal instead.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<div class="codeblock-title">webpack.dev.js</div>
+<pre class="language-javascript" data-line="7-9"><code v-pre class="language-javascript">// @ts-check
+
+import { defineDevConfig } from &quot;@workleap/webpack-configs&quot;;
+import { swcConfig } from &quot;./swc.dev.js&quot;;
+
+export default defineDevConfig(swcConfig, {
+    svgr: {
+        ref: true
+    }
 });</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="verbose">
