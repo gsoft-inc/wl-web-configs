@@ -1,5 +1,11 @@
 # @workleap/webpack-configs
 
+## 1.3.0
+
+### Minor Changes
+
+- [#175](https://github.com/gsoft-inc/wl-web-configs/pull/175) [`0f5077c`](https://github.com/gsoft-inc/wl-web-configs/commit/0f5077cdc9592e02099c498fcb6ebda6e1637e0c) Thanks [@patricklafrance](https://github.com/patricklafrance)! - Added an `svgr` option.
+
 ## 1.2.1
 
 ### Patch Changes
