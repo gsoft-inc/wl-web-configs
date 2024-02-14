@@ -8,12 +8,12 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import type { Configuration as WebpackConfig } from "webpack";
 import webpack from "webpack";
+import type { ServerOptions } from "webpack-dev-server";
 import { applyTransformers, type WebpackConfigTransformer } from "./transformers/applyTransformers.ts";
 import { isNil, isObject } from "./utils.ts";
 
-// Add the "devServer" prop to WebpackConfig typings.
+// Add the "devServer" option to WebpackConfig typings.
 import "webpack-dev-server";
-import { ServerOptions } from "webpack-dev-server";
 
 // Aliases
 const DefinePlugin = webpack.DefinePlugin;
