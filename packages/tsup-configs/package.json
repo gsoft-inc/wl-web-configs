@@ -40,7 +40,7 @@
         "typescript": "*"
     },
     "devDependencies": {
-        "@swc/core": "1.4.0",
+        "@swc/core": "1.4.1",
         "@swc/helpers": "0.5.6",
         "@swc/jest": "0.2.36",
         "@types/jest": "29.5.12",
@@ -49,7 +49,7 @@
         "@workleap/typescript-configs": "workspace:*",
         "jest": "29.7.0",
         "ts-node": "10.9.2",
-        "tsup": "8.0.1",
+        "tsup": "8.0.2",
         "typescript": "5.3.3"
     },
     "publishConfig": {

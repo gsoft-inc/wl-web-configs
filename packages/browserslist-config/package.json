@@ -38,7 +38,7 @@
         "@workleap/eslint-plugin": "workspace:*",
         "@workleap/tsup-configs": "workspace:*",
         "@workleap/typescript-configs": "workspace:*",
-        "tsup": "8.0.1"
+        "tsup": "8.0.2"
     },
     "publishConfig": {
         "access": "public",
