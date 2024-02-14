@@ -8,10 +8,11 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import type { Configuration as WebpackConfig } from "webpack";
 import webpack from "webpack";
+import type { ServerOptions } from "webpack-dev-server";
 import { applyTransformers, type WebpackConfigTransformer } from "./transformers/applyTransformers.ts";
 import { isNil, isObject } from "./utils.ts";
 
-// Add the "devServer" prop to WebpackConfig typings.
+// Add the "devServer" option to WebpackConfig typings.
 import "webpack-dev-server";
 
 // Aliases
@@ -43,7 +44,7 @@ export function defineFastRefreshPluginConfig(options: ReactRefreshPluginOptions
 
 export interface DefineDevConfigOptions {
     entry?: string;
-    https?: NonNullable<WebpackConfig["devServer"]>["https"];
+    https?: boolean | ServerOptions | undefined;
     host?: string;
     port?: number;
     publicPath?: `${string}/` | "auto";
@@ -116,12 +117,15 @@ export function defineDevConfig(swcConfig: SwcConfig, options: DefineDevConfigOp
             // According to the Fast Refresh plugin documentation, hot should be "true" to enable Fast Refresh:
             // https://github.com/pmmmwh/react-refresh-webpack-plugin#usage.
             hot: true,
-            https,
             host,
             port,
             historyApiFallback: true,
             client: (overlay === false || fastRefresh) ? {
                 overlay: false
+            } : undefined,
+            server: https ? {
+                type: "https",
+                options: isObject(https) ? https : undefined
             } : undefined
         },
         entry,

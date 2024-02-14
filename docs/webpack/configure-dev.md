@@ -150,7 +150,7 @@ export default defineDevConfig(swcConfig, {
 
 ### `https`
 
-- **Type**: `boolean`
+- **Type**: `boolean` | `ServerOptions`
 - **Default**: `false`
 
 Set webpack DevServer [https option](https://webpack.js.org/configuration/dev-server/#devserverhttps) and format webpack [publicPath option](https://webpack.js.org/configuration/output/#outputpublicpath) accordingly.

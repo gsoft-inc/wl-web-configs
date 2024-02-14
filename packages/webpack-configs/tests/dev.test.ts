@@ -3,7 +3,7 @@ import { Config as SwcConfig } from "@swc/core";
 import { defineDevConfig as defineSwcConfig } from "@workleap/swc-configs";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import type { Configuration, FileCacheOptions, RuleSetRule } from "webpack";
-import type { ClientConfiguration } from "webpack-dev-server";
+import type { ClientConfiguration, ServerConfiguration } from "webpack-dev-server";
 import { defineDevConfig, defineDevHtmlWebpackPluginConfig, defineFastRefreshPluginConfig } from "../src/dev.ts";
 import type { WebpackConfigTransformer } from "../src/transformers/applyTransformers.ts";
 import { findModuleRule, matchAssetModuleType, matchLoaderName } from "../src/transformers/moduleRules.ts";
@@ -26,7 +26,7 @@ test("when https is enabled, the dev server is configured for https", () => {
         https: true
     });
 
-    expect(result.devServer?.https).toBe(true);
+    expect((result.devServer?.server as ServerConfiguration).type).toBe("https");
 });
 
 test("when https is disabled, the dev server is not configured for https", () => {
@@ -34,7 +34,7 @@ test("when https is disabled, the dev server is not configured for https", () =>
         https: false
     });
 
-    expect(result.devServer?.https).toBe(false);
+    expect(result.devServer?.server).toBeUndefined();
 });
 
 test("when https is enabled, the public path starts with https", () => {
