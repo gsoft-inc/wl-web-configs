@@ -1,5 +1,11 @@
 # @workleap/eslint-plugin
 
+## 3.0.2
+
+### Patch Changes
+
+- [#179](https://github.com/gsoft-inc/wl-web-configs/pull/179) [`61d3721`](https://github.com/gsoft-inc/wl-web-configs/commit/61d37216198083ba78cd4b1480e38c8d772a6119) Thanks [@patricklafrance](https://github.com/patricklafrance)! - Updated dependencies.
+
 ## 3.0.1
 
 ### Patch Changes
