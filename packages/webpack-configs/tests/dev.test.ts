@@ -3,7 +3,7 @@ import { Config as SwcConfig } from "@swc/core";
 import { defineDevConfig as defineSwcConfig } from "@workleap/swc-configs";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import type { Configuration, FileCacheOptions, RuleSetRule } from "webpack";
-import type { ClientConfiguration, ServerConfiguration, ServerOptions } from "webpack-dev-server";
+import type { ClientConfiguration, ServerConfiguration } from "webpack-dev-server";
 import { defineDevConfig, defineDevHtmlWebpackPluginConfig, defineFastRefreshPluginConfig } from "../src/dev.ts";
 import type { WebpackConfigTransformer } from "../src/transformers/applyTransformers.ts";
 import { findModuleRule, matchAssetModuleType, matchLoaderName } from "../src/transformers/moduleRules.ts";
