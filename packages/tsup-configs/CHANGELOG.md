@@ -1,5 +1,11 @@
 # @workleap/tsup-configs
 
+## 3.0.4
+
+### Patch Changes
+
+- [#181](https://github.com/gsoft-inc/wl-web-configs/pull/181) [`9a31cfc`](https://github.com/gsoft-inc/wl-web-configs/commit/9a31cfc6cc68455551c5b1b040843e8a7f83d6c9) Thanks [@patricklafrance](https://github.com/patricklafrance)! - Excluding tests files and stories files from TSUP bundles.
+
 ## 3.0.3
 
 ### Patch Changes
