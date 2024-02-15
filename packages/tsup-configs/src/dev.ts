@@ -14,7 +14,11 @@ export function defineDevConfig(options: DefineDevConfigOptions = {}) {
     const config: TsupConfig = {
         dts: true,
         watch: true,
-        entry: ["./src"],
+        entry: [
+            "./src",
+            "!src/**/*.stories.ts(x)",
+            "!src/**/*.test.ts(x)"
+        ],
         outDir: "./dist",
         format: "esm",
         target: "esnext",
