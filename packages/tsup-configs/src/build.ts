@@ -15,7 +15,11 @@ export function defineBuildConfig(options: DefineBuildConfigOptions = {}) {
         clean: true,
         dts: true,
         treeshake: true,
-        entry: ["./src"],
+        entry: [
+            "./src",
+            "!src/**/*.stories.ts(x)",
+            "!src/**/*.test.ts(x)"
+        ],
         outDir: "./dist",
         format: "esm",
         target: "esnext",
