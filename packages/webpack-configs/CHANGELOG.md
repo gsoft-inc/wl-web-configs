@@ -1,5 +1,11 @@
 # @workleap/webpack-configs
 
+## 1.4.0
+
+### Minor Changes
+
+- [#183](https://github.com/gsoft-inc/wl-web-configs/pull/183) [`77128e6`](https://github.com/gsoft-inc/wl-web-configs/commit/77128e666574333035e6bb077fc1982f327751eb) Thanks [@patricklafrance](https://github.com/patricklafrance)! - Added a "readable" option to Webpack optimize option.
+
 ## 1.3.2
 
 ### Patch Changes
