@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/wl-web-configs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.761279310796">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.761682182641">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -32,12 +32,12 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../static/favicon.png" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.5.0.761279310796" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.5.0.761682182641" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.761279310796" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.761682182641" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.761279310796" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.5.0.761279310796" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.761682182641" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.5.0.761682182641" defer></script>
 
     <link href="https://gsoft-inc.github.io/wl-idp-docs-hub/static/retype-customization.css" rel="stylesheet" />
 
@@ -710,10 +710,11 @@ export default defineBuildConfig(swcConfig, {
     </h3>
 </doc-anchor-target>
 <ul>
-<li><strong>Type</strong>: <code v-pre>boolean</code></li>
+<li><strong>Type</strong>: <code v-pre>boolean</code> | <code v-pre>&quot;readable&quot;</code></li>
 <li><strong>Default</strong>: <code v-pre>true</code></li>
 </ul>
-<p>Whether or not to enable webpack production optimizations like <a href="https://webpack.js.org/configuration/optimization/#optimizationminimize" class="outbound" target="_blank">code minification</a>. This option can be quite usefull when debugging an issue with webpack bundling.</p>
+<p>Whether or not to enable webpack production optimizations like <a href="https://webpack.js.org/configuration/optimization/#optimizationminimize" class="outbound" target="_blank">code minification</a> and <a href="https://webpack.js.org/guides/tree-shaking/" class="outbound" target="_blank">tree shaking</a>. This option can be quite useful when debugging an issue with webpack bundling.</p>
+<p>When <code v-pre>false</code> is provided, most of the optimizations, including minification and tree shaking will be turned off:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <div class="codeblock-title">webpack.build.js</div>
 <pre class="language-javascript" data-line="7"><code v-pre class="language-javascript">// @ts-check
@@ -723,6 +724,18 @@ import { swcConfig } from &quot;./swc.build.js&quot;;
 
 export default defineBuildConfig(swcConfig, {
     optimize: false
+});</code></pre>
+</doc-codeblock></div>
+<p>When <code v-pre>readable</code> is provided, most of the optimizations will still be applied but the resulting code bundles will be easier to read:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<div class="codeblock-title">webpack.build.js</div>
+<pre class="language-javascript" data-line="7"><code v-pre class="language-javascript">// @ts-check
+
+import { defineBuildConfig } from &quot;@workleap/webpack-configs&quot;;
+import { swcConfig } from &quot;./swc.build.js&quot;;
+
+export default defineBuildConfig(swcConfig, {
+    optimize: &quot;readable&quot;
 });</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="cssmodules">
