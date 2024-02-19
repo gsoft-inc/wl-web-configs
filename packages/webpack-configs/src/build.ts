@@ -48,6 +48,61 @@ export function defineMiniCssExtractPluginConfig(options: MiniCssExtractPluginOp
     };
 }
 
+export type WebpackOptimization = NonNullable<WebpackConfig["optimization"]>;
+export type OptimizeOption = boolean | "readable";
+
+export function getOptimizationConfig(optimize: OptimizeOption): WebpackOptimization {
+    if (optimize === "readable") {
+        return {
+            minimize: true,
+            minimizer: [
+                new TerserPlugin({
+                    minify: TerserPlugin.swcMinify,
+                    terserOptions: {
+                        toplevel: true,
+                        mangle: false,
+                        keep_classnames: true,
+                        keep_fnames: true,
+                        compress: {
+                            toplevel: true,
+                            hoist_props: false
+                        },
+                        output: {
+                            comments: true
+                        }
+                    }
+                })
+            ],
+            chunkIds: "named",
+            moduleIds: "named",
+            mangleExports: false,
+            mangleWasmImports: false
+        };
+    } else if (optimize) {
+        return {
+            minimize: true,
+            minimizer: [
+                new TerserPlugin({
+                    minify: TerserPlugin.swcMinify
+                })
+            ]
+        };
+    }
+
+    // Doesn't turnoff everything but is good enough to help with debugging scenarios.
+    return {
+        minimize: false,
+        chunkIds: "named",
+        moduleIds: "named",
+        concatenateModules: false,
+        flagIncludedChunks: false,
+        mangleExports: false,
+        mangleWasmImports: false,
+        removeAvailableModules: false,
+        usedExports: false
+    };
+}
+
 export interface DefineBuildConfigOptions {
     entry?: string;
     outputPath?: string;
@@ -58,7 +113,7 @@ export interface DefineBuildConfigOptions {
     plugins?: WebpackConfig["plugins"];
     htmlWebpackPlugin?: boolean | HtmlWebpackPlugin.Options;
     miniCssExtractPluginOptions?: MiniCssExtractPluginOptions;
-    optimize?: boolean;
+    optimize?: OptimizeOption;
     cssModules?: boolean;
     svgr?: boolean | SvgrOptions;
     environmentVariables?: Record<string, unknown>;
@@ -129,29 +184,7 @@ export function defineBuildConfig(swcConfig: SwcConfig, options: DefineBuildConf
                 timestamp: true
             }
         } : undefined,
-        optimization: optimize
-            ? {
-                minimize: true,
-                minimizer: [
-                    new TerserPlugin({
-                        minify: TerserPlugin.swcMinify,
-                        terserOptions: {
-                            compress: true,
-                            mangle: true
-                        }
-                    })
-                ]
-            }
-            : {
-                minimize: false,
-                chunkIds: "named",
-                concatenateModules: false,
-                flagIncludedChunks: false,
-                mangleExports: false,
-                mangleWasmImports: false,
-                moduleIds: "named",
-                removeAvailableModules: false
-            },
+        optimization: getOptimizationConfig(optimize),
         infrastructureLogging: verbose ? {
             appendOnly: true,
             level: "verbose",

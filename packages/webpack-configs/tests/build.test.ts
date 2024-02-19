@@ -107,6 +107,14 @@ test("when optimize is false, minimize is set to false", () => {
     expect(result.optimization?.minimize).toBeFalsy();
 });
 
+test("when optimize is \"readable\", minimize is set to true", () => {
+    const result = defineBuildConfig(SwcConfig, {
+        optimize: "readable"
+    });
+
+    expect(result.optimization?.minimize).toBeTruthy();
+});
+
 test("when optimize is false, chunkIds is set to \"named\"", () => {
     const result = defineBuildConfig(SwcConfig, {
         optimize: false
@@ -118,6 +126,22 @@ test("when optimize is false, chunkIds is set to \"named\"", () => {
 test("when optimize is false, moduleIds is set to \"named\"", () => {
     const result = defineBuildConfig(SwcConfig, {
         optimize: false
+    });
+
+    expect(result.optimization?.chunkIds).toBe("named");
+});
+
+test("when optimize is \"readable\", chunkIds is set to \"named\"", () => {
+    const result = defineBuildConfig(SwcConfig, {
+        optimize: "readable"
+    });
+
+    expect(result.optimization?.chunkIds).toBe("named");
+});
+
+test("when optimize is \"readable\", moduleIds is set to \"named\"", () => {
+    const result = defineBuildConfig(SwcConfig, {
+        optimize: "readable"
     });
 
     expect(result.optimization?.chunkIds).toBe("named");
@@ -137,6 +161,14 @@ test("when optimize is false, do not include minify configuration", () => {
     });
 
     expect(result.optimization?.minimizer).toBeUndefined();
+});
+
+test("when optimize is \"readable\", include minify configuration", () => {
+    const result = defineBuildConfig(SwcConfig, {
+        optimize: "readable"
+    });
+
+    expect(result.optimization?.minimizer).toBeDefined();
 });
 
 test("when cache is enabled, the cache configuration is included", () => {

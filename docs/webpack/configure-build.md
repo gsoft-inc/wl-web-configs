@@ -345,10 +345,12 @@ export default defineBuildConfig(swcConfig, {
 
 ### `optimize`
 
-- **Type**: `boolean`
+- **Type**: `boolean` | `"readable"`
 - **Default**: `true`
 
-Whether or not to enable webpack production optimizations like [code minification](https://webpack.js.org/configuration/optimization/#optimizationminimize). This option can be quite usefull when debugging an issue with webpack bundling.
+Whether or not to enable webpack production optimizations like [code minification](https://webpack.js.org/configuration/optimization/#optimizationminimize) and [tree shaking](https://webpack.js.org/guides/tree-shaking/). This option can be quite useful when debugging an issue with webpack bundling.
+
+When `false` is provided, most of the optimizations, including minification and tree shaking will be turned off:
 
 ```js !#7 webpack.build.js
 // @ts-check
@@ -358,6 +360,19 @@ import { swcConfig } from "./swc.build.js";
 
 export default defineBuildConfig(swcConfig, {
     optimize: false
+});
+```
+
+When `readable` is provided, most of the optimizations will still be applied but the resulting code bundles will be easier to read:
+
+```js !#7 webpack.build.js
+// @ts-check
+
+import { defineBuildConfig } from "@workleap/webpack-configs";
+import { swcConfig } from "./swc.build.js";
+
+export default defineBuildConfig(swcConfig, {
+    optimize: "readable"
 });
 ```
 
