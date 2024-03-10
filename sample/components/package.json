@@ -28,12 +28,12 @@
         "react-dom": "*"
     },
     "devDependencies": {
-        "@swc/core": "1.4.1",
+        "@swc/core": "1.4.6",
         "@swc/jest": "0.2.36",
         "@testing-library/react": "14.2.1",
         "@types/jest": "29.5.12",
-        "@types/react": "18.2.55",
-        "@types/react-dom": "18.2.19",
+        "@types/react": "18.2.64",
+        "@types/react-dom": "18.2.21",
         "@workleap/eslint-plugin": "workspace:*",
         "@workleap/stylelint-configs": "workspace:*",
         "@workleap/swc-configs": "workspace:*",
@@ -45,6 +45,6 @@
         "react": "18.2.0",
         "react-dom": "18.2.0",
         "tsup": "8.0.2",
-        "typescript": "5.3.3"
+        "typescript": "5.4.2"
     }
 }

@@ -11,11 +11,11 @@ export function applyTransformers(config: WebpackConfig, transformers: WebpackCo
     let count = 0;
 
     const transformedConfig = transformers.reduce((acc, transformer) => {
-        transformer(acc, context);
+        const newConfig = transformer(acc, context);
 
         count += 1;
 
-        return acc;
+        return newConfig;
     }, config);
 
     if (context.verbose) {
