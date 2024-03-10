@@ -49,14 +49,14 @@
         }
     },
     "devDependencies": {
-        "@types/node": "20.11.17",
+        "@types/node": "20.11.25",
         "@workleap/eslint-plugin": "workspace:*",
         "@workleap/tsup-configs": "workspace:*",
         "@workleap/typescript-configs": "workspace:*",
         "prettier": "3.2.5",
         "stylelint": "16.2.1",
         "tsup": "8.0.2",
-        "typescript": "5.3.3"
+        "typescript": "5.4.2"
     },
     "publishConfig": {
         "access": "public",

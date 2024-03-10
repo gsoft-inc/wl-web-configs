@@ -32,17 +32,16 @@
     },
     "dependencies": {
         "postcss-load-config": "5.0.3",
-        "postcss-preset-env": "9.3.0"
+        "postcss-preset-env": "9.5.0"
     },
     "peerDependencies": {
         "postcss": ">=8.4.6"
     },
     "devDependencies": {
-        "@swc/core": "1.4.1",
-        "@swc/helpers": "0.5.6",
+        "@swc/core": "1.4.6",
         "@swc/jest": "0.2.36",
         "@types/jest": "29.5.12",
-        "@types/node": "20.11.17",
+        "@types/node": "20.11.25",
         "@workleap/eslint-plugin": "workspace:*",
         "@workleap/swc-configs": "workspace:*",
         "@workleap/tsup-configs": "workspace:*",
@@ -51,7 +50,7 @@
         "postcss": "8.4.35",
         "ts-node": "10.9.2",
         "tsup": "8.0.2",
-        "typescript": "5.3.3"
+        "typescript": "5.4.2"
     },
     "publishConfig": {
         "access": "public",
