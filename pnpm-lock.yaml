@@ -225,7 +225,7 @@ importers:
   packages/swc-configs:
     dependencies:
       '@swc/helpers':
-        specifier: 0.5.6
+        specifier: '*'
         version: 0.5.6
     devDependencies:
       '@swc/core':
@@ -310,7 +310,7 @@ importers:
         specifier: 8.1.0
         version: 8.1.0(typescript@5.4.2)
       '@swc/helpers':
-        specifier: 0.5.6
+        specifier: '*'
         version: 0.5.6
       css-loader:
         specifier: 6.10.0
