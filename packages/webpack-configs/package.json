@@ -64,15 +64,15 @@
         "webpack-dev-server": "5.0.2"
     },
     "dependencies": {
-        "@pmmmwh/react-refresh-webpack-plugin": "0.5.11",
-        "@svgr/webpack": "8.1.0",
-        "css-loader": "6.10.0",
-        "html-webpack-plugin": "5.6.0",
-        "mini-css-extract-plugin": "2.8.1",
-        "postcss-loader": "8.1.1",
-        "style-loader": "3.3.4",
-        "swc-loader": "0.2.6",
-        "terser-webpack-plugin": "5.3.10"
+        "@pmmmwh/react-refresh-webpack-plugin": "^0.5.11",
+        "@svgr/webpack": "^8.1.0",
+        "css-loader": "^6.10.0",
+        "html-webpack-plugin": "^5.6.0",
+        "mini-css-extract-plugin": "^2.8.1",
+        "postcss-loader": "^8.1.1",
+        "style-loader": "^3.3.4",
+        "swc-loader": "^0.2.6",
+        "terser-webpack-plugin": "^5.3.10"
     },
     "publishConfig": {
         "access": "public",

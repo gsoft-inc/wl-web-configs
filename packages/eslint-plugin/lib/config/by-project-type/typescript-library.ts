@@ -1,24 +1,14 @@
-import { mdxFiles, sourceFiles } from "../../utils/patterns";
-
 import type { Linter } from "eslint";
 
 const config: Linter.Config = {
-    overrides: [
-        {
-            files: sourceFiles,
-            plugins: ["@workleap"],
-            extends: [
-                "plugin:@workleap/core",
-                "plugin:@workleap/typescript",
-                "plugin:@workleap/jest",
-                "plugin:@workleap/testing-library"
-            ]
-        },
-        {
-            files: mdxFiles,
-            plugins: ["@workleap"],
-            extends: ["plugin:@workleap/mdx"]
-        }
+    plugins: ["@workleap"],
+    extends: [
+        "plugin:@workleap/core",
+        "plugin:@workleap/typescript",
+        "plugin:@workleap/jest",
+        "plugin:@workleap/testing-library",
+        "plugin:@workleap/mdx",
+        "plugin:@workleap/package-json"
     ]
 };
 

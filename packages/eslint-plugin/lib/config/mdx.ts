@@ -1,9 +1,14 @@
-// https://github.com/storybookjs/eslint-plugin-storybook/blob/main/lib/configs/recommended.ts
-
 import type { Linter } from "eslint";
+import { mdxFiles } from "../utils/patterns";
 
 const config: Linter.Config = {
-    extends: ["plugin:mdx/recommended"]
+    overrides: [
+        {
+            files: mdxFiles,
+            plugins: ["@workleap"],
+            extends: ["plugin:mdx/recommended"]
+        }
+    ]
 };
 
 // Using TypeScript "export" keyword until ESLint support ESM.
