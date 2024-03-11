@@ -1,5 +1,11 @@
 # @workleap/webpack-configs
 
+## 1.4.1
+
+### Patch Changes
+
+- [#186](https://github.com/gsoft-inc/wl-web-configs/pull/186) [`997054e`](https://github.com/gsoft-inc/wl-web-configs/commit/997054eb66118e5897ce686a446d98ac7ea6abd6) Thanks [@patricklafrance](https://github.com/patricklafrance)! - Loosen the dependencies version.
+
 ## 1.4.0
 
 ### Minor Changes
