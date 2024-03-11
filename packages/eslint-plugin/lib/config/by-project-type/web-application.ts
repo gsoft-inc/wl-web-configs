@@ -1,32 +1,22 @@
-import { mdxFiles, sourceFiles } from "../../utils/patterns";
-
 import type { Linter } from "eslint";
 
 const config: Linter.Config = {
-    overrides: [
-        {
-            files: sourceFiles,
-            plugins: ["@workleap"],
-            extends: [
-                "plugin:@workleap/core",
-                "plugin:@workleap/typescript",
-                "plugin:@workleap/react",
-                "plugin:@workleap/jsx-a11y",
-                "plugin:@workleap/jest",
-                "plugin:@workleap/testing-library",
-                "plugin:@workleap/storybook"
-            ],
-            rules: {
-                // Custom WorkLeap rules
-                "@workleap/strict-css-modules-names": "warn"
-            }
-        },
-        {
-            files: mdxFiles,
-            plugins: ["@workleap"],
-            extends: ["plugin:@workleap/mdx"]
-        }
-    ]
+    plugins: ["@workleap"],
+    extends: [
+        "plugin:@workleap/core",
+        "plugin:@workleap/typescript",
+        "plugin:@workleap/react",
+        "plugin:@workleap/jsx-a11y",
+        "plugin:@workleap/jest",
+        "plugin:@workleap/testing-library",
+        "plugin:@workleap/storybook",
+        "plugin:@workleap/mdx",
+        "plugin:@workleap/package-json"
+    ],
+    rules: {
+        // Custom WorkLeap rules
+        "@workleap/strict-css-modules-names": "warn"
+    }
 };
 
 // Using TypeScript "export" keyword until ESLint support ESM.

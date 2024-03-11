@@ -1,6 +1,6 @@
 **/dist/*
 node_modules
-*.md
 pnpm-lock.yaml
+*.md
 *.snap
 *.yml
