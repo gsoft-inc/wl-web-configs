@@ -30,11 +30,25 @@ test("when a format array option is provided, do not merge the provided array wi
     expect(result.format![0]).toBe("cjs");
 });
 
-test("when a transformer is provided, the transformer is applied on the tsup config", () => {
+test("when a transformer is provided, and the transformer update the existing configuration object, the transformer is applied on the tsup config", () => {
     const platformTransformer: TsupConfigTransformer = (config: Options) => {
         config.platform = "node";
 
         return config;
+    };
+
+    const result = defineBuildConfig({
+        transformers: [platformTransformer]
+    });
+
+    expect(result.platform).toBe("node");
+});
+
+test("when a transformer is provided, and the transformer returns a new configuration object, the transformer is applied on the tsup config", () => {
+    const platformTransformer: TsupConfigTransformer = () => {
+        return {
+            platform: "node"
+        };
     };
 
     const result = defineBuildConfig({
