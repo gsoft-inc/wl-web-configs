@@ -294,11 +294,25 @@ test("the provided swc config object is set as the swc-loader options", () => {
     expect((swcLoader?.moduleRule as RuleSetRule).options).toBe(config);
 });
 
-test("when a transformer is provided, the transformer is applied on the webpack config", () => {
+test("when a transformer is provided, and the transformer update the existing configuration object, the transformer is applied on the webpack config", () => {
     const entryTransformer: WebpackConfigTransformer = (config: Configuration) => {
         config.entry = "a-custom-value-in-a-transformer";
 
         return config;
+    };
+
+    const result = defineDevConfig(DefaultConfig, {
+        transformers: [entryTransformer]
+    });
+
+    expect(result.entry).toBe("a-custom-value-in-a-transformer");
+});
+
+test("when a transformer is provided, and the transformer returns a new configuration object, the transformer is applied on the webpack config", () => {
+    const entryTransformer: WebpackConfigTransformer = () => {
+        return {
+            entry: "a-custom-value-in-a-transformer"
+        };
     };
 
     const result = defineDevConfig(DefaultConfig, {

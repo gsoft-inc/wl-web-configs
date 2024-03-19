@@ -78,11 +78,25 @@ describe("ecmascript parser", () => {
     });
 });
 
-test("when a transformer is provided, the transformer is applied on the swc config", () => {
+test("when a transformer is provided, and the transformer update the existing configuration object, the transformer is applied on the swc config", () => {
     const minifyTransformer: SwcConfigTransformer = (config: SwcConfig) => {
         config.minify = true;
 
         return config;
+    };
+
+    const result = defineJestConfig({
+        transformers: [minifyTransformer]
+    });
+
+    expect(result.minify).toBeTruthy();
+});
+
+test("when a transformer is provided, and the transformer returns a new configuration object, the transformer is applied on the swc config", () => {
+    const minifyTransformer: SwcConfigTransformer = () => {
+        return {
+            minify: true
+        };
     };
 
     const result = defineJestConfig({

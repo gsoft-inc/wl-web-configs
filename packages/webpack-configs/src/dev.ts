@@ -254,7 +254,7 @@ export function defineDevConfig(swcConfig: SwcConfig, options: DefineDevConfigOp
             }),
             fastRefresh && new ReactRefreshWebpackPlugin(trySetFastRefreshOverlay(isObject(fastRefresh) ? fastRefresh : defineFastRefreshPluginConfig(), overlay)),
             ...plugins
-        ].filter(Boolean) as WebpackConfig["plugins"]
+        ].filter(Boolean)
     };
 
     const transformedConfig = applyTransformers(config, transformers, {
