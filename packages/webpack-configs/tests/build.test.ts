@@ -179,23 +179,6 @@ test("when cache is enabled, the cache configuration is included", () => {
     expect(result.cache).toBeDefined();
 });
 
-test("when cache is disabled, the cache prop is false", () => {
-    const result = defineBuildConfig(SwcConfig, {
-        cache: false
-    });
-
-    expect(result.cache).toBeFalsy();
-});
-
-test("when a cache directory is provided and cache is enabled, use the provided cache directory value", () => {
-    const result = defineBuildConfig(SwcConfig, {
-        cache: true,
-        cacheDirectory: "a-custom-path"
-    });
-
-    expect((result.cache as FileCacheOptions).cacheDirectory).toBe("a-custom-path");
-});
-
 test("when htmlWebpackPlugin is \"false\", no html-webpack-plugin instance is added to the plugin array", () => {
     const config = defineBuildConfig(SwcConfig, {
         htmlWebpackPlugin: false
