@@ -5,7 +5,6 @@ import type { Config as SwcConfig } from "@swc/core";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import { createRequire } from "node:module";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
 import type { Configuration as WebpackConfig } from "webpack";
 import webpack from "webpack";
 import type { ServerOptions } from "webpack-dev-server";
@@ -22,9 +21,6 @@ const DefinePlugin = webpack.DefinePlugin;
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import.meta/resolve
 // is available
 const require = createRequire(import.meta.url);
-
-// The equivalent of __filename for CommonJS.
-const __filename = fileURLToPath(import.meta.url);
 
 export function defineDevHtmlWebpackPluginConfig(options: HtmlWebpackPlugin.Options = {}): HtmlWebpackPlugin.Options {
     const {
@@ -49,7 +45,6 @@ export interface DefineDevConfigOptions {
     port?: number;
     publicPath?: `${string}/` | "auto";
     cache?: boolean;
-    cacheDirectory?: string;
     moduleRules?: NonNullable<WebpackConfig["module"]>["rules"];
     plugins?: WebpackConfig["plugins"];
     htmlWebpackPlugin?: boolean | HtmlWebpackPlugin.Options;
@@ -94,7 +89,6 @@ export function defineDevConfig(swcConfig: SwcConfig, options: DefineDevConfigOp
         port = 8080,
         publicPath,
         cache = true,
-        cacheDirectory = path.resolve("node_modules/.cache/webpack"),
         moduleRules = [],
         plugins = [],
         htmlWebpackPlugin = defineDevHtmlWebpackPluginConfig(),
@@ -134,14 +128,8 @@ export function defineDevConfig(swcConfig: SwcConfig, options: DefineDevConfigOp
             publicPath: publicPath ?? `${https ? "https" : "http"}://${host}:${port}/`
         },
         cache: cache && {
-            type: "filesystem",
-            allowCollectingMemory: true,
-            maxMemoryGenerations: 1,
-            cacheDirectory: cacheDirectory,
-            // Took from https://webpack.js.org/configuration/cache/#cachebuilddependencies.
-            buildDependencies: {
-                config: [__filename]
-            }
+            type: "memory",
+            maxGenerations: 1
         },
         // (ACTUALLY NOT FIXING ANYTHING AT THE MOMENT)
         // Fixes caching for environmental variables using the DefinePlugin by forcing
