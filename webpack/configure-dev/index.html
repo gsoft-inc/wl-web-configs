@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/wl-web-configs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.764182623214">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.764724199773">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -32,12 +32,12 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../static/favicon.png" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.5.0.764182623214" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.5.0.764724199773" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.764182623214" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.764724199773" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.764182623214" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.5.0.764182623214" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.764724199773" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.5.0.764724199773" defer></script>
 
     <link href="https://gsoft-inc.github.io/wl-idp-docs-hub/static/retype-customization.css" rel="stylesheet" />
 
@@ -594,7 +594,7 @@ export default defineDevConfig(swcConfig, {
 <li><strong>Type</strong>: <code v-pre>boolean</code></li>
 <li><strong>Default</strong>: <code v-pre>true</code></li>
 </ul>
-<p>Whether or not webpack <a href="https://webpack.js.org/configuration/cache/" class="outbound" target="_blank">filesystem cache</a> is enabled.</p>
+<p>Whether or not webpack <a href="https://webpack.js.org/configuration/cache/#cache" class="outbound" target="_blank">memory cache</a> is enabled. This will also set <a href="https://webpack.js.org/configuration/cache/#cachemaxgenerations" class="outbound" target="_blank">maxGenerations</a> to 1 to remove cache entries from memory when they are no longer needed.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <div class="codeblock-title">webpack.dev.js</div>
 <pre class="language-javascript" data-line="7"><code v-pre class="language-javascript">// @ts-check
@@ -606,29 +606,6 @@ export default defineDevConfig(swcConfig, {
     cache: false
 });</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="cachedirectory">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#cachedirectory">#</doc-anchor-trigger>
-        <span><code v-pre>cacheDirectory</code></span>
-    </h3>
-</doc-anchor-target>
-<ul>
-<li><strong>Type</strong>: <code v-pre>string</code></li>
-<li><strong>Default</strong>: <code v-pre>node_modules/.cache/webpack</code></li>
-</ul>
-<div class="codeblock-wrapper"><doc-codeblock>
-<div class="codeblock-title">webpack.dev.js</div>
-<pre class="language-javascript" data-line="8"><code v-pre class="language-javascript">// @ts-check
-
-import { defineDevConfig } from &quot;@workleap/webpack-configs&quot;;
-import { swcConfig } from &quot;./swc.dev.js&quot;;
-import path from &quot;path&quot;;
-
-export default defineDevConfig(swcConfig, {
-    cacheDirectory: path.resolve(&quot;./custom-webpack-cache&quot;)
-});</code></pre>
-</doc-codeblock></div>
-<p>Set webpack <a href="https://webpack.js.org/configuration/cache/#cachecachedirectory" class="outbound" target="_blank">cacheDirectory option</a> when <code v-pre>cache</code> is enabled.</p>
 <doc-anchor-target id="modulerules">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#modulerules">#</doc-anchor-trigger>
