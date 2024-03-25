@@ -145,7 +145,6 @@ export function defineBuildConfig(swcConfig: SwcConfig, options: DefineBuildConf
             publicPath,
             clean: true
         },
-        cache: false,
         optimization: getOptimizationConfig(optimize),
         infrastructureLogging: verbose ? {
             appendOnly: true,

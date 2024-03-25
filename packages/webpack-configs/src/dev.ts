@@ -131,27 +131,6 @@ export function defineDevConfig(swcConfig: SwcConfig, options: DefineDevConfigOp
             type: "memory",
             maxGenerations: 1
         },
-        // (ACTUALLY NOT FIXING ANYTHING AT THE MOMENT)
-        // Fixes caching for environmental variables using the DefinePlugin by forcing
-        // webpack caching to prioritize hashes over timestamps.
-        snapshot: cache ? {
-            buildDependencies: {
-                hash: true,
-                timestamp: true
-            },
-            module: {
-                hash: true,
-                timestamp: true
-            },
-            resolve: {
-                hash: true,
-                timestamp: true
-            },
-            resolveBuildDependencies: {
-                hash: true,
-                timestamp: true
-            }
-        } : undefined,
         // See: https://webpack.js.org/guides/build-performance/#avoid-extra-optimization-steps
         optimization: {
             // Keep "runtimeChunk" to false, otherwise it breaks module federation
