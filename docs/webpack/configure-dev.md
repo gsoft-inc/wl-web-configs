@@ -244,7 +244,7 @@ export default defineDevConfig(swcConfig, {
 - **Type**: `boolean`
 - **Default**: `true`
 
-Whether or not webpack [filesystem cache](https://webpack.js.org/configuration/cache/) is enabled.
+Whether or not webpack [memory cache](https://webpack.js.org/configuration/cache/#cache) is enabled. This will also set [maxGenerations](https://webpack.js.org/configuration/cache/#cachemaxgenerations) to 1 to remove cache entries from memory when they are no longer needed.
 
 ```js !#7 webpack.dev.js
 // @ts-check
@@ -256,25 +256,6 @@ export default defineDevConfig(swcConfig, {
     cache: false
 });
 ```
-
-### `cacheDirectory`
-
-- **Type**: `string`
-- **Default**: `node_modules/.cache/webpack`
-
-```js !#8 webpack.dev.js
-// @ts-check
-
-import { defineDevConfig } from "@workleap/webpack-configs";
-import { swcConfig } from "./swc.dev.js";
-import path from "path";
-
-export default defineDevConfig(swcConfig, {
-    cacheDirectory: path.resolve("./custom-webpack-cache")
-});
-```
-
-Set webpack [cacheDirectory option](https://webpack.js.org/configuration/cache/#cachecachedirectory) when `cache` is enabled.
 
 ### `moduleRules`
 

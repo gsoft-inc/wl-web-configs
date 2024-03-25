@@ -4,7 +4,6 @@ import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import { createRequire } from "node:module";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
 import TerserPlugin from "terser-webpack-plugin";
 import type { Configuration as WebpackConfig } from "webpack";
 import webpack from "webpack";
@@ -18,9 +17,6 @@ const DefinePlugin = webpack.DefinePlugin;
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import.meta/resolve
 // is available
 const require = createRequire(import.meta.url);
-
-// The equivalent of __filename for CommonJS.
-const __filename = fileURLToPath(import.meta.url);
 
 export function defineBuildHtmlWebpackPluginConfig(options: HtmlWebpackPlugin.Options = {}): HtmlWebpackPlugin.Options {
     const {
@@ -107,8 +103,6 @@ export interface DefineBuildConfigOptions {
     entry?: string;
     outputPath?: string;
     publicPath?: `${string}/` | "auto";
-    cache?: boolean;
-    cacheDirectory?: string;
     moduleRules?: NonNullable<WebpackConfig["module"]>["rules"];
     plugins?: WebpackConfig["plugins"];
     htmlWebpackPlugin?: boolean | HtmlWebpackPlugin.Options;
@@ -127,8 +121,6 @@ export function defineBuildConfig(swcConfig: SwcConfig, options: DefineBuildConf
         outputPath = path.resolve("dist"),
         // The trailing / is very important, otherwise paths will not be resolved correctly.
         publicPath = "http://localhost:8080/",
-        cache = true,
-        cacheDirectory = path.resolve("node_modules/.cache/webpack"),
         moduleRules = [],
         plugins = [],
         htmlWebpackPlugin = defineBuildHtmlWebpackPluginConfig(),
@@ -153,37 +145,6 @@ export function defineBuildConfig(swcConfig: SwcConfig, options: DefineBuildConf
             publicPath,
             clean: true
         },
-        cache: cache && {
-            type: "filesystem",
-            allowCollectingMemory: false,
-            cacheDirectory: cacheDirectory,
-            maxMemoryGenerations: 1,
-            // Took from https://webpack.js.org/configuration/cache/#cachebuilddependencies.
-            buildDependencies: {
-                config: [__filename]
-            }
-        },
-        // (ACTUALLY NOT FIXING ANYTHING AT THE MOMENT)
-        // Fixes caching for environmental variables using the DefinePlugin by forcing
-        // webpack caching to prioritize hashes over timestamps.
-        snapshot: cache ? {
-            buildDependencies: {
-                hash: true,
-                timestamp: true
-            },
-            module: {
-                hash: true,
-                timestamp: true
-            },
-            resolve: {
-                hash: true,
-                timestamp: true
-            },
-            resolveBuildDependencies: {
-                hash: true,
-                timestamp: true
-            }
-        } : undefined,
         optimization: getOptimizationConfig(optimize),
         infrastructureLogging: verbose ? {
             appendOnly: true,

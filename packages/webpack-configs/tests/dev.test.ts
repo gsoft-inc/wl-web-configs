@@ -2,7 +2,7 @@ import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 import type { Config as SwcConfig } from "@swc/core";
 import { defineDevConfig as defineSwcConfig } from "@workleap/swc-configs";
 import HtmlWebpackPlugin from "html-webpack-plugin";
-import type { Configuration, FileCacheOptions, RuleSetRule } from "webpack";
+import type { Configuration, RuleSetRule } from "webpack";
 import type { ClientConfiguration, ServerConfiguration } from "webpack-dev-server";
 import { defineDevConfig, defineDevHtmlWebpackPluginConfig, defineFastRefreshPluginConfig } from "../src/dev.ts";
 import type { WebpackConfigTransformer } from "../src/transformers/applyTransformers.ts";
@@ -107,15 +107,6 @@ test("when cache is disabled, the cache prop is false", () => {
     });
 
     expect(result.cache).toBeFalsy();
-});
-
-test("when a cache directory is provided and cache is enabled, use the provided cache directory value", () => {
-    const result = defineDevConfig(DefaultConfig, {
-        cache: true,
-        cacheDirectory: "a-custom-path"
-    });
-
-    expect((result.cache as FileCacheOptions).cacheDirectory).toBe("a-custom-path");
 });
 
 test("when additional module rules are provided, append the provided rules at the end of the module rules array", () => {

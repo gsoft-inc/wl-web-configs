@@ -1,6 +1,6 @@
 import { defineBuildConfig as defineSwcConfig } from "@workleap/swc-configs";
 import HtmlWebpackPlugin from "html-webpack-plugin";
-import type { Configuration, FileCacheOptions, RuleSetRule } from "webpack";
+import type { Configuration, RuleSetRule } from "webpack";
 import { defineBuildConfig, defineBuildHtmlWebpackPluginConfig, defineMiniCssExtractPluginConfig } from "../src/build.ts";
 import type { WebpackConfigTransformer } from "../src/transformers/applyTransformers.ts";
 import { findModuleRule, matchAssetModuleType, matchLoaderName } from "../src/transformers/moduleRules.ts";
@@ -169,31 +169,6 @@ test("when optimize is \"readable\", include minify configuration", () => {
     });
 
     expect(result.optimization?.minimizer).toBeDefined();
-});
-
-test("when cache is enabled, the cache configuration is included", () => {
-    const result = defineBuildConfig(SwcConfig, {
-        cache: true
-    });
-
-    expect(result.cache).toBeDefined();
-});
-
-test("when cache is disabled, the cache prop is false", () => {
-    const result = defineBuildConfig(SwcConfig, {
-        cache: false
-    });
-
-    expect(result.cache).toBeFalsy();
-});
-
-test("when a cache directory is provided and cache is enabled, use the provided cache directory value", () => {
-    const result = defineBuildConfig(SwcConfig, {
-        cache: true,
-        cacheDirectory: "a-custom-path"
-    });
-
-    expect((result.cache as FileCacheOptions).cacheDirectory).toBe("a-custom-path");
 });
 
 test("when htmlWebpackPlugin is \"false\", no html-webpack-plugin instance is added to the plugin array", () => {
