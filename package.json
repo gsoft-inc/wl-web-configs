@@ -17,7 +17,7 @@
         "build:stylelint": "pnpm --filter \"@workleap/stylelint-configs\" build",
         "test": "jest",
         "lint": "pnpm run \"/^lint:.*/\"",
-        "lint:eslint": "eslint . --max-warnings=1 --cache --cache-location node_modules/.cache/eslint",
+        "lint:eslint": "eslint . --max-warnings=0 --cache --cache-location node_modules/.cache/eslint",
         "lint:stylelint": "stylelint \"**/*.css\" --cache --cache-location node_modules/.cache/stylelint",
         "lint:types": "pnpm -r --parallel --filter \"!@workleap/typescript-configs\" exec tsc",
         "changeset": "changeset",
