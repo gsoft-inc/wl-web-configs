@@ -1,5 +1,11 @@
 # @workleap/webpack-configs
 
+## 1.5.0
+
+### Minor Changes
+
+- [#190](https://github.com/gsoft-inc/wl-web-configs/pull/190) [`b6246b3`](https://github.com/gsoft-inc/wl-web-configs/commit/b6246b30a505821e36b09579fb14e3c0f99c963a) Thanks [@bsokol-wl](https://github.com/bsokol-wl)! - Enable in-memory webpack cache by default
+
 ## 1.4.2
 
 ### Patch Changes
