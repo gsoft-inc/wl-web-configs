@@ -109,6 +109,10 @@ export const swcConfig = defineJestConfig({
 
 ### `paths`
 
+!!!warning
+You shouldn't need to define custom paths for your project. If you're defining custom paths to support aliases, consider using the [imports](https://medium.com/outbrain-engineering/the-hidden-power-of-package-json-a93143ec0b7c) field of your project's `package.json` file instead.
+!!!
+
 - **Type**: `Record<string, string[]>`
 
 A series of entries which re-map imports to lookup locations relative to the [baseUrl](#baseurl) if set.
