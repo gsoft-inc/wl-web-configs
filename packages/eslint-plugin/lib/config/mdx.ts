@@ -5,7 +5,6 @@ const config: Linter.Config = {
     overrides: [
         {
             files: mdxFiles,
-            plugins: ["@workleap"],
             extends: ["plugin:mdx/recommended"]
         }
     ]

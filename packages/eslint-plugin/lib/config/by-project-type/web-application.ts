@@ -11,7 +11,8 @@ const config: Linter.Config = {
         "plugin:@workleap/testing-library",
         "plugin:@workleap/storybook",
         "plugin:@workleap/mdx",
-        "plugin:@workleap/package-json"
+        "plugin:@workleap/package-json",
+        "plugin:@workleap/yaml"
     ],
     rules: {
         // Custom WorkLeap rules

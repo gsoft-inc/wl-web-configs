@@ -12,6 +12,7 @@ const plugin: ESLint.Plugin = {
         react: require("./config/react"),
         storybook: require("./config/storybook"),
         typescript: require("./config/typescript"),
+        yaml: require("./config/yaml"),
         "jsx-a11y": require("./config/jsx-a11y"),
         "testing-library": require("./config/testing-library"),
         "package-json": require("./config/package-json"),

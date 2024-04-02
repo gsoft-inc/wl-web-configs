@@ -3,4 +3,3 @@ node_modules
 pnpm-lock.yaml
 *.md
 *.snap
-*.yml

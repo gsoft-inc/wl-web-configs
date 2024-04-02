@@ -8,7 +8,8 @@ const config: Linter.Config = {
         "plugin:@workleap/jest",
         "plugin:@workleap/testing-library",
         "plugin:@workleap/mdx",
-        "plugin:@workleap/package-json"
+        "plugin:@workleap/package-json",
+        "plugin:@workleap/yaml"
     ],
     rules: {
         "package-json/valid-version": "off"

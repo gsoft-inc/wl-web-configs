@@ -26,7 +26,12 @@ Then, add the following settings to your solution [VS Code settings file](https:
     "editor.formatOnSave": true,
     "typescript.format.enable": false, // Disables the default formatter to use ESLint instead
     "javascript.format.enable": false, // Disables the default formatter to use ESLint instead
-    "json.format.enable": false // Disables the default formatter to use ESLint instead
+    "json.format.enable": false, // Disables the default formatter to use ESLint instead
+    "eslint.validate": [ // Enables YAML files formatting.
+        "javascript",
+        "javascriptreact",
+        "yaml"
+    ]
 }
 ```
 

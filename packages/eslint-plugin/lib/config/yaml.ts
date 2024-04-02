@@ -1,15 +1,14 @@
+import { yamlFiles } from "../utils/patterns";
+
 import type { Linter } from "eslint";
 
 const config: Linter.Config = {
-    plugins: ["@workleap"],
-    extends: [
-        "plugin:@workleap/core",
-        "plugin:@workleap/typescript",
-        "plugin:@workleap/jest",
-        "plugin:@workleap/testing-library",
-        "plugin:@workleap/mdx",
-        "plugin:@workleap/package-json",
-        "plugin:@workleap/yaml"
+    extends: ["plugin:yml/standard"],
+    overrides: [
+        {
+            files: yamlFiles,
+            parser: "yaml-eslint-parser"
+        }
     ]
 };
 

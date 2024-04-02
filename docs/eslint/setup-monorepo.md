@@ -85,11 +85,15 @@ Then, open the newly created file and paste the following ignore rules:
 node_modules
 __snapshots__
 storybook-static
+pnpm-lock.yaml
+package-lock.json
 *.md
-*.yml
-*.yaml
 !.storybook
 ```
+
+!!!info
+While only the `.storybook` dot folder is listed, you should include any other dot folders that need to be linted.
+!!!
 
 ### Configure indent style
 
@@ -148,7 +152,7 @@ workspace
 
 ```json package.json
 {
-    "lint:eslint:": "eslint . --max-warnings=1 --cache --cache-location node_modules/.cache/eslint"
+    "lint:eslint:": "eslint . --max-warnings=0 --cache --cache-location node_modules/.cache/eslint"
 }
 ```
 
