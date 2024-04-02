@@ -1,5 +1,11 @@
 # @workleap/eslint-plugin
 
+## 3.2.0
+
+### Minor Changes
+
+- [#195](https://github.com/gsoft-inc/wl-web-configs/pull/195) [`dd560c6`](https://github.com/gsoft-inc/wl-web-configs/commit/dd560c6eb7a332d9254b1a46dc2fe1da8759a7e4) Thanks [@patricklafrance](https://github.com/patricklafrance)! - Added a config for YAML files.
+
 ## 3.1.0
 
 ### Minor Changes
