@@ -22,6 +22,8 @@ If the default [by project type configurations](default.md/#available-configurat
 | :icon-mark-github: [testing-library](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/testing-library.ts) | Rules for Jest files using [Testing Library](https://testing-library.com/). |
 | :icon-mark-github: [storybook](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/storybook.ts) | Rules for [Storybook](https://storybook.js.org/) story files. |
 | :icon-mark-github: [mdx](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/mdx.ts) | Rules for [MDX](https://mdxjs.com/) files (used for Storybook MDX stories). |
+| :icon-mark-github: [package-json](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/package-json.ts) | Rules for [package.json](https://docs.npmjs.com/cli/v10/configuring-npm/package-json) files. |
+| :icon-mark-github: [yaml](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/lib/config/yaml.ts) | Rules for [YAML](https://yaml.org/) files. |
 
 ## Compose a configuration
 
