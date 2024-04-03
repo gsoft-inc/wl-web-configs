@@ -16,6 +16,7 @@ export function defineDevConfig(options: DefineDevConfigOptions = {}) {
         watch: true,
         entry: [
             "./src",
+            "!src/**/*.css",
             "!src/**/*.stories.ts(x)",
             "!src/**/*.test.ts(x)"
         ],

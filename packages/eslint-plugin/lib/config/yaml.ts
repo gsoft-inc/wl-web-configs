@@ -1,12 +1,12 @@
+import type { Linter } from "eslint";
 import { yamlFiles } from "../utils/patterns";
 
-import type { Linter } from "eslint";
-
 const config: Linter.Config = {
-    extends: ["plugin:yml/standard"],
     overrides: [
         {
             files: yamlFiles,
+            plugins: ["yml"],
+            extends: ["plugin:yml/recommended"],
             parser: "yaml-eslint-parser"
         }
     ]
