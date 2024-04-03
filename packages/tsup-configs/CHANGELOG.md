@@ -1,5 +1,11 @@
 # @workleap/tsup-configs
 
+## 3.0.5
+
+### Patch Changes
+
+- [#197](https://github.com/gsoft-inc/wl-web-configs/pull/197) [`d8b3d36`](https://github.com/gsoft-inc/wl-web-configs/commit/d8b3d36ab87dfd1e6be06186d03ed3427f4c64e0) Thanks [@patricklafrance](https://github.com/patricklafrance)! - Exclusing css files from the entry option as they should import from tsx files.
+
 ## 3.0.4
 
 ### Patch Changes
