@@ -354,7 +354,7 @@ describe("defineMiniCssExtractPluginConfig", () => {
         });
 
         expect(result.chunkFilename).toBe("a-custom-chunk-filename");
-        expect(result.filename).toBe("[name].[fullhash].css");
+        expect(result.filename).toBe("[name].css");
     });
 
 

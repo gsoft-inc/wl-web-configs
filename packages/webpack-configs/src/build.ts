@@ -143,7 +143,8 @@ export function defineBuildConfig(swcConfig: SwcConfig, options: DefineBuildConf
             path: outputPath,
             filename: "[name].js",
             publicPath,
-            clean: true
+            clean: true,
+            assetModuleFilename: "[name][ext][query]"
         },
         optimization: getOptimizationConfig(optimize),
         infrastructureLogging: verbose ? {
