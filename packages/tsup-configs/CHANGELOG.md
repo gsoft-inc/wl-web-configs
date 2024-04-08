@@ -1,5 +1,11 @@
 # @workleap/tsup-configs
 
+## 3.0.6
+
+### Patch Changes
+
+- [#199](https://github.com/gsoft-inc/wl-web-configs/pull/199) [`7805dbe`](https://github.com/gsoft-inc/wl-web-configs/commit/7805dbe75532e16797bc62ccccc7e0c4e8be66b1) Thanks [@patricklafrance](https://github.com/patricklafrance)! - Add an export for the tsup configs default entry paths.
+
 ## 3.0.5
 
 ### Patch Changes
