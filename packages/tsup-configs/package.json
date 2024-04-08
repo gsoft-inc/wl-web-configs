@@ -40,16 +40,15 @@
         "typescript": "*"
     },
     "devDependencies": {
-        "@swc/core": "1.4.6",
+        "@swc/core": "1.4.12",
         "@swc/jest": "0.2.36",
         "@types/jest": "29.5.12",
         "@workleap/eslint-plugin": "workspace:*",
         "@workleap/swc-configs": "workspace:*",
         "@workleap/typescript-configs": "workspace:*",
         "jest": "29.7.0",
-        "ts-node": "10.9.2",
         "tsup": "8.0.2",
-        "typescript": "5.4.2"
+        "typescript": "5.4.4"
     },
     "publishConfig": {
         "access": "public",

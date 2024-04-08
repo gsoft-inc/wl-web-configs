@@ -3,6 +3,7 @@
     "author": "Workleap",
     "description": "Common configurations for building web apps and libraries at Workleap",
     "private": true,
+    "type": "module",
     "license": "Apache-2.0",
     "repository": {
         "type": "git",
@@ -19,6 +20,8 @@
         "lint": "pnpm run \"/^lint:.*/\"",
         "lint:eslint": "eslint . --max-warnings=0 --cache --cache-location node_modules/.cache/eslint",
         "lint:stylelint": "stylelint \"**/*.css\" --cache --cache-location node_modules/.cache/stylelint",
+        "lint:knip": "knip",
+        "lint:installed-check": "installed-check",
         "lint:types": "pnpm -r --parallel --filter \"!@workleap/typescript-configs\" exec tsc",
         "changeset": "changeset",
         "ci-release": "pnpm build && changeset publish",
@@ -39,7 +42,9 @@
         "@workleap/eslint-plugin": "workspace:*",
         "@workleap/typescript-configs": "workspace:*",
         "eslint": "8.57.0",
+        "installed-check": "9.3.0",
         "jest": "29.7.0",
+        "knip": "5.9.0",
         "prettier": "3.2.5",
         "retypeapp": "3.5.0",
         "stylelint": "16.2.1",
@@ -47,6 +52,6 @@
         "typescript": "5.4.2"
     },
     "engines": {
-        "node": ">=16.0.0"
+        "node": ">=18.12.0"
     }
 }

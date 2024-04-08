@@ -5,6 +5,13 @@ export interface DefineDevConfigOptions extends TsupConfig {
     transformers?: TsupConfigTransformer[];
 }
 
+export const TsupDevEntryPaths = [
+    "./src",
+    "!src/**/*.css",
+    "!src/**/*.stories.ts(x)",
+    "!src/**/*.test.ts(x)"
+];
+
 export function defineDevConfig(options: DefineDevConfigOptions = {}) {
     const {
         transformers = [],
@@ -14,12 +21,7 @@ export function defineDevConfig(options: DefineDevConfigOptions = {}) {
     const config: TsupConfig = {
         dts: true,
         watch: true,
-        entry: [
-            "./src",
-            "!src/**/*.css",
-            "!src/**/*.stories.ts(x)",
-            "!src/**/*.test.ts(x)"
-        ],
+        entry: TsupDevEntryPaths,
         outDir: "./dist",
         format: "esm",
         target: "esnext",

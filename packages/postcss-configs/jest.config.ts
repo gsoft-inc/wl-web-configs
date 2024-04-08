@@ -1,5 +1,5 @@
 import type { Config } from "jest";
-import { config as swcConfig } from "./swc.jest.ts";
+import { swcConfig } from "./swc.jest.ts";
 
 const config: Config = {
     testEnvironment: "node",
