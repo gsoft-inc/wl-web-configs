@@ -34,7 +34,7 @@ type MiniCssExtractPluginOptions = NonNullable<ConstructorParameters<typeof Mini
 
 export function defineMiniCssExtractPluginConfig(options: MiniCssExtractPluginOptions = {}): MiniCssExtractPluginOptions {
     const {
-        filename = "[name].[fullhash].css",
+        filename = "[name].css",
         ...rest
     } = options;
 
@@ -141,9 +141,10 @@ export function defineBuildConfig(swcConfig: SwcConfig, options: DefineBuildConf
         entry,
         output: {
             path: outputPath,
-            filename: "[name].[fullhash].js",
+            filename: "[name].js",
             publicPath,
-            clean: true
+            clean: true,
+            assetModuleFilename: "[name][ext][query]"
         },
         optimization: getOptimizationConfig(optimize),
         infrastructureLogging: verbose ? {
