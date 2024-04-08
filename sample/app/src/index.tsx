@@ -5,7 +5,7 @@ import { createRoot } from "react-dom/client";
 import { App } from "./App.tsx";
 
 if (process.env.USE_MSW) {
-    import("../mocks/browser.ts").then(({ worker }) => {
+    import("./mocks/browser.ts").then(({ worker }) => {
         worker.start();
     });
 }
