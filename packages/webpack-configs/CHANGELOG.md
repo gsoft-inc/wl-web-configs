@@ -1,5 +1,11 @@
 # @workleap/webpack-configs
 
+## 1.5.1
+
+### Patch Changes
+
+- [#201](https://github.com/gsoft-inc/wl-web-configs/pull/201) [`de5804b`](https://github.com/gsoft-inc/wl-web-configs/commit/de5804b352496fe0a6d4e01a5b6bb5e6a56aca18) Thanks [@bsokol-wl](https://github.com/bsokol-wl)! - Remove hashes from chunk file names and asset/resource file names in order to prevent chunk load errors for users during a deployment
+
 ## 1.5.0
 
 ### Minor Changes
