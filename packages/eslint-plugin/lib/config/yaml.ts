@@ -9,10 +9,7 @@ const config: Linter.Config = {
             extends: ["plugin:yml/recommended"],
             parser: "yaml-eslint-parser"
         }
-    ],
-    rules: {
-        "yml/no-empty-mapping-value": "off"
-    }
+    ]
 };
 
 // Using TypeScript "export" keyword until ESLint support ESM.
