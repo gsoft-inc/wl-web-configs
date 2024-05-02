@@ -1,8 +1,8 @@
 import type { Linter } from "eslint";
-import reactPlugin from 'eslint-plugin-react';
-import reactHooksPlugin from 'eslint-plugin-react-hooks';
-import globals from 'globals';
-import { sourceFiles } from "../utils/patterns";
+import reactPlugin from "eslint-plugin-react";
+import reactHooksPlugin from "eslint-plugin-react-hooks";
+import globals from "globals";
+import { sourceFiles } from "../utils/patterns.ts";
 
 const config: Linter.FlatConfig[] = [
     {
@@ -12,15 +12,15 @@ const config: Linter.FlatConfig[] = [
         },
         settings: {
             react: {
-                version: 'detect'
+                version: "detect"
             }
         },
         languageOptions: {
             ...reactPlugin.configs.recommended.languageOptions,
             globals: {
                 ...globals.serviceworker,
-                ...globals.browser,
-            },
+                ...globals.browser
+            }
         },
         rules: {
             ...reactPlugin.configs.recommended.rules,
@@ -82,7 +82,7 @@ const config: Linter.FlatConfig[] = [
         plugins: {
             "react-hooks": reactHooksPlugin
         },
-        files: sourceFiles,
+        files: sourceFiles
     }
 ];
 

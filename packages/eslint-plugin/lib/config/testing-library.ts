@@ -1,7 +1,6 @@
-import testingLibraryPlugin from "eslint-plugin-testing-library";
-import { reactTestFiles, testFiles } from "../utils/patterns";
-
 import type { Linter } from "eslint";
+import testingLibraryPlugin from "eslint-plugin-testing-library";
+import { reactTestFiles, testFiles } from "../utils/patterns.ts";
 
 const config: Linter.FlatConfig[] = [
     {

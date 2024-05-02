@@ -2,11 +2,11 @@
 
 import type { Linter } from "eslint";
 import storybookPlugin from "eslint-plugin-storybook";
-import { mainStorybookFiles, storybookFiles } from "../utils/patterns";
+import { mainStorybookFiles, storybookFiles } from "../utils/patterns.ts";
 
 const config: Linter.FlatConfig[] = [
     {
-        ignores: ['!.storybook'],
+        ignores: ["!.storybook"]
     },
     {
         files: storybookFiles,
@@ -14,7 +14,7 @@ const config: Linter.FlatConfig[] = [
         rules: {
             ...storybookPlugin.configs.recommended.overrides[0].rules,
             ...storybookPlugin.configs.csf.overrides[0].rules,
-            ...storybookPlugin.configs['csf-strict'].rules,
+            ...storybookPlugin.configs["csf-strict"].rules
         }
     },
     {

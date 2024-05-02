@@ -1,10 +1,15 @@
-export const sourceFiles = [
-    "**/*.[jt]s?(x)",
+export const javaScriptFiles = [
+    "**/*.js?(x)",
     "**/*.[cm]js"
 ];
 
-export const typescriptFiles = [
+export const typeScriptFiles = [
     "**/*.ts?(x)"
+];
+
+export const sourceFiles = [
+    ...javaScriptFiles,
+    ...typeScriptFiles
 ];
 
 export const testFiles = [

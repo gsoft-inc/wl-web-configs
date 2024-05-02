@@ -1,26 +1,36 @@
 import type { Linter } from "eslint";
+import workleapPlugin from "../../index.ts";
+import core from "../core.ts";
+import jest from "../jest.ts";
+import jsxA11y from "../jsx-a11y.ts";
+import mdx from "../mdx.ts";
+import packageJson from "../package-json.ts";
+import react from "../react.ts";
+import storybook from "../storybook.ts";
+import testingLibrary from "../testing-library.ts";
+import typescript from "../typescript.ts";
+import yml from "../yaml.ts";
 
-const config: Linter.Config = {
-    plugins: ["@workleap"],
-    extends: [
-        "plugin:@workleap/core",
-        "plugin:@workleap/typescript",
-        "plugin:@workleap/react",
-        "plugin:@workleap/jsx-a11y",
-        "plugin:@workleap/jest",
-        "plugin:@workleap/testing-library",
-        "plugin:@workleap/storybook",
-        "plugin:@workleap/mdx",
-        "plugin:@workleap/package-json",
-        "plugin:@workleap/yaml"
-    ],
-    rules: {
-        // Custom WorkLeap rules
-        "@workleap/strict-css-modules-names": "warn"
-    }
-};
+const config: Linter.FlatConfig[] = [
+    {
+        plugins: {
+            "@workleap": workleapPlugin
+        },
+        rules: {
+            // Custom WorkLeap rules
+            "@workleap/strict-css-modules-names": "warn"
+        }
+    },
+    core,
+    typescript,
+    ...react,
+    jsxA11y,
+    jest,
+    ...testingLibrary,
+    ...storybook,
+    mdx,
+    packageJson,
+    ...yml
+];
 
-// Using TypeScript "export" keyword until ESLint support ESM.
-// Otherwise we must deal with a weird CommonJS output from esbuild which is not worth it.
-// For more info, see: https://github.com/evanw/esbuild/issues/1079
-export = config;
+export default config;

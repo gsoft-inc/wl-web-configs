@@ -1,22 +1,26 @@
 import type { Linter } from "eslint";
+import core from "../core.ts";
+import jest from "../jest.ts";
+import mdx from "../mdx.ts";
+import packageJson from "../package-json.ts";
+import testingLibrary from "../testing-library.ts";
+import typescript from "../typescript.ts";
+import yml from "../yaml.ts";
 
-const config: Linter.Config = {
-    plugins: ["@workleap"],
-    extends: [
-        "plugin:@workleap/core",
-        "plugin:@workleap/typescript",
-        "plugin:@workleap/jest",
-        "plugin:@workleap/testing-library",
-        "plugin:@workleap/mdx",
-        "plugin:@workleap/package-json",
-        "plugin:@workleap/yaml"
-    ],
-    rules: {
-        "package-json/valid-version": "off"
-    }
-};
+const config: Linter.FlatConfig[] = [
+    core,
+    typescript,
+    jest,
+    ...testingLibrary,
+    mdx,
+    {
+        ...packageJson,
+        rules: {
+            ...packageJson.rules,
+            "package-json/valid-version": "off"
+        }
+    },
+    ...yml
+];
 
-// Using TypeScript "export" keyword until ESLint support ESM.
-// Otherwise we must deal with a weird CommonJS output from esbuild which is not worth it.
-// For more info, see: https://github.com/evanw/esbuild/issues/1079
-module.exports = config;
+export default config;

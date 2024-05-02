@@ -1,16 +1,17 @@
-import tsEslint, { type Config } from "typescript-eslint";
-import { typescriptFiles } from "../utils/patterns";
+import type { Linter } from "eslint";
+import tseslint from "typescript-eslint";
+import { typeScriptFiles } from "../utils/patterns.ts";
 
-const unused = 3;
-
-const config: Config = tsEslint.config(
+const config: Linter.FlatConfig =
     {
-        files: typescriptFiles,
+        files: typeScriptFiles,
         plugins: {
-            "@typescript-eslint": tsEslint.plugin
+            // @ts-ignore
+            "@typescript-eslint": tseslint.plugin
         },
         languageOptions: {
-            parser: tsEslint.parser,
+            // @ts-ignore
+            parser: tseslint.parser,
             parserOptions: {
                 project: true
             }
@@ -70,7 +71,6 @@ const config: Config = tsEslint.config(
             "semi":"off",
             "@typescript-eslint/semi": ["warn", "always"]
         }
-    }
-);
+    };
 
 export default config;

@@ -1,31 +1,48 @@
 import type { ESLint } from "eslint";
+import { name, version } from "../package.json";
+import monorepoWorkspace from "./config/by-project-type/monorepo-workspace.ts";
+import reactLibrary from "./config/by-project-type/react-library.ts";
+import typescriptLibrary from "./config/by-project-type/typescript-library.ts";
+import webApplication from "./config/by-project-type/web-application.ts";
+import core from "./config/core.ts";
+import jest from "./config/jest.ts";
+import jsxA11y from "./config/jsx-a11y.ts";
+import mdx from "./config/mdx.ts";
+import packageJson from "./config/package-json.ts";
+import react from "./config/react.ts";
+import storybook from "./config/storybook.ts";
+import testingLibrary from "./config/testing-library.ts";
+import typescript from "./config/typescript.ts";
+import yaml from "./config/yaml.ts";
+import StrictCSSModuleNames from "./rules/strict-css-modules-names.ts";
 
 const plugin: ESLint.Plugin = {
+    meta: {
+        name,
+        version
+    },
     rules: {
-        "strict-css-modules-names": require("./rules/strict-css-modules-names")
+        "strict-css-modules-names": StrictCSSModuleNames
     },
     configs: {
         // Parts
-        core: require("./config/core"),
-        jest: require("./config/jest"),
-        mdx: require("./config/mdx"),
-        react: require("./config/react"),
-        storybook: require("./config/storybook"),
-        typescript: require("./config/typescript"),
-        yaml: require("./config/yaml"),
-        "jsx-a11y": require("./config/jsx-a11y"),
-        "testing-library": require("./config/testing-library"),
-        "package-json": require("./config/package-json"),
+        core,
+        jest,
+        mdx,
+        react,
+        storybook,
+        typescript,
+        yaml,
+        jsxA11y,
+        testingLibrary,
+        packageJson,
 
         // By project type
-        "react-library": require("./config/by-project-type/react-library"),
-        "typescript-library": require("./config/by-project-type/typescript-library"),
-        "web-application": require("./config/by-project-type/web-application"),
-        "monorepo-workspace": require("./config/by-project-type/monorepo-workspace")
+        reactLibrary,
+        typescriptLibrary,
+        webApplication,
+        monorepoWorkspace
     }
 };
 
-// Using TypeScript "export" keyword until ESLint support ESM.
-// Otherwise we must deal with a weird CommonJS output from esbuild which is not worth it.
-// For more info, see: https://github.com/evanw/esbuild/issues/1079
-export = plugin;
+export default plugin;
