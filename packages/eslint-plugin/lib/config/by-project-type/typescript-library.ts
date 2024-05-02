@@ -18,5 +18,4 @@ const config: Linter.FlatConfig[] = [
     ...yml
 ];
 
-console.log(workleapPlugin);
 export default config;
