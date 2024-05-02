@@ -1,4 +1,4 @@
-import type { ESLint } from "eslint";
+import type { ESLint, Linter, Rule } from "eslint";
 import { name, version } from "../package.json";
 import monorepoWorkspace from "./config/by-project-type/monorepo-workspace.ts";
 import reactLibrary from "./config/by-project-type/react-library.ts";
@@ -13,8 +13,8 @@ import react from "./config/react.ts";
 import storybook from "./config/storybook.ts";
 import testingLibrary from "./config/testing-library.ts";
 import typescript from "./config/typescript.ts";
+import workleap from "./config/workleap.ts";
 import yaml from "./config/yaml.ts";
-import StrictCSSModuleNames from "./rules/strict-css-modules-names.ts";
 
 const plugin: ESLint.Plugin = {
     meta: {
@@ -22,10 +22,11 @@ const plugin: ESLint.Plugin = {
         version
     },
     rules: {
-        "strict-css-modules-names": StrictCSSModuleNames
+        ...workleap.plugins!["@workleap"].rules
     },
     configs: {
         // Parts
+        workleap,
         core,
         jest,
         mdx,
