@@ -8,15 +8,15 @@ import typescript from "../typescript.ts";
 import yml from "../yaml.ts";
 
 const config: Linter.FlatConfig[] = [
-    core,
-    typescript,
-    jest,
+    ...core,
+    ...typescript,
+    ...jest,
     ...testingLibrary,
-    mdx,
+    ...mdx,
     {
-        ...packageJson,
+        ...packageJson[0],
         rules: {
-            ...packageJson.rules,
+            ...packageJson[0].rules,
             "package-json/valid-version": "off"
         }
     },

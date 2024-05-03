@@ -2,7 +2,7 @@ import type { Linter } from "eslint";
 import jsxA11yPlugin from "eslint-plugin-jsx-a11y";
 import { sourceFiles } from "../utils/patterns.ts";
 
-const config: Linter.FlatConfig =
+const config: Linter.FlatConfig[] = [
     {
         plugins: { "jsx-a11y": jsxA11yPlugin },
         languageOptions: {
@@ -28,6 +28,7 @@ const config: Linter.FlatConfig =
             // Since we don't use captions, we are disabling this rule.
             "jsx-a11y/media-has-caption": "off"
         }
-    };
+    }
+];
 
 export default config;

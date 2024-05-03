@@ -1,10 +1,10 @@
-import typeScriptLibrary from "./dist/config/by-project-type/typescript-library.js";
+import workleapPlugin from "./dist/index.js";
 
 const config = [
     {
         ignores: ["**/dist/**"]
     },
-    ...typeScriptLibrary
+    ...workleapPlugin.configs.typeScriptLibrary
 ];
 
 export default config;

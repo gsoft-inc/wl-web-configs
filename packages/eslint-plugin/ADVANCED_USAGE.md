@@ -15,56 +15,83 @@ The `@workleap/eslint-plugin` package exposes the following configuration parts:
 
 Each configuration block can be extended individually, or in combination with others, to compose your custom ESLint configuration.
 
-Here's an example of how to use the TypeScript configuration block in your .eslintrc.json file:
+Here's an example of how to use the TypeScript configuration block in your eslint.config.js file:
 
-```json
-{
-  "extends": ["plugin:@workleap/typescript"],
-  "rules": {
-    // your custom rules
-  }
-}
-```
-Similarly, here's an example of how to use the react configuration block:
+```javascript
+import workleapPlugin from "@workleap/eslint-plugin";
 
-```json
-{
-  "extends": ["plugin:@workleap/react"],
-  "rules": {
-    // your custom rules
-  }
-}
+const config = [
+    workleapPlugin.configs.typescript,
+    {
+        rules: {
+          // your custom rules
+        }
+    }
+];
+
+export default config;
 ```
+
+Some premade configurations are already combinations of configs. Here's an example of how to use the react configuration block:
+
+```javascript
+import workleapPlugin from "@workleap/eslint-plugin";
+
+const config = [
+    ...workleapPlugin.configs.react,
+    {
+        rules: {
+          // your custom rules
+        }
+    }
+];
+
+export default config;
+```
+
 And here's an example of how to use both TypeScript and react configuration blocks together:
 
 ```json
-{
-  "extends": ["plugin:@workleap/typescript", "plugin:@workleap/react"],
-  "rules": {
-    // your custom rules
-  }
-}
+import workleapPlugin from "@workleap/eslint-plugin";
+
+const config = [
+    workleapPlugin.configs.typescript,
+    ...workleapPlugin.configs.react,
+    {
+        rules: {
+          // your custom rules
+        }
+    }
+];
+
+export default config;
 ```
 
-Alternatively, if you want to lint files other than `.ts/.tsx/.js/.jsx`, you will need create different overwrite blocks
+Alternatively, if you want to change any of the underlying configuration, you will have to create new configuration blocks to modify existing configuration blocks.
 
-```json
-{
-    "overrides": [
+```javascript
+import workleapPlugin from "@workleap/eslint-plugin";
+
+const config = [
+    {
+       ...workleapPlugin.configs.typescript, 
+       files: ["*.ts"]
+    },
+    ...workleapPlugin.configs.react.map(config => (
         {
-            "files": ["*.ts", "*.tsx"],
-            "extends": ["plugin:@workleap/typescript", "plugin:@workleap/react"],
-            "rules": {
-                // your custom rules
-            }
-        },
-        {
-            "files": ["*.mdx"],
-            "extends": ["plugin:@workleap/mdx"],
-            "rules": {
-                // your custom rules
-            }
+            ...config,
+            files: ["*.jsx?"],
         }
-    ]
-}
+    )),
+    {
+        ...workleapPlugin.configs.mdx,
+        files: ["*.mdx"],
+        rules: {
+            ...workleapPlugin.configs.mdx.rules,
+              // your custom rules
+        }
+    }
+];
+
+export default config;
 ```

@@ -9,12 +9,12 @@ import typescript from "../typescript.ts";
 import yml from "../yaml.ts";
 
 const config: Linter.FlatConfig[] = [
-    core,
-    typescript,
-    jest,
+    ...core,
+    ...typescript,
+    ...jest,
     ...testingLibrary,
-    mdx,
-    packageJson,
+    ...mdx,
+    ...packageJson,
     ...yml
 ];
 

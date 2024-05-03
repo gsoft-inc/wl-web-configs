@@ -2,7 +2,7 @@ import type { Linter } from "eslint";
 import tseslint from "typescript-eslint";
 import { typeScriptFiles } from "../utils/patterns.ts";
 
-const config: Linter.FlatConfig =
+const config: Linter.FlatConfig[] = [
     {
         files: typeScriptFiles,
         plugins: {
@@ -71,6 +71,7 @@ const config: Linter.FlatConfig =
             "semi":"off",
             "@typescript-eslint/semi": ["warn", "always"]
         }
-    };
+    }
+];
 
 export default config;

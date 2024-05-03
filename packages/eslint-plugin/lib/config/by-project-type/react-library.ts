@@ -13,15 +13,15 @@ import yml from "../yaml.ts";
 
 const config: Linter.FlatConfig[] = [
     workleap,
-    core,
-    typescript,
+    ...core,
+    ...typescript,
     ...react,
-    jsxA11y,
-    jest,
+    ...jsxA11y,
+    ...jest,
     ...testingLibrary,
     ...storybook,
-    mdx,
-    packageJson,
+    ...mdx,
+    ...packageJson,
     ...yml
 ];
 

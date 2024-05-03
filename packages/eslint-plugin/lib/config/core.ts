@@ -2,7 +2,7 @@ import js from "@eslint/js";
 import type { Linter } from "eslint";
 import { javaScriptFiles } from "../utils/patterns.ts";
 
-const config: Linter.FlatConfig =
+const config: Linter.FlatConfig[] = [
 {
     files: javaScriptFiles,
     rules: {
@@ -130,6 +130,6 @@ const config: Linter.FlatConfig =
         "arrow-parens": ["warn", "as-needed"]
 
     }
-};
+}];
 
 export default config;
