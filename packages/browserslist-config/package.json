@@ -32,7 +32,8 @@
         "README.md"
     ],
     "scripts": {
-        "build": "tsup"
+        "build": "tsup",
+        "lint:eslint": "eslint . --max-warnings=0 --cache --cache-location .cache/eslint"
     },
     "devDependencies": {
         "@workleap/eslint-plugin": "workspace:*",

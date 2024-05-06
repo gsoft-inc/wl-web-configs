@@ -12,6 +12,9 @@ import workleap from "../workleap.ts";
 import yml from "../yaml.ts";
 
 const config: Linter.FlatConfig[] = [
+    {
+        ignores: ["dist/"]
+    },
     workleap,
     ...core,
     ...typescript,

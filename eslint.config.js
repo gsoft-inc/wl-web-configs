@@ -1,4 +1,4 @@
-import workleapPlugin from "./packages/eslint-plugin/dist/index.js";
+import workleapPlugin from "@workleap/eslint-plugin";
 
 const config = [
     {

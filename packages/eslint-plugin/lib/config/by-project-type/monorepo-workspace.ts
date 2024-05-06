@@ -9,6 +9,9 @@ import typescript from "../typescript.ts";
 import yml from "../yaml.ts";
 
 const config: Linter.FlatConfig[] = [
+    {
+        ignores: ["dist/"]
+    },
     ...(withGlobals(core, ["node"])),
     ...(withGlobals(typescript, ["node"])),
     ...jest,

@@ -32,7 +32,8 @@
         "directory": "packages/swc-configs"
     },
     "scripts": {
-        "build": "tsup"
+        "build": "tsup",
+        "lint:eslint": "eslint . --max-warnings=0 --cache --cache-location .cache/eslint"
     },
     "peerDependencies": {
         "@swc/core": "*",
