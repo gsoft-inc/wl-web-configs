@@ -10,7 +10,7 @@ const config = [
             "node_modules/",
             ".github/",
             "packages/",
-            "samples/"
+            "sample/"
         ]
     },
     ...workleapPlugin.configs.monorepoWorkspace
