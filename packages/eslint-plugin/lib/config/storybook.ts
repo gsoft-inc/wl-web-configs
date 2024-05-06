@@ -1,7 +1,7 @@
 // https://github.com/storybookjs/eslint-plugin-storybook/blob/main/lib/configs/recommended.ts
 
 import type { Linter } from "eslint";
-import storybookPlugin from "eslint-plugin-storybook";
+import * as storybookPlugin from "eslint-plugin-storybook";
 import { mainStorybookFiles, storybookFiles } from "../utils/patterns.ts";
 
 const config: Linter.FlatConfig[] = [
