@@ -9,7 +9,8 @@ const config = [
             "*.snap",
             "node_modules/",
             ".github/",
-            "packages/"
+            "packages/",
+            "samples/"
         ]
     },
     ...workleapPlugin.configs.monorepoWorkspace

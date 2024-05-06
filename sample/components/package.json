@@ -21,7 +21,8 @@
         "dev": "tsup --config ./tsup.dev.ts",
         "dev-msw": "pnpm dev",
         "build": "tsup --config ./tsup.build.ts",
-        "serve-build": "pnpm build"
+        "serve-build": "pnpm build",
+        "lint:eslint": "eslint . --max-warnings=0 --cache --cache-location .cache/eslint"
     },
     "peerDependencies": {
         "react": "*",
