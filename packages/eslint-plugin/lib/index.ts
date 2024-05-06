@@ -1,5 +1,4 @@
-import type { ESLint, Linter, Rule } from "eslint";
-import { name, version } from "../package.json";
+import type { ESLint } from "eslint";
 import monorepoWorkspace from "./config/by-project-type/monorepo-workspace.ts";
 import reactLibrary from "./config/by-project-type/react-library.ts";
 import typescriptLibrary from "./config/by-project-type/typescript-library.ts";
@@ -17,10 +16,6 @@ import workleap from "./config/workleap.ts";
 import yaml from "./config/yaml.ts";
 
 const plugin: ESLint.Plugin = {
-    meta: {
-        name,
-        version
-    },
     rules: {
         ...workleap.plugins!["@workleap"].rules
     },

@@ -4,7 +4,11 @@ import { mdxFiles } from "../utils/patterns.ts";
 
 const config: Linter.FlatConfig[] = [
     {
-        ...mdxPlugin.configs.flat,
+        ...mdxPlugin.flat,
+        files: mdxFiles
+    },
+    {
+        ...mdxPlugin.flatCodeBlocks,
         files: mdxFiles
     }
 ];

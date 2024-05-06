@@ -1,4 +1,5 @@
 import type { Linter } from "eslint";
+import { withGlobals } from "../../utils/helpers.ts";
 import core from "../core.ts";
 import jest from "../jest.ts";
 import mdx from "../mdx.ts";
@@ -8,8 +9,8 @@ import typescript from "../typescript.ts";
 import yml from "../yaml.ts";
 
 const config: Linter.FlatConfig[] = [
-    ...core,
-    ...typescript,
+    ...(withGlobals(core, ["node"])),
+    ...(withGlobals(typescript, ["node"])),
     ...jest,
     ...testingLibrary,
     ...mdx,

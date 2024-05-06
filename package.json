@@ -19,7 +19,7 @@
         "test": "jest",
         "lint": "pnpm run \"/^lint:.*/\"",
         "lint:eslint": "eslint . --max-warnings=0 --cache --cache-location node_modules/.cache/eslint",
-        "lint:eslint-packages": "pnpm -r --parallel lint:eslint",
+        "lint:eslint-packages": "pnpm -r --parallel --if-present --aggregate-output lint:eslint",
         "lint:stylelint": "stylelint \"**/*.css\" --cache --cache-location node_modules/.cache/stylelint",
         "lint:knip": "knip",
         "lint:installed-check": "installed-check",

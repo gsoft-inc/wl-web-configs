@@ -150,7 +150,7 @@ Add 2 scripts to the top leve `package.json`:
 "scripts": {
     "lint": "pnpm run \"/^lint:.*/\"",
     "lint:eslint": "eslint . --max-warnings=0 --cache --cache-location node_modules/.cache/eslint",
-    "lint:eslint-packages": "pnpm -r --parallel lint:eslint",
+    "lint:eslint-packages": "pnpm -r --parallel --if-present --aggregate-output lint:eslint",
 }
 ```
 - The `lint` script will run all scripts that start with "lint:" inside this `package.json`.
