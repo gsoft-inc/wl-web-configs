@@ -2,9 +2,9 @@ import workleapPlugin from "./dist/index.js";
 
 const config = [
     {
-        ignores: ["**/dist/**"]
+        ignores: ["dist/"]
     },
-    ...workleapPlugin.configs.typeScriptLibrary
+    ...workleapPlugin.configs.typescriptLibrary
 ];
 
 export default config;

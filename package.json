@@ -19,6 +19,7 @@
         "test": "jest",
         "lint": "pnpm run \"/^lint:.*/\"",
         "lint:eslint": "eslint . --max-warnings=0 --cache --cache-location node_modules/.cache/eslint",
+        "lint:eslint-packages": "pnpm -r --parallel lint:eslint",
         "lint:stylelint": "stylelint \"**/*.css\" --cache --cache-location node_modules/.cache/stylelint",
         "lint:knip": "knip",
         "lint:installed-check": "installed-check",
@@ -38,7 +39,6 @@
     "devDependencies": {
         "@changesets/changelog-github": "0.5.0",
         "@changesets/cli": "2.27.1",
-        "@typescript-eslint/parser": "7.6.0",
         "@workleap/eslint-plugin": "workspace:*",
         "@workleap/typescript-configs": "workspace:*",
         "eslint": "8.57.0",

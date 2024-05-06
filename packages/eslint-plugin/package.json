@@ -33,7 +33,8 @@
         "README.md"
     ],
     "scripts": {
-        "build": "tsup"
+        "build": "tsup",
+        "lint:eslint": "eslint . --max-warnings=0 --cache --cache-location .cache/eslint"
     },
     "peerDependencies": {
         "eslint": "8.57.0",

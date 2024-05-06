@@ -145,19 +145,23 @@ export default config;
 
 You must run ESLint from each monorepo package. It will use which ever `eslint.config.js` is the first to be found by traversing up from the directory in which the `eslint` command was run. pnpm can be used to automate this process.
 
-Add 2 scripts to the top leve `pacakge.json`:
+Add 2 scripts to the top leve `package.json`:
 ```json
 "scripts": {
     "lint": "pnpm run \"/^lint:.*/\"",
-    "lint:eslint": "eslint ."
+    "lint:eslint": "eslint . --max-warnings=0 --cache --cache-location node_modules/.cache/eslint",
+    "lint:eslint-packages": "pnpm -r --parallel lint:eslint",
 }
 ```
+- The `lint` script will run all scripts that start with "lint:" inside this `package.json`.
+- `lint:eslint` will run ESLint at the top level of the project. You can set up your ESLint flags however you like.
+- `lint:eslint-packages` will simulataneously run the `lint:eslint` script within each package's `package.json` if it has been defined.
+
 
 Add this script to the `package.json` of each monorepo package:
 ```json
 "scripts": {
-    "lint:eslint": "eslint ."
+    "lint:eslint": "eslint . --max-warnings=0 --cache --cache-location .cache/eslint"
 }
 ```
-
-Now, whenever you run `pnpm lint` at the root level, each monorepo package will execute every script that begins with `lint:`, including `lint:eslint`. You can customize the `lint:eslint` command as needed, and add additional `lint:` scripts as well.
+Now, whenever you run `pnpm lint` at the root level, each monorepo package will also execute their `lint:eslint` commands.
