@@ -1,5 +1,5 @@
 import type { Linter } from "eslint";
-import Globals from "Globals";
+import Globals from "globals";
 
 export function withGlobals(configs: Linter.FlatConfig[], globals: Array<keyof typeof Globals>): Linter.FlatConfig[] {
     return configs.map(conf => ({
