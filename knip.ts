@@ -171,8 +171,6 @@ const config: KnipConfig = {
         "sample/utils": sampleUtilsConfig
     },
     ignoreWorkspaces: [
-        // Until it's migrated to ESLint 9.
-        "packages/eslint-plugin",
         // Until it supports ESM.
         "packages/stylelint-configs"
     ],
