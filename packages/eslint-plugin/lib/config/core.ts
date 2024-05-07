@@ -4,6 +4,7 @@ import { javaScriptFiles } from "../utils/patterns.ts";
 
 const config: Linter.FlatConfig[] = [
     {
+        name: "Workleap/Core",
         files: javaScriptFiles,
         rules: {
             ...js.configs.recommended.rules,

@@ -4,10 +4,12 @@ import { mdxFiles } from "../utils/patterns.ts";
 
 const config: Linter.FlatConfig[] = [
     {
+        name: "Workleap/MDX",
         ...mdxPlugin.flat,
         files: mdxFiles
     },
     {
+        name: "Workleap/MDX",
         ...mdxPlugin.flatCodeBlocks,
         files: mdxFiles
     }

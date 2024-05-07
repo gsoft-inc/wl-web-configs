@@ -4,6 +4,7 @@ import { reactTestFiles, testFiles } from "../utils/patterns.ts";
 
 const config: Linter.FlatConfig[] = [
     {
+        name: "Workleap/TestingLibrary",
         files: reactTestFiles,
         plugins: {
             "testing-library": testingLibraryPlugin
@@ -11,6 +12,7 @@ const config: Linter.FlatConfig[] = [
         rules: testingLibraryPlugin.configs.react.rules
     },
     {
+        name: "Workleap/TestingLibrary",
         files: testFiles,
         plugins: {
             "testing-library": testingLibraryPlugin

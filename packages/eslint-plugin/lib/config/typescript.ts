@@ -4,6 +4,7 @@ import { typeScriptFiles } from "../utils/patterns.ts";
 
 const config: Linter.FlatConfig[] = [
     {
+        name: "Workleap/TypeScript",
         files: typeScriptFiles,
         plugins: {
             // @ts-ignore

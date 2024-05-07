@@ -6,6 +6,7 @@ import { sourceFiles } from "../utils/patterns.ts";
 
 const config: Linter.FlatConfig[] = [
     {
+        name: "Workleap/React",
         files: sourceFiles,
         plugins: {
             react: reactPlugin
@@ -78,6 +79,7 @@ const config: Linter.FlatConfig[] = [
         }
     },
     {
+        name: "Workleap/React",
         ...reactHooksPlugin.configs.recommended,
         plugins: {
             "react-hooks": reactHooksPlugin

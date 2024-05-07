@@ -3,6 +3,7 @@ import packageJsonPluginRecommended from "eslint-plugin-package-json/configs/rec
 
 const config: Linter.FlatConfig[] = [
     {
+        name: "Workleap/Package.json",
         ...(packageJsonPluginRecommended as Linter.FlatConfig),
         files: ["package.json"],
         rules: {

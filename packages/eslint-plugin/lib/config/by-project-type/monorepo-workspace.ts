@@ -1,5 +1,5 @@
 import type { Linter } from "eslint";
-import { withGlobals } from "../../utils/helpers.ts";
+import { appendDebugName, withGlobals } from "../../utils/helpers.ts";
 import core from "../core.ts";
 import jest from "../jest.ts";
 import mdx from "../mdx.ts";
@@ -8,10 +8,7 @@ import testingLibrary from "../testing-library.ts";
 import typescript from "../typescript.ts";
 import yml from "../yaml.ts";
 
-const config: Linter.FlatConfig[] = [
-    {
-        ignores: ["dist/"]
-    },
+const config: Linter.FlatConfig[] = appendDebugName([
     ...(withGlobals(core, ["node"])),
     ...(withGlobals(typescript, ["node"])),
     ...jest,
@@ -25,6 +22,6 @@ const config: Linter.FlatConfig[] = [
         }
     },
     ...yml
-];
+], "MonorepoWorkspace");
 
 export default config;

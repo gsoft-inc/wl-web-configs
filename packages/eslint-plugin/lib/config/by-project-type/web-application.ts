@@ -1,5 +1,5 @@
 import type { Linter } from "eslint";
-import { withGlobals } from "../../utils/helpers.ts";
+import { appendDebugName, withGlobals } from "../../utils/helpers.ts";
 import core from "../core.ts";
 import jest from "../jest.ts";
 import jsxA11y from "../jsx-a11y.ts";
@@ -12,7 +12,7 @@ import typescript from "../typescript.ts";
 import workleap from "../workleap.ts";
 import yml from "../yaml.ts";
 
-const config: Linter.FlatConfig[] = [
+const config: Linter.FlatConfig[] = appendDebugName([
     {
         ignores: ["dist/"]
     },
@@ -27,6 +27,6 @@ const config: Linter.FlatConfig[] = [
     ...mdx,
     ...packageJson,
     ...yml
-];
+], "WebApplication");
 
 export default config;

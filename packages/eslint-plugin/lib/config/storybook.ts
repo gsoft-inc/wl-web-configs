@@ -6,6 +6,7 @@ import { mainStorybookFiles, storybookFiles } from "../utils/patterns.ts";
 
 const config: Linter.FlatConfig[] = [
     {
+        name: "Workleap/Storybook",
         files: storybookFiles,
         plugins: { "storybook": storybookPlugin },
         rules: {
@@ -15,6 +16,7 @@ const config: Linter.FlatConfig[] = [
         }
     },
     {
+        name: "Workleap/Storybook",
         files: mainStorybookFiles,
         plugins: { "storybook": storybookPlugin },
         rules: {

@@ -1,4 +1,5 @@
 import type { Linter } from "eslint";
+import { appendDebugName } from "../../utils/helpers.ts";
 import core from "../core.ts";
 import jest from "../jest.ts";
 import jsxA11y from "../jsx-a11y.ts";
@@ -11,10 +12,7 @@ import typescript from "../typescript.ts";
 import workleap from "../workleap.ts";
 import yml from "../yaml.ts";
 
-const config: Linter.FlatConfig[] = [
-    {
-        ignores: ["dist/"]
-    },
+const config: Linter.FlatConfig[] = appendDebugName([
     workleap,
     ...core,
     ...typescript,
@@ -26,6 +24,6 @@ const config: Linter.FlatConfig[] = [
     ...mdx,
     ...packageJson,
     ...yml
-];
+], "ReactLibrary");
 
 export default config;

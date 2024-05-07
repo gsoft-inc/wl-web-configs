@@ -4,6 +4,7 @@ import { sourceFiles } from "../utils/patterns.ts";
 
 const config: Linter.FlatConfig[] = [
     {
+        name: "Workleap/JsxA11y",
         plugins: { "jsx-a11y": jsxA11yPlugin },
         languageOptions: {
             parserOptions: jsxA11yPlugin.configs.recommended.parserOptions

@@ -4,6 +4,7 @@ import { reactTestFiles, testFiles } from "../utils/patterns.ts";
 
 const config: Linter.FlatConfig[] = [
     {
+        name: "Workleap/Jest",
         files: [...testFiles, ...reactTestFiles],
         ...jestPlugin.configs["flat/recommended"],
         rules: {
