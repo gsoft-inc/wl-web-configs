@@ -13,7 +13,7 @@ Flat config is the new default configuration format for ESLint. It is supported 
 
 Previously, ESLint allowed you to use multiple formats to define your config files. Flat config can only use JavaScript. You can import plugins and pre-made configuration objects directly, and manipulate them as necessary.
 
-The `extends` keyword has been removed. Now you simply add multiple configuration objects to an array. Configuration objects will cascade, similar to the `overrides` block of the old config.
+The `extends` keyword has been removed. Now you simply add multiple _configuration objects_ to an array. Configuration objects will cascade, similar to the `overrides` block of the old config.
 
 The `.eslintignore` file is no longer valid. If you need to exclude files from linting, add them to a configuration block under the `ignores` key.
 
@@ -21,7 +21,9 @@ Config files no longer rely on custom resolution implemented by ESLint. Since th
 
 ## Basic migration steps
 
-1. Create a file called `eslint.config.js`. `@workleap/eslint-config` is published in ESM, so if your project `type` in `package.json` is not `module`, then you shoudl create an `eslint.config.mjs` file instead.
+1. Create a file called `eslint.config.js`. `@workleap/eslint-config` is published in ESM, so if your project `type` in `package.json` is not `module`, then you should create an `eslint.config.mjs` file instead.
+
+### Initial setup
 
 Import the `@workleap/eslint-config` module. Create a config array and set it as the default export.
 ```javascript
@@ -34,45 +36,58 @@ const config = [
 export default config;
 ```
 
-You can choose to combine [any individual configs](wl-web-configs/eslint/advanced-composition/) or chose a one of the "by project type" configs (more info below). Here, we'll compose a config for a project that uses React and TypeScript. By convention, all configs are found at `workleapPlugin.configs`. Each config can be a single object or an array, but for simplicity, all Workleap configs are exported as arrays. Therefore, each Workleap config must be spread (`...`) into the config array.
+### Ignoring files
+
+ESLint will no longer use the `.eslintignore` file. If you have one of these files, create a new configuration object with an `ignores` key:
+
 ```javascript
 import workleapPlugin from "@workleap/eslint-config";
 
 const config = [
-    ...workleapPlugin.configs.core,
-    ...workleapPlugin.configs.typescript,
-    ...workleadPlugin.configs.react
+    {
+        ignores: ["node_modules/", "dist/"]
+    }
 ];
 
 export default config;
 ```
 
-Each config is pre-configured to look for the most common relevant file types. If you need to override the file types, you can create new config objects that extend existing ones.
+## Recommended setup - By project type
+
+`@workleap/eslint-config` exposes some pre-built configs based on common project types. Each of these configs are properly set up for **JavaScript**, **TypeScript**, **Jest**, **Testing Library**, **MDX**, **package.json**, and **YAML**. 
+
+By convention, all configs are found at `workleapPlugin.configs`. A flat config can be a single object or an array, but for simplicity, all Workleap configs are exported as arrays. Therefore, each Workleap config must be spread (`...`) into the config array.
+
+| Type | Config Key | Purpose | Additional Configs |
+|---|---|---|---|
+| Web Application | `configs.webApplication` | General purpose web application using React and TypeScript | React<br>JSX A11y<br>Storybook |
+| TypeScript Library | `configs.typeScriptLibrary` | For building a TypeScript library to be consumed by another project |  |
+| React Library | `configs.reactLibrary` | For building a React library to be consumed by another project | React<br>JSX A11y<br>Storybook |
+| Monorepo Workspace | `configs.monorepoWorkspace` | For the top level of a monorepo |  |
+
+For example, to configure ESLint for a React web application, add the project config to your config array:
 ```javascript
 import workleapPlugin from "@workleap/eslint-config";
 
 const config = [
-    ...workleapPlugin.configs.core,
-    ...workleapPlugin.configs.typescript,
-    ...workleadPlugin.configs.react.map(conf => (
-        {
-            ...conf,
-            files: ["*.js"]
-        }
-    ))
+    {
+        ignores: ["node_modules/", "dist/"]
+    },
+    ...workleapPlugin.configs.webApplication
 ];
 
 export default config;
 ```
 
-You can use a similar pattern to override rules within a config object, or you can add a new config object to override all config objects above it.
+You can override individual rules across all configs by adding another configuration object to the array:
 ```javascript
 import workleapPlugin from "@workleap/eslint-config";
 
 const config = [
-    ...workleapPlugin.configs.core,
-    ...workleapPlugin.configs.typescript,
-    ...workleadPlugin.configs.react,
+    {
+        ignores: ["node_modules/", "dist/"]
+    },
+    ...workleapPlugin.configs.webApplication,
     {
         rules: {
             'react/jsx-uses-vars': 'error',
@@ -83,42 +98,13 @@ const config = [
 export default config;
 ```
 
-To ignore files, you can add a config block at the top of your config array.
-```javascript
-import workleapPlugin from "@workleap/eslint-config";
-
-const config = [
-    {
-        ignors: ["*.md", "dist/"]
-    },
-    ...workleapPlugin.configs.core,
-    ...workleapPlugin.configs.typescript,
-    ...workleadPlugin.configs.react
-];
-
-export default config;
-```
-
-You can now delete your previous `.eslintrc`-style config file, as well as your `.eslintignore` file, if you have one. Please refer to the [official migration guide](https://eslint.org/docs/latest/use/configure/migration-guide) for more details.
-
-## By project type setup
-
-`@workleap/eslint-config` also exposes some pre-combined configs based on common project types. Each of these includes proper configs for JavaScript, TypeScript, Jest, Testing Library, MDX, package.json, and YAML.
-
-| Type | Config Key | Purpose | Additional Configs |
-|---|---|---|---|
-| Web Application | `configs.webApplication` | General purpose web application using React and TypeScript | React<br>JSX A11y<br>Storybook |
-| TypeScript Library | `configs.typeScriptLibrary` | For building a TypeScript library to be consumed by another project |  |
-| React Library | `configs.reactLibrary` | For building a React library to be consumed by another project | React<br>JSX A11y<br>Storybook |
-| Monorepo Workspace | `configs.monorepoWorkspace` | For the top level of a monorepo |  |
-
 ## Example monorepo setup
 
-Monorepo setup can be more complex, because each workspace should have it's own ESLint config file.
+Monorepo setups can be more complex, because each package should have its own ESLint config file.
 
 ### Top level
 
-Create a new `eslint.config.js`. Import the monorepo workspace config. Ignore the directory that contains your monorepo packages (and any other files you don't want linted).
+Create a new `eslint.config.js` at the root of your project. Import the monorepo workspace config. Ignore the directory or directories that contain your monorepo packages (and any other files you don't want linted).
 ```javascript
 import workleapPlugin from "@workleap/eslint-config";
 
@@ -132,7 +118,9 @@ const config = [
 export default config;
 ```
 
-Inside each monorepo package, create another `eslint.config.js` file. Add the config module that matches the pacakge type. For example, a web application would use the `webApplication` config, while a component libary would use the `reactLibrary` config:
+### Monorepo packages
+
+Inside each monorepo package, create another `eslint.config.js` file. Add the config module that matches the package type. For example, a web application would use the `webApplication` config, while a component libary would use the `reactLibrary` config:
 ```javascript
 import workleapPlugin from "@workleap/eslint-config";
 
@@ -145,7 +133,11 @@ export default config;
 
 You must run ESLint from each monorepo package. It will use which ever `eslint.config.js` is the first to be found by traversing up from the directory in which the `eslint` command was run. pnpm can be used to automate this process.
 
-Add 2 scripts to the top leve `package.json`:
+You can now delete your previous `.eslintrc` config file, as well as your `.eslintignore` file, if you have one. Please refer to the [official migration guide](https://eslint.org/docs/latest/use/configure/migration-guide) for more details.
+
+### Running ESLint in the monorepo
+
+Ensure these 3 scripts are present in your top-level `package.json`:
 ```json
 "scripts": {
     "lint": "pnpm run \"/^lint:.*/\"",
@@ -164,4 +156,38 @@ Add this script to the `package.json` of each monorepo package:
     "lint:eslint": "eslint . --max-warnings=0 --cache --cache-location .cache/eslint"
 }
 ```
-Now, whenever you run `pnpm lint` at the root level, each monorepo package will also execute their `lint:eslint` commands.
+Now, whenever you run `pnpm lint` at the root level, each monorepo package will also execute their `lint:eslint` commands. We recommend using ESLint's cache feature, as shown in the example. Make sure you add the cache location to the `.gitignore` file.
+
+## Advanced Configuration
+
+We recommend using one of the "by project type" configurations for simplicity and consistency. But if you need to customize further, you can choose to combine [any individual configs](wl-web-configs/eslint/advanced-composition/). Here, we'll compose a config for a project that uses React and TypeScript. 
+
+```javascript
+import workleapPlugin from "@workleap/eslint-config";
+
+const config = [
+    ...workleapPlugin.configs.core,
+    ...workleapPlugin.configs.typescript,
+    ...workleadPlugin.configs.react
+];
+
+export default config;
+```
+
+Some rules may need to be overridden within each nested config object. Since flat configs are entirely JavaScript, we can manipulate the underlying configuration objects directly. For example, to change the file type used by a config object: 
+```javascript
+import workleapPlugin from "@workleap/eslint-config";
+
+const config = [
+    ...workleapPlugin.configs.core,
+    ...workleapPlugin.configs.typescript,
+    ...workleadPlugin.configs.react.map(conf => (
+        {
+            ...conf,
+            files: ["*.js"]
+        }
+    ))
+];
+
+export default config;
+```
