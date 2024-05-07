@@ -6,9 +6,6 @@ import { mainStorybookFiles, storybookFiles } from "../utils/patterns.ts";
 
 const config: Linter.FlatConfig[] = [
     {
-        ignores: ["!.storybook"]
-    },
-    {
         files: storybookFiles,
         plugins: { "storybook": storybookPlugin },
         rules: {

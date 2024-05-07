@@ -1,19 +1,21 @@
 import workleapPlugin from "@workleap/eslint-plugin";
 
+const {withLimitedScope, withIgnores} = workleapPlugin.helpers;
+
 const config = [
-    {
-        ignores: [
-            "dist/",
+        ...withIgnores(workleapPlugin.configs.monorepoWorkspace,
+        [
+            "**/dist/",
             "pnpm-lock.yaml",
             "*.md",
             "*.snap",
-            "node_modules/",
+            "**/node_modules/",
             ".github/",
             "packages/",
             "sample/"
-        ]
-    },
-    ...workleapPlugin.configs.monorepoWorkspace
+        ]),
+        ...withLimitedScope(workleapPlugin.configs.typescriptLibrary, "packages/eslint-plugin/", ["lib/plugins.d.ts"]),
+
 ];
 
 export default config;

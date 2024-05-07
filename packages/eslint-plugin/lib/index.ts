@@ -14,8 +14,13 @@ import testingLibrary from "./config/testing-library.ts";
 import typescript from "./config/typescript.ts";
 import workleap from "./config/workleap.ts";
 import yaml from "./config/yaml.ts";
+import helpers from "./utils/helpers.ts";
 
-const plugin: ESLint.Plugin = {
+interface WorkleapEslintPlugin extends ESLint.Plugin {
+    helpers: typeof helpers
+}
+
+const plugin: WorkleapEslintPlugin = {
     rules: {
         ...workleap.plugins!["@workleap"].rules
     },
@@ -38,7 +43,8 @@ const plugin: ESLint.Plugin = {
         typescriptLibrary,
         webApplication,
         monorepoWorkspace
-    }
+    },
+    helpers
 };
 
 export default plugin;
