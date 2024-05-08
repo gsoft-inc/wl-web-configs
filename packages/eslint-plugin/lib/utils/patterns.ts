@@ -38,8 +38,3 @@ export const mainStorybookFiles = [
 export const mdxFiles = [
     "**/*.mdx"
 ];
-
-export const yamlFiles = [
-    "**/*.yaml",
-    "**/*.yml"
-];

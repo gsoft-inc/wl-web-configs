@@ -36,7 +36,6 @@
         "lint:eslint": "eslint . --max-warnings=0 --cache --cache-location .cache/eslint"
     },
     "devDependencies": {
-        "@workleap/eslint-plugin": "workspace:*",
         "@workleap/tsup-configs": "workspace:*",
         "@workleap/typescript-configs": "workspace:*",
         "eslint": "8.57.0",

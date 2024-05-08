@@ -44,7 +44,6 @@
         "@swc/core": "1.4.13",
         "@swc/jest": "0.2.36",
         "@types/jest": "29.5.12",
-        "@workleap/eslint-plugin": "workspace:*",
         "@workleap/swc-configs": "workspace:*",
         "@workleap/typescript-configs": "workspace:*",
         "eslint": "8.57.0",
