@@ -24,7 +24,6 @@ const config = concat(
     extend(workleapPlugin.configs.typescriptLibrary, "packages/webpack-configs/"),
     extend(workleapPlugin.configs.webApplication, "sample/app/"),
     extend(workleapPlugin.configs.reactLibrary, "sample/components/"),
-    extend(workleapPlugin.configs.reactLibrary, "sample/components/"),
     extend(workleapPlugin.configs.typescriptLibrary, "sample/utils/")
 );
 

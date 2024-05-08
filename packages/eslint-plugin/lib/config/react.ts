@@ -21,7 +21,8 @@ const config: Linter.FlatConfig[] = await concat(
             ...reactPlugin.configs.recommended.languageOptions,
             globals: {
                 ...globals.serviceworker,
-                ...globals.browser
+                ...globals.browser,
+                React: false
             }
         },
         rules: {
