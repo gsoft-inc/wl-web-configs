@@ -57,6 +57,7 @@
         "@types/estree": "1.0.5",
         "@types/jest": "29.5.12",
         "@types/node": "20.12.7",
+        "@typescript-eslint/utils": "7.8.0",
         "@workleap/swc-configs": "workspace:*",
         "@workleap/tsup-configs": "workspace:*",
         "@workleap/typescript-configs": "workspace:*",
@@ -66,6 +67,7 @@
     },
     "dependencies": {
         "@eslint/js": "^9.0.0",
+        "eslint-flat-config-utils": "^0.2.4",
         "eslint-plugin-jest": "^28.3.0",
         "eslint-plugin-jsx-a11y": "^6.8.0",
         "eslint-plugin-mdx": "^3.1.5",
@@ -74,7 +76,6 @@
         "eslint-plugin-react-hooks": "^4.6.2",
         "eslint-plugin-storybook": "^0.8.0",
         "eslint-plugin-testing-library": "^6.2.2",
-        "eslint-plugin-yml": "^1.14.0",
         "globals": "^15.1.0",
         "jsonc-eslint-parser": "^2.4.0",
         "typescript-eslint": "^7.8.0"

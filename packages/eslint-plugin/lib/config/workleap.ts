@@ -1,8 +1,7 @@
 import type { Linter } from "eslint";
 import StrictCSSModuleNames from "../rules/strict-css-modules-names.ts";
 
-const config: Linter.FlatConfig =
-{
+const config: Linter.FlatConfig = {
     plugins: {
         "@workleap": {
             rules: {

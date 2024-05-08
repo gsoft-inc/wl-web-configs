@@ -1,20 +1,24 @@
+import js from "@eslint/js";
 import type { Linter } from "eslint";
+import { concat } from "eslint-flat-config-utils";
+import globals from "globals";
 import tseslint from "typescript-eslint";
 import { typeScriptFiles } from "../utils/patterns.ts";
 
-const config: Linter.FlatConfig[] = [
+const config: Linter.FlatConfig[] = await concat(
+    js.configs.recommended,
+    // @ts-expect-error ESLint and TS-ESLint types don't match, even though objects are the same shape
+    tseslint.configs.recommended,
     {
         name: "Workleap/TypeScript",
         files: typeScriptFiles,
         plugins: {
-            // @ts-ignore
             "@typescript-eslint": tseslint.plugin
         },
         languageOptions: {
-            // @ts-ignore
             parser: tseslint.parser,
-            parserOptions: {
-                project: true
+            globals: {
+                ...globals.node
             }
         },
         rules: {
@@ -70,9 +74,10 @@ const config: Linter.FlatConfig[] = [
             ],
             "@typescript-eslint/object-curly-spacing": ["warn", "always"],
             "semi":"off",
-            "@typescript-eslint/semi": ["warn", "always"]
+            "@typescript-eslint/semi": ["warn", "always"],
+            "no-undef": "off"
         }
     }
-];
+);
 
 export default config;

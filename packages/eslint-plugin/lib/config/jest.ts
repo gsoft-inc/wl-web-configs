@@ -1,8 +1,9 @@
 import type { Linter } from "eslint";
+import { concat } from "eslint-flat-config-utils";
 import jestPlugin from "eslint-plugin-jest";
 import { reactTestFiles, testFiles } from "../utils/patterns.ts";
 
-const config: Linter.FlatConfig[] = [
+const config: Linter.FlatConfig[] = await concat(
     {
         name: "Workleap/Jest",
         files: [...testFiles, ...reactTestFiles],
@@ -14,6 +15,6 @@ const config: Linter.FlatConfig[] = [
             "jest/prefer-to-contain": "error"
         }
     }
-];
+);
 
 export default config;

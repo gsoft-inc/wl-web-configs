@@ -1,10 +1,11 @@
 // https://github.com/storybookjs/eslint-plugin-storybook/blob/main/lib/configs/recommended.ts
 
 import type { Linter } from "eslint";
+import { concat } from "eslint-flat-config-utils";
 import * as storybookPlugin from "eslint-plugin-storybook";
 import { mainStorybookFiles, storybookFiles } from "../utils/patterns.ts";
 
-const config: Linter.FlatConfig[] = [
+const config: Linter.FlatConfig[] = await concat(
     {
         name: "Workleap/Storybook",
         files: storybookFiles,
@@ -23,6 +24,6 @@ const config: Linter.FlatConfig[] = [
             "storybook/no-uninstalled-addons": "warn"
         }
     }
-];
+);
 
 export default config;

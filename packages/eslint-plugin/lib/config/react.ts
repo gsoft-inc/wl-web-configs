@@ -1,10 +1,11 @@
 import type { Linter } from "eslint";
+import { concat } from "eslint-flat-config-utils";
 import reactPlugin from "eslint-plugin-react";
 import reactHooksPlugin from "eslint-plugin-react-hooks";
 import globals from "globals";
 import { sourceFiles } from "../utils/patterns.ts";
 
-const config: Linter.FlatConfig[] = [
+const config: Linter.FlatConfig[] = await concat(
     {
         name: "Workleap/React",
         files: sourceFiles,
@@ -86,6 +87,6 @@ const config: Linter.FlatConfig[] = [
         },
         files: sourceFiles
     }
-];
+);
 
 export default config;

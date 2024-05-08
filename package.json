@@ -41,6 +41,7 @@
         "@workleap/eslint-plugin": "workspace:*",
         "@workleap/typescript-configs": "workspace:*",
         "eslint": "8.57.0",
+        "eslint-flat-config-utils": "^0.2.4",
         "installed-check": "9.3.0",
         "jest": "29.7.0",
         "knip": "5.9.4",

@@ -1,13 +1,20 @@
 import js from "@eslint/js";
 import type { Linter } from "eslint";
+import { concat } from "eslint-flat-config-utils";
+import globals from "globals";
 import { javaScriptFiles } from "../utils/patterns.ts";
 
-const config: Linter.FlatConfig[] = [
+const config: Linter.FlatConfig[] = await concat(
+    js.configs.recommended as Linter.FlatConfig,
     {
         name: "Workleap/Core",
         files: javaScriptFiles,
+        languageOptions: {
+            globals: {
+                ...globals.node
+            }
+        },
         rules: {
-            ...js.configs.recommended.rules,
             // eslint:recommended overwrite some rules
             "no-cond-assign": ["error", "except-parens"],
             "no-labels": ["warn", { allowLoop: true, allowSwitch: false }],
@@ -131,6 +138,7 @@ const config: Linter.FlatConfig[] = [
             "arrow-parens": ["warn", "as-needed"]
 
         }
-    }];
+    }
+);
 
 export default config;

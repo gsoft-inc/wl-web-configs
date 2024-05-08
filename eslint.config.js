@@ -1,27 +1,31 @@
 import workleapPlugin from "@workleap/eslint-plugin";
+import { concat, extend } from "eslint-flat-config-utils";
 
-const { withLimitedScope, withIgnores } = workleapPlugin.helpers;
-
-const config = [
-    ...withIgnores(workleapPlugin.configs.monorepoWorkspace, [
-        "**/dist/",
-        "pnpm-lock.yaml",
-        "*.md",
-        "*.snap",
-        "**/node_modules/",
-        ".github/"
-    ]),
-    ...withLimitedScope(workleapPlugin.configs.typescriptLibrary, "packages/browserslist-config/"),
-    ...withLimitedScope(workleapPlugin.configs.typescriptLibrary, "packages/eslint-plugin/", ["lib/plugins.d.ts"]),
-    ...withLimitedScope(workleapPlugin.configs.typescriptLibrary, "packages/postcss-configs/"),
-    ...withLimitedScope(workleapPlugin.configs.typescriptLibrary, "packages/stylelint-configs/"),
-    ...withLimitedScope(workleapPlugin.configs.typescriptLibrary, "packages/swc-configs/"),
-    ...withLimitedScope(workleapPlugin.configs.typescriptLibrary, "packages/tsup-configs/"),
-    ...withLimitedScope(workleapPlugin.configs.typescriptLibrary, "packages/webpack-configs/"),
-    ...withLimitedScope(workleapPlugin.configs.webApplication, "sample/app/"),
-    ...withLimitedScope(workleapPlugin.configs.reactLibrary, "sample/components/"),
-    ...withLimitedScope(workleapPlugin.configs.reactLibrary, "sample/components/"),
-    ...withLimitedScope(workleapPlugin.configs.typescriptLibrary, "sample/utils/"),
-];
+const config = concat(
+    {
+        ignores: [
+            "**/dist/",
+            "pnpm-lock.yaml",
+            "*.md",
+            "*.snap",
+            "**/node_modules/",
+            ".github/"
+        ]
+    },
+    workleapPlugin.configs.monorepoWorkspace,
+    extend(workleapPlugin.configs.typescriptLibrary, "packages/browserslist-config/"),
+    extend(workleapPlugin.configs.typescriptLibrary, {
+        ignores: ["lib/plugins.d.ts"]
+    }, "packages/eslint-plugin/"),
+    extend(workleapPlugin.configs.typescriptLibrary, "packages/postcss-configs/"),
+    extend(workleapPlugin.configs.typescriptLibrary, "packages/stylelint-configs/"),
+    extend(workleapPlugin.configs.typescriptLibrary, "packages/swc-configs/"),
+    extend(workleapPlugin.configs.typescriptLibrary, "packages/tsup-configs/"),
+    extend(workleapPlugin.configs.typescriptLibrary, "packages/webpack-configs/"),
+    extend(workleapPlugin.configs.webApplication, "sample/app/"),
+    extend(workleapPlugin.configs.reactLibrary, "sample/components/"),
+    extend(workleapPlugin.configs.reactLibrary, "sample/components/"),
+    extend(workleapPlugin.configs.typescriptLibrary, "sample/utils/")
+);
 
 export default config;

@@ -1,8 +1,9 @@
 import type { Linter } from "eslint";
+import { concat } from "eslint-flat-config-utils";
 import jsxA11yPlugin from "eslint-plugin-jsx-a11y";
 import { sourceFiles } from "../utils/patterns.ts";
 
-const config: Linter.FlatConfig[] = [
+const config: Linter.FlatConfig[] = await concat(
     {
         name: "Workleap/JsxA11y",
         plugins: { "jsx-a11y": jsxA11yPlugin },
@@ -30,6 +31,6 @@ const config: Linter.FlatConfig[] = [
             "jsx-a11y/media-has-caption": "off"
         }
     }
-];
+);
 
 export default config;

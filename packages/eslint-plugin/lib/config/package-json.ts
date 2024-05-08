@@ -1,10 +1,11 @@
 import type { Linter } from "eslint";
+import { concat } from "eslint-flat-config-utils";
 import packageJsonPluginRecommended from "eslint-plugin-package-json/configs/recommended";
 
-const config: Linter.FlatConfig[] = [
+const config: Linter.FlatConfig[] = await concat(
     {
-        name: "Workleap/Package.json",
         ...(packageJsonPluginRecommended as Linter.FlatConfig),
+        name: "Workleap/Package.json",
         files: ["package.json"],
         rules: {
             ...packageJsonPluginRecommended.rules,
@@ -25,6 +26,6 @@ const config: Linter.FlatConfig[] = [
             "package-json/valid-repository-directory": "off"
         }
     }
-];
+);
 
 export default config;
