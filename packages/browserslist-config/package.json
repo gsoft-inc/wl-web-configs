@@ -35,6 +35,7 @@
         "build": "tsup"
     },
     "devDependencies": {
+        "@workleap/eslint-plugin": "workspace:*",
         "@workleap/tsup-configs": "workspace:*",
         "@workleap/typescript-configs": "workspace:*",
         "eslint": "8.57.0",

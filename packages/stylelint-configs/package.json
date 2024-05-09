@@ -46,6 +46,7 @@
     },
     "devDependencies": {
         "@types/node": "20.12.7",
+        "@workleap/eslint-plugin": "workspace:*",
         "@workleap/tsup-configs": "workspace:*",
         "@workleap/typescript-configs": "workspace:*",
         "eslint": "8.57.0",

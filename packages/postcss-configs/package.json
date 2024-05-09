@@ -38,6 +38,7 @@
         "@swc/jest": "0.2.36",
         "@types/jest": "29.5.12",
         "@types/node": "20.12.7",
+        "@workleap/eslint-plugin": "workspace:*",
         "@workleap/swc-configs": "workspace:*",
         "@workleap/tsup-configs": "workspace:*",
         "@workleap/typescript-configs": "workspace:*",

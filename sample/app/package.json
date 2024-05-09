@@ -25,6 +25,7 @@
         "@types/react": "18.2.77",
         "@types/react-dom": "18.2.25",
         "@workleap/browserslist-config": "workspace:*",
+        "@workleap/eslint-plugin": "workspace:*",
         "@workleap/postcss-configs": "workspace:*",
         "@workleap/stylelint-configs": "workspace:*",
         "@workleap/swc-configs": "workspace:*",
