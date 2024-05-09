@@ -28,8 +28,7 @@
         "directory": "packages/webpack-configs"
     },
     "scripts": {
-        "build": "tsup",
-        "lint:eslint": "eslint . --max-warnings=0 --cache --cache-location .cache/eslint"
+        "build": "tsup"
     },
     "peerDependencies": {
         "@swc/core": "*",

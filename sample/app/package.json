@@ -13,8 +13,7 @@
         "dev-msw-verbose": "cross-env USE_MSW=true VERBOSE=true nodemon",
         "build": "webpack --config webpack.build.js",
         "serve-build": "pnpm build && pnpm http-server dist -p 8080 -P http://localhost:8080? -c-1",
-        "build-verbose": "cross-env PROFILE=true webpack --config webpack.build.js",
-        "lint:eslint": "eslint . --max-warnings=0 --cache --cache-location .cache/eslint"
+        "build-verbose": "cross-env PROFILE=true webpack --config webpack.build.js"
     },
     "devDependencies": {
         "@swc/core": "1.4.13",

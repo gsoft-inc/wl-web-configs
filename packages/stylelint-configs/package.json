@@ -30,8 +30,7 @@
         "directory": "packages/stylelint-configs"
     },
     "scripts": {
-        "build": "tsup",
-        "lint:eslint": "eslint . --max-warnings=0 --cache --cache-location .cache/eslint"
+        "build": "tsup"
     },
     "peerDependencies": {
         "prettier": ">=2.0.0",
