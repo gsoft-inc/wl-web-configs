@@ -98,65 +98,78 @@ const config = [
 export default config;
 ```
 
+You can now delete your previous `.eslintrc` config file, as well as your `.eslintignore` file, if you have one. Please refer to the [official migration guide](https://eslint.org/docs/latest/use/configure/migration-guide) for more details.
+
 ## Example monorepo setup
 
-Monorepo setups can be more complex, because each package should have its own ESLint config file.
+Monorepo setups can be more complex, because each package should have its own ESLint rules. With flat config, ESLint will use which ever `eslint.config.js` is the first to be found by traversing up from the directory in which the `eslint` command was run. This means that, by default, individual ESLint configs within monorepo packages will be ignored if ESLint is run from the root directory.
 
-### Top level
-
-Create a new `eslint.config.js` at the root of your project. Import the monorepo workspace config. Ignore the directory or directories that contain your monorepo packages (and any other files you don't want linted).
-```javascript
-import workleapPlugin from "@workleap/eslint-config";
-
-const config = [
-    {
-        ignores: ["node_modules/", "packages/"]
-    },
-    ...workleapPlugin.configs.monorepoWorkspace
-];
-
-export default config;
-```
+We can mimic the old ESLint behavior by importing each package's ESLint config into the top level and merging them together.
 
 ### Monorepo packages
 
-Inside each monorepo package, create another `eslint.config.js` file. Add the config module that matches the package type. For example, a web application would use the `webApplication` config, while a component libary would use the `reactLibrary` config:
+Inside each monorepo package, create a `eslint.config.js` file. Add the config module that matches the package type. For example, a web application would use the `webApplication` config, while a component libary would use the `reactLibrary` config:
+```javascript
+import workleapPlugin from "@workleap/eslint-config";
+
+const config = workleapPlugin.configs.reactLibrary;
+
+export default config;
+```
+
+You can also set custom ignore rules:
 ```javascript
 import workleapPlugin from "@workleap/eslint-config";
 
 const config = [
-    ...workleapPlugin.configs.reactLibrary
+    ...workleapPlugin.configs.reactLibrary,
+    ignores: ["build/"]
 ];
 
 export default config;
 ```
 
-You must run ESLint from each monorepo package. It will use which ever `eslint.config.js` is the first to be found by traversing up from the directory in which the `eslint` command was run. pnpm can be used to automate this process.
+### Top level
 
-You can now delete your previous `.eslintrc` config file, as well as your `.eslintignore` file, if you have one. Please refer to the [official migration guide](https://eslint.org/docs/latest/use/configure/migration-guide) for more details.
+Create a new `eslint.config.js` at the root of your project. Import the monorepo workspace config.
 
-### Running ESLint in the monorepo
+In order to make it easier to scope config files to monorepo packages, we recommend using [eslint-flat-config-utils](https://github.com/antfu/eslint-flat-config-utils). The `concat` function makes it easier to join multiple configs together. Wrap your configuration objects in the `concat` function because it will automatically merege arrays.
 
-Ensure these 3 scripts are present in your top-level `package.json`:
-```json
-"scripts": {
-    "lint": "pnpm run \"/^lint:.*/\"",
-    "lint:eslint": "eslint . --max-warnings=0 --cache --cache-location node_modules/.cache/eslint",
-    "lint:eslint-packages": "pnpm -r --parallel --if-present --aggregate-output lint:eslint",
-}
+```javascript
+import { concat } from "eslint-flat-config-utils";
+import workleapPlugin from "@workleap/eslint-config";
+
+const config = concat(
+    {
+        ignores: ["node_modules/"]
+    },
+    workleapPlugin.configs.monorepoWorkspace
+);
+
+export default config;
 ```
-- The `lint` script will run all scripts that start with "lint:" inside this `package.json`.
-- `lint:eslint` will run ESLint at the top level of the project. You can set up your ESLint flags however you like.
-- `lint:eslint-packages` will simulataneously run the `lint:eslint` script within each package's `package.json` if it has been defined.
 
+Import each package's `eslint.config.js` and add them to the `concat` function. Wrap each of the package imports with the `extend` function, and provide the relative path to the root of each package. This will scope the files of that config to the given directory, including any ignores.
 
-Add this script to the `package.json` of each monorepo package:
-```json
-"scripts": {
-    "lint:eslint": "eslint . --max-warnings=0 --cache --cache-location .cache/eslint"
-}
+```javascript
+import { concat } from "eslint-flat-config-utils";
+import workleapPlugin from "@workleap/eslint-config";
+import packageOneConfig from "./packages/one";
+import packageTwoConfig from "./packages/two";
+
+const config = concat(
+    {
+        ignores: ["node_modules/"]
+    },
+    workleapPlugin.configs.monorepoWorkspace,
+    extend(packageOneConfig, "packages/one/"),
+    extend(packageTwoConfig, "packages/two/"),
+);
+
+export default config;
 ```
-Now, whenever you run `pnpm lint` at the root level, each monorepo package will also execute their `lint:eslint` commands. We recommend using ESLint's cache feature, as shown in the example. Make sure you add the cache location to the `.gitignore` file.
+
+With this setup, you can lint the entire project from the root, or from within each individual package directory.
 
 ## Advanced Configuration
 

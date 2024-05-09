@@ -1,5 +1,15 @@
 import workleapPlugin from "@workleap/eslint-plugin";
 import { concat, extend } from "eslint-flat-config-utils";
+import packageBrowserslistConfig from "./packages/browserslist-config/eslint.config.mjs";
+import packageEslintPlugin from "./packages/eslint-plugin/eslint.config.js";
+import packagePostcssConfigs from "./packages/postcss-configs/eslint.config.js";
+import packageStylelintConfigs from "./packages/stylelint-configs/eslint.config.mjs";
+import packageSwcConfigs from "./packages/swc-configs/eslint.config.mjs";
+import packageTsupConfigs from "./packages/tsup-configs/eslint.config.mjs";
+import packageWebpackConfigs from "./packages/webpack-configs/eslint.config.js";
+import sampleApp from "./sample/app/eslint.config.js";
+import sampleComponents from "./sample/components/eslint.config.js";
+import sampleUtils from "./sample/utils/eslint.config.js";
 
 const config = concat(
     {
@@ -13,18 +23,16 @@ const config = concat(
         ]
     },
     workleapPlugin.configs.monorepoWorkspace,
-    extend(workleapPlugin.configs.typescriptLibrary, "packages/browserslist-config/"),
-    extend(workleapPlugin.configs.typescriptLibrary, {
-        ignores: ["lib/plugins.d.ts"]
-    }, "packages/eslint-plugin/"),
-    extend(workleapPlugin.configs.typescriptLibrary, "packages/postcss-configs/"),
-    extend(workleapPlugin.configs.typescriptLibrary, "packages/stylelint-configs/"),
-    extend(workleapPlugin.configs.typescriptLibrary, "packages/swc-configs/"),
-    extend(workleapPlugin.configs.typescriptLibrary, "packages/tsup-configs/"),
-    extend(workleapPlugin.configs.typescriptLibrary, "packages/webpack-configs/"),
-    extend(workleapPlugin.configs.webApplication, "sample/app/"),
-    extend(workleapPlugin.configs.reactLibrary, "sample/components/"),
-    extend(workleapPlugin.configs.typescriptLibrary, "sample/utils/")
+    extend(packageBrowserslistConfig, "packages/browserslist-config/"),
+    extend(packageEslintPlugin, "packages/eslint-plugin/"),
+    extend(packagePostcssConfigs, "packages/postcss-configs/"),
+    extend(packageStylelintConfigs, "packages/stylelint-configs/"),
+    extend(packageSwcConfigs, "packages/swc-configs/"),
+    extend(packageTsupConfigs, "packages/tsup-configs/"),
+    extend(packageWebpackConfigs, "packages/webpack-configs/"),
+    extend(sampleApp, "sample/app/"),
+    extend(sampleComponents, "sample/components/"),
+    extend(sampleUtils, "sample/utils/")
 );
 
 export default config;
