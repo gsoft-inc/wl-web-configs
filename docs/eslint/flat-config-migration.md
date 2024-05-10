@@ -207,3 +207,9 @@ const config = concat(
 
 export default config;
 ```
+
+## Known Issues
+
+### Knip and top level await
+
+Currently, Knip has [known issues](https://knip.dev/reference/known-issues#ts-config-files-using-esm-features) working with TypeScript projects that use ESM features. This means the top-level await used with the `concat` function breaks Knip. It should be disabled for eslint config files until a solution is found.

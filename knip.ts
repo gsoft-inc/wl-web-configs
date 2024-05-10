@@ -99,7 +99,7 @@ const configureTsup: KnipTransformer = config => {
 
 const configurePackage: KnipTransformer = config => {
     return {
-        ...config,
+        ...config
     };
 };
 
