@@ -1,30 +1,29 @@
 // https://github.com/storybookjs/eslint-plugin-storybook/blob/main/lib/configs/recommended.ts
 
-import { mainStorybookFiles, storybookFiles } from "../utils/patterns";
-
 import type { Linter } from "eslint";
+import { concat } from "eslint-flat-config-utils";
+import * as storybookPlugin from "eslint-plugin-storybook";
+import { mainStorybookFiles, storybookFiles } from "../utils/patterns.ts";
 
-const config: Linter.Config = {
-    overrides: [
-        {
-            files: storybookFiles,
-            plugins: ["storybook"],
-            extends: [
-                "plugin:storybook/recommended",
-                "plugin:storybook/csf",
-                "plugin:storybook/csf-strict"
-            ]
-        },
-        {
-            files: mainStorybookFiles,
-            rules: {
-                "storybook/no-uninstalled-addons": "warn"
-            }
+const config: Linter.FlatConfig[] = await concat(
+    {
+        name: "workleap/storybook",
+        files: storybookFiles,
+        plugins: { "storybook": storybookPlugin },
+        rules: {
+            ...storybookPlugin.configs.recommended.overrides[0].rules,
+            ...storybookPlugin.configs.csf.overrides[0].rules,
+            ...storybookPlugin.configs["csf-strict"].rules
         }
-    ]
-};
+    },
+    {
+        name: "workleap/storybook",
+        files: mainStorybookFiles,
+        plugins: { "storybook": storybookPlugin },
+        rules: {
+            "storybook/no-uninstalled-addons": "warn"
+        }
+    }
+);
 
-// Using TypeScript "export" keyword until ESLint support ESM.
-// Otherwise we must deal with a weird CommonJS output from esbuild which is not worth it.
-// For more info, see: https://github.com/evanw/esbuild/issues/1079
-export = config;
+export default config;

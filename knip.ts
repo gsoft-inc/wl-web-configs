@@ -32,6 +32,19 @@ const ignoreBrowserslist: KnipTransformer = ({ ignoreDependencies, ...config }) 
     };
 };
 
+const ignoreEslint: KnipTransformer = ({ ignoreDependencies, ...config }) => {
+    return {
+        ...config,
+        ignoreDependencies: [
+            ...(ignoreDependencies as string[] ?? []),
+            // Browserlist isn't supported by plugins.
+            "@workleap/eslint-plugin",
+            // Ignoring until the TS config files using ESM features known issue is fixed: https://knip.dev/reference/known-issues.
+            "eslint"
+        ]
+    };
+};
+
 const configurePostcss: KnipTransformer = config => {
     return {
         ...config,
@@ -86,8 +99,7 @@ const configureTsup: KnipTransformer = config => {
 
 const configurePackage: KnipTransformer = config => {
     return {
-        ...config,
-        eslint: true
+        ...config
     };
 };
 
@@ -99,7 +111,7 @@ const configureSample: KnipTransformer = ({ entry, ...config }) => {
             "src/index.ts",
             "src/index.tsx"
         ],
-        eslint: true,
+        // eslint: true,
         stylelint: true
     };
 };
@@ -111,11 +123,14 @@ const rootConfig = defineWorkspace({
         // Installed once for all the workspace's projects
         "ts-node"
     ]
-});
+}, [
+    ignoreEslint
+]);
 
 const packagesConfig: KnipWorkspaceConfig = defineWorkspace({}, [
     configurePackage,
-    configureTsup
+    configureTsup,
+    ignoreEslint
 ]);
 
 const swcConfig: KnipWorkspaceConfig = defineWorkspace({
@@ -127,7 +142,8 @@ const swcConfig: KnipWorkspaceConfig = defineWorkspace({
     ]
 }, [
     configurePackage,
-    configureTsup
+    configureTsup,
+    ignoreEslint
 ]);
 
 const webpackConfig: KnipWorkspaceConfig = defineWorkspace({
@@ -139,7 +155,12 @@ const webpackConfig: KnipWorkspaceConfig = defineWorkspace({
     ]
 }, [
     configurePackage,
-    configureTsup
+    configureTsup,
+    ignoreEslint
+]);
+
+const typescriptConfig: KnipWorkspaceConfig = defineWorkspace({}, [
+    configurePackage
 ]);
 
 const sampleAppConfig = defineWorkspace({}, [
@@ -147,7 +168,8 @@ const sampleAppConfig = defineWorkspace({}, [
     ignoreBrowserslist,
     configurePostcss,
     configureWebpack,
-    configureMsw
+    configureMsw,
+    ignoreEslint
 ]);
 
 const sampleComponentsConfig = defineWorkspace({}, [
@@ -157,7 +179,8 @@ const sampleComponentsConfig = defineWorkspace({}, [
 
 const sampleUtilsConfig = defineWorkspace({}, [
     configureSample,
-    configureTsup
+    configureTsup,
+    ignoreEslint
 ]);
 
 const config: KnipConfig = {
@@ -166,15 +189,16 @@ const config: KnipConfig = {
         "packages/*": packagesConfig,
         "packages/swc-configs": swcConfig,
         "packages/webpack-configs": webpackConfig,
+        "packages/typescript-configs": typescriptConfig,
         "sample/app": sampleAppConfig,
         "sample/components": sampleComponentsConfig,
         "sample/utils": sampleUtilsConfig
     },
     ignoreWorkspaces: [
-        // Until it's migrated to ESLint 9.
-        "packages/eslint-plugin",
         // Until it supports ESM.
-        "packages/stylelint-configs"
+        "packages/stylelint-configs",
+        // Ignoring until the TS config files using ESM features known issue is fixed: https://knip.dev/reference/known-issues.
+        "packages/eslint-plugin"
     ],
     exclude: [
         // It cause issues with config like Jest "projects".

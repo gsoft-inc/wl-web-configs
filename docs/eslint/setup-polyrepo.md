@@ -31,80 +31,90 @@ npm install -D @workleap/eslint-plugin eslint @typescript-eslint/parser
 
 ## Configure ESLint
 
-First, create a configuration file named `.eslintrc.json` at the root of the solution:
+First, create a configuration file named `eslint.config.js` at the root of the solution:
 
 ``` !#5
 root
 ├── src
 ├──── ...
 ├── package.json
-├── .eslintrc.json
+├── eslint.config.js
 ```
 
-Then, open the newly created file and extend the default configuration with one of the [shared configurations](default.md#available-configurations) provided by `@workleap/eslint-plugin` :point_down:
+!!!info
+If your `package.json` does not specify `"type": "module"`, you should create an `eslint.config.mjs` file instead.
+!!!
+
+Then, open the newly created file and import the Workleap ESLint plugin (`@workleap/eslint-plugin`). Creat an array and spread one of the [shared configurations](default.md#available-configurations) provided by the plugin into the array :point_down:
 
 ### `web-application`
 
 For an application developed with TypeScript and React, use the following configuration:
 
-```json !#4 .eslintrc.json
-{
-    "$schema": "https://json.schemastore.org/eslintrc",
-    "root": true,
-    "extends": "plugin:@workleap/web-application"
-}
+```javascript !#4 eslint.config.js
+import workleapPlugin from "@workleap/eslint-config";
+
+const config = [
+    ...workleapPlugin.configs.webApplication
+];
+
+export default config;
 ```
 
 ### `react-library`
 
 For a TypeScript library developed **with** React, use the following configuration:
 
-```json !#4 .eslintrc.json
-{
-    "$schema": "https://json.schemastore.org/eslintrc",
-    "root": true,
-    "extends": "plugin:@workleap/react-library"
-}
+```javascript !#4 eslint.config.js
+import workleapPlugin from "@workleap/eslint-config";
+
+const config = [
+    ...workleapPlugin.configs.reactLibrary
+];
+
+export default config;
 ```
 
 ### `typescript-library`
 
 For a TypeScript library developed **without** React, use the following configuration:
 
-```json !#4 .eslintrc.json
-{
-    "$schema": "https://json.schemastore.org/eslintrc",
-    "root": true,
-    "extends": "plugin:@workleap/typescript-library"
-}
+```javascript !#4 eslint.config.js
+import workleapPlugin from "@workleap/eslint-config";
+
+const config = [
+    ...workleapPlugin.configs.typescriptLibrary
+];
+
+export default config;
 ```
 
-### .eslintignore
+### Ignoring files
 
-ESLint can be configured to [ignore](https://eslint.org/docs/latest/use/configure/ignore) certain files and directories while linting by specifying one or more glob patterns.
+ESLint can be configured to ignore certain files and directories while linting by specifying one or more glob patterns.
 
-To do so, first, create an `.eslintignore` file at the root of the solution:
+To do so, add a configuration object with an `ignores` key at the top of your config array.
 
-``` !#6
-root
-├── src
-├──── ...
-├── package.json
-├── .eslintrc.json
-├── .eslintignore
-```
+```javascript !#4-15 eslint.config.js
+import workleapPlugin from "@workleap/eslint-config";
 
-Then, open the newly created file and paste the following ignore rules:
+const config = [
+    {
+        ignores: [
+            "**/dist/*",
+            "node_modules",
+            "**/__snapshots__",
+            "**/storybook-static",
+            "pnpm-lock.yaml",
+            "package-lock.json",
+            "**/*.md",
+            "!**/.storybook"
+        ]
+    },
+    ...workleapPlugin.configs.typescriptLibrary
+];
 
-```bash .eslintignore
-**/dist/*
-node_modules
-__snapshots__
-storybook-static
-pnpm-lock.yaml
-package-lock.json
-*.md
-!.storybook
+export default config;
 ```
 
 !!!info
@@ -124,8 +134,7 @@ root
 ├── src
 ├──── ...
 ├── package.json
-├── .eslintrc.json
-├── .eslintignore
+├── eslint.config.js
 ├── .editorconfig
 ```
 
