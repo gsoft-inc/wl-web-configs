@@ -17,11 +17,11 @@ The `extends` keyword has been removed. Now you simply add multiple _configurati
 
 The `.eslintignore` file is no longer valid. If you need to exclude files from linting, add them to a configuration block under the `ignores` key.
 
-Config files no longer rely on custom resolution implemented by ESLint. Since they import modules directly, they now rely on Node file resolution. Config files no longer merge down the file tree, either. Every config file acts as if it is the root config file. This means if you have nested configs as well as a true root config (like in a monorepo), you will want to set your top-level config to ignore directories that have their own config files.
+Config files no longer rely on custom resolution implemented by ESLint. Since they import modules directly, they now rely on Node file resolution. Nested config files are no longer read. When ESLint is run, it will find the nearest config file starting from the current directory and traversing up. We have detailed a technique for using nested configs in the monorepo setup section.
 
 ## Basic migration steps
 
-1. Create a file called `eslint.config.js`. `@workleap/eslint-config` is published in ESM, so if your project `type` in `package.json` is not `module`, then you should create an `eslint.config.mjs` file instead.
+Create a file called `eslint.config.js`. `@workleap/eslint-config` is published in ESM, so if your project `type` in `package.json` is not `module`, then you should create an `eslint.config.mjs` file instead.
 
 ### Initial setup
 
@@ -54,7 +54,7 @@ export default config;
 
 ## Recommended setup - By project type
 
-`@workleap/eslint-config` exposes some pre-built configs based on common project types. Each of these configs are properly set up for **JavaScript**, **TypeScript**, **Jest**, **Testing Library**, **MDX**, **package.json**, and **YAML**. 
+`@workleap/eslint-config` exposes some pre-built configs based on common project types. Each of these configs are properly set up for **JavaScript**, **TypeScript**, **Jest**, **Testing Library**, **MDX**, **package.json**. 
 
 By convention, all configs are found at `workleapPlugin.configs`. A flat config can be a single object or an array, but for simplicity, all Workleap configs are exported as arrays. Therefore, each Workleap config must be spread (`...`) into the config array.
 
@@ -90,7 +90,7 @@ const config = [
     ...workleapPlugin.configs.webApplication,
     {
         rules: {
-            'react/jsx-uses-vars': 'error',
+            "react/jsx-uses-vars": "error",
         }
     }
 ];
@@ -133,7 +133,7 @@ export default config;
 
 Create a new `eslint.config.js` at the root of your project. Import the monorepo workspace config.
 
-In order to make it easier to scope config files to monorepo packages, we recommend using [eslint-flat-config-utils](https://github.com/antfu/eslint-flat-config-utils). The `concat` function makes it easier to join multiple configs together. Wrap your configuration objects in the `concat` function because it will automatically merege arrays.
+In order to make it easier to scope config files to monorepo packages, we recommend using [eslint-flat-config-utils](https://github.com/antfu/eslint-flat-config-utils). The `concat` function makes it easier to join multiple configs together. Wrap your configuration objects in the `concat` function because it will automatically merge arrays.
 
 ```javascript
 import { concat } from "eslint-flat-config-utils";
@@ -152,7 +152,7 @@ export default config;
 Import each package's `eslint.config.js` and add them to the `concat` function. Wrap each of the package imports with the `extend` function, and provide the relative path to the root of each package. This will scope the files of that config to the given directory, including any ignores.
 
 ```javascript
-import { concat } from "eslint-flat-config-utils";
+import { concat, extend } from "eslint-flat-config-utils";
 import workleapPlugin from "@workleap/eslint-config";
 import packageOneConfig from "./packages/one";
 import packageTwoConfig from "./packages/two";

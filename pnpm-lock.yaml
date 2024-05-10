@@ -24,7 +24,7 @@ importers:
         specifier: 8.57.0
         version: 8.57.0
       eslint-flat-config-utils:
-        specifier: ^0.2.4
+        specifier: 0.2.4
         version: 0.2.4
       installed-check:
         specifier: 9.3.0
