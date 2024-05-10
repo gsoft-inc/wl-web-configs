@@ -33,50 +33,61 @@ Each configuration piece can be extended individually, or in combination with ot
 
 To extend the configuration with a single piece:
 
-```json !#4 .eslintrc.json
-{
-    "$schema": "https://json.schemastore.org/eslintrc",
-    "root": true,
-    "extends": "plugin:@workleap/typescript",
-    "rules": {
-        ...
-    }
-}
+```javascript !#4 eslint.config.js
+import workleapPlugin from "@workleap/eslint-config";
+
+const config = [
+    ...workleapPlugin.configs.typescript
+];
+
+export default config;
 ```
 
 ### Multiple pieces
 
 To extend the configuration with multiple pieces:
 
-```json !#4 .eslintrc.json
-{
-    "$schema": "https://json.schemastore.org/eslintrc",
-    "root": true,
-    "extends": ["plugin:@workleap/core", "plugin:@workleap/typescript"],
-    "rules": {
-        ...
-    }
-}
+```javascript !#4-5 eslint.config.js
+import workleapPlugin from "@workleap/eslint-config";
+
+const config = [
+    ...workleapPlugin.configs.core,
+    ...workleapPlugin.configs.typescript,
+];
+
+export default config;
+```
+
+The `concat` helper from [eslint-flat-config-utils](https://github.com/antfu/eslint-flat-config-utils) is useful to avoid having to spread arrays.
+
+```javascript !#1,4-7 eslint.config.js
+import { concat } from "eslint-flat-config-utils";
+import workleapPlugin from "@workleap/eslint-config";
+
+const config = concat(
+    workleapPlugin.configs.core,
+    workleapPlugin.configs.typescript,
+);
+
+export default config;
 ```
 
 ## Lint additional files
 
-The configuration pieces already targets which file extensions their linting rules will be applied to. If you wish to lint additional file extensions for a given piece you can add an ESLint [override block](https://eslint.org/docs/latest/use/configure/configuration-files#how-do-overrides-work):
+The configuration pieces already target which file extensions their linting rules will be applied to. If you wish to lint additional file extensions for a given piece you can override the `files` key as you would with any JavaScript object. Since Workleap shared configs are arrays, you will need to use a `map` function.
 
-```json !#5-10 .eslintrc.json
-{
-    "$schema": "https://json.schemastore.org/eslintrc",
-    "root": true,
-    "extends": ["plugin:@workleap/react"],
-    "overrides": [
-        {
-            "files": ["*.js", "*.jsx"],
-            "extends": "plugin:@workleap/react"
-        }
-    ]
-}
+```javascript !#4-7 eslint.config.js
+import workleapPlugin from "@workleap/eslint-config";
+
+const config = [
+    ...workleapPlugin.configs.react.map(conf => ({
+        ...conf,
+        files: ["*.js", "*.jsx"],
+    }))
+];
+
+export default config;
 ```
-
 
 
 

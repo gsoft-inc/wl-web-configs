@@ -26,7 +26,7 @@ Create a file called `eslint.config.js`. `@workleap/eslint-config` is published 
 ### Initial setup
 
 Import the `@workleap/eslint-config` module. Create a config array and set it as the default export.
-```javascript
+```javascript !#3-5 eslint.config.js
 import workleapPlugin from "@workleap/eslint-config";
 
 const config = [
@@ -40,7 +40,7 @@ export default config;
 
 ESLint will no longer use the `.eslintignore` file. If you have one of these files, create a new configuration object with an `ignores` key:
 
-```javascript
+```javascript !#4-6 eslint.config.js
 import workleapPlugin from "@workleap/eslint-config";
 
 const config = [
@@ -54,19 +54,12 @@ export default config;
 
 ## Recommended setup - By project type
 
-`@workleap/eslint-config` exposes some pre-built configs based on common project types. Each of these configs are properly set up for **JavaScript**, **TypeScript**, **Jest**, **Testing Library**, **MDX**, and **package.json**. 
+`@workleap/eslint-config` exposes some pre-built configs based on common project types. Each of these configs are properly set up for **JavaScript**, **TypeScript**, **Jest**, **Testing Library**, **MDX**, and **package.json**. Some configs will additionally lint **React**, **JSX A11y**, and **Storybook**. See [available configurations](../eslint/#available-configurations).
 
 By convention, all configs are found at `workleapPlugin.configs`. A flat config can be a single object or an array, but for simplicity, all Workleap configs are exported as arrays. Therefore, each Workleap config must be spread (`...`) into the config array.
 
-| Type | Config Key | Purpose | Additional Configs |
-|---|---|---|---|
-| Web Application | `configs.webApplication` | General purpose web application using React and TypeScript | React<br>JSX A11y<br>Storybook |
-| TypeScript Library | `configs.typeScriptLibrary` | For building a TypeScript library to be consumed by another project |  |
-| React Library | `configs.reactLibrary` | For building a React library to be consumed by another project | React<br>JSX A11y<br>Storybook |
-| Monorepo Workspace | `configs.monorepoWorkspace` | For the top level of a monorepo |  |
-
 For example, to configure ESLint for a React web application, add the project config to your config array:
-```javascript
+```javascript !#7 eslint.config.js
 import workleapPlugin from "@workleap/eslint-config";
 
 const config = [
@@ -79,10 +72,15 @@ const config = [
 export default config;
 ```
 
-In order to make it easier to combine config files, we recommend using [eslint-flat-config-utils](https://github.com/antfu/eslint-flat-config-utils). Wrap your configuration objects in the `concat` function to automatically combine and flatten arrays of configs. This returns a promise, which you can `await` before exporting.
+In order to make it easier to combine config files, we recommend using [eslint-flat-config-utils](https://github.com/antfu/eslint-flat-config-utils). Wrap your configuration objects in the `concat` function to automatically combine and flatten arrays of configs. This returns a promise, which you can `await` before exporting. 
+
+!!!Info
+Awaiting this promise is not necessary if this is a top level config file. If this is in a monorepo package ([see below](#monorepo-packages)), then you can handle the promise automatically by using `concat` in the top level config file.
+!!!
 
 You can override individual rules across all configs by adding another configuration object to the array:
-```javascript
+```javascript !#1,4,9-13,14 eslint.config.js
+import { concat } from "eslint-flat-config-utils";
 import workleapPlugin from "@workleap/eslint-config";
 
 const config = await concat(
@@ -111,7 +109,7 @@ We can mimic the old ESLint behavior by importing each package's ESLint config i
 ### Monorepo packages
 
 Inside each monorepo package, create a `eslint.config.js` file. Add the config module that matches the package type. For example, a web application would use the `webApplication` config, while a component libary would use the `reactLibrary` config:
-```javascript
+```javascript !#4 eslint.config.js
 import workleapPlugin from "@workleap/eslint-config";
 
 const config = {
@@ -122,11 +120,11 @@ export default config;
 ```
 
 You can also set custom ignore rules:
-```javascript
+```javascript !#6 eslint.config.js
 import { concat } from "eslint-flat-config-utils";
 import workleapPlugin from "@workleap/eslint-config";
 
-const config = await concat(
+const config = concat(
     workleapPlugin.configs.reactLibrary,
     ignores: ["build/"]
 );
@@ -138,11 +136,11 @@ export default config;
 
 Create a new `eslint.config.js` at the root of your project. Import the monorepo workspace config.
 
-```javascript
+```javascript !#8 eslint.config.js
 import { concat } from "eslint-flat-config-utils";
 import workleapPlugin from "@workleap/eslint-config";
 
-const config = await concat(
+const config = concat(
     {
         ignores: ["node_modules/"]
     },
@@ -154,13 +152,13 @@ export default config;
 
 Import each package's `eslint.config.js` and add them to the `concat` function. Wrap each of the package imports with the `extend` function, and provide the relative path to the root of each package. This will scope the files of that config to the given directory, including any ignores.
 
-```javascript
+```javascript !#1,3-4,11-12 eslint.config.js
 import { concat, extend } from "eslint-flat-config-utils";
 import workleapPlugin from "@workleap/eslint-config";
 import packageOneConfig from "./packages/one";
 import packageTwoConfig from "./packages/two";
 
-const config = await concat(
+const config = concat(
     {
         ignores: ["node_modules/"]
     },
@@ -178,11 +176,11 @@ With this setup, you can lint the entire project from the root, or from within e
 
 We recommend using one of the "by project type" configurations for simplicity and consistency. But if you need to customize further, you can choose to combine [any individual configs](advanced-composition). Here, we'll compose a config for a project that uses React and TypeScript. 
 
-```javascript
+```javascript !#5-7 eslint.config.js
 import { concat } from "eslint-flat-config-utils";
 import workleapPlugin from "@workleap/eslint-config";
 
-const config = await concat(
+const config = concat(
     workleapPlugin.configs.core,
     workleapPlugin.configs.typescript,
     workleadPlugin.configs.react
@@ -192,11 +190,11 @@ export default config;
 ```
 
 Some rules may need to be overridden within each nested config object. Since flat configs are entirely JavaScript, we can manipulate the underlying configuration objects directly. For example, to change the file type used by a config object: 
-```javascript
+```javascript !#7-12 eslint.config.js
 import { concat } from "eslint-flat-config-utils";
 import workleapPlugin from "@workleap/eslint-config";
 
-const config = await concat(
+const config = concat(
     workleapPlugin.configs.core,
     workleapPlugin.configs.typescript,
     workleadPlugin.configs.react.map(conf => (
