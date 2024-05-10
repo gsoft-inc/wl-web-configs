@@ -7,7 +7,7 @@ import { sourceFiles } from "../utils/patterns.ts";
 
 const config: Linter.FlatConfig[] = await concat(
     {
-        name: "Workleap/React",
+        name: "workleap/react",
         files: sourceFiles,
         plugins: {
             react: reactPlugin
@@ -81,7 +81,7 @@ const config: Linter.FlatConfig[] = await concat(
         }
     },
     {
-        name: "Workleap/React",
+        name: "workleap/react",
         ...reactHooksPlugin.configs.recommended,
         plugins: {
             "react-hooks": reactHooksPlugin

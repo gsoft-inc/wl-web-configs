@@ -5,7 +5,7 @@ import { reactTestFiles, testFiles } from "../utils/patterns.ts";
 
 const config: Linter.FlatConfig[] = await concat(
     {
-        name: "Workleap/TestingLibrary",
+        name: "workleap/testing-library",
         files: reactTestFiles,
         plugins: {
             "testing-library": testingLibraryPlugin
@@ -13,7 +13,7 @@ const config: Linter.FlatConfig[] = await concat(
         rules: testingLibraryPlugin.configs.react.rules
     },
     {
-        name: "Workleap/TestingLibrary",
+        name: "workleap/testing-library",
         files: testFiles,
         plugins: {
             "testing-library": testingLibraryPlugin

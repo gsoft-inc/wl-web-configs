@@ -7,7 +7,7 @@ import { javaScriptFiles } from "../utils/patterns.ts";
 const config: Linter.FlatConfig[] = await concat(
     js.configs.recommended as Linter.FlatConfig,
     {
-        name: "Workleap/Core",
+        name: "workleap/core",
         files: javaScriptFiles,
         languageOptions: {
             globals: {

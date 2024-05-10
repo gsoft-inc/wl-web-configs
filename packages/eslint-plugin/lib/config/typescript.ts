@@ -10,7 +10,7 @@ const config: Linter.FlatConfig[] = await concat(
     // @ts-expect-error ESLint and TS-ESLint types don't match, even though objects are the same shape
     tseslint.configs.recommended,
     {
-        name: "Workleap/TypeScript",
+        name: "workleap/typescript",
         files: typeScriptFiles,
         plugins: {
             "@typescript-eslint": tseslint.plugin

@@ -5,7 +5,7 @@ import packageJsonPluginRecommended from "eslint-plugin-package-json/configs/rec
 const config: Linter.FlatConfig[] = await concat(
     {
         ...(packageJsonPluginRecommended as Linter.FlatConfig),
-        name: "Workleap/Package.json",
+        name: "workleap/package-json",
         files: ["package.json"],
         rules: {
             ...packageJsonPluginRecommended.rules,

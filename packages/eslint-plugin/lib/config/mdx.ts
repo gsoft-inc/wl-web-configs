@@ -4,7 +4,7 @@ import { mdxFiles } from "../utils/patterns.ts";
 
 const config: Linter.FlatConfig[] = [
     {
-        name: "Workleap/MDX",
+        name: "workleap/mdx",
         ...mdxPlugin.flat,
         files: mdxFiles,
         processor: mdxPlugin.createRemarkProcessor({

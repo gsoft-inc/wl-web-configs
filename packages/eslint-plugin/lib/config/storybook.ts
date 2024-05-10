@@ -7,7 +7,7 @@ import { mainStorybookFiles, storybookFiles } from "../utils/patterns.ts";
 
 const config: Linter.FlatConfig[] = await concat(
     {
-        name: "Workleap/Storybook",
+        name: "workleap/storybook",
         files: storybookFiles,
         plugins: { "storybook": storybookPlugin },
         rules: {
@@ -17,7 +17,7 @@ const config: Linter.FlatConfig[] = await concat(
         }
     },
     {
-        name: "Workleap/Storybook",
+        name: "workleap/storybook",
         files: mainStorybookFiles,
         plugins: { "storybook": storybookPlugin },
         rules: {
