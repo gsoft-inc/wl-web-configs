@@ -1,5 +1,11 @@
 # @workleap/eslint-plugin
 
+## 3.2.3
+
+### Patch Changes
+
+- [#213](https://github.com/gsoft-inc/wl-web-configs/pull/213) [`ea355fb`](https://github.com/gsoft-inc/wl-web-configs/commit/ea355fb219cf7ed6b300ea5c66cf70813a0f59bb) Thanks [@mahmoudmoravej](https://github.com/mahmoudmoravej)! - Bump minimist package 0.0.10->0.2.4 in overrides
+
 ## 3.2.2
 
 ### Patch Changes
