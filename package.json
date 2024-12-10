@@ -30,25 +30,25 @@
         "build-sample": "pnpm --filter \"./sample/*\" -r build",
         "serve-sample": "pnpm --filter \"./sample/*\" -r --parallel serve-build",
         "dev-docs": "retype start",
-        "list-outdated-deps": "pnpm outdated -r --format list !eslint",
-        "update-outdated-deps": "pnpm update -r --latest !eslint"
+        "list-outdated-deps": "pnpm outdated -r --format list !eslint !@types/eslint",
+        "update-outdated-deps": "pnpm update -r --latest !eslint !@types/eslint"
     },
     "devDependencies": {
         "@changesets/changelog-github": "0.5.0",
-        "@changesets/cli": "2.27.1",
-        "@typescript-eslint/parser": "7.6.0",
+        "@changesets/cli": "2.27.10",
+        "@typescript-eslint/parser": "8.18.0",
         "@workleap/eslint-plugin": "workspace:*",
         "@workleap/typescript-configs": "workspace:*",
         "eslint": "8.57.0",
         "jest": "29.7.0",
-        "knip": "5.9.4",
-        "prettier": "3.2.5",
-        "retypeapp": "3.5.0",
-        "stylelint": "16.3.1",
+        "knip": "5.39.2",
+        "prettier": "3.4.2",
+        "retypeapp": "3.6.0",
+        "stylelint": "16.11.0",
         "ts-node": "10.9.2",
-        "typescript": "5.4.5"
+        "typescript": "5.7.2"
     },
-    "pnpm":{
+    "pnpm": {
         "overrides": {
             "minimist": "^0.2.4"
         }
