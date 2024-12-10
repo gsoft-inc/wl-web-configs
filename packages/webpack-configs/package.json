@@ -4,12 +4,16 @@
     "description": "Workleap recommended webpack config.",
     "version": "1.5.1",
     "license": "Apache-2.0",
-    "keywords": [
-        "workleap",
-        "webpack",
-        "config"
-    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gsoft-inc/wl-web-configs.git",
+        "directory": "packages/webpack-configs"
+    },
     "type": "module",
+    "publishConfig": {
+        "access": "public",
+        "provenance": true
+    },
     "exports": {
         ".": {
             "import": "./dist/index.js",
@@ -22,11 +26,6 @@
         "CHANGELOG.md",
         "README.md"
     ],
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gsoft-inc/wl-web-configs.git",
-        "directory": "packages/webpack-configs"
-    },
     "scripts": {
         "build": "tsup"
     },
@@ -70,9 +69,5 @@
         "style-loader": "^4.0.0",
         "swc-loader": "^0.2.6",
         "terser-webpack-plugin": "^5.3.10"
-    },
-    "publishConfig": {
-        "access": "public",
-        "provenance": true
     }
 }

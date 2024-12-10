@@ -6,23 +6,10 @@
     "private": true,
     "license": "Apache-2.0",
     "type": "module",
-    "exports": {
-        ".": {
-            "import": "./dist/index.js",
-            "types": "./dist/index.d.ts",
-            "default": "./dist/index.js"
-        },
-        "./index.css": "./dist/index.css"
-    },
+    "exports": "./src/index.ts",
     "files": [
         "/dist"
     ],
-    "scripts": {
-        "dev": "tsup --config ./tsup.dev.ts",
-        "dev-msw": "pnpm dev",
-        "build": "tsup --config ./tsup.build.ts",
-        "serve-build": "pnpm build"
-    },
     "peerDependencies": {
         "react": "*",
         "react-dom": "*"
@@ -37,7 +24,6 @@
         "@workleap/eslint-plugin": "workspace:*",
         "@workleap/stylelint-configs": "workspace:*",
         "@workleap/swc-configs": "workspace:*",
-        "@workleap/tsup-configs": "workspace:*",
         "@workleap/typescript-configs": "workspace:*",
         "eslint": "8.57.0",
         "identity-obj-proxy": "3.0.0",
@@ -45,7 +31,6 @@
         "jest-environment-jsdom": "29.7.0",
         "react": "18.2.0",
         "react-dom": "18.2.0",
-        "tsup": "8.0.2",
         "typescript": "5.4.5"
     }
 }

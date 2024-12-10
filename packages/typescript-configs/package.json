@@ -4,22 +4,16 @@
     "description": "Workleap recommended typescript config.",
     "version": "3.0.2",
     "license": "Apache-2.0",
-    "keywords": [
-        "workleap",
-        "typescript",
-        "tsconfig",
-        "config"
-    ],
     "repository": {
         "type": "git",
         "url": "git+https://github.com/gsoft-inc/wl-web-configs.git",
         "directory": "packages/typescript-configs"
     },
-    "peerDependencies": {
-        "typescript": "*"
-    },
     "publishConfig": {
         "access": "public",
         "provenance": true
+    },
+    "peerDependencies": {
+        "typescript": "*"
     }
 }

@@ -2,8 +2,7 @@
     "extends": "@workleap/typescript-configs/web-application.json",
     "compilerOptions": {
         "paths": {
-            "@sample/components": ["../components/src/index.ts"],
-            "@sample/utils": ["../utils/src/index.ts"]
+            "@sample/tsup-lib": ["../tsup-lib/src/index.ts"]
         }
     },
     "exclude": ["public", "dist", "node_modules"]

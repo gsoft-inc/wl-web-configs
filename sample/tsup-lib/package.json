@@ -1,5 +1,5 @@
 {
-    "name": "@sample/utils",
+    "name": "@sample/tsup-lib",
     "author": "Workleap",
     "version": "0.0.0",
     "description": "Typescript library to try the web configs.",
@@ -13,15 +13,15 @@
             "default": "./dist/index.js"
         }
     },
+    "files": [
+        "/dist"
+    ],
     "scripts": {
         "dev": "tsup --config ./tsup.dev.ts",
         "dev-msw": "pnpm dev",
         "build": "tsup --config ./tsup.build.ts",
         "serve-build": "pnpm build"
     },
-    "files": [
-        "/dist"
-    ],
     "devDependencies": {
         "@workleap/eslint-plugin": "workspace:*",
         "@workleap/tsup-configs": "workspace:*",
