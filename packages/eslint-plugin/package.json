@@ -29,7 +29,8 @@
     ],
     "scripts": {
         "build": "tsup",
-        "eslint": "eslint . --max-warnings=-0 --cache --cache-location node_modules/.cache/eslint"
+        "eslint": "eslint . --max-warnings=-0 --cache --cache-location node_modules/.cache/eslint",
+        "test": "jest"
     },
     "peerDependencies": {
         "@typescript-eslint/parser": "*",

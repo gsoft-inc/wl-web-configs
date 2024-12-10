@@ -27,11 +27,20 @@
             "dependsOn": ["eslint"]
         },
         "//#eslint": {
+            "dependsOn": ["@workleap/eslint-plugin#build"],
             "outputs": ["node_modules/.cache/eslint"]
         },
         "eslint": {
             "dependsOn": ["@workleap/eslint-plugin#build", "^eslint", "//#eslint"],
             "outputs": ["node_modules/.cache/eslint"]
+        },
+        "@sample/app#test": {
+            "dependsOn": ["@workleap/swc-configs#build", "@sample/tsup-lib#build"],
+            "outputs": ["node_modules/.cache/jest/**"]
+        },
+        "test": {
+            "dependsOn": ["@workleap/swc-configs#build"],
+            "outputs": ["node_modules/.cache/jest/**"]
         }
     }
 }

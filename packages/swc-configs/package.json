@@ -32,7 +32,8 @@
     },
     "scripts": {
         "build": "tsup",
-        "eslint": "eslint . --max-warnings=-0 --cache --cache-location node_modules/.cache/eslint"
+        "eslint": "eslint . --max-warnings=-0 --cache --cache-location node_modules/.cache/eslint",
+        "test": "jest"
     },
     "peerDependencies": {
         "@swc/core": "*",
@@ -59,7 +60,8 @@
         "@workleap/typescript-configs": "workspace:*",
         "eslint": "8.57.0",
         "jest": "29.7.0",
+        "ts-node": "10.9.2",
         "tsup": "8.3.5",
-        "typescript": "5.7.2"
+        "typescript": "5.5.4"
     }
 }
