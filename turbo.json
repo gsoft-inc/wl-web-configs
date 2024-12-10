@@ -24,7 +24,7 @@
             "persistent": true
         },
         "lint": {
-            "dependsOn": ["eslint"]
+            "dependsOn": ["eslint", "typecheck"]
         },
         "//#eslint": {
             "dependsOn": ["@workleap/eslint-plugin#build"],
@@ -33,6 +33,17 @@
         "eslint": {
             "dependsOn": ["@workleap/eslint-plugin#build", "^eslint", "//#eslint"],
             "outputs": ["node_modules/.cache/eslint"]
+        },
+        "//#typecheck": {
+            "outputs": ["node_modules/.cache/tsbuildinfo.json"]
+        },
+        "@sample/app#typecheck": {
+            "dependsOn": ["build"],
+            "outputs": ["node_modules/.cache/jest/**"]
+        },
+        "typecheck": {
+            "dependsOn": ["^typecheck", "//#typecheck"],
+            "outputs": ["node_modules/.cache/tsbuildinfo.json"]
         },
         "@sample/app#test": {
             "dependsOn": ["@workleap/swc-configs#build", "@sample/tsup-lib#build"],

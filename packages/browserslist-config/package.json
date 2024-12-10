@@ -33,7 +33,8 @@
     ],
     "scripts": {
         "build": "tsup",
-        "eslint": "eslint . --max-warnings=-0 --cache --cache-location node_modules/.cache/eslint"
+        "eslint": "eslint . --max-warnings=-0 --cache --cache-location node_modules/.cache/eslint",
+        "typecheck": "tsc"
     },
     "devDependencies": {
         "@typescript-eslint/parser": "8.18.0",
