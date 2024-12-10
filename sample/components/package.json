@@ -10,6 +10,9 @@
     "files": [
         "/dist"
     ],
+    "scripts": {
+        "eslint": "eslint . --max-warnings=-0 --cache --cache-location node_modules/.cache/eslint"
+    },
     "peerDependencies": {
         "react": "*",
         "react-dom": "*"
@@ -21,6 +24,7 @@
         "@types/jest": "29.5.14",
         "@types/react": "19.0.1",
         "@types/react-dom": "19.0.2",
+        "@typescript-eslint/parser": "8.18.0",
         "@workleap/eslint-plugin": "workspace:*",
         "@workleap/stylelint-configs": "workspace:*",
         "@workleap/swc-configs": "workspace:*",

@@ -12,7 +12,8 @@
         "dev-verbose": "cross-env VERBOSE=true nodemon",
         "dev-msw-verbose": "cross-env USE_MSW=true VERBOSE=true nodemon",
         "build": "webpack --config webpack.build.js",
-        "serve-build": "pnpm build && pnpm http-server dist -p 8080 -P http://localhost:8080? -c-1"
+        "serve-build": "pnpm build && pnpm http-server dist -p 8080 -P http://localhost:8080? -c-1",
+        "eslint": "eslint . --max-warnings=-0 --cache --cache-location node_modules/.cache/eslint"
     },
     "devDependencies": {
         "@swc/core": "1.10.1",
@@ -23,6 +24,7 @@
         "@types/node": "22.10.1",
         "@types/react": "19.0.1",
         "@types/react-dom": "19.0.2",
+        "@typescript-eslint/parser": "8.18.0",
         "@workleap/browserslist-config": "workspace:*",
         "@workleap/eslint-plugin": "workspace:*",
         "@workleap/postcss-configs": "workspace:*",

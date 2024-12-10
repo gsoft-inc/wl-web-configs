@@ -27,7 +27,8 @@
         "directory": "packages/stylelint-configs"
     },
     "scripts": {
-        "build": "tsup"
+        "build": "tsup",
+        "eslint": "eslint . --max-warnings=-0 --cache --cache-location node_modules/.cache/eslint"
     },
     "peerDependencies": {
         "prettier": ">=2.0.0",
@@ -47,6 +48,7 @@
     },
     "devDependencies": {
         "@types/node": "22.10.1",
+        "@typescript-eslint/parser": "8.18.0",
         "@workleap/eslint-plugin": "workspace:*",
         "@workleap/tsup-configs": "workspace:*",
         "@workleap/typescript-configs": "workspace:*",

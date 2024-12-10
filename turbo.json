@@ -22,6 +22,16 @@
             "dependsOn": ["build"],
             "cache": false,
             "persistent": true
+        },
+        "lint": {
+            "dependsOn": ["eslint"]
+        },
+        "//#eslint": {
+            "outputs": ["node_modules/.cache/eslint"]
+        },
+        "eslint": {
+            "dependsOn": ["@workleap/eslint-plugin#build", "^eslint", "//#eslint"],
+            "outputs": ["node_modules/.cache/eslint"]
         }
     }
 }

@@ -27,7 +27,8 @@
         "README.md"
     ],
     "scripts": {
-        "build": "tsup"
+        "build": "tsup",
+        "eslint": "eslint . --max-warnings=-0 --cache --cache-location node_modules/.cache/eslint"
     },
     "peerDependencies": {
         "postcss": ">=8.4.6"
@@ -41,6 +42,7 @@
         "@swc/jest": "0.2.37",
         "@types/jest": "29.5.14",
         "@types/node": "22.10.1",
+        "@typescript-eslint/parser": "8.18.0",
         "@workleap/eslint-plugin": "workspace:*",
         "@workleap/swc-configs": "workspace:*",
         "@workleap/tsup-configs": "workspace:*",

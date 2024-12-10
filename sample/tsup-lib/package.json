@@ -19,9 +19,11 @@
     "scripts": {
         "dev": "tsup --config ./tsup.dev.ts",
         "dev-msw": "pnpm dev",
-        "build": "tsup --config ./tsup.build.ts"
+        "build": "tsup --config ./tsup.build.ts",
+        "eslint": "eslint . --max-warnings=-0 --cache --cache-location node_modules/.cache/eslint"
     },
     "devDependencies": {
+        "@typescript-eslint/parser": "8.18.0",
         "@workleap/eslint-plugin": "workspace:*",
         "@workleap/tsup-configs": "workspace:*",
         "@workleap/typescript-configs": "workspace:*",

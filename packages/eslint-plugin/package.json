@@ -28,7 +28,8 @@
         "README.md"
     ],
     "scripts": {
-        "build": "tsup"
+        "build": "tsup",
+        "eslint": "eslint . --max-warnings=-0 --cache --cache-location node_modules/.cache/eslint"
     },
     "peerDependencies": {
         "@typescript-eslint/parser": "*",
@@ -47,6 +48,7 @@
         }
     },
     "dependencies": {
+        "@stylistic/eslint-plugin-ts": "^2.12.0",
         "@typescript-eslint/eslint-plugin": "^8.18.0",
         "eslint-plugin-import": "^2.31.0",
         "eslint-plugin-jest": "^28.9.0",

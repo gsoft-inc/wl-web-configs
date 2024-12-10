@@ -31,7 +31,8 @@
         "directory": "packages/swc-configs"
     },
     "scripts": {
-        "build": "tsup"
+        "build": "tsup",
+        "eslint": "eslint . --max-warnings=-0 --cache --cache-location node_modules/.cache/eslint"
     },
     "peerDependencies": {
         "@swc/core": "*",
@@ -52,6 +53,7 @@
         "@swc/helpers": "0.5.15",
         "@swc/jest": "0.2.37",
         "@types/jest": "29.5.14",
+        "@typescript-eslint/parser": "8.18.0",
         "@workleap/eslint-plugin": "workspace:*",
         "@workleap/tsup-configs": "workspace:*",
         "@workleap/typescript-configs": "workspace:*",
