@@ -1,3 +1,3 @@
-import { defineJestConfig } from "@workleap/swc-configs";
+import { defineJestConfig } from "../swc-configs/src/index.ts";
 
 export const swcConfig = defineJestConfig();

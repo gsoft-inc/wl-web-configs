@@ -1,0 +1,27 @@
+{
+    "$schema": "https://turbo.build/schema.json",
+    "globalEnv": ["USE_MSW", "VERBOSE"],
+    "ui": "tui",
+    "tasks": {
+        "dev": {
+            "dependsOn": ["build"],
+            "cache": false,
+            "persistent": true
+        },
+        "dev-msw": {
+            "dependsOn": ["build"],
+            "cache": false,
+            "persistent": true
+        },
+        "build": {
+            "dependsOn": ["^build"],
+            "outputs": ["dist/**"],
+            "outputLogs": "new-only"
+        },
+        "serve-build": {
+            "dependsOn": ["build"],
+            "cache": false,
+            "persistent": true
+        }
+    }
+}
