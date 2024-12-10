@@ -1,4 +1,4 @@
-import type { Configuration as WebpackConfig } from "webpack";
+import type { WebpackConfig } from "../types.ts";
 
 export interface WebpackConfigTransformerContext {
     environment: "dev" | "build";

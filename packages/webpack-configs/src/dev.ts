@@ -5,7 +5,6 @@ import type { Config as SwcConfig } from "@swc/core";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import { createRequire } from "node:module";
 import path from "node:path";
-import type { Configuration as WebpackConfig } from "webpack";
 import webpack from "webpack";
 import type { ServerOptions } from "webpack-dev-server";
 import { applyTransformers, type WebpackConfigTransformer } from "./transformers/applyTransformers.ts";
@@ -13,6 +12,7 @@ import { isNil, isObject } from "./utils.ts";
 
 // Add the "devServer" option to WebpackConfig typings.
 import "webpack-dev-server";
+import type { WebpackConfig } from "./types.ts";
 
 // Aliases
 const DefinePlugin = webpack.DefinePlugin;

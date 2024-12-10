@@ -5,9 +5,9 @@ import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import { createRequire } from "node:module";
 import path from "node:path";
 import TerserPlugin from "terser-webpack-plugin";
-import type { Configuration as WebpackConfig } from "webpack";
 import webpack from "webpack";
 import { applyTransformers, type WebpackConfigTransformer } from "./transformers/applyTransformers.ts";
+import type { WebpackConfig } from "./types.ts";
 import { isObject } from "./utils.ts";
 
 // Aliases

@@ -1,4 +1,4 @@
-import type { Configuration as WebpackConfig } from "webpack";
+import type { WebpackConfig } from "../types.ts";
 
 export type WebpackPlugin = NonNullable<WebpackConfig["plugins"]>[number];
 
