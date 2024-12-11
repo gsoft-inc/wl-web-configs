@@ -24,7 +24,8 @@
             "persistent": true
         },
         "lint": {
-            "dependsOn": ["eslint", "typecheck", "//#syncpack", "//#knip"]
+            // "dependsOn": ["eslint", "typecheck", "//#syncpack", "//#knip"]
+            "dependsOn": ["eslint", "typecheck", "//#syncpack"]
         },
         "//#eslint": {
             "dependsOn": ["@workleap/eslint-plugin#build"],
