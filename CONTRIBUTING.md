@@ -18,6 +18,12 @@ It's important to note that PNPM workspace doesn't hoist the npm dependencies at
 
 The main difference to account for is that the `devDependencies` must now be installed locally in every package `package.json` file rather than in the root `package.json` file.
 
+### Turborepo
+
+This repository use [Turborepo](https://turbo.build/repo/docs) to execute it's commands. Turborepo help saving time with it's built-in cache but also ensure the packages topological order is respected when executing commands.
+
+To be understand the relationships between the commands, have a look at this repository [turbo.json](./turbo.json) configuration file.
+
 ## Project overview
 
 This project is composed of many packages. Each package is located in the [packages](packages/) directory. These packages represent shared configuration for tools that are used across the Workleap projects.
@@ -44,6 +50,20 @@ Then, open a terminal at the root of the workspace and execute the following com
 
 ```bash
 npx retype wallet --add <your-license-key-here>
+```
+
+## Develop the packages
+
+The packages can be tested with the sample application. Open a [VSCode terminals](https://code.visualstudio.com/docs/terminal/basics#_managing-multiple-terminals) and start the sample application with one of the following scripts:
+
+```bash
+pnpm dev-sample
+```
+
+or
+
+```bash
+pnpm dev-sample-msw
 ```
 
 ## Release the packages
@@ -90,12 +110,20 @@ Build the sample application for development and start the dev server.
 pnpm dev-sample
 ```
 
-### build
+### dev-sample-msw
+
+Build the sample application for development with MSW and start the dev server.
+
+```bash
+pnpm dev-sample-msw
+```
+
+### build-pkg
 
 Build the packages for release.
 
 ```bash
-pnpm build
+pnpm build-pkg
 ```
 
 ### build-sample
@@ -124,7 +152,7 @@ pnpm dev-docs
 
 ### test
 
-Run the packages unit tests.
+Run the packages & sample application unit tests.
 
 ```bash
 pnpm test
@@ -132,7 +160,7 @@ pnpm test
 
 ### lint
 
-Lint the packages files.
+Lint the packages files & the sample application.
 
 ```bash
 pnpm lint
@@ -237,16 +265,6 @@ Make sure the package publish access is *public* by adding the following to the 
 npm *dependencies* and *peerDependencies* must be added to the package own *package.json* file.
 
 ## Maintainers notes
-
-### Cyclic workspace dependencies
-
-At installation you'll notice that PNPM will warn that there are cyclic workspace dependencies.
-
-```
-There are cyclic workspace dependencies: C:\Dev\gsoft\wl-web-configs\packages\eslint-plugin, C:\Dev\gsoft\wl-web-configs\packages\swc-configs; C:\Dev\gsoft\wl-web-configs\packages\eslint-plugin, C:\Dev\gsoft\wl-web-configs\packages\swc-configs, C:\Dev\gsoft\wl-web-configs\packages\tsup-configs; C:\Dev\gsoft\wl-web-configs\packages\swc-configs, C:\Dev\gsoft\wl-web-configs\packages\tsup-configs
-```
-
-It is expected as we are dog fooding our own packages to build, lint and tests.
 
 ### TS moduleResolution
 
