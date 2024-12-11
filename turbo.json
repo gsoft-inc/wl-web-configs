@@ -53,7 +53,6 @@
             //     "//#typecheck"
             // ],
             "dependsOn": ["build", "^typecheck", "//#typecheck"],
-            // "dependsOn": ["^typecheck", "//#typecheck"],
             "outputs": ["node_modules/.cache/tsbuildinfo.json"]
         },
         "//#syncpack": {},
