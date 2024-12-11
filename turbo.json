@@ -43,15 +43,15 @@
         // },
         // Ideally, this task wouldn't depends directly on "build".
         "typecheck": {
-            "dependsOn": [
-                "@workleap/swc-configs#build",
-                "@workleap/tsup-configs#build",
-                "@workleap/postcss-configs#build",
-                "@workleap/webpack-configs#build",
-                "^typecheck",
-                "//#typecheck"
-            ],
-            // "dependsOn": ["build", "^typecheck", "//#typecheck"],
+            // "dependsOn": [
+            //     "@workleap/swc-configs#build",
+            //     "@workleap/tsup-configs#build",
+            //     "@workleap/postcss-configs#build",
+            //     "@workleap/webpack-configs#build",
+            //     "^typecheck",
+            //     "//#typecheck"
+            // ],
+            "dependsOn": ["build", "^typecheck", "//#typecheck"],
             "outputs": ["node_modules/.cache/tsbuildinfo.json"]
         },
         "//#syncpack": {},
