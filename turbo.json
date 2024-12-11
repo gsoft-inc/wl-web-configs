@@ -37,10 +37,11 @@
         "//#typecheck": {
             "outputs": ["node_modules/.cache/tsbuildinfo.json"]
         },
-        "@sample/app#typecheck": {
-            "dependsOn": ["build"],
-            "outputs": ["node_modules/.cache/jest/**"]
-        },
+        // "@sample/app#typecheck": {
+        //     "dependsOn": ["build"],
+        //     "outputs": ["node_modules/.cache/tsbuildinfo.json"]
+        // },
+        // Ideally, this task wouldn't depends directly on "build".
         "typecheck": {
             "dependsOn": ["build", "^typecheck", "//#typecheck"],
             "outputs": ["node_modules/.cache/tsbuildinfo.json"]
