@@ -4,14 +4,14 @@
     "description": "Workleap recommended Browserslist configuration.",
     "version": "2.0.1",
     "license": "Apache-2.0",
-    "keywords": [
-        "workleap",
-        "browserslist"
-    ],
     "repository": {
         "type": "git",
         "url": "git+https://github.com/gsoft-inc/wl-web-configs.git",
         "directory": "packages/browserslist-config"
+    },
+    "publishConfig": {
+        "access": "public",
+        "provenance": true
     },
     "exports": {
         ".": {
@@ -32,17 +32,16 @@
         "README.md"
     ],
     "scripts": {
-        "build": "tsup"
+        "build": "tsup",
+        "eslint": "eslint . --max-warnings=-0 --cache --cache-location node_modules/.cache/eslint",
+        "typecheck": "tsc"
     },
     "devDependencies": {
+        "@typescript-eslint/parser": "8.18.0",
         "@workleap/eslint-plugin": "workspace:*",
         "@workleap/tsup-configs": "workspace:*",
         "@workleap/typescript-configs": "workspace:*",
         "eslint": "8.57.0",
-        "tsup": "8.0.2"
-    },
-    "publishConfig": {
-        "access": "public",
-        "provenance": true
+        "tsup": "8.3.5"
     }
 }

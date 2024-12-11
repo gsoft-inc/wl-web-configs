@@ -3,11 +3,10 @@
     "description": "Workleap recommended SWC configs.",
     "version": "2.2.3",
     "license": "Apache-2.0",
-    "keywords": [
-        "workleap",
-        "swc",
-        "config"
-    ],
+    "publishConfig": {
+        "access": "public",
+        "provenance": true
+    },
     "exports": {
         ".": {
             "require": {
@@ -32,7 +31,10 @@
         "directory": "packages/swc-configs"
     },
     "scripts": {
-        "build": "tsup"
+        "build": "tsup",
+        "eslint": "eslint . --max-warnings=-0 --cache --cache-location node_modules/.cache/eslint",
+        "typecheck": "tsc",
+        "test": "jest"
     },
     "peerDependencies": {
         "@swc/core": "*",
@@ -49,20 +51,18 @@
         }
     },
     "devDependencies": {
-        "@swc/core": "1.4.13",
-        "@swc/helpers": "0.5.9",
-        "@swc/jest": "0.2.36",
-        "@types/jest": "29.5.12",
+        "@swc/core": "1.10.1",
+        "@swc/helpers": "0.5.15",
+        "@swc/jest": "0.2.37",
+        "@types/jest": "29.5.14",
+        "@typescript-eslint/parser": "8.18.0",
         "@workleap/eslint-plugin": "workspace:*",
         "@workleap/tsup-configs": "workspace:*",
         "@workleap/typescript-configs": "workspace:*",
         "eslint": "8.57.0",
         "jest": "29.7.0",
-        "tsup": "8.0.2",
-        "typescript": "5.4.5"
-    },
-    "publishConfig": {
-        "access": "public",
-        "provenance": true
+        "ts-node": "10.9.2",
+        "tsup": "8.3.5",
+        "typescript": "5.5.4"
     }
 }

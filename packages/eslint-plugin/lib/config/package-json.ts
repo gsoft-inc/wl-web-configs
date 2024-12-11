@@ -8,6 +8,7 @@ const config: Linter.Config = {
             extends: ["plugin:package-json/recommended"],
             parser: "jsonc-eslint-parser",
             rules: {
+                "package-json/order-properties": "off",
                 "package-json/prefer-repository-shorthand": "off",
                 "package-json/sort-collections": [
                     "error",

@@ -10,52 +10,50 @@
         "url": "git+https://github.com/gsoft-inc/wl-web-configs.git"
     },
     "scripts": {
-        "postinstall": "pnpm build",
-        "build": "pnpm build:tsup && pnpm build:swc && pnpm build:eslint && pnpm build:stylelint && pnpm --filter \"!@workleap/tsup-configs\" --filter \"!@workleap/swc-configs\" --filter \"!@workleap/eslint-plugin\" --filter \"!@workleap/stylelint-configs\" --filter \"!./sample/*\" -r build",
-        "build:tsup": "pnpm --filter \"@workleap/tsup-configs\" build",
-        "build:swc": "pnpm --filter \"@workleap/swc-configs\" build",
-        "build:eslint": "pnpm --filter \"@workleap/eslint-plugin\" build",
-        "build:stylelint": "pnpm --filter \"@workleap/stylelint-configs\" build",
-        "test": "jest",
-        "lint": "pnpm run \"/^lint:.*/\"",
-        "lint:eslint": "eslint . --max-warnings=0 --cache --cache-location node_modules/.cache/eslint",
-        "lint:stylelint": "stylelint \"**/*.css\" --cache --cache-location node_modules/.cache/stylelint",
-        "lint:knip": "knip",
-        "lint:types": "pnpm -r --parallel --filter \"!@workleap/typescript-configs\" exec tsc",
-        "changeset": "changeset",
-        "ci-release": "pnpm build && changeset publish",
-        "clean": "pnpm -r --include-workspace-root --parallel exec pnpm dlx rimraf dist node_modules/.cache",
-        "reset": "pnpm -r --include-workspace-root --parallel exec pnpm dlx rimraf dist node_modules",
-        "dev-sample": "pnpm --filter \"./sample/*\" -r --parallel dev",
-        "dev-sample-msw": "pnpm --filter \"./sample/*\" -r --parallel dev-msw",
-        "build-sample": "pnpm --filter \"./sample/*\" -r build",
-        "serve-sample": "pnpm --filter \"./sample/*\" -r --parallel serve-build",
+        "dev-sample": "turbo run dev --filter=./sample/*",
+        "dev-sample-msw": "turbo run dev-msw --filter=./sample/*",
         "dev-docs": "retype start",
-        "list-outdated-deps": "pnpm outdated -r --format list !eslint",
-        "update-outdated-deps": "pnpm update -r --latest !eslint"
+        "build-pkg": "turbo run build --filter=./packages/*",
+        "build-sample": "turbo run build --filter=./sample/*",
+        "serve-sample": "turbo run serve-build --filter=./sample/*",
+        "prelint": "turbo run build --filter=./packages/*",
+        "lint": "turbo run lint --continue",
+        "eslint": "eslint . --ignore-pattern packages --ignore-pattern sample --max-warnings=-0 --cache --cache-location node_modules/.cache/eslint",
+        "typecheck": "tsc",
+        "syncpack": "syncpack lint",
+        "knip": "knip --cache --cache-location ./node_modules/.cache/knip",
+        "test": "turbo run test --continue",
+        "changeset": "changeset",
+        "publish-pkg": "changeset publish",
+        "publish-pr-pkg": "pkg-pr-new publish ./packages/* --packageManager=pnpm --pnpm",
+        "clean": "pnpm -r --parallel --include-workspace-root exec pnpm dlx rimraf dist .turbo .rslib node_modules/.cache",
+        "reset": "pnpm -r  --parallel --include-workspace-root exec pnpm dlx rimraf dist node_modules",
+        "list-outdated-deps": "pnpm outdated -r --format list !eslint !@types/eslint !typescript",
+        "update-outdated-deps": "pnpm update -r --latest !eslint !@types/eslint !typescript"
     },
     "devDependencies": {
         "@changesets/changelog-github": "0.5.0",
-        "@changesets/cli": "2.27.1",
-        "@typescript-eslint/parser": "7.6.0",
+        "@changesets/cli": "2.27.10",
+        "@typescript-eslint/parser": "8.18.0",
         "@workleap/eslint-plugin": "workspace:*",
         "@workleap/typescript-configs": "workspace:*",
         "eslint": "8.57.0",
-        "jest": "29.7.0",
-        "knip": "5.9.4",
-        "prettier": "3.2.5",
-        "retypeapp": "3.5.0",
-        "stylelint": "16.3.1",
-        "ts-node": "10.9.2",
-        "typescript": "5.4.5"
+        "knip": "5.39.2",
+        "pkg-pr-new": "0.0.35",
+        "prettier": "3.4.2",
+        "retypeapp": "3.6.0",
+        "syncpack": "13.0.0",
+        "turbo": "2.3.3",
+        "typescript": "5.5.4"
     },
-    "pnpm":{
+    "pnpm": {
         "overrides": {
             "minimist": "^0.2.4"
         }
     },
     "engines": {
-        "node": ">=20.0.0"
+        "node": ">=22.0.0",
+        "pnpm": ">=9"
     },
     "packageManager": "pnpm@9.5.0+sha512.140036830124618d624a2187b50d04289d5a087f326c9edfc0ccd733d76c4f52c3a313d4fc148794a2a9d81553016004e6742e8cf850670268a7387fc220c903"
 }

@@ -1,0 +1,51 @@
+{
+    "$schema": "https://turbo.build/schema.json",
+    "globalEnv": ["USE_MSW", "VERBOSE"],
+    "ui": "tui",
+    "tasks": {
+        "dev": {
+            "dependsOn": ["^build"],
+            "cache": false,
+            "persistent": true
+        },
+        "dev-msw": {
+            "dependsOn": ["^build"],
+            "cache": false,
+            "persistent": true
+        },
+        "build": {
+            "dependsOn": ["^build"],
+            "outputs": ["dist/**"]
+        },
+        "serve-build": {
+            "dependsOn": ["build"],
+            "cache": false,
+            "persistent": true
+        },
+        "lint": {
+            "dependsOn": ["eslint", "typecheck", "//#syncpack", "//#knip"]
+        },
+        "//#eslint": {
+            "outputs": ["node_modules/.cache/eslint"]
+        },
+        "eslint": {
+            "outputs": ["node_modules/.cache/eslint"]
+        },
+        "//#typecheck": {
+            "outputs": ["node_modules/.cache/tsbuildinfo.json"]
+        },
+        "typecheck": {
+            "outputs": ["node_modules/.cache/tsbuildinfo.json"]
+        },
+        "//#syncpack": {},
+        "//#knip": {},
+        "@sample/app#test": {
+            "dependsOn": ["@workleap/swc-configs#build", "@sample/tsup-lib#build"],
+            "outputs": ["node_modules/.cache/jest/**"]
+        },
+        "test": {
+            "dependsOn": ["@workleap/swc-configs#build"],
+            "outputs": ["node_modules/.cache/jest/**"]
+        }
+    }
+}

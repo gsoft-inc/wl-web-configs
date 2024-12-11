@@ -1,4 +1,4 @@
-import { helloFrom } from "@sample/utils";
+import { helloFrom } from "@sample/tsup-lib";
 import "./Home.css";
 import AddIcon from "./assets/add.svg";
 

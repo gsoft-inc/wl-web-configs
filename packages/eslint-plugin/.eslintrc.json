@@ -1,0 +1,8 @@
+{
+    "$schema": "https://json.schemastore.org/eslintrc",
+    "root": true,
+    "extends": "./dist/config/by-project-type/typescript-library.js",
+    "rules": {
+        "@typescript-eslint/no-require-imports": "off"
+    }
+}

@@ -1,4 +1,5 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter } from "react-router";
+import { RouterProvider } from "react-router/dom";
 import { About } from "./About.tsx";
 import { Fetch } from "./Fetch.tsx";
 import { Home } from "./Home.tsx";
@@ -22,13 +23,21 @@ const router = createBrowserRouter([
             }
         ]
     }
-]);
+], {
+    future: {
+        v7_relativeSplatPath: false,
+        v7_startTransition: false,
+        v7_fetcherPersist: false,
+        v7_normalizeFormMethod: false,
+        v7_partialHydration: false,
+        v7_skipActionErrorRevalidation: false
+    }
+});
 
 export function App() {
     return (
         <RouterProvider
             router={router}
-            fallbackElement={<div>Loading...</div>}
         />
     );
 }

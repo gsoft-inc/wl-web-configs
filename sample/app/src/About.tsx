@@ -1,5 +1,5 @@
 import { Button } from "@sample/components";
-import { helloFrom } from "@sample/utils";
+import { helloFrom } from "@sample/tsup-lib";
 
 export function About() {
     return (

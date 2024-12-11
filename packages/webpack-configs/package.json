@@ -4,12 +4,16 @@
     "description": "Workleap recommended webpack config.",
     "version": "1.5.1",
     "license": "Apache-2.0",
-    "keywords": [
-        "workleap",
-        "webpack",
-        "config"
-    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gsoft-inc/wl-web-configs.git",
+        "directory": "packages/webpack-configs"
+    },
     "type": "module",
+    "publishConfig": {
+        "access": "public",
+        "provenance": true
+    },
     "exports": {
         ".": {
             "import": "./dist/index.js",
@@ -22,13 +26,11 @@
         "CHANGELOG.md",
         "README.md"
     ],
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gsoft-inc/wl-web-configs.git",
-        "directory": "packages/webpack-configs"
-    },
     "scripts": {
-        "build": "tsup"
+        "build": "tsup",
+        "eslint": "eslint . --max-warnings=-0 --cache --cache-location node_modules/.cache/eslint",
+        "typecheck": "tsc",
+        "test": "jest"
     },
     "peerDependencies": {
         "@swc/core": "*",
@@ -45,34 +47,32 @@
     },
     "devDependencies": {
         "@svgr/core": "8.1.0",
-        "@swc/core": "1.4.13",
-        "@swc/helpers": "0.5.9",
-        "@swc/jest": "0.2.36",
-        "@types/jest": "29.5.12",
-        "@types/node": "20.12.7",
+        "@swc/core": "1.10.1",
+        "@swc/helpers": "0.5.15",
+        "@swc/jest": "0.2.37",
+        "@types/jest": "29.5.14",
+        "@types/node": "22.10.1",
+        "@typescript-eslint/parser": "8.18.0",
         "@workleap/eslint-plugin": "workspace:*",
         "@workleap/swc-configs": "workspace:*",
         "@workleap/tsup-configs": "workspace:*",
         "@workleap/typescript-configs": "workspace:*",
         "eslint": "8.57.0",
         "jest": "29.7.0",
-        "tsup": "8.0.2",
-        "typescript": "5.4.5"
+        "ts-node": "10.9.2",
+        "tsup": "8.3.5",
+        "typescript": "5.5.4"
     },
     "dependencies": {
-        "@pmmmwh/react-refresh-webpack-plugin": "^0.5.11",
+        "@pmmmwh/react-refresh-webpack-plugin": "^0.5.15",
         "@svgr/webpack": "^8.1.0",
-        "css-loader": "^7.1.1",
-        "html-webpack-plugin": "^5.6.0",
-        "mini-css-extract-plugin": "^2.8.1",
+        "css-loader": "^7.1.2",
+        "html-webpack-plugin": "^5.6.3",
+        "mini-css-extract-plugin": "^2.9.2",
         "postcss-loader": "^8.1.1",
-        "react-refresh": "^0.14.0",
+        "react-refresh": "^0.16.0",
         "style-loader": "^4.0.0",
         "swc-loader": "^0.2.6",
         "terser-webpack-plugin": "^5.3.10"
-    },
-    "publishConfig": {
-        "access": "public",
-        "provenance": true
     }
 }

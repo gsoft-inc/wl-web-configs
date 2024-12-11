@@ -18,36 +18,45 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Install Node.js
-        uses: actions/setup-node@v3
-
       - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        id: pnpm-install
+        uses: pnpm/action-setup@v4
         with:
-          version: 9.*
           run_install: false
 
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
-
-      - name: Setup pnpm cache
-        uses: actions/cache@v3
+      - name: Install Node.js
+        uses: actions/setup-node@v4
         with:
-          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+          node-version: ">=22.0.0"
+          check-latest: true
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
 
       - name: Install Dependencies
-        run: pnpm i --frozen-lockfile
+        run: pnpm install --frozen-lockfile
+
+      - name: Restore Turborepo cache
+        id: cache-turborepo-restore
+        uses: actions/cache/restore@v4
+        with:
+          key: ${{ runner.os }}-turborepo-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-turborepo-
+          path: .turbo
+
+      - name: Build packages
+        run: pnpm build-pkg
+
+      - name: Save Turborepo cache
+        id: cache-turborepo-save
+        if: always() && steps.cache-turborepo-restore.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          key: ${{ steps.cache-turborepo-restore.outputs.cache-primary-key }}
+          path: .turbo
 
       - name: Create release Pull Request or publish to NPM
         uses: changesets/action@v1
@@ -55,8 +64,7 @@ jobs:
           commit: "ci(changesets): version packages"
           title: "Changeset: New Version"
           # This expects you to have a script called release which does a build for your packages and calls changeset publish
-          publish: pnpm run ci-release
+          publish: pnpm publish-pkg
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.WORKLEAP_NPM_TOKEN }}
-

@@ -1,9 +1,10 @@
 {
     "extends": "@workleap/typescript-configs/web-application.json",
     "compilerOptions": {
+        "incremental": true,
+        "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json",
         "paths": {
-            "@sample/components": ["../components/src/index.ts"],
-            "@sample/utils": ["../utils/src/index.ts"]
+            "@sample/tsup-lib": ["../tsup-lib/src/index.ts"]
         }
     },
     "exclude": ["public", "dist", "node_modules"]

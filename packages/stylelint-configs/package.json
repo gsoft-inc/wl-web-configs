@@ -4,13 +4,10 @@
     "description": "Workleap recommended Stylelint configurations.",
     "version": "2.0.3",
     "license": "Apache-2.0",
-    "keywords": [
-        "workleap",
-        "stylelint",
-        "stylelint-plugin",
-        "config",
-        "css"
-    ],
+    "publishConfig": {
+        "access": "public",
+        "provenance": true
+    },
     "exports": {
         ".": {
             "require": "./dist/index.js",
@@ -30,7 +27,9 @@
         "directory": "packages/stylelint-configs"
     },
     "scripts": {
-        "build": "tsup"
+        "build": "tsup",
+        "eslint": "eslint . --max-warnings=-0 --cache --cache-location node_modules/.cache/eslint",
+        "typecheck": "tsc"
     },
     "peerDependencies": {
         "prettier": ">=2.0.0",
@@ -44,21 +43,18 @@
             "optional": true
         }
     },
+    "dependencies": {
+        "stylelint-config-standard": "^36.0.1",
+        "stylelint-prettier": "^5.0.2"
+    },
     "devDependencies": {
-        "@types/node": "20.12.7",
+        "@types/node": "22.10.1",
+        "@typescript-eslint/parser": "8.18.0",
         "@workleap/eslint-plugin": "workspace:*",
         "@workleap/tsup-configs": "workspace:*",
         "@workleap/typescript-configs": "workspace:*",
         "eslint": "8.57.0",
-        "tsup": "8.0.2",
-        "typescript": "5.4.5"
-    },
-    "dependencies": {
-        "stylelint-config-standard": "^36.0.0",
-        "stylelint-prettier": "^5.0.0"
-    },
-    "publishConfig": {
-        "access": "public",
-        "provenance": true
+        "tsup": "8.3.5",
+        "typescript": "5.5.4"
     }
 }
