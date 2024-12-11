@@ -17,6 +17,7 @@ Common configurations for building web apps at [Workleap](https://workleap.com/)
 | [@workleap/tsup-configs](packages/tsup-configs/README.md) | [![npm version](https://img.shields.io/npm/v/@workleap/tsup-configs)](https://www.npmjs.com/package/@workleap/tsup-configs) |
 | [@workleap/swc-configs](packages/swc-configs/README.md) | [![npm version](https://img.shields.io/npm/v/@workleap/swc-configs)](https://www.npmjs.com/package/@workleap/swc-configs) |
 | [@workleap/webpack-configs](packages/webpack-configs/README.md) | [![npm version](https://img.shields.io/npm/v/@workleap/webpack-configs)](https://www.npmjs.com/package/@workleap/webpack-configs) |
+| [@workleap/rsbuild-configs](packages/rsbuild-configs/README.md) | [![npm version](https://img.shields.io/npm/v/@workleap/rsbuild-configs)](https://www.npmjs.com/package/@workleap/rsbuild-configs) |
 
 ## Have a question or found an issue?
 
