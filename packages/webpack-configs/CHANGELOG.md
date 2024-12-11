@@ -1,5 +1,11 @@
 # @workleap/webpack-configs
 
+## 1.5.2
+
+### Patch Changes
+
+- [#215](https://github.com/gsoft-inc/wl-web-configs/pull/215) [`d6dfe8f`](https://github.com/gsoft-inc/wl-web-configs/commit/d6dfe8f61ab56a606c84c7c580dded75ba5e7bfc) Thanks [@patricklafrance](https://github.com/patricklafrance)! - Fixed typings.
+
 ## 1.5.1
 
 ### Patch Changes
