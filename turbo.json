@@ -37,10 +37,10 @@
         "//#typecheck": {
             "outputs": ["node_modules/.cache/tsbuildinfo.json"]
         },
-        // "@sample/app#typecheck": {
-        //     "dependsOn": ["build"],
-        //     "outputs": ["node_modules/.cache/tsbuildinfo.json"]
-        // },
+        "@sample/app#typecheck": {
+            "dependsOn": ["build"],
+            "outputs": ["node_modules/.cache/tsbuildinfo.json"]
+        },
         // Ideally, this task wouldn't depends on "build".
         "typecheck": {
             // "dependsOn": [
@@ -51,7 +51,7 @@
             //     "^typecheck",
             //     "//#typecheck"
             // ],
-            "dependsOn": ["^build", "^typecheck", "//#typecheck"],
+            "dependsOn": ["build", "^typecheck", "//#typecheck"],
             "outputs": ["node_modules/.cache/tsbuildinfo.json"]
         },
         "//#syncpack": {},
