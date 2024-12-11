@@ -46,11 +46,6 @@
         "turbo": "2.3.3",
         "typescript": "5.5.4"
     },
-    "pnpm": {
-        "overrides": {
-            "minimist": "^0.2.4"
-        }
-    },
     "engines": {
         "node": ">=22.0.0",
         "pnpm": ">=9"
