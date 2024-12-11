@@ -16,6 +16,7 @@
         "build-pkg": "turbo run build --filter=./packages/*",
         "build-sample": "turbo run build --filter=./sample/*",
         "serve-sample": "turbo run serve-build --filter=./sample/*",
+        "prelint": "turbo run build --filter=./packages/*",
         "lint": "turbo run lint --continue",
         "eslint": "eslint . --ignore-pattern packages --ignore-pattern sample --max-warnings=-0 --cache --cache-location node_modules/.cache/eslint",
         "typecheck": "tsc",

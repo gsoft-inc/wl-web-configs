@@ -4,55 +4,37 @@
     "ui": "tui",
     "tasks": {
         "dev": {
-            "dependsOn": ["build"],
+            "dependsOn": ["^build"],
             "cache": false,
             "persistent": true
         },
         "dev-msw": {
-            "dependsOn": ["build"],
+            "dependsOn": ["^build"],
             "cache": false,
             "persistent": true
         },
         "build": {
             "dependsOn": ["^build"],
-            "outputs": ["dist/**"],
-            "outputLogs": "new-only"
+            "outputs": ["dist/**"]
         },
         "serve-build": {
-            "dependsOn": ["build"],
+            "dependsOn": ["^build"],
             "cache": false,
             "persistent": true
         },
         "lint": {
-            // "dependsOn": ["eslint", "typecheck", "//#syncpack", "//#knip"]
-            "dependsOn": ["eslint", "typecheck", "//#syncpack"]
+            "dependsOn": ["eslint", "typecheck", "//#syncpack", "//#knip"]
         },
         "//#eslint": {
-            "dependsOn": ["@workleap/eslint-plugin#build"],
             "outputs": ["node_modules/.cache/eslint"]
         },
         "eslint": {
-            "dependsOn": ["@workleap/eslint-plugin#build", "^eslint", "//#eslint"],
             "outputs": ["node_modules/.cache/eslint"]
         },
         "//#typecheck": {
             "outputs": ["node_modules/.cache/tsbuildinfo.json"]
         },
-        // "@sample/app#typecheck": {
-        //     "dependsOn": ["build"],
-        //     "outputs": ["node_modules/.cache/tsbuildinfo.json"]
-        // },
-        // Ideally, this task wouldn't depends on "build".
         "typecheck": {
-            // "dependsOn": [
-            //     "@workleap/swc-configs#build",
-            //     "@workleap/tsup-configs#build",
-            //     "@workleap/postcss-configs#build",
-            //     "@workleap/webpack-configs#build",
-            //     "^typecheck",
-            //     "//#typecheck"
-            // ],
-            "dependsOn": ["build", "^typecheck", "//#typecheck"],
             "outputs": ["node_modules/.cache/tsbuildinfo.json"]
         },
         "//#syncpack": {},
