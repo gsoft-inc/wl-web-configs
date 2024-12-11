@@ -46,6 +46,7 @@
             "dependsOn": [
                 "@workleap/swc-configs#build",
                 "@workleap/tsup-configs#build",
+                "@workleap/postcss-configs#build",
                 "@workleap/webpack-configs#build",
                 "^typecheck",
                 "//#typecheck"
