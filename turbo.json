@@ -42,7 +42,7 @@
             "outputs": ["node_modules/.cache/jest/**"]
         },
         "typecheck": {
-            "dependsOn": ["^typecheck", "//#typecheck"],
+            "dependsOn": ["build", "^typecheck", "//#typecheck"],
             "outputs": ["node_modules/.cache/tsbuildinfo.json"]
         },
         "//#syncpack": {},
