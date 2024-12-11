@@ -54,8 +54,8 @@ jobs:
       - name: Build packages
         run: pnpm build-pkg
 
-      - name: Build sample
-        run: pnpm build-sample
+      - name: Build webpack sample
+        run: pnpm build-webpack
 
       - name: Test packages
         run: pnpm test

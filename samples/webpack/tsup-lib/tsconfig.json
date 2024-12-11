@@ -1,8 +1,8 @@
 {
-    "extends": "@workleap/typescript-configs/monorepo-workspace.json",
+    "extends": "@workleap/typescript-configs/library.json",
     "compilerOptions": {
         "incremental": true,
         "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json",
     },
-    "exclude": ["packages", "samples", "node_modules"]
+    "exclude": ["dist", "node_modules"]
 }

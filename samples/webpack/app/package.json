@@ -1,8 +1,8 @@
 {
-    "name": "@sample/app",
+    "name": "@webpack-sample/app",
     "author": "Workleap",
     "version": "0.0.0",
-    "description": "Application to try the web configs.",
+    "description": "Application to try the webpack configs.",
     "private": true,
     "license": "Apache-2.0",
     "type": "module",
@@ -16,6 +16,13 @@
         "eslint": "eslint . --max-warnings=-0 --cache --cache-location node_modules/.cache/eslint",
         "typecheck": "tsc",
         "test": "jest"
+    },
+    "dependencies": {
+        "@webpack-sample/components": "workspace:*",
+        "@webpack-sample/tsup-lib": "workspace:*",
+        "react": "19.0.0",
+        "react-dom": "19.0.0",
+        "react-router": "7.0.2"
     },
     "devDependencies": {
         "@swc/core": "1.10.1",
@@ -50,13 +57,6 @@
         "webpack": "5.97.1",
         "webpack-cli": "5.1.4",
         "webpack-dev-server": "5.1.0"
-    },
-    "dependencies": {
-        "@sample/components": "workspace:*",
-        "@sample/tsup-lib": "workspace:*",
-        "react": "19.0.0",
-        "react-dom": "19.0.0",
-        "react-router": "7.0.2"
     },
     "msw": {
         "workerDirectory": "public"

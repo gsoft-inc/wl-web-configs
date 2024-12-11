@@ -91,7 +91,7 @@ const configurePackage: KnipTransformer = config => {
     };
 };
 
-const configureSample: KnipTransformer = ({ entry, ...config }) => {
+const configureWebpackSample: KnipTransformer = ({ entry, ...config }) => {
     return {
         ...config,
         entry: [
@@ -142,21 +142,21 @@ const webpackConfig: KnipWorkspaceConfig = defineWorkspace({
     configureTsup
 ]);
 
-const sampleAppConfig = defineWorkspace({}, [
-    configureSample,
+const webpackSampleAppConfig = defineWorkspace({}, [
+    configureWebpackSample,
     ignoreBrowserslist,
     configurePostcss,
     configureWebpack,
     configureMsw
 ]);
 
-const sampleComponentsConfig = defineWorkspace({}, [
-    configureSample,
+const webpackSampleComponentsConfig = defineWorkspace({}, [
+    configureWebpackSample,
     configureTsup
 ]);
 
-const sampleUtilsConfig = defineWorkspace({}, [
-    configureSample,
+const webpackSampleTsupLibConfig = defineWorkspace({}, [
+    configureWebpackSample,
     configureTsup
 ]);
 
@@ -166,9 +166,9 @@ const config: KnipConfig = {
         "packages/*": packagesConfig,
         "packages/swc-configs": swcConfig,
         "packages/webpack-configs": webpackConfig,
-        "sample/app": sampleAppConfig,
-        "sample/components": sampleComponentsConfig,
-        "sample/utils": sampleUtilsConfig
+        "samples/webpack/app": webpackSampleAppConfig,
+        "samples/webpack/components": webpackSampleComponentsConfig,
+        "samples/webpack/tsup-lib": webpackSampleTsupLibConfig
     },
     ignoreWorkspaces: [
         // Until it's migrated to ESLint 9.

@@ -1,5 +1,5 @@
 {
-    "name": "@sample/tsup-lib",
+    "name": "@webpack-sample/tsup-lib",
     "author": "Workleap",
     "version": "0.0.0",
     "description": "Typescript library to try the web configs.",

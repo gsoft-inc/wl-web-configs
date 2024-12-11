@@ -1,5 +1,5 @@
 {
-    "name": "@sample/components",
+    "name": "@webpack-sample/components",
     "author": "Workleap",
     "version": "0.0.0",
     "description": "React components library to try the web configs.",
