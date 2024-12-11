@@ -24,7 +24,7 @@ function defineSvgrPluginConfig(options: PluginSvgrOptions) {
     return options;
 }
 
-export function defineStorybook(options: DefineStorybookConfigOptions = {}) {
+export function defineStorybookConfig(options: DefineStorybookConfigOptions = {}) {
     const {
         plugins = [],
         sourceMap = {
