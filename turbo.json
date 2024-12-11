@@ -24,7 +24,7 @@
             "persistent": true
         },
         "lint": {
-            "dependsOn": ["eslint", "typecheck"]
+            "dependsOn": ["eslint", "typecheck", "//#syncpack", "//#knip"]
         },
         "//#eslint": {
             "dependsOn": ["@workleap/eslint-plugin#build"],
@@ -45,6 +45,8 @@
             "dependsOn": ["^typecheck", "//#typecheck"],
             "outputs": ["node_modules/.cache/tsbuildinfo.json"]
         },
+        "//#syncpack": {},
+        "//#knip": {},
         "@sample/app#test": {
             "dependsOn": ["@workleap/swc-configs#build", "@sample/tsup-lib#build"],
             "outputs": ["node_modules/.cache/jest/**"]
