@@ -45,7 +45,7 @@
         "@workleap/eslint-plugin": "workspace:*",
         "@workleap/typescript-configs": "workspace:*",
         "eslint": "8.57.0",
-        "knip": "5.39.2",
+        "knip": "5.39.4",
         "pkg-pr-new": "0.0.35",
         "prettier": "3.4.2",
         "retypeapp": "3.6.0",
