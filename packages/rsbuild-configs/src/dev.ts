@@ -15,13 +15,13 @@ export interface DefineDevConfigOptions {
     host?: string;
     port?: number;
     // Similar to webpack.publicPath.
-    assetPrefix?: `${string}/` | "auto";
+    assetPrefix?: string;
     plugins?: RsbuildPlugins;
     html?: false | DefineDevHtmlPluginConfigFunction;
     lazyCompilation?: boolean;
     hmr?: boolean;
     fastRefresh?: boolean;
-    sourceMap?: boolean | SourceMap;
+    sourceMap?: false | SourceMap;
     overlay?: false;
     react?: false | DefineDevDefineReactPluginConfigFunction;
     svgr? : false | DefineDevSvgrPluginConfigFunction;
@@ -73,8 +73,7 @@ export function defineDevConfig(options: DefineDevConfigOptions = {}) {
     const config: RsbuildConfig = {
         mode: "development",
         dev: {
-            // The trailing / is very important, otherwise paths will not be resolved correctly.
-            assetPrefix: assetPrefix ?? `${https ? "https" : "http"}://${host}:${port}/`,
+            assetPrefix: assetPrefix ?? `${https ? "https" : "http"}://${host}:${port}`,
             lazyCompilation,
             hmr,
             client: (overlay === false || fastRefresh) ? {
@@ -102,8 +101,6 @@ export function defineDevConfig(options: DefineDevConfigOptions = {}) {
         },
         output: {
             target: "web",
-            // // The trailing / is very important, otherwise paths will not be resolved correctly.
-            // assetPrefix: assetPrefix ?? `${https ? "https" : "http"}://${host}:${port}/`,
             minify: false,
             sourceMap
         },

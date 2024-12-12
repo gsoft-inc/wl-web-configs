@@ -7,7 +7,7 @@ toc:
     depth: 2-3
 ---
 
-# Webpack
+# Rsbuild
 
 <!-- !!!warning Before you continue...
 
@@ -28,21 +28,17 @@ npm create @workleap/project@latest <output-directory>
 +++
 !!! -->
 
-## A word about Rspack
-
-[Rspack](https://www.rspack.dev/) is a partial rewrite of [webpack](https://webpack.js.org/) in Rust and will most likely be its successor once it's features complete and stable. Our goal is to migrate to Rspack somewhere in 2024 or 2025 when a `1.0` version is released and [Module Federation](https://module-federation.io/) support is available.
-
-Meanwhile, you can **confidently start a new project with webpack** as the **migration** process to Rspack is expected to be **seamless**; Rspack is committed to support the full webpack API and its massive plugin ecosystem.
+[Rsbuild](https://lib.rsbuild.dev/index) is a high-performance build tool powered by [Rspack](https://rspack.dev/), a Rust-based port of [webpack](https://webpack.js.org/) designed for efficiency and speed. Those new Rsbuild shared configurations are a modern replacement for previous Workleap's shared [webpack configurations](../webpack//default.md).
 
 ## Main features
 
-The shared configurations offered by `@workleap/webpack-configs` includes the following features :point_down:
+The shared configurations offered by `@workleap/rsbuild-configs` includes the following features :point_down:
 
 ### Language support
 
 - JavaScript
 - TypeScript
-- CSS (with CSS modules and PostCSS)
+- CSS (with CSS modules and LightningCSS)
 
 ### Framework support
 
@@ -58,20 +54,20 @@ The shared configurations offered by `@workleap/webpack-configs` includes the fo
 ### Development features
 
 - Development server
-- File system caching
 - Fast Refresh or Hot Module Reload
 - Sourcemap
 
 ### Production features
 
-- File system caching
 - Minification
 - Output to `/dist`
 
 ### Target environment
 
-As per the [PostCSS](../postcss/default.md) and [SWC](../swc/default.md) configurations.
+As per the [Browserlist](../browserslist/default.md) configuration.
 
 ## Getting started
 
-To get started, follow the quick start guide to configure webpack for either a [development environment](configure-dev.md) or a [production environment](configure-build.md).
+To get started, follow the quick start guide to configure Rsbuild for either a [development environment](configure-dev.md), a [production environment](configure-build.md) or [storybook]().
+
+If your project is already using `@workleap/webpack-configs`, follow the [migration guide]().

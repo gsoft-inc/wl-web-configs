@@ -1,0 +1,2 @@
+-> Don't forget the changes to the HTML template for the assets like the favicon.
+    -> L'ajouter aussi au guide de migration de Squide

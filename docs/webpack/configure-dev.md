@@ -9,6 +9,10 @@ toc:
 
 # Configure for development
 
+!!!warning
+If you're starting a new project, consider using [Rsbuild](../rsbuild/default.md) instead of webpack for better performance and modern tooling.
+!!!
+
 To configure [webpack](https://webpack.js.org/) for a development environment, execute the following steps.
 
 ## Install the packages
@@ -61,7 +65,7 @@ The content of the `public/index.html` file is the default template that will be
 
 #### Reference local assets
 
-To reference local assets such as a `favicon.png` in the default HTML template, it is recommended to preprend the **relative** path of every asset with the `publicPath` of the webpack config.
+To reference local assets such as a `favicon.png` in the default HTML template, it is recommended to preprend the **relative** path of every asset with the `publicPath` option of the webpack config.
 
 First, add the asset to the `public` folder at the root of the project:
 
@@ -204,7 +208,7 @@ export default defineDevConfig(swcConfig, {
 
 ### `publicPath`
 
-- **Type**: `boolean`
+- **Type**: `string`
 - **Default**: `${https ? "https" : "http"}://${host}:${port}/`
 
 Set webpack [public path](https://webpack.js.org/configuration/output/#outputpublicpath).
@@ -413,7 +417,7 @@ export default defineDevConfig(swcConfig, {
 - **Type**: `boolean` or an object literal accepting any `@svgr/webpack` [option](https://react-svgr.com/docs/options/)
 - **Default**: `true`
 
-Whether or not to handle `.svg` files with `@svgr/webpack`. If `@svgr/webpack` is desactived, the `.svg` files will are handled by the `asset/resource` rule.
+Whether or not to handle `.svg` files with `@svgr/webpack`. If `@svgr/webpack` is desactived, the `.svg` files will be handled by the `asset/resource` rule.
 
 ```js !#7 webpack.dev.js
 // @ts-check
@@ -503,7 +507,7 @@ export default defineDevConfig(swcConfig, {
 
 ### Execution context
 
-Generic transformers can use the `context` parameter to gather additional information about their execution context, like the `environment` they are operating in:
+Generic transformers can use the `context` parameter to gather additional information about their execution context, like the `environment` they are operating in.
 
 ```ts !#7 transformer.js
 // @ts-check

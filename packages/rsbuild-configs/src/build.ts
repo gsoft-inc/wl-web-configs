@@ -16,7 +16,7 @@ export interface DefineBuildConfigOptions {
     // Similar to webpack.output.path.
     distPath?: DistPathConfig;
     // Similar to webpack.publicPath.
-    assetPrefix?: `${string}/` | "auto";
+    assetPrefix?: string;
     plugins?: RsbuildPlugins;
     html?: false | DefineBuildHtmlPluginConfigFunction;
     minify?: Minify;
@@ -86,8 +86,7 @@ export function defineBuildConfig(options: DefineBuildConfigOptions = {}) {
         distPath = {
             root: path.resolve("./dist")
         },
-        // The trailing / is very important, otherwise paths will not be resolved correctly.
-        assetPrefix = "http://localhost:8080/",
+        assetPrefix = "http://localhost:8080",
         plugins = [],
         html = defaultDefineHtmlPluginConfig,
         minify = true,

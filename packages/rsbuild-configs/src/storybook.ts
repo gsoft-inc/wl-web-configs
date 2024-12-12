@@ -78,7 +78,7 @@ export function defineStorybookConfig(options: DefineStorybookConfigOptions = {}
     };
 
     const transformedConfig = applyTransformers(config, transformers, {
-        environment: "dev",
+        environment: "storybook",
         verbose
     });
 

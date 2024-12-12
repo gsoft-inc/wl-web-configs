@@ -1,7 +1,7 @@
 import type { RsbuildConfig } from "@rsbuild/core";
 
 export interface RsbuildConfigTransformerContext {
-    environment: "dev" | "build";
+    environment: "dev" | "build" | "storybook";
     verbose: boolean;
 }
 
