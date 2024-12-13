@@ -6,12 +6,12 @@ import type { WebpackConfigTransformer } from "../src/transformers/applyTransfor
 import { findModuleRule, matchAssetModuleType, matchLoaderName } from "../src/transformers/moduleRules.ts";
 import { findPlugin, matchConstructorName } from "../src/transformers/plugins.ts";
 
-const SwcConfig = defineSwcConfig({
+const DefaultSwcConfig = defineSwcConfig({
     chrome: "116"
 });
 
 test("when an entry prop is provided, use the provided entry value", () => {
-    const result = defineBuildConfig(SwcConfig, {
+    const result = defineBuildConfig(DefaultSwcConfig, {
         entry: "./a-new-entry.ts"
     });
 
@@ -19,7 +19,7 @@ test("when an entry prop is provided, use the provided entry value", () => {
 });
 
 test("when an output path is provided, use the provided ouput path value", () => {
-    const result = defineBuildConfig(SwcConfig, {
+    const result = defineBuildConfig(DefaultSwcConfig, {
         outputPath: "./a-new-output-path"
     });
 
@@ -27,11 +27,11 @@ test("when an output path is provided, use the provided ouput path value", () =>
 });
 
 test("when a public path is set to \"auto\", should not throw an error", () => {
-    expect(() => defineBuildConfig(SwcConfig, { publicPath: "auto" })).not.toThrow();
+    expect(() => defineBuildConfig(DefaultSwcConfig, { publicPath: "auto" })).not.toThrow();
 });
 
 test("when a valid public path is provided, use the provided public path value", () => {
-    const result = defineBuildConfig(SwcConfig, {
+    const result = defineBuildConfig(DefaultSwcConfig, {
         publicPath: "a-valid-public-path-ending-with-a-trailing-slash/"
     });
 
@@ -49,7 +49,7 @@ test("when additional module rules are provided, append the provided rules at th
         type: "asset/inline"
     };
 
-    const result = defineBuildConfig(SwcConfig, {
+    const result = defineBuildConfig(DefaultSwcConfig, {
         moduleRules: [
             newModuleRule1,
             newModuleRule2
@@ -78,7 +78,7 @@ test("when additional plugins are provided, append the provided plugins at the e
     const newPlugin1 = new Plugin1();
     const newPlugin2 = new Plugin2();
 
-    const result = defineBuildConfig(SwcConfig, {
+    const result = defineBuildConfig(DefaultSwcConfig, {
         plugins: [
             newPlugin1,
             newPlugin2
@@ -92,7 +92,7 @@ test("when additional plugins are provided, append the provided plugins at the e
 });
 
 test("when optimize is true, minimize is set to true", () => {
-    const result = defineBuildConfig(SwcConfig, {
+    const result = defineBuildConfig(DefaultSwcConfig, {
         optimize: true
     });
 
@@ -100,7 +100,7 @@ test("when optimize is true, minimize is set to true", () => {
 });
 
 test("when optimize is false, minimize is set to false", () => {
-    const result = defineBuildConfig(SwcConfig, {
+    const result = defineBuildConfig(DefaultSwcConfig, {
         optimize: false
     });
 
@@ -108,7 +108,7 @@ test("when optimize is false, minimize is set to false", () => {
 });
 
 test("when optimize is \"readable\", minimize is set to true", () => {
-    const result = defineBuildConfig(SwcConfig, {
+    const result = defineBuildConfig(DefaultSwcConfig, {
         optimize: "readable"
     });
 
@@ -116,7 +116,7 @@ test("when optimize is \"readable\", minimize is set to true", () => {
 });
 
 test("when optimize is false, chunkIds is set to \"named\"", () => {
-    const result = defineBuildConfig(SwcConfig, {
+    const result = defineBuildConfig(DefaultSwcConfig, {
         optimize: false
     });
 
@@ -124,7 +124,7 @@ test("when optimize is false, chunkIds is set to \"named\"", () => {
 });
 
 test("when optimize is false, moduleIds is set to \"named\"", () => {
-    const result = defineBuildConfig(SwcConfig, {
+    const result = defineBuildConfig(DefaultSwcConfig, {
         optimize: false
     });
 
@@ -132,7 +132,7 @@ test("when optimize is false, moduleIds is set to \"named\"", () => {
 });
 
 test("when optimize is \"readable\", chunkIds is set to \"named\"", () => {
-    const result = defineBuildConfig(SwcConfig, {
+    const result = defineBuildConfig(DefaultSwcConfig, {
         optimize: "readable"
     });
 
@@ -140,7 +140,7 @@ test("when optimize is \"readable\", chunkIds is set to \"named\"", () => {
 });
 
 test("when optimize is \"readable\", moduleIds is set to \"named\"", () => {
-    const result = defineBuildConfig(SwcConfig, {
+    const result = defineBuildConfig(DefaultSwcConfig, {
         optimize: "readable"
     });
 
@@ -148,7 +148,7 @@ test("when optimize is \"readable\", moduleIds is set to \"named\"", () => {
 });
 
 test("when optimize is true, include minify configuration", () => {
-    const result = defineBuildConfig(SwcConfig, {
+    const result = defineBuildConfig(DefaultSwcConfig, {
         optimize: true
     });
 
@@ -156,7 +156,7 @@ test("when optimize is true, include minify configuration", () => {
 });
 
 test("when optimize is false, do not include minify configuration", () => {
-    const result = defineBuildConfig(SwcConfig, {
+    const result = defineBuildConfig(DefaultSwcConfig, {
         optimize: false
     });
 
@@ -164,7 +164,7 @@ test("when optimize is false, do not include minify configuration", () => {
 });
 
 test("when optimize is \"readable\", include minify configuration", () => {
-    const result = defineBuildConfig(SwcConfig, {
+    const result = defineBuildConfig(DefaultSwcConfig, {
         optimize: "readable"
     });
 
@@ -172,7 +172,7 @@ test("when optimize is \"readable\", include minify configuration", () => {
 });
 
 test("when htmlWebpackPlugin is \"false\", no html-webpack-plugin instance is added to the plugin array", () => {
-    const config = defineBuildConfig(SwcConfig, {
+    const config = defineBuildConfig(DefaultSwcConfig, {
         htmlWebpackPlugin: false
     });
 
@@ -182,7 +182,7 @@ test("when htmlWebpackPlugin is \"false\", no html-webpack-plugin instance is ad
 });
 
 test("when htmlWebpackPlugin is \"true\", an html-webpack-plugin instance is added to the plugin array", () => {
-    const config = defineBuildConfig(SwcConfig, {
+    const config = defineBuildConfig(DefaultSwcConfig, {
         htmlWebpackPlugin: true
     });
 
@@ -192,7 +192,7 @@ test("when htmlWebpackPlugin is \"true\", an html-webpack-plugin instance is add
 });
 
 test("when css modules is enabled, include css modules configuration", () => {
-    const result = defineBuildConfig(SwcConfig, {
+    const result = defineBuildConfig(DefaultSwcConfig, {
         cssModules: true
     });
 
@@ -207,7 +207,7 @@ test("when css modules is enabled, include css modules configuration", () => {
 });
 
 test("when css modules is disabled, do not include css modules configuration", () => {
-    const result = defineBuildConfig(SwcConfig, {
+    const result = defineBuildConfig(DefaultSwcConfig, {
         cssModules: false
     });
 
@@ -217,7 +217,7 @@ test("when css modules is disabled, do not include css modules configuration", (
 });
 
 test("the provided swc config object is set as the swc-loader options", () => {
-    const swcConfig = SwcConfig;
+    const swcConfig = DefaultSwcConfig;
 
     const result = defineBuildConfig(swcConfig);
 
@@ -233,7 +233,7 @@ test("when a transformer is provided, and the transformer update the existing co
         return config;
     };
 
-    const result = defineBuildConfig(SwcConfig, {
+    const result = defineBuildConfig(DefaultSwcConfig, {
         transformers: [entryTransformer]
     });
 
@@ -247,7 +247,7 @@ test("when a transformer is provided, and the transformer returns a new configur
         };
     };
 
-    const result = defineBuildConfig(SwcConfig, {
+    const result = defineBuildConfig(DefaultSwcConfig, {
         transformers: [entryTransformer]
     });
 
@@ -267,7 +267,7 @@ test("when multiple transformers are provided, all the transformers are applied 
         return config;
     };
 
-    const result = defineBuildConfig(SwcConfig, {
+    const result = defineBuildConfig(DefaultSwcConfig, {
         transformers: [entryTransformer, devToolTransformer]
     });
 
@@ -278,7 +278,7 @@ test("when multiple transformers are provided, all the transformers are applied 
 test("transformers context environment is \"build\"", () => {
     const mockTransformer = jest.fn();
 
-    defineBuildConfig(SwcConfig, {
+    defineBuildConfig(DefaultSwcConfig, {
         transformers: [mockTransformer]
     });
 
@@ -288,7 +288,7 @@ test("transformers context environment is \"build\"", () => {
 test("when the verbose option is true, the transformers context verbose value is \"true\"", () => {
     const mockTransformer = jest.fn();
 
-    defineBuildConfig(SwcConfig, {
+    defineBuildConfig(DefaultSwcConfig, {
         verbose: true,
         transformers: [mockTransformer]
     });
@@ -309,7 +309,7 @@ test("when the verbose option is true, the transformers context verbose value is
 // });
 
 test("when the svgr option is false, do not add the svgr rule", () => {
-    const result = defineBuildConfig(SwcConfig, {
+    const result = defineBuildConfig(DefaultSwcConfig, {
         svgr: false
     });
 
@@ -319,7 +319,7 @@ test("when the svgr option is false, do not add the svgr rule", () => {
 });
 
 test("when the svgr option is false, add .svg to the default assets rule", () => {
-    const result = defineBuildConfig(SwcConfig, {
+    const result = defineBuildConfig(DefaultSwcConfig, {
         svgr: false
     });
 

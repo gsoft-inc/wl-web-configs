@@ -75,7 +75,7 @@ export function defineDevConfig(options: DefineDevConfigOptions = {}) {
         dev: {
             assetPrefix: assetPrefix ?? `${https ? "https" : "http"}://${host}:${port}`,
             lazyCompilation,
-            hmr,
+            hmr: hmr || fastRefresh,
             client: (overlay === false || fastRefresh) ? {
                 overlay: false
             } : undefined
