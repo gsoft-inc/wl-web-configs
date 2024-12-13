@@ -242,10 +242,10 @@ export const App = () => <Logo />;
 
 Start the Rsbuild process with verbose logging turned on.
 
-```ts !#4 rsbuild.build.ts
-import { defineBuildConfig } from "@workleap/rsbuild-configs";
+```ts !#4 rsbuild.config.ts
+import { defineStorybookConfig } from "@workleap/rsbuild-configs";
 
-export default defineBuildConfig({
+export default defineStorybookConfig({
     verbose: true
 });
 ```
@@ -269,7 +269,7 @@ To view the default build configuration of `@workleap/rsbuild-configs`, have a l
 transformer(config: RsbuildConfig, context: RsbuildConfigTransformerContext) => RsbuildConfig
 ```
 
-```ts !#3-10,13 rsbuild.build.ts
+```ts !#3-10,13 rsbuild.config.ts
 import { defineBuildConfig, type RsbuildConfig, type RsbuildConfigTransformer } from "@workleap/rsbuild-configs";
 
 const useInlineStylesTransformer: RsbuildConfigTransformer = (config: RsbuildConfig) => {
@@ -351,7 +351,7 @@ To make them accessible to the application files, Rsbuild must be aware of those
 
 First, define the variables with `environmentVariables`:
 
-```ts !#4-6 rsbuild.build.ts
+```ts !#4-6 rsbuild.config.ts
 import { defineStorybookConfig } from "@workleap/rsbuild-configs";
 
 export default defineStorybookConfig({

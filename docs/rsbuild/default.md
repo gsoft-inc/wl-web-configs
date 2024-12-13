@@ -1,5 +1,5 @@
 ---
-order: 110
+order: 130
 icon: /static/rsbuild.svg
 label: Rsbuild
 expanded: true
@@ -70,4 +70,4 @@ As per the [Browserlist](../browserslist/default.md) configuration.
 
 To get started, follow the quick start guide to configure Rsbuild for either a [development environment](./configure-dev.md), a [production environment](./configure-build.md) or [storybook](./configure-storybook.md).
 
-If your project is already using `@workleap/webpack-configs`, follow the [migration guide]().
+If your project is already using `@workleap/webpack-configs`, follow the [migration guide](./migrate-from-webpack.md).

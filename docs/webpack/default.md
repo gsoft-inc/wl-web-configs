@@ -1,5 +1,5 @@
 ---
-order: 110
+order: 90
 icon: /static/webpack.svg
 label: webpack
 expanded: true
@@ -10,7 +10,7 @@ toc:
 # Webpack
 
 !!!warning
-If you're starting a new project, consider using [Rsbuild](../rsbuild/default.md) instead of webpack for better performance and modern tooling.
+`@workleap/webpack-configs` is now in maintenance mode. If you're starting a new project, consider using [@workleap/rsbuild-configs](../rsbuild/default.md) instead for better performance and modern tooling.
 !!!
 
 <!-- !!!warning Before you continue...

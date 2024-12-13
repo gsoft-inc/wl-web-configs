@@ -10,7 +10,7 @@ toc:
 # Configure for build
 
 !!!warning
-If you're starting a new project, consider using [Rsbuild](../rsbuild/default.md) instead of webpack for better performance and modern tooling.
+`@workleap/webpack-configs` is now in maintenance mode. If you're starting a new project, consider using [@workleap/rsbuild-configs](../rsbuild/default.md) instead for better performance and modern tooling.
 !!!
 
 To configure [webpack](https://webpack.js.org/) for a production environment, execute the following steps.

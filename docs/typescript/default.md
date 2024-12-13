@@ -1,5 +1,5 @@
 ---
-order: 120
+order: 150
 icon: /static/typescript.svg
 label: Typescript
 expanded: true
