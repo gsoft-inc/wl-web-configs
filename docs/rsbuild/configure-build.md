@@ -603,6 +603,61 @@ The `=== "true"` part of `"DEBUG": process.env.DEBUG === "true"` is very importa
 By default, Rsbuild injects a few environment variables into the code using the [source.define](https://rsbuild.dev/guide/advanced/env-vars#using-define) option. For additional information about these default environment variables, refer to the Rsbuild [documentation](https://rsbuild.dev/guide/advanced/env-vars#default-variables).
 !!!
 
+## CSS modules typings
+
+When you import CSS Modules in TypeScript code, TypeScript may prompt that the module is missing a type definition:
+
+```bash
+TS2307: Cannot find module './index.module.css' or its corresponding type declarations.
+```
+
+To fix this, you need to add a type declaration file for the CSS Modules, please create a `src/env.d.ts` file, and add the corresponding type declaration.
+
+```ts env.d.ts
+/// <reference types="@rsbuild/core/types" />
+```
+
+!!!info
+Make sure the project have a dependency on `@rsbuild/core`.
+!!!
+
+### Monorepo
+
+If your solution is a monorepo, ensure that projects referencing your packages that include CSS Modules, also include the necessary type definitions
+
+For example, given the following structure:
+
+``` !#3,7
+workspace
+├── app
+├──── tsconfig.ts
+├── packages
+├──── components
+├────── src
+├───────── Button.tsx
+├───────── Button.module.css
+├───────── env.d.ts
+├───────── tsconfig.ts
+├── package.json
+```
+
+Copy the CSS Modules typings into the `app` web application own `env.d.ts` file, or include the `components` package's typings into the `apps` web application `tsconfig.ts` configuration file:
+
+```json !#5 app/tsconfig.ts
+{
+    "extends": "@workleap/typescript-configs/web-application.json",
+    "include": [
+        ".",
+        "../**/src/env.d.ts"
+    ],
+    "exclude": ["public", "dist", "node_modules"]
+}
+```
+
+!!!info
+For additional information abour CSS modules type declaration, refer to the Rsbuild [documentation](https://rsbuild.dev/guide/basic/css-modules#type-declaration).
+!!!
+
 ## Try it :rocket:
 
 To test your new Rsbuild configuration, open a terminal at the root of the project and execute the [CLI script added earlier](#add-a-cli-script). The build process should complete without outputting any error in the terminal and the bundle files should be available in the `/dist` folder (or any other `distPath` you configured).

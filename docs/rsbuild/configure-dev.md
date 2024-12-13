@@ -679,6 +679,39 @@ To fix this, you need to add a type declaration file for the CSS Modules, please
 Make sure the project have a dependency on `@rsbuild/core`.
 !!!
 
+### Monorepo
+
+If your solution is a monorepo, ensure that projects referencing your packages that include CSS Modules, also include the necessary type definitions
+
+For example, given the following structure:
+
+``` !#3,7
+workspace
+├── app
+├──── tsconfig.ts
+├── packages
+├──── components
+├────── src
+├───────── Button.tsx
+├───────── Button.module.css
+├───────── env.d.ts
+├───────── tsconfig.ts
+├── package.json
+```
+
+Copy the CSS Modules typings into the `app` web application own `env.d.ts` file, or include the `components` package's typings into the `apps` web application `tsconfig.ts` configuration file:
+
+```json !#5 app/tsconfig.ts
+{
+    "extends": "@workleap/typescript-configs/web-application.json",
+    "include": [
+        ".",
+        "../**/src/env.d.ts"
+    ],
+    "exclude": ["public", "dist", "node_modules"]
+}
+```
+
 !!!info
 For additional information abour CSS modules type declaration, refer to the Rsbuild [documentation](https://rsbuild.dev/guide/basic/css-modules#type-declaration).
 !!!

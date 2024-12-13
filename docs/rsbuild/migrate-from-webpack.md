@@ -33,15 +33,15 @@ Then, in the same terminal, remove the following packages:
 
 +++ pnpm
 ```bash
-pnpm remove @workleap/webpack-configs @swc/core @swc/helpers @workleap/swc-configs webpack webpack-cli webpack-dev-server
+pnpm remove @workleap/webpack-configs @swc/core @swc/helpers @workleap/swc-configs webpack webpack-cli webpack-dev-server @workleap/postcss-configs postcss
 ```
 +++ yarn
 ```bash
-yarn remove @workleap/webpack-configs @swc/core @swc/helpers @workleap/swc-configs webpack webpack-cli webpack-dev-server
+yarn remove @workleap/webpack-configs @swc/core @swc/helpers @workleap/swc-configs webpack webpack-cli webpack-dev-server @workleap/postcss-configs postcss
 ```
 +++ npm
 ```bash
-npm uninstall @workleap/webpack-configs @swc/core @swc/helpers @workleap/swc-configs webpack webpack-cli webpack-dev-server
+npm uninstall @workleap/webpack-configs @swc/core @swc/helpers @workleap/swc-configs webpack webpack-cli webpack-dev-server @workleap/postcss-configs postcss
 ```
 +++
 
@@ -57,6 +57,7 @@ web-app
 ├──── index.html       -->  U
 ├── webpack.dev.js     -->  rsbuild.dev.ts
 ├── webpack.build.js   -->  rsbuild.build.ts
+├── postcss.config.ts  -->  X
 ├── swc.build.js       -->  X
 ├── swc.dev.js         -->  X
 ├── package.json
@@ -121,6 +122,10 @@ import { defineDevHostConfig } from "@workleap/rsbuild-configs";
 
 export default defineDevHostConfig(8080);
 ```
+
+### `postcss.config.ts`
+
+Delete the `postcss.config.ts` file.
 
 ### `swc.build.js`
 
