@@ -1,6 +1,5 @@
-import { RsbuildConfig, RsbuildPlugin, SourceMap } from "@rsbuild/core";
-import exp from "constants";
-import { RsbuildConfigTransformer } from "../src/applyTransformers.ts";
+import type { RsbuildConfig, RsbuildPlugin, SourceMap } from "@rsbuild/core";
+import type { RsbuildConfigTransformer } from "../src/applyTransformers.ts";
 import { defineDevConfig } from "../src/dev.ts";
 
 test("when an entry prop is provided, the source.entry option is the provided value", () => {
@@ -27,7 +26,7 @@ test("when https is true, the asset prefix option include \"https\"", () => {
         https: true
     });
 
-    expect(result.dev?.assetPrefix).toMatch(/(https)/i)
+    expect(result.dev?.assetPrefix).toMatch(/(https)/i);
 });
 
 test("when https is a certificate, the server option is configured with the provided certificate", () => {
@@ -51,7 +50,7 @@ test("when https is a certificate, the dev.assetPrefix option include \"https\""
         }
     });
 
-    expect(result.dev?.assetPrefix).toMatch(/(https)/i)
+    expect(result.dev?.assetPrefix).toMatch(/(https)/i);
 });
 
 test("when https is false, the dev.assetPrefix option doesn't include \"https\"", () => {
@@ -59,7 +58,7 @@ test("when https is false, the dev.assetPrefix option doesn't include \"https\""
         https: false
     });
 
-    expect(result.dev?.assetPrefix).not.toMatch(/(https)/i)
+    expect(result.dev?.assetPrefix).not.toMatch(/(https)/i);
 });
 
 test("when https is false, the basic-ssl plugin is not included", () => {
@@ -122,7 +121,7 @@ test("when additional plugins are provided, append the provided plugins at the e
     const plugin1: RsbuildPlugin = {
         name: "plugin-1",
         setup: () => {}
-    }
+    };
 
     const plugin2: RsbuildPlugin = {
         name: "plugin-2",
@@ -212,13 +211,13 @@ test("when fastRefresh is true, the react plugin enable fast refresh", () => {
     const result = defineDevConfig({
         fastRefresh: true,
         react: defaultOptions => {
-            isEnabled = defaultOptions.fastRefresh === true
+            isEnabled = defaultOptions.fastRefresh === true;
 
             return defaultOptions;
         }
     });
 
-    const plugin = result.plugins?.find(x => (x as RsbuildPlugin).name === "rsbuild:react")
+    const plugin = result.plugins?.find(x => (x as RsbuildPlugin).name === "rsbuild:react");
 
     expect(plugin).toBeDefined();
     expect(isEnabled).toBeTruthy();
@@ -237,7 +236,7 @@ test("when fastRefresh is true and the overlay is disable, disable the fast refr
         }
     });
 
-    const plugin = result.plugins?.find(x => (x as RsbuildPlugin).name === "rsbuild:react")
+    const plugin = result.plugins?.find(x => (x as RsbuildPlugin).name === "rsbuild:react");
 
     expect(plugin).toBeDefined();
     expect(isOverlayDisabled).toBeTruthy();
@@ -263,7 +262,7 @@ test("when sourceMap is an object, the output.sourceMap option is the object", (
     const sourceMap: SourceMap = {
         js: false,
         css: false
-    }
+    };
 
     const result = defineDevConfig({
         sourceMap
@@ -283,7 +282,7 @@ test("when overlay is false, the dev.client.overlay option is false", () => {
 test("when overlay is false, react plugin fast refresh overlay is disabled", () => {
     let isOverlayDisabled = false;
 
-    const result = defineDevConfig({
+    defineDevConfig({
         overlay: false,
         react: defaultOptions => {
             isOverlayDisabled = defaultOptions.reactRefreshOptions?.overlay === false;
@@ -300,7 +299,7 @@ test("when react is false, the react plugin is not included", () => {
         react: false
     });
 
-    const plugin = result.plugins?.find(x => (x as RsbuildPlugin).name === "rsbuild:react")
+    const plugin = result.plugins?.find(x => (x as RsbuildPlugin).name === "rsbuild:react");
 
     expect(plugin).toBeUndefined();
 });
@@ -310,7 +309,7 @@ test("when svgr is false, the svgr plugin is not included", () => {
         svgr: false
     });
 
-    const plugin = result.plugins?.find(x => (x as RsbuildPlugin).name === "rsbuild:svgr")
+    const plugin = result.plugins?.find(x => (x as RsbuildPlugin).name === "rsbuild:svgr");
 
     expect(plugin).toBeUndefined();
 });
@@ -322,7 +321,7 @@ test("when a transformer is provided, and the transformer update the existing co
         config.source = config.source ?? {};
         config.source.entry = {
             index: "a-custom-value-in-a-transformer"
-        }
+        };
 
         return config;
     };
@@ -357,7 +356,7 @@ test("when multiple transformers are provided, all the transformers are applied 
         config.source = config.source ?? {};
         config.source.entry = {
             index: "a-custom-value-in-a-transformer"
-        }
+        };
 
         return config;
     };
@@ -365,7 +364,7 @@ test("when multiple transformers are provided, all the transformers are applied 
     const distPathTransformer: RsbuildConfigTransformer = (config: RsbuildConfig) => {
         config.output = config.output ?? {};
         config.output.distPath = config.output.distPath ?? {};
-        config.output.distPath.js = "a-custom-dist-path-in-a-tranformer"
+        config.output.distPath.js = "a-custom-dist-path-in-a-tranformer";
 
         return config;
     };
