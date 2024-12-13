@@ -81,7 +81,7 @@ Before:
 import { defineBuildHostConfig } from "@workleap/webpack-configs";
 import { swcConfig } from "./swc.build.js";
 
-export default defineBuildHostConfig(swcConfig, []);
+export default defineBuildHostConfig(swcConfig);
 ```
 
 After:
@@ -89,7 +89,7 @@ After:
 ```ts rsbuild.build.ts
 import { defineBuildHostConfig } from "@workleap/rsbuild-configs";
 
-export default defineBuildHostConfig([]);
+export default defineBuildHostConfig();
 ```
 
 ### `webpack.dev.js`
@@ -111,7 +111,7 @@ Before:
 import { defineDevHostConfig } from "@workleap/webpack-configs";
 import { swcConfig } from "./swc.dev.js";
 
-export default defineDevHostConfig(swcConfig, 8080, Remotes);
+export default defineDevHostConfig(swcConfig);
 ```
 
 After:
@@ -119,7 +119,7 @@ After:
 ```ts rsbuild.dev.ts
 import { defineDevHostConfig } from "@workleap/rsbuild-configs";
 
-export default defineDevHostConfig(8080, Remotes);
+export default defineDevHostConfig(8080);
 ```
 
 ### `swc.build.js`
@@ -164,26 +164,6 @@ After:
 
 ## Update scripts
 
-### `build`
-
-Update the `build` script to run Rsbuild instead of webpack.
-
-Before:
-
-```json package.json
-"scripts": {
-    "build": "webpack --config webpack.build.js"
-}
-```
-
-After:
-
-```json package.json
-"scripts": {
-    "build": "rsbuild build --config rsbuild.build.ts"
-}
-```
-
 ### `dev`
 
 Update the `dev` script to run Rsbuild instead of webpack.
@@ -204,10 +184,26 @@ After:
 }
 ```
 
+### `build`
+
+Update the `build` script to run Rsbuild instead of webpack.
+
+Before:
+
+```json package.json
+"scripts": {
+    "build": "webpack --config webpack.build.js"
+}
+```
+
+After:
+
+```json package.json
+"scripts": {
+    "build": "rsbuild build --config rsbuild.build.ts"
+}
+```
+
 ### Try it :rocket:
 
 Start the application in a development environment using the `dev` and `build` script. Everything should run smoothly without any warnings or errors outputted in the terminal.
-
-
--> Don't forget the changes to the HTML template for the assets like the favicon.
-    -> L'ajouter aussi au guide de migration de Squide
