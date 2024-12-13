@@ -97,7 +97,7 @@ Then, add the assets to the `index.html` file:
 If `output.publicPath` is set to `auto`, use `href="favicon.png"` instead.
 !!!
 
-### `defineDevConfig`
+### `webpack.dev.js`
 
 Next, create a configuration file named `webpack.dev.js` at the root of the project:
 
@@ -122,7 +122,7 @@ import { swcConfig } from "./swc.dev.js";
 export default defineDevConfig(swcConfig);
 ```
 
-### `swcConfig`
+### `swc.dev.js`
 
 In the previous code sample, the `defineDevConfig(swcConfig, options)` function receive an SWC [configuration object](https://swc.rs/docs/configuration/swcrc) through the `swcConfig` parameter. 
 
@@ -626,7 +626,7 @@ export default defineDevConfig(swcConfig, {
 
 Then, use the variables in any application files:
 
-```tsx !#2 src/app.tsx
+```tsx !#2 src/App.tsx
 export function App() {
     if (process.env.DEBUG) {
         console.log("The application has been bootstrapped in debug!");

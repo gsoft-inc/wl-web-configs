@@ -15,15 +15,15 @@ To configure [Rsbuild](https://rsbuild.dev/) for a production environment, execu
 
 +++ pnpm
 ```bash
-pnpm add -D @workleap/rsbuild-configs @workleap/browserslist-config @rsbuild/core @rspack/core browserslist nodemon
+pnpm add -D @workleap/rsbuild-configs @workleap/browserslist-config @rsbuild/core @rspack/core browserslist
 ```
 +++ yarn
 ```bash
-yarn add -D @workleap/rsbuild-configs @workleap/browserslist-config @rsbuild/core @rspack/core browserslist nodemon
+yarn add -D @workleap/rsbuild-configs @workleap/browserslist-config @rsbuild/core @rspack/core browserslist
 ```
 +++ npm
 ```bash
-npm install -D @workleap/rsbuild-configs @workleap/browserslist-config @rsbuild/core @rspack/core browserslist nodemon
+npm install -D @workleap/rsbuild-configs @workleap/browserslist-config @rsbuild/core @rspack/core browserslist
 ```
 +++
 
@@ -91,7 +91,7 @@ Then, add the assets to the `index.html` file:
 If `assetPrefix` is set to `auto`, use `href="favicon.png"` instead.
 !!!
 
-## Browserslist
+### Browserslist
 
 Next, let's set up [Browserlist](https://github.com/browserslist/browserslist) to define the minimum browser versions supported by the application. Rsbuild will automatically detect and load the browser versions from the nearest `.browserslistrc` configuration file.
 
@@ -113,7 +113,7 @@ Then, open the newly created file and extend the default configuration with the 
 extends @workleap/browserslist-config
 ```
 
-### `defineBuildConfig`
+### `rsbuild.build.ts`
 
 Next, create a configuration file named `rsbuild.build.ts` at the root of the project:
 
@@ -213,7 +213,7 @@ Append the provided Rsbuild plugins to the configuration.
 import { defineBuildConfig } from "@workleap/rsbuild-configs";
 import { pluginAssetsRetry } from "@rsbuild/plugin-assets-retry";
 
-export default defineBuildConfig(swcConfig, {
+export default defineBuildConfig({
     plugins: [pluginAssetsRetry()]
 });
 ```
@@ -373,7 +373,7 @@ Whether or not to handle `.svg` files with [plugin-svgr](https://rsbuild.dev/plu
 ```ts !#4 rsbuild.build.ts
 import { defineBuildConfig } from "@workleap/rsbuild-configs";
 
-export default defineBuildConfig(swcConfig, {
+export default defineBuildConfig({
     svgr: false
 });
 ```
@@ -383,7 +383,7 @@ To customize [plugin-svgr](https://rsbuild.dev/plugins/list/plugin-svgr), provid
 ```ts !#4-13 rsbuild.build.ts
 import { defineBuildConfig } from "@workleap/rsbuild-configs";
 
-export default defineBuildConfig(swcConfig, {
+export default defineBuildConfig({
     svgr: defaultOptions => {
         return {
             svgrOptions: {
@@ -419,6 +419,16 @@ declare module '*.svg?react' {
 
 For additional information, refer to the plugin [documentation](https://rsbuild.dev/plugins/list/plugin-svgr#type-declaration).
 
+#### Import images
+
+By default, `plugin-svgr` is configured to support [named import](https://rsbuild.dev/plugins/list/plugin-svgr#named-import) for `ReactComponent`:
+
+```tsx
+import { ReactComponent as Logo } from "./logo.svg";
+
+export const App = () => <Logo />;
+```
+
 ### `compressImage`
 
 - **Type**: `false` or `(defaultOptions: PluginImageCompressOptions) => PluginImageCompressOptions`
@@ -429,7 +439,7 @@ Whether or not to compress images with [plugin-image-compress](https://github.co
 ```ts !#4 rsbuild.build.ts
 import { defineBuildConfig } from "@workleap/rsbuild-configs";
 
-export default defineBuildConfig(swcConfig, {
+export default defineBuildConfig({
     compressImage: false
 });
 ```
@@ -439,7 +449,7 @@ To customize [plugin-image-compress](https://github.com/rspack-contrib/rsbuild-p
 ```ts !#4-9 rsbuild.build.ts
 import { defineBuildConfig } from "@workleap/rsbuild-configs";
 
-export default defineBuildConfig(swcConfig, {
+export default defineBuildConfig({
     compressImage: defaultOptions => {
         return [
             ...defaultOptions,
@@ -454,7 +464,7 @@ export default defineBuildConfig(swcConfig, {
 - **Type**: `boolean`
 - **Default**: `false`
 
-Start the webpack process with verbose logging turned on.
+Start the Rsbuild process with verbose logging turned on.
 
 ```ts !#4 rsbuild.build.ts
 import { defineBuildConfig } from "@workleap/rsbuild-configs";
@@ -483,16 +493,13 @@ To view the default build configuration of `@workleap/rsbuild-configs`, have a l
 transformer(config: RsbuildConfig, context: RsbuildConfigTransformerContext) => RsbuildConfig
 ```
 
-```ts !#3-13,16 rsbuild.build.ts
+```ts !#3-10,16 rsbuild.build.ts
 import { defineBuildConfig, type RsbuildConfig, type RsbuildConfigTransformer } from "@workleap/rsbuild-configs";
 
 const forceNamedChunkIdsTransformer: RsbuildConfigTransformer = (config: RsbuildConfig) => {
-    config.tools = config.tools ?? {};
-    config.tools.rspack = config.tools.rspack ?? {};
-
-    config.tools.rspack.optimization = {
-        ...(config.tools.rspack.optimization ?? {}),
-        chunkIds: "named"
+    config.output = {
+        ...(config.output ?? {}),
+        filename: "[name].[contenthash].bundle.js"
     };
 
     return config;
@@ -510,7 +517,10 @@ Generic transformers can use the `context` parameter to gather additional inform
 ```ts !#2 transformer.ts
 export const transformer: RsbuildConfigTransformer = (config: RsbuildConfig) => {
     if (context.environment === "build") {
-        config.output.filename = "[name].[contenthash].bundle.js";
+        config.output = {
+            ...(config.output ?? {}),
+            filename: "[name].[contenthash].bundle.js"
+        };
     }
 
     return config;
@@ -575,7 +585,7 @@ export default defineBuildConfig({
 
 Then, use the variables in any application files:
 
-```tsx !#2 src/app.tsx
+```tsx !#2 src/App.tsx
 export function App() {
     if (process.env.DEBUG) {
         console.log("The application has been bootstrapped in debug!");

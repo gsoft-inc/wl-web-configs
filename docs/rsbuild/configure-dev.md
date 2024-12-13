@@ -93,7 +93,7 @@ Then, add the assets to the `index.html` file:
 If `assetPrefix` is set to `auto`, use `href="favicon.png"` instead.
 !!!
 
-## Browserslist
+### Browserslist
 
 Next, let's set up [Browserlist](https://github.com/browserslist/browserslist) to define the minimum browser versions supported by the application. Rsbuild will automatically detect and load the browser versions from the nearest `.browserslistrc` configuration file.
 
@@ -115,7 +115,7 @@ Then, open the newly created file and extend the default configuration with the 
 extends @workleap/browserslist-config
 ```
 
-### `defineDevConfig`
+### `rsbuild.dev.ts`
 
 Next, create a configuration file named `rsbuild.dev.ts` at the root of the project:
 
@@ -135,7 +135,7 @@ Then, open the newly created file and `export` the Rsbuild configuration by usin
 ```ts rsbuild.dev.ts
 import { defineDevConfig } from "@workleap/rsbuild-configs";
 
-export default defineDevConfig(swcConfig);
+export default defineDevConfig();
 ```
 
 ## Use predefined options
@@ -244,7 +244,7 @@ Append the provided Rsbuild plugins to the configuration.
 import { defineDevConfig } from "@workleap/rsbuild-configs";
 import { pluginAssetsRetry } from "@rsbuild/plugin-assets-retry";
 
-export default defineDevConfig(swcConfig, {
+export default defineDevConfig({
     plugins: [pluginAssetsRetry()]
 });
 ```
@@ -427,7 +427,7 @@ Whether or not to handle `.svg` files with [plugin-svgr](https://rsbuild.dev/plu
 ```ts !#4 rsbuild.dev.ts
 import { defineDevConfig } from "@workleap/rsbuild-configs";
 
-export default defineDevConfig(swcConfig, {
+export default defineDevConfig({
     svgr: false
 });
 ```
@@ -437,7 +437,7 @@ To customize the [plugin-svgr](https://rsbuild.dev/plugins/list/plugin-svgr), pr
 ```ts !#4-13 rsbuild.dev.ts
 import { defineDevConfig } from "@workleap/rsbuild-configs";
 
-export default defineDevConfig(swcConfig, {
+export default defineDevConfig({
     svgr: defaultOptions => {
         return {
             svgrOptions: {
@@ -472,6 +472,16 @@ declare module '*.svg?react' {
 ```
 
 For additional information, refer to the plugin [documentation](https://rsbuild.dev/plugins/list/plugin-svgr#type-declaration).
+
+#### Import images
+
+By default, `plugin-svgr` is configured to support [named import](https://rsbuild.dev/plugins/list/plugin-svgr#named-import) for `ReactComponent`:
+
+```tsx
+import { ReactComponent as Logo } from "./logo.svg";
+
+export const App = () => <Logo />;
+```
 
 ### `verbose`
 
@@ -633,7 +643,7 @@ export default defineDevConfig({
 
 Then, use the variables in any application files:
 
-```tsx !#2 src/app.tsx
+```tsx !#2 src/App.tsx
 export function App() {
     if (process.env.DEBUG) {
         console.log("The application has been bootstrapped in debug!");

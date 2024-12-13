@@ -68,6 +68,6 @@ As per the [Browserlist](../browserslist/default.md) configuration.
 
 ## Getting started
 
-To get started, follow the quick start guide to configure Rsbuild for either a [development environment](configure-dev.md), a [production environment](configure-build.md) or [storybook]().
+To get started, follow the quick start guide to configure Rsbuild for either a [development environment](./configure-dev.md), a [production environment](./configure-build.md) or [storybook](./configure-storybook.md).
 
 If your project is already using `@workleap/webpack-configs`, follow the [migration guide]().
