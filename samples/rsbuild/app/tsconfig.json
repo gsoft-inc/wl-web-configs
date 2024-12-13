@@ -7,5 +7,9 @@
         //     "@rsbuild-sample/tsup-lib": ["../tsup-lib/src/index.ts"]
         // }
     },
+    "include": [
+        ".",
+        "../**/src/env.d.ts"
+    ],
     "exclude": ["public", "dist", "node_modules"]
 }
