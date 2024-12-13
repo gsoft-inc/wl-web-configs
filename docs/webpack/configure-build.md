@@ -495,7 +495,7 @@ To deal with environment variables, the webpack documentation suggests using the
 
 ### cross-env
 
-We recommend instead to define environment variables using [cross-env](https://github.com/kentcdodds/cross-env). With `cross-env`, the environment variables will be made available to any Node.js files that are executed by the script process (`dev` in the example below :point_down:):
+We recommend instead to define environment variables using [cross-env](https://github.com/kentcdodds/cross-env). With `cross-env`, the environment variables will be made available to any Node.js files that are executed by the script process (`build` in the example below :point_down:):
 
 ```json package.json
 {

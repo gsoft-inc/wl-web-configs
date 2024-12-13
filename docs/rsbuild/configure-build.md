@@ -1,19 +1,17 @@
 ---
-order: 100
-label: Configure for development
+order: 90
+label: Configure for build
 meta:
-    title: Configure for development - Rsbuild
+    title: Configure for build - Rsbuild
 toc:
     depth: 2-3
 ---
 
-# Configure for development
+# Configure for build
 
-To configure [Rsbuild](https://rsbuild.dev/) for a development environment, execute the following steps.
+To configure [Rsbuild](https://rsbuild.dev/) for a production environment, execute the following steps.
 
 ## Install the packages
-
-Open a terminal at the root of the project and install the following packages:
 
 +++ pnpm
 ```bash
@@ -115,9 +113,9 @@ Then, open the newly created file and extend the default configuration with the 
 extends @workleap/browserslist-config
 ```
 
-### `defineDevConfig`
+### `defineBuildConfig`
 
-Next, create a configuration file named `rsbuild.dev.ts` at the root of the project:
+Next, create a configuration file named `rsbuild.build.ts` at the root of the project:
 
 ``` !#8
 web-project
@@ -127,82 +125,53 @@ web-project
 ├──── ...
 ├── .browserslistrc
 ├── package.json
-├── rsbuild.dev.ts
+├── rsbuild.build.ts
 ```
 
-Then, open the newly created file and `export` the Rsbuild configuration by using the `defineDevConfig(options)` function:
+Then, open the newly created file and `export` the Rsbuild configuration by using the `defineBuildConfig(options)` function:
 
-```ts rsbuild.dev.ts
-import { defineDevConfig } from "@workleap/rsbuild-configs";
+```ts rsbuild.build.ts
+import { defineBuildConfig } from "@workleap/rsbuild-configs";
 
-export default defineDevConfig(swcConfig);
+export default defineBuildConfig();
 ```
 
 ## Use predefined options
 
-The `defineDevConfig(options)` function can be used as shown in the previous example, however, if you wish to customize the default configuration, the function also accept a few predefined options to help with that 👇
+The `defineBuildConfig(options)` function can be used as shown in the previous example, however, if you wish to customize the default configuration, the function also accept a few predefined options to help with that 👇
 
 ### `entry`
 
-- **Type**: An object literal accepting any [source.entry](https://rsbuild.dev/config/source/entry) options.
+- **Type**: `RsbuildEntry`
 - **Default**: `{ index: "./src/index.tsx" }`
 
 Set Rsbuild [source.entry](https://rsbuild.dev/config/source/entry) option.
 
-```ts !#5 rsbuild.dev.ts
-import { defineDevConfig } from "@workleap/rsbuild-configs";
+```ts !#5 rsbuild.build.ts
+import { defineBuildConfig } from "@workleap/rsbuild-configs";
 
-export default defineDevConfig({
+export default defineBuildConfig({
     entry: {
         index: "./src/another-entry.tsx"
     }
 });
 ```
 
-### `https`
+### `distPath`
 
-- **Type**: `boolean` or an object literal accepting any [server.https](https://rsbuild.dev/config/server/https) options.
-- **Default**: `false`
-
-Set Rsbuild [server.https](https://rsbuild.dev/config/server/https) option and format Rsbuild [dev.assetPrefix](https://rsbuild.dev/config/dev/asset-prefix) option accordingly.
-
-```ts !#4 rsbuild.dev.ts
-import { defineDevConfig } from "@workleap/rsbuild-configs";
-
-export default defineDevConfig({
-    https: true
-});
-```
-
-When `true`, a self-signed certificate will be generated with [rsbuild-plugin-basic-ssl](https://github.com/rspack-contrib/rsbuild-plugin-basic-ssl). To manually set a certificate, follow Rsbuild [instructions](https://rsbuild.dev/config/server/https#set-certificate).
-
-### `host`
+> This option is the Rsbuild equivalent of webpack [outputPath](../webpack/configure-build.md#outputpath) option.
 
 - **Type**: `string`
-- **Default**: `localhost`
+- **Default**: `dist`
 
-Set Rsbuild [server.host](https://rsbuild.dev/config/server/host) option and format Rsbuild [dev.assetPrefix](https://rsbuild.dev/config/dev/asset-prefix) option accordingly.
+Set Rsbuild [output.distPath](https://rsbuild.dev/config/output/dist-path) option.
 
-```ts !#4 rsbuild.dev.ts
-import { defineDevConfig } from "@workleap/rsbuild-configs";
+```ts !#8 rsbuild.build.ts
+import { defineBuildConfig } from "@workleap/rsbuild-configs";
+import path from "path";
 
-export default defineDevConfig({
-    host: "my-custom-host"
-});
-```
-
-### `port`
-
-- **Type**: `number`
-- **Default**: `8080`
-
-Set Rsbuild [server.port](https://rsbuild.dev/config/server/port) option and format Rsbuild [dev.assetPrefix](https://rsbuild.dev/config/dev/asset-prefix) option accordingly.
-
-```ts !#4 rsbuild.dev.ts
-import { defineDevConfig } from "@workleap/rsbuild-configs";
-
-export default defineDevConfig({
-    port: 1234
+export default defineBuildConfig({
+    distPath: path.resolve("./a-custom-folder")
 });
 ```
 
@@ -213,12 +182,12 @@ export default defineDevConfig({
 - **Type**: `string`
 - **Default**: `${https ? "https" : "http"}://${host}:${port}`
 
-Set Rsbuild [dev.assetPrefix](https://rsbuild.dev/config/dev/asset-prefix) option.
+Set Rsbuild [output.assetPrefix](https://rsbuild.dev/config/output/asset-prefix) option.
 
-```ts !#4 rsbuild.dev.ts
-import { defineDevConfig } from "@workleap/rsbuild-configs";
+```ts !#4 rsbuild.build.ts
+import { defineBuildConfig } from "@workleap/rsbuild-configs";
 
-export default defineDevConfig({
+export default defineBuildConfig({
     assetPrefix: "http://dev-host:8080"
 });
 ```
@@ -226,9 +195,9 @@ export default defineDevConfig({
 If you're unsure of the asset prefix in advance, set the option to `auto`. Rsbuild will automatically determine the asset prefix using [import.meta.url](https://webpack.js.org/api/module-variables/#importmetaurl) or [document.currentScript](https://developer.mozilla.org/en-US/docs/Web/API/Document/currentScript).
 
 ```ts !#4 rsbuild.build.ts
-import { defineDevConfig  } from "@workleap/rsbuild-configs";
+import { defineBuildConfig  } from "@workleap/rsbuild-configs";
 
-export default defineDevConfig({
+export default defineBuildConfig({
     assetPrefix: "auto"
 });
 ```
@@ -240,11 +209,11 @@ export default defineDevConfig({
 
 Append the provided Rsbuild plugins to the configuration.
 
-```ts !#5 rsbuild.dev.ts
-import { defineDevConfig } from "@workleap/rsbuild-configs";
+```ts !#5 rsbuild.build.ts
+import { defineBuildConfig } from "@workleap/rsbuild-configs";
 import { pluginAssetsRetry } from "@rsbuild/plugin-assets-retry";
 
-export default defineDevConfig(swcConfig, {
+export default defineBuildConfig(swcConfig, {
     plugins: [pluginAssetsRetry()]
 });
 ```
@@ -256,21 +225,21 @@ export default defineDevConfig(swcConfig, {
 
 By default, Rsbuild will attempt to load an HTML template from the `public/index.html` file. To use Rsbuild's built-in HTML template instead, set the option to `false`.
 
-```ts !#4 rsbuild.dev.ts
-import { defineDevConfig } from "@workleap/rsbuild-configs";
+```ts !#4 rsbuild.build.ts
+import { defineBuildConfig } from "@workleap/rsbuild-configs";
 
-export default defineDevConfig({
+export default defineBuildConfig({
     html: false
 });
 ```
 
 To customize the default [HTML template](https://rsbuild.dev/guide/basic/html-template) configuration, provide a function extending the default options.
 
-```ts !#5-10 rsbuild.dev.ts
-import { defineDevConfig } from "@workleap/rsbuild-configs";
+```ts !#5-10 rsbuild.build.ts
+import { defineBuildConfig } from "@workleap/rsbuild-configs";
 import path from "path";
 
-export default defineDevConfig({
+export default defineBuildConfig({
     html: defaultOptions => {
         return {
             ...defaultOptions,
@@ -280,107 +249,84 @@ export default defineDevConfig({
 });
 ```
 
-### `lazyCompilation`
+### `minify`
 
-- **Type**: `boolean`
+- **Type**: `false` or an object literal accepting any [minify options](https://rsbuild.dev/config/output/minify).
 - **Default**: `true`
 
-Whether or not to use [lazy compilation](https://rsbuild.dev/config/dev/lazy-compilation). To disable lazy compilation, set the option to `false`.
+Whether or not to minify the code. To disable code minification, set the option to `false`.
 
-```ts !#4 rsbuild.dev.ts
-import { defineDevConfig } from "@workleap/rsbuild-configs";
+```ts !#4 rsbuild.build.ts
+import { defineBuildConfig } from "@workleap/rsbuild-configs";
 
-export default defineDevConfig({
-    lazyCompilation: false
+export default defineBuildConfig({
+    minify: false
 });
 ```
 
-### `hmr`
+To customize the minimizer [configuration](https://rsbuild.dev/config/output/minify), provide an object literal.
 
-- **Type**: `boolean`
-- **Default**: `true`
+```ts !#4-6 rsbuild.build.ts
+import { defineBuildConfig } from "@workleap/rsbuild-configs";
 
-Whether or not to use [HMR](https://rsbuild.dev/guide/advanced/hmr). To disable HMR set the option to `false`.
-
-```ts !#4 rsbuild.dev.ts
-import { defineDevConfig } from "@workleap/rsbuild-configs";
-
-export default defineDevConfig({
-    hmr: false
-});
-```
-
-### `fastRefresh`
-
-- **Type**: `boolean`
-- **Default**: `true`
-
-Whether or not to use [Fast Refresh](https://rsbuild.dev/guide/framework/react#react-fast-refresh) instead of use [HMR](https://rsbuild.dev/guide/advanced/hmr). To disable fast refresh set the option to `false`.
-
-```ts !#4 rsbuild.dev.ts
-import { defineDevConfig } from "@workleap/rsbuild-configs";
-
-export default defineDevConfig({
-    fastRefresh: false
-});
-```
-
-To customize the Fast Refresh [configuration](https://rsbuild.dev/plugins/list/plugin-react#reactrefreshoptions), provide a [react](#react) function extending the default options.
-
-```ts !#4-11 rsbuild.dev.ts
-import { defineDevConfig } from "@workleap/rsbuild-configs";
-
-export default defineDevConfig({
-    react: defaultOptions => {
-        return {
-            ...defaultOptions,
-            reactRefreshOptions: {
-                overlay: false
-            }
-        };
+export default defineBuildConfig({
+    minify: {
+        css: false
     }
+});
+```
+
+### `optimize`
+
+- **Type**: `boolean` | `"readable"`
+- **Default**: `true`
+
+Whether or not to enable Rsbuild production code [optimization](https://rspack.dev/config/optimization). This option can be quite useful when debugging an issue with Rsbuild bundling.
+
+When `false` is provided, most of the optimizations, including minification will be turned off:
+
+```ts !#4 rsbuild.build.ts
+import { defineBuildConfig } from "@workleap/rsbuild-configs";
+
+export default defineBuildConfig({
+    optimize: false
+});
+```
+
+When `readable` is provided, most of the optimizations will still be applied but the outputed bundles will be easier to read:
+
+```ts !#4 rsbuild.build.ts
+import { defineBuildConfig } from "@workleap/rsbuild-configs";
+
+export default defineBuildConfig({
+    optimize: "readable"
 });
 ```
 
 ### `sourceMap`
 
 - **Type**: `false` or an object literal accepting any [output.sourceMap](https://rsbuild.dev/config/output/source-map) options.
-- **Default**: `{ js: "cheap-module-source-map", css: true }`
+- **Default**: `{ js: "source-map", css: true }`
 
 Whether or not to generate [source map](https://rsbuild.dev/config/output/source-map). To disable source map, set the option to `false`. 
 
-```ts !#4 rsbuild.dev.ts
-import { defineDevConfig } from "@workleap/rsbuild-configs";
+```ts !#4 rsbuild.build.ts
+import { defineBuildConfig } from "@workleap/rsbuild-configs";
 
-export default defineDevConfig({
+export default defineBuildConfig({
     sourceMap: false
 });
 ```
 
 To customize the source map [configuration](https://rsbuild.dev/config/output/source-map), provide an object literal.
 
-```ts !#4-6 rsbuild.dev.ts
-import { defineDevConfig } from "@workleap/rsbuild-configs";
+```ts !#4-6 rsbuild.build.ts
+import { defineBuildConfig } from "@workleap/rsbuild-configs";
 
-export default defineDevConfig({
+export default defineBuildConfig({
     sourceMap: {
         css: false
     }
-});
-```
-
-### `overlay`
-
-- **Type**: `false`
-- **Default**: `undefined` 
-
-Whether or not a full-screen overlay should be in the browser when there are compiler errors or warnings.
-
-```ts !#4 rsbuild.dev.ts
-import { defineDevConfig } from "@workleap/rsbuild-configs";
-
-export default defineDevConfig({
-    overlay: false
 });
 ```
 
@@ -391,20 +337,20 @@ export default defineDevConfig({
 
 Whether or not to transform React code. To disable React code transformation, set the option to `false`.
 
-```ts !#4 rsbuild.dev.ts
-import { defineDevConfig } from "@workleap/rsbuild-configs";
+```ts !#4 rsbuild.build.ts
+import { defineBuildConfig } from "@workleap/rsbuild-configs";
 
-export default defineDevConfig({
+export default defineBuildConfig({
     react: false
 });
 ```
 
 To customize [plugin-react](https://rsbuild.dev/plugins/list/plugin-react), provide a function to extend the default options.
 
-```ts !#4-12 rsbuild.dev.ts
-import { defineDevConfig } from "@workleap/rsbuild-configs";
+```ts !#4-12 rsbuild.build.ts
+import { defineBuildConfig } from "@workleap/rsbuild-configs";
 
-export default defineDevConfig({
+export default defineBuildConfig({
     react: defaultOptions => {
         return {
             ...defaultOptions,
@@ -424,20 +370,20 @@ export default defineDevConfig({
 
 Whether or not to handle `.svg` files with [plugin-svgr](https://rsbuild.dev/plugins/list/plugin-svgr). When the option is set to `false`, the `.svg` files will be handled by the `asset/resource` rule.
 
-```ts !#4 rsbuild.dev.ts
-import { defineDevConfig } from "@workleap/rsbuild-configs";
+```ts !#4 rsbuild.build.ts
+import { defineBuildConfig } from "@workleap/rsbuild-configs";
 
-export default defineDevConfig(swcConfig, {
+export default defineBuildConfig(swcConfig, {
     svgr: false
 });
 ```
 
-To customize the [plugin-svgr](https://rsbuild.dev/plugins/list/plugin-svgr), provide a function extending the default options.
+To customize [plugin-svgr](https://rsbuild.dev/plugins/list/plugin-svgr), provide a function extending the default options.
 
-```ts !#4-13 rsbuild.dev.ts
-import { defineDevConfig } from "@workleap/rsbuild-configs";
+```ts !#4-13 rsbuild.build.ts
+import { defineBuildConfig } from "@workleap/rsbuild-configs";
 
-export default defineDevConfig(swcConfig, {
+export default defineBuildConfig(swcConfig, {
     svgr: defaultOptions => {
         return {
             svgrOptions: {
@@ -473,17 +419,47 @@ declare module '*.svg?react' {
 
 For additional information, refer to the plugin [documentation](https://rsbuild.dev/plugins/list/plugin-svgr#type-declaration).
 
+### `compressImage`
+
+- **Type**: `false` or `(defaultOptions: PluginImageCompressOptions) => PluginImageCompressOptions`
+- **Default**: `defaultOptions => defaultOptions`
+
+Whether or not to compress images with [plugin-image-compress](https://github.com/rspack-contrib/rsbuild-plugin-image-compress). To disable image compression, set the option to `false`.
+
+```ts !#4 rsbuild.build.ts
+import { defineBuildConfig } from "@workleap/rsbuild-configs";
+
+export default defineBuildConfig(swcConfig, {
+    compressImage: false
+});
+```
+
+To customize [plugin-image-compress](https://github.com/rspack-contrib/rsbuild-plugin-image-compress), provide a function extending the default options.
+
+```ts !#4-9 rsbuild.build.ts
+import { defineBuildConfig } from "@workleap/rsbuild-configs";
+
+export default defineBuildConfig(swcConfig, {
+    compressImage: defaultOptions => {
+        return [
+            ...defaultOptions,
+            "pngLossless"
+        ];
+    }
+});
+```
+
 ### `verbose`
 
 - **Type**: `boolean`
 - **Default**: `false`
 
-Start the Rsbuild process with verbose logging turned on.
+Start the webpack process with verbose logging turned on.
 
-```ts !#4 rsbuild.dev.ts
-import { defineDevConfig } from "@workleap/rsbuild-configs";
+```ts !#4 rsbuild.build.ts
+import { defineBuildConfig } from "@workleap/rsbuild-configs";
 
-export default defineDevConfig({
+export default defineBuildConfig({
     verbose: true
 });
 ```
@@ -494,9 +470,9 @@ export default defineDevConfig({
 We do not guarantee that your configuration transformers won't break after an update. It's your responsibility to keep them up to date with new releases.
 !!!
 
-The [predefined options](#use-predefined-options) are useful to quickly customize the [default development configuration](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/rsbuild-configs/src/dev.ts) of `@workleap/rsbuild-configs`, but only covers a subset of an [Rsbuild configuration](https://rsbuild.dev/config/index). If you need full control over the configuration, you can provide configuration transformer functions through the `transformers` option of the `defineDevConfig` function. Remember, **no locked in** :heart::v:.
+The [predefined options](#use-predefined-options) are useful to quickly customize the [default build configuration](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/rsbuild-configs/src/build.ts) of `@workleap/rsbuild-configs`, but only covers a subset of an [Rsbuild configuration](https://rsbuild.dev/config/index). If you need full control over the configuration, you can provide configuration transformer functions through the `transformers` option of the `defineBuildConfig` function. Remember, **no locked in** :heart::v:.
 
-To view the default development configuration of `@workleap/rsbuild-configs`, have a look at the [dev.ts configuration file](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/rsbuild-configs/src/dev.ts) on GitHub.
+To view the default build configuration of `@workleap/rsbuild-configs`, have a look at the [build.ts configuration file](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/rsbuild-configs/src/build.ts) on GitHub.
 
 ### `transformers`
 
@@ -507,8 +483,8 @@ To view the default development configuration of `@workleap/rsbuild-configs`, ha
 transformer(config: RsbuildConfig, context: RsbuildConfigTransformerContext) => RsbuildConfig
 ```
 
-```ts !#3-13,16 rsbuild.dev.ts
-import { defineDevConfig, type RsbuildConfig, type RsbuildConfigTransformer } from "@workleap/rsbuild-configs";
+```ts !#3-13,16 rsbuild.build.ts
+import { defineBuildConfig, type RsbuildConfig, type RsbuildConfigTransformer } from "@workleap/rsbuild-configs";
 
 const forceNamedChunkIdsTransformer: RsbuildConfigTransformer = (config: RsbuildConfig) => {
     config.tools = config.tools ?? {};
@@ -522,7 +498,7 @@ const forceNamedChunkIdsTransformer: RsbuildConfigTransformer = (config: Rsbuild
     return config;
 };
 
-export default defineDevConfig({
+export default defineBuildConfig({
     transformers: [forceNamedChunkIdsTransformer]
 });
 ```
@@ -533,14 +509,8 @@ Generic transformers can use the `context` parameter to gather additional inform
 
 ```ts !#2 transformer.ts
 export const transformer: RsbuildConfigTransformer = (config: RsbuildConfig) => {
-    if (context.environment === "dev") {
-        config.tools = config.tools ?? {};
-        config.tools.rspack = config.tools.rspack ?? {};
-
-        config.tools.rspack.optimization = {
-            ...(config.tools.rspack.optimization ?? {}),
-            chunkIds: "named"
-        };
+    if (context.environment === "build") {
+        config.output.filename = "[name].[contenthash].bundle.js";
     }
 
     return config;
@@ -550,64 +520,36 @@ export const transformer: RsbuildConfigTransformer = (config: RsbuildConfig) => 
 - `environment`: `"dev" | "build" | "storybook"`
 - `verbose`: `boolean`
 
-## Setup nodemon
-
-[Nodemon](https://nodemon.io/) is a utility that will monitor for any changes in the `rsbuild.dev.dev.ts` file and restart the Rsbuild development server whenever a change occurs.
-
-First, add a `nodemon.json` file at the root of the project:
-
-``` !#8
-web-project
-├── public
-├──── index.html
-├── src
-├──── ...
-├── package.json
-├── rsbuild.dev.ts
-├── nodemon.json
-```
-
-Then, open the `nodemon.json` file and copy/paste the following content:
-
-```json nodemon.json
-{
-    "watch": ["rsbuild.dev.ts"],
-    "exec": "rsbuild dev --config rsbuild.dev.ts"
-}
-```
-
-Finally, add a CLI script at the [next step](#add-a-cli-script) of this guide.
-
 ## Add a CLI script
 
-To initiate the development server, add the following script to your project `package.json` file:
+To create the bundle files for production, add the following script to your project `package.json` file:
 
 ```json package.json
 {
-    "dev": "nodemon"
+    "build": "rsbuild build --config rsbuild.build.ts"
 }
 ```
 
-## Define environment variables
+## Use environment variables
 
 ### cross-env
 
-We recommend to define environment variables using [cross-env](https://github.com/kentcdodds/cross-env). With `cross-env`, the environment variables will be made available to any Node.js files that are executed by the script process (`dev` in the example below :point_down:):
+We recommend instead to define environment variables using [cross-env](https://github.com/kentcdodds/cross-env). With `cross-env`, the environment variables will be made available to any Node.js files that are executed by the script process (`build` in the example below :point_down:):
 
 ```json package.json
 {
-    "dev": "cross-env DEBUG=true nodemon"
+    "build": "cross-env DEBUG=true rsbuild build --config rsbuild.build.ts"
 }
 ```
 
-```ts !#4 tsbuild.dev.ts
-import { defineDevConfig } from "@workleap/rsbuild-configs";
+```ts !#3 rsbuild.build.ts
+import { defineBuildConfig } from "@workleap/rsbuild-configs";
 
 if (process.env.DEBUG) {
     console.log("Configuring Rsbuild in debug mode!");
 }
 
-export default defineDevConfig();
+export default defineBuildConfig();
 ```
 
 However, there's a catch. When using `cross-env`, the variables will not be available in the application files because `cross-env` only makes them available to files that are executed by the process at **build time** while the application files are executed at **runtime** by a browser.
@@ -621,10 +563,10 @@ To make them accessible to the application files, Rsbuild must be aware of those
 
 First, define the variables with `environmentVariables`:
 
-```ts !#4-6 rsbuild.dev.ts
-import { defineDevConfig } from "@workleap/rsbuild-configs";
+```ts !#4-6 rsbuild.build.ts
+import { defineBuildConfig } from "@workleap/rsbuild-configs";
 
-export default defineDevConfig({
+export default defineBuildConfig({
     environmentVariables: {
         "DEBUG": process.env.DEBUG === "true"
     }
@@ -643,7 +585,7 @@ export function App() {
 }
 ```
 
-!!!info
+!!!
 The `=== "true"` part of `"DEBUG": process.env.DEBUG === "true"` is very important, otherwise the environment variable value would be `"true"` instead of `true`.
 !!!
 
@@ -651,30 +593,6 @@ The `=== "true"` part of `"DEBUG": process.env.DEBUG === "true"` is very importa
 By default, Rsbuild injects a few environment variables into the code using the [source.define](https://rsbuild.dev/guide/advanced/env-vars#using-define) option. For additional information about these default environment variables, refer to the Rsbuild [documentation](https://rsbuild.dev/guide/advanced/env-vars#default-variables).
 !!!
 
-## CSS modules typings
-
-When you import CSS Modules in TypeScript code, TypeScript may prompt that the module is missing a type definition:
-
-```bash
-TS2307: Cannot find module './index.module.css' or its corresponding type declarations.
-```
-
-To fix this, you need to add a type declaration file for the CSS Modules, please create a `src/env.d.ts` file, and add the corresponding type declaration.
-
-```ts env.d.ts
-/// <reference types="@rsbuild/core/types" />
-```
-
-!!!info
-Make sure the project have a dependency on `@rsbuild/core`.
-!!!
-
-!!!info
-For additional information abour CSS modules type declaration, refer to the Rsbuild [documentation](https://rsbuild.dev/guide/basic/css-modules#type-declaration).
-!!!
-
 ## Try it :rocket:
 
-To test your new Rsbuild configuration, open a terminal at the root of the project and execute the [CLI script added earlier](#add-a-cli-script). A development server should start without outputting any error in the terminal.
-
-
+To test your new Rsbuild configuration, open a terminal at the root of the project and execute the [CLI script added earlier](#add-a-cli-script). The build process should complete without outputting any error in the terminal and the bundle files should be available in the `/dist` folder (or any other `distPath` you configured).

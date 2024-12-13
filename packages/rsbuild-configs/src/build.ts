@@ -1,4 +1,5 @@
 import { defineConfig, type DistPathConfig, type HtmlConfig, type Minify, type RsbuildConfig, type RsbuildEntry, type RsbuildPlugins, type SourceMap } from "@rsbuild/core";
+import { pluginImageCompress, type PluginImageCompressOptions } from "@rsbuild/plugin-image-compress";
 import { pluginReact, type PluginReactOptions } from "@rsbuild/plugin-react";
 import { pluginSvgr, type PluginSvgrOptions } from "@rsbuild/plugin-svgr";
 import { SwcJsMinimizerRspackPlugin, type Optimization } from "@rspack/core";
@@ -10,6 +11,7 @@ export type OptimizeOption = boolean | "readable";
 export type DefineBuildHtmlPluginConfigFunction = (defaultOptions: HtmlConfig) => HtmlConfig;
 export type DefineBuildDefineReactPluginConfigFunction = (defaultOptions: PluginReactOptions) => PluginReactOptions;
 export type DefineBuildSvgrPluginConfigFunction = (defaultOptions: PluginSvgrOptions) => PluginSvgrOptions;
+export type DefineBuildImageCompressPluginConfigFunction = (defaultOptions: PluginImageCompressOptions) => PluginImageCompressOptions;
 
 export interface DefineBuildConfigOptions {
     entry?: RsbuildEntry;
@@ -20,10 +22,11 @@ export interface DefineBuildConfigOptions {
     plugins?: RsbuildPlugins;
     html?: false | DefineBuildHtmlPluginConfigFunction;
     minify?: Minify;
-    sourceMap?: boolean | SourceMap;
     optimize?: OptimizeOption;
+    sourceMap?: boolean | SourceMap;
     react?: false | DefineBuildDefineReactPluginConfigFunction;
     svgr? : false | DefineBuildSvgrPluginConfigFunction;
+    compressImage?: false | DefineBuildImageCompressPluginConfigFunction;
     environmentVariables?: Record<string, unknown>;
     transformers?: RsbuildConfigTransformer[];
     verbose?: boolean;
@@ -41,8 +44,16 @@ function defineSvgrPluginConfig(options: PluginSvgrOptions) {
     return options;
 }
 
+function defineImageCompressPluginConfig(options: PluginImageCompressOptions) {
+    return options;
+}
+
 export function getOptimizationConfig(optimize: OptimizeOption): Optimization {
-    if (optimize === "readable") {
+    if (optimize === true) {
+        return {
+            minimize: true
+        };
+    } else if (optimize === "readable") {
         return {
             minimize: true,
             minimizer: [
@@ -59,10 +70,6 @@ export function getOptimizationConfig(optimize: OptimizeOption): Optimization {
             chunkIds: "named",
             moduleIds: "named",
             mangleExports: false
-        };
-    } else if (optimize) {
-        return {
-            minimize: true
         };
     }
 
@@ -90,13 +97,14 @@ export function defineBuildConfig(options: DefineBuildConfigOptions = {}) {
         plugins = [],
         html = defaultDefineHtmlPluginConfig,
         minify = true,
+        optimize = true,
         sourceMap = {
             js: "source-map",
             css: true
         },
         react = defaultDefineReactPluginConfig,
-        optimize = true,
         svgr = defineSvgrPluginConfig,
+        compressImage = defineImageCompressPluginConfig,
         // Using an empty object literal as the default value to ensure
         // "process.env" is always available.
         environmentVariables = {},
@@ -149,6 +157,7 @@ export function defineBuildConfig(options: DefineBuildConfigOptions = {}) {
                     exportType: "named"
                 }
             })),
+            compressImage && pluginImageCompress(compressImage(["jpeg", "png", "ico", "svg"])),
             ...plugins
         ].filter(Boolean),
         tools: {
