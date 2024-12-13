@@ -9,7 +9,7 @@ toc:
 
 # Configure for development
 
-To configure [Rsbuild](https://rsbuild.dev/) for a development environment, execute the following steps.
+To configure [Rsbuild](https://rsbuild.dev/) for a development environment, execute the following steps :point_down:
 
 ## Install the packages
 

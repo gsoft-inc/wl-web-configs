@@ -9,7 +9,7 @@ toc:
 
 # Configure for build
 
-To configure [Rsbuild](https://rsbuild.dev/) for a production environment, execute the following steps.
+To configure [Rsbuild](https://rsbuild.dev/) for a production environment, execute the following steps :point_down:
 
 ## Install the packages
 

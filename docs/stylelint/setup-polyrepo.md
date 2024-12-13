@@ -9,7 +9,7 @@ toc:
 
 # Setup a polyrepo
 
-Execute the following steps to setup [Stylelint](https://stylelint.io/) for a polyrepo solution (**single project** per repository).
+Execute the following steps to setup [Stylelint](https://stylelint.io/) for a polyrepo solution (**single project** per repository) :point_down:
 
 ## Install the packages
 

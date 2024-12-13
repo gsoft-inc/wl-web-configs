@@ -9,7 +9,7 @@ toc:
 
 # Configure for development
 
-To configure [tsup](https://tsup.egoist.dev/) for a development environment, execute the following steps.
+To configure [tsup](https://tsup.egoist.dev/) for a development environment, execute the following steps :point_down:
 
 ## Install the packages
 

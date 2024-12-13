@@ -13,7 +13,7 @@ toc:
 `@workleap/webpack-configs` is now in maintenance mode. If you're starting a new project, consider using [@workleap/rsbuild-configs](../rsbuild/default.md) instead for better performance and modern tooling.
 !!!
 
-To configure [webpack](https://webpack.js.org/) for a development environment, execute the following steps.
+To configure [webpack](https://webpack.js.org/) for a development environment, execute the following steps :point_down:
 
 ## Install the packages
 

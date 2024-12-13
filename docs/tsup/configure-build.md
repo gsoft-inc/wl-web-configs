@@ -9,7 +9,7 @@ toc:
 
 # Configure for build
 
-To configure [tsup](https://tsup.egoist.dev/) for a build environment, execute the following steps.
+To configure [tsup](https://tsup.egoist.dev/) for a build environment, execute the following steps :point_down:
 
 ## Install the packages
 

@@ -12,7 +12,7 @@ toc:
 `@workleap/postcss-configs` is now in maintenance mode. If you're starting a new project, consider using [@workleap/rsbuild-configs](../rsbuild/default.md) instead of [@workleap/webpack-configs](../webpack/default.md), which eliminates the need for PostCSS.
 !!!
 
-Execute the following steps to setup [PostCSS](https://postcss.org/) for a single project.
+Execute the following steps to setup [PostCSS](https://postcss.org/) for a single project :point_down:
 
 ## Install the packages
 
