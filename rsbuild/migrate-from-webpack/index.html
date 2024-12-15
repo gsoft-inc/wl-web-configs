@@ -10,24 +10,24 @@
     <meta name="generator" content="Retype 3.6.0">
 
     <!-- Primary Meta Tags -->
-    <title>Integrate with VS Code - ESLint</title>
-    <meta name="title" content="Integrate with VS Code - ESLint">
-    <meta name="description" content="ESLint VS Code extension greatly improve the development experience by automatically linting the code as you type and ">
+    <title>Migrate from Webpack - Rsbuild</title>
+    <meta name="title" content="Migrate from Webpack - Rsbuild">
+    <meta name="description" content="To migrate from @squide/firefly-webpack-configs to @squide/firefly-rsbuild-configs, execute the following steps 👇">
 
     <!-- Canonical -->
-    <link rel="canonical" href="https://gsoft-inc.github.io/wl-web-configs/eslint/integrate-vscode/">
+    <link rel="canonical" href="https://gsoft-inc.github.io/wl-web-configs/rsbuild/migrate-from-webpack/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://gsoft-inc.github.io/wl-web-configs/eslint/integrate-vscode/">
-    <meta property="og:title" content="Integrate with VS Code - ESLint">
-    <meta property="og:description" content="ESLint VS Code extension greatly improve the development experience by automatically linting the code as you type and ">
+    <meta property="og:url" content="https://gsoft-inc.github.io/wl-web-configs/rsbuild/migrate-from-webpack/">
+    <meta property="og:title" content="Migrate from Webpack - Rsbuild">
+    <meta property="og:description" content="To migrate from @squide/firefly-webpack-configs to @squide/firefly-rsbuild-configs, execute the following steps 👇">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://gsoft-inc.github.io/wl-web-configs/eslint/integrate-vscode/">
-    <meta property="twitter:title" content="Integrate with VS Code - ESLint">
-    <meta property="twitter:description" content="ESLint VS Code extension greatly improve the development experience by automatically linting the code as you type and ">
+    <meta property="twitter:url" content="https://gsoft-inc.github.io/wl-web-configs/rsbuild/migrate-from-webpack/">
+    <meta property="twitter:title" content="Migrate from Webpack - Rsbuild">
+    <meta property="twitter:description" content="To migrate from @squide/firefly-webpack-configs to @squide/firefly-rsbuild-configs, execute the following steps 👇">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
@@ -283,75 +283,281 @@
                                 <nav class="breadcrumb" aria-label="Breadcrumb">
                                     <ol role="list">
                                         <li class="pr-4">
-                                            <a href="../../eslint/" class="pr-4">
-                                                ES​Lint
+                                            <a href="../../rsbuild/" class="pr-4">
+                                                Rsbuild
                                             </a>
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
                                                 <path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"/>
                                             </svg>
                                         </li>
                                         <li class="pr-4">
-                                            <a href="../../eslint/integrate-vscode/" class="pr-4">
-                                                Integrate with VS Code
+                                            <a href="../../rsbuild/migrate-from-webpack/" class="pr-4">
+                                                Migrate from Webpack
                                             </a>
                                         </li>
                                     </ol>
                                 </nav>
                 
                                 <!-- Page content  -->
-<doc-anchor-target id="integrate-with-vs-code" class="break-words">
+<doc-anchor-target id="migrate-from-webpack" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#integrate-with-vs-code">#</doc-anchor-trigger>
-        <span>Integrate with VS Code</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#migrate-from-webpack">#</doc-anchor-trigger>
+        <span>Migrate from Webpack</span>
     </h1>
 </doc-anchor-target>
-<p><a href="https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint" class="outbound" target="_blank">ESLint VS Code extension</a> greatly improve the development experience by <strong>automatically linting</strong> the code as you type and <strong>automatically formatting</strong> the code according to your ESLint configuration whenever you save.</p>
-<doc-anchor-target id="install-eslint-extension">
+<p>To migrate from <a href="https://www.npmjs.com/package/@squide/firefly-webpack-configs" class="outbound" target="_blank">@squide/firefly-webpack-configs</a> to <code v-pre>@squide/firefly-rsbuild-configs</code>, execute the following steps <span class="docs-emoji">&#x1F447;</span></p>
+<doc-anchor-target id="update-packages">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#install-eslint-extension">#</doc-anchor-trigger>
-        <span>Install ESLint extension</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#update-packages">#</doc-anchor-trigger>
+        <span>Update packages</span>
     </h2>
 </doc-anchor-target>
-<p>Open VS Code and install the <a href="https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint" class="outbound" target="_blank">dbaeumer.vscode-eslint</a> extension.</p>
-<doc-anchor-target id="configure-vs-code">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#configure-vs-code">#</doc-anchor-trigger>
-        <span>Configure VS Code</span>
-    </h2>
-</doc-anchor-target>
-<p>Then, add the following settings to your solution <a href="https://code.visualstudio.com/docs/getstarted/settings" class="outbound" target="_blank">VS Code settings file</a>:</p>
+<p>Open a terminal at the root of the web application project and install the following packages:</p>
+<doc-tabs>
+<doc-tab v-cloak id="pnpm">
+<template #title>pnpm</template>
 <div class="codeblock-wrapper"><doc-codeblock>
-<div class="codeblock-title">./vscode/settings.json</div>
-<pre class="language-json"><code v-pre class="language-json">{
-    &quot;editor.codeActionsOnSave&quot;: {
-        &quot;source.fixAll&quot;: true, // Makes sure ESLint is run on save
-        &quot;source.sortImports&quot;: true // Let VS Code handle import sorting, it's snappier and more reliable than ESLint
-    },
-    &quot;editor.formatOnSave&quot;: true,
-    &quot;typescript.format.enable&quot;: false, // Disables the default formatter to use ESLint instead
-    &quot;javascript.format.enable&quot;: false, // Disables the default formatter to use ESLint instead
-    &quot;json.format.enable&quot;: false, // Disables the default formatter to use ESLint instead
-    &quot;eslint.validate&quot;: [ // Enables YAML files formatting.
-        &quot;javascript&quot;,
-        &quot;javascriptreact&quot;,
-        &quot;yaml&quot;
-    ]
+<pre class="language-bash"><code v-pre class="language-bash">pnpm add -D @workleap/rsbuild-configs @rsbuild/core @rspack/core</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="yarn">
+<template #title>yarn</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">yarn add -D @workleap/rsbuild-configs @rsbuild/core @rspack/core</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="npm">
+<template #title>npm</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">npm install -D @workleap/rsbuild-configs @rsbuild/core @rspack/core</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+</doc-tabs>
+<p>Then, in the same terminal, remove the following packages:</p>
+<doc-tabs>
+<doc-tab v-cloak id="pnpm">
+<template #title>pnpm</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">pnpm remove @workleap/webpack-configs @swc/core @swc/helpers @workleap/swc-configs webpack webpack-cli webpack-dev-server @workleap/postcss-configs postcss</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="yarn">
+<template #title>yarn</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">yarn remove @workleap/webpack-configs @swc/core @swc/helpers @workleap/swc-configs webpack webpack-cli webpack-dev-server @workleap/postcss-configs postcss</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="npm">
+<template #title>npm</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">npm uninstall @workleap/webpack-configs @swc/core @swc/helpers @workleap/swc-configs webpack webpack-cli webpack-dev-server @workleap/postcss-configs postcss</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+</doc-tabs>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-yellow-500"></div>
+    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-yellow-500" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M22.48 15.59L14.01 1.45A2.968 2.968 0 0012.16.09c-.78-.19-1.58-.07-2.27.35-.41.25-.76.6-1.01 1.01v.01L.4 15.6c-.83 1.43-.33 3.27 1.1 4.1.45.26.95.4 1.48.4h16.95c.8-.01 1.55-.33 2.11-.9.56-.57.87-1.33.86-2.13a3.04 3.04 0 00-.42-1.48zm-1.87 2.21c-.19.19-.44.3-.69.3H2.99c-.17 0-.34-.05-.49-.13a.992.992 0 01-.37-1.35L10.6 2.48c.08-.14.2-.25.34-.33a.992.992 0 011.37.33l8.46 14.13c.09.15.13.32.13.49 0 .26-.1.51-.29.7z"></path>
+                    <path d="M11.45 12.1c.55 0 1-.45 1-1v-4c0-.55-.45-1-1-1s-1 .45-1 1v4c0 .56.45 1 1 1zM11.46 14.1c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+<p>If your web application project uses SWC for tests, you may want to keep the <code v-pre>@swc/core</code> and <code v-pre>@workleap/swc-configs</code> packages.</p>
+        </div>
+    </div>
+</div>
+<doc-anchor-target id="update-files">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#update-files">#</doc-anchor-trigger>
+        <span>Update files</span>
+    </h2>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">web-app
+├── public
+├──── index.html       --&gt;  U
+├── webpack.dev.js     --&gt;  rsbuild.dev.ts
+├── webpack.build.js   --&gt;  rsbuild.build.ts
+├── postcss.config.ts  --&gt;  X
+├── swc.build.js       --&gt;  X
+├── swc.dev.js         --&gt;  X
+├── package.json</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="webpackbuildjs">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#webpackbuildjs">#</doc-anchor-trigger>
+        <span><code v-pre>webpack.build.js</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Rename the file from <code v-pre>webpack.build.js</code> to <code v-pre>rsbuild.build.ts</code>.</p>
+<p>Then, open the <code v-pre>rsbuild.build.ts</code> file and apply the following changes:</p>
+<ul>
+<li>Replace <code v-pre>&quot;@workleap/webpack-configs&quot;</code> for <code v-pre>&quot;@workleap/rsbuild-configs&quot;</code>.</li>
+<li>Remove <code v-pre>import { swcConfig } from &quot;./swc.build.js&quot;</code>.</li>
+<li>Remove the first argument of the <code v-pre>defineBuildHostConfig</code> function.</li>
+<li>Remove <code v-pre>// @ts-check</code>.</li>
+</ul>
+<p>Before:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<div class="codeblock-title">webpack.build.js</div>
+<pre class="language-javascript"><code v-pre class="language-javascript">// @ts-check
+
+import { defineBuildHostConfig } from &quot;@workleap/webpack-configs&quot;;
+import { swcConfig } from &quot;./swc.build.js&quot;;
+
+export default defineBuildHostConfig(swcConfig);</code></pre>
+</doc-codeblock></div>
+<p>After:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<div class="codeblock-title">rsbuild.build.ts</div>
+<pre class="language-typescript"><code v-pre class="language-typescript">import { defineBuildHostConfig } from &quot;@workleap/rsbuild-configs&quot;;
+
+export default defineBuildHostConfig();</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="webpackdevjs">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#webpackdevjs">#</doc-anchor-trigger>
+        <span><code v-pre>webpack.dev.js</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Rename the file from <code v-pre>webpack.dev.js</code> to <code v-pre>rsbuild.dev.ts</code>.</p>
+<p>Then, open the <code v-pre>rsbuild.build.ts</code> file and and apply the following changes:</p>
+<ul>
+<li>Replace <code v-pre>&quot;@workleap/webpack-configs&quot;</code> for <code v-pre>&quot;@workleap/rsbuild-configs&quot;</code>.</li>
+<li>Remove <code v-pre>import { swcConfig } from &quot;./swc.build.js&quot;</code>.</li>
+<li>Remove the first argument of the <code v-pre>defineDevHostConfig</code> function.</li>
+<li>Remove <code v-pre>// @ts-check</code>.</li>
+</ul>
+<p>Before:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<div class="codeblock-title">webpack.dev.js</div>
+<pre class="language-javascript"><code v-pre class="language-javascript">// @ts-check
+
+import { defineDevHostConfig } from &quot;@workleap/webpack-configs&quot;;
+import { swcConfig } from &quot;./swc.dev.js&quot;;
+
+export default defineDevHostConfig(swcConfig);</code></pre>
+</doc-codeblock></div>
+<p>After:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<div class="codeblock-title">rsbuild.dev.ts</div>
+<pre class="language-typescript"><code v-pre class="language-typescript">import { defineDevHostConfig } from &quot;@workleap/rsbuild-configs&quot;;
+
+export default defineDevHostConfig(8080);</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="postcssconfigts">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#postcssconfigts">#</doc-anchor-trigger>
+        <span><code v-pre>postcss.config.ts</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Delete the <code v-pre>postcss.config.ts</code> file.</p>
+<doc-anchor-target id="swcbuildjs">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#swcbuildjs">#</doc-anchor-trigger>
+        <span><code v-pre>swc.build.js</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Delete the <code v-pre>swc.build.js</code> file.</p>
+<doc-anchor-target id="swcdevjs">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#swcdevjs">#</doc-anchor-trigger>
+        <span><code v-pre>swc.dev.js</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Delete the <code v-pre>swc.dev.js</code> file.</p>
+<doc-anchor-target id="indexhtml">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#indexhtml">#</doc-anchor-trigger>
+        <span><code v-pre>index.html</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Replace <code v-pre>&lt;%=webpackConfig.output.publicPath%&gt;</code> by <code v-pre>&lt;%=assetPrefix%&gt;/</code> (the <code v-pre>/</code> is important).</p>
+<p>Before:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<div class="codeblock-title">public/index.html</div>
+<pre class="language-markup"><code v-pre class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;link href=&quot;&lt;%=webpackConfig.output.publicPath%&gt;favicon.png&quot; rel=&quot;icon&quot;&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id=&quot;root&quot;&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</doc-codeblock></div>
+<p>After:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<div class="codeblock-title">public/index.html</div>
+<pre class="language-markup"><code v-pre class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;link href=&quot;&lt;%=assetPrefix%&gt;/favicon.png&quot; rel=&quot;icon&quot;&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id=&quot;root&quot;&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="update-scripts">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#update-scripts">#</doc-anchor-trigger>
+        <span>Update scripts</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="dev">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#dev">#</doc-anchor-trigger>
+        <span><code v-pre>dev</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Update the <code v-pre>dev</code> script to run Rsbuild instead of webpack.</p>
+<p>Before:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<div class="codeblock-title">package.json</div>
+<pre class="language-json"><code v-pre class="language-json">&quot;scripts&quot;: {
+    &quot;dev&quot;: &quot;webpack serve --config webpack.dev.js&quot;
 }</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="install-editorconfig-extension">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#install-editorconfig-extension">#</doc-anchor-trigger>
-        <span>Install EditorConfig extension</span>
-    </h2>
+<p>After:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<div class="codeblock-title">package.json</div>
+<pre class="language-json"><code v-pre class="language-json">&quot;scripts&quot;: {
+    &quot;dev&quot;: &quot;rsbuild dev --config rsbuild.dev.ts&quot;
+}</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="build">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#build">#</doc-anchor-trigger>
+        <span><code v-pre>build</code></span>
+    </h3>
 </doc-anchor-target>
-<p>Finally, install the <a href="https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig" class="outbound" target="_blank">EditorConfig.EditorConfig</a> extension.</p>
+<p>Update the <code v-pre>build</code> script to run Rsbuild instead of webpack.</p>
+<p>Before:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<div class="codeblock-title">package.json</div>
+<pre class="language-json"><code v-pre class="language-json">&quot;scripts&quot;: {
+    &quot;build&quot;: &quot;webpack --config webpack.build.js&quot;
+}</code></pre>
+</doc-codeblock></div>
+<p>After:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<div class="codeblock-title">package.json</div>
+<pre class="language-json"><code v-pre class="language-json">&quot;scripts&quot;: {
+    &quot;build&quot;: &quot;rsbuild build --config rsbuild.build.ts&quot;
+}</code></pre>
+</doc-codeblock></div>
 <doc-anchor-target id="try-it">
-    <h2>
+    <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#try-it">#</doc-anchor-trigger>
         <span>Try it <span class="docs-emoji">&#x1F680;</span></span>
-    </h2>
+    </h3>
 </doc-anchor-target>
-<p>Restart VS Code, open a JavaScript file, type invalid code (e.g. <code v-pre>var x = 0;</code>), then save. The code should have been formatted automatically (e.g. <code v-pre>const x = 0;</code>).</p>
+<p>Start the application in a development environment using the <code v-pre>dev</code> and <code v-pre>build</code> script. Everything should run smoothly without any warnings or errors outputted in the terminal.</p>
 
                                 
                                 <!-- Required only on API pages -->
@@ -359,7 +565,7 @@
                             </div>
                             <footer class="clear-both">
                                 <div class="flex flex-wrap items-center justify-between mt-14">
-                                    <a class="my-2.5 inline-flex items-center text-sm whitespace-nowrap text-blue-500 dark:text-blue-400 hover:text-blue-700 hover:underline" href="https://github.com/gsoft-inc/wl-web-configs/blob/main/docs/eslint/integrate-vscode.md" target="_blank" rel="noopener">
+                                    <a class="my-2.5 inline-flex items-center text-sm whitespace-nowrap text-blue-500 dark:text-blue-400 hover:text-blue-700 hover:underline" href="https://github.com/gsoft-inc/wl-web-configs/blob/main/docs/rsbuild/migrate-from-webpack.md" target="_blank" rel="noopener">
                                         <svg class="mr-1.5" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M20 12c-.55 0-1 .45-1 1v7c0 .55-.45 1-1 1H4c-.55 0-1-.45-1-1V6c0-.55.45-1 1-1h7c.55 0 1-.45 1-1s-.45-1-1-1H4C2.35 3 1 4.35 1 6v14c0 1.65 1.35 3 3 3h14c1.65 0 3-1.35 3-3v-7c0-.55-.45-1-1-1z" /><path d="M22.21 1.79c-1.18-1.18-3.24-1.18-4.41 0l-9.5 9.5c-.13.13-.22.29-.26.46l-1 4c-.08.34.01.7.26.95.18.2.44.3.7.3.08 0 .16-.01.24-.03l4-1c.18-.04.34-.13.46-.26l9.5-9.5c1.22-1.22 1.22-3.2.01-4.42zm-1.42 3l-9.3 9.3-2.11.53.53-2.11 9.3-9.3c.42-.42 1.16-.42 1.59 0 .43.43.43 1.15-.01 1.58z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         <span>Edit this page</span>
                                     </a>
@@ -367,20 +573,20 @@
                             
                                 <nav class="flex mt-14">
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../eslint/advanced-composition/">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../rsbuild/configure-storybook/">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
                                                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                                                <span class="block mt-1">Advanced composition</span>
+                                                <span class="block mt-1">Configure for Storybook</span>
                                             </span>
                                         </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../stylelint/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../tsup/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                                                <span class="block mt-1">Stylelint</span>
+                                                <span class="block mt-1">tsup</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         </a>
@@ -444,6 +650,6 @@
 
     <div id="docs-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "Integrate with VS Code", level: 2, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Migrate from Webpack", level: 2, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>
