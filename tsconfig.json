@@ -4,5 +4,5 @@
         "incremental": true,
         "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json",
     },
-    "exclude": ["packages", "sample", "node_modules"]
+    "exclude": ["packages", "samples", "node_modules"]
 }

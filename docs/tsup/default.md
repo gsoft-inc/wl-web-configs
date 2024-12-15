@@ -1,5 +1,5 @@
 ---
-order: 130
+order: 110
 icon: /static/tsup.svg
 label: tsup
 expanded: true

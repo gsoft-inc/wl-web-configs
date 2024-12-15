@@ -27,7 +27,8 @@ const ignoreBrowserslist: KnipTransformer = ({ ignoreDependencies, ...config }) 
         ignoreDependencies: [
             ...(ignoreDependencies as string[] ?? []),
             // Browserlist isn't supported by plugins.
-            "@workleap/browserslist-config"
+            "@workleap/browserslist-config",
+            "browserslist"
         ]
     };
 };
@@ -75,6 +76,15 @@ const configureWebpack: KnipTransformer = ({ ignoreDependencies, ...config }) =>
     };
 };
 
+const configureRsbuild: KnipTransformer = config => {
+    return {
+        ...config,
+        rsbuild: {
+            config: ["rsbuild.*.ts"]
+        }
+    };
+};
+
 const configureTsup: KnipTransformer = config => {
     return {
         ...config,
@@ -88,19 +98,6 @@ const configurePackage: KnipTransformer = config => {
     return {
         ...config,
         eslint: true
-    };
-};
-
-const configureSample: KnipTransformer = ({ entry, ...config }) => {
-    return {
-        ...config,
-        entry: [
-            ...(entry as string[] ?? []),
-            "src/index.ts",
-            "src/index.tsx"
-        ],
-        eslint: true,
-        stylelint: true
     };
 };
 
@@ -142,22 +139,64 @@ const webpackConfig: KnipWorkspaceConfig = defineWorkspace({
     configureTsup
 ]);
 
-const sampleAppConfig = defineWorkspace({}, [
-    configureSample,
+const configureWebpackSample: KnipTransformer = ({ entry, ...config }) => {
+    return {
+        ...config,
+        entry: [
+            ...(entry as string[] ?? []),
+            "src/index.ts",
+            "src/index.tsx"
+        ],
+        eslint: true,
+        stylelint: true
+    };
+};
+
+const webpackSampleAppConfig = defineWorkspace({}, [
+    configureWebpackSample,
     ignoreBrowserslist,
     configurePostcss,
     configureWebpack,
     configureMsw
 ]);
 
-const sampleComponentsConfig = defineWorkspace({}, [
-    configureSample,
+const webpackSampleComponentsConfig = defineWorkspace({}, [
+    configureWebpackSample,
     configureTsup
 ]);
 
-const sampleUtilsConfig = defineWorkspace({}, [
-    configureSample,
+const webpackSampleTsupLibConfig = defineWorkspace({}, [
+    configureWebpackSample,
     configureTsup
+]);
+
+const configureRsbuildSample: KnipTransformer = ({ entry, ...config }) => {
+    return {
+        ...config,
+        entry: [
+            ...(entry as string[] ?? []),
+            "src/index.ts",
+            "src/index.tsx"
+        ],
+        eslint: true,
+        stylelint: true
+    };
+};
+
+const rsbuildSampleAppConfig = defineWorkspace({}, [
+    configureRsbuildSample,
+    ignoreBrowserslist,
+    configureRsbuild,
+    configureMsw
+]);
+
+const rsbuildSampleComponentsConfig = defineWorkspace({}, [
+    configureRsbuildSample,
+    configureTsup
+]);
+
+const storybookSample = defineWorkspace({}, [
+    ignoreBrowserslist
 ]);
 
 const config: KnipConfig = {
@@ -166,9 +205,12 @@ const config: KnipConfig = {
         "packages/*": packagesConfig,
         "packages/swc-configs": swcConfig,
         "packages/webpack-configs": webpackConfig,
-        "sample/app": sampleAppConfig,
-        "sample/components": sampleComponentsConfig,
-        "sample/utils": sampleUtilsConfig
+        "samples/webpack/app": webpackSampleAppConfig,
+        "samples/webpack/components": webpackSampleComponentsConfig,
+        "samples/webpack/tsup-lib": webpackSampleTsupLibConfig,
+        "samples/rsbuild/app": rsbuildSampleAppConfig,
+        "samples/rsbuild/components": rsbuildSampleComponentsConfig,
+        "samples/storybook": storybookSample
     },
     ignoreWorkspaces: [
         // Until it's migrated to ESLint 9.

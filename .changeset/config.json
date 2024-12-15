@@ -10,7 +10,7 @@
   "access": "restricted",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": ["@sample/*"],
+  "ignore": ["@webpack-sample/*", "@rsbuild-sample/*", "@storybook-sample/*"],
   "___experimentalUnsafeOptions_WILL_CHANGE_IN_PATCH": {
     "onlyUpdatePeerDependentsWhenOutOfRange": true
   }

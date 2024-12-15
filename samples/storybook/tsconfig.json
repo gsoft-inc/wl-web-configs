@@ -1,0 +1,22 @@
+{
+    "extends": "@workleap/typescript-configs/web-application.json",
+    "compilerOptions": {
+        "incremental": true,
+        "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json",
+        // "paths": {
+        //     "@rslib-poc/components-lib": ["../../libs/components-lib/src/index.ts"],
+        //     "@rslib-poc/ext-lib": ["../../libs/ext-lib/src/index.ts"],
+        //     "@rslib-poc/ts-lib": ["../../libs/ts-lib/src/index.ts"],
+        // }
+    },
+    // "include": [
+    //     "**/*",
+    //     /**
+    //      * Since we are using module augmentation in the packages, and we use tsconfig paths to resolve the packages
+    //      * from this repo, we need to include the types folder in the packages to make sure the types are included
+    //      * in the build.
+    //     */
+    //     "../../libs/**/types"
+    // ],
+    "exclude": ["dist", "node_modules"]
+}

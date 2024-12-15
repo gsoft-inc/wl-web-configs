@@ -8,7 +8,11 @@ toc:
 
 # Configure a project
 
-Execute the following steps to setup [PostCSS](https://postcss.org/) for a single project.
+!!!warning
+`@workleap/postcss-configs` is now in maintenance mode. If you're starting a new project, consider using [@workleap/rsbuild-configs](../rsbuild/default.md) instead of [@workleap/webpack-configs](../webpack/default.md), which eliminates the need for PostCSS.
+!!!
+
+Execute the following steps to setup [PostCSS](https://postcss.org/) for a single project :point_down:
 
 ## Install the packages
 
@@ -158,7 +162,7 @@ export default defineConfig({
 ## Configure webpack
 
 !!!info
-If your project is using `@workleap/wepack-config`, you don't have to configure `postcss-loader` as the [defineDevConfig](../webpack/configure-dev.md#definedevconfig) and [defineBuildConfig](../webpack/configure-build.md#definebuildconfig) functions already takes care of configuring PostCSS.
+If your project is using `@workleap/wepack-config`, you don't have to configure `postcss-loader` as the [defineDevConfig](../webpack/configure-dev.md#webpackdevjs) and [defineBuildConfig](../webpack/configure-build.md#webpackbuildjs) functions already takes care of configuring PostCSS.
 !!!
 
 To integrate with webpack, update your configuration file to include a [postcss-loader](https://www.npmjs.com/package/postcss-loader):

@@ -9,7 +9,7 @@ toc:
 
 # Configure for development
 
-To configure [SWC](https://swc.rs/) for a development environment, execute the following steps.
+To configure [SWC](https://swc.rs/) for a development environment, execute the following steps :point_down:
 
 ## Install the packages
 

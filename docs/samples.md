@@ -5,13 +5,17 @@ icon: command-palette
 
 # Samples
 
-## Web configs sample
+## Rsbuild sample
 
-- :icon-mark-github: [Web application](https://github.com/gsoft-inc/wl-web-configs/tree/main/sample/app)
-- :icon-mark-github: [Components library](https://github.com/gsoft-inc/wl-web-configs/tree/main/sample/components)
-- :icon-mark-github: [TypeScript library](https://github.com/gsoft-inc/wl-web-configs/tree/main/sample/utils)
-- :icon-mark-github: [Monorepo workspace](https://github.com/gsoft-inc/wl-web-configs/blob/main/tsconfig.json)
+- :icon-mark-github: [Web application](https://github.com/gsoft-inc/wl-web-configs/tree/main/samples/rsbuild/app)
+- :icon-mark-github: [Components library](https://github.com/gsoft-inc/wl-web-configs/tree/main/samples/rsbuild/components)
 
-## Foundy CLI templates
+## Webpack sample
 
-- :icon-mark-github: [Web application](https://github.com/gsoft-inc/wl-foundry-cli/tree/main/templates/web-application)
+- :icon-mark-github: [Web application](https://github.com/gsoft-inc/wl-web-configs/tree/main/samples/webpack/app)
+- :icon-mark-github: [Components library](https://github.com/gsoft-inc/wl-web-configs/tree/main/samples/webpack/components)
+- :icon-mark-github: [TypeScript library](https://github.com/gsoft-inc/wl-web-configs/tree/main/samples//webpack/tsup-lib)
+
+## Storybook sample
+
+- :icon-mark-github: [Storybook](https://github.com/gsoft-inc/wl-web-configs/tree/main/samples/storybook)

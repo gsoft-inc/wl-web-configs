@@ -9,7 +9,11 @@ toc:
 
 # Configure for development
 
-To configure [webpack](https://webpack.js.org/) for a development environment, execute the following steps.
+!!!warning
+`@workleap/webpack-configs` is now in maintenance mode. If you're starting a new project, consider using [@workleap/rsbuild-configs](../rsbuild/default.md) instead for better performance and modern tooling.
+!!!
+
+To configure [webpack](https://webpack.js.org/) for a development environment, execute the following steps :point_down:
 
 ## Install the packages
 
@@ -61,7 +65,7 @@ The content of the `public/index.html` file is the default template that will be
 
 #### Reference local assets
 
-To reference local assets such as a `favicon.png` in the default HTML template, it is recommended to preprend the **relative** path of every asset with the `publicPath` of the webpack config.
+To reference local assets such as a `favicon.png` in the default HTML template, it is recommended to preprend the **relative** path of every asset with the `publicPath` option of the webpack config.
 
 First, add the asset to the `public` folder at the root of the project:
 
@@ -93,7 +97,7 @@ Then, add the assets to the `index.html` file:
 If `output.publicPath` is set to `auto`, use `href="favicon.png"` instead.
 !!!
 
-### `defineDevConfig`
+### `webpack.dev.js`
 
 Next, create a configuration file named `webpack.dev.js` at the root of the project:
 
@@ -118,7 +122,7 @@ import { swcConfig } from "./swc.dev.js";
 export default defineDevConfig(swcConfig);
 ```
 
-### `swcConfig`
+### `swc.dev.js`
 
 In the previous code sample, the `defineDevConfig(swcConfig, options)` function receive an SWC [configuration object](https://swc.rs/docs/configuration/swcrc) through the `swcConfig` parameter. 
 
@@ -204,7 +208,7 @@ export default defineDevConfig(swcConfig, {
 
 ### `publicPath`
 
-- **Type**: `boolean`
+- **Type**: `string`
 - **Default**: `${https ? "https" : "http"}://${host}:${port}/`
 
 Set webpack [public path](https://webpack.js.org/configuration/output/#outputpublicpath).
@@ -413,7 +417,7 @@ export default defineDevConfig(swcConfig, {
 - **Type**: `boolean` or an object literal accepting any `@svgr/webpack` [option](https://react-svgr.com/docs/options/)
 - **Default**: `true`
 
-Whether or not to handle `.svg` files with `@svgr/webpack`. If `@svgr/webpack` is desactived, the `.svg` files will are handled by the `asset/resource` rule.
+Whether or not to handle `.svg` files with `@svgr/webpack`. If `@svgr/webpack` is desactived, the `.svg` files will be handled by the `asset/resource` rule.
 
 ```js !#7 webpack.dev.js
 // @ts-check
@@ -503,7 +507,7 @@ export default defineDevConfig(swcConfig, {
 
 ### Execution context
 
-Generic transformers can use the `context` parameter to gather additional information about their execution context, like the `environment` they are operating in:
+Generic transformers can use the `context` parameter to gather additional information about their execution context, like the `environment` they are operating in.
 
 ```ts !#7 transformer.js
 // @ts-check
@@ -622,7 +626,7 @@ export default defineDevConfig(swcConfig, {
 
 Then, use the variables in any application files:
 
-```tsx !#2 src/app.tsx
+```tsx !#2 src/App.tsx
 export function App() {
     if (process.env.DEBUG) {
         console.log("The application has been bootstrapped in debug!");

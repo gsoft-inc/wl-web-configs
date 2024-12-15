@@ -10,6 +10,10 @@ toc:
 # Transformer utilities
 
 !!!warning
+`@workleap/webpack-configs` is now in maintenance mode. If you're starting a new project, consider using [@workleap/rsbuild-configs](../rsbuild/default.md) instead for better performance and modern tooling.
+!!!
+
+!!!warning
 We do not guarantee that your configuration transformers won't break after an update. It's your responsibility to keep them up to date with new releases.
 !!!
 

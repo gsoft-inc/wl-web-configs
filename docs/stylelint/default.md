@@ -1,5 +1,5 @@
 ---
-order: 150
+order: 160
 icon: /static/stylelint.svg
 label: Stylelint
 expanded: true

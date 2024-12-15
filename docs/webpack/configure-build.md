@@ -9,7 +9,11 @@ toc:
 
 # Configure for build
 
-To configure [webpack](https://webpack.js.org/) for a production environment, execute the following steps.
+!!!warning
+`@workleap/webpack-configs` is now in maintenance mode. If you're starting a new project, consider using [@workleap/rsbuild-configs](../rsbuild/default.md) instead for better performance and modern tooling.
+!!!
+
+To configure [webpack](https://webpack.js.org/) for a production environment, execute the following steps :point_down:
 
 ## Install the packages
 
@@ -94,7 +98,7 @@ Then, add the assets to the `index.html` file:
 If `output.publicPath` is set to `auto`, use `href="favicon.png"` instead.
 !!!
 
-### `defineBuildConfig`
+### `webpack.build.js`
 
 Next, create a configuration file named `webpack.build.js` at the root of the project:
 
@@ -117,7 +121,7 @@ import { swcConfig } from "./swc.build.js";
 export default defineBuildConfig(swcConfig);
 ```
 
-### `swcConfig`
+### `swc.build.js`
 
 In the previous code sample, the `defineBuildConfig(swcConfig, options)` function receive an SWC [configuration object](https://swc.rs/docs/configuration/swcrc) through the `swcConfig` parameter. 
 
@@ -491,7 +495,7 @@ To deal with environment variables, the webpack documentation suggests using the
 
 ### cross-env
 
-We recommend instead to define environment variables using [cross-env](https://github.com/kentcdodds/cross-env). With `cross-env`, the environment variables will be made available to any Node.js files that are executed by the script process (`dev` in the example below :point_down:):
+We recommend instead to define environment variables using [cross-env](https://github.com/kentcdodds/cross-env). With `cross-env`, the environment variables will be made available to any Node.js files that are executed by the script process (`build` in the example below :point_down:):
 
 ```json package.json
 {
@@ -538,7 +542,7 @@ export default defineBuildConfig(swcConfig, {
 
 Then, use the variables in any application files:
 
-```tsx !#2 src/app.tsx
+```tsx !#2 src/App.tsx
 export function App() {
     if (process.env.DEBUG) {
         console.log("The application has been bootstrapped in debug!");

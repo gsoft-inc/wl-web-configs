@@ -1,5 +1,5 @@
 ---
-order: 160
+order: 100
 icon: /static/postcss.svg
 label: PostCSS
 expanded: true
@@ -8,6 +8,10 @@ toc:
 ---
 
 # PostCSS
+
+!!!warning
+`@workleap/postcss-configs` is now in maintenance mode. If you're starting a new project, consider using [@workleap/rsbuild-configs](../rsbuild/default.md) instead of [@workleap/webpack-configs](../webpack/default.md), which eliminates the need for PostCSS.
+!!!
 
 <!-- !!!warning Before you continue...
 

@@ -9,7 +9,7 @@ toc:
 
 # Configure for build
 
-To configure [SWC](https://swc.rs/) for a production environment, execute the following steps.
+To configure [SWC](https://swc.rs/) for a production environment, execute the following steps :point_down:
 
 ## Install the packages
 

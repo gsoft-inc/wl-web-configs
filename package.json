@@ -10,15 +10,22 @@
         "url": "git+https://github.com/gsoft-inc/wl-web-configs.git"
     },
     "scripts": {
-        "dev-sample": "turbo run dev --filter=./sample/*",
-        "dev-sample-msw": "turbo run dev-msw --filter=./sample/*",
+        "dev-webpack": "turbo run dev --filter=./samples/webpack/*",
+        "dev-webpack-msw": "turbo run dev-msw --filter=./samples/webpack/*",
+        "dev-rsbuild": "turbo run dev --filter=./samples/rsbuild/*",
+        "dev-rsbuild-msw": "turbo run dev-msw --filter=./samples/rsbuild/*",
+        "dev-storybook": "turbo run dev --filter=./samples/storybook",
         "dev-docs": "retype start",
         "build-pkg": "turbo run build --filter=./packages/*",
-        "build-sample": "turbo run build --filter=./sample/*",
-        "serve-sample": "turbo run serve-build --filter=./sample/*",
+        "build-webpack": "turbo run build --filter=./samples/webpack/*",
+        "build-rsbuild": "turbo run build --filter=./samples/rsbuild/*",
+        "build-storybook": "turbo run build --filter=./samples/storybook",
+        "serve-webpack": "turbo run serve-build --filter=./samples/webpack/*",
+        "serve-rsbuild": "turbo run serve-build --filter=./samples/rsbuild/*",
+        "serve-storybook": "turbo run serve-build --filter=./samples/storybook",
         "prelint": "turbo run build --filter=./packages/*",
         "lint": "turbo run lint --continue",
-        "eslint": "eslint . --ignore-pattern packages --ignore-pattern sample --max-warnings=-0 --cache --cache-location node_modules/.cache/eslint",
+        "eslint": "eslint . --ignore-pattern packages --ignore-pattern samples --max-warnings=-0 --cache --cache-location node_modules/.cache/eslint",
         "typecheck": "tsc",
         "syncpack": "syncpack lint",
         "knip": "knip --cache --cache-location ./node_modules/.cache/knip",
@@ -38,18 +45,13 @@
         "@workleap/eslint-plugin": "workspace:*",
         "@workleap/typescript-configs": "workspace:*",
         "eslint": "8.57.0",
-        "knip": "5.39.2",
+        "knip": "5.39.4",
         "pkg-pr-new": "0.0.35",
         "prettier": "3.4.2",
         "retypeapp": "3.6.0",
         "syncpack": "13.0.0",
         "turbo": "2.3.3",
         "typescript": "5.5.4"
-    },
-    "pnpm": {
-        "overrides": {
-            "minimist": "^0.2.4"
-        }
     },
     "engines": {
         "node": ">=22.0.0",

@@ -9,7 +9,7 @@ toc:
 
 # Configure for Jest
 
-To configure [SWC](https://swc.rs/) for a [Jest](https://jestjs.io/) environment, execute the following steps.
+To configure [SWC](https://swc.rs/) for a [Jest](https://jestjs.io/) environment, execute the following steps :point_down:
 
 ## Install the packages
 
