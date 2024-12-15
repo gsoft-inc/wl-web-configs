@@ -16,6 +16,7 @@
         "dev-rsbuild-msw": "turbo run dev-msw --filter=./samples/rsbuild/*",
         "dev-storybook": "turbo run dev --filter=./samples/storybook",
         "dev-docs": "retype start",
+        "build-docs": "retype start",
         "build-pkg": "turbo run build --filter=./packages/*",
         "build-webpack": "turbo run build --filter=./samples/webpack/*",
         "build-rsbuild": "turbo run build --filter=./samples/rsbuild/*",
