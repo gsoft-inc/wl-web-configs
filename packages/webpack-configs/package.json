@@ -1,7 +1,7 @@
 {
     "name": "@workleap/webpack-configs",
     "author": "Workleap",
-    "description": "Workleap recommended webpack config.",
+    "description": "Workleap recommended webpack configurations.",
     "version": "1.5.2",
     "license": "Apache-2.0",
     "repository": {
