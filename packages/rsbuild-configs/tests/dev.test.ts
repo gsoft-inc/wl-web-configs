@@ -314,8 +314,6 @@ test("when svgr is false, the svgr plugin is not included", () => {
     expect(plugin).toBeUndefined();
 });
 
-/////////////////////////
-
 test("when a transformer is provided, and the transformer update the existing configuration object, the transformer is applied on the Rsbuild config", () => {
     const entryTransformer: RsbuildConfigTransformer = (config: RsbuildConfig) => {
         config.source = config.source ?? {};
