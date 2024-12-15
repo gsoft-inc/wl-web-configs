@@ -1,7 +1,7 @@
 {
     "name": "@workleap/typescript-configs",
     "author": "Workleap",
-    "description": "Workleap recommended typescript config.",
+    "description": "Workleap recommended typescript configurations.",
     "version": "3.0.2",
     "license": "Apache-2.0",
     "repository": {

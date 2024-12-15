@@ -1,6 +1,6 @@
 {
     "name": "@workleap/swc-configs",
-    "description": "Workleap recommended SWC configs.",
+    "description": "Workleap recommended SWC configurations.",
     "version": "2.2.3",
     "license": "Apache-2.0",
     "publishConfig": {

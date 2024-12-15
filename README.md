@@ -11,13 +11,13 @@ Common configurations for building web apps at [Workleap](https://workleap.com/)
 | --- | --- |
 | [@workleap/browserslist-config](packages/browserslist-config/README.md) | [![npm version](https://img.shields.io/npm/v/@workleap/browserslist-config)](https://www.npmjs.com/package/@workleap/browserslist-config) |
 | [@workleap/eslint-plugin](packages/eslint-plugin/README.md) | [![npm version](https://img.shields.io/npm/v/@workleap/eslint-plugin)](https://www.npmjs.com/package/@workleap/eslint-plugin) |
-| [@workleap/postcss-configs](packages/postcss-configs/README.md) | [![npm version](https://img.shields.io/npm/v/@workleap/postcss-configs)](https://www.npmjs.com/package/@workleap/postcss-configs) |
 | [@workleap/stylelint-plugin](packages/stylelint-configs/README.md) | [![npm version](https://img.shields.io/npm/v/@workleap/stylelint-configs)](https://www.npmjs.com/package/@workleap/stylelint-configs) |
 | [@workleap/typescript-configs](packages/typescript-configs/README.md) | [![npm version](https://img.shields.io/npm/v/@workleap/typescript-configs)](https://www.npmjs.com/package/@workleap/typescript-configs) |
-| [@workleap/tsup-configs](packages/tsup-configs/README.md) | [![npm version](https://img.shields.io/npm/v/@workleap/tsup-configs)](https://www.npmjs.com/package/@workleap/tsup-configs) |
 | [@workleap/swc-configs](packages/swc-configs/README.md) | [![npm version](https://img.shields.io/npm/v/@workleap/swc-configs)](https://www.npmjs.com/package/@workleap/swc-configs) |
-| [@workleap/webpack-configs](packages/webpack-configs/README.md) | [![npm version](https://img.shields.io/npm/v/@workleap/webpack-configs)](https://www.npmjs.com/package/@workleap/webpack-configs) |
 | [@workleap/rsbuild-configs](packages/rsbuild-configs/README.md) | [![npm version](https://img.shields.io/npm/v/@workleap/rsbuild-configs)](https://www.npmjs.com/package/@workleap/rsbuild-configs) |
+| [@workleap/postcss-configs](packages/postcss-configs/README.md) | [![npm version](https://img.shields.io/npm/v/@workleap/postcss-configs)](https://www.npmjs.com/package/@workleap/postcss-configs) |
+| [@workleap/tsup-configs](packages/tsup-configs/README.md) | [![npm version](https://img.shields.io/npm/v/@workleap/tsup-configs)](https://www.npmjs.com/package/@workleap/tsup-configs) |
+| [@workleap/webpack-configs](packages/webpack-configs/README.md) | [![npm version](https://img.shields.io/npm/v/@workleap/webpack-configs)](https://www.npmjs.com/package/@workleap/webpack-configs) |
 
 ## Have a question or found an issue?
 
