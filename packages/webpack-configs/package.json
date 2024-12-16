@@ -55,7 +55,7 @@
         "react-refresh": "^0.16.0",
         "style-loader": "^4.0.0",
         "swc-loader": "^0.2.6",
-        "terser-webpack-plugin": "^5.3.10"
+        "terser-webpack-plugin": "^5.3.11"
     },
     "devDependencies": {
         "@svgr/core": "8.1.0",
