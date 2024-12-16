@@ -216,6 +216,10 @@ If you're encountering typing issues, consider adding type declarations for the 
 - [SVGR](./configure-dev.md#typings)
 - [CSS Module](./configure-dev.md#css-modules-typings)
 
+## Storybook
+
+Consider using the new Rsbuild [Storybook](./configure-storybook.md) shared configurations.
+
 ## Try it :rocket:
 
 Start the application in a development environment using the `dev` and `build` script. Everything should run smoothly without any warnings or errors outputted in the terminal.
