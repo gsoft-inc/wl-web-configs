@@ -17,6 +17,7 @@ const config: Linter.Config = {
             rules: {
                 // @typescript-eslint/recommended disables
                 "@typescript-eslint/no-non-null-assertion": "off",
+                "@typescript-eslint/no-empty-object-type": ["error", { allowInterfaces: "with-single-extends", allowObjectTypes: "never" }],
 
                 // additional rules we want
                 "@typescript-eslint/consistent-type-definitions": "warn",
@@ -43,7 +44,6 @@ const config: Linter.Config = {
                 "@typescript-eslint/no-useless-constructor":"warn",
                 "object-curly-spacing":"off",
                 "quotes":"off",
-                // "@typescript-eslint/quotes": ["warn", "double"],
                 "@stylistic/ts/quotes": ["warn", "double"],
                 "@typescript-eslint/no-import-type-side-effects": "warn",
                 "@typescript-eslint/consistent-type-imports": [
@@ -55,19 +55,9 @@ const config: Linter.Config = {
                     }
                 ],
 
-                // "@typescript-eslint/member-delimiter-style": "warn",
                 "@stylistic/ts/member-delimiter-style": "warn",
-                // "@typescript-eslint/comma-dangle": ["warn", "never"],
                 "@stylistic/ts/comma-dangle": ["warn", "never"],
                 "indent":"off",
-                // "@typescript-eslint/indent": [
-                //     "warn",
-                //     4,
-                //     {
-                //         SwitchCase: 1,
-                //         CallExpression: { arguments: "first" }
-                //     }
-                // ],
                 "@stylistic/ts/indent": [
                     "warn",
                     4,
@@ -76,10 +66,8 @@ const config: Linter.Config = {
                         CallExpression: { arguments: "first" }
                     }
                 ],
-                // "@typescript-eslint/object-curly-spacing": ["warn", "always"],
                 "@stylistic/ts/object-curly-spacing": ["warn", "always"],
                 "semi":"off",
-                // "@typescript-eslint/semi": ["warn", "always"]
                 "@stylistic/ts/semi": ["warn", "always"]
             }
         }
