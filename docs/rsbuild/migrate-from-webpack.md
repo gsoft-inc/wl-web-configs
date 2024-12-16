@@ -9,7 +9,7 @@ toc:
 
 # Migrate from Webpack
 
-To migrate from [@squide/firefly-webpack-configs](https://www.npmjs.com/package/@squide/firefly-webpack-configs) to `@squide/firefly-rsbuild-configs`, execute the following steps :point_down:
+To migrate from [@squide/firefly-webpack-configs](https://www.npmjs.com/package/@squide/firefly-webpack-configs) to [@squide/firefly-rsbuild-configs](https://www.npmjs.com/package/@workleap/rsbuild-configs), execute the following steps :point_down:
 
 ## Update packages
 
@@ -209,6 +209,13 @@ After:
 }
 ```
 
-### Try it :rocket:
+## Typings
+
+If you're encountering typing issues, consider adding type declarations for the following
+
+- [SVGR](./configure-dev.md#typings)
+- [CSS Module](./configure-dev.md#css-modules-typings)
+
+## Try it :rocket:
 
 Start the application in a development environment using the `dev` and `build` script. Everything should run smoothly without any warnings or errors outputted in the terminal.

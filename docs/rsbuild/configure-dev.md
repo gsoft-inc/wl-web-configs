@@ -451,6 +451,8 @@ export default defineDevConfig({
 });
 ```
 
+#### Typings
+
 When you reference an SVG asset in TypeScript code, TypeScript may prompt that the module is missing a type definition:
 
 ```bash
