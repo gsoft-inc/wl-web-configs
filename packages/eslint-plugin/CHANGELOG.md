@@ -1,5 +1,11 @@
 # @workleap/eslint-plugin
 
+## 3.2.5
+
+### Patch Changes
+
+- [#223](https://github.com/gsoft-inc/wl-web-configs/pull/223) [`73b1935`](https://github.com/gsoft-inc/wl-web-configs/commit/73b19350d689a6de7724cbbc578e283004d8c33d) Thanks [@patricklafrance](https://github.com/patricklafrance)! - Configure new recommended @typescript-eslint rules after updating the package.
+
 ## 3.2.4
 
 ### Patch Changes
