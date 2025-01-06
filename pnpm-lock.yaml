@@ -276,6 +276,51 @@ importers:
         specifier: 5.5.4
         version: 5.5.4
 
+  packages/rslib:
+    devDependencies:
+      '@rsbuild/core':
+        specifier: 1.1.10
+        version: 1.1.10
+      '@rslib/core':
+        specifier: 0.1.4
+        version: 0.1.4(typescript@5.5.4)
+      '@swc/core':
+        specifier: 1.10.1
+        version: 1.10.1(@swc/helpers@0.5.15)
+      '@swc/jest':
+        specifier: 0.2.37
+        version: 0.2.37(@swc/core@1.10.1(@swc/helpers@0.5.15))
+      '@types/jest':
+        specifier: 29.5.14
+        version: 29.5.14
+      '@types/node':
+        specifier: 22.10.2
+        version: 22.10.2
+      '@typescript-eslint/parser':
+        specifier: 8.18.0
+        version: 8.18.0(eslint@8.57.0)(typescript@5.5.4)
+      '@workleap/eslint-plugin':
+        specifier: workspace:*
+        version: link:../eslint-plugin
+      '@workleap/swc-configs':
+        specifier: workspace:*
+        version: link:../swc-configs
+      '@workleap/typescript-configs':
+        specifier: workspace:*
+        version: link:../typescript-configs
+      eslint:
+        specifier: 8.57.0
+        version: 8.57.0
+      jest:
+        specifier: 29.7.0
+        version: 29.7.0(@types/node@22.10.2)(ts-node@10.9.2(@swc/core@1.10.1(@swc/helpers@0.5.15))(@types/node@22.10.2)(typescript@5.5.4))
+      ts-node:
+        specifier: 10.9.2
+        version: 10.9.2(@swc/core@1.10.1(@swc/helpers@0.5.15))(@types/node@22.10.2)(typescript@5.5.4)
+      typescript:
+        specifier: 5.5.4
+        version: 5.5.4
+
   packages/stylelint-configs:
     dependencies:
       prettier:
@@ -2625,6 +2670,19 @@ packages:
       '@rsbuild/core': 1.x
     peerDependenciesMeta:
       '@rsbuild/core':
+        optional: true
+
+  '@rslib/core@0.1.4':
+    resolution: {integrity: sha512-JyjSDxLTQmYg7UCASPOdjIY8VzNLsV2XR/liwdVf81nhendm2BuGB30wn76WEK0wxTkBZ1mPufwRCal0NMsjZw==}
+    engines: {node: '>=16.0.0'}
+    hasBin: true
+    peerDependencies:
+      '@microsoft/api-extractor': ^7
+      typescript: ^5
+    peerDependenciesMeta:
+      '@microsoft/api-extractor':
+        optional: true
+      typescript:
         optional: true
 
   '@rspack/binding-darwin-arm64@1.1.6':
@@ -7027,6 +7085,19 @@ packages:
     engines: {node: '>=18.0.0', npm: '>=8.0.0'}
     hasBin: true
 
+  rsbuild-plugin-dts@0.1.4:
+    resolution: {integrity: sha512-jqhkHGeswhH1Jfc/5zDX01UhrCwImquVjuZZXnAa34Cx0SEB+938WBIpAkyx3UEq7QLQDSII2z3pZ9cD/bpCTg==}
+    engines: {node: '>=16.0.0'}
+    peerDependencies:
+      '@microsoft/api-extractor': ^7
+      '@rsbuild/core': 1.x
+      typescript: ^5
+    peerDependenciesMeta:
+      '@microsoft/api-extractor':
+        optional: true
+      typescript:
+        optional: true
+
   rsbuild-plugin-html-minifier-terser@1.1.1:
     resolution: {integrity: sha512-rbDLv+XmGeSQo9JWKSwBst3Qwx1opLqtQCnQ3t9Z0F0ZTxKOC1S/ypPv5tSn/S3GMHct5Yb76mMgh6p80hjOAQ==}
     peerDependencies:
@@ -10272,6 +10343,14 @@ snapshots:
     transitivePeerDependencies:
       - '@rspack/core'
       - typescript
+
+  '@rslib/core@0.1.4(typescript@5.5.4)':
+    dependencies:
+      '@rsbuild/core': 1.1.10
+      rsbuild-plugin-dts: 0.1.4(@rsbuild/core@1.1.10)(typescript@5.5.4)
+      tinyglobby: 0.2.10
+    optionalDependencies:
+      typescript: 5.5.4
 
   '@rspack/binding-darwin-arm64@1.1.6':
     optional: true
@@ -15604,6 +15683,15 @@ snapshots:
       '@rollup/rollup-win32-ia32-msvc': 4.28.1
       '@rollup/rollup-win32-x64-msvc': 4.28.1
       fsevents: 2.3.3
+
+  rsbuild-plugin-dts@0.1.4(@rsbuild/core@1.1.10)(typescript@5.5.4):
+    dependencies:
+      '@rsbuild/core': 1.1.10
+      magic-string: 0.30.15
+      picocolors: 1.1.1
+      tinyglobby: 0.2.10
+    optionalDependencies:
+      typescript: 5.5.4
 
   rsbuild-plugin-html-minifier-terser@1.1.1(@rsbuild/core@1.1.10):
     dependencies:
