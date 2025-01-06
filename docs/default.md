@@ -35,11 +35,11 @@ For an organization like Workleap, with a large suite of products, it **doesn't 
 
 ### Filling the gap
 
-While a collection of common configurations gets us closer to that goal, on their own, configuration libraries are not enough to reach it. There is still a need to install and assemble those configurations correctly in the new application, which can also be a challenge. To fill this gap, we choosed to invest as well in a [CLI](https://github.com/gsoft-inc/wl-foundry-cli) to scaffold new web applications and libraries.
+While a collection of common configurations gets us closer to that goal, on their own, configuration libraries are not enough to reach it. There is still a need to install and assemble those configurations correctly in the new application, which can also be a challenge. To fill this gap, we will also invest into a __CLI__ to scaffold new web applications and libraries.
 
 ### Best of both worlds
 
-With the CLI, developers can generate fully configured web applications in a few minutes. However, contrary to configuration libraries, a CLI alone is only good at creating the initial files of an application, it doesn't help with the **maintenance** or the **adoption of new features** offered by tools over time.
+With the CLI, developers will have the ability to generate fully configured web applications in a few minutes. However, contrary to configuration libraries, a CLI alone is only good at creating the initial files of an application, it doesn't help with the **maintenance** or the **adoption of new features** offered by tools over time.
 
 That's why we need both, there's a strong synergy between a collection of configuration libraries and a CLI.
 
