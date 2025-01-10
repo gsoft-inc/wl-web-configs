@@ -17,6 +17,7 @@
     },
     "types": "./dist/index.d.ts",
     "files": [
+        "src",
         "dist",
         "CHANGELOG.md",
         "README.md"
@@ -48,8 +49,8 @@
         "stylelint-prettier": "^5.0.2"
     },
     "devDependencies": {
-        "@types/node": "22.10.2",
-        "@typescript-eslint/parser": "8.18.0",
+        "@types/node": "22.10.5",
+        "@typescript-eslint/parser": "8.19.1",
         "@workleap/eslint-plugin": "workspace:*",
         "@workleap/tsup-configs": "workspace:*",
         "@workleap/typescript-configs": "workspace:*",

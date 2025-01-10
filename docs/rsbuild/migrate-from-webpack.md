@@ -1,13 +1,13 @@
 ---
 order: 70
-label: Migrate from Webpack
+label: Migrate from webpack
 meta:
-    title: Migrate from Webpack - Rsbuild
+    title: Migrate from webpack - Rsbuild
 toc:
     depth: 2-3
 ---
 
-# Migrate from Webpack
+# Migrate from webpack
 
 To migrate from [@squide/firefly-webpack-configs](https://www.npmjs.com/package/@squide/firefly-webpack-configs) to [@squide/firefly-rsbuild-configs](https://www.npmjs.com/package/@workleap/rsbuild-configs), execute the following steps :point_down:
 

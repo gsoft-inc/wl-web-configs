@@ -22,6 +22,7 @@
         }
     },
     "files": [
+        "src",
         "dist",
         "CHANGELOG.md",
         "README.md"
@@ -36,14 +37,18 @@
         "@rsbuild/core": "*",
         "@rslib/core": "*"
     },
+    "dependencies": {
+        "@rsbuild/plugin-react": "^1.1.0",
+        "@rsbuild/plugin-svgr": "^1.0.6"
+    },
     "devDependencies": {
-        "@rsbuild/core": "1.1.10",
-        "@rslib/core": "0.1.4",
-        "@swc/core": "1.10.1",
+        "@rsbuild/core": "1.1.13",
+        "@rslib/core": "0.3.0",
+        "@swc/core": "1.10.6",
         "@swc/jest": "0.2.37",
         "@types/jest": "29.5.14",
-        "@types/node": "22.10.2",
-        "@typescript-eslint/parser": "8.18.0",
+        "@types/node": "22.10.5",
+        "@typescript-eslint/parser": "8.19.1",
         "@workleap/eslint-plugin": "workspace:*",
         "@workleap/swc-configs": "workspace:*",
         "@workleap/typescript-configs": "workspace:*",

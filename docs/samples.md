@@ -1,5 +1,5 @@
 ---
-order: 90
+order: 70
 icon: command-palette
 ---
 
