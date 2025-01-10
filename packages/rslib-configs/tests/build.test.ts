@@ -1,10 +1,10 @@
 import type { RsbuildPlugin, SourceMap } from "@rsbuild/core";
 import type { RslibConfig } from "@rslib/core";
 import type { RslibConfigTransformer } from "../src/applyTransformers.ts";
-import { defineDevConfig } from "../src/dev.ts";
+import { defineBuildConfig } from "../src/build.ts";
 
 test("when an entry prop is provided, the source.entry option is the provided value", () => {
-    const result = defineDevConfig({
+    const result = defineBuildConfig({
         entry: {
             index: "./a-new-entry.ts"
         },
@@ -15,7 +15,7 @@ test("when an entry prop is provided, the source.entry option is the provided va
 });
 
 test("when format is \"cjs\", the lib.format option is \"cjs\"", () => {
-    const result = defineDevConfig({
+    const result = defineBuildConfig({
         format: "cjs",
         tsconfigPath: "./build.json"
     });
@@ -24,7 +24,7 @@ test("when format is \"cjs\", the lib.format option is \"cjs\"", () => {
 });
 
 test("when a syntax prop is provided, the lib.syntax option is the provided value", () => {
-    const result = defineDevConfig({
+    const result = defineBuildConfig({
         syntax: "es2015",
         tsconfigPath: "./build.json"
     });
@@ -33,11 +33,11 @@ test("when a syntax prop is provided, the lib.syntax option is the provided valu
 });
 
 test("when bundle is false and the tsconfigPath option is not provided, throw an error", () => {
-    expect(() => defineDevConfig({ bundle: false })).toThrow(/When the "bundle" option is "false", a "tsconfigPath" option must be provided./);
+    expect(() => defineBuildConfig({ bundle: false })).toThrow(/When the "bundle" option is "false", a "tsconfigPath" option must be provided./);
 });
 
 test("when bundle is false, the default source.entry option is \"./src/**\"", () => {
-    const result = defineDevConfig({
+    const result = defineBuildConfig({
         bundle: false,
         tsconfigPath: "./build.json"
     });
@@ -46,11 +46,11 @@ test("when bundle is false, the default source.entry option is \"./src/**\"", ()
 });
 
 test("when bundle is true and the tsconfigPath option is not provided, do not throw an error", () => {
-    expect(() => defineDevConfig({ bundle: true })).not.toThrow();
+    expect(() => defineBuildConfig({ bundle: true })).not.toThrow();
 });
 
 test("when bundle is true, the lib.bundle option is true", () => {
-    const result = defineDevConfig({
+    const result = defineBuildConfig({
         bundle: true
     });
 
@@ -58,24 +58,24 @@ test("when bundle is true, the lib.bundle option is true", () => {
 });
 
 test("when bundle is true, the default source.entry option is [\"./src/index.ts\", \"./src/index.js\"]", () => {
-    const result = defineDevConfig({
+    const result = defineBuildConfig({
         bundle: true
     });
 
     expect(result.source?.entry?.index).toEqual(["./src/index.ts", "./src/index.js"]);
 });
 
-test("when dts is true, the lib.dts option is true", () => {
-    const result = defineDevConfig({
-        dts: true,
+test("when dts is false, the lib.dts option is true", () => {
+    const result = defineBuildConfig({
+        dts: false,
         tsconfigPath: "./build.json"
     });
 
-    expect(result.lib[0]?.dts).toBeTruthy();
+    expect(result.lib[0]?.dts).toBeFalsy();
 });
 
 test("when a target is provided, the output.target option is the provided value", () => {
-    const result = defineDevConfig({
+    const result = defineBuildConfig({
         target: "node",
         tsconfigPath: "./build.json"
     });
@@ -84,7 +84,7 @@ test("when a target is provided, the output.target option is the provided value"
 });
 
 test("when a dist path is provided, the output.distPath option is the provided value", () => {
-    const result = defineDevConfig({
+    const result = defineBuildConfig({
         distPath: {
             js: "./dist-path"
         },
@@ -105,7 +105,7 @@ test("when additional plugins are provided, append the provided plugins at the e
         setup: () => {}
     };
 
-    const result = defineDevConfig({
+    const result = defineBuildConfig({
         plugins: [
             plugin1,
             plugin2
@@ -120,7 +120,7 @@ test("when additional plugins are provided, append the provided plugins at the e
 });
 
 test("when sourceMap is false, the output.sourceMap option is false", () => {
-    const result = defineDevConfig({
+    const result = defineBuildConfig({
         sourceMap: false,
         tsconfigPath: "./build.json"
     });
@@ -134,7 +134,7 @@ test("when sourceMap is an object, the output.sourceMap option is the object", (
         css: false
     };
 
-    const result = defineDevConfig({
+    const result = defineBuildConfig({
         sourceMap,
         tsconfigPath: "./build.json"
     });
@@ -143,7 +143,7 @@ test("when sourceMap is an object, the output.sourceMap option is the object", (
 });
 
 test("when react is false, the react plugin is not included", () => {
-    const result = defineDevConfig({
+    const result = defineBuildConfig({
         react: false,
         tsconfigPath: "./build.json"
     });
@@ -156,7 +156,7 @@ test("when react is false, the react plugin is not included", () => {
 test("when react is a function, the function is executed", () => {
     const fct = jest.fn();
 
-    defineDevConfig({
+    defineBuildConfig({
         react: fct,
         tsconfigPath: "./build.json"
     });
@@ -165,7 +165,7 @@ test("when react is a function, the function is executed", () => {
 });
 
 test("when svgr is false, the svgr plugin is not included", () => {
-    const result = defineDevConfig({
+    const result = defineBuildConfig({
         svgr: false,
         tsconfigPath: "./build.json"
     });
@@ -178,7 +178,7 @@ test("when svgr is false, the svgr plugin is not included", () => {
 test("when svgr is a function, the function is executed", () => {
     const fct = jest.fn();
 
-    defineDevConfig({
+    defineBuildConfig({
         svgr: fct,
         tsconfigPath: "./build.json"
     });
@@ -196,7 +196,7 @@ test("when a transformer is provided, and the transformer update the existing co
         return config;
     };
 
-    const result = defineDevConfig({
+    const result = defineBuildConfig({
         transformers: [entryTransformer],
         tsconfigPath: "./build.json"
     });
@@ -216,7 +216,7 @@ test("when a transformer is provided, and the transformer returns a new configur
         };
     };
 
-    const result = defineDevConfig({
+    const result = defineBuildConfig({
         transformers: [entryTransformer],
         tsconfigPath: "./build.json"
     });
@@ -242,7 +242,7 @@ test("when multiple transformers are provided, all the transformers are applied 
         return config;
     };
 
-    const result = defineDevConfig({
+    const result = defineBuildConfig({
         transformers: [entryTransformer, distPathTransformer],
         tsconfigPath: "./build.json"
     });
@@ -251,13 +251,13 @@ test("when multiple transformers are provided, all the transformers are applied 
     expect(result.output!.distPath!.js).toBe("a-custom-dist-path-in-a-tranformer");
 });
 
-test("transformers context environment is \"dev\"", () => {
+test("transformers context environment is \"build\"", () => {
     const mockTransformer = jest.fn();
 
-    defineDevConfig({
+    defineBuildConfig({
         transformers: [mockTransformer],
         tsconfigPath: "./build.json"
     });
 
-    expect(mockTransformer).toHaveBeenCalledWith(expect.anything(), { environment: "dev" });
+    expect(mockTransformer).toHaveBeenCalledWith(expect.anything(), { environment: "build" });
 });

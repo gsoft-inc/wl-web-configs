@@ -1,28 +1,27 @@
 import type { DistPathConfig, RsbuildPlugins, SourceMap } from "@rsbuild/core";
 import { pluginReact, type PluginReactOptions } from "@rsbuild/plugin-react";
 import { pluginSvgr, type PluginSvgrOptions } from "@rsbuild/plugin-svgr";
-// import { defineConfig, type Dts, type RsbuildConfigEntry, type RsbuildConfigOutputTarget, type Syntax } from "@rslib/core";
-import { defineConfig, type Dts, type RsbuildConfigEntry, type RsbuildConfigOutputTarget } from "@rslib/core";
+import { defineConfig, type Dts, type RsbuildConfigEntry, type RsbuildConfigOutputTarget, type Syntax } from "@rslib/core";
 import { applyTransformers, type RslibConfigTransformer } from "./applyTransformers.ts";
 
 export type DefineDevDefineReactPluginConfigFunction = (defaultOptions: PluginReactOptions) => PluginReactOptions;
 export type DefineDevSvgrPluginConfigFunction = (defaultOptions: PluginSvgrOptions) => PluginSvgrOptions;
 
 export interface DefineDevConfigOptions {
-        entry?: RsbuildConfigEntry;
-        format?: "esm" | "cjs";
-        // syntax?: Syntax;
-        bundle?: boolean;
-        tsconfigPath?: string;
-        dts?: Dts;
-        target?: RsbuildConfigOutputTarget;
-        distPath?: DistPathConfig;
-        plugins?: RsbuildPlugins;
-        sourceMap?: boolean | SourceMap;
-        react?: false | DefineDevDefineReactPluginConfigFunction;
-        svgr? : false | DefineDevSvgrPluginConfigFunction;
-        transformers?: RslibConfigTransformer[];
-};
+    entry?: RsbuildConfigEntry;
+    format?: "esm" | "cjs";
+    syntax?: Syntax;
+    bundle?: boolean;
+    tsconfigPath?: string;
+    dts?: Dts;
+    target?: RsbuildConfigOutputTarget;
+    distPath?: DistPathConfig;
+    plugins?: RsbuildPlugins;
+    sourceMap?: boolean | SourceMap;
+    react?: false | DefineDevDefineReactPluginConfigFunction;
+    svgr? : false | DefineDevSvgrPluginConfigFunction;
+    transformers?: RslibConfigTransformer[];
+}
 
 function defaultDefineReactPluginConfig(options: PluginReactOptions) {
     return options;
@@ -36,7 +35,7 @@ export function defineDevConfig(options: DefineDevConfigOptions = {}) {
     const {
         entry: entryValue,
         format = "esm",
-        // syntax = "esnext",
+        syntax = "esnext",
         bundle = false,
         tsconfigPath,
         dts = false,
@@ -55,7 +54,7 @@ export function defineDevConfig(options: DefineDevConfigOptions = {}) {
     } = options;
 
     if (!bundle && !tsconfigPath) {
-        throw new Error("[rslib-configs] When the \"bundle\" option is \"false\", a \"tsconfigPath\" option must be provided.");
+        throw new Error("[rslib-configs] When the \"bundle\" option is \"false\", a \"tsconfigPath\" option must be provided. We recommend including a tsconfig.build.json file specifically for compiling the library project.");
     }
 
     let entry = entryValue;
@@ -70,8 +69,7 @@ export function defineDevConfig(options: DefineDevConfigOptions = {}) {
         mode: "development",
         lib: [{
             format,
-            // syntax,
-            syntax: "esnext",
+            syntax,
             bundle,
             dts
         }],
@@ -87,9 +85,7 @@ export function defineDevConfig(options: DefineDevConfigOptions = {}) {
             sourceMap
         },
         plugins: [
-            react && pluginReact(react({
-                fastRefresh: false
-            })),
+            react && pluginReact(react({})),
             svgr && pluginSvgr(svgr({
                 svgrOptions: {
                     exportType: "named"

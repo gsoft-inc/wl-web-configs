@@ -2,7 +2,7 @@ import type { DistPathConfig, RsbuildPlugins, SourceMap } from "@rsbuild/core";
 import { pluginReact, type PluginReactOptions } from "@rsbuild/plugin-react";
 import { pluginSvgr, type PluginSvgrOptions } from "@rsbuild/plugin-svgr";
 import { defineConfig, type Dts, type RsbuildConfigEntry, type RsbuildConfigOutputTarget, type Syntax } from "@rslib/core";
-import { applyTransformers, RslibConfigTransformer } from "./applyTransformers.ts";
+import { applyTransformers, type RslibConfigTransformer } from "./applyTransformers.ts";
 
 export type DefineBuildDefineReactPluginConfigFunction = (defaultOptions: PluginReactOptions) => PluginReactOptions;
 export type DefineBuildSvgrPluginConfigFunction = (defaultOptions: PluginSvgrOptions) => PluginSvgrOptions;
@@ -54,7 +54,7 @@ export function defineBuildConfig(options: DefineBuildConfigOptions = {}) {
     } = options;
 
     if (!bundle && !tsconfigPath) {
-        throw new Error("[rslib-configs] When the \"bundle\" option is \"false\", a \"tsconfigPath\" option must be provided.");
+        throw new Error("[rslib-configs] When the \"bundle\" option is \"false\", a \"tsconfigPath\" option must be provided. We recommend including a tsconfig.build.json file specifically for compiling the library project.");
     }
 
     let entry = entryValue;
@@ -85,16 +85,14 @@ export function defineBuildConfig(options: DefineBuildConfigOptions = {}) {
             sourceMap
         },
         plugins: [
-            react && pluginReact(react({
-                fastRefresh: false
-            })),
+            react && pluginReact(react({})),
             svgr && pluginSvgr(svgr({
                 svgrOptions: {
                     exportType: "named"
                 }
             })),
             ...plugins
-        ].filter(Boolean),
+        ].filter(Boolean)
     });
 
     const transformedConfig = applyTransformers(config, transformers, {
