@@ -19,6 +19,7 @@
     },
     "dependencies": {
         "@rsbuild-sample/components": "workspace:*",
+        "@rsbuild-sample/rslib-lib": "workspace:*",
         "react": "19.0.0",
         "react-dom": "19.0.0",
         "react-router": "7.1.1"

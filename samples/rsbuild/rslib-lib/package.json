@@ -1,8 +1,8 @@
 {
-    "name": "@webpack-sample/tsup-lib",
+    "name": "@rsbuild-sample/rslib-lib",
     "author": "Workleap",
     "version": "0.0.0",
-    "description": "tsup library to try the web configs.",
+    "description": "Rslib library to try the web configs.",
     "private": true,
     "license": "Apache-2.0",
     "type": "module",
@@ -17,19 +17,20 @@
         "/dist"
     ],
     "scripts": {
-        "dev": "tsup --config ./tsup.dev.ts",
+        "dev": "rslib build -w -c ./rslib.dev.ts",
         "dev-msw": "pnpm dev",
-        "build": "tsup --config ./tsup.build.ts",
+        "build": "rslib build -c ./rslib.build.ts",
         "eslint": "eslint . --max-warnings=-0 --cache --cache-location node_modules/.cache/eslint",
         "typecheck": "tsc"
     },
     "devDependencies": {
+        "@rsbuild/core": "1.1.13",
+        "@rslib/core": "0.3.1",
         "@typescript-eslint/parser": "8.19.1",
         "@workleap/eslint-plugin": "workspace:*",
-        "@workleap/tsup-configs": "workspace:*",
+        "@workleap/rslib-configs": "workspace:*",
         "@workleap/typescript-configs": "workspace:*",
         "eslint": "8.57.0",
-        "tsup": "8.3.5",
         "typescript": "5.5.4"
     }
 }
