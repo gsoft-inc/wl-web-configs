@@ -13,7 +13,6 @@ toc:
 `@workleap/tsup-configs` is now in maintenance mode. If you're starting a new project, consider using [@workleap/rslib-configs](../rslib/default.md) instead for better performance and modern tooling.
 !!!
 
-
 <!-- !!!warning Before you continue...
 
 The preferred way for using `@workleap/tsup-configs` is **not** by installing the library manually, but rather by **scaffolding** your application with Workleap's [foundry-cli](https://github.com/gsoft-inc/wl-foundry-cli).

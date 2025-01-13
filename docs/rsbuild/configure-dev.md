@@ -347,7 +347,7 @@ export default defineDevConfig({
 - **Type**: `false` or an object literal accepting any [output.sourceMap](https://rsbuild.dev/config/output/source-map) options.
 - **Default**: `{ js: "cheap-module-source-map", css: true }`
 
-Whether or not to generate [source map](https://rsbuild.dev/config/output/source-map). To disable source map, set the option to `false`. 
+Whether or not to generate [source maps](https://rsbuild.dev/config/output/source-map). To disable source map, set the option to `false`. 
 
 ```ts !#4 rsbuild.dev.ts
 import { defineDevConfig } from "@workleap/rsbuild-configs";
@@ -592,7 +592,7 @@ Finally, add a CLI script at the [next step](#add-a-cli-script) of this guide.
 
 ## Add a CLI script
 
-To initiate the development server, add the following script to your project `package.json` file:
+To initiate the development server, add the following script to the project `package.json` file:
 
 ```json package.json
 {
@@ -665,25 +665,21 @@ By default, Rsbuild injects a few environment variables into the code using the 
 
 ## CSS modules typings
 
-When you import CSS Modules in TypeScript code, TypeScript may prompt that the module is missing a type definition:
+When CSS Modules are imported from TypeScript code, TypeScript may prompt that the module is missing a type definition:
 
 ```bash
 TS2307: Cannot find module './index.module.css' or its corresponding type declarations.
 ```
 
-To fix this, you need to add a type declaration file for the CSS Modules, please create a `src/env.d.ts` file, and add the corresponding type declaration.
+To fix this, add a type declaration file for the CSS Modules, by creating a `src/env.d.ts` file, and adding the corresponding type declaration.
 
 ```ts env.d.ts
 /// <reference types="@rsbuild/core/types" />
 ```
 
-!!!info
-Make sure the project have a dependency on `@rsbuild/core`.
-!!!
-
 ### Monorepo
 
-If your solution is a monorepo, ensure that projects referencing your packages that include CSS Modules, also include the necessary type definitions
+If the solution is a monorepo, ensure that projects referencing the packages that include CSS Modules, also include the necessary type definitions
 
 For example, given the following structure:
 
@@ -715,11 +711,11 @@ Copy the CSS Modules typings into the `app` web application own `env.d.ts` file,
 ```
 
 !!!info
-For additional information abour CSS modules type declaration, refer to the Rsbuild [documentation](https://rsbuild.dev/guide/basic/css-modules#type-declaration).
+For additional information about CSS modules type declaration, refer to the Rsbuild [documentation](https://rsbuild.dev/guide/basic/css-modules#type-declaration).
 !!!
 
 ## Try it :rocket:
 
-To test your new Rsbuild configuration, open a terminal at the root of the project and execute the [CLI script added earlier](#add-a-cli-script). A development server should start without outputting any error in the terminal.
+To test the new Rsbuild configuration, open a terminal at the root of the project and execute the [CLI script added earlier](#add-a-cli-script). A development server should start without outputting any error in the terminal.
 
 

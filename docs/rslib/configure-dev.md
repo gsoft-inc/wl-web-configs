@@ -9,7 +9,7 @@ toc:
 
 # Configure for development
 
-To configure [Rslib](https://lib.rsbuild.dev/) for a development environment, execute the following steps :point_down:
+To configure [Rslib](https://lib.rsbuild.dev) for a development environment, execute the following steps :point_down:
 
 ## Install the packages
 
@@ -33,7 +33,7 @@ npm install -D @workleap/rslib-configs @rslib/core @rsbuild/core
 
 ### `tsconfig.build.json`
 
-First, create a `tsconfig.build.json` at the root of the project:
+First, create a `tsconfig.build.json` file at the root of the project:
 
 ``` !#6
 library-project
@@ -55,7 +55,7 @@ Then, open the newly created `tsconfig.build.json` file and copy/paste the follo
 ```
 
 !!!info
-`@workleap/rslib-config` is configured by default for [bundleless](https://lib.rsbuild.dev/guide/basic/output-structure#bundle--bundleless) output. Rslib bundleless support expect the typescript configuration file `include` option to target the source files folder. If the project source files folder is not `src`, update the previous code sample to target the appropriate source files folder.
+`@workleap/rslib-config` is configured by default to produce [bundleless](https://lib.rsbuild.dev/guide/basic/output-structure#bundle--bundleless) output. Rslib's bundleless mode expects the `include` option in the TypeScript configuration file to point to the project’s source files folder. If the project's source files are not located in the `src` folder, update the provided configuration sample to target the correct source folder.
 !!!
 
 ### `rslib.dev.ts`
@@ -147,9 +147,9 @@ export default defineDevConfig({
 ```
 
 !!!info
-Tree-shaking works best when bundlers can exclude entires files from the bundle. When the `bundle` option is set to `true`, bundlers must tree-shake strictly by removing unused parts withing the same file. While this is supported by most modern bundlers, it's best to stick to the lowest common denominator to produce the most predictable results and not bundling libraries.
+Tree-shaking is most effective when bundlers can exclude entire files from the final bundle. However, when the `bundle` option is set to `true`, bundlers must perform tree-shaking within individual files by removing unused parts. While most modern bundlers support this, it's generally better to follow the lowest common denominator approach by opting for a [bundleless](https://lib.rsbuild.dev/guide/basic/output-structure#bundle--bundleless) output, to produce the most predictable results and not bundling unnecessary code.
 
-For additional information about bundle vs bundleless, refer to the following [documentation](https://lib.rsbuild.dev/guide/basic/output-structure#bundle--bundleless).
+For more details on the differences between bundled and bundleless output, refer to the [documentation](https://lib.rsbuild.dev/guide/basic/output-structure#bundle--bundleless).
 !!!
 
 ### `tsconfigPath`
@@ -204,7 +204,7 @@ export default defineDevConfig({
 
 Set Rsbuild [output.distPath](https://rsbuild.dev/config/output/dist-path) option.
 
-```ts !#8 rslib.build.ts
+```ts !#5 rslib.build.ts
 import { defineDevConfig } from "@workleap/rslib-configs";
 import path from "path";
 
@@ -234,7 +234,7 @@ export default defineDevConfig({
 - **Type**: `false` or an object literal accepting any [output.sourceMap](https://rsbuild.dev/config/output/source-map) options.
 - **Default**: `{ js: "cheap-module-source-map", css: true }`
 
-Whether or not to generate [source map](https://rsbuild.dev/config/output/source-map). To disable source map, set the option to `false`. 
+Whether or not to generate [source maps](https://rsbuild.dev/config/output/source-map). To disable source map, set the option to `false`. 
 
 ```ts !#4 rslib.dev.ts
 import { defineDevConfig } from "@workleap/rslib-configs";
@@ -446,7 +446,7 @@ Finally, add a CLI script at the [next step](#add-a-cli-script) of this guide.
 
 ## Add a CLI script
 
-To initiate the watch process, add the following script to your project `package.json` file:
+To initiate the watch process, add the following script to the project `package.json` file:
 
 ```json package.json
 {
@@ -456,29 +456,25 @@ To initiate the watch process, add the following script to your project `package
 
 ## CSS modules typings
 
-When you import CSS Modules in TypeScript code, TypeScript may prompt that the module is missing a type definition:
+When CSS Modules are imported from TypeScript code, TypeScript may prompt that the module is missing a type definition:
 
 ```bash
 TS2307: Cannot find module './index.module.css' or its corresponding type declarations.
 ```
 
-To fix this, you need to add a type declaration file for the CSS Modules, please create a `src/env.d.ts` file, and add the corresponding type declaration.
+To fix this, add a type declaration file for the CSS Modules, by creating a `src/env.d.ts` file, and adding the corresponding type declaration.
 
 ```ts env.d.ts
 /// <reference types="@rsbuild/core/types" />
 ```
 
 !!!info
-Make sure the project have a dependency on `@rsbuild/core`.
-!!!
-
-!!!info
-Yes, `@rsbuild/core`, it's not a typoe.
+Yes, reference types from `@rsbuild/core`, it's not a typo.
 !!!
 
 ### Monorepo
 
-If your solution is a monorepo, ensure that projects referencing your packages that include CSS Modules, also include the necessary type definitions
+If the solution is a monorepo, ensure that projects referencing the packages that include CSS Modules, also include the necessary type definitions
 
 For example, given the following structure:
 
@@ -510,9 +506,9 @@ Copy the CSS Modules typings into the `app` web application own `env.d.ts` file,
 ```
 
 !!!info
-For additional information abour CSS modules type declaration, refer to the Rsbuild [documentation](https://rsbuild.dev/guide/basic/css-modules#type-declaration).
+For additional information about CSS modules type declaration, refer to the Rslib/Rsbuild [documentation](https://rsbuild.dev/guide/basic/css-modules#type-declaration).
 !!!
 
 ## Try it :rocket:
 
-To test your new Rslib configuration, open a terminal at the root of the project and execute the [CLI script added earlier](#add-a-cli-script). The library project should should be compiled without outputting any error in the terminal and watch process should start.
+To test the new Rslib configuration, open a terminal at the root of the project and execute the [CLI script added earlier](#add-a-cli-script). The library project should should be compiled without outputting any error in the terminal and watch process should start.
