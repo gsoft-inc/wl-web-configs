@@ -453,13 +453,13 @@ export default defineDevConfig({
 
 #### Typings
 
-When you reference an SVG asset in TypeScript code, TypeScript may prompt that the module is missing a type definition:
+When an SVG asset in referenced in TypeScript code, TypeScript may prompt that the module is missing a type definition:
 
 ```bash
 TS2307: Cannot find module './logo.svg' or its corresponding type declarations.
 ```
 
-To fix this, you need to add type declaration for the SVG assets, create a `src/env.d.ts` file, and add the type declaration.
+To fix this, add a type declaration for the SVG assets, by creating a `src/env.d.ts` file, and add the type declaration.
 
 ```ts src/env.d.ts
 declare module '*.svg' {
@@ -564,7 +564,7 @@ export const transformer: RsbuildConfigTransformer = (config: RsbuildConfig) => 
 
 ## Setup nodemon
 
-[Nodemon](https://nodemon.io/) is a utility that will monitor for any changes in the `rsbuild.dev.dev.ts` file and restart the Rsbuild development server whenever a change occurs.
+[Nodemon](https://nodemon.io/) is a utility that will monitor for any changes in the `rsbuild.dev.ts` file and restart the Rsbuild development server whenever a change occurs.
 
 First, add a `nodemon.json` file at the root of the project:
 
