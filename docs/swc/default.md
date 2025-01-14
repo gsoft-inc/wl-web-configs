@@ -1,5 +1,5 @@
 ---
-order: 140
+order: 100
 icon: /static/swc.svg
 label: SWC
 expanded: true
@@ -8,6 +8,10 @@ toc:
 ---
 
 # SWC
+
+!!!warning
+`@workleap/swc-configs` is now in maintenance mode, with the exception of the [Jest shared configurations](./configure-jest.md), which remain actively maintained. If you're starting a new project, consider using [@workleap/rsbuild-configs](../rsbuild/default.md) or [@workleap/rslib-configs](../rslib/default.md) instead for better performance and modern tooling.
+!!!
 
 <!-- !!!warning Before you continue...
 

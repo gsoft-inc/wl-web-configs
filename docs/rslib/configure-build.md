@@ -103,7 +103,7 @@ export default defineBuildConfig();
 
 The `defineBuildConfig(options)` function can be used as shown in the previous example, however, if you wish to customize the default configuration, the function also accept a few predefined options to help with that 👇
 
-### entry
+### `entry`
 
 - **Type**: An object literal accepting any [source.entry](https://rsbuild.dev/config/source/entry) options.
 - **Default**: `{ index: "./src/**" }` when the [bundle](https://lib.rsbuild.dev/config/lib/bundle) option is `false`, otherwise `{ index: ["./src/index.ts", "./src/index.js"] }`.
@@ -120,7 +120,7 @@ export default defineBuildConfig({
 });
 ```
 
-### format
+### `format`
 
 - **Type**: `string`
 - **Default**: `esm`
@@ -135,7 +135,7 @@ export default defineBuildConfig({
 });
 ```
 
-### syntax
+### `syntax`
 
 - **Type**: `string`
 - **Default**: `esnext`
@@ -150,7 +150,7 @@ export default defineBuildConfig({
 });
 ```
 
-### bundle
+### `bundle`
 
 - **Type**: `boolean`
 - **Default**: `false`
@@ -171,7 +171,7 @@ Tree-shaking is most effective when bundlers can exclude entire files from the f
 For more details on the differences between bundled and bundleless output, refer to the [documentation](https://lib.rsbuild.dev/guide/basic/output-structure#bundle--bundleless).
 !!!
 
-### tsconfigPath
+### `tsconfigPath`
 
 - **Type**: `string`
 - **Default**: `undefined`
@@ -186,7 +186,7 @@ export default defineBuildConfig({
 });
 ```
 
-### dts
+### `dts`
 
 - **Type**: An object literal accepting any [lib.dts](https://lib.rsbuild.dev/config/lib/dts) options.
 - **Default**: `true`
@@ -201,7 +201,7 @@ export default defineBuildConfig({
 });
 ```
 
-### target
+### `target`
 
 - **Type**: `string`
 - **Default**: `web`
@@ -216,7 +216,7 @@ export default defineBuildConfig({
 });
 ```
 
-### distPath
+### `distPath`
 
 - **Type**: `string`
 - **Default**: `dist`
@@ -232,7 +232,7 @@ export default defineBuildConfig({
 });
 ```
 
-### plugins
+### `plugins`
 
 - **Type**: An array of Rsbuild [plugin instances](https://rsbuild.dev/plugins/list/index)
 - **Default**: `[]`
@@ -248,7 +248,7 @@ export default defineBuildConfig({
 });
 ```
 
-### sourceMap
+### `sourceMap`
 
 - **Type**: `false` or an object literal accepting any [output.sourceMap](https://rsbuild.dev/config/output/source-map) options.
 - **Default**: `{ js: "source-map", css: true }`
@@ -275,7 +275,7 @@ export default defineBuildConfig({
 });
 ```
 
-### react
+### `react`
 
 - **Type**: `false` or `(defaultOptions: PluginReactOptions) => PluginReactOptions`
 - **Default**: `defaultOptions => defaultOptions`
@@ -308,7 +308,7 @@ export default defineBuildConfig({
 });
 ```
 
-### svgr
+### `svgr`
 
 - **Type**: `false` or `(defaultOptions: PluginSvgrOptions) => PluginSvgrOptions`
 - **Default**: `defaultOptions => defaultOptions`
@@ -419,7 +419,9 @@ export default defineBuildConfig({
 
 Generic transformers can use the `context` parameter to gather additional information about their execution context, like the `environment` they are operating in.
 
-```ts !#2 transformer.ts
+```ts !#4 transformer.ts
+import type { RslibConfig, RslibConfigTransformer } from "@workleap/rslib-configs";
+
 export const transformer: RslibConfigTransformer = (config: RslibConfig) => {
     if (context.environment === "build") {
         config.tools = config.tools ?? {};

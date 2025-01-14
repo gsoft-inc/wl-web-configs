@@ -1,5 +1,5 @@
 ---
-order: 110
+order: 130
 icon: /static/rslib.svg
 label: Rslib
 expanded: true
@@ -69,6 +69,6 @@ The shared configurations offered by `@workleap/rslib-configs` includes the foll
 
 ## Getting started
 
-To get started, follow the quick start guide to configure Rslib for either a [development environment](./configure-dev.md) or a [production environment](./configure-build.md).
+To get started, follow the quick start guide to configure Rsbuild for either a [development environment](./configure-dev.md), a [production environment](./configure-build.md) or [storybook](./configure-storybook.md).
 
 If your project is already using `@workleap/tsup-configs`, follow the [migration guide](./migrate-from-tsup.md).

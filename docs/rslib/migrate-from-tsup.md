@@ -66,7 +66,7 @@ Rename the file from `tsup.dev.ts` to `rslib.dev.ts`.
 Then, open the `rslib.dev.ts` file and and apply the following changes:
 
 - Replace `"@workleap/tsup-configs"` for `"@workleap/rslib-configs"`.
-- Add a `tsconfigPath` option referencing the `tsconfig.build.json` created earlier.
+- Add a `tsconfigPath` option and reference the previously created `tsconfig.build.json` file.
 
 Before:
 
@@ -94,7 +94,7 @@ Rename the file from `tsup.build.ts` to `rslib.build.ts`.
 Then, open the `rslib.build.ts` file and and apply the following changes:
 
 - Replace `"@workleap/tsup-configs"` for `"@workleap/rslib-configs"`.
-- Add a `tsconfigPath` option referencing the `tsconfig.build.json` created earlier.
+- Add a `tsconfigPath` option and reference the previously created `tsconfig.build.json` file.
 
 Before:
 

@@ -518,7 +518,9 @@ export default defineBuildConfig({
 
 Generic transformers can use the `context` parameter to gather additional information about their execution context, like the `environment` they are operating in.
 
-```ts !#2 transformer.ts
+```ts !#4 transformer.ts
+import type { RsbuildConfig, RsbuildConfigTransformer } from "@workleap/rsbuild-configs";
+
 export const transformer: RsbuildConfigTransformer = (config: RsbuildConfig) => {
     if (context.environment === "build") {
         config.output = {
