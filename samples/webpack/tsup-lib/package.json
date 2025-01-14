@@ -24,7 +24,7 @@
         "typecheck": "tsc"
     },
     "devDependencies": {
-        "@typescript-eslint/parser": "8.19.1",
+        "@typescript-eslint/parser": "8.20.0",
         "@workleap/eslint-plugin": "workspace:*",
         "@workleap/tsup-configs": "workspace:*",
         "@workleap/typescript-configs": "workspace:*",

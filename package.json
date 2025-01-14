@@ -46,11 +46,11 @@
     "devDependencies": {
         "@changesets/changelog-github": "0.5.0",
         "@changesets/cli": "2.27.11",
-        "@typescript-eslint/parser": "8.19.1",
+        "@typescript-eslint/parser": "8.20.0",
         "@workleap/eslint-plugin": "workspace:*",
         "@workleap/typescript-configs": "workspace:*",
         "eslint": "8.57.0",
-        "knip": "5.41.1",
+        "knip": "5.42.0",
         "pkg-pr-new": "0.0.39",
         "prettier": "3.4.2",
         "retypeapp": "3.6.0",

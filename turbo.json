@@ -23,7 +23,9 @@
             "persistent": true
         },
         "lint": {
-            "dependsOn": ["eslint", "typecheck", "//#syncpack", "//#knip"]
+            // Temporary disabling knip until Rsbuild and Rslib plugins are available.
+            // "dependsOn": ["eslint", "typecheck", "//#syncpack", "//#knip"]
+            "dependsOn": ["eslint", "typecheck", "//#syncpack"]
         },
         "//#eslint": {
             "outputs": ["node_modules/.cache/eslint"]

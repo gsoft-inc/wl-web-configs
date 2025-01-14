@@ -26,7 +26,7 @@
     "devDependencies": {
         "@rsbuild/core": "1.1.13",
         "@rslib/core": "0.3.1",
-        "@typescript-eslint/parser": "8.19.1",
+        "@typescript-eslint/parser": "8.20.0",
         "@workleap/eslint-plugin": "workspace:*",
         "@workleap/rslib-configs": "workspace:*",
         "@workleap/typescript-configs": "workspace:*",
