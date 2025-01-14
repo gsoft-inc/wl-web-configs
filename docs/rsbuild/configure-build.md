@@ -13,6 +13,8 @@ To configure [Rsbuild](https://rsbuild.dev/) for a production environment, execu
 
 ## Install the packages
 
+Open a terminal at the root of the web application project and install the following packages:
+
 +++ pnpm
 ```bash
 pnpm add -D @workleap/rsbuild-configs @workleap/browserslist-config @rsbuild/core @rspack/core browserslist
@@ -168,7 +170,7 @@ Set Rsbuild [output.distPath](https://rsbuild.dev/config/output/dist-path) optio
 
 ```ts !#8 rsbuild.build.ts
 import { defineBuildConfig } from "@workleap/rsbuild-configs";
-import path from "path";
+import path from "node:path";
 
 export default defineBuildConfig({
     distPath: path.resolve("./a-custom-folder")
@@ -237,7 +239,7 @@ To customize the default [HTML template](https://rsbuild.dev/guide/basic/html-te
 
 ```ts !#5-10 rsbuild.build.ts
 import { defineBuildConfig } from "@workleap/rsbuild-configs";
-import path from "path";
+import path from "node:path";
 
 export default defineBuildConfig({
     html: defaultOptions => {

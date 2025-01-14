@@ -9,7 +9,7 @@ toc:
 
 # Migrate from webpack
 
-To migrate from [@squide/firefly-webpack-configs](https://www.npmjs.com/package/@squide/firefly-webpack-configs) to [@squide/firefly-rsbuild-configs](https://www.npmjs.com/package/@workleap/rsbuild-configs), execute the following steps :point_down:
+To migrate from [@workleap/webpack-configs](https://www.npmjs.com/package/@workleap/webpack-configs) to [@workleap/rsbuild-configs](https://www.npmjs.com/package/@workleap/rsbuild-configs), execute the following steps :point_down:
 
 ## Update packages
 
@@ -29,7 +29,7 @@ npm install -D @workleap/rsbuild-configs @rsbuild/core @rspack/core
 ```
 +++
 
-Then, in the same terminal, remove the following packages:
+Then, using the same terminal, remove the following packages:
 
 +++ pnpm
 ```bash
@@ -52,7 +52,7 @@ If your web application project uses SWC for tests, you may want to keep the `@s
 ## Update files
 
 ```
-web-app
+web-project
 ├── public
 ├──── index.html       -->  U
 ├── webpack.dev.js     -->  rsbuild.dev.ts
@@ -63,36 +63,6 @@ web-app
 ├── package.json
 ```
 
-### `webpack.build.js`
-
-Rename the file from `webpack.build.js` to `rsbuild.build.ts`.
-
-Then, open the `rsbuild.build.ts` file and apply the following changes:
-
-- Replace `"@workleap/webpack-configs"` for `"@workleap/rsbuild-configs"`.
-- Remove `import { swcConfig } from "./swc.build.js"`.
-- Remove the first argument of the `defineBuildHostConfig` function.
-- Remove `// @ts-check`.
-
-Before:
-
-```js webpack.build.js
-// @ts-check
-
-import { defineBuildHostConfig } from "@workleap/webpack-configs";
-import { swcConfig } from "./swc.build.js";
-
-export default defineBuildHostConfig(swcConfig);
-```
-
-After:
-
-```ts rsbuild.build.ts
-import { defineBuildHostConfig } from "@workleap/rsbuild-configs";
-
-export default defineBuildHostConfig();
-```
-
 ### `webpack.dev.js`
 
 Rename the file from `webpack.dev.js` to `rsbuild.dev.ts`.
@@ -101,7 +71,7 @@ Then, open the `rsbuild.build.ts` file and and apply the following changes:
 
 - Replace `"@workleap/webpack-configs"` for `"@workleap/rsbuild-configs"`.
 - Remove `import { swcConfig } from "./swc.build.js"`.
-- Remove the first argument of the `defineDevHostConfig` function.
+- Remove the argument of the `defineDevConfig` function.
 - Remove `// @ts-check`.
 
 Before:
@@ -109,18 +79,48 @@ Before:
 ```js webpack.dev.js
 // @ts-check
 
-import { defineDevHostConfig } from "@workleap/webpack-configs";
+import { defineDevConfig } from "@workleap/webpack-configs";
 import { swcConfig } from "./swc.dev.js";
 
-export default defineDevHostConfig(swcConfig);
+export default defineDevConfig(swcConfig);
 ```
 
 After:
 
 ```ts rsbuild.dev.ts
-import { defineDevHostConfig } from "@workleap/rsbuild-configs";
+import { defineDevConfig } from "@workleap/rsbuild-configs";
 
-export default defineDevHostConfig(8080);
+export default defineDevConfig();
+```
+
+### `webpack.build.js`
+
+Rename the file from `webpack.build.js` to `rsbuild.build.ts`.
+
+Then, open the `rsbuild.build.ts` file and apply the following changes:
+
+- Replace `"@workleap/webpack-configs"` for `"@workleap/rsbuild-configs"`.
+- Remove `import { swcConfig } from "./swc.build.js"`.
+- Remove the argument of the `defineBuildConfig` function.
+- Remove `// @ts-check`.
+
+Before:
+
+```js webpack.build.js
+// @ts-check
+
+import { defineBuildConfig } from "@workleap/webpack-configs";
+import { swcConfig } from "./swc.build.js";
+
+export default defineBuildConfig(swcConfig);
+```
+
+After:
+
+```ts rsbuild.build.ts
+import { defineBuildConfig } from "@workleap/rsbuild-configs";
+
+export default defineBuildConfig();
 ```
 
 ### `postcss.config.ts`

@@ -13,7 +13,7 @@ To configure [Rslib](https://lib.rsbuild.dev) for publication, execute the follo
 
 ## Install the packages
 
-Open a terminal at the root of the project and install the following packages:
+Open a terminal at the root of the library project and install the following packages:
 
 +++ pnpm
 ```bash
@@ -225,7 +225,7 @@ Set Rsbuild [output.distPath](https://rsbuild.dev/config/output/dist-path) optio
 
 ```ts !#5 rslib.build.ts
 import { defineBuildConfig } from "@workleap/rslib-configs";
-import path from "path";
+import path from "node:path";
 
 export default defineBuildConfig({
     distPath: path.resolve("./a-custom-folder")

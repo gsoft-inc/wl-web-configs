@@ -1,4 +1,4 @@
-import path from "path";
+import path from "node:path";
 import type { RuleSetRule, RuleSetUseItem } from "webpack";
 import { matchLoaderName } from "../../src/transformers/moduleRules.ts";
 

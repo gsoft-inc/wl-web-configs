@@ -55,6 +55,7 @@ export function defineStorybookConfig(options: DefineStorybookConfigOptions = {}
         },
         output: {
             target: "web",
+            minify: false,
             sourceMap
         },
         plugins: [

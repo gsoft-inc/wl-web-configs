@@ -1,7 +1,7 @@
 import type { RslibConfig } from "@rslib/core";
 
 export interface RslibConfigTransformerContext {
-    environment: "dev" | "build";
+    environment: "dev" | "build" | "storybook";
 }
 
 export type RslibConfigTransformer = (config: RslibConfig, context: RslibConfigTransformerContext) => RslibConfig;

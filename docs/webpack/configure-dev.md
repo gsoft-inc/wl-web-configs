@@ -333,7 +333,7 @@ To extend/replace the default `html-webpack-plugin` configuration, use the `defi
 
 import { defineDevConfig, defineDevHtmlWebpackPluginConfig } from "@workleap/webpack-configs";
 import { swcConfig } from "./swc.dev.js";
-import path from "path";
+import path from "node:path";
 
 export default defineDevConfig(swcConfig, {
     htmlWebpackPlugin: defineDevHtmlWebpackPluginConfig({

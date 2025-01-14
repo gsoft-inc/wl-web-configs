@@ -13,7 +13,7 @@ To configure [Rslib](https://lib.rsbuild.dev) for a development environment, exe
 
 ## Install the packages
 
-Open a terminal at the root of the project and install the following packages:
+Open a terminal at the root of the library project and install the following packages:
 
 +++ pnpm
 ```bash
@@ -159,8 +159,9 @@ For more details on the differences between bundled and bundleless output, refer
 
 Set Rslib [source.tsconfigPath](https://rsbuild.dev/config/source/tsconfig-path) option. When the `bundle` option is set to `false` (default value), the `tsconfigPath` option is required.
 
-```ts !#4 rslib.dev.ts
+```ts !#5 rslib.dev.ts
 import { defineDevConfig } from "@workleap/rslib-configs";
+import path from "node:path";
 
 export default defineDevConfig({
     tsconfigPath: path.resolve("./tsconfig.build.json")
@@ -206,7 +207,7 @@ Set Rsbuild [output.distPath](https://rsbuild.dev/config/output/dist-path) optio
 
 ```ts !#5 rslib.build.ts
 import { defineDevConfig } from "@workleap/rslib-configs";
-import path from "path";
+import path from "node:path";
 
 export default defineDevConfig({
     distPath: path.resolve("./a-custom-folder")

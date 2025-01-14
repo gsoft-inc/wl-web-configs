@@ -13,7 +13,7 @@ To configure [Rsbuild](https://rsbuild.dev/) for a development environment, exec
 
 ## Install the packages
 
-Open a terminal at the root of the project and install the following packages:
+Open a terminal at the root of the web application project and install the following packages:
 
 +++ pnpm
 ```bash
@@ -268,7 +268,7 @@ To customize the default [HTML template](https://rsbuild.dev/guide/basic/html-te
 
 ```ts !#5-10 rsbuild.dev.ts
 import { defineDevConfig } from "@workleap/rsbuild-configs";
-import path from "path";
+import path from "node:path";
 
 export default defineDevConfig({
     html: defaultOptions => {

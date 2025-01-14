@@ -1,5 +1,6 @@
 import { defineDevConfig } from "@workleap/rslib-configs";
+import path from "node:path";
 
 export default defineDevConfig({
-    tsconfigPath: "./tsconfig.build.json"
+    tsconfigPath: path.resolve("./tsconfig.build.json")
 });
