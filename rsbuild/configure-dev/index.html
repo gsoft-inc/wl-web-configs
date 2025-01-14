@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/wl-web-configs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.789492583867">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.790190789202">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.6.0">
@@ -32,12 +32,12 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../static/favicon.png" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.6.0.789492583867" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.6.0.790190789202" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.789492583867" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.790190789202" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.6.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.789492583867" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.6.0.789492583867" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.790190789202" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.6.0.790190789202" defer></script>
 
     <link href="https://gsoft-inc.github.io/wl-idp-docs-hub/static/retype-customization.css" rel="stylesheet" />
 
@@ -312,7 +312,7 @@
         <span>Install the packages</span>
     </h2>
 </doc-anchor-target>
-<p>Open a terminal at the root of the project and install the following packages:</p>
+<p>Open a terminal at the root of the web application project and install the following packages:</p>
 <doc-tabs>
 <doc-tab v-cloak id="pnpm">
 <template #title>pnpm</template>
@@ -620,7 +620,7 @@ export default defineDevConfig({
 <div class="codeblock-wrapper"><doc-codeblock>
 <div class="codeblock-title">rsbuild.dev.ts</div>
 <pre class="language-typescript" data-line="5-10"><code v-pre class="language-typescript">import { defineDevConfig } from &quot;@workleap/rsbuild-configs&quot;;
-import path from &quot;path&quot;;
+import path from &quot;node:path&quot;;
 
 export default defineDevConfig({
     html: defaultOptions =&gt; {
@@ -714,7 +714,7 @@ export default defineDevConfig({
 <li><strong>Type</strong>: <code v-pre>false</code> or an object literal accepting any <a href="https://rsbuild.dev/config/output/source-map" class="outbound" target="_blank">output.sourceMap</a> options.</li>
 <li><strong>Default</strong>: <code v-pre>{ js: &quot;cheap-module-source-map&quot;, css: true }</code></li>
 </ul>
-<p>Whether or not to generate <a href="https://rsbuild.dev/config/output/source-map" class="outbound" target="_blank">source map</a>. To disable source map, set the option to <code v-pre>false</code>.</p>
+<p>Whether or not to generate <a href="https://rsbuild.dev/config/output/source-map" class="outbound" target="_blank">source maps</a>. To disable source map, set the option to <code v-pre>false</code>.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <div class="codeblock-title">rsbuild.dev.ts</div>
 <pre class="language-typescript" data-line="4"><code v-pre class="language-typescript">import { defineDevConfig } from &quot;@workleap/rsbuild-configs&quot;;
@@ -832,11 +832,11 @@ export default defineDevConfig({
         <span>Typings</span>
     </h4>
 </doc-anchor-target>
-<p>When you reference an SVG asset in TypeScript code, TypeScript may prompt that the module is missing a type definition:</p>
+<p>When an SVG asset in referenced in TypeScript code, TypeScript may prompt that the module is missing a type definition:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-bash"><code v-pre class="language-bash">TS2307: Cannot find module './logo.svg' or its corresponding type declarations.</code></pre>
 </doc-codeblock></div>
-<p>To fix this, you need to add type declaration for the SVG assets, create a <code v-pre>src/env.d.ts</code> file, and add the type declaration.</p>
+<p>To fix this, add a type declaration for the SVG assets, by creating a <code v-pre>src/env.d.ts</code> file, and add the type declaration.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <div class="codeblock-title">src/env.d.ts</div>
 <pre class="language-typescript"><code v-pre class="language-typescript">declare module '*.svg' {
@@ -947,7 +947,9 @@ export default defineDevConfig({
 <p>Generic transformers can use the <code v-pre>context</code> parameter to gather additional information about their execution context, like the <code v-pre>environment</code> they are operating in.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <div class="codeblock-title">transformer.ts</div>
-<pre class="language-typescript" data-line="2"><code v-pre class="language-typescript">export const transformer: RsbuildConfigTransformer = (config: RsbuildConfig) =&gt; {
+<pre class="language-typescript" data-line="4"><code v-pre class="language-typescript">import type { RsbuildConfig, RsbuildConfigTransformer } from &quot;@workleap/rsbuild-configs&quot;;
+
+export const transformer: RsbuildConfigTransformer = (config: RsbuildConfig) =&gt; {
     if (context.environment === &quot;dev&quot;) {
         config.tools = config.tools ?? {};
         config.tools.rspack = config.tools.rspack ?? {};
@@ -971,7 +973,7 @@ export default defineDevConfig({
         <span>Setup nodemon</span>
     </h2>
 </doc-anchor-target>
-<p><a href="https://nodemon.io/" class="outbound" target="_blank">Nodemon</a> is a utility that will monitor for any changes in the <code v-pre>rsbuild.dev.dev.ts</code> file and restart the Rsbuild development server whenever a change occurs.</p>
+<p><a href="https://nodemon.io/" class="outbound" target="_blank">Nodemon</a> is a utility that will monitor for any changes in the <code v-pre>rsbuild.dev.ts</code> file and restart the Rsbuild development server whenever a change occurs.</p>
 <p>First, add a <code v-pre>nodemon.json</code> file at the root of the project:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-none" data-line="8"><code v-pre class="language-none">web-project
@@ -998,7 +1000,7 @@ export default defineDevConfig({
         <span>Add a CLI script</span>
     </h2>
 </doc-anchor-target>
-<p>To initiate the development server, add the following script to your project <code v-pre>package.json</code> file:</p>
+<p>To initiate the development server, add the following script to the project <code v-pre>package.json</code> file:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <div class="codeblock-title">package.json</div>
 <pre class="language-json"><code v-pre class="language-json">{
@@ -1108,39 +1110,22 @@ export default defineDevConfig({
         <span>CSS modules typings</span>
     </h2>
 </doc-anchor-target>
-<p>When you import CSS Modules in TypeScript code, TypeScript may prompt that the module is missing a type definition:</p>
+<p>When CSS Modules are imported from TypeScript code, TypeScript may prompt that the module is missing a type definition:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-bash"><code v-pre class="language-bash">TS2307: Cannot find module './index.module.css' or its corresponding type declarations.</code></pre>
 </doc-codeblock></div>
-<p>To fix this, you need to add a type declaration file for the CSS Modules, please create a <code v-pre>src/env.d.ts</code> file, and add the corresponding type declaration.</p>
+<p>To fix this, add a type declaration file for the CSS Modules, by creating a <code v-pre>src/env.d.ts</code> file, and adding the corresponding type declaration.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <div class="codeblock-title">env.d.ts</div>
 <pre class="language-typescript"><code v-pre class="language-typescript">/// &lt;reference types=&quot;@rsbuild/core/types&quot; /&gt;</code></pre>
 </doc-codeblock></div>
-<div class="flex mb-6">
-    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-300"></div>
-    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
-        <div class="flex items-center ml-4 h-7">
-            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-blue-300" width="22" height="22" viewBox="0 0 24 24" role="presentation">
-                <g fill="currentColor"><g>
-                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
-                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
-                    <path fill="none" d="M0 0h24v24H0z"></path>
-                </g></g>
-            </svg>
-        </div>
-        <div class="pr-5 ml-3 w-full">
-<p>Make sure the project have a dependency on <code v-pre>@rsbuild/core</code>.</p>
-        </div>
-    </div>
-</div>
 <doc-anchor-target id="monorepo">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#monorepo">#</doc-anchor-trigger>
         <span>Monorepo</span>
     </h3>
 </doc-anchor-target>
-<p>If your solution is a monorepo, ensure that projects referencing your packages that include CSS Modules, also include the necessary type definitions</p>
+<p>If the solution is a monorepo, ensure that projects referencing the packages that include CSS Modules, also include the necessary type definitions</p>
 <p>For example, given the following structure:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-none" data-line="3,7"><code v-pre class="language-none">workspace
@@ -1180,7 +1165,7 @@ export default defineDevConfig({
             </svg>
         </div>
         <div class="pr-5 ml-3 w-full">
-<p>For additional information abour CSS modules type declaration, refer to the Rsbuild <a href="https://rsbuild.dev/guide/basic/css-modules#type-declaration" class="outbound" target="_blank">documentation</a>.</p>
+<p>For additional information about CSS modules type declaration, refer to the Rsbuild <a href="https://rsbuild.dev/guide/basic/css-modules#type-declaration" class="outbound" target="_blank">documentation</a>.</p>
         </div>
     </div>
 </div>
@@ -1190,7 +1175,7 @@ export default defineDevConfig({
         <span>Try it <span class="docs-emoji">&#x1F680;</span></span>
     </h2>
 </doc-anchor-target>
-<p>To test your new Rsbuild configuration, open a terminal at the root of the project and execute the <doc-anchor-trigger to="#add-a-cli-script">CLI script added earlier</doc-anchor-trigger>. A development server should start without outputting any error in the terminal.</p>
+<p>To test the new Rsbuild configuration, open a terminal at the root of the project and execute the <doc-anchor-trigger to="#add-a-cli-script">CLI script added earlier</doc-anchor-trigger>. A development server should start without outputting any error in the terminal.</p>
 
                                 
                                 <!-- Required only on API pages -->
