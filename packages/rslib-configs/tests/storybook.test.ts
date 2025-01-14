@@ -1,5 +1,6 @@
-import type { RsbuildConfig, RsbuildPlugin, SourceMap } from "@rsbuild/core";
-import type { RsbuildConfigTransformer } from "../src/applyTransformers.ts";
+import type { RsbuildPlugin, SourceMap } from "@rsbuild/core";
+import type { RslibConfig } from "@rslib/core";
+import type { RslibConfigTransformer } from "../src/applyTransformers.ts";
 import { defineStorybookConfig } from "../src/storybook.ts";
 
 test("when additional plugins are provided, append the provided plugins at the end of the plugins array", () => {
@@ -87,8 +88,8 @@ test("when svgr is a function, the function is executed", () => {
     expect(fct).toHaveBeenCalledTimes(1);
 });
 
-test("when a transformer is provided, and the transformer update the existing configuration object, the transformer is applied on the Rsbuild config", () => {
-    const entryTransformer: RsbuildConfigTransformer = (config: RsbuildConfig) => {
+test("when a transformer is provided, and the transformer update the existing configuration object, the transformer is applied on the Rslib config", () => {
+    const entryTransformer: RslibConfigTransformer = (config: RslibConfig) => {
         config.source = config.source ?? {};
         config.source.entry = {
             index: "a-custom-value-in-a-transformer"
@@ -104,15 +105,14 @@ test("when a transformer is provided, and the transformer update the existing co
     expect(result.source!.entry!.index).toBe("a-custom-value-in-a-transformer");
 });
 
-test("when a transformer is provided, and the transformer returns a new configuration object, the transformer is applied on the Rsbuild config", () => {
-    const entryTransformer: RsbuildConfigTransformer = () => {
-        return {
-            source: {
-                entry: {
-                    index: "a-custom-value-in-a-transformer"
-                }
-            }
+test("when a transformer is provided, and the transformer returns a new configuration object, the transformer is applied on the Rslib config", () => {
+    const entryTransformer: RslibConfigTransformer = (config: RslibConfig) => {
+        config.source = config.source ?? {};
+        config.source.entry = {
+            index: "a-custom-value-in-a-transformer"
         };
+
+        return config;
     };
 
     const result = defineStorybookConfig({
@@ -123,7 +123,7 @@ test("when a transformer is provided, and the transformer returns a new configur
 });
 
 test("when multiple transformers are provided, all the transformers are applied on the webpack config", () => {
-    const entryTransformer: RsbuildConfigTransformer = (config: RsbuildConfig) => {
+    const entryTransformer: RslibConfigTransformer = (config: RslibConfig) => {
         config.source = config.source ?? {};
         config.source.entry = {
             index: "a-custom-value-in-a-transformer"
@@ -132,7 +132,7 @@ test("when multiple transformers are provided, all the transformers are applied 
         return config;
     };
 
-    const distPathTransformer: RsbuildConfigTransformer = (config: RsbuildConfig) => {
+    const distPathTransformer: RslibConfigTransformer = (config: RslibConfig) => {
         config.output = config.output ?? {};
         config.output.distPath = config.output.distPath ?? {};
         config.output.distPath.js = "a-custom-dist-path-in-a-tranformer";
@@ -155,16 +155,5 @@ test("transformers context environment is \"storybook\"", () => {
         transformers: [mockTransformer]
     });
 
-    expect(mockTransformer).toHaveBeenCalledWith(expect.anything(), { environment: "storybook", verbose: false });
-});
-
-test("when the verbose option is true, the transformers context verbose value is \"true\"", () => {
-    const mockTransformer = jest.fn();
-
-    defineStorybookConfig({
-        verbose: true,
-        transformers: [mockTransformer]
-    });
-
-    expect(mockTransformer).toHaveBeenCalledWith(expect.anything(), { environment: "storybook", verbose: true });
+    expect(mockTransformer).toHaveBeenCalledWith(expect.anything(), { environment: "storybook" });
 });
