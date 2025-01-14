@@ -37,7 +37,7 @@ export function defineStorybookConfig(options: DefineStorybookConfigOptions = {}
 
     const config = defineConfig({
         lib: [{
-            dts: false,
+            dts: false
         }],
         output: {
             target: "web",
