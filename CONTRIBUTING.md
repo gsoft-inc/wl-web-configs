@@ -102,20 +102,52 @@ If you got linting error, most of the time, they can be fixed automatically usin
 
 From the project root, you have access to many commands the main ones are:
 
-### dev-sample
+### dev-webpack
 
-Build the sample application for development and start the dev server.
+Build the sample application using webpack as a bundler for development and start the dev server.
 
 ```bash
-pnpm dev-sample
+pnpm dev-webpack
 ```
 
-### dev-sample-msw
+### dev-webpack-msw
 
-Build the sample application for development with MSW and start the dev server.
+Build the sample application using webpack as a bundler for development with MSW and start the dev server.
 
 ```bash
-pnpm dev-sample-msw
+pnpm dev-webpack-msw
+```
+
+### dev-rsbuild
+
+Build the sample application using Rsbuild as a bundler for development and start the dev server.
+
+```bash
+pnpm dev-rsbuild
+```
+
+### dev-rsbuild-msw
+
+Build the sample application using Rsbuild as a bundler for development with MSW and start the dev server.
+
+```bash
+pnpm dev-rsbuild-msw
+```
+
+### dev-storybook-rsbuild
+
+Build the sample Storybook application using Rsbuild as a bundler for development and start the dev server.
+
+```bash
+pnpm dev-storybook-rsbuild
+```
+
+### dev-storybook-rslib
+
+Build the sample Storybook application using Rsbuild as a bundler but with an Rslib config file for development and start the dev server.
+
+```bash
+pnpm dev-storybook-rslib
 ```
 
 ### build-pkg
@@ -126,20 +158,68 @@ Build the packages for release.
 pnpm build-pkg
 ```
 
-### build-sample
+### build-webpack
 
-Build the sample application for release.
+Build the sample application using webpack as a bundler for release.
 
 ```bash
-pnpm build-sample
+pnpm build-webpack
 ```
 
-### serve-sample
+### build-rsbuild
 
-Build the sample application for deployment and start a local web server to serve the application.
+Build the sample application using Rsbuild as a bundler for release.
 
 ```bash
-pnpm serve-sample
+pnpm build-rsbuild
+```
+
+### build-storybook-rsbuild
+
+Build the sample Storybook application using Rsbuild as a bundler for release.
+
+```bash
+pnpm build-storybook-rsbuild
+```
+
+### build-storybook-rslib
+
+Build the sample Storybook application using Rsbuild as a bundler but with an Rslib config file as a bundler for release.
+
+```bash
+pnpm build-storybook-rslib
+```
+
+### serve-webpack
+
+Build the sample application using webpack and start a local web server to serve the application.
+
+```bash
+pnpm serve-webpack
+```
+
+### serve-rsbuild
+
+Build the sample application using Rsbuild and start a local web server to serve the application.
+
+```bash
+pnpm serve-rsbuild
+```
+
+### serve-storybook-rsbuild
+
+Build the sample Storybook application using Rsbuild and start a local web server to serve the application.
+
+```bash
+pnpm serve-storybook-rsbuild
+```
+
+### serve-storybook-rslib
+
+Build the sample Storybook application using Rsbuild as a bundler but with an Rslib config file and start a local web server to serve the application.
+
+```bash
+pnpm serve-storybook-rsbuild
 ```
 
 ### dev-docs

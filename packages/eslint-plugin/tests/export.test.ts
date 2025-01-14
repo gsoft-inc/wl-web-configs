@@ -1,5 +1,5 @@
-import fs from "fs";
-import path from "path";
+import fs from "node:fs";
+import path from "node:path";
 import plugin from "../lib";
 
 const rules = fs.readdirSync(path.resolve(__dirname, "../lib/rules")).map(x => path.parse(x).name);

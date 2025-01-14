@@ -1,5 +1,5 @@
 ---
-order: 100
+order: 110
 icon: /static/postcss.svg
 label: PostCSS
 expanded: true

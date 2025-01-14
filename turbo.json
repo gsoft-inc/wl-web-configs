@@ -23,7 +23,9 @@
             "persistent": true
         },
         "lint": {
-            "dependsOn": ["eslint", "typecheck", "//#syncpack", "//#knip"]
+            // Temporary disabling knip until Rsbuild and Rslib plugins are available.
+            // "dependsOn": ["eslint", "typecheck", "//#syncpack", "//#knip"]
+            "dependsOn": ["eslint", "typecheck", "//#syncpack"]
         },
         "//#eslint": {
             "outputs": ["node_modules/.cache/eslint"]
@@ -39,8 +41,12 @@
         },
         "//#syncpack": {},
         "//#knip": {},
-        "@sample/app#test": {
-            "dependsOn": ["@workleap/swc-configs#build", "@sample/tsup-lib#build"],
+        "@rsbuild-sample/app#test": {
+            "dependsOn": ["@workleap/swc-configs#build", "@rsbuild-sample/rslib-lib#build"],
+            "outputs": ["node_modules/.cache/jest/**"]
+        },
+        "@webpack-sample/app#test": {
+            "dependsOn": ["@workleap/swc-configs#build", "@webpack-sample/tsup-lib#build"],
             "outputs": ["node_modules/.cache/jest/**"]
         },
         "test": {

@@ -304,6 +304,16 @@ test("when react is false, the react plugin is not included", () => {
     expect(plugin).toBeUndefined();
 });
 
+test("when react is a function, the function is executed", () => {
+    const fct = jest.fn();
+
+    defineDevConfig({
+        react: fct
+    });
+
+    expect(fct).toHaveBeenCalledTimes(1);
+});
+
 test("when svgr is false, the svgr plugin is not included", () => {
     const result = defineDevConfig({
         svgr: false
@@ -312,6 +322,16 @@ test("when svgr is false, the svgr plugin is not included", () => {
     const plugin = result.plugins?.find(x => (x as RsbuildPlugin).name === "rsbuild:svgr");
 
     expect(plugin).toBeUndefined();
+});
+
+test("when svgr is a function, the function is executed", () => {
+    const fct = jest.fn();
+
+    defineDevConfig({
+        svgr: fct
+    });
+
+    expect(fct).toHaveBeenCalledTimes(1);
 });
 
 test("when a transformer is provided, and the transformer update the existing configuration object, the transformer is applied on the Rsbuild config", () => {

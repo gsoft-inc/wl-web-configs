@@ -1,5 +1,5 @@
 ---
-order: 110
+order: 80
 icon: /static/tsup.svg
 label: tsup
 expanded: true
@@ -8,6 +8,10 @@ toc:
 ---
 
 # tsup
+
+!!!warning
+`@workleap/tsup-configs` is now in maintenance mode. If you're starting a new project, consider using [@workleap/rslib-configs](../rslib/default.md) instead for better performance and modern tooling.
+!!!
 
 <!-- !!!warning Before you continue...
 

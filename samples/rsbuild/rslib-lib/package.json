@@ -1,0 +1,36 @@
+{
+    "name": "@rsbuild-sample/rslib-lib",
+    "author": "Workleap",
+    "version": "0.0.0",
+    "description": "Rslib library to try the web configs.",
+    "private": true,
+    "license": "Apache-2.0",
+    "type": "module",
+    "exports": {
+        ".": {
+            "import": "./dist/index.js",
+            "types": "./dist/index.d.ts",
+            "default": "./dist/index.js"
+        }
+    },
+    "files": [
+        "/dist"
+    ],
+    "scripts": {
+        "dev": "rslib build -w -c ./rslib.dev.ts",
+        "dev-msw": "pnpm dev",
+        "build": "rslib build -c ./rslib.build.ts",
+        "eslint": "eslint . --max-warnings=-0 --cache --cache-location node_modules/.cache/eslint",
+        "typecheck": "tsc"
+    },
+    "devDependencies": {
+        "@rsbuild/core": "1.1.13",
+        "@rslib/core": "0.3.1",
+        "@typescript-eslint/parser": "8.20.0",
+        "@workleap/eslint-plugin": "workspace:*",
+        "@workleap/rslib-configs": "workspace:*",
+        "@workleap/typescript-configs": "workspace:*",
+        "eslint": "8.57.0",
+        "typescript": "5.5.4"
+    }
+}

@@ -1,6 +1,3 @@
-// They are installed in this nested project, but not at the root of the workspace.
-/* eslint-disable storybook/no-uninstalled-addons */
-
 import type { StorybookConfig } from "storybook-react-rsbuild";
 
 const storybookConfig: StorybookConfig = {
@@ -12,7 +9,7 @@ const storybookConfig: StorybookConfig = {
         "@storybook/addon-a11y"
     ],
     stories: [
-        "../../rsbuild/components/src/**/*.stories.(tsx|mdx)"
+        "../../../rsbuild/components/src/**/*.stories.(tsx|mdx)"
     ],
     docs: {
         autodocs: false

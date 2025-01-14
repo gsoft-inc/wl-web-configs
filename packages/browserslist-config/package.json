@@ -27,6 +27,7 @@
     },
     "types": "./dist/index.d.ts",
     "files": [
+        "src",
         "dist",
         "CHANGELOG.md",
         "README.md"
@@ -37,7 +38,7 @@
         "typecheck": "tsc"
     },
     "devDependencies": {
-        "@typescript-eslint/parser": "8.18.0",
+        "@typescript-eslint/parser": "8.20.0",
         "@workleap/eslint-plugin": "workspace:*",
         "@workleap/tsup-configs": "workspace:*",
         "@workleap/typescript-configs": "workspace:*",

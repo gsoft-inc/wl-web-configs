@@ -1,5 +1,5 @@
 ---
-order: 130
+order: 140
 icon: /static/rsbuild.svg
 label: Rsbuild
 expanded: true

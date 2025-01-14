@@ -13,6 +13,8 @@ To configure [Rsbuild](https://rsbuild.dev/) for a production environment, execu
 
 ## Install the packages
 
+Open a terminal at the root of the web application project and install the following packages:
+
 +++ pnpm
 ```bash
 pnpm add -D @workleap/rsbuild-configs @workleap/browserslist-config @rsbuild/core @rspack/core browserslist
@@ -168,7 +170,7 @@ Set Rsbuild [output.distPath](https://rsbuild.dev/config/output/dist-path) optio
 
 ```ts !#8 rsbuild.build.ts
 import { defineBuildConfig } from "@workleap/rsbuild-configs";
-import path from "path";
+import path from "node:path";
 
 export default defineBuildConfig({
     distPath: path.resolve("./a-custom-folder")
@@ -237,7 +239,7 @@ To customize the default [HTML template](https://rsbuild.dev/guide/basic/html-te
 
 ```ts !#5-10 rsbuild.build.ts
 import { defineBuildConfig } from "@workleap/rsbuild-configs";
-import path from "path";
+import path from "node:path";
 
 export default defineBuildConfig({
     html: defaultOptions => {
@@ -308,7 +310,7 @@ export default defineBuildConfig({
 - **Type**: `false` or an object literal accepting any [output.sourceMap](https://rsbuild.dev/config/output/source-map) options.
 - **Default**: `{ js: "source-map", css: true }`
 
-Whether or not to generate [source map](https://rsbuild.dev/config/output/source-map). To disable source map, set the option to `false`. 
+Whether or not to generate [source maps](https://rsbuild.dev/config/output/source-map). To disable source map, set the option to `false`. 
 
 ```ts !#4 rsbuild.build.ts
 import { defineBuildConfig } from "@workleap/rsbuild-configs";
@@ -516,7 +518,9 @@ export default defineBuildConfig({
 
 Generic transformers can use the `context` parameter to gather additional information about their execution context, like the `environment` they are operating in.
 
-```ts !#2 transformer.ts
+```ts !#4 transformer.ts
+import type { RsbuildConfig, RsbuildConfigTransformer } from "@workleap/rsbuild-configs";
+
 export const transformer: RsbuildConfigTransformer = (config: RsbuildConfig) => {
     if (context.environment === "build") {
         config.output = {
@@ -534,7 +538,7 @@ export const transformer: RsbuildConfigTransformer = (config: RsbuildConfig) => 
 
 ## Add a CLI script
 
-To create the bundle files for production, add the following script to your project `package.json` file:
+To create the bundle files for production, add the following script to the project `package.json` file:
 
 ```json package.json
 {
@@ -607,25 +611,21 @@ By default, Rsbuild injects a few environment variables into the code using the 
 
 ## CSS modules typings
 
-When you import CSS Modules in TypeScript code, TypeScript may prompt that the module is missing a type definition:
+When CSS Modules are imported from TypeScript code, TypeScript may prompt that the module is missing a type definition:
 
 ```bash
 TS2307: Cannot find module './index.module.css' or its corresponding type declarations.
 ```
 
-To fix this, you need to add a type declaration file for the CSS Modules, please create a `src/env.d.ts` file, and add the corresponding type declaration.
+To fix this, add a type declaration file for the CSS Modules, by creating a `src/env.d.ts` file, and adding the corresponding type declaration.
 
 ```ts env.d.ts
 /// <reference types="@rsbuild/core/types" />
 ```
 
-!!!info
-Make sure the project have a dependency on `@rsbuild/core`.
-!!!
-
 ### Monorepo
 
-If your solution is a monorepo, ensure that projects referencing your packages that include CSS Modules, also include the necessary type definitions
+If the solution is a monorepo, ensure that projects referencing the packages that include CSS Modules, also include the necessary type definitions
 
 For example, given the following structure:
 
@@ -657,9 +657,9 @@ Copy the CSS Modules typings into the `app` web application own `env.d.ts` file,
 ```
 
 !!!info
-For additional information abour CSS modules type declaration, refer to the Rsbuild [documentation](https://rsbuild.dev/guide/basic/css-modules#type-declaration).
+For additional information about CSS modules type declaration, refer to the Rsbuild [documentation](https://rsbuild.dev/guide/basic/css-modules#type-declaration).
 !!!
 
 ## Try it :rocket:
 
-To test your new Rsbuild configuration, open a terminal at the root of the project and execute the [CLI script added earlier](#add-a-cli-script). The build process should complete without outputting any error in the terminal and the bundle files should be available in the `/dist` folder (or any other `distPath` you configured).
+To test the new Rsbuild configuration, open a terminal at the root of the project and execute the [CLI script added earlier](#add-a-cli-script). The build process should complete without outputting any error in the terminal and the bundle files should be available in the `/dist` folder (or any other `distPath` you configured).

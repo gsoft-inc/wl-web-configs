@@ -163,7 +163,7 @@ Set webpack [output path](https://webpack.js.org/configuration/output/#outputpat
 
 import { defineBuildConfig } from "@workleap/webpack-configs";
 import { swcConfig } from "./swc.build.js";
-import path from "path";
+import path from "node:path";
 
 export default defineBuildConfig(swcConfig, {
     outputPath: path.resolve("./a-custom-folder")
@@ -279,7 +279,7 @@ To extend/replace the default `html-webpack-plugin` configuration, use the `defi
 
 import { defineBuildConfig, defineBuildHtmlWebpackPluginConfig } from "@workleap/webpack-configs";
 import { swcConfig } from "./swc.build.js";
-import path from "path";
+import path from "node:path";
 
 export default defineBuildConfig(swcConfig, {
     htmlWebpackPlugin: defineBuildHtmlWebpackPluginConfig({
@@ -301,7 +301,7 @@ Forward the provided object literal to the [mini-css-extract-plugin](https://git
 
 import { defineBuildConfig, defineMiniCssExtractPluginConfig } from "@workleap/webpack-configs";
 import { swcConfig } from "./swc.build.js";
-import path from "path";
+import path from "node:path";
 
 export default defineBuildConfig(swcConfig, {
     htmlWebpackPluginOptions: defineMiniCssExtractPluginConfig({

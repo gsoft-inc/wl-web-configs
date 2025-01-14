@@ -52,14 +52,14 @@ extends @workleap/browserslist-config
 
 ### `rsbuild.config.ts`
 
-Next, create a configuration file named `rsbuild.config.ts` under the `storybook` folder:
+Next, create a configuration file named `rsbuild.config.ts` under the `.storybook` folder:
 
 ``` !#5
 storybook
 ├── .storybook
 ├──── main.ts
 ├──── preview.tsx
-├──── rsbuild.configts
+├──── rsbuild.config.ts
 ├── .browserslistrc
 ├── package.json
 ```
@@ -81,9 +81,7 @@ import type { StorybookConfig } from "storybook-react-rsbuild";
 
 const storybookConfig: StorybookConfig = {
     framework: "storybook-react-rsbuild",
-    stories: [
-        "../../src/**/*.stories.(tsx|mdx)"
-    ]
+    stories: ["../../src/**/*.stories.(tsx|mdx)"]
 };
 
 export default storybookConfig;
@@ -203,13 +201,15 @@ export default defineStorybookConfig({
 });
 ```
 
-When you reference an SVG asset in TypeScript code, TypeScript may prompt that the module is missing a type definition:
+#### Typings
+
+When an SVG asset in referenced in TypeScript code, TypeScript may prompt that the module is missing a type definition:
 
 ```bash
 TS2307: Cannot find module './logo.svg' or its corresponding type declarations.
 ```
 
-To fix this, you need to add type declaration for the SVG assets, create a `src/env.d.ts` file, and add the type declaration.
+To fix this, add a type declaration for the SVG assets, by creating a `src/env.d.ts` file, and add the type declaration.
 
 ```ts src/env.d.ts
 declare module '*.svg' {
@@ -256,9 +256,9 @@ export default defineStorybookConfig({
 We do not guarantee that your configuration transformers won't break after an update. It's your responsibility to keep them up to date with new releases.
 !!!
 
-The [predefined options](#use-predefined-options) are useful to quickly customize the [default Storybook configuration](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/rsbuild-configs/src/storybook.ts) of `@workleap/rsbuild-configs`, but only covers a subset of an [Rsbuild configuration](https://rsbuild.dev/config/index). If you need full control over the configuration, you can provide configuration transformer functions through the `transformers` option of the `defineBuildConfig` function. Remember, **no locked in** :heart::v:.
+The [predefined options](#use-predefined-options) are useful to quickly customize the [default Storybook configuration](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/rsbuild-configs/src/storybook.ts) of `@workleap/rsbuild-configs`, but only covers a subset of an [Rsbuild configuration](https://rsbuild.dev/config/index). If you need full control over the configuration, you can provide configuration transformer functions through the `transformers` option of the `defineStorybookConfig` function. Remember, **no locked in** :heart::v:.
 
-To view the default build configuration of `@workleap/rsbuild-configs`, have a look at the [storybook.ts configuration file](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/rsbuild-configs/src/storybook.ts) on GitHub.
+To view the default Storybook configuration of `@workleap/rsbuild-configs`, have a look at the [storybook.ts configuration file](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/rsbuild-configs/src/storybook.ts) on GitHub.
 
 ### `transformers`
 
@@ -270,7 +270,7 @@ transformer(config: RsbuildConfig, context: RsbuildConfigTransformerContext) => 
 ```
 
 ```ts !#3-10,13 rsbuild.config.ts
-import { defineBuildConfig, type RsbuildConfig, type RsbuildConfigTransformer } from "@workleap/rsbuild-configs";
+import { defineStorybookConfig, type RsbuildConfig, type RsbuildConfigTransformer } from "@workleap/rsbuild-configs";
 
 const useInlineStylesTransformer: RsbuildConfigTransformer = (config: RsbuildConfig) => {
     config.output = {
@@ -281,7 +281,7 @@ const useInlineStylesTransformer: RsbuildConfigTransformer = (config: RsbuildCon
     return config;
 };
 
-export default defineBuildConfig({
+export default defineStorybookConfig({
     transformers: [useInlineStylesTransformer]
 });
 ```
@@ -290,7 +290,9 @@ export default defineBuildConfig({
 
 Generic transformers can use the `context` parameter to gather additional information about their execution context, like the `environment` they are operating in.
 
-```ts !#2 transformer.ts
+```ts !#4 transformer.ts
+import type { RsbuildConfig, RsbuildConfigTransformer } from "@workleap/rsbuild-configs";
+
 export const transformer: RsbuildConfigTransformer = (config: RsbuildConfig) => {
     if (context.environment === "storybook") {
         config.output = {
@@ -308,7 +310,7 @@ export const transformer: RsbuildConfigTransformer = (config: RsbuildConfig) => 
 
 ## Add CLI scripts
 
-To create the bundle files for production, add the following scripts to your project `package.json` file:
+Add the following scripts to the project `package.json` file:
 
 ```json package.json
 {
@@ -383,4 +385,4 @@ By default, Rsbuild injects a few environment variables into the code using the 
 
 ## Try it :rocket:
 
-To test your new Rsbuild configuration, open a terminal at the root of the project and execute the [CLI scripts added earlier](#add-cli-scripts). Either the Storybook development server should start without outputting any error in the terminal or the Storybook application bundle files should be available in the `/storybook-static` folder (or any other folder you configured).
+To test the new Rsbuild configuration, open a terminal at the root of the project and execute the [CLI scripts added earlier](#add-cli-scripts). Either the Storybook development server should start without outputting any error in the terminal or the Storybook application bundle files should be available in the `/storybook-static` folder (or any other folder you configured).

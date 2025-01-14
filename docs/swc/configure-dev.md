@@ -9,6 +9,10 @@ toc:
 
 # Configure for development
 
+!!!warning
+`@workleap/swc-configs` is now in maintenance mode for the shared __development__ configuration. If you're starting a new project, consider using [@workleap/rsbuild-configs](../rsbuild/default.md) instead for better performance and modern tooling which eliminates the needs for a custom SWC configuration.
+!!!
+
 To configure [SWC](https://swc.rs/) for a development environment, execute the following steps :point_down:
 
 ## Install the packages

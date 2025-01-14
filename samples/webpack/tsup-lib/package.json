@@ -2,7 +2,7 @@
     "name": "@webpack-sample/tsup-lib",
     "author": "Workleap",
     "version": "0.0.0",
-    "description": "Typescript library to try the web configs.",
+    "description": "tsup library to try the web configs.",
     "private": true,
     "license": "Apache-2.0",
     "type": "module",
@@ -24,7 +24,7 @@
         "typecheck": "tsc"
     },
     "devDependencies": {
-        "@typescript-eslint/parser": "8.18.0",
+        "@typescript-eslint/parser": "8.20.0",
         "@workleap/eslint-plugin": "workspace:*",
         "@workleap/tsup-configs": "workspace:*",
         "@workleap/typescript-configs": "workspace:*",

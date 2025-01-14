@@ -148,7 +148,7 @@ test("when multiple transformers are provided, all the transformers are applied 
     expect(result.output!.distPath!.js).toBe("a-custom-dist-path-in-a-tranformer");
 });
 
-test("transformers context environment is \"dev\"", () => {
+test("transformers context environment is \"storybook\"", () => {
     const mockTransformer = jest.fn();
 
     defineStorybookConfig({
