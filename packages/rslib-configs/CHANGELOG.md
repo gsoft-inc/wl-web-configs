@@ -1,5 +1,11 @@
 # @workleap/rslib-configs
 
+## 1.0.1
+
+### Patch Changes
+
+- [#230](https://github.com/gsoft-inc/wl-web-configs/pull/230) [`0a4279c`](https://github.com/gsoft-inc/wl-web-configs/commit/0a4279c40b7c2ea76c7e1884a8e2fd744ca9b7c1) Thanks [@patricklafrance](https://github.com/patricklafrance)! - Packages now includes the source codes and sourcemap.
+
 ## 1.0.0
 
 ### Major Changes
