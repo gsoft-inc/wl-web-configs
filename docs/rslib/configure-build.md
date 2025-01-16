@@ -120,21 +120,6 @@ export default defineBuildConfig({
 });
 ```
 
-### `format`
-
-- **Type**: `string`
-- **Default**: `esm`
-
-Set Rslib [lib.format](https://lib.rsbuild.dev/config/lib/format) option.
-
-```ts !#4 rslib.build.ts
-import { defineBuildConfig } from "@workleap/rslib-configs";
-
-export default defineBuildConfig({
-    format: "cjs"
-});
-```
-
 ### `syntax`
 
 - **Type**: `string`

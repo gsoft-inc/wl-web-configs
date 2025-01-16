@@ -9,7 +9,6 @@ export type DefineBuildSvgrPluginConfigFunction = (defaultOptions: PluginSvgrOpt
 
 export interface DefineBuildConfigOptions {
     entry?: RsbuildConfigEntry;
-    format?: "esm" | "cjs";
     syntax?: Syntax;
     bundle?: boolean;
     tsconfigPath?: string;
@@ -34,7 +33,6 @@ function defineSvgrPluginConfig(options: PluginSvgrOptions) {
 export function defineBuildConfig(options: DefineBuildConfigOptions = {}) {
     const {
         entry: entryValue,
-        format = "esm",
         syntax = "esnext",
         bundle = false,
         tsconfigPath,
@@ -68,7 +66,7 @@ export function defineBuildConfig(options: DefineBuildConfigOptions = {}) {
     const config = defineConfig({
         mode: "production",
         lib: [{
-            format,
+            format: "esm",
             syntax,
             bundle,
             dts

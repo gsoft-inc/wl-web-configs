@@ -15,17 +15,10 @@
     },
     "exports": {
         ".": {
-            "require": {
-                "types": "./dist/index.d.ts",
-                "default": "./dist/index.js"
-            },
-            "import": {
-                "types": "./dist/index.d.mts",
-                "default": "./dist/index.mjs"
-            }
+            "require": "./dist/index.js",
+            "import": "./dist/index.js"
         }
     },
-    "types": "./dist/index.d.ts",
     "files": [
         "src",
         "dist",
@@ -33,16 +26,16 @@
         "README.md"
     ],
     "scripts": {
-        "build": "tsup",
+        "prebuild": "rimraf dist",
+        "build": "tsc --project tsconfig.build.json",
         "eslint": "eslint . --max-warnings=-0 --cache --cache-location node_modules/.cache/eslint",
         "typecheck": "tsc"
     },
     "devDependencies": {
         "@typescript-eslint/parser": "8.20.0",
         "@workleap/eslint-plugin": "workspace:*",
-        "@workleap/tsup-configs": "workspace:*",
         "@workleap/typescript-configs": "workspace:*",
         "eslint": "8.57.0",
-        "tsup": "8.3.5"
+        "rimraf": "6.0.1"
     }
 }

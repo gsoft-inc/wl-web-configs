@@ -11,11 +11,9 @@
     "exports": {
         ".": {
             "require": "./dist/index.js",
-            "import": "./dist/index.js",
-            "types": "./dist/index.d.ts"
+            "import": "./dist/index.js"
         }
     },
-    "types": "./dist/index.d.ts",
     "files": [
         "src",
         "dist",
@@ -28,7 +26,8 @@
         "directory": "packages/stylelint-configs"
     },
     "scripts": {
-        "build": "tsup",
+        "prebuild": "rimraf dist",
+        "build": "tsc --project tsconfig.build.json",
         "eslint": "eslint . --max-warnings=-0 --cache --cache-location node_modules/.cache/eslint",
         "typecheck": "tsc"
     },
@@ -49,13 +48,12 @@
         "stylelint-prettier": "^5.0.2"
     },
     "devDependencies": {
-        "@types/node": "22.10.6",
+        "@types/node": "22.10.7",
         "@typescript-eslint/parser": "8.20.0",
         "@workleap/eslint-plugin": "workspace:*",
-        "@workleap/tsup-configs": "workspace:*",
         "@workleap/typescript-configs": "workspace:*",
         "eslint": "8.57.0",
-        "tsup": "8.3.5",
+        "rimraf": "6.0.1",
         "typescript": "5.5.4"
     }
 }

@@ -9,13 +9,15 @@ icon: command-palette
 
 - :icon-mark-github: [Web application](https://github.com/gsoft-inc/wl-web-configs/tree/main/samples/rsbuild/app)
 - :icon-mark-github: [Components library](https://github.com/gsoft-inc/wl-web-configs/tree/main/samples/rsbuild/components)
+- :icon-mark-github: [Rslib library](https://github.com/gsoft-inc/wl-web-configs/tree/main/samples/rsbuild/rslib-lib)
 
 ## Webpack sample
 
 - :icon-mark-github: [Web application](https://github.com/gsoft-inc/wl-web-configs/tree/main/samples/webpack/app)
 - :icon-mark-github: [Components library](https://github.com/gsoft-inc/wl-web-configs/tree/main/samples/webpack/components)
-- :icon-mark-github: [TypeScript library](https://github.com/gsoft-inc/wl-web-configs/tree/main/samples//webpack/tsup-lib)
+- :icon-mark-github: [Tsup library](https://github.com/gsoft-inc/wl-web-configs/tree/main/samples//webpack/tsup-lib)
 
-## Storybook sample
+## Storybook samples
 
-- :icon-mark-github: [Storybook](https://github.com/gsoft-inc/wl-web-configs/tree/main/samples/storybook)
+- :icon-mark-github: [Rsbuild](https://github.com/gsoft-inc/wl-web-configs/tree/main/samples/storybook/rsbuild)
+- :icon-mark-github: [Rslib](https://github.com/gsoft-inc/wl-web-configs/tree/main/samples/storybook/rslib)

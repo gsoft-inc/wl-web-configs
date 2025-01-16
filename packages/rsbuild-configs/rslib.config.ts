@@ -1,5 +1,5 @@
+import { defineBuildConfig } from "@workleap/rslib-configs";
 import path from "node:path";
-import { defineBuildConfig } from "./src/build.ts";
 
 export default defineBuildConfig({
     target: "node",
