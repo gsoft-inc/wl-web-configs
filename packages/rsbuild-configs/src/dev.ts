@@ -4,6 +4,7 @@ import { pluginReact, type PluginReactOptions } from "@rsbuild/plugin-react";
 import { pluginSvgr, type PluginSvgrOptions } from "@rsbuild/plugin-svgr";
 import path from "node:path";
 import { applyTransformers, type RsbuildConfigTransformer } from "./applyTransformers.ts";
+import { isBoolean } from "./assertions.ts";
 
 export type DefineDevHtmlPluginConfigFunction = (defaultOptions: HtmlConfig) => HtmlConfig;
 export type DefineDevDefineReactPluginConfigFunction = (defaultOptions: PluginReactOptions) => PluginReactOptions;
@@ -81,7 +82,7 @@ export function defineDevConfig(options: DefineDevConfigOptions = {}) {
             } : undefined
         },
         server: {
-            https: typeof https === "boolean" ? undefined : https,
+            https: isBoolean(https) ? undefined : https,
             host,
             port,
             historyApiFallback: true
@@ -108,7 +109,7 @@ export function defineDevConfig(options: DefineDevConfigOptions = {}) {
             ? html({ template: path.resolve("./public/index.html") })
             : undefined,
         plugins: [
-            typeof https === "boolean" && https && pluginBasicSsl(),
+            isBoolean(https) && https && pluginBasicSsl(),
             react && pluginReact(react({
                 fastRefresh,
                 reactRefreshOptions: {

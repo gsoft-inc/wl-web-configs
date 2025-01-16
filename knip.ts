@@ -105,14 +105,12 @@ const rootConfig = defineWorkspace({
     ignoreDependencies: [
         // Required for Stylelint (seems like a Knip bug)
         "prettier",
-        // Installed once for all the workspace's projects
         "ts-node"
     ]
 });
 
 const packagesConfig: KnipWorkspaceConfig = defineWorkspace({}, [
-    configurePackage,
-    configureTsup
+    configurePackage
 ]);
 
 const swcConfig: KnipWorkspaceConfig = defineWorkspace({
@@ -123,8 +121,7 @@ const swcConfig: KnipWorkspaceConfig = defineWorkspace({
         "browserslist"
     ]
 }, [
-    configurePackage,
-    configureTsup
+    configurePackage
 ]);
 
 const webpackConfig: KnipWorkspaceConfig = defineWorkspace({
@@ -135,8 +132,7 @@ const webpackConfig: KnipWorkspaceConfig = defineWorkspace({
         "webpack-dev-server"
     ]
 }, [
-    configurePackage,
-    configureTsup
+    configurePackage
 ]);
 
 const configureWebpackSample: KnipTransformer = ({ entry, ...config }) => {
@@ -161,8 +157,7 @@ const webpackSampleAppConfig = defineWorkspace({}, [
 ]);
 
 const webpackSampleComponentsConfig = defineWorkspace({}, [
-    configureWebpackSample,
-    configureTsup
+    configureWebpackSample
 ]);
 
 const webpackSampleTsupLibConfig = defineWorkspace({}, [
@@ -191,11 +186,18 @@ const rsbuildSampleAppConfig = defineWorkspace({}, [
 ]);
 
 const rsbuildSampleComponentsConfig = defineWorkspace({}, [
-    configureRsbuildSample,
-    configureTsup
+    configureRsbuildSample
 ]);
 
-const storybookSample = defineWorkspace({}, [
+const rsbuildSampleRslibLibConfig = defineWorkspace({}, [
+    configureRsbuildSample
+]);
+
+const storybookRsbuildSample = defineWorkspace({}, [
+    ignoreBrowserslist
+]);
+
+const storybookRslibSample = defineWorkspace({}, [
     ignoreBrowserslist
 ]);
 
@@ -210,7 +212,9 @@ const config: KnipConfig = {
         "samples/webpack/tsup-lib": webpackSampleTsupLibConfig,
         "samples/rsbuild/app": rsbuildSampleAppConfig,
         "samples/rsbuild/components": rsbuildSampleComponentsConfig,
-        "samples/storybook": storybookSample
+        "samples/rsbuild/rslib-lib": rsbuildSampleRslibLibConfig,
+        "samples/storybook/rsbuild": storybookRsbuildSample,
+        "samples/storybook/rslib": storybookRslibSample
     },
     ignoreWorkspaces: [
         // Until it's migrated to ESLint 9.

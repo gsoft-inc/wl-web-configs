@@ -3,6 +3,7 @@ import { pluginReact, type PluginReactOptions } from "@rsbuild/plugin-react";
 import { pluginSvgr, type PluginSvgrOptions } from "@rsbuild/plugin-svgr";
 import { defineConfig, type Dts, type RsbuildConfigEntry, type RsbuildConfigOutputTarget, type Syntax } from "@rslib/core";
 import { applyTransformers, type RslibConfigTransformer } from "./applyTransformers.ts";
+import { isFunction } from "./assertions.ts";
 
 export type DefineDevDefineReactPluginConfigFunction = (defaultOptions: PluginReactOptions) => PluginReactOptions;
 export type DefineDevSvgrPluginConfigFunction = (defaultOptions: PluginSvgrOptions) => PluginSvgrOptions;
@@ -17,17 +18,9 @@ export interface DefineDevConfigOptions {
     distPath?: DistPathConfig;
     plugins?: RsbuildPlugins;
     sourceMap?: boolean | SourceMap;
-    react?: false | DefineDevDefineReactPluginConfigFunction;
-    svgr? : false | DefineDevSvgrPluginConfigFunction;
+    react?: true | DefineDevDefineReactPluginConfigFunction;
+    svgr? : true | DefineDevSvgrPluginConfigFunction;
     transformers?: RslibConfigTransformer[];
-}
-
-function defaultDefineReactPluginConfig(options: PluginReactOptions) {
-    return options;
-}
-
-function defineSvgrPluginConfig(options: PluginSvgrOptions) {
-    return options;
 }
 
 export function defineDevConfig(options: DefineDevConfigOptions = {}) {
@@ -46,8 +39,8 @@ export function defineDevConfig(options: DefineDevConfigOptions = {}) {
             js: "cheap-module-source-map",
             css: true
         },
-        react = defaultDefineReactPluginConfig,
-        svgr = defineSvgrPluginConfig,
+        react = false,
+        svgr = false,
         transformers = []
     } = options;
 
@@ -62,6 +55,12 @@ export function defineDevConfig(options: DefineDevConfigOptions = {}) {
             index: bundle ? ["./src/index.ts", "./src/index.js"] : "./src/**"
         };
     }
+
+    const svgrDefaultOptions: PluginSvgrOptions = {
+        svgrOptions: {
+            exportType: "named"
+        }
+    };
 
     const config = defineConfig({
         mode: "development",
@@ -82,15 +81,11 @@ export function defineDevConfig(options: DefineDevConfigOptions = {}) {
             minify: false,
             sourceMap
         },
-        plugins: [
-            react && pluginReact(react({})),
-            svgr && pluginSvgr(svgr({
-                svgrOptions: {
-                    exportType: "named"
-                }
-            })),
+        plugins: ([
+            react && pluginReact(isFunction(react) ? react({}) : {}),
+            svgr && pluginSvgr(isFunction(svgr) ? svgr(svgrDefaultOptions) : svgrDefaultOptions),
             ...plugins
-        ]
+        ] as RsbuildPlugins).filter(Boolean)
     });
 
     const transformedConfig = applyTransformers(config, transformers, {

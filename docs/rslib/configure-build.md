@@ -262,16 +262,16 @@ export default defineBuildConfig({
 
 ### `react`
 
-- **Type**: `false` or `(defaultOptions: PluginReactOptions) => PluginReactOptions`
+- **Type**: `true` or `(defaultOptions: PluginReactOptions) => PluginReactOptions`
 - **Default**: `defaultOptions => defaultOptions`
 
-Whether or not to transform React code. To disable React code transformation, set the option to `false`.
+Whether or not to transform React code. To enable React code transformation, set the option to `true`.
 
 ```ts !#4 rslib.build.ts
 import { defineBuildConfig } from "@workleap/rslib-configs";
 
 export default defineBuildConfig({
-    react: false
+    react: true
 });
 ```
 
@@ -295,10 +295,10 @@ export default defineBuildConfig({
 
 ### `svgr`
 
-- **Type**: `false` or `(defaultOptions: PluginSvgrOptions) => PluginSvgrOptions`
+- **Type**: `true` or `(defaultOptions: PluginSvgrOptions) => PluginSvgrOptions`
 - **Default**: `defaultOptions => defaultOptions`
 
-Whether or not to handle `.svg` files with [plugin-svgr](https://rsbuild.dev/plugins/list/plugin-svgr). When the option is set to `false`, the `.svg` files will be handled by the `asset/resource` rule.
+Whether or not to handle `.svg` files with [plugin-svgr](https://rsbuild.dev/plugins/list/plugin-svgr). To enable SVGR transformation, set the option to `true`. When this option is not activated, the `.svg` files will be handled by the `asset/resource` rule.
 
 ```ts !#4 rslib.build.ts
 import { defineBuildConfig } from "@workleap/rslib-configs";

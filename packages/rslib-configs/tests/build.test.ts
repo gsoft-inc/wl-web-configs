@@ -135,13 +135,23 @@ test("when sourceMap is an object, the output.sourceMap option is the object", (
 
 test("when react is false, the react plugin is not included", () => {
     const result = defineBuildConfig({
-        react: false,
         tsconfigPath: "./build.json"
     });
 
     const plugin = result.plugins?.find(x => (x as RsbuildPlugin).name === "rsbuild:react");
 
     expect(plugin).toBeUndefined();
+});
+
+test("when react is true, the react plugin is included", () => {
+    const result = defineBuildConfig({
+        react: true,
+        tsconfigPath: "./build.json"
+    });
+
+    const plugin = result.plugins?.find(x => (x as RsbuildPlugin).name === "rsbuild:react");
+
+    expect(plugin).toBeDefined();
 });
 
 test("when react is a function, the function is executed", () => {
@@ -157,13 +167,23 @@ test("when react is a function, the function is executed", () => {
 
 test("when svgr is false, the svgr plugin is not included", () => {
     const result = defineBuildConfig({
-        svgr: false,
         tsconfigPath: "./build.json"
     });
 
     const plugin = result.plugins?.find(x => (x as RsbuildPlugin).name === "rsbuild:svgr");
 
     expect(plugin).toBeUndefined();
+});
+
+test("when svgr is true, the svgr plugin is included", () => {
+    const result = defineBuildConfig({
+        svgr: true,
+        tsconfigPath: "./build.json"
+    });
+
+    const plugin = result.plugins?.find(x => (x as RsbuildPlugin).name === "rsbuild:svgr");
+
+    expect(plugin).toBeDefined();
 });
 
 test("when svgr is a function, the function is executed", () => {
