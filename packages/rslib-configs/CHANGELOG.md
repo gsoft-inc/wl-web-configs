@@ -1,5 +1,11 @@
 # @workleap/rslib-configs
 
+## 1.0.2
+
+### Patch Changes
+
+- [#232](https://github.com/gsoft-inc/wl-web-configs/pull/232) [`803f0ed`](https://github.com/gsoft-inc/wl-web-configs/commit/803f0edef6dc2c0525e1522d209c517e0e119da6) Thanks [@patricklafrance](https://github.com/patricklafrance)! - React and SVGR code transformation are not activated by default anymore for the dev and build configs.
+
 ## 1.0.1
 
 ### Patch Changes
