@@ -3,6 +3,7 @@ import { pluginReact, type PluginReactOptions } from "@rsbuild/plugin-react";
 import { pluginSvgr, type PluginSvgrOptions } from "@rsbuild/plugin-svgr";
 import { defineConfig, type Dts, type RsbuildConfigEntry, type RsbuildConfigOutputTarget, type Syntax } from "@rslib/core";
 import { applyTransformers, type RslibConfigTransformer } from "./applyTransformers.ts";
+import { isFunction } from "./assertions.ts";
 
 export type DefineBuildDefineReactPluginConfigFunction = (defaultOptions: PluginReactOptions) => PluginReactOptions;
 export type DefineBuildSvgrPluginConfigFunction = (defaultOptions: PluginSvgrOptions) => PluginSvgrOptions;
@@ -17,17 +18,9 @@ export interface DefineBuildConfigOptions {
     distPath?: DistPathConfig;
     plugins?: RsbuildPlugins;
     sourceMap?: boolean | SourceMap;
-    react?: false | DefineBuildDefineReactPluginConfigFunction;
-    svgr? : false | DefineBuildSvgrPluginConfigFunction;
+    react?: true | DefineBuildDefineReactPluginConfigFunction;
+    svgr? : true | DefineBuildSvgrPluginConfigFunction;
     transformers?: RslibConfigTransformer[];
-}
-
-function defaultDefineReactPluginConfig(options: PluginReactOptions) {
-    return options;
-}
-
-function defineSvgrPluginConfig(options: PluginSvgrOptions) {
-    return options;
 }
 
 export function defineBuildConfig(options: DefineBuildConfigOptions = {}) {
@@ -46,8 +39,8 @@ export function defineBuildConfig(options: DefineBuildConfigOptions = {}) {
             js: "source-map",
             css: true
         },
-        react = defaultDefineReactPluginConfig,
-        svgr = defineSvgrPluginConfig,
+        react = false,
+        svgr = false,
         transformers = []
     } = options;
 
@@ -62,6 +55,12 @@ export function defineBuildConfig(options: DefineBuildConfigOptions = {}) {
             index: bundle ? ["./src/index.ts", "./src/index.js"] : "./src/**"
         };
     }
+
+    const svgrDefaultOptions: PluginSvgrOptions = {
+        svgrOptions: {
+            exportType: "named"
+        }
+    };
 
     const config = defineConfig({
         mode: "production",
@@ -82,15 +81,11 @@ export function defineBuildConfig(options: DefineBuildConfigOptions = {}) {
             minify: false,
             sourceMap
         },
-        plugins: [
-            react && pluginReact(react({})),
-            svgr && pluginSvgr(svgr({
-                svgrOptions: {
-                    exportType: "named"
-                }
-            })),
+        plugins: ([
+            react && pluginReact(isFunction(react) ? react({}) : {}),
+            svgr && pluginSvgr(isFunction(svgr) ? svgr(svgrDefaultOptions) : svgrDefaultOptions),
             ...plugins
-        ].filter(Boolean)
+        ] as RsbuildPlugins).filter(Boolean)
     });
 
     const transformedConfig = applyTransformers(config, transformers, {
