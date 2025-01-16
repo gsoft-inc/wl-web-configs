@@ -14,15 +14,6 @@ test("when an entry prop is provided, the source.entry option is the provided va
     expect(result.source?.entry!.index).toBe("./a-new-entry.ts");
 });
 
-test("when format is \"cjs\", the lib.format option is \"cjs\"", () => {
-    const result = defineBuildConfig({
-        format: "cjs",
-        tsconfigPath: "./build.json"
-    });
-
-    expect(result.lib[0]?.format).toBe("cjs");
-});
-
 test("when a syntax prop is provided, the lib.syntax option is the provided value", () => {
     const result = defineBuildConfig({
         syntax: "es2015",

@@ -1,4 +1,3 @@
-// Importing directly from the package to prevent circular dependencies.
-import { defineJestConfig } from "../swc-configs/src/index.ts";
+import { defineJestConfig } from "@workleap/swc-configs";
 
 export const swcConfig = defineJestConfig();
