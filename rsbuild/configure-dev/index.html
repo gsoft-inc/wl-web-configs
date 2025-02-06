@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/wl-web-configs">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.790369861715">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.792129231777">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.6.0">
@@ -32,12 +32,12 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../static/favicon.png" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.6.0.790369861715" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.6.0.792129231777" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.790369861715" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.792129231777" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.6.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.790369861715" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.6.0.790369861715" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.792129231777" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.6.0.792129231777" defer></script>
 
     <link href="https://gsoft-inc.github.io/wl-idp-docs-hub/static/retype-customization.css" rel="stylesheet" />
 
@@ -973,27 +973,7 @@ export const transformer: RsbuildConfigTransformer = (config: RsbuildConfig) =&g
         <span>Setup nodemon</span>
     </h2>
 </doc-anchor-target>
-<p><a href="https://nodemon.io/" class="outbound" target="_blank">Nodemon</a> is a utility that will monitor for any changes in the <code v-pre>rsbuild.dev.ts</code> file and restart the Rsbuild development server whenever a change occurs.</p>
-<p>First, add a <code v-pre>nodemon.json</code> file at the root of the project:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none" data-line="8"><code v-pre class="language-none">web-project
-├── public
-├──── index.html
-├── src
-├──── ...
-├── package.json
-├── rsbuild.dev.ts
-├── nodemon.json</code></pre>
-</doc-codeblock></div>
-<p>Then, open the <code v-pre>nodemon.json</code> file and copy/paste the following content:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<div class="codeblock-title">nodemon.json</div>
-<pre class="language-json"><code v-pre class="language-json">{
-    &quot;watch&quot;: [&quot;rsbuild.dev.ts&quot;],
-    &quot;exec&quot;: &quot;rsbuild dev --config rsbuild.dev.ts&quot;
-}</code></pre>
-</doc-codeblock></div>
-<p>Finally, add a CLI script at the <doc-anchor-trigger to="#add-a-cli-script">next step</doc-anchor-trigger> of this guide.</p>
+<p>A tool such as <a href="https://nodemon.io/" class="outbound" target="_blank">Nodemon</a> is not required with Rsbuild because the development server is automatically restarted when the configuration file is updated.</p>
 <doc-anchor-target id="add-a-cli-script">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#add-a-cli-script">#</doc-anchor-trigger>
