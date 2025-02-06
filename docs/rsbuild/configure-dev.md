@@ -566,31 +566,7 @@ export const transformer: RsbuildConfigTransformer = (config: RsbuildConfig) => 
 
 ## Setup nodemon
 
-[Nodemon](https://nodemon.io/) is a utility that will monitor for any changes in the `rsbuild.dev.ts` file and restart the Rsbuild development server whenever a change occurs.
-
-First, add a `nodemon.json` file at the root of the project:
-
-``` !#8
-web-project
-├── public
-├──── index.html
-├── src
-├──── ...
-├── package.json
-├── rsbuild.dev.ts
-├── nodemon.json
-```
-
-Then, open the `nodemon.json` file and copy/paste the following content:
-
-```json nodemon.json
-{
-    "watch": ["rsbuild.dev.ts"],
-    "exec": "rsbuild dev --config rsbuild.dev.ts"
-}
-```
-
-Finally, add a CLI script at the [next step](#add-a-cli-script) of this guide.
+A tool such as [Nodemon](https://nodemon.io/) is not required with Rsbuild because the development server is automatically restarted when the configuration file is updated.
 
 ## Add a CLI script
 

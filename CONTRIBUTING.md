@@ -94,10 +94,6 @@ pnpm build
 
 By default, packages compilation output will be in their respective *dist* directory.
 
-#### Linting errors
-
-If you got linting error, most of the time, they can be fixed automatically using `eslint . --fix`, if not, follow the report provided by `pnpm lint`.
-
 ## Commands
 
 From the project root, you have access to many commands the main ones are:
