@@ -1,5 +1,11 @@
 # @workleap/rsbuild-configs
 
+## 1.1.0
+
+### Minor Changes
+
+- [#234](https://github.com/gsoft-inc/wl-web-configs/pull/234) [`ad94f27`](https://github.com/gsoft-inc/wl-web-configs/commit/ad94f2714d520af580f01dab3dc02b31b5857673) Thanks [@patricklafrance](https://github.com/patricklafrance)! - Added a new `writeToDisk` predefined option for the dev config.
+
 ## 1.0.2
 
 ### Patch Changes
