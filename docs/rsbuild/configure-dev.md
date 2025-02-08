@@ -384,6 +384,21 @@ export default defineDevConfig({
 });
 ```
 
+### `writeToDisk`
+
+- **Type**: `true`
+- **Default**: `undefined`
+
+Whether or not to [write the build output](https://rsbuild.dev/config/dev/write-to-disk) from the development server to the disk.
+
+```ts !#4 rsbuild.dev.ts
+import { defineDevConfig } from "@workleap/rsbuild-configs";
+
+export default defineDevConfig({
+    writeToDisk: true
+});
+```
+
 ### `react`
 
 - **Type**: `false` or `(defaultOptions: PluginReactOptions) => PluginReactOptions`

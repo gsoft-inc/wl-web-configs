@@ -24,6 +24,7 @@ export interface DefineDevConfigOptions {
     fastRefresh?: boolean;
     sourceMap?: false | SourceMap;
     overlay?: false;
+    writeToDisk?: true;
     react?: false | DefineDevDefineReactPluginConfigFunction;
     svgr? : false | DefineDevSvgrPluginConfigFunction;
     environmentVariables?: Record<string, unknown>;
@@ -62,6 +63,7 @@ export function defineDevConfig(options: DefineDevConfigOptions = {}) {
             css: true
         },
         overlay,
+        writeToDisk,
         react = defaultDefineReactPluginConfig,
         svgr = defineSvgrPluginConfig,
         // Using an empty object literal as the default value to ensure
@@ -79,7 +81,8 @@ export function defineDevConfig(options: DefineDevConfigOptions = {}) {
             hmr: hmr || fastRefresh,
             client: (overlay === false || fastRefresh) ? {
                 overlay: false
-            } : undefined
+            } : undefined,
+            writeToDisk
         },
         server: {
             https: isBoolean(https) ? undefined : https,

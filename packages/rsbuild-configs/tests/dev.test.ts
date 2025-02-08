@@ -294,6 +294,14 @@ test("when overlay is false, react plugin fast refresh overlay is disabled", () 
     expect(isOverlayDisabled).toBeTruthy();
 });
 
+test("when writeToDisk is true, the dev.writeToDisk option is true", () => {
+    const result = defineDevConfig({
+        writeToDisk: true
+    });
+
+    expect(result.dev?.writeToDisk).toBeTruthy();
+});
+
 test("when react is false, the react plugin is not included", () => {
     const result = defineDevConfig({
         react: false
