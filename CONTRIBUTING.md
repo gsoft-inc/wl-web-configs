@@ -286,7 +286,7 @@ pnpm update-outdated-deps
 
 We use [GitHub Actions](https://docs.github.com/en/actions) for this repository.
 
-You can find the configuration is in the `.github/workflows` folder and the build results are available [here](https://github.com/gsoft-inc/wl-web-configs/actions).
+You can find the configuration is in the `.github/workflows` folder and the build results are available [here](https://github.com/workleap/wl-web-configs/actions).
 
 We currently have 3 builds configured:
 
@@ -300,7 +300,7 @@ This action will trigger when a commit is done in a PR to `main` or after a push
 
 ### Retype
 
-This action will trigger when a commit is done in a PR to `main` or after a push to `main`. The action will generate the documentation website into the `retype` branch. This repository [Github Pages](https://github.com/gsoft-inc/wl-web-configs/settings/pages) is configured to automatically deploy the website from the `retype` branch.
+This action will trigger when a commit is done in a PR to `main` or after a push to `main`. The action will generate the documentation website into the `retype` branch. This repository [Github Pages](https://github.com/workleap/wl-web-configs/settings/pages) is configured to automatically deploy the website from the `retype` branch.
 
 If you are having issue with the Retype license, make sure the `RETYPE_API_KEY` Github secret contains a valid Retype license.
 
@@ -308,7 +308,7 @@ If you are having issue with the Retype license, make sure the `RETYPE_API_KEY` 
 
 There are a few steps to add new packages to the monorepo.
 
-Before you add a new package, please read the [GSoft GitHub guidelines](https://github.com/gsoft-inc/github-guidelines#npm-package-name).
+Before you add a new package, please read the [GSoft GitHub guidelines](https://github.com/workleap/github-guidelines#npm-package-name).
 
 ### Create the package
 
@@ -322,7 +322,7 @@ pnpm init
 
 Answer the CLI questions.
 
-Once the *package.json* is generated, please read again the [GSoft GitHub guidelines](https://github.com/gsoft-inc/github-guidelines#npm-package-name) and make sure the package name, author and license are valid.
+Once the *package.json* is generated, please read again the [GSoft GitHub guidelines](https://github.com/workleap/github-guidelines#npm-package-name) and make sure the package name, author and license are valid.
 
 Don't forget to add the [npm scope](https://docs.npmjs.com/about-scopes) *"@workleap"* before the package name. For example, if the project name is "foo", your package name should be "@workleap/foo".
 
