@@ -26,7 +26,7 @@ To ask a question or propose an idea, feel free to start a new [discussion](http
 
 ## Documentation
 
-View the [user's documentation](https://gsoft-inc.github.io/wl-web-configs/).
+View the [user's documentation](https://workleap.github.io/wl-web-configs/).
 
 ## 🤝 Contributing
 
