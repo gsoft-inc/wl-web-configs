@@ -484,9 +484,9 @@ export default defineBuildConfig({
 We do not guarantee that your configuration transformers won't break after an update. It's your responsibility to keep them up to date with new releases.
 !!!
 
-The [predefined options](#use-predefined-options) are useful to quickly customize the [default build configuration](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/rsbuild-configs/src/build.ts) of `@workleap/rsbuild-configs`, but only covers a subset of an [Rsbuild configuration](https://rsbuild.dev/config/index). If you need full control over the configuration, you can provide configuration transformer functions through the `transformers` option of the `defineBuildConfig` function. Remember, **no locked in** :heart::v:.
+The [predefined options](#use-predefined-options) are useful to quickly customize the [default build configuration](https://github.com/workleap/wl-web-configs/blob/main/packages/rsbuild-configs/src/build.ts) of `@workleap/rsbuild-configs`, but only covers a subset of an [Rsbuild configuration](https://rsbuild.dev/config/index). If you need full control over the configuration, you can provide configuration transformer functions through the `transformers` option of the `defineBuildConfig` function. Remember, **no locked in** :heart::v:.
 
-To view the default build configuration of `@workleap/rsbuild-configs`, have a look at the [build.ts configuration file](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/rsbuild-configs/src/build.ts) on GitHub.
+To view the default build configuration of `@workleap/rsbuild-configs`, have a look at the [build.ts configuration file](https://github.com/workleap/wl-web-configs/blob/main/packages/rsbuild-configs/src/build.ts) on GitHub.
 
 ### `transformers`
 
