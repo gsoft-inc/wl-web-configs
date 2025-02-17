@@ -38,7 +38,7 @@ branding:
 favicon: ./static/favicon.png
 
 edit:
-  repo: "https://github.com/gsoft-inc/wl-web-configs"
+  repo: "https://github.com/workleap/wl-web-configs"
   base: /docs
   branch: main
 
@@ -49,22 +49,22 @@ links:
 
   - text: Found a bug?
     icon: issue-opened
-    link: https://github.com/gsoft-inc/wl-web-configs/issues
+    link: https://github.com/workleap/wl-web-configs/issues
     target: blank
 
   - text: Feature requests
     icon: comment-discussion
-    link: https://github.com/gsoft-inc/wl-web-configs/discussions
+    link: https://github.com/workleap/wl-web-configs/discussions
     target: blank
 
   - text: Releases
     icon: tag
-    link: https://github.com/gsoft-inc/wl-web-configs/releases
+    link: https://github.com/workleap/wl-web-configs/releases
     target: blank
 
   - text: Github
     icon: mark-github
-    link: https://github.com/gsoft-inc/wl-web-configs
+    link: https://github.com/workleap/wl-web-configs
     target: blank
 
   - text: NPM
@@ -81,7 +81,7 @@ footer:
 
     - text: License
       icon: shield-check
-      link: https://github.com/gsoft-inc/wl-web-configs/blob/main/LICENSE
+      link: https://github.com/workleap/wl-web-configs/blob/main/LICENSE
       target: blank
 
 # To allow using {{ }} in code blocks.
