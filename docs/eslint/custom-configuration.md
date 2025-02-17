@@ -9,7 +9,7 @@ meta:
 If you are in the process of **migrating an existing project** to use `@workleap/eslint-plugin` or encountering a challenging situation that is not currently handled by this library, you might want to customize the default shared configurations.
 
 !!!
-For a list of the rules included with the default shared configurations, refer to the configuration files in the following [folder](https://github.com/gsoft-inc/wl-web-configs/tree/main/packages/eslint-plugin/lib/config) on GitHub.
+For a list of the rules included with the default shared configurations, refer to the configuration files in the following [folder](https://github.com/workleap/wl-web-configs/tree/main/packages/eslint-plugin/lib/config) on GitHub.
 !!!
 
 ## Disable a default rule
