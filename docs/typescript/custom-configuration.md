@@ -10,7 +10,7 @@ meta:
 If you are in the process of **migrating an existing project** to use `@workleap/typescript-configs` or encountering a challenging situation that is not currently handled by this library, you might want to customize the default shared configurations.
 
 !!!
-For a list of the rules included with the default shared configurations, refer to the configuration files in the following [folder](https://github.com/gsoft-inc/wl-web-configs/tree/main/packages/typescript-configs) on GitHub.
+For a list of the rules included with the default shared configurations, refer to the configuration files in the following [folder](https://github.com/workleap/wl-web-configs/tree/main/packages/typescript-configs) on GitHub.
 !!!
 
 ## Change a default field value
