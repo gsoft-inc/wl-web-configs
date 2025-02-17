@@ -14,8 +14,8 @@ If the default [by project type configurations](default.md/#available-configurat
 
 | Name | Description |
 | ---  | --- |
-| :icon-mark-github: [core](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/typescript-configs/core.json) | Basic rules shared by every configuration. |
-| :icon-mark-github: [react](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/typescript-configs/react.json) | Rules for [React](https://react.dev/) applications and libraries. |
+| :icon-mark-github: [core](https://github.com/workleap/wl-web-configs/blob/main/packages/typescript-configs/core.json) | Basic rules shared by every configuration. |
+| :icon-mark-github: [react](https://github.com/workleap/wl-web-configs/blob/main/packages/typescript-configs/react.json) | Rules for [React](https://react.dev/) applications and libraries. |
 
 ## Compose a new configuration
 
