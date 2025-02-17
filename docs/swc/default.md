@@ -15,7 +15,7 @@ toc:
 
 <!-- !!!warning Before you continue...
 
-The preferred way for using `@workleap/swc-configs` is **not** by installing the library manually, but rather by **scaffolding** your application with Workleap's [foundry-cli](https://github.com/gsoft-inc/wl-foundry-cli).
+The preferred way for using `@workleap/swc-configs` is **not** by installing the library manually, but rather by **scaffolding** your application with Workleap's [foundry-cli](https://github.com/workleap/wl-foundry-cli).
 
 +++ pnpm
 ```bash
