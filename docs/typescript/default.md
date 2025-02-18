@@ -11,7 +11,7 @@ toc:
 
 <!-- !!!warning Before you continue...
 
-The preferred way for using `@workleap/typescript-configs` is **not** by installing the library manually, but rather by **scaffolding** your application with Workleap's [foundry-cli](https://github.com/gsoft-inc/wl-foundry-cli).
+The preferred way for using `@workleap/typescript-configs` is **not** by installing the library manually, but rather by **scaffolding** your application with Workleap's [foundry-cli](https://github.com/workleap/wl-foundry-cli).
 
 +++ pnpm
 ```bash
@@ -55,9 +55,9 @@ If you are in the process of migrating an existing project to `@workleap/typescr
 
 | Name | Description |
 | ---  | --- |
-| :icon-mark-github: [web-application](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/typescript-configs/web-application.json) | For web applications developed with [React](https://react.dev/). |
-| :icon-mark-github: [library](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/typescript-configs/library.json) | For library project developed with or without [React](https://react.dev/). |
-| :icon-mark-github: [monorepo-workspace](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/typescript-configs/monorepo-workspace.json) | For the workspace configuration of a monorepo solution. |
+| :icon-mark-github: [web-application](https://github.com/workleap/wl-web-configs/blob/main/packages/typescript-configs/web-application.json) | For web applications developed with [React](https://react.dev/). |
+| :icon-mark-github: [library](https://github.com/workleap/wl-web-configs/blob/main/packages/typescript-configs/library.json) | For library project developed with or without [React](https://react.dev/). |
+| :icon-mark-github: [monorepo-workspace](https://github.com/workleap/wl-web-configs/blob/main/packages/typescript-configs/monorepo-workspace.json) | For the workspace configuration of a monorepo solution. |
 
 ## Getting started
 

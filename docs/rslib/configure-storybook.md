@@ -228,9 +228,9 @@ export const App = () => <Logo />;
 We do not guarantee that your configuration transformers won't break after an update. It's your responsibility to keep them up to date with new releases.
 !!!
 
-The [predefined options](#use-predefined-options) are useful to quickly customize the [default Storybook configuration](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/rslib-configs/src/storybook.ts) of `@workleap/rslib-configs`, but only covers a subset of an [Rslib configuration](https://lib.rsbuild.dev/config/index). If you need full control over the configuration, you can provide configuration transformer functions through the `transformers` option of the `defineStorybookConfig` function. Remember, **no locked in** :heart::v:.
+The [predefined options](#use-predefined-options) are useful to quickly customize the [default Storybook configuration](https://github.com/workleap/wl-web-configs/blob/main/packages/rslib-configs/src/storybook.ts) of `@workleap/rslib-configs`, but only covers a subset of an [Rslib configuration](https://lib.rsbuild.dev/config/index). If you need full control over the configuration, you can provide configuration transformer functions through the `transformers` option of the `defineStorybookConfig` function. Remember, **no locked in** :heart::v:.
 
-To view the default Storybook configuration of `@workleap/rslib-configs`, have a look at the [storybook.ts configuration file](https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/rslib-configs/src/storybook.ts) on GitHub.
+To view the default Storybook configuration of `@workleap/rslib-configs`, have a look at the [storybook.ts configuration file](https://github.com/workleap/wl-web-configs/blob/main/packages/rslib-configs/src/storybook.ts) on GitHub.
 
 ### `transformers`
 

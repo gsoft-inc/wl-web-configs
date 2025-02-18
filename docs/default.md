@@ -10,7 +10,7 @@ Welcome to `@workleap/web-configs`, a collection of **configuration libraries** 
 
 <!-- !!!warning Before you continue...
 
-The preferred way for using these configuration libraries is **not** by installing them manually, but rather by **scaffolding** your application with Workleap's [foundry-cli](https://github.com/gsoft-inc/wl-foundry-cli).
+The preferred way for using these configuration libraries is **not** by installing them manually, but rather by **scaffolding** your application with Workleap's [foundry-cli](https://github.com/workleap/wl-foundry-cli).
 
 +++ pnpm
 ```bash

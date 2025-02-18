@@ -11,7 +11,7 @@ const rule: Rule.RuleModule = {
             description: "CSS Modules should have the same name as a component and located in the same folder",
             category: "Strict",
             recommended: false,
-            url: "https://github.com/gsoft-inc/wl-web-configs/blob/main/packages/eslint-plugin/docs/rules/strict-css-modules-names.md"
+            url: "https://github.com/workleap/wl-web-configs/blob/main/packages/eslint-plugin/docs/rules/strict-css-modules-names.md"
         }
     },
     create: function(context) {

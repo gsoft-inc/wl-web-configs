@@ -5,7 +5,7 @@
 
 ## Usage
 
-View the [user's documentation](https://gsoft-inc.github.io/wl-web-configs/).
+View the [user's documentation](https://workleap.github.io/wl-web-configs/).
 
 ## 🤝 Contributing
 
@@ -21,4 +21,4 @@ Once all our projects use ESM, CJS support can be removed.
 
 ## License
 
-Copyright © 2023, Workleap. This code is licensed under the Apache License, Version 2.0. You may obtain a copy of this license at https://github.com/gsoft-inc/workleap-license/blob/master/LICENSE.
+Copyright © 2023, Workleap. This code is licensed under the Apache License, Version 2.0. You may obtain a copy of this license at https://github.com/workleap/workleap-license/blob/master/LICENSE.
